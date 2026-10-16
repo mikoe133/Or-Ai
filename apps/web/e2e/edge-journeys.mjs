@@ -4,6 +4,28 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { expect } from "playwright/test";
 
+export async function textContrast(locator) {
+  return locator.evaluate((element) => {
+    const rgba = (value) => {
+      const parts = value.match(/[\d.]+/g)?.map(Number) ?? [];
+      return [parts[0] ?? 0, parts[1] ?? 0, parts[2] ?? 0, parts[3] ?? 1];
+    };
+    const parents = [];
+    for (let current = element; current; current = current.parentElement) parents.unshift(current);
+    let background = [255, 255, 255];
+    for (const parent of parents) {
+      const colour = rgba(getComputedStyle(parent).backgroundColor);
+      background = background.map((channel, index) => colour[index] * colour[3] + channel * (1 - colour[3]));
+    }
+    const luminance = (colour) => colour.slice(0, 3).map((value) => {
+      const channel = value / 255;
+      return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+    }).reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
+    const foreground = luminance(rgba(getComputedStyle(element).color)), backdrop = luminance(background);
+    return (Math.max(foreground, backdrop) + 0.05) / (Math.min(foreground, backdrop) + 0.05);
+  });
+}
+
 export async function catalogFilters(page) {
   await page.goto("/?sort=recommended&pageSize=1&page=2");
   await expect(
