@@ -93,6 +93,7 @@ test('real catalog metadata, cards and details expose only current public fields
   assert.equal('publicSample' in catalog.items[0]!, false); assert.equal('description' in catalog.items[0]!, false);
   const detail = await read('/api/products/demo-partner'); assert.equal(detail.response.status, 200);
   const product = ProductDetailSchema.parse(detail.body);
+  assert.equal(detail.body.versionId, demoId('demo-partner-v2'));
   assert.equal(product.versionNumber, 2); assert.equal(product.questionCount, 6); assert.equal(product.purchaseUrl, null);
   assert.equal(product.publicSample.summary.includes('公开样例'), true);
   assert.equal(product.redemptionNotice.length > 0 && product.purchaseNotice.length > 0, true);
