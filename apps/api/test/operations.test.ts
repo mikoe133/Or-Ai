@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, writeFile, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { Test } from '@nestjs/testing';
@@ -15,6 +15,7 @@ import { SupabaseAuthGateway, type SupabaseIdentity } from '../src/accounts/supa
 import { DemoIdentityScenarios, demoId } from '../scripts/demo-fixtures';
 import { createLocalFixture } from './local-fixture';
 import { runAdminCommand } from '../scripts/admin-command';
+import { parseOrderCsv } from '../src/operations/orders-admin.service';
 
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>, app: INestApplication, base: string, directory: string;
 let configuration: ReturnType<typeof loadConfiguration>;
@@ -351,4 +352,200 @@ test('a READY file stays private until explicitly selected as the current publis
   assert.equal((await visitor.raw(publicPath.replace(pending.id, randomUUID()))).status, 404);
   await admin.request('/admin/assets/' + cover.id + '/archive', 'POST', { expectedRevision: cover.revision, requestId: randomUUID() });
   assert.equal((await visitor.raw(publicPath)).status, 404);
+});
+
+test('version edits, reviews and publication reject stale revisions and idempotency payload changes', async () => {
+  const seed = await fixture.runtime.client.product.findUniqueOrThrow({ where: { slug: 'demo-work' } });
+  const configuration = (await fixture.runtime.client.productVersion.findUniqueOrThrow({ where: { id: seed.currentVersionId! } })).configuration;
+  const imported = await admin.request('/admin/products/' + seed.id + '/versions', 'POST', { configuration, requestId: randomUUID() });
+  const path = '/admin/products/' + seed.id + '/versions/' + imported.body.id;
+  const input = { configuration, expectedRevision: imported.body.revision, requestId: randomUUID() };
+  const edited = await admin.request(path, 'PUT', input); assert.equal(edited.status, 200);
+  assert.equal((await admin.request(path, 'PUT', { ...input, expectedRevision: 99 })).status, 409);
+  assert.equal((await admin.request(path + '/review', 'POST', { expectedRevision: input.expectedRevision, requestId: randomUUID() })).status, 409);
+  const reviewed = await admin.request(path + '/review', 'POST', { expectedRevision: edited.body.revision, requestId: randomUUID() });
+  assert.equal(reviewed.status, 200); assert.ok(reviewed.body.revision > edited.body.revision);
+  assert.equal((await admin.request(path + '/publish', 'POST', { expectedRevision: edited.body.revision, requestId: randomUUID() })).status, 409);
+  assert.equal((await admin.request(path + '/publish', 'POST', { expectedRevision: reviewed.body.revision, requestId: randomUUID() })).status, 200);
+  assert.equal((await admin.request('/admin/products/' + seed.id, 'PATCH', { name: '过期编辑', expectedRevision: seed.revision, requestId: randomUUID() })).status, 409);
+  assert.ok((await admin.request('/admin/products/' + seed.id + '/versions?pageSize=1')).body.total >= 2);
+});
+
+test('cover selection on an unpublished product is a controlled conflict, not an internal database error', async () => {
+  const product = await fixture.runtime.client.product.findUniqueOrThrow({ where: { slug: 'fixture-draft' } });
+  const response = await admin.request('/admin/products/' + product.id + '/cover', 'POST', { assetId: randomUUID(), expectedRevision: product.revision, requestId: randomUUID() });
+  assert.equal(response.status, 409);
+});
+
+test('CSV preview detects conflicting references within the same batch and preserves real import feedback', async () => {
+  const csv = 'platform,reference,productVersionId,quantity,amountFen\n' + [1,2].map(quantity => 'manual,demo:csv-inner,' + versionId + ',' + quantity + ',990').join('\n');
+  for (const dryRun of [true, false]) {
+    const response = await admin.request('/admin/orders/import', 'POST', { csv, dryRun, requestId: randomUUID() });
+    assert.equal(response.status, 200); assert.equal(response.body.accepted, 1); assert.equal(response.body.rejected, 1);
+  }
+});
+
+test('CSV parser handles reordered headers, escaped quotes and newlines, rejects malformed or unbounded data', async () => {
+  const header = 'platform,reference,productVersionId,quantity,amountFen';
+  const parsed = parseOrderCsv('quantity,reference,amountFen,platform,productVersionId\r\n1,"demo:a""b\nc",990,manual,' + versionId);
+  assert.equal(parsed[0]?.values?.reference, 'demo:a"b\nc');
+  for (const csv of ['', header, header + '\nmanual,"unfinished', header + '\nmanual,"done"x,x,1,1', header + '\nmanual,un"quoted,x,1,1',
+    header + '\n' + 'x'.repeat(20_001), header + '\n' + 'a,b,c,d,e\n'.repeat(501), header + '\na,b,c,d,e,f,g,h']) {
+    assert.throws(() => parseOrderCsv(csv), error => error instanceof ApiException && error.code === 'VALIDATION_ERROR');
+  }
+  const large = header + '\n' + ('manual,demo:' + 'x'.repeat(260) + ',' + versionId + ',1,990\n').repeat(500);
+  assert.ok(large.length > 100_000);
+  const response = await admin.request('/admin/orders/import', 'POST', { csv: large, dryRun: true, requestId: randomUUID() });
+  assert.equal(response.status, 200); assert.equal(response.body.rejected, 500);
+  const mismatched = await admin.request('/admin/orders/import', 'POST', { csv: header + '\nmanual,only-two', dryRun: false, requestId: randomUUID() });
+  assert.equal(mismatched.body.rows[0].code, 'VALIDATION_ERROR');
+});
+
+test('CSV concurrent retries and distinct batches deduplicate identical platform references; duplicate metadata conflicts', async () => {
+  const reference = 'demo:csv-race:' + randomUUID(), csv = 'platform,reference,productVersionId,quantity,amountFen\nmanual,' + reference + ',' + versionId + ',1,990';
+  const requestId = randomUUID();
+  const results = await Promise.all([requestId, requestId, randomUUID()].map(id => admin.request('/admin/orders/import', 'POST', { csv, requestId: id, dryRun: false })));
+  assert.equal(results.every(result => result.status === 200 && result.body.accepted === 1), true);
+  assert.equal(new Set(results.map(result => result.body.rows[0].orderId)).size, 1);
+  const conflict = await admin.request('/admin/orders/import', 'POST', { csv: csv.replace(',1,990', ',2,990'), requestId: randomUUID(), dryRun: true });
+  assert.equal(conflict.body.rejected, 1);
+  const list = await admin.request('/admin/orders?platform=manual&status=pending&reference=' + reference + '&pageSize=1');
+  assert.equal(list.body.total, 1); assert.equal(list.body.items.length, 1);
+});
+
+test('actual JPEG, WebP, WebM and MP4 bytes pass verification and support authorized video ranges', async () => {
+  for (const [fileName, mimeType, kind] of [['cover.jpg','image/jpeg','cover'],['cover.webp','image/webp','cover'],['preview.webm','video/webm','video'],['preview.mp4','video/mp4','video']]) {
+    const bytes = await readFile('test/fixtures/' + fileName);
+    const prepared = await uploaded(bytes, { fileName, mimeType, kind });
+    assert.equal((await admin.request('/admin/uploads/' + prepared.id + '/complete', 'POST', { requestId: randomUUID() })).status, 409);
+    const sent = await admin.raw(prepared.uploadPath, 'PUT', bytes, { 'content-type': 'application/octet-stream' });
+    assert.equal(sent.status, 200); await sent.arrayBuffer();
+    const complete = await admin.request('/admin/uploads/' + prepared.id + '/complete', 'POST', { requestId: randomUUID() });
+    assert.equal(complete.body.status, 'available');
+    assert.equal((await admin.request('/admin/uploads/' + prepared.id + '/complete', 'POST', { requestId: randomUUID() })).status, 200);
+    const value = await asset({ kind, text: null, fileId: prepared.id });
+    assert.equal((await admin.request('/admin/assets/' + value.id)).body.checksum, sha(bytes));
+    for (const [range, length] of [['bytes=-8',8],['bytes=8-',bytes.length-8]]) {
+      const response = await admin.raw(complete.body.downloadPath, 'GET', undefined, { range: String(range) });
+      assert.equal(response.status, 206); assert.equal((await response.arrayBuffer()).byteLength, length);
+    }
+    for (const range of ['bytes=2-1','bytes=-0','bytes=999999-','bytes=0-1,4-5','bytes=-','invalid']) {
+      const response = await admin.raw(complete.body.downloadPath, 'GET', undefined, { range });
+      assert.equal(response.status, 416); await response.arrayBuffer();
+    }
+  }
+});
+
+test('interrupted declarations and corrupt uploaded files never become available or leave misleading completion status', async () => {
+  const short = await uploaded(image, { byteSize: image.length - 1 });
+  const rejected = await admin.raw(short.uploadPath, 'PUT', image, { 'content-type': 'application/octet-stream' });
+  assert.equal(rejected.status, 400); await rejected.arrayBuffer();
+  assert.equal((await admin.request('/admin/uploads/' + short.id)).body.status, 'failed');
+  assert.equal((await readdir(directory)).includes(short.id + '.blob'), false);
+  const pending = await uploaded();
+  await (await admin.raw(pending.uploadPath, 'PUT', image, { 'content-type': 'application/octet-stream' })).arrayBuffer();
+  const corrupt = Buffer.from(image); corrupt[40] = corrupt[40]! ^ 1;
+  await writeFile(join(directory, pending.id + '.blob'), corrupt);
+  assert.equal((await admin.request('/admin/uploads/' + pending.id + '/complete', 'POST', { requestId: randomUUID() })).status, 400);
+  assert.equal((await admin.request('/admin/uploads/' + pending.id)).body.status, 'failed');
+  assert.equal((await readdir(directory)).includes(pending.id + '.blob'), false);
+});
+
+test('upload retries preserve status, enforce the binary-only boundary, and reject unsupported extensions or purposes', async () => {
+  const request = { productVersionId: versionId, kind: 'cover', fileName: '封面.png', mimeType: 'image/png', byteSize: image.length, checksum: sha(image), requestId: randomUUID() };
+  const prepared = await admin.request('/admin/uploads', 'POST', request);
+  assert.equal((await admin.request('/admin/uploads', 'POST', request)).body.id, prepared.body.id);
+  assert.equal((await admin.request('/admin/uploads', 'POST', { ...request, fileName: 'new.png' })).status, 409);
+  for (const change of [{ fileName: 'bad.txt' }, { kind: 'video' }, { productVersionId: randomUUID() }, { fileName: 'bad\r\n.png' }]) {
+    assert.ok([400,404].includes((await admin.request('/admin/uploads', 'POST', { ...request, ...change, requestId: randomUUID() })).status));
+  }
+  assert.equal((await admin.request(prepared.body.uploadPath, 'PUT', {})).status, 400);
+  assert.equal((await admin.raw(prepared.body.uploadPath, 'PUT', image, { 'content-type': 'application/octet-stream', 'x-csrf-token': '' })).status, 403);
+  const content = await admin.raw(prepared.body.uploadPath, 'PUT', image, { 'content-type': 'application/octet-stream' });
+  assert.equal(content.status, 200); await content.arrayBuffer();
+  const repeated = await admin.raw(prepared.body.uploadPath, 'PUT', image, { 'content-type': 'application/octet-stream' });
+  assert.equal(repeated.status, 409); await repeated.arrayBuffer();
+  await admin.request('/admin/uploads/' + prepared.body.id + '/complete', 'POST', { requestId: randomUUID() });
+  assert.equal((await admin.request('/admin/uploads', 'POST', request)).body.status, 'available');
+});
+
+test('asset association checks file readiness, media purpose, version and text content; unknown IDs and stale actions remain controlled', async () => {
+  const pending = await uploaded(), value = await asset({ kind: 'script', text: '' });
+  assert.equal((await admin.request('/admin/assets/' + value.id + '/review', 'POST', { expectedRevision: value.revision, requestId: randomUUID() })).status, 409);
+  assert.equal((await admin.request('/admin/assets/' + value.id, 'PATCH', { expectedRevision: value.revision, fileId: pending.id, requestId: randomUUID() })).status, 400);
+  const response = await admin.request('/admin/assets', 'POST', { productVersionId: versionId, platform: 'manual', kind: 'cover', variant: randomUUID(), fileId: pending.id, requestId: randomUUID() });
+  assert.equal(response.status, 409);
+  const withText = await admin.request('/admin/assets', 'POST', { productVersionId: versionId, platform: 'manual', kind: 'cover', variant: randomUUID(), text: 'unexpected', requestId: randomUUID() });
+  assert.equal(withText.status, 400);
+  const cover = await asset({ kind: 'cover', text: null });
+  assert.equal((await admin.request('/admin/assets/' + cover.id, 'PATCH', { text: 'wrong', expectedRevision: cover.revision, requestId: randomUUID() })).status, 400);
+  assert.equal((await admin.request('/admin/assets/' + cover.id + '/ready', 'POST', { expectedRevision: cover.revision, requestId: randomUUID() })).status, 409);
+  const filtered = await admin.request('/admin/assets?platform=xiaohongshu&status=draft&productVersionId=' + versionId);
+  assert.ok(filtered.body.total >= 1);
+  for (const path of ['/admin/assets/', '/admin/orders/', '/admin/products/', '/admin/uploads/']) {
+    assert.equal((await admin.request(path + randomUUID())).status, 404);
+    assert.equal((await admin.request(path + 'invalid-id')).status, 400);
+  }
+});
+
+test('audit write failures roll back metadata and idempotency state; repaired identical requests commit once without secrets', async () => {
+  const input = { slug: 't07-audit-' + randomUUID().slice(0,8), name: '演示', requestId: randomUUID() };
+  await fixture.owner.pool.query('REVOKE INSERT ON orai.admin_audit_logs FROM orai_app');
+  try { assert.equal((await admin.request('/admin/tags', 'POST', input)).status, 500); }
+  finally { await fixture.owner.pool.query('GRANT INSERT ON orai.admin_audit_logs TO orai_app'); }
+  assert.equal(await fixture.runtime.client.tag.count({ where: { slug: input.slug } }), 0);
+  assert.equal(await fixture.runtime.client.idempotentRequest.count({ where: { requestId: input.requestId } }), 0);
+  const created = await admin.request('/admin/tags', 'POST', input); assert.equal(created.status, 200);
+  assert.equal((await admin.request('/admin/tags', 'POST', { ...input, requestId: randomUUID() })).status, 409);
+  const audit = await admin.request('/admin/audit?pageSize=1');
+  assert.equal(audit.status, 200); assert.equal(audit.body.items.length, 1);
+  const issued = await issue();
+  const stored = JSON.stringify(await fixture.runtime.client.idempotentRequest.findMany());
+  const history = JSON.stringify((await admin.request('/admin/audit?pageSize=50')).body);
+  assert.equal(stored.includes(issued.code), false); assert.equal(history.includes(issued.code), false);
+});
+
+test('view deduplication checks changed targets and campaigns; scope or unknown query fields cannot extend access', async () => {
+  const browser = await new Browser().bootstrap(), requestId = randomUUID();
+  const campaign = await fixture.runtime.client.campaign.create({ data: { code: 'demo-t07-' + randomUUID().slice(0,8), productVersionId: versionId, scope: 'DEMO', platform: 'MANUAL', title: '演示渠道' } });
+  const input = { kind: 'view', productVersionId: versionId, campaignCode: campaign.code, requestId };
+  const responses = await Promise.all([1,2].map(() => browser.request('/events', 'POST', input)));
+  assert.deepEqual(responses.map(value => ({ status: value.status, code: value.body.error?.code })), [{ status: 200, code: undefined }, { status: 200, code: undefined }]);
+  assert.equal((await browser.request('/events', 'POST', { ...input, campaignCode: undefined })).status, 409);
+  assert.equal((await browser.request('/events', 'POST', { ...input, campaignCode: 'missing', requestId: randomUUID() })).status, 404);
+  assert.equal((await browser.request('/events', 'POST', { ...input, productVersionId: randomUUID(), requestId: randomUUID() })).status, 404);
+  for (const path of ['/admin/products','/admin/tags','/admin/categories','/admin/orders','/admin/assets','/admin/overview','/admin/audit']) {
+    assert.equal((await admin.request(path + '?scope=live')).status, 400);
+  }
+});
+
+test('HTTP replacement and concurrent refund preserve a completed account-bound report, its owner and consumed credit', async () => {
+  const issued = await issue(), buyer = await new Browser().login();
+  const claimed = await buyer.request('/redemptions/claim', 'POST', { code: issued.code, requestId: randomUUID() });
+  const entitlementId = claimed.body.entitlement.id;
+  const started = await buyer.request('/attempts', 'POST', { entitlementId, requestId: randomUUID() });
+  const attemptId = started.body.attemptId;
+  const questions = (await buyer.request('/attempts/' + attemptId + '/questions')).body;
+  let revision = questions.revision;
+  for (const question of questions.questions) {
+    const saved = await buyer.request('/attempts/' + attemptId + '/answers/' + question.id, 'PUT', { optionId: 'often', expectedRevision: revision, requestId: randomUUID() });
+    assert.equal(saved.status, 200); revision = saved.body.attemptRevision;
+  }
+  const report = await buyer.request('/attempts/' + attemptId + '/submit', 'POST', { expectedRevision: revision, requestId: randomUUID() });
+  assert.equal(report.status, 200);
+  const bound = await buyer.request('/me/entitlements/bind', 'POST', { code: issued.code, confirmed: true, requestId: randomUUID() });
+  assert.equal(bound.status, 200);
+  const before = await fixture.runtime.client.entitlement.findUniqueOrThrow({ where: { id: entitlementId } });
+  const snapshot = await fixture.runtime.client.report.findUniqueOrThrow({ where: { id: report.body.id } });
+  const replaced = await admin.request('/admin/codes/' + issued.response.body.receipt.codeIds[0] + '/replace', 'POST', { requestId: randomUUID() });
+  assert.equal(replaced.status, 200); assert.equal((await buyer.request('/reports/' + report.body.id)).status, 200);
+  const requestId = randomUUID();
+  const refunds = await Promise.all([1,2].map(() => admin.request('/admin/orders/' + issued.recorded.id + '/refund', 'POST', { requestId })));
+  assert.equal(refunds.every(value => value.status === 200), true);
+  assert.notEqual((await buyer.request('/reports/' + report.body.id)).status, 200);
+  const after = await fixture.runtime.client.entitlement.findUniqueOrThrow({ where: { id: entitlementId } });
+  assert.equal(after.ownerUserId, before.ownerUserId); assert.equal(after.ownership, 'ACCOUNT_BOUND'); assert.equal(after.reportsConsumed, 1);
+  assert.deepEqual((await fixture.runtime.client.report.findUniqueOrThrow({ where: { id: snapshot.id } })).snapshot, snapshot.snapshot);
+  assert.equal(await fixture.runtime.client.entitlementBinding.count({ where: { entitlementId } }), 1);
+  assert.equal(await fixture.runtime.client.event.count({ where: { dedupeKey: 'refund:' + issued.recorded.id, kind: 'REFUND' } }), 1);
 });
