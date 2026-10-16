@@ -42,7 +42,7 @@ export function LibraryPage({reports=false}:{reports?:boolean}){
         :entitlements.data?.items.filter(value=>!reports||value.reportId!==null).map(value=><article className="biz-card" key={value.id}><h2>{value.productName}</h2><Demo show={value.isDemo}/><p>版本 {value.versionNumber} · 权益{statusText[value.status]} · 已用 {value.reportsConsumed}/{value.reportsAllowed} 份报告</p><p>访问截至 {new Date(value.accessExpiresAt).toLocaleString('zh-CN')}</p><p>报告：{reportText[value.reportState]}</p>
           {value.reportId&&value.reportState==='available'&&value.status==='active'?<Link to={'/reports/'+value.reportId+'?source='+source}>查看报告</Link>:!reports&&<button disabled={action.busy||value.status!=='active'||value.reportsConsumed>=value.reportsAllowed} onClick={()=>open(value)}>{value.attemptId?'继续作答':'开始测试'}</button>}
         </article>)}</div>
-      {result.data?.items.length===0&&<p role="status">这里暂时没有内容。</p>}{reports&&source==='anonymous'&&<p className="biz-note">本页按应用分页，列出其中已生成的报告；过期、撤权、删除状态以服务端为准。</p>}
+      {(reports&&source==='anonymous'?!entitlements.data?.items.some(value=>value.reportId!==null):result.data?.items.length===0)&&<p role="status">这里暂时没有内容。</p>}{reports&&source==='anonymous'&&<p className="biz-note">本页按应用分页，列出其中已生成的报告；过期、撤权、删除状态以服务端为准。</p>}
       {result.data&&<Pager {...result.data} onChange={next=>change({page:String(next)})}/>}</>}
     {Boolean(action.error)&&<Failure error={action.error}/>}<div className="biz-row">{source==='anonymous'&&session.data?.authenticated&&<button disabled={action.busy} onClick={()=>void action.run(()=>consumer.logout(),async()=>{await identityChanged(client);})}>退出本机兑换会话</button>}<Link to={reports?'/apps':'/reports'}>{reports?'查看我的应用':'查看我的报告'}</Link></div>
   </Page>;

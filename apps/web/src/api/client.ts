@@ -18,7 +18,8 @@ export class ApiClient {
   }
   forgetCsrf(){this.csrfToken='';}
   async request<T>(path:string,schema:Schema<T>,options:Options={}):Promise<T>{
-    if(!/^\/api\/[a-zA-Z0-9/_?=&%+,.:-]+$/.test(path)||path.split('?')[0]!.includes('..'))throw new ClientError('VALIDATION_ERROR','请求地址不正确。');
+    const pathname=path.split('?')[0]!;
+    if(!/^\/api\/[a-zA-Z0-9/_?=&%+,.:-]+$/.test(path)||!/^\/api\/[a-zA-Z0-9/_:.-]+$/.test(pathname)||pathname.includes('..'))throw new ClientError('VALIDATION_ERROR','请求地址不正确。');
     const method=options.method??'GET',mutation=method!=='GET',epoch=this.epoch();
     const privateRequest=mutation||!/^\/api\/(?:products|categories|tags)(?:[/?]|$)/.test(path);
     if(options.binary&&!(options.body instanceof Blob))throw new ClientError('VALIDATION_ERROR','请选择需要上传的文件。');

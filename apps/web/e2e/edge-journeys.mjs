@@ -86,7 +86,14 @@ export async function seededReportStates({browser,fixture,base,demoId,output}){
     const report=await fixture.runtime.client.report.findUniqueOrThrow({where:{id}});
     const snapshot={...report.snapshot,productName:'长标题'.repeat(53),resultLabel:'观察结论'.repeat(20),
       explanation:'长解释内容。'.repeat(200),suggestion:'一步一步观察自己的生活。'.repeat(70),disclaimer:'仅供娱乐与自我观察。'.repeat(28)+'完整声明结束'};
-    await fixture.runtime.client.report.update({where:{id},data:{snapshot}});
+    // A long-text response fixture exercises rendering/export only. The real
+    // seeded report is immutable; authorization, deletion and usage still go
+    // through the database-backed endpoint below.
+    await missing.route('**/api/reports/'+id,async route=>{
+      if(route.request().method()!=='GET')return route.continue();
+      const response=await route.fetch(),body=await response.json();
+      await route.fulfill({response,json:response.ok()?{...body,content:snapshot}:body});
+    });
     await missing.goto('/reports/'+id);await expect(missing.getByText('信息不足，暂不提供总分',{exact:true})).toBeVisible();
     assert.equal(await missing.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
     await missing.screenshot({path:join(output,'long-report-mobile.png'),fullPage:true});
