@@ -113,7 +113,7 @@ export function PrivacyRoot({ children }: { children: ReactNode }) {
         </div>
       )}
       <div
-        key={epoch}
+        key={privateRoute ? epoch : 'public'}
         style={masked ? { visibility: "hidden" } : undefined}
         aria-hidden={masked || undefined}
       >

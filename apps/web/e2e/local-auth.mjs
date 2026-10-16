@@ -26,7 +26,17 @@ const require = createRequire(join(root, 'apps/api/package.json')), { Pool } = r
 const database = new Pool({ connectionString: env.DATABASE_URL, max: 1 });
 let browser, phase = 'setup', page, adminId, operatorGranted = false, success = false;
 const checks = [], consoleErrors = [], http = [];
-function passed(label) { checks.push(label); console.log('PASS ' + label); }
+async function passed(label) {
+  checks.push(label); console.log('PASS ' + label);
+  // This acceptance intentionally uses the real API defaults. Respect its
+  // shared 60-second read budget instead of weakening limits or clearing it.
+  const key = createHash('sha256').update('DEMO:anonymous-read-ip:127.0.0.1').digest('hex');
+  const budget = (await database.query('SELECT hits,ceil(extract(epoch FROM window_ends_at-now()))::int AS remaining FROM orai.request_rate_buckets WHERE key_hash=$1', [key])).rows[0];
+  if (budget?.hits >= Number(env.ANONYMOUS_READ_IP_LIMIT || 120) / 2 && budget.remaining > 0) {
+    console.log('WAIT respecting the real API read rate window');
+    await new Promise(resolve => setTimeout(resolve, Math.min(budget.remaining, 60) * 1000 + 100));
+  }
+}
 function command(name, args = []) {
   const result = spawnSync('pnpm', [name, ...args], { cwd: root, env: { ...process.env, ...env }, encoding: 'utf8', timeout: 240000, maxBuffer: 2_000_000 });
   assert.equal(result.status, 0, `Local command ${name} must succeed; output withheld because it may contain private data`);
@@ -37,7 +47,11 @@ function role(action, account, requestId = randomUUID()) {
   if (account === operator) operatorGranted = action === 'grant';
   return requestId;
 }
-async function context(client) { return (await client.request.get(base + '/api/account/context')).json(); }
+async function context(client) {
+  const response = await client.request.get(base + '/api/account/context');
+  assert.equal(response.status(), 200, 'The real account context read must succeed');
+  return response.json();
+}
 async function login(p, account, password = account.password) {
   await p.goto(base + '/auth/login');
   await p.getByLabel('邮箱', { exact: true }).fill(account.email);
@@ -121,12 +135,12 @@ try {
   await login(page, operator);
   await expect(page.getByRole('alert')).toHaveText('请先在邮件中验证邮箱，再登录。');
   assert.equal((await context(operatorContext)).account, null);
-  await verified(page, operator, confirmation); await storageSafe(page); passed(phase);
+  await verified(page, operator, confirmation); await storageSafe(page); await passed(phase);
 
   phase = 'password login is real and wrong passwords have a useful failure state';
   await logout(page); await login(page, operator, randomBytes(24).toString('base64url'));
   await expect(page.getByRole('alert')).toHaveText('邮箱或密码不正确。');
-  await login(page, operator); await expect(page).toHaveURL(base + '/account'); await storageSafe(page); passed(phase);
+  await login(page, operator); await expect(page).toHaveURL(base + '/account'); await storageSafe(page); await passed(phase);
 
   phase = 'ordinary authenticated users cannot read or write administrator resources';
   await page.goto(base + '/admin');
@@ -134,7 +148,7 @@ try {
   assert.equal((await operatorContext.request.get(base + '/api/admin/overview')).status(), 403);
   const userCsrf = (await context(operatorContext)).csrfToken;
   assert.equal((await operatorContext.request.post(base + '/api/admin/orders', { headers: { origin: base, 'X-CSRF-Token': userCsrf }, data: {} })).status(), 403);
-  passed(phase);
+  await passed(phase);
 
   phase = 'existing owner CLI grants an actual Auth user and records one idempotent audit';
   const grantId = role('grant', operator); role('grant', operator, grantId);
@@ -142,7 +156,7 @@ try {
   assert.equal(grant.rows[0].count, 1);
   await page.reload(); await expect(page.getByRole('heading', { name: '运营概览', exact: true })).toBeVisible();
   assert.equal((await context(operatorContext)).account.role, 'admin');
-  await page.screenshot({ path: join(output, 'admin-overview.png'), fullPage: true }); passed(phase);
+  await page.screenshot({ path: join(output, 'admin-overview.png'), fullPage: true }); await passed(phase);
 
   phase = 'real administrator records an order and anonymous redemption stays usable';
   await page.goto(base + '/admin/orders');
@@ -167,7 +181,7 @@ try {
   await expect(anonymousPage).toHaveURL(base + '/apps');
   await expect(anonymousPage.getByRole('button', { name: '开始测试', exact: true })).toBeVisible();
   const anonymousEntitlements = await (await anonymous.request.get(base + '/api/session/entitlements')).json();
-  assert.equal(anonymousEntitlements.items.length, 1); passed(phase);
+  assert.equal(anonymousEntitlements.items.length, 1); await passed(phase);
 
   phase = 'real administrator can save a version-linked copy draft and browse existing backoffice pages';
   await page.goto(base + '/admin/products'); await expect(page.getByRole('heading', { name: '商品管理', exact: true })).toBeVisible();
@@ -178,7 +192,7 @@ try {
   await page.getByLabel('文字内容', { exact: true }).fill('本地认证验收演示：用一次轻松的提问，更了解自己的感受。');
   await page.getByRole('button', { name: '保存素材草稿', exact: true }).click();
   await expect(page.getByText('素材状态：draft', { exact: true })).toBeVisible();
-  await page.screenshot({ path: join(output, 'admin-copy-draft.png'), fullPage: true }); passed(phase);
+  await page.screenshot({ path: join(output, 'admin-copy-draft.png'), fullPage: true }); await passed(phase);
 
   phase = 'revoking administrator access immediately blocks an already open write form';
   await page.goto(base + '/admin/orders'); await page.getByLabel('商品版本', { exact: true }).selectOption(versionId);
@@ -186,23 +200,23 @@ try {
   const revokeId = role('revoke', operator);
   const denied = page.waitForResponse(r => new URL(r.url()).pathname === '/api/admin/orders' && r.request().method() === 'POST');
   await page.getByRole('button', { name: '记录订单', exact: true }).click(); assert.equal((await denied).status(), 403);
-  await expect(page.getByRole('alert')).toContainText('管理员');
+  await expect.poll(async () => (await page.getByRole('alert').allTextContents()).some(text => text.includes('管理员'))).toBe(true);
   assert.equal((await database.query('SELECT count(*)::int AS count FROM orai.orders WHERE reference=$1', [reference + ':must-deny'])).rows[0].count, 0);
   assert.equal((await database.query("SELECT count(*)::int AS count FROM orai.admin_audit_logs WHERE request_id=$1 AND action='administrator.revoke'", [revokeId])).rows[0].count, 1);
-  await page.reload(); await expect(page.getByRole('alert')).toHaveText('当前账户没有已验证的管理员权限。'); passed(phase);
+  await page.reload(); await expect(page.getByRole('alert')).toHaveText('当前账户没有已验证的管理员权限。'); await passed(phase);
 
   phase = 'logout immediately invalidates a copied old browser session';
   role('grant', operator); const oldState = await operatorContext.storageState();
   await logout(page);
   const stale = await request.newContext({ baseURL: base, storageState: oldState });
-  assert.equal((await stale.get('/api/admin/overview')).status(), 401); await stale.dispose(); passed(phase);
+  assert.equal((await stale.get('/api/admin/overview')).status(), 401); await stale.dispose(); await passed(phase);
 
   phase = 'a second actual local account remains a non-administrator';
   const readerContext = await browser.newContext({ baseURL: base, reducedMotion: 'reduce' }), readerPage = await readerContext.newPage();
   const readerConfirmation = await register(readerPage, ordinary); await verified(readerPage, ordinary, readerConfirmation);
   await readerPage.goto(base + '/admin'); await expect(readerPage.getByRole('alert')).toHaveText('当前账户没有已验证的管理员权限。');
   assert.equal((await readerContext.request.get(base + '/api/admin/overview')).status(), 403);
-  await logout(readerPage); passed(phase);
+  await logout(readerPage); await passed(phase);
 
   phase = 'Mailpit recovery updates the password; expired callbacks and the old password fail';
   await page.goto(base + '/auth/forgot'); await page.getByLabel('邮箱', { exact: true }).fill(operator.email);
@@ -221,7 +235,7 @@ try {
   await login(page, operator); await expect(page).toHaveURL(base + '/account'); await storageSafe(page);
   await readerPage.goto(base + '/auth/callback?code=used-or-invalid&sb_flow_id=missing-flow');
   await expect(readerPage.getByRole('status')).toContainText('验证链接已失效');
-  assert.equal(new URL(readerPage.url()).search, ''); passed(phase);
+  assert.equal(new URL(readerPage.url()).search, ''); await passed(phase);
 
   phase = 'stop and restart preserve real Auth accounts, business rows and stable keys';
   const keysBefore = stableKeys(await readFile(join(root, '.env'), 'utf8'));
@@ -236,11 +250,11 @@ try {
   assert.deepEqual((await database.query(countsSql)).rows, countsBefore);
   const secondDevice = await browser.newContext({ baseURL: base, viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' }), secondPage = await secondDevice.newPage();
   await login(secondPage, operator); await expect(secondPage).toHaveURL(base + '/account');
-  assert.equal((await context(secondDevice)).account.id, operator.businessUserId);
-  assert.equal((await context(secondDevice)).account.role, 'admin');
+  const deviceAccount = (await context(secondDevice)).account;
+  assert.equal(deviceAccount.id, operator.businessUserId); assert.equal(deviceAccount.role, 'admin');
   await secondPage.goto(base + '/admin'); await expect(secondPage.getByRole('heading', { name: '运营概览', exact: true })).toBeVisible();
   await secondPage.screenshot({ path: join(output, 'admin-mobile.png'), fullPage: true });
-  await logout(secondPage); passed(phase);
+  await logout(secondPage); await passed(phase);
   assert.deepEqual(consoleErrors, []);
   await login(page, operator); await expect(page).toHaveURL(base + '/account');
   await page.goto(base + '/admin'); await expect(page.getByRole('heading', { name: '运营概览', exact: true })).toBeVisible();
