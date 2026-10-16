@@ -1,33 +1,497 @@
-import {useState} from 'react';
-import {useQuery,useQueryClient} from '@tanstack/react-query';
-import {useSearchParams} from 'react-router-dom';
-import {AdminProductInputSchema,ProductConfigurationSchema} from '@orai/contracts/admin';
-import {adminApi,parseEditor,productMetadata,type AdminProduct} from './api.js';
-import {Failure,Loading,Pager,useAction} from '../business/shared.js';
-type Version=Awaited<ReturnType<typeof adminApi.importVersion>>;
-export function Products({scope}:{scope:'demo'|'live'}){
-  const[params,setParams]=useSearchParams(),client=useQueryClient(),action=useAction(),[current,setCurrent]=useState<AdminProduct|null>(null),[metadata,setMetadata]=useState(''),[recommendationOrder,setRecommendationOrder]=useState(0),[configuration,setConfiguration]=useState(''),[loaded,setLoaded]=useState(''),[version,setVersion]=useState<Version|null>(null),[versionPage,setVersionPage]=useState(1),[preview,setPreview]=useState<Awaited<ReturnType<typeof adminApi.preview>>|null>(null),[notice,setNotice]=useState('');
-  const list=useQuery({queryKey:['private','admin','products',params.toString()],queryFn:({signal})=>adminApi.products(params.toString(),signal)});
-  const categories=useQuery({queryKey:['private','admin','categories'],queryFn:({signal})=>adminApi.categories(signal)}),tags=useQuery({queryKey:['private','admin','tags'],queryFn:({signal})=>adminApi.tags(signal)});
-  const versions=useQuery({queryKey:['private','admin','versions',current?.id,versionPage],queryFn:({signal})=>adminApi.versions(current!.id,versionPage,signal),enabled:Boolean(current)});
-  function changed(){void client.invalidateQueries({queryKey:['private','admin','products']});void client.invalidateQueries({queryKey:['private','admin','versions']});void client.invalidateQueries({queryKey:['private','admin','overview']});void client.invalidateQueries({queryKey:['public']});}
-  function choose(value:AdminProduct){setCurrent(value);setMetadata(JSON.stringify(productMetadata(value),null,2));setRecommendationOrder(value.recommendationOrder);setVersion(null);setConfiguration('');setLoaded('');setPreview(null);setVersionPage(1);setNotice('');}
-  function newProduct(){setCurrent(null);setVersion(null);setPreview(null);setConfiguration('');setLoaded('');setRecommendationOrder(0);setNotice('');setMetadata(JSON.stringify({slug:'',name:'',hook:'',summary:'',description:'',categoryId:categories.data?.items[0]?.id??'',tagIds:[],priceFen:990,durationMinutes:3,experienceType:'score',themeKey:'gentle',coverUrl:null,scope,recommended:false,publicSample:{label:'',summary:'',dimensions:[{label:'',score:null}],suggestion:'',isDemo:scope==='demo'},purchaseUrl:null,purchaseNotice:'',redemptionNotice:''},null,2));}
-  return <><h2>商品管理</h2><p>先维护商品资料，再导入、预览、审核并发布具体版本。公开样例与私人报告分开。</p>
-    <form className="biz-row" onSubmit={event=>{event.preventDefault();const form=new FormData(event.currentTarget);setParams({query:String(form.get('query')??''),...(form.get('status')?{status:String(form.get('status'))}:{}),page:'1'});}}><label>搜索商品<input aria-label="搜索商品" name="query" maxLength={100} defaultValue={params.get('query')??''}/></label><label>商品状态<select aria-label="商品状态" name="status" defaultValue={params.get('status')??''}><option value="">全部</option>{['draft','reviewed','published','archived'].map(value=><option key={value}>{value}</option>)}</select></label><button>筛选商品</button><button type="button" disabled={action.busy} onClick={newProduct}>新建商品</button></form>
-    {list.isPending?<Loading/>:list.isError?<Failure error={list.error} retry={()=>void list.refetch()}/>:<><div className="biz-grid">{list.data.items.map(value=><article className="biz-card" key={value.id}><h3>{value.name}</h3><p>{value.slug} · {value.status} · 修订 {value.revision}</p><button onClick={()=>choose(value)} disabled={action.busy}>编辑商品</button></article>)}</div><Pager {...list.data} onChange={page=>setParams({...Object.fromEntries(params),page:String(page)})}/></>}
-    <details><summary>分类与标签参考</summary>{categories.isError||tags.isError?<Failure error={categories.error??tags.error}/>:<><h3>分类</h3>{categories.data?.items.map(value=><p key={value.id}>{value.name}：{value.id}</p>)}<h3>标签</h3>{tags.data?.items.map(value=><p key={value.id}>{value.name}：{value.id}</p>)}</>}</details>
-    {metadata&&<section className="biz-card"><h3>{current?'商品资料':'新增商品资料'}</h3>{current&&<><p>商品状态：{current.status} · 修订 {current.revision}</p><button disabled={action.busy} onClick={()=>void action.run(()=>adminApi.product(current.id),choose)}>刷新商品与修订</button><p className="biz-note">刷新会重新读取服务器资料，替换当前表单草稿。</p></>}
-      <form onSubmit={event=>{event.preventDefault();void action.run(()=>{const data=parseEditor(AdminProductInputSchema,metadata);if(!current)return adminApi.createProduct(action.intent('create-product',data));const{slug:_slug,scope:_scope,...fields}=data;return adminApi.patchProduct(current.id,action.intent('metadata:'+current.id,{...fields,recommendationOrder,expectedRevision:current.revision}));},value=>{choose(value);setNotice('商品资料已保存。');changed();});}}>
-        <label>商品元数据 JSON<textarea aria-label="商品元数据 JSON" value={metadata} maxLength={100000} onChange={event=>setMetadata(event.target.value)}/></label><label>推荐排序<input aria-label="推荐排序" type="number" min="0" max="10000" value={recommendationOrder} onChange={event=>setRecommendationOrder(Number(event.target.value))}/></label><button disabled={action.busy} type="submit">{current?'保存商品资料':'创建商品'}</button>
+import { useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
+import {
+  AdminProductInputSchema,
+  ProductConfigurationSchema,
+} from "@orai/contracts/admin";
+import {
+  adminApi,
+  parseEditor,
+  productMetadata,
+  type AdminProduct,
+} from "./api.js";
+import { Failure, Loading, Pager, useAction } from "../business/shared.js";
+type Version = Awaited<ReturnType<typeof adminApi.importVersion>>;
+export function Products({ scope }: { scope: "demo" | "live" }) {
+  const [params, setParams] = useSearchParams(),
+    client = useQueryClient(),
+    action = useAction(),
+    [current, setCurrent] = useState<AdminProduct | null>(null),
+    [metadata, setMetadata] = useState(""),
+    [recommendationOrder, setRecommendationOrder] = useState(0),
+    [configuration, setConfiguration] = useState(""),
+    [loaded, setLoaded] = useState(""),
+    [version, setVersion] = useState<Version | null>(null),
+    [versionPage, setVersionPage] = useState(1),
+    [preview, setPreview] = useState<Awaited<
+      ReturnType<typeof adminApi.preview>
+    > | null>(null),
+    [notice, setNotice] = useState("");
+  const list = useQuery({
+    queryKey: ["private", "admin", "products", params.toString()],
+    queryFn: ({ signal }) => adminApi.products(params.toString(), signal),
+  });
+  const categories = useQuery({
+      queryKey: ["private", "admin", "categories"],
+      queryFn: ({ signal }) => adminApi.categories(signal),
+    }),
+    tags = useQuery({
+      queryKey: ["private", "admin", "tags"],
+      queryFn: ({ signal }) => adminApi.tags(signal),
+    });
+  const versions = useQuery({
+    queryKey: ["private", "admin", "versions", current?.id, versionPage],
+    queryFn: ({ signal }) =>
+      adminApi.versions(current!.id, versionPage, signal),
+    enabled: Boolean(current),
+  });
+  function changed() {
+    void client.invalidateQueries({
+      queryKey: ["private", "admin", "products"],
+    });
+    void client.invalidateQueries({
+      queryKey: ["private", "admin", "versions"],
+    });
+    void client.invalidateQueries({
+      queryKey: ["private", "admin", "overview"],
+    });
+    void client.invalidateQueries({ queryKey: ["public"] });
+  }
+  function choose(value: AdminProduct) {
+    setCurrent(value);
+    setMetadata(JSON.stringify(productMetadata(value), null, 2));
+    setRecommendationOrder(value.recommendationOrder);
+    setVersion(null);
+    setConfiguration("");
+    setLoaded("");
+    setPreview(null);
+    setVersionPage(1);
+    setNotice("");
+  }
+  function newProduct() {
+    setCurrent(null);
+    setVersion(null);
+    setPreview(null);
+    setConfiguration("");
+    setLoaded("");
+    setRecommendationOrder(0);
+    setNotice("");
+    setMetadata(
+      JSON.stringify(
+        {
+          slug: "",
+          name: "",
+          hook: "",
+          summary: "",
+          description: "",
+          categoryId: categories.data?.items[0]?.id ?? "",
+          tagIds: [],
+          priceFen: 990,
+          durationMinutes: 3,
+          experienceType: "score",
+          themeKey: "gentle",
+          coverUrl: null,
+          scope,
+          recommended: false,
+          publicSample: {
+            label: "",
+            summary: "",
+            dimensions: [{ label: "", score: null }],
+            suggestion: "",
+            isDemo: scope === "demo",
+          },
+          purchaseUrl: null,
+          purchaseNotice: "",
+          redemptionNotice: "",
+        },
+        null,
+        2,
+      ),
+    );
+  }
+  return (
+    <>
+      <h2>商品管理</h2>
+      <p>
+        先维护商品资料，再导入、预览、审核并发布具体版本。公开样例与私人报告分开。
+      </p>
+      <form
+        className="biz-row"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const form = new FormData(event.currentTarget);
+          setParams({
+            query: String(form.get("query") ?? ""),
+            ...(form.get("status")
+              ? { status: String(form.get("status")) }
+              : {}),
+            page: "1",
+          });
+        }}
+      >
+        <label>
+          搜索商品
+          <input
+            aria-label="搜索商品"
+            name="query"
+            maxLength={100}
+            defaultValue={params.get("query") ?? ""}
+          />
+        </label>
+        <label>
+          商品状态
+          <select
+            aria-label="商品状态"
+            name="status"
+            defaultValue={params.get("status") ?? ""}
+          >
+            <option value="">全部</option>
+            {["draft", "reviewed", "published", "archived"].map((value) => (
+              <option key={value}>{value}</option>
+            ))}
+          </select>
+        </label>
+        <button>筛选商品</button>
+        <button type="button" disabled={action.busy} onClick={newProduct}>
+          新建商品
+        </button>
       </form>
-      {current&&<><h3>配置版本</h3>{versions.isPending?<Loading/>:versions.isError?<Failure error={versions.error} retry={()=>void versions.refetch()}/>:<><div className="biz-row">{versions.data?.items.map(value=><button key={value.id} disabled={action.busy} onClick={()=>void action.run(()=>adminApi.preview(current.id,value.id),result=>{setVersion(result.version);setPreview(result);const text=JSON.stringify(result.configuration,null,2);setConfiguration(text);setLoaded(text);setNotice('已读取版本预览。');})}>预览版本 {value.number}（{value.status}）</button>)}</div>{versions.data&&<Pager {...versions.data} onChange={setVersionPage}/>}</>}
-        <label>从 JSON 文件读取配置<input aria-label="从 JSON 文件读取配置" type="file" accept=".json,application/json" onChange={event=>{const file=event.target.files?.[0];if(!file)return;void action.run(async()=>{if(file.size>512*1024)throw new Error('Configuration too large');return file.text();},setConfiguration);}}/></label><label>题目与报告配置 JSON<textarea aria-label="题目与报告配置 JSON" value={configuration} maxLength={524288} onChange={event=>setConfiguration(event.target.value)}/></label>
-        <div className="biz-row"><button disabled={action.busy||!configuration} onClick={()=>void action.run(()=>adminApi.importVersion(current.id,action.intent('import:'+current.id,{configuration:parseEditor(ProductConfigurationSchema,configuration)})),value=>{setVersion(value);setPreview(null);setLoaded(configuration);setNotice('已导入新的草稿版本。');changed();})}>导入为新版本</button>
-          {version&&<button disabled={action.busy||!['draft','reviewed'].includes(version.status)||configuration===loaded} onClick={()=>void action.run(()=>adminApi.replaceVersion(current.id,version.id,action.intent('replace:'+version.id,{configuration:parseEditor(ProductConfigurationSchema,configuration),expectedRevision:version.revision})),value=>{setVersion(value);setLoaded(configuration);setPreview(null);changed();})}>保存配置草稿</button>}</div>
-        {version&&<><p>版本 {version.number} · {version.status} · 修订 {version.revision}</p>{configuration!==loaded&&<p>配置有未保存修改，请先保存或导入。</p>}<div className="biz-row">{(['review','publish']as const).map(command=><button key={command} disabled={action.busy||configuration!==loaded||(command==='review'?!['draft','reviewed'].includes(version.status):version.status!=='reviewed')} onClick={()=>void action.run(()=>adminApi.versionAction(current.id,version.id,command,action.intent(command+':'+version.id,{expectedRevision:version.revision})),value=>{setVersion(value);setNotice(command==='publish'?'版本已发布，请刷新商品资料以继续编辑。':'版本已审核。');changed();})}>{command==='review'?'审核版本':'发布版本'}</button>)}</div></>}
-        {preview&&<details><summary>公开展示预览（尚未发布的版本仍不会公开）</summary><pre>{JSON.stringify(preview.publicView,null,2)}</pre></details>}
-        <button disabled={action.busy||current.status!=='published'} onClick={()=>void action.run(()=>adminApi.archiveProduct(current.id,action.intent('archive:'+current.id,{})),()=>{setNotice('商品已下架，请刷新商品资料。');changed();})}>下架商品</button>
-      </>}
-    </section>}{notice&&<p role="status">{notice}</p>}{Boolean(action.error)&&<Failure error={action.error} retry={changed}/>}</>;
+      {list.isPending ? (
+        <Loading />
+      ) : list.isError ? (
+        <Failure error={list.error} retry={() => void list.refetch()} />
+      ) : (
+        <>
+          <div className="biz-grid">
+            {list.data.items.map((value) => (
+              <article className="biz-card" key={value.id}>
+                <h3>{value.name}</h3>
+                <p>
+                  {value.slug} · {value.status} · 修订 {value.revision}
+                </p>
+                <button onClick={() => choose(value)} disabled={action.busy}>
+                  编辑商品
+                </button>
+              </article>
+            ))}
+          </div>
+          <Pager
+            {...list.data}
+            onChange={(page) =>
+              setParams({ ...Object.fromEntries(params), page: String(page) })
+            }
+          />
+        </>
+      )}
+      <details>
+        <summary>分类与标签参考</summary>
+        {categories.isError || tags.isError ? (
+          <Failure error={categories.error ?? tags.error} />
+        ) : (
+          <>
+            <h3>分类</h3>
+            {categories.data?.items.map((value) => (
+              <p key={value.id}>
+                {value.name}：{value.id}
+              </p>
+            ))}
+            <h3>标签</h3>
+            {tags.data?.items.map((value) => (
+              <p key={value.id}>
+                {value.name}：{value.id}
+              </p>
+            ))}
+          </>
+        )}
+      </details>
+      {metadata && (
+        <section className="biz-card">
+          <h3>{current ? "商品资料" : "新增商品资料"}</h3>
+          {current && (
+            <>
+              <p>
+                商品状态：{current.status} · 修订 {current.revision}
+              </p>
+              <button
+                disabled={action.busy}
+                onClick={() =>
+                  void action.run(() => adminApi.product(current.id), choose)
+                }
+              >
+                刷新商品与修订
+              </button>
+              <p className="biz-note">
+                刷新会重新读取服务器资料，替换当前表单草稿。
+              </p>
+            </>
+          )}
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              void action.run(
+                () => {
+                  const data = parseEditor(AdminProductInputSchema, metadata);
+                  if (!current)
+                    return adminApi.createProduct(
+                      action.intent("create-product", data),
+                    );
+                  const { slug: _slug, scope: _scope, ...fields } = data;
+                  return adminApi.patchProduct(
+                    current.id,
+                    action.intent("metadata:" + current.id, {
+                      ...fields,
+                      recommendationOrder,
+                      expectedRevision: current.revision,
+                    }),
+                  );
+                },
+                (value) => {
+                  choose(value);
+                  setNotice("商品资料已保存。");
+                  changed();
+                },
+              );
+            }}
+          >
+            <label>
+              商品元数据 JSON
+              <textarea
+                aria-label="商品元数据 JSON"
+                value={metadata}
+                maxLength={100000}
+                onChange={(event) => setMetadata(event.target.value)}
+              />
+            </label>
+            <label>
+              推荐排序
+              <input
+                aria-label="推荐排序"
+                type="number"
+                min="0"
+                max="10000"
+                value={recommendationOrder}
+                onChange={(event) =>
+                  setRecommendationOrder(Number(event.target.value))
+                }
+              />
+            </label>
+            <button disabled={action.busy} type="submit">
+              {current ? "保存商品资料" : "创建商品"}
+            </button>
+          </form>
+          {current && (
+            <>
+              <h3>配置版本</h3>
+              {versions.isPending ? (
+                <Loading />
+              ) : versions.isError ? (
+                <Failure
+                  error={versions.error}
+                  retry={() => void versions.refetch()}
+                />
+              ) : (
+                <>
+                  <div className="biz-row">
+                    {versions.data?.items.map((value) => (
+                      <button
+                        key={value.id}
+                        disabled={action.busy}
+                        onClick={() =>
+                          void action.run(
+                            () => adminApi.preview(current.id, value.id),
+                            (result) => {
+                              setVersion(result.version);
+                              setPreview(result);
+                              const text = JSON.stringify(
+                                result.configuration,
+                                null,
+                                2,
+                              );
+                              setConfiguration(text);
+                              setLoaded(text);
+                              setNotice("已读取版本预览。");
+                            },
+                          )
+                        }
+                      >
+                        预览版本 {value.number}（{value.status}）
+                      </button>
+                    ))}
+                  </div>
+                  {versions.data && (
+                    <Pager {...versions.data} onChange={setVersionPage} />
+                  )}
+                </>
+              )}
+              <label>
+                从 JSON 文件读取配置
+                <input
+                  aria-label="从 JSON 文件读取配置"
+                  type="file"
+                  accept=".json,application/json"
+                  onChange={(event) => {
+                    const file = event.target.files?.[0];
+                    if (!file) return;
+                    void action.run(async () => {
+                      if (file.size > 512 * 1024)
+                        throw new Error("Configuration too large");
+                      return file.text();
+                    }, setConfiguration);
+                  }}
+                />
+              </label>
+              <label>
+                题目与报告配置 JSON
+                <textarea
+                  aria-label="题目与报告配置 JSON"
+                  value={configuration}
+                  maxLength={524288}
+                  onChange={(event) => setConfiguration(event.target.value)}
+                />
+              </label>
+              <div className="biz-row">
+                <button
+                  disabled={action.busy || !configuration}
+                  onClick={() =>
+                    void action.run(
+                      () =>
+                        adminApi.importVersion(
+                          current.id,
+                          action.intent("import:" + current.id, {
+                            configuration: parseEditor(
+                              ProductConfigurationSchema,
+                              configuration,
+                            ),
+                          }),
+                        ),
+                      (value) => {
+                        setVersion(value);
+                        setPreview(null);
+                        setLoaded(configuration);
+                        setNotice("已导入新的草稿版本。");
+                        changed();
+                      },
+                    )
+                  }
+                >
+                  导入为新版本
+                </button>
+                {version && (
+                  <button
+                    disabled={
+                      action.busy ||
+                      !["draft", "reviewed"].includes(version.status) ||
+                      configuration === loaded
+                    }
+                    onClick={() =>
+                      void action.run(
+                        () =>
+                          adminApi.replaceVersion(
+                            current.id,
+                            version.id,
+                            action.intent("replace:" + version.id, {
+                              configuration: parseEditor(
+                                ProductConfigurationSchema,
+                                configuration,
+                              ),
+                              expectedRevision: version.revision,
+                            }),
+                          ),
+                        (value) => {
+                          setVersion(value);
+                          setLoaded(configuration);
+                          setPreview(null);
+                          changed();
+                        },
+                      )
+                    }
+                  >
+                    保存配置草稿
+                  </button>
+                )}
+              </div>
+              {version && (
+                <>
+                  <p>
+                    版本 {version.number} · {version.status} · 修订{" "}
+                    {version.revision}
+                  </p>
+                  {configuration !== loaded && (
+                    <p>配置有未保存修改，请先保存或导入。</p>
+                  )}
+                  <div className="biz-row">
+                    {(["review", "publish"] as const).map((command) => (
+                      <button
+                        key={command}
+                        disabled={
+                          action.busy ||
+                          configuration !== loaded ||
+                          (command === "review"
+                            ? !["draft", "reviewed"].includes(version.status)
+                            : version.status !== "reviewed")
+                        }
+                        onClick={() =>
+                          void action.run(
+                            () =>
+                              adminApi.versionAction(
+                                current.id,
+                                version.id,
+                                command,
+                                action.intent(command + ":" + version.id, {
+                                  expectedRevision: version.revision,
+                                }),
+                              ),
+                            (value) => {
+                              setVersion(value);
+                              setNotice(
+                                command === "publish"
+                                  ? "版本已发布，请刷新商品资料以继续编辑。"
+                                  : "版本已审核。",
+                              );
+                              changed();
+                            },
+                          )
+                        }
+                      >
+                        {command === "review" ? "审核版本" : "发布版本"}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+              {preview && (
+                <details>
+                  <summary>公开展示预览（尚未发布的版本仍不会公开）</summary>
+                  <pre>{JSON.stringify(preview.publicView, null, 2)}</pre>
+                </details>
+              )}
+              <button
+                disabled={action.busy || current.status !== "published"}
+                onClick={() =>
+                  void action.run(
+                    () =>
+                      adminApi.archiveProduct(
+                        current.id,
+                        action.intent("archive:" + current.id, {}),
+                      ),
+                    () => {
+                      setNotice("商品已下架，请刷新商品资料。");
+                      changed();
+                    },
+                  )
+                }
+              >
+                下架商品
+              </button>
+            </>
+          )}
+        </section>
+      )}
+      {notice && <p role="status">{notice}</p>}
+      {Boolean(action.error) && (
+        <Failure error={action.error} retry={changed} />
+      )}
+    </>
+  );
 }
