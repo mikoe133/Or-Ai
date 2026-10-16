@@ -154,3 +154,21 @@ export const AdminFileSchema = z.object({ id: IdSchema, productVersionId: IdSche
   expiresAt: TimestampSchema, verifiedAt: TimestampSchema.nullable(), uploadPath: z.string(), downloadPath: z.string().nullable() }).strict();
 export const ClientViewEventSchema = z.object({ kind: z.literal('view'), productVersionId: IdSchema,
   requestId: IdSchema, campaignCode: KeySchema.optional() }).strict();
+
+export const AdminCategorySchema=z.object({id:IdSchema,slug:KeySchema,name:text(80),sortOrder:z.number().int(),revision:z.number().int().min(0)}).strict();
+export const AdminTagSchema=AdminCategorySchema.omit({sortOrder:true}).strict();
+export const AdminOrderDetailSchema=AdminOrderSchema.extend({
+  codes:z.array(z.object({id:IdSchema,status:z.enum(['issued','claimed','expired','revoked']),claimDeadline:TimestampSchema,
+    claimedAt:TimestampSchema.nullable(),revokedAt:TimestampSchema.nullable(),batchId:IdSchema.nullable(),replacesCodeId:IdSchema.nullable(),entitlementId:IdSchema.nullable()}).strict()),
+  batches:z.array(z.object({id:IdSchema,createdAt:TimestampSchema}).strict()),
+}).strict();
+export const AdminCsvResultSchema=z.object({dryRun:z.boolean(),totalRows:z.number().int(),accepted:z.number().int(),rejected:z.number().int(),
+  rows:z.array(z.object({row:z.number().int(),status:z.enum(['accepted','rejected']),orderId:IdSchema.optional(),code:z.string().optional(),message:z.string().optional()}).strict()).max(500),
+}).strict();
+export const AdminOverviewSchema=z.object({scope:DataScopeSchema,generatedAt:TimestampSchema,attribution:z.literal('unconfirmed'),
+  events:z.array(z.object({kind:z.enum(['view','redemption','start','complete','report_view','share_export','refund']),source:z.enum(['demo','web','manual']),count:z.number().int(),latestAt:TimestampSchema.nullable()}).strict()),
+  orders:z.object({recordedCount:z.number().int(),recordedAmountFen:z.number().int(),paymentVerified:z.literal(false),
+    statuses:z.array(z.object({status:z.enum(['pending','fulfilled','refunded','cancelled']),count:z.number().int()}).strict())}).strict(),
+  products:z.number().int(),assets:z.number().int(),
+}).strict();
+export const AdminAuditSchema=z.object({id:IdSchema,actorUserId:IdSchema.nullable(),scope:DataScopeSchema,action:text(160),entityKind:text(80),entityId:IdSchema,requestId:IdSchema.nullable(),createdAt:TimestampSchema}).strict();

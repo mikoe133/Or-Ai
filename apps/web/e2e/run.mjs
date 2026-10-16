@@ -59,6 +59,7 @@ try{
  phase='saved progress, unavailable feedback and report creation remain truthful';
  for(let index=1;index<questions.questions.length;index++){
   await page.getByRole('button',{name:'下一题',exact:true}).click();
+  await expect(page.getByRole('group')).toContainText('第 '+(index+1)+'/'+questions.questions.length+' 题');
   if(index===1)await page.route('**/api/attempts/*/answers/*',async route=>{const response=await route.fetch(),body=await response.json();body.feedback=null;body.feedbackStatus='unavailable';await route.fulfill({response,json:body});});
   await page.getByRole('radio').first().check();await page.getByRole('button',{name:'保存答案',exact:true}).click();await expect(page.getByRole('progressbar',{name:'已保存进度'})).toHaveAttribute('value',String(index+1));
   if(index===1){await expect(page.getByText('统计暂不可用，答案已保存，可以继续作答。')).toBeVisible();await page.unroute('**/api/attempts/*/answers/*');}
@@ -74,6 +75,7 @@ try{
  phase='operator CSV preview reports row failures without creating orders';await admin.getByLabel('CSV 内容',{exact:true}).fill('platform,reference,productVersionId,quantity,amountFen\nmanual,demo:csv-ui,'+versionId+',1,990\nmanual,demo:bad,'+versionId+',0,990');await admin.getByRole('button',{name:'预演 CSV',exact:true}).click();await expect(admin.getByText('通过 1 行，失败 1 行',{exact:true})).toBeVisible();assert.equal(await fixture.runtime.client.order.count({where:{reference:'demo:csv-ui'}}),0);checks.push(phase);
  phase='operator verifies, previews and reviews actual image and video files';await admin.goto('/admin/assets');
  for(const[kind,name]of[['cover','cover.jpg'],['video','preview.webm']]){
+  if(kind==='video')await admin.getByRole('button',{name:'新建另一份素材',exact:true}).click();
   await admin.getByLabel('素材类别',{exact:true}).selectOption(kind);await admin.getByLabel('商品版本',{exact:true}).selectOption(versionId);await admin.getByLabel('变体名',{exact:true}).fill('e2e-'+kind);await admin.getByLabel('媒体文件',{exact:true}).setInputFiles(join(root,'apps/api/test/fixtures',name));await admin.getByRole('button',{name:'上传并校验',exact:true}).click();await expect(admin.getByText('文件已校验，可关联素材。',{exact:true})).toBeVisible();
   if(kind==='video')await expect.poll(()=>admin.locator('video').evaluate(video=>video.videoWidth)).toBe(16);
   await admin.getByRole('button',{name:'保存素材草稿',exact:true}).click();await admin.getByRole('button',{name:'审核素材',exact:true}).click();await admin.getByRole('button',{name:'标记就绪',exact:true}).click();await expect(admin.getByText('素材状态：ready',{exact:true})).toBeVisible();
@@ -84,5 +86,5 @@ try{
  phase='mobile pages fit and the design preview stays separate';await page.setViewportSize({width:390,height:844});await page.goto('/');await expect(page.locator('a[href="/products/demo-partner"]').first()).toBeVisible();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);await page.screenshot({path:join(output,'mobile-catalog.png'),fullPage:true});await page.goto('/preview');await expect(page.getByText('独立设计预览 · 数据为示例',{exact:false})).toBeVisible();checks.push(phase);
  await anonymous.close();await recovery.close();await device.close();await operator.close();
  assert.deepEqual(errors,[]);await writeFile(join(output,'result.json'),JSON.stringify({passed:true,checks,identityFactsIsolated:true,cloudAuthAccepted:false},null,2)+'\n');console.log(JSON.stringify({passed:true,checks,cloudAuthAccepted:false}));
-}catch(error){await writeFile(join(output,'result.json'),JSON.stringify({passed:false,phase,checks,errorType:error.name},null,2)+'\n');console.error(JSON.stringify({passed:false,phase,errorType:error.name}));process.exitCode=1;}
+}catch(error){await writeFile(join(output,'failure.txt'),String(error.stack).replace(/[A-Za-z0-9_-]{43,}/g,'[redacted]'));if(browser){let index=0;for(const context of browser.contexts())for(const page of context.pages())await writeFile(join(output,'failure-page-'+index+++'.txt'),(await page.locator('body').innerText()).replace(/[A-Za-z0-9_-]{43,}/g,'[redacted]'));}await writeFile(join(output,'result.json'),JSON.stringify({passed:false,phase,checks,errorType:error.name},null,2)+'\n');console.error(JSON.stringify({passed:false,phase,errorType:error.name}));process.exitCode=1;}
 finally{await browser?.close();await vite?.close();await app?.close();await fixture?.close();if(directory)await rm(directory,{recursive:true,force:true});}

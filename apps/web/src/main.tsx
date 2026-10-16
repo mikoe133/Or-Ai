@@ -8,6 +8,7 @@ import './styles.css';
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false, refetchOnWindowFocus:false } } });
 queryClient.setQueryDefaults(['private'],{gcTime:0,staleTime:0});
+queryClient.setQueryDefaults(['private','feedback'],{gcTime:60000,staleTime:Infinity});
 queryClient.setQueryDefaults(['public'],{staleTime:30000});
 const root = document.getElementById('root');
 if (!root) throw new Error('Missing application root');

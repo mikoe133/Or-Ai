@@ -15,7 +15,7 @@ export function RedemptionPage(){
       const parsed=RedemptionRequestSchema.safeParse(action.intent('redeem',{code}));if(!parsed.success)throw new ClientError('VALIDATION_ERROR','请粘贴完整兑换码，检查是否缺少字符。');
       return consumer.redeem(parsed.data);
     },async value=>{setCode('');await identityChanged(client);navigate('/apps',{replace:true,state:{redeemedId:value.entitlement.id}});});}}>
-      <label>兑换码<input type="password" autoComplete="off" autoCapitalize="none" spellCheck={false} value={code} minLength={32} maxLength={96} required disabled={action.busy} onChange={event=>setCode(event.target.value)}/></label><button type="submit" disabled={action.busy}>{action.busy?'请稍候…':'领取或恢复'}</button>
+      <label>兑换码<input aria-label="兑换码" type="password" autoComplete="off" autoCapitalize="none" spellCheck={false} value={code} minLength={32} maxLength={96} required disabled={action.busy} onChange={event=>setCode(event.target.value)}/></label><button type="submit" disabled={action.busy}>{action.busy?'请稍候…':'领取或恢复'}</button>
     </form>{Boolean(action.error)&&<Failure error={action.error}/>}<p>已绑定商品请登录原账户查看，不会被恢复为匿名商品。</p><Link to="/auth/login">邮箱登录</Link><Link to="/apps">查看我的应用</Link></Page>;
 }
 
@@ -54,7 +54,7 @@ export function AccountLibrary(){
   return <section className="biz-view"><h2>我的商品与报告</h2><nav className="biz-row"><Link to="/apps?source=account">账户已绑定商品</Link><Link to="/reports?source=account">账户报告</Link><Link to="/apps?source=anonymous">本机未绑定商品</Link>{context.data.account.role==='admin'&&context.data.account.emailVerified&&<Link to="/admin">运营后台</Link>}</nav>
     <p>登录不会自动合并本机商品。绑定后，商品与报告只能由当前账户访问，原兑换码不能再用于匿名恢复。</p>
     <form onSubmit={event=>{event.preventDefault();void action.run(async()=>{const parsed=BindEntitlementRequestSchema.safeParse(action.intent('bind',{code,confirmed}));if(!parsed.success)throw new ClientError('VALIDATION_ERROR','请填写完整兑换码，并确认绑定。');return consumer.bind(parsed.data);},async()=>{setCode('');setConfirmed(false);await identityChanged(client);navigate('/apps?source=account');});}}>
-      <label>要绑定的兑换码<input type="password" autoComplete="off" value={code} maxLength={96} minLength={32} required disabled={action.busy||!context.data.account.emailVerified} onChange={event=>setCode(event.target.value)}/></label>
+      <label>要绑定的兑换码<input aria-label="要绑定的兑换码" type="password" autoComplete="off" value={code} maxLength={96} minLength={32} required disabled={action.busy||!context.data.account.emailVerified} onChange={event=>setCode(event.target.value)}/></label>
       <label className="biz-option"><input type="checkbox" checked={confirmed} onChange={event=>setConfirmed(event.target.checked)}/>我确认将此商品绑定到当前账户</label><button type="submit" disabled={action.busy||!confirmed||!context.data.account.emailVerified}>确认绑定</button>
     </form>{Boolean(action.error)&&<Failure error={action.error}/>}</section>;
 }

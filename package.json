@@ -13,6 +13,7 @@
     "build": "pnpm -r --if-present build",
     "dev": "pnpm --parallel --filter @orai/api --filter @orai/web dev",
     "test": "pnpm --filter @orai/contracts build && pnpm --filter @orai/api test && pnpm --filter @orai/web test",
+    "test:e2e": "pnpm --filter @orai/contracts build && pnpm --filter @orai/api exec tsc -p tsconfig.test.json && node --env-file=.env apps/web/e2e/run.mjs",
     "db:generate": "pnpm --filter @orai/api db:generate",
     "db:validate": "pnpm --filter @orai/api db:validate",
     "db:migrate": "pnpm --filter @orai/api db:migrate",

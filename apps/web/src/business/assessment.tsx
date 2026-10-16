@@ -19,7 +19,7 @@ function QuestionsBody({value,id}:{value:Questions;id:string}){
   const requested=value.questions.findIndex(question=>question.id===params.get('question'));
   const current=requested>=0?requested:firstMissing>=0?firstMissing:0,question=value.questions[current]!;
   const saved=value.answers.find(answer=>answer.questionId===question.id),[choice,setChoice]=useState(saved?.optionId??'');
-  useEffect(()=>{setChoice(saved?.optionId??'');action.resetError();},[question.id,saved?.optionId]);
+  useEffect(()=>{if(!params.has('question'))setParams({question:question.id},{replace:true});},[params,question.id,setParams]);
   const dirty=choice!==(saved?.optionId??''),complete=value.status==='completed';
   const feedbackKey=['private','feedback',id,question.id,value.revision];
   const feedback=useQuery<Feedback|null>({queryKey:feedbackKey,queryFn:({signal})=>consumer.feedback(id,question.id,signal),enabled:Boolean(saved),staleTime:Infinity});
@@ -40,8 +40,8 @@ function QuestionsBody({value,id}:{value:Questions;id:string}){
   </>;
 }
 export function AssessmentPage(){
-  const{id=''}=useParams();const result=useQuery({queryKey:['private','attempt',id],queryFn:({signal})=>consumer.questions(id,signal)});
-  return <Page title="探索自己" section="apps">{result.isPending?<Loading/>:result.isError?<Failure error={result.error} retry={()=>void result.refetch()}/>:<QuestionsBody id={id} value={result.data}/>}</Page>;
+  const{id=''}=useParams(),[params]=useSearchParams();const result=useQuery({queryKey:['private','attempt',id],queryFn:({signal})=>consumer.questions(id,signal)});
+  return <Page title="探索自己" section="apps">{result.isPending?<Loading/>:result.isError?<Failure error={result.error} retry={()=>void result.refetch()}/>:<QuestionsBody key={id+':'+(params.get('question')??'initial')+':'+result.data.revision} id={id} value={result.data}/>}</Page>;
 }
 export function ReportPage(){
   const{id=''}=useParams(),[params]=useSearchParams(),client=useQueryClient(),navigate=useNavigate(),action=useAction(),[confirmed,setConfirmed]=useState(false);
