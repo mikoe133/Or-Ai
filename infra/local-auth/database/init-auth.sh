@@ -2,6 +2,9 @@
 set -eu
 # Runs once on this dedicated Auth volume. Never connects to the business DB.
 psql --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" --set=ON_ERROR_STOP=1 --set=auth_password="$POSTGRES_PASSWORD" <<'SQL'
+-- Auth's upstream migrations grant read access to this reserved role.
+-- It is not the cluster owner and cannot log in or administer PostgreSQL.
+CREATE ROLE postgres NOLOGIN NOINHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS;
 CREATE ROLE supabase_auth_admin LOGIN NOINHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOBYPASSRLS PASSWORD :'auth_password';
 CREATE SCHEMA auth AUTHORIZATION supabase_auth_admin;
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
