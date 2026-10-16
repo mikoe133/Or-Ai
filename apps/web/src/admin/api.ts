@@ -32,6 +32,7 @@ export const adminApi={
   replaceCode:(codeId:string,body:unknown)=>api.request('/api/admin/codes/'+id(codeId)+'/replace',AdminSecretDeliverySchema,{method:'POST',body}),
   refund:(orderId:string,body:unknown)=>api.request('/api/admin/orders/'+id(orderId)+'/refund',AdminOrderSchema,{method:'POST',body}),
   assets:(query='',signal?:AbortSignal)=>api.request('/api/admin/assets'+(query?'?'+query:''),PageSchema(AdminManagedAssetSchema),{signal}),
+  asset:(assetId:string)=>api.request('/api/admin/assets/'+id(assetId),AdminManagedAssetSchema),
   createAsset:(body:unknown)=>api.request('/api/admin/assets',AdminManagedAssetSchema,{method:'POST',body}),
   patchAsset:(assetId:string,body:unknown)=>api.request('/api/admin/assets/'+id(assetId),AdminManagedAssetSchema,{method:'PATCH',body}),
   assetAction:(assetId:string,action:'review'|'ready'|'archive',body:unknown)=>api.request('/api/admin/assets/'+id(assetId)+'/'+action,AdminManagedAssetSchema,{method:'POST',body}),
@@ -43,3 +44,10 @@ export const adminApi={
 export type AdminProduct=Awaited<ReturnType<typeof adminApi.product>>;
 export type Asset=Awaited<ReturnType<typeof adminApi.createAsset>>;
 export type Upload=Awaited<ReturnType<typeof adminApi.prepare>>;
+export async function findPublishedProduct(versionId:string,read:(page:number)=>Promise<{items:AdminProduct[];page:number;pageSize:number;total:number}>=page=>adminApi.products(new URLSearchParams({status:'published',pageSize:'50',page:String(page)}).toString())){
+  for(let page=1;;page++){
+    const result=await read(page),product=result.items.find(value=>value.currentVersionId===versionId);
+    if(product)return product;
+    if(page*result.pageSize>=result.total)return undefined;
+  }
+}
