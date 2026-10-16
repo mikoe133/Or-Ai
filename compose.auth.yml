@@ -23,6 +23,7 @@ services:
     environment:
       GOTRUE_API_HOST: 0.0.0.0
       GOTRUE_API_PORT: 9999
+      GOTRUE_CORS_ALLOWED_HEADERS: apikey
       API_EXTERNAL_URL: http://127.0.0.1:${LOCAL_AUTH_PORT:-54321}/auth/v1
       GOTRUE_DB_DRIVER: postgres
       GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${LOCAL_AUTH_DB_PASSWORD:?Run pnpm auth:setup first}@auth-db:5432/orai_auth?search_path=auth
@@ -71,6 +72,8 @@ services:
     image: orai-local-auth-gateway:nginx1.28.3
     build:
       context: infra/local-auth/gateway
+      args:
+        WEB_PORT: ${WEB_PORT:-5173}
     user: '101:101'
     ports:
       - 127.0.0.1:${LOCAL_AUTH_PORT:-54321}:8080
