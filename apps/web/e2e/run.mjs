@@ -35,6 +35,7 @@ try{
   .overrideProvider(SupabaseAuthGateway).useValue({verify:async token=>{const value=proofs.get(token);assert.ok(value);return value;},refresh:async token=>{const value=refreshes.get(token);assert.ok(value);return{...value,identity:proofs.get(value.accessToken)};},logout:async()=>{}}).compile();
  app=module.createNestApplication({logger:false});configureApp(app);await app.listen(0,'127.0.0.1');
  process.env.VITE_SUPABASE_URL='';process.env.VITE_SUPABASE_PUBLISHABLE_KEY='';
+ process.chdir(join(root,'apps/web'));
  const{createServer}=await import(pathToFileURL(webRequire.resolve('vite')).href);
  vite=await createServer({root:join(root,'apps/web'),configFile:join(root,'apps/web/vite.config.ts'),server:{host:'127.0.0.1',port:webPort,strictPort:true,proxy:{'/api':await app.getUrl(),'/health':await app.getUrl()}}});await vite.listen();
  browser=await chromium.launch({headless:true,...(process.env.ORAI_BROWSER_PATH?{executablePath:process.env.ORAI_BROWSER_PATH}:process.platform==='darwin'?{executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'}:{})});
