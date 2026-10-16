@@ -212,6 +212,9 @@
   background: #f7f3fc;
   color-scheme: light;
 }
+.store-home:has(.biz-view) .store-mobile-nav {
+  background: #24212b;
+}
 @media (max-width: 767px) {
   .biz-view {
     gap: 17px;
