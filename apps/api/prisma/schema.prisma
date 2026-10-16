@@ -1,0 +1,698 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["orai"]
+}
+
+enum DataScope {
+  DEMO
+  LIVE
+
+  @@schema("orai")
+}
+
+enum DatabaseEnvironment {
+  DEVELOPMENT
+  TEST
+  PRODUCTION
+
+  @@schema("orai")
+}
+
+enum ProductStatus {
+  DRAFT
+  REVIEWED
+  PUBLISHED
+  ARCHIVED
+
+  @@schema("orai")
+}
+
+enum ExperienceType {
+  SCORE
+  TENDENCY
+
+  @@schema("orai")
+}
+
+enum Platform {
+  DOUYIN
+  XIAOHONGSHU
+  MANUAL
+
+  @@schema("orai")
+}
+
+enum OrderStatus {
+  PENDING
+  FULFILLED
+  REFUNDED
+  CANCELLED
+
+  @@schema("orai")
+}
+
+enum CodeStatus {
+  ISSUED
+  CLAIMED
+  EXPIRED
+  REVOKED
+
+  @@schema("orai")
+}
+
+enum Ownership {
+  ANONYMOUS
+  ACCOUNT_BOUND
+
+  @@schema("orai")
+}
+
+enum EntitlementStatus {
+  ACTIVE
+  EXPIRED
+  REVOKED
+
+  @@schema("orai")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+
+  @@schema("orai")
+}
+
+enum AttemptStatus {
+  STARTED
+  SUBMITTED
+  COMPLETED
+  INVALID
+
+  @@schema("orai")
+}
+
+enum AssetKind {
+  COVER
+  VIDEO
+  SCRIPT
+  COPY
+
+  @@schema("orai")
+}
+
+enum AssetStatus {
+  DRAFT
+  REVIEWED
+  READY
+  ARCHIVED
+
+  @@schema("orai")
+}
+
+enum EventKind {
+  VIEW
+  REDEMPTION
+  START
+  COMPLETE
+  REPORT_VIEW
+  SHARE_EXPORT
+  REFUND
+
+  @@schema("orai")
+}
+
+enum EventSource {
+  WEB
+  MANUAL
+  DEMO
+
+  @@schema("orai")
+}
+
+model EnvironmentMarker {
+  id           Int                 @id
+  environment  DatabaseEnvironment
+  databaseName String              @map("database_name")
+  createdAt    DateTime            @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("environment_marker")
+  @@schema("orai")
+}
+
+model Category {
+  id        String    @id @default(uuid(7)) @db.Uuid
+  slug      String    @unique
+  name      String
+  sortOrder Int       @default(0) @map("sort_order")
+  revision  Int       @default(0)
+  products  Product[]
+
+  @@map("categories")
+  @@schema("orai")
+}
+
+model Tag {
+  id       String       @id @default(uuid(7)) @db.Uuid
+  slug     String       @unique
+  name     String
+  revision Int          @default(0)
+  products ProductTag[]
+
+  @@map("tags")
+  @@schema("orai")
+}
+
+model Product {
+  id                  String           @id @default(uuid(7)) @db.Uuid
+  slug                String           @unique
+  name                String
+  hook                String
+  summary             String
+  description         String
+  categoryId          String           @map("category_id") @db.Uuid
+  category            Category         @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  tags                ProductTag[]
+  scope               DataScope
+  status              ProductStatus    @default(DRAFT)
+  priceFen            Int              @map("price_fen")
+  currency            String           @default("CNY")
+  durationMinutes     Int              @map("duration_minutes")
+  durationIsEstimate  Boolean          @default(true) @map("duration_is_estimate")
+  experienceType      ExperienceType   @map("experience_type")
+  themeKey            String           @map("theme_key")
+  coverUrl            String?          @map("cover_url")
+  publicSample        Json             @map("public_sample")
+  purchaseUrl         String?          @map("purchase_url")
+  purchaseNotice      String           @map("purchase_notice")
+  redemptionNotice    String           @map("redemption_notice")
+  recommended         Boolean          @default(false)
+  revision            Int              @default(0)
+  recommendationOrder Int              @default(0) @map("recommendation_order")
+  currentVersionId    String?          @unique @map("current_version_id") @db.Uuid
+  currentVersion      ProductVersion?  @relation("CurrentVersion", fields: [currentVersionId, id, scope], references: [id, productId, scope], onDelete: Restrict)
+  versions            ProductVersion[] @relation("ProductVersions")
+  publishedAt         DateTime?        @map("published_at") @db.Timestamptz(3)
+  createdAt           DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt           DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@unique([id, scope])
+  @@unique([currentVersionId, id, scope])
+  @@index([scope, status, categoryId, publishedAt])
+  @@index([scope, status, recommended, recommendationOrder])
+  @@map("products")
+  @@schema("orai")
+}
+
+model ProductTag {
+  productId String  @map("product_id") @db.Uuid
+  tagId     String  @map("tag_id") @db.Uuid
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Restrict)
+
+  @@id([productId, tagId])
+  @@index([tagId, productId])
+  @@map("product_tags")
+  @@schema("orai")
+}
+
+model ProductVersion {
+  id            String           @id @default(uuid(7)) @db.Uuid
+  productId     String           @map("product_id") @db.Uuid
+  scope         DataScope
+  product       Product          @relation("ProductVersions", fields: [productId, scope], references: [id, scope], onDelete: Restrict)
+  currentFor    Product?         @relation("CurrentVersion")
+  number        Int
+  revision      Int              @default(0)
+  status        ProductStatus    @default(DRAFT)
+  configuration Json
+  publishedAt   DateTime?        @map("published_at") @db.Timestamptz(3)
+  createdAt     DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  orders        Order[]
+  codes         RedemptionCode[]
+  entitlements  Entitlement[]
+  attempts      Attempt[]
+  reports       Report[]
+  questionStats QuestionStat[]
+  resultStats   ResultStat?
+  assets        CampaignAsset[]
+  campaigns     Campaign[]
+  events        Event[]
+  files         AssetFile[]
+
+  @@unique([productId, number])
+  @@unique([id, scope])
+  @@unique([id, productId, scope])
+  @@index([productId, scope, status])
+  @@map("product_versions")
+  @@schema("orai")
+}
+
+model Order {
+  id               String           @id @default(uuid(7)) @db.Uuid
+  platform         Platform
+  reference        String
+  productVersionId String           @map("product_version_id") @db.Uuid
+  scope            DataScope
+  productVersion   ProductVersion   @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  quantity         Int              @default(1)
+  amountFen        Int              @map("amount_fen")
+  status           OrderStatus      @default(PENDING)
+  createdAt        DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  refundedAt       DateTime?        @map("refunded_at") @db.Timestamptz(3)
+  codes            RedemptionCode[]
+  entitlements     Entitlement[]
+  batches          CodeBatch[]
+
+  @@unique([platform, reference])
+  @@unique([id, scope])
+  @@unique([id, productVersionId, scope])
+  @@index([scope, status, createdAt])
+  @@map("orders")
+  @@schema("orai")
+}
+
+model CodeBatch {
+  id        String           @id @default(uuid(7)) @db.Uuid
+  orderId   String           @map("order_id") @db.Uuid
+  order     Order            @relation(fields: [orderId, scope], references: [id, scope], onDelete: Restrict)
+  scope     DataScope
+  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  codes     RedemptionCode[]
+
+  @@unique([id, orderId, scope])
+  @@index([orderId])
+  @@map("code_batches")
+  @@schema("orai")
+}
+
+model RedemptionCode {
+  id               String          @id @default(uuid(7)) @db.Uuid
+  digest           String          @unique
+  scope            DataScope
+  status           CodeStatus      @default(ISSUED)
+  orderId          String          @map("order_id") @db.Uuid
+  productVersionId String          @map("product_version_id") @db.Uuid
+  order            Order           @relation(fields: [orderId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  productVersion   ProductVersion  @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  batchId          String?         @map("batch_id") @db.Uuid
+  batch            CodeBatch?      @relation(fields: [batchId, orderId, scope], references: [id, orderId, scope], onDelete: Restrict)
+  entitlementId    String?         @map("entitlement_id") @db.Uuid
+  entitlement      Entitlement?    @relation(fields: [entitlementId, orderId, productVersionId, scope], references: [id, orderId, productVersionId, scope], onDelete: Restrict, map: "redemption_codes_entitlement_delivery_fkey")
+  replacesCodeId   String?         @unique @map("replaces_code_id") @db.Uuid
+  replacesCode     RedemptionCode? @relation("Replacement", fields: [replacesCodeId, orderId, productVersionId, scope], references: [id, orderId, productVersionId, scope], onDelete: Restrict, map: "redemption_codes_replacement_delivery_fkey")
+  replacement      RedemptionCode? @relation("Replacement")
+  claimDeadline    DateTime        @map("claim_deadline") @db.Timestamptz(3)
+  claimedAt        DateTime?       @map("claimed_at") @db.Timestamptz(3)
+  revokedAt        DateTime?       @map("revoked_at") @db.Timestamptz(3)
+  createdAt        DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([id, orderId, productVersionId, scope], map: "redemption_codes_delivery_key")
+  @@unique([replacesCodeId, orderId, productVersionId, scope], map: "redemption_codes_replacement_key")
+  @@index([orderId])
+  @@index([batchId])
+  @@index([entitlementId])
+  @@index([productVersionId, scope])
+  @@index([scope, status, claimDeadline])
+  @@map("redemption_codes")
+  @@schema("orai")
+}
+
+model User {
+  id             String               @id @default(uuid(7)) @db.Uuid
+  supabaseUserId String               @unique @map("supabase_user_id") @db.Uuid
+  assetFiles     AssetFile[]
+  scope          DataScope
+  role           UserRole             @default(USER)
+  disabledAt     DateTime?            @map("disabled_at") @db.Timestamptz(3)
+  createdAt      DateTime             @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt      DateTime             @updatedAt @map("updated_at") @db.Timestamptz(3)
+  entitlements   Entitlement[]
+  bindings       EntitlementBinding[]
+  auditLogs      AdminAuditLog[]
+  accountSessions AccountSession[]
+
+  @@unique([id, scope])
+  @@map("users")
+  @@schema("orai")
+}
+
+model AccountSession {
+  id                  String    @id @default(uuid(7)) @db.Uuid
+  userId              String    @map("user_id") @db.Uuid
+  scope               DataScope
+  user                User      @relation(fields: [userId, scope], references: [id, scope], onDelete: Restrict)
+  supabaseSessionId   String    @map("supabase_session_id") @db.Uuid
+  tokenDigest         String    @unique @map("token_digest")
+  accessCredential    String?   @map("access_credential")
+  refreshCredential   String?   @map("refresh_credential")
+  accessExpiresAt     DateTime  @map("access_expires_at") @db.Timestamptz(3)
+  expiresAt           DateTime  @map("expires_at") @db.Timestamptz(3)
+  createdAt           DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt           DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  revokedAt           DateTime? @map("revoked_at") @db.Timestamptz(3)
+
+  @@unique([id, scope])
+  @@unique([supabaseSessionId, scope])
+  @@index([userId, scope, revokedAt])
+  @@index([expiresAt])
+  @@map("account_sessions")
+  @@schema("orai")
+}
+
+model Entitlement {
+  id               String              @id @default(uuid(7)) @db.Uuid
+  productVersionId String              @map("product_version_id") @db.Uuid
+  scope            DataScope
+  productVersion   ProductVersion      @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  orderId          String              @map("order_id") @db.Uuid
+  order            Order               @relation(fields: [orderId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  ownership        Ownership           @default(ANONYMOUS)
+  ownerUserId      String?             @map("owner_user_id") @db.Uuid
+  ownerUser        User?               @relation(fields: [ownerUserId, scope], references: [id, scope], onDelete: Restrict)
+  status           EntitlementStatus   @default(ACTIVE)
+  reportsAllowed   Int                 @default(1) @map("reports_allowed")
+  reportsConsumed  Int                 @default(0) @map("reports_consumed")
+  claimedAt        DateTime            @map("claimed_at") @db.Timestamptz(3)
+  accessExpiresAt  DateTime            @map("access_expires_at") @db.Timestamptz(3)
+  boundAt          DateTime?           @map("bound_at") @db.Timestamptz(3)
+  revokedAt        DateTime?           @map("revoked_at") @db.Timestamptz(3)
+  codes            RedemptionCode[]
+  attempts         Attempt[]
+  grants           AccessGrant[]
+  binding          EntitlementBinding?
+
+  @@unique([id, scope])
+  @@unique([id, productVersionId, scope])
+  @@unique([id, orderId, productVersionId, scope], map: "entitlements_delivery_key")
+  @@unique([id, ownerUserId])
+  @@index([orderId])
+  @@index([productVersionId, scope])
+  @@index([ownerUserId, scope, status, claimedAt])
+  @@map("entitlements")
+  @@schema("orai")
+}
+
+model AccessSession {
+  id          String        @id @default(uuid(7)) @db.Uuid
+  tokenDigest String        @unique @map("token_digest")
+  scope       DataScope
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  expiresAt   DateTime      @map("expires_at") @db.Timestamptz(3)
+  revokedAt   DateTime?     @map("revoked_at") @db.Timestamptz(3)
+  grants      AccessGrant[]
+
+  @@unique([id, scope])
+  @@index([expiresAt])
+  @@map("access_sessions")
+  @@schema("orai")
+}
+
+model AccessGrant {
+  sessionId     String        @map("session_id") @db.Uuid
+  entitlementId String        @map("entitlement_id") @db.Uuid
+  scope         DataScope
+  session       AccessSession @relation(fields: [sessionId, scope], references: [id, scope], onDelete: Cascade)
+  entitlement   Entitlement   @relation(fields: [entitlementId, scope], references: [id, scope], onDelete: Restrict)
+  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamptz(3)
+  revokedAt     DateTime?     @map("revoked_at") @db.Timestamptz(3)
+
+  @@id([sessionId, entitlementId])
+  @@index([entitlementId])
+  @@map("access_grants")
+  @@schema("orai")
+}
+
+model EntitlementBinding {
+  entitlementId String      @id @map("entitlement_id") @db.Uuid
+  userId        String      @map("user_id") @db.Uuid
+  entitlement   Entitlement @relation(fields: [entitlementId, userId], references: [id, ownerUserId], onDelete: Restrict)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Restrict)
+  createdAt     DateTime    @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([entitlementId, userId])
+  @@index([userId, createdAt])
+  @@map("entitlement_bindings")
+  @@schema("orai")
+}
+
+model Attempt {
+  id               String          @id @default(uuid(7)) @db.Uuid
+  entitlementId    String          @map("entitlement_id") @db.Uuid
+  productVersionId String          @map("product_version_id") @db.Uuid
+  scope            DataScope
+  entitlement      Entitlement     @relation(fields: [entitlementId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  productVersion   ProductVersion  @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  ordinal          Int             @default(1)
+  status           AttemptStatus   @default(STARTED)
+  revision         Int             @default(0)
+  statsValid       Boolean         @default(true) @map("stats_valid")
+  createdAt        DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  submittedAt      DateTime?       @map("submitted_at") @db.Timestamptz(3)
+  completedAt      DateTime?       @map("completed_at") @db.Timestamptz(3)
+  invalidatedAt    DateTime?       @map("invalidated_at") @db.Timestamptz(3)
+  answersExpireAt  DateTime?       @map("answers_expire_at") @db.Timestamptz(3)
+  answers          AttemptAnswer[]
+  report           Report?
+
+  @@unique([entitlementId, ordinal])
+  @@unique([id, productVersionId, scope])
+  @@index([productVersionId, scope, status, statsValid])
+  @@index([answersExpireAt, status])
+  @@map("attempts")
+  @@schema("orai")
+}
+
+model AttemptAnswer {
+  attemptId  String   @map("attempt_id") @db.Uuid
+  questionId String   @map("question_id")
+  optionId   String   @map("option_id")
+  revision   Int      @default(1)
+  savedAt    DateTime @default(now()) @map("saved_at") @db.Timestamptz(3)
+  attempt    Attempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@id([attemptId, questionId])
+  @@map("attempt_answers")
+  @@schema("orai")
+}
+
+model Report {
+  id               String         @id @default(uuid(7)) @db.Uuid
+  attemptId        String         @unique @map("attempt_id") @db.Uuid
+  productVersionId String         @map("product_version_id") @db.Uuid
+  scope            DataScope
+  attempt          Attempt        @relation(fields: [attemptId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  productVersion   ProductVersion @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  resultTypeId     String         @map("result_type_id")
+  snapshot         Json?
+  createdAt        DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  expiresAt        DateTime       @map("expires_at") @db.Timestamptz(3)
+  deletedAt        DateTime?      @map("deleted_at") @db.Timestamptz(3)
+
+  @@unique([attemptId, productVersionId, scope])
+  @@index([productVersionId, scope])
+  @@index([expiresAt])
+  @@map("reports")
+  @@schema("orai")
+}
+
+model QuestionStat {
+  productVersionId String               @map("product_version_id") @db.Uuid
+  questionId       String               @map("question_id")
+  scope            DataScope
+  productVersion   ProductVersion       @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  answerCount      Int                  @default(0) @map("answer_count")
+  updatedAt        DateTime             @default(now()) @map("updated_at") @db.Timestamptz(3)
+  options          QuestionOptionStat[]
+
+  @@id([productVersionId, questionId])
+  @@map("question_stats")
+  @@schema("orai")
+}
+
+model QuestionOptionStat {
+  productVersionId String       @map("product_version_id") @db.Uuid
+  questionId       String       @map("question_id")
+  optionId         String       @map("option_id")
+  count            Int          @default(0)
+  question         QuestionStat @relation(fields: [productVersionId, questionId], references: [productVersionId, questionId], onDelete: Cascade)
+
+  @@id([productVersionId, questionId, optionId])
+  @@map("question_option_stats")
+  @@schema("orai")
+}
+
+model ResultStat {
+  productVersionId String           @id @map("product_version_id") @db.Uuid
+  scope            DataScope
+  productVersion   ProductVersion   @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  completedCount   Int              @default(0) @map("completed_count")
+  updatedAt        DateTime         @default(now()) @map("updated_at") @db.Timestamptz(3)
+  types            ResultTypeStat[]
+
+  @@unique([productVersionId, scope])
+  @@map("result_stats")
+  @@schema("orai")
+}
+
+model ResultTypeStat {
+  productVersionId String     @map("product_version_id") @db.Uuid
+  resultTypeId     String     @map("result_type_id")
+  count            Int        @default(0)
+  result           ResultStat @relation(fields: [productVersionId], references: [productVersionId], onDelete: Cascade)
+
+  @@id([productVersionId, resultTypeId])
+  @@map("result_type_stats")
+  @@schema("orai")
+}
+
+model CampaignAsset {
+  id               String         @id @default(uuid(7)) @db.Uuid
+  productVersionId String         @map("product_version_id") @db.Uuid
+  scope            DataScope
+  productVersion   ProductVersion @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  platform         Platform
+  kind             AssetKind
+  variant          String
+  status           AssetStatus    @default(DRAFT)
+  text             String?
+  storageKey       String?        @map("storage_key")
+  mimeType         String?        @map("mime_type")
+  byteSize         Int?           @map("byte_size")
+  checksum         String?
+  revision         Int            @default(0)
+  fileId           String?        @map("file_id") @db.Uuid
+  file             AssetFile?     @relation(fields: [fileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  createdAt        DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime       @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@unique([productVersionId, platform, kind, variant])
+  @@index([scope, platform, kind, status])
+  @@map("campaign_assets")
+  @@schema("orai")
+}
+
+enum AssetFileStatus {
+  PENDING
+  VERIFYING
+  UPLOADED
+  AVAILABLE
+  FAILED
+  EXPIRED
+
+  @@schema("orai")
+}
+
+model AssetFile {
+  id               String          @id @default(uuid(7)) @db.Uuid
+  productVersionId String          @map("product_version_id") @db.Uuid
+  scope            DataScope
+  productVersion   ProductVersion  @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  ownerUserId      String          @map("owner_user_id") @db.Uuid
+  owner            User            @relation(fields: [ownerUserId, scope], references: [id, scope], onDelete: Restrict)
+  kind             AssetKind
+  originalName     String          @map("original_name")
+  mimeType         String          @map("mime_type")
+  byteSize         Int             @map("byte_size")
+  checksum         String
+  storageKey       String          @unique @map("storage_key")
+  status           AssetFileStatus @default(PENDING)
+  expiresAt        DateTime        @map("expires_at") @db.Timestamptz(3)
+  verifiedAt       DateTime?       @map("verified_at") @db.Timestamptz(3)
+  createdAt        DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt        DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+  assets           CampaignAsset[]
+
+  @@unique([id, productVersionId, scope])
+  @@index([scope, ownerUserId, status, expiresAt])
+  @@map("asset_files")
+  @@schema("orai")
+}
+
+model Campaign {
+  id               String         @id @default(uuid(7)) @db.Uuid
+  code             String         @unique
+  productVersionId String         @map("product_version_id") @db.Uuid
+  scope            DataScope
+  productVersion   ProductVersion @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  platform         Platform
+  title            String
+  purchaseUrl      String?        @map("purchase_url")
+  contentUrl       String?        @map("content_url")
+  publishedAt      DateTime?      @map("published_at") @db.Timestamptz(3)
+  createdAt        DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  events           Event[]
+
+  @@unique([id, productVersionId, scope])
+  @@index([productVersionId, scope])
+  @@map("campaigns")
+  @@schema("orai")
+}
+
+model Event {
+  id               String          @id @default(uuid(7)) @db.Uuid
+  dedupeKey        String          @unique @map("dedupe_key")
+  scope            DataScope
+  kind             EventKind
+  source           EventSource
+  productVersionId String?         @map("product_version_id") @db.Uuid
+  productVersion   ProductVersion? @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  campaignId       String?         @map("campaign_id") @db.Uuid
+  campaign         Campaign?       @relation(fields: [campaignId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  occurredAt       DateTime        @default(now()) @map("occurred_at") @db.Timestamptz(3)
+
+  @@index([scope, kind, occurredAt])
+  @@index([productVersionId, scope])
+  @@index([campaignId])
+  @@map("events")
+  @@schema("orai")
+}
+
+model IdempotentRequest {
+  id            String   @id @default(uuid(7)) @db.Uuid
+  actorKey      String   @map("actor_key")
+  operation     String
+  requestId     String   @map("request_id") @db.Uuid
+  requestDigest String   @map("request_digest")
+  response      Json
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  expiresAt     DateTime @map("expires_at") @db.Timestamptz(3)
+
+  @@unique([actorKey, operation, requestId])
+  @@index([expiresAt])
+  @@map("idempotent_requests")
+  @@schema("orai")
+}
+
+model AdminAuditLog {
+  id          String    @id @default(uuid(7)) @db.Uuid
+  actorUserId String?   @map("actor_user_id") @db.Uuid
+  actorUser   User?     @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict)
+  scope       DataScope
+  action      String
+  entityKind  String    @map("entity_kind")
+  entityId    String    @map("entity_id") @db.Uuid
+  requestId   String?   @map("request_id") @db.Uuid
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([entityKind, entityId, createdAt])
+  @@index([actorUserId, createdAt])
+  @@map("admin_audit_logs")
+  @@schema("orai")
+}
+
+model RequestRateBucket {
+  keyHash      String    @id @map("key_hash")
+  scope        DataScope
+  hits         Int       @default(1)
+  windowEndsAt DateTime  @map("window_ends_at") @db.Timestamptz(3)
+
+  @@index([windowEndsAt])
+  @@map("request_rate_buckets")
+  @@schema("orai")
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@orai/api",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/main.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env node_modules/@nestjs/cli/bin/nest.js start --watch",
+    "build": "pnpm db:generate && tsc -p tsconfig.json",
+    "start": "node --env-file-if-exists=../../.env dist/main.js",
+    "typecheck": "pnpm db:generate && tsc -p tsconfig.json --noEmit",
+    "test": "pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/*.test.js",
+    "db:generate": "node node_modules/prisma/build/index.js generate",
+    "db:validate": "node node_modules/prisma/build/index.js validate",
+    "db:migrate": "node --env-file-if-exists=../../.env node_modules/prisma/build/index.js migrate deploy",
+    "db:status": "node --env-file-if-exists=../../.env node_modules/prisma/build/index.js migrate status",
+    "db:provision": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/provision-cli.js",
+    "db:seed": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/seed-cli.js",
+    "catalog:manage": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/catalog-cli.js",
+    "delivery:manage": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/delivery-cli.js",
+    "retention:preview": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/retention-cli.js"
+  },
+  "dependencies": {
+    "@nestjs/common": "12.1.2",
+    "@nestjs/core": "12.1.2",
+    "@nestjs/platform-express": "12.1.2",
+    "@orai/contracts": "workspace:*",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
+    "@supabase/supabase-js": "2.117.3",
+    "class-transformer": "0.5.1",
+    "class-validator": "0.15.1",
+    "pg": "8.23.1",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "12.0.8",
+    "@nestjs/testing": "12.1.2",
+    "@types/express": "5.0.6",
+    "@types/node": "24.10.1",
+    "@types/pg": "8.23.1",
+    "prisma": "7.10.0",
+    "typescript": "5.9.3"
+  }
+}
