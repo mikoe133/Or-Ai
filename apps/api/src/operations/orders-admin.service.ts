@@ -102,8 +102,9 @@ export class OrdersAdminService {
         if (!source.values) throw new ApiException('VALIDATION_ERROR', 'CSV 此行列数不正确', 400);
         const values = source.values;
         if (!/^\d+$/.test(values.quantity!) || !/^\d+$/.test(values.amountFen!)) throw new ApiException('VALIDATION_ERROR', '数量和金额必须为整数', 400);
-        const request = parseInput(AdminCreateOrderSchema, { ...values, quantity: Number(values.quantity), amountFen: Number(values.amountFen),
+        const parsedRequest = parseInput(AdminCreateOrderSchema, { ...values, quantity: Number(values.quantity), amountFen: Number(values.amountFen),
           scope: access.scope.toLowerCase(), requestId: rowRequestId(body.requestId.toLowerCase(), source.row) });
+        const request = { ...parsedRequest, productVersionId: parsedRequest.productVersionId.toLowerCase() };
         const referenceKey = JSON.stringify([request.platform, request.reference]);
         const content = JSON.stringify([request.productVersionId.toLowerCase(), request.quantity, request.amountFen]);
         if (references.has(referenceKey) && references.get(referenceKey) !== content) throw new ApiException('CONFLICT', '同一批次内订单引用重复且内容不同', 409);
