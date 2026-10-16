@@ -638,7 +638,8 @@ try {
     null,
   );
   checks.push(phase);
-  phase = "mobile pages fit, remain legible and keep the design preview separate";
+  phase =
+    "mobile pages fit, remain legible and keep the design preview separate";
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   await expect(
@@ -650,11 +651,21 @@ try {
     ),
     true,
   );
-  const visualChecks=await Promise.allSettled([
-    (async()=>assert.ok(await textContrast(page.getByRole('heading',{name:'发现有趣的自己',exact:true})) >= 4.5,'functional page text must contrast against its actual surface'))(),
-    expect(page.getByText('封面暂不可用',{exact:true})).toBeVisible(),
+  const visualChecks = await Promise.allSettled([
+    (async () =>
+      assert.ok(
+        (await textContrast(
+          page.getByRole("heading", { name: "发现有趣的自己", exact: true }),
+        )) >= 4.5,
+        "functional page text must contrast against its actual surface",
+      ))(),
+    expect(page.getByText("封面暂不可用", { exact: true })).toBeVisible(),
   ]);
-  assert.deepEqual(visualChecks.map(result=>result.status),['fulfilled','fulfilled'],'text contrast and an unavailable cover need usable fallbacks');
+  assert.deepEqual(
+    visualChecks.map((result) => result.status),
+    ["fulfilled", "fulfilled"],
+    "text contrast and an unavailable cover need usable fallbacks",
+  );
   await page.screenshot({
     path: join(output, "mobile-catalog.png"),
     fullPage: true,

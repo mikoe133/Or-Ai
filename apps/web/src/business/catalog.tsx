@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { KeySchema } from "@orai/contracts";
@@ -6,6 +6,29 @@ import { api, consumer } from "../api/consumer.js";
 import { MutationIntent } from "../api/intent.js";
 import { catalogSearch, changeCatalogSearch } from "./model.js";
 import { Page, Loading, Failure, Demo, Pager } from "./shared.js";
+
+function ProductCover({
+  src,
+  alt,
+  className,
+}: {
+  src: string | null;
+  alt: string;
+  className?: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  return !src || failed ? (
+    <p className="biz-note">{src ? "封面暂不可用" : "封面待补"}</p>
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      loading="lazy"
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 export function CatalogPage() {
   const [params, setParams] = useSearchParams();
@@ -227,15 +250,11 @@ export function CatalogPage() {
           <div className="biz-grid">
             {result.data.items.map((product) => (
               <article key={product.id} className="biz-card">
-                {product.coverUrl ? (
-                  <img
-                    src={product.coverUrl}
-                    alt={product.name + "的封面"}
-                    loading="lazy"
-                  />
-                ) : (
-                  <p className="biz-note">封面待补</p>
-                )}
+                <ProductCover
+                  key={product.coverUrl}
+                  src={product.coverUrl}
+                  alt={product.name + "的封面"}
+                />
                 <h2>
                   <Link to={"/products/" + product.slug}>{product.name}</Link>
                 </h2>
@@ -313,13 +332,12 @@ export function ProductPage() {
       ) : (
         <>
           <Demo show={result.data.isDemo} />
-          {result.data.coverUrl && (
-            <img
-              className="biz-cover"
-              src={result.data.coverUrl}
-              alt="商品封面"
-            />
-          )}
+          <ProductCover
+            key={result.data.coverUrl}
+            className="biz-cover"
+            src={result.data.coverUrl}
+            alt="商品封面"
+          />
           <p>{result.data.hook}</p>
           <p>{result.data.description}</p>
           <p>
