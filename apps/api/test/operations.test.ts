@@ -412,6 +412,8 @@ test('CSV concurrent retries and distinct batches deduplicate identical platform
   assert.equal(conflict.body.rejected, 1);
   const list = await admin.request('/admin/orders?platform=manual&status=pending&reference=' + reference + '&pageSize=1');
   assert.equal(list.body.total, 1); assert.equal(list.body.items.length, 1);
+  const normalized = await admin.request('/admin/orders/import', 'POST', { csv: csv.replace(versionId, versionId.toUpperCase()), requestId: randomUUID(), dryRun: true });
+  assert.equal(normalized.body.accepted, 1); assert.equal(normalized.body.rejected, 0);
 });
 
 test('actual JPEG, WebP, WebM and MP4 bytes pass verification and support authorized video ranges', async () => {
