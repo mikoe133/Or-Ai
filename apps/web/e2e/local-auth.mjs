@@ -7,11 +7,12 @@ import { createRequire } from 'node:module';
 import { mkdir, readFile, writeFile, chmod } from 'node:fs/promises';
 import { join } from 'node:path';
 import { parseEnv } from 'node:util';
-import { chromium, expect, request } from 'playwright/test';
+import { chromium, expect as playwrightExpect, request } from 'playwright/test';
 import { readLocalAuthConfig } from '../../../scripts/local-auth-config.mjs';
 import { repositoryRoot as root } from '../../../scripts/runtime-config.mjs';
 
 const raw = await readFile(join(root, '.env'), 'utf8'), env = parseEnv(raw), config = readLocalAuthConfig(raw);
+const expect = playwrightExpect.configure({ timeout: 20000 });
 const base = config.siteOrigin, output = join(root, '.local/t06-o/e2e');
 await mkdir(output, { recursive: true, mode: 0o700 }); await chmod(output, 0o700);
 const id = randomBytes(5).toString('hex');
@@ -24,7 +25,7 @@ await privateSave();
 const require = createRequire(join(root, 'apps/api/package.json')), { Pool } = require('pg');
 const database = new Pool({ connectionString: env.DATABASE_URL, max: 1 });
 let browser, phase = 'setup', page, adminId, operatorGranted = false, success = false;
-const checks = [], consoleErrors = [];
+const checks = [], consoleErrors = [], http = [];
 function passed(label) { checks.push(label); console.log('PASS ' + label); }
 function command(name, args = []) {
   const result = spawnSync('pnpm', [name, ...args], { cwd: root, env: { ...process.env, ...env }, encoding: 'utf8', timeout: 240000, maxBuffer: 2_000_000 });
@@ -113,6 +114,7 @@ try {
   const operatorContext = await browser.newContext({ baseURL: base, viewport: { width: 1440, height: 1000 }, reducedMotion: 'reduce' });
   operatorContext.setDefaultTimeout(15000); operatorContext.setDefaultNavigationTimeout(20000);
   page = await operatorContext.newPage(); page.on('pageerror', error => consoleErrors.push(error.name));
+  page.on('response', response => { const path = new URL(response.url()).pathname; if (path.startsWith('/api/') || path.startsWith('/auth/v1/')) http.push({ phase, path, status: response.status() }); });
 
   phase = 'real signup requires Mailpit verification and rejects unverified login';
   const confirmation = await register(page, operator);
@@ -252,9 +254,10 @@ try {
   for (const value of [...Object.values(env), operator.password, ordinary.password].filter(x => typeof x === 'string' && x.length >= 12)) detail = detail.replaceAll(value, '[redacted]');
   detail = detail.replace(/eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/g, '[redacted-jwt]');
   await writeFile(join(output, 'failure.txt'), phase + '\n' + detail, { mode: 0o600 });
-  if (page) await page.screenshot({ path: join(output, 'failure.png'), fullPage: true }).catch(() => {});
+  if (page) await page.screenshot({ path: join(output, 'failure.png'), fullPage: true, timeout: 3000 }).catch(() => {});
   console.error(JSON.stringify({ failedPhase: phase, passed: checks.length, detail: '.local/t06-o/e2e/failure.txt' })); process.exitCode = 1;
 } finally {
+  await writeFile(join(output, 'http.json'), JSON.stringify(http, null, 2), { mode: 0o600 });
   if (!success && operatorGranted && operator.supabaseUserId) { try { role('revoke', operator); } catch { console.error('Inspect local operator privileges after the failed acceptance.'); } }
   await browser?.close(); await database.end();
 }
