@@ -15,7 +15,7 @@ test('lifecycle commands always select the dedicated project and compose file', 
   assert.deepEqual(up.slice(0, 5), ['compose', '--project-name', 'orai-auth-local', '--file', 'compose.auth.yml']);
   assert.deepEqual(up.slice(5), ['up', '--detach', '--build', '--wait', '--wait-timeout', '90']);
   assert.deepEqual(api().authComposeArguments('stop').slice(5), ['stop', '--timeout', '15']);
-  assert.deepEqual(api().authComposeArguments('restart').slice(5), ['restart', '--timeout', '15']);
+  assert.deepEqual(api().authComposeArguments('restart').slice(5), ['up', '--detach', '--force-recreate', '--no-build', '--wait', '--wait-timeout', '90']);
   assert.deepEqual(api().authComposeArguments('config').slice(5), ['config', '--quiet']);
   for (const command of ['down', 'down -v', 'rm', 'reset', 'exec', 'unknown']) assert.throws(() => api().authComposeArguments(command), /unsupported/i);
 });
