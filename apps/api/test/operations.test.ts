@@ -550,3 +550,45 @@ test('HTTP replacement and concurrent refund preserve a completed account-bound 
   assert.equal(await fixture.runtime.client.entitlementBinding.count({ where: { entitlementId } }), 1);
   assert.equal(await fixture.runtime.client.event.count({ where: { dedupeKey: 'refund:' + issued.recorded.id, kind: 'REFUND' } }), 1);
 });
+
+test('knowing LIVE product, order, asset and file IDs cannot cross the development administrator scope', async () => {
+  const seed = await fixture.runtime.client.product.findUniqueOrThrow({ where: { slug: 'demo-partner' } });
+  const { id: _id, ...metadata } = seed;
+  const product = await fixture.owner.client.product.create({ data: { ...metadata, slug: 't07-live-isolation', scope: 'LIVE',
+    status: 'DRAFT', currentVersionId: null, publishedAt: null, coverUrl: null, publicSample: { ...seed.publicSample as object, isDemo: false } } });
+  const source = await fixture.runtime.client.productVersion.findUniqueOrThrow({ where: { id: versionId } });
+  const version = await fixture.owner.client.productVersion.create({ data: { productId: product.id, scope: 'LIVE', number: 1, configuration: source.configuration!, status: 'PUBLISHED', publishedAt: new Date() } });
+  const user = await fixture.owner.client.user.create({ data: { supabaseUserId: randomUUID(), scope: 'LIVE' } });
+  const fileId = randomUUID();
+  await fixture.owner.client.assetFile.create({ data: { id: fileId, productVersionId: version.id, scope: 'LIVE', ownerUserId: user.id,
+    kind: 'COVER', originalName: 'live.png', mimeType: 'image/png', byteSize: image.length, checksum: sha(image), storageKey: fileId + '.blob',
+    status: 'AVAILABLE', verifiedAt: new Date(), expiresAt: new Date(Date.now() + 3_600_000) } });
+  const cover = await fixture.owner.client.campaignAsset.create({ data: { productVersionId: version.id, scope: 'LIVE', platform: 'MANUAL', kind: 'COVER',
+    variant: 'live-isolation', status: 'READY', fileId, storageKey: fileId + '.blob', mimeType: 'image/png', byteSize: image.length, checksum: sha(image) } });
+  const coverUrl = '/api/assets/' + cover.id + '/files/' + fileId + '/content';
+  await fixture.owner.client.product.update({ where: { id: product.id }, data: { status: 'PUBLISHED', currentVersionId: version.id, coverUrl, publishedAt: new Date() } });
+  const order = await fixture.owner.client.order.create({ data: { platform: 'MANUAL', reference: 'live:t07', productVersionId: version.id, scope: 'LIVE', quantity: 1, amountFen: 990 } });
+  for (const path of ['/admin/products/' + product.id, '/admin/orders/' + order.id, '/admin/assets/' + cover.id, '/admin/files/' + fileId + '/content', coverUrl]) {
+    const response = await admin.raw(path); assert.equal(response.status, 404); await response.arrayBuffer();
+  }
+  assert.equal((await admin.request('/admin/assets?productVersionId=' + version.id)).body.total, 0);
+  assert.equal((await admin.request('/admin/products?query=t07-live-isolation')).body.total, 0);
+  assert.equal((await admin.request('/admin/orders/' + order.id + '/refund', 'POST', { requestId: randomUUID() })).status, 404);
+  assert.equal((await admin.request('/admin/uploads', 'POST', { productVersionId: version.id, kind: 'cover', fileName: 'x.png', mimeType: 'image/png', byteSize: image.length, checksum: sha(image), requestId: randomUUID() })).status, 404);
+  assert.equal((await admin.request('/admin/assets', 'POST', { productVersionId: versionId, kind: 'cover', platform: 'manual', variant: randomUUID(), fileId, requestId: randomUUID() })).status, 409);
+  const visitor = await new Browser().bootstrap();
+  assert.equal((await visitor.request('/events', 'POST', { kind: 'view', productVersionId: version.id, requestId: randomUUID() })).status, 404);
+});
+
+test('simultaneous upload preparations cannot exceed the per-administrator pending quota; expired status remains truthful', async () => {
+  const active = await fixture.runtime.client.assetFile.count({ where: { ownerUserId: DemoIdentityScenarios.admin.id, scope: 'DEMO',
+    status: { in: ['PENDING','VERIFYING','UPLOADED'] }, expiresAt: { gt: new Date() } } });
+  const results = await Promise.all(Array.from({ length: 23 - active }, () => admin.request('/admin/uploads', 'POST', {
+    productVersionId: versionId, kind: 'cover', fileName: 'x.png', mimeType: 'image/png', byteSize: image.length, checksum: sha(image), requestId: randomUUID() })));
+  assert.equal(results.filter(value => value.status === 200).length, 20 - active);
+  assert.equal(results.filter(value => value.status === 409).length, 3);
+  const pending = results.find(value => value.status === 200)!.body;
+  await fixture.owner.client.assetFile.update({ where: { id: pending.id }, data: { expiresAt: new Date(Date.now() - 1000) } });
+  assert.equal((await admin.request('/admin/uploads/' + pending.id)).body.status, 'expired');
+  assert.equal((await admin.request('/admin/uploads/' + pending.id + '/complete', 'POST', { requestId: randomUUID() })).status, 410);
+});
