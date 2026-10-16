@@ -12,6 +12,8 @@
 
 T10 接入页面展示层、主题变量、组件外观和手机/桌面响应式布局，两端共用同一套前端、API 与状态逻辑。业务状态、计分、统计和归属继续由原服务提供。T10 本地视觉不等待 T09，但平台整体公网验收仍需 T09。
 
+后续实际执行顺序见 [ROADMAP.md](ROADMAP.md)。T10 分为 T10-L 本地正式视觉和 T10-V 公网整体验收；推荐先固定内容制作链与首个轻量体验，再将正式稿接到这些真实路由。后台/skill/MCP/新体验缺稿逐页记录，必要项未关闭或未经明确范围调整时，不将 T10 整体标完成。
+
 ## 页面清单
 
 以下真实路由已在 T08 通过本地功能验收，使用真实 API 和临时控件。原 Figma 视觉流程独立保留在 `/preview`、`/preview/products/partner`、`/preview/redeem[/success]`、`/preview/assessment/partner`、`/preview/reports/partner`，其数据仍为示例。正式 UI 在 T10 接入真实路由和现有状态逻辑；[接口契约与区域字段映射](API-CONTRACTS.md) 区分已实现端点与后续契约。
