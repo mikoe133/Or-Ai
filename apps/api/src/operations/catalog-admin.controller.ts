@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, Param, Patch, Post, Put, Query, Req, UseGuards } from '@nestjs/common';
 import { CatalogMetadataQuerySchema } from '@orai/contracts';
-import { AdminReplaceVersionSchema } from '@orai/contracts/admin';
+import { AdminReplaceVersionSchema, AdminRevisionInputSchema } from '@orai/contracts/admin';
 import { parseInput } from '../common/parse-input';
 import { VersionsService } from '../catalog/versions.service';
 import { AdminRequestGuard, type AdminRequest } from './admin-request.guard';
@@ -65,11 +65,11 @@ export class CatalogAdminController {
   }
   @Post('products/:id/versions/:versionId/review') @HttpCode(200)
   review(@Req() r: AdminRequest, @Param('id') id: unknown, @Param('versionId') version: unknown, @Body() body: unknown, @Query() query: unknown) {
-    parseInput(CatalogMetadataQuerySchema, query); return this.versions.review(r.administrator, id, version, body);
+    parseInput(CatalogMetadataQuerySchema, query); return this.versions.review(r.administrator, id, version, parseInput(AdminRevisionInputSchema, body));
   }
   @Post('products/:id/versions/:versionId/publish') @HttpCode(200)
   publish(@Req() r: AdminRequest, @Param('id') id: unknown, @Param('versionId') version: unknown, @Body() body: unknown, @Query() query: unknown) {
-    parseInput(CatalogMetadataQuerySchema, query); return this.versions.publish(r.administrator, id, version, body);
+    parseInput(CatalogMetadataQuerySchema, query); return this.versions.publish(r.administrator, id, version, parseInput(AdminRevisionInputSchema, body));
   }
   @Post('products/:id/archive') @HttpCode(200)
   archive(@Req() r: AdminRequest, @Param('id') id: unknown, @Body() body: unknown, @Query() query: unknown) {

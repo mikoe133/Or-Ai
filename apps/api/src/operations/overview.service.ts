@@ -49,8 +49,11 @@ export class OverviewService {
       if (!version) throw new ApiException('NOT_FOUND', '商品当前不可浏览', 404);
       const campaign = body.campaignCode ? await tx.campaign.findFirst({ where: { code: body.campaignCode, scope, productVersionId: version.id } }) : null;
       if (body.campaignCode && !campaign) throw new ApiException('NOT_FOUND', '渠道记录不可用', 404);
-      const row = await tx.event.upsert({ where: { dedupeKey }, update: {}, create: { dedupeKey, scope, kind: 'VIEW',
-        source: scope === 'DEMO' ? 'DEMO' : 'WEB', productVersionId: version.id, campaignId: campaign?.id ?? null } });
+      // ON CONFLICT DO NOTHING works atomically across API processes; an empty
+      // Prisma upsert can otherwise race between its SELECT and INSERT.
+      await tx.event.createMany({ skipDuplicates: true, data: [{ dedupeKey, scope, kind: 'VIEW',
+        source: scope === 'DEMO' ? 'DEMO' : 'WEB', productVersionId: version.id, campaignId: campaign?.id ?? null }] });
+      const row = await tx.event.findUniqueOrThrow({ where: { dedupeKey } });
       if (row.productVersionId !== version.id || row.campaignId !== (campaign?.id ?? null)) throw new ApiException('IDEMPOTENCY_CONFLICT', '浏览请求编号已用于其他内容', 409);
       return { accepted: true, source: row.source.toLowerCase(), observation: 'client_reported' };
     });

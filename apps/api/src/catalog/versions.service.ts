@@ -116,7 +116,7 @@ export class VersionsService {
   async replaceDraft(access: CatalogAdminAccess, productId: unknown, versionId: unknown, input: unknown) {
     await this.administrators.require(access);
     const id = parseInput(IdSchema, versionId).toLowerCase(), request = parseInput(AdminVersionInputSchema, input, 'INVALID_CONFIGURATION');
-    return this.mutate(access, productId, 'replace', request.requestId, { id, configuration: request.configuration }, async (tx, product) => {
+    return this.mutate(access, productId, 'replace', request.requestId, { id, configuration: request.configuration, expectedRevision: request.expectedRevision }, async (tx, product) => {
       const version = await this.version(tx, product.id, id);
       if (!['DRAFT', 'REVIEWED'].includes(version.status)) throw new ApiException('VERSION_IMMUTABLE', '已发布版本不可修改，请创建新版本', 409);
       if (request.expectedRevision !== undefined && version.revision !== request.expectedRevision) throw new ApiException('REVISION_CONFLICT', '配置已更新，请刷新后重试', 409);
@@ -128,12 +128,13 @@ export class VersionsService {
   async review(access: CatalogAdminAccess, productId: unknown, versionId: unknown, input: unknown) {
     await this.administrators.require(access);
     const id = parseInput(IdSchema, versionId).toLowerCase(), request = parseInput(AdminVersionActionSchema, input);
-    return this.mutate(access, productId, 'review', request.requestId, { id }, async (tx, product) => {
+    return this.mutate(access, productId, 'review', request.requestId, { id, expectedRevision: request.expectedRevision }, async (tx, product) => {
       const version = await this.version(tx, product.id, id);
+      if (request.expectedRevision !== undefined && version.revision !== request.expectedRevision) throw new ApiException('REVISION_CONFLICT', '配置已更新，请重新预览后审核', 409);
       if (!['DRAFT', 'REVIEWED'].includes(version.status)) throw new ApiException('VERSION_IMMUTABLE', '已发布版本不可重新审核', 409);
       this.publicPreview(product, version);
-      const updated = await tx.productVersion.update({ where: { id }, data: { status: 'REVIEWED' } });
-      if (product.status === 'DRAFT') await tx.product.update({ where: { id: product.id }, data: { status: 'REVIEWED' } });
+      const updated = await tx.productVersion.update({ where: { id }, data: { status: 'REVIEWED', revision: { increment: 1 } } });
+      if (product.status === 'DRAFT') await tx.product.update({ where: { id: product.id }, data: { status: 'REVIEWED', revision: { increment: 1 } } });
       return { response: versionDto(updated), entityId: id, entityKind: 'product_version' };
     });
   }
@@ -141,16 +142,17 @@ export class VersionsService {
   async publish(access: CatalogAdminAccess, productId: unknown, versionId: unknown, input: unknown) {
     await this.administrators.require(access);
     const id = parseInput(IdSchema, versionId).toLowerCase(), request = parseInput(AdminVersionActionSchema, input);
-    return this.mutate(access, productId, 'publish', request.requestId, { id }, async (tx, product) => {
+    return this.mutate(access, productId, 'publish', request.requestId, { id, expectedRevision: request.expectedRevision }, async (tx, product) => {
       const version = await this.version(tx, product.id, id);
+      if (request.expectedRevision !== undefined && version.revision !== request.expectedRevision) throw new ApiException('REVISION_CONFLICT', '配置已更新，请重新审核后发布', 409);
       if (version.status === 'PUBLISHED' && product.status === 'PUBLISHED' && product.currentVersionId === id) {
         return { response: versionDto(version), entityId: id, entityKind: 'product_version' };
       }
       if (version.status !== 'REVIEWED') throw new ApiException('CONFLICT', '需要先审核一个未发布的新版本', 409);
       this.publicPreview(product, version);
       const publishedAt = new Date();
-      const published = await tx.productVersion.update({ where: { id }, data: { status: 'PUBLISHED', publishedAt } });
-      await tx.product.update({ where: { id: product.id }, data: { status: 'PUBLISHED', currentVersionId: id, publishedAt } });
+      const published = await tx.productVersion.update({ where: { id }, data: { status: 'PUBLISHED', publishedAt, revision: { increment: 1 } } });
+      await tx.product.update({ where: { id: product.id }, data: { status: 'PUBLISHED', currentVersionId: id, publishedAt, revision: { increment: 1 } } });
       return { response: versionDto(published), entityId: id, entityKind: 'product_version' };
     });
   }
@@ -160,7 +162,7 @@ export class VersionsService {
     const request = parseInput(AdminVersionActionSchema, input);
     return this.mutate(access, productId, 'archive', request.requestId, {}, async (tx, product) => {
       if (!['PUBLISHED', 'ARCHIVED'].includes(product.status)) throw new ApiException('CONFLICT', '只能下架已发布的商品', 409);
-      const archived = await tx.product.update({ where: { id: product.id }, data: { status: 'ARCHIVED' } });
+      const archived = await tx.product.update({ where: { id: product.id }, data: { status: 'ARCHIVED', revision: { increment: 1 } } });
       return { response: productDto(archived), entityId: product.id, entityKind: 'product' };
     });
   }

@@ -77,7 +77,7 @@ export const AdminProductInputSchema = z.object({
 }).strict();
 export const AdminVersionInputSchema = z.object({ configuration: ProductConfigurationSchema, requestId: IdSchema,
   expectedRevision: z.number().int().min(0).optional() }).strict();
-export const AdminVersionActionSchema = z.object({ requestId: IdSchema }).strict();
+export const AdminVersionActionSchema = z.object({ requestId: IdSchema, expectedRevision: z.number().int().min(0).optional() }).strict();
 export const AdminVersionSchema = z.object({
   id: IdSchema, productId: IdSchema, scope: DataScopeSchema, number: z.number().int().min(1),
   status: ProductStatusSchema, createdAt: TimestampSchema, publishedAt: TimestampSchema.nullable(),

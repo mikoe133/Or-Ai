@@ -95,7 +95,7 @@ export class OrdersAdminService {
     if (!body.dryRun) await this.mutations.run(access, 'orders.import.reserve', body.requestId, { csv: body.csv }, async () => ({
       response: { batchId: body.requestId }, entityKind: 'order_import', entityId: body.requestId,
     }));
-    const rows: ImportRow[] = [];
+    const rows: ImportRow[] = [], references = new Map<string, string>();
     for (const source of parsed) {
       await this.mutations.administrators.require(access);
       try {
@@ -104,6 +104,9 @@ export class OrdersAdminService {
         if (!/^\d+$/.test(values.quantity!) || !/^\d+$/.test(values.amountFen!)) throw new ApiException('VALIDATION_ERROR', '数量和金额必须为整数', 400);
         const request = parseInput(AdminCreateOrderSchema, { ...values, quantity: Number(values.quantity), amountFen: Number(values.amountFen),
           scope: access.scope.toLowerCase(), requestId: rowRequestId(body.requestId.toLowerCase(), source.row) });
+        const referenceKey = JSON.stringify([request.platform, request.reference]);
+        const content = JSON.stringify([request.productVersionId.toLowerCase(), request.quantity, request.amountFen]);
+        if (references.has(referenceKey) && references.get(referenceKey) !== content) throw new ApiException('CONFLICT', '同一批次内订单引用重复且内容不同', 409);
         let orderId: string | undefined;
         if (body.dryRun) {
           const version = await this.database.client.productVersion.findFirst({ where: { id: request.productVersionId, scope: access.scope }, include: { product: true } });
@@ -112,6 +115,7 @@ export class OrdersAdminService {
           if (existing && (existing.scope !== access.scope || existing.productVersionId !== request.productVersionId || existing.quantity !== request.quantity || existing.amountFen !== request.amountFen)) throw new ApiException('CONFLICT', '订单引用已存在且内容不同', 409);
           orderId = existing?.id;
         } else orderId = (await this.delivery.recordOrder(access, request)).id;
+        references.set(referenceKey, content);
         rows.push({ row: source.row, status: 'accepted', ...(orderId ? { orderId } : {}) });
       } catch (error) {
         if (!(error instanceof ApiException) || error.getStatus() >= 500 || ['AUTH_REQUIRED','FORBIDDEN','EMAIL_UNVERIFIED'].includes(error.code)) throw error;

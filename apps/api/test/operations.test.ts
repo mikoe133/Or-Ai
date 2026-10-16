@@ -170,8 +170,9 @@ test('products, recommendation, version import/review/publication and immutable 
   assert.equal(imported.status, 200);
   const version = imported.body;
   assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id + '/preview')).body.isPreview, true);
-  assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id + '/review', 'POST', { requestId: randomUUID() })).status, 200);
-  assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id + '/publish', 'POST', { requestId: randomUUID() })).status, 200);
+  const reviewed = await admin.request('/admin/products/' + id + '/versions/' + version.id + '/review', 'POST', { expectedRevision: version.revision, requestId: randomUUID() });
+  assert.equal(reviewed.status, 200);
+  assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id + '/publish', 'POST', { expectedRevision: reviewed.body.revision, requestId: randomUUID() })).status, 200);
   assert.equal((await admin.request('/products/' + input.slug)).status, 200);
   assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id, 'PUT', {
     configuration: config, expectedRevision: version.revision, requestId: randomUUID() })).status, 409);

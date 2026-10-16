@@ -138,10 +138,11 @@ export class CatalogAdminService {
       const product = await tx.product.findFirst({ where: { id, scope: access.scope } });
       if (!product) throw new ApiException('NOT_FOUND', '商品不存在于当前管理范围', 404);
       if (product.revision !== body.expectedRevision) throw new ApiException('REVISION_CONFLICT', '商品已更新，请刷新后重试', 409);
+      if (product.status !== 'PUBLISHED' || !product.currentVersionId) throw new ApiException('CONFLICT', '请先发布商品版本，再选择就绪封面', 409);
       await tx.$queryRaw(Prisma.sql`SELECT id FROM orai.campaign_assets WHERE id=${body.assetId}::uuid FOR SHARE`);
       const asset = await tx.campaignAsset.findFirst({ where: { id: body.assetId.toLowerCase(), scope: access.scope,
-        productVersionId: product.currentVersionId ?? '', kind: 'COVER', status: 'READY', file: { status: 'AVAILABLE' } } });
-      if (product.status !== 'PUBLISHED' || !asset?.fileId) throw new ApiException('CONFLICT', '需要当前已发布版本的就绪封面', 409);
+        productVersionId: product.currentVersionId, kind: 'COVER', status: 'READY', file: { status: 'AVAILABLE' } } });
+      if (!asset?.fileId) throw new ApiException('CONFLICT', '需要当前已发布版本的就绪封面', 409);
       const row = await tx.product.update({ where: { id }, data: { coverUrl: publicCoverPath(asset.id, asset.fileId), revision: { increment: 1 } }, include: productInclude });
       return { response: dto(row), entityKind: 'product', entityId: id };
     });

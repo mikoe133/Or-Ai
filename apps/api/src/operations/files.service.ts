@@ -89,8 +89,21 @@ export class FilesService {
     const body = parseInput(AdminDeliveryActionSchema, input), row = await this.owned(access, inputId); this.usable(row);
     if (row.status === 'AVAILABLE') return dto(row);
     if (row.status !== 'UPLOADED') throw new ApiException('CONFLICT', '文件尚未完成上传', 409);
-    const inspected = await this.storage.inspect(row.storageKey, row.byteSize);
-    if (inspected.byteSize !== row.byteSize || inspected.checksum !== row.checksum || inspected.mimeType !== row.mimeType) throw new ApiException('VALIDATION_ERROR', '文件校验未通过，请重新上传', 400);
+    try {
+      const inspected = await this.storage.inspect(row.storageKey, row.byteSize);
+      if (inspected.byteSize !== row.byteSize || inspected.checksum !== row.checksum || inspected.mimeType !== row.mimeType) throw new ApiException('VALIDATION_ERROR', '文件校验未通过，请重新上传', 400);
+    } catch (error) {
+      if (error instanceof ApiException && error.getStatus() === 400) {
+        const rejected = await this.database.client.$transaction(async tx => {
+          await this.mutations.administrators.require(access, tx);
+          return tx.assetFile.updateMany({ where: { id: row.id, status: 'UPLOADED' }, data: { status: 'FAILED' } });
+        });
+        // A concurrent successful completion owns an immutable file. Never
+        // delete that file when this inspection lost the state transition.
+        if (rejected.count) await this.storage.remove(row.storageKey).catch(() => undefined);
+      }
+      throw error;
+    }
     await this.mutations.run(access, 'files.complete:' + row.id, body.requestId, {}, async tx => {
       await tx.$queryRaw(Prisma.sql`SELECT id FROM orai.asset_files WHERE id=${row.id}::uuid FOR UPDATE`);
       const fresh = await this.owned(access, row.id, tx); this.usable(fresh);
