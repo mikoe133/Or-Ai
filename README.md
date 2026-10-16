@@ -14,7 +14,9 @@ T01–T05、T06-L、T07 和 T08 本地功能已验收。[业务商城](http://12
 
 后续[多形态商品规划](prd/v1/EXPERIENCE-PLATFORM.md) 拆为 T15 体验模板/协议、T16 网页/2.5D/Three.js 试点、T17 小游戏新输入/评估。明确选择型沉浸呈现可复用现有计分，排序/分支/动作需另实现后端能力；这些是规划，当前没有 3D 或游戏运行器。
 
-T08 已完成，后续顺序已统一到[任务路线](prd/v1/ROADMAP.md)：T06-O 本地操作准备 → T12-A/B/C 内容后台 → T13 skill 库 → T14-L 本地 MCP → T15 体验/报告模板 → T16-A 网页/2.5D → T10-L 正式视觉 → T09 云端 → T14-C 远程 MCP → T10-V 平台验收 → T11 首款试运营。Three.js 与新小游戏评估留在后续扩展队列。任务编号保留，按执行序号推进；本次只整理规划，没有启动新功能、Goal、自动化或云资源。
+T08 与 T06-O 已完成，后续顺序见[任务路线](prd/v1/ROADMAP.md)：下一批次 T12-A/B/C 内容后台 → T13 skill 库 → T14-L 本地 MCP → T15 体验/报告模板 → T16-A 网页/2.5D → T10-L 正式视觉 → T09 云端 → T14-C 远程 MCP → T10-V 平台验收 → T11 首款试运营。Three.js 与新小游戏评估留在后续扩展队列。本轮仅执行 T06-O，真实本地 Auth/收件/后台已可操作；未启动 T12、Goal、自动化或云资源。
+
+本机账户环境使用独立 Supabase Auth 与 Mailpit。执行 `pnpm auth:setup`、`pnpm auth:up` 后重启本项目 `pnpm dev`，即可[登录](http://127.0.0.1:5173/auth/login)并访问[后台](http://127.0.0.1:5173/admin)，邮件在[本地收件箱](http://127.0.0.1:54324/)。本轮私有管理员凭据在 Git 忽略的 `.local/auth/operator-account.json`，操作和恢复步骤见 [AUTH-SETUP.md](prd/v1/AUTH-SETUP.md)。25 项新增配置/运行栈检查、11 项真实 Auth 浏览器流程及停用/恢复通过，原 198 项测试与 22 项业务浏览器回归亦通过；云端/外部邮件仍待 T09。
 
 ## 本地工具链
 
@@ -98,7 +100,7 @@ curl --fail http://127.0.0.1:5173/api/products/demo-partner
 
 封面、视频、脚本、文案有独立基础素材记录。媒体走申请→流式上传→服务端实际签名/大小/SHA-256 校验→完成→素材审核/READY；返回稳定 assetId/fileId，不接受客户端 storageKey。上传者、版本、范围、用途、期限和并发配额均校验，下载需当前管理员权限并支持字节 Range。只有明确选为商品封面的当前版本 READY 图片才公开，视频等不会自动公开。完整端点和状态见 [运营接口](prd/v1/API-CONTRACTS.md#运营接口t07-本地已实现)。
 
-本地角色初始化使用 `pnpm admin:manage grant --supabase-user <uuid> --request-id <uuid>`，撤销用 revoke。命令只接受已有用户、明确的本地目标、环境标记与 schema owner，并审计；没有 HTTP 提权入口。当前 Auth 未配置，实际手动登录需先配置 [本地/云端 Auth](prd/v1/AUTH-SETUP.md)，隔离测试身份没有作为登录后门交付。
+本地角色初始化使用 `pnpm admin:manage grant --supabase-user <uuid> --request-id <uuid>`，撤销用 revoke。命令只接受已有用户、明确的本地目标、环境标记与 schema owner，并审计；没有 HTTP 提权入口。T06-O 已通过真实本机 Auth 用户登录/授权/撤销，配置步骤见 [本地/云端 Auth](prd/v1/AUTH-SETUP.md)，隔离测试身份没有作为登录后门交付。
 
 ASSET_STORAGE_DRIVER 默认在开发/测试为 local，ASSET_DIRECTORY 相对 API 工作目录，通常为 `apps/api/.local/assets`。图片默认上限 10 MiB，视频 100 MiB；可用 `.env.example` 中的设置调整。开发容器预建非 root 可写的 0700 目录，文件不进入镜像或 Git；重建容器不会保留可写层文件。生产拒绝 local 驱动，云存储适配/持久化在 T09 接入。
 
@@ -116,7 +118,7 @@ T08 已接入受保护的简单管理页面；完整内容工作台、素材历�
 
 `/admin`、`/admin/products`、`/admin/assets`、`/admin/orders` 接入真实 T07 API，支持商品资料与配置版本、发布/下架、四类素材、文件校验/预览/封面采用、CSV 预演/导入、首次交付/补发/退款和审计概览。代码/文件/报告权限由服务器复核；退出或切换身份会取消并清除私密查询，通知其他打开的标签页。
 
-当前未配置 Auth，手动登录账户和后台需先按 [AUTH-SETUP.md](prd/v1/AUTH-SETUP.md) 配置服务。浏览器验收仅在隔离 Nest 测试进程替换外部身份事实；真实业务库、Cookie、权限、绑定和售后流程照常执行，没有交付测试登录后门。
+T06-O 已接入真实本机 Auth，可按 [AUTH-SETUP.md](prd/v1/AUTH-SETUP.md) 登录基础后台。下面的 T08 业务回归仍在隔离 Nest 测试进程替换外部身份事实；新增 `pnpm test:e2e:local-auth` 则使用实际注册用户、Mailpit 和现有开发服务，二者分别记录证据。没有交付测试登录后门。
 
 本机 PostgreSQL 和 `.env` 就绪后运行：
 
@@ -174,13 +176,15 @@ Compose 的 `app` profile 用开发配置连接同网段本地数据库。生产
 
 ## 配置与关闭
 
-`.env.example` 分隔运行与认证配置。`SUPABASE_*`、`VITE_SUPABASE_*` 当前为空，认证页面会显示尚未配置，匿名兑换可独立使用。按 [账户配置](prd/v1/AUTH-SETUP.md) 接入自己的 Supabase Auth 与 Resend SMTP。浏览器只能使用公开的 `VITE_` 配置，数据库密码、服务端加密密钥及 service role 不得使用此前缀；不用在聊天中粘贴凭据。
+`.env.example` 分隔运行与认证配置，示例中的 `SUPABASE_*`、`VITE_SUPABASE_*` 默认留空。本机 `pnpm auth:setup` 配置真实 Auth，`pnpm auth:disable` 可撤回其管理字段；停用时认证页如实提示未配置，匿名兑换独立可用。按 [账户配置](prd/v1/AUTH-SETUP.md) 区分本机服务与后续云端 Supabase/Resend。浏览器只能使用公开的 `VITE_` 配置，数据库密码、服务端加密密钥及 service role 不得使用此前缀；不用在聊天中粘贴凭据。
 
 临时账户页面为 `/auth/register`、`/auth/login`、`/auth/forgot`、`/auth/callback`、`/auth/reset`、`/account`。邮箱确认与找回首次回调需在发起申请的同一浏览器打开，验证后可在其他设备密码登录。后台 Cookie 负责业务会话与刷新，登录不自动绑定商品。根 `pnpm test` 同时运行 API 与前端认证逻辑测试，测试不会调用真实邮件服务。
 
 开发终端按 `Ctrl+C` 关闭 API/Web，然后：
 
 ```sh
+# 已配置本机 Auth 时执行以下第一行。
+pnpm auth:down
 pnpm db:down
 pnpm runtime:stop
 ```
@@ -189,4 +193,4 @@ pnpm runtime:stop
 
 ## 进度与执行方式
 
-每次实现处理一个 task 并运行对应检查，本地必需验收通过后可推进下一 task，原执行范围到 T08 后停止。当前没有活动 Goal，本次没有调整自动化。云端未验收项见 [LOCAL-FIRST.md](prd/v1/LOCAL-FIRST.md)，实现与测试证据记录在 [PROGRESS.md](prd/v1/PROGRESS.md)。
+每次按 ROADMAP 处理一个明确批次并验证。原范围到 T08 后停止；用户随后授权的本轮已完成 T06-O，下一批次 T12-A 尚未开始。未创建 Goal 或调整自动化。云端未验收项见 [LOCAL-FIRST.md](prd/v1/LOCAL-FIRST.md)，实现与测试证据记录在 [PROGRESS.md](prd/v1/PROGRESS.md)。
