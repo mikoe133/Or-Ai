@@ -34,6 +34,7 @@
     "test:local-auth": "node --test --experimental-test-coverage --test-coverage-include='scripts/local-auth-*.mjs' scripts/test/local-auth.test.mjs scripts/test/local-auth-runtime.test.mjs",
     "test:local-auth:database": "node --test scripts/test/local-auth-database.test.mjs",
     "test:local-auth:stack": "node --test scripts/test/local-auth-database.test.mjs scripts/test/local-auth-gateway.test.mjs scripts/test/local-auth-cors.test.mjs",
+    "test:local-auth:restart": "node --test scripts/test/local-auth-restart.test.mjs",
     "test:e2e:local-auth": "node apps/web/e2e/local-auth.mjs",
     "db:up": "node scripts/docker.mjs compose up -d --wait db",
     "db:down": "node scripts/docker.mjs compose stop db",

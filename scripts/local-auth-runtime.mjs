@@ -1,7 +1,11 @@
 export function authComposeArguments(action) {
   const operations = {
     up: ['up', '--detach', '--build', '--wait', '--wait-timeout', '90'],
-    stop: ['stop', '--timeout', '15'], restart: ['restart', '--timeout', '15'], config: ['config', '--quiet'],
+    stop: ['stop', '--timeout', '15'],
+    // Compose restart does not wait on depends_on health. Recreate the same
+    // services with their retained volumes through the ordered up workflow.
+    restart: ['up', '--detach', '--force-recreate', '--no-build', '--wait', '--wait-timeout', '90'],
+    config: ['config', '--quiet'],
   };
   if (!Object.hasOwn(operations, action)) throw new Error('Unsupported local Auth lifecycle action.');
   return ['compose', '--project-name', 'orai-auth-local', '--file', 'compose.auth.yml', ...operations[action]];
