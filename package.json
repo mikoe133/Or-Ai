@@ -1,0 +1,37 @@
+{
+  "name": "orai",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": ">=24.21.0 <25",
+    "pnpm": "10.33.2"
+  },
+  "scripts": {
+    "check:toolchain": "node scripts/check-toolchain.mjs",
+    "typecheck": "pnpm --filter @orai/contracts build && pnpm -r --if-present typecheck",
+    "build": "pnpm -r --if-present build",
+    "dev": "pnpm --parallel --filter @orai/api --filter @orai/web dev",
+    "test": "pnpm --filter @orai/contracts build && pnpm --filter @orai/api test && pnpm --filter @orai/web test",
+    "db:generate": "pnpm --filter @orai/api db:generate",
+    "db:validate": "pnpm --filter @orai/api db:validate",
+    "db:migrate": "pnpm --filter @orai/api db:migrate",
+    "db:status": "pnpm --filter @orai/api db:status",
+    "db:provision": "pnpm --filter @orai/api db:provision",
+    "db:seed": "pnpm --filter @orai/api db:seed",
+    "catalog:manage": "pnpm --filter @orai/api catalog:manage",
+    "delivery:manage": "pnpm --filter @orai/api delivery:manage",
+    "admin:manage": "pnpm --filter @orai/api admin:manage",
+    "retention:preview": "pnpm --filter @orai/api retention:preview",
+    "local:setup": "node scripts/setup-local.mjs",
+    "db:up": "node scripts/docker.mjs compose up -d --wait db",
+    "db:down": "node scripts/docker.mjs compose stop db",
+    "docker:build": "node scripts/docker.mjs build -f apps/api/Dockerfile -t orai-api:local .",
+    "runtime:start": "node scripts/start-runtime.mjs",
+    "runtime:stop": "node scripts/stop-runtime.mjs",
+    "docker": "node scripts/docker.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

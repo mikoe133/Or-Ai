@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { z } from 'zod';
 import { IdSchema } from '@orai/contracts';
 import { AdminCategoryCreateSchema, AdminCategoryPatchSchema, AdminTagCreateSchema, AdminTagPatchSchema,
-  AdminPageQuerySchema, AdminProductInputSchema, AdminProductCreateSchema, AdminProductPatchSchema, AdminProductSchema } from '@orai/contracts/admin';
+  AdminPageQuerySchema, AdminProductInputSchema, AdminProductCreateSchema, AdminProductPatchSchema, AdminProductCoverSchema, AdminProductSchema } from '@orai/contracts/admin';
 import { PublicReportSampleSchema as SampleSchema } from '@orai/contracts';
 import { DatabaseService } from '../database/database.service';
 import { type CatalogAdminAccess } from '../catalog/admin-access.service';
@@ -10,6 +10,7 @@ import { Prisma, type Product } from '../generated/prisma/client';
 import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
 import { AdminMutationService } from './admin-mutation.service';
+import { publicCoverPath } from './media-paths';
 
 const listQuery = AdminPageQuerySchema.extend({ query: z.string().trim().max(100).default(''),
   status: z.enum(['draft','reviewed','published','archived']).optional(), categoryId: IdSchema.optional() }).strict();
@@ -129,5 +130,20 @@ export class CatalogAdminService {
       this.database.client.productVersion.count({ where: { productId: id, scope: access.scope } }),
     ]);
     return { items: rows.map(row => ({ ...row, scope: access.scope.toLowerCase(), status: row.status.toLowerCase(), createdAt: row.createdAt.toISOString(), publishedAt: row.publishedAt?.toISOString() ?? null })), total, page, pageSize };
+  }
+  async selectCover(access: CatalogAdminAccess, inputId: unknown, input: unknown) {
+    const id = parseInput(IdSchema, inputId).toLowerCase(), body = parseInput(AdminProductCoverSchema, input);
+    return this.mutations.run(access, 'products.cover:' + id, body.requestId, body, async tx => {
+      await tx.$queryRaw(Prisma.sql`SELECT id FROM orai.products WHERE id=${id}::uuid FOR UPDATE`);
+      const product = await tx.product.findFirst({ where: { id, scope: access.scope } });
+      if (!product) throw new ApiException('NOT_FOUND', '商品不存在于当前管理范围', 404);
+      if (product.revision !== body.expectedRevision) throw new ApiException('REVISION_CONFLICT', '商品已更新，请刷新后重试', 409);
+      await tx.$queryRaw(Prisma.sql`SELECT id FROM orai.campaign_assets WHERE id=${body.assetId}::uuid FOR SHARE`);
+      const asset = await tx.campaignAsset.findFirst({ where: { id: body.assetId.toLowerCase(), scope: access.scope,
+        productVersionId: product.currentVersionId ?? '', kind: 'COVER', status: 'READY', file: { status: 'AVAILABLE' } } });
+      if (product.status !== 'PUBLISHED' || !asset?.fileId) throw new ApiException('CONFLICT', '需要当前已发布版本的就绪封面', 409);
+      const row = await tx.product.update({ where: { id }, data: { coverUrl: publicCoverPath(asset.id, asset.fileId), revision: { increment: 1 } }, include: productInclude });
+      return { response: dto(row), entityKind: 'product', entityId: id };
+    });
   }
 }

@@ -15,9 +15,10 @@ import { AssetStorage, LocalAssetStorage } from './asset-storage';
 import { MediaAdminController } from './media-admin.controller';
 import { OverviewService } from './overview.service';
 import { EventsController, OverviewController } from './overview.controller';
+import { PublicAssetsController } from './public-assets.controller';
 
 @Module({ imports: [DatabaseModule, AccountCoreModule, CatalogModule, RedemptionModule],
-  controllers: [CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController],
+  controllers: [CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController],
   providers: [AdminRequestGuard, AdminMutationService, CatalogAdminService, OrdersAdminService, AssetsService, FilesService,
     { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService] })
 export class OperationsModule {}

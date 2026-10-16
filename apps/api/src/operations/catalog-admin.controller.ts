@@ -46,6 +46,10 @@ export class CatalogAdminController {
   }
   @Get('products/:id/versions')
   listVersions(@Req() r: AdminRequest, @Param('id') id: unknown, @Query() query: unknown) { return this.catalog.versions(r.administrator, id, query); }
+  @Post('products/:id/cover') @HttpCode(200)
+  selectCover(@Req() r: AdminRequest, @Param('id') id: unknown, @Body() body: unknown, @Query() query: unknown) {
+    parseInput(CatalogMetadataQuerySchema, query); return this.catalog.selectCover(r.administrator, id, body);
+  }
   @Post('products/:id/versions') @HttpCode(200)
   importVersion(@Req() r: AdminRequest, @Param('id') id: unknown, @Body() body: unknown, @Query() query: unknown) {
     parseInput(CatalogMetadataQuerySchema, query); return this.versions.importConfiguration(r.administrator, id, body);

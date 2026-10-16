@@ -131,6 +131,7 @@ export const AdminProductSchema = AdminProductInputSchema.extend({ id: IdSchema,
   status: ProductStatusSchema, recommendationOrder: z.number().int(), currentVersionId: IdSchema.nullable(),
   createdAt: TimestampSchema, updatedAt: TimestampSchema }).strict();
 export const AdminReplaceVersionSchema = AdminVersionInputSchema.extend({ expectedRevision: AdminRevisionInputSchema.shape.expectedRevision }).strict();
+export const AdminProductCoverSchema = AdminRevisionInputSchema.extend({ assetId: IdSchema }).strict();
 export const AdminCsvImportSchema = z.object({ csv: z.string().min(1).max(500_000), requestId: IdSchema, dryRun: z.boolean().default(true) }).strict();
 export const AdminAssetCreateSchema = z.object({ productVersionId: IdSchema, platform: PlatformSchema,
   kind: z.enum(['cover', 'video', 'script', 'copy']), variant: text(40), status: z.literal('draft').default('draft'),

@@ -11,6 +11,7 @@ import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
 import { AdminMutationService } from './admin-mutation.service';
 import { AssetStorage } from './asset-storage';
+import { publicCoverPath } from './media-paths';
 
 function dto(row: AssetFile) {
   return AdminFileSchema.parse({ id: row.id, productVersionId: row.productVersionId, scope: row.scope.toLowerCase(),
@@ -107,6 +108,14 @@ export class FilesService {
     const row = await this.database.client.assetFile.findFirst({ where: { id, scope: access.scope, status: 'AVAILABLE' } });
     if (!row) throw new ApiException('NOT_FOUND', '文件尚未就绪或不可访问', 404);
     return this.stream(row, range);
+  }
+  async publicCover(inputAssetId: unknown, inputFileId: unknown, range?: string) {
+    const id = parseInput(IdSchema, inputAssetId).toLowerCase(), fileId = parseInput(IdSchema, inputFileId).toLowerCase();
+    const scope = this.configuration.environment === 'production' ? 'LIVE' : 'DEMO';
+    const asset = await this.database.client.campaignAsset.findFirst({ where: { id, fileId, scope, kind: 'COVER', status: 'READY',
+      file: { status: 'AVAILABLE' }, productVersion: { status: 'PUBLISHED', currentFor: { status: 'PUBLISHED', scope, coverUrl: publicCoverPath(id, fileId) } } }, include: { file: true } });
+    if (!asset?.file) throw new ApiException('NOT_FOUND', '封面当前不可公开访问', 404);
+    return this.stream(asset.file, range);
   }
   private async stream(row: AssetFile, range?: string) {
     let start = 0, end = row.byteSize - 1;
