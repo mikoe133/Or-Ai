@@ -82,6 +82,23 @@ try{
   if(kind==='cover'){await admin.getByRole('button',{name:'采用为商品封面',exact:true}).click();await expect(admin.getByText('已采用为当前商品封面。',{exact:true})).toBeVisible();}
  }
  await admin.screenshot({path:join(output,'admin-assets.png'),fullPage:true});checks.push(phase);
+ phase='unsaved media cannot be reviewed or adopted as the previous asset';
+ await admin.getByRole('article').filter({has:admin.getByRole('heading',{name:'cover · e2e-cover',exact:true})}).getByRole('button',{name:'编辑素材',exact:true}).click();
+ await admin.getByLabel('媒体文件',{exact:true}).setInputFiles(join(root,'apps/api/test/fixtures/cover.webp'));
+ await expect(admin.getByRole('button',{name:'保存素材修改',exact:true})).toBeDisabled();
+ await expect(admin.getByRole('button',{name:'采用为商品封面',exact:true})).toBeDisabled();
+ await expect(admin.getByText('当前已保存媒体预览',{exact:true})).toBeVisible();
+ await admin.getByRole('button',{name:'上传并校验',exact:true}).click();
+ await expect(admin.getByRole('button',{name:'保存素材修改',exact:true})).toBeEnabled();
+ await expect(admin.getByRole('button',{name:'采用为商品封面',exact:true})).toBeDisabled();
+ await admin.getByRole('button',{name:'保存素材修改',exact:true}).click();
+ await expect(admin.getByText('素材状态：draft',{exact:true})).toBeVisible();
+ const savedAsset=await fixture.runtime.client.campaignAsset.findFirstOrThrow({where:{variant:'e2e-cover'}});
+ await fixture.runtime.client.campaignAsset.update({where:{id:savedAsset.id},data:{variant:'concurrent-edit',revision:{increment:1}}});
+ await admin.getByRole('button',{name:'审核素材',exact:true}).click();await expect(admin.getByRole('alert')).toContainText('刷新');
+ await admin.getByRole('button',{name:'刷新素材与修订',exact:true}).click();await expect(admin.getByLabel('变体名',{exact:true})).toHaveValue('concurrent-edit');
+ await admin.getByLabel('变体名',{exact:true}).fill('unsaved-metadata');await expect(admin.getByRole('button',{name:'审核素材',exact:true})).toBeDisabled();
+ checks.push(phase);
  phase='refund immediately denies a bound account report without changing its snapshot or usage';await admin.goto('/admin/orders?order='+orderId);await admin.getByLabel('已核对订单并在原平台处理退款').check();await admin.getByRole('button',{name:'退款并撤权',exact:true}).click();await expect(admin.getByText('订单状态：refunded',{exact:true})).toBeVisible();await devicePage.reload();await expect(devicePage.getByRole('alert')).toBeVisible();assert.equal((await fixture.runtime.client.entitlement.findUniqueOrThrow({where:{id:entitlement.id}})).reportsConsumed,1);assert.notEqual((await fixture.runtime.client.report.findUniqueOrThrow({where:{id:reportId}})).snapshot,null);checks.push(phase);
  phase='mobile pages fit and the design preview stays separate';await page.setViewportSize({width:390,height:844});await page.goto('/');await expect(page.locator('a[href="/products/demo-partner"]').first()).toBeVisible();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);await page.screenshot({path:join(output,'mobile-catalog.png'),fullPage:true});await page.goto('/preview');await expect(page.getByText('独立设计预览 · 数据为示例',{exact:false})).toBeVisible();checks.push(phase);
  await anonymous.close();await recovery.close();await device.close();await operator.close();
