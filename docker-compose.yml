@@ -1,0 +1,61 @@
+name: orai
+services:
+  db:
+    image: postgres:17.10-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Run pnpm local:setup first}
+      POSTGRES_DB: ${POSTGRES_DB:?Run pnpm local:setup first}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run pnpm local:setup first}
+    ports:
+      - 127.0.0.1:${POSTGRES_PORT:-55432}:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    security_opt:
+      - no-new-privileges:true
+  api:
+    profiles: [app]
+    image: orai-api:local
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      APP_ENV: development
+      API_PORT: 4100
+      API_HOST: 0.0.0.0
+      DATABASE_URL: ${DATABASE_CONTAINER_URL:?Run pnpm local:setup and pnpm db:provision first}
+      DATABASE_SSL_MODE: disable
+      DATABASE_POOL_MAX: 5
+      CSRF_SIGNING_KEY: ${CSRF_SIGNING_KEY:?Run pnpm local:setup first}
+      APP_PUBLIC_ORIGIN: ${APP_PUBLIC_ORIGIN:-}
+      WEB_PORT: ${WEB_PORT:-5173}
+      TRUST_PROXY_CIDRS: ${TRUST_PROXY_CIDRS:-}
+      ANONYMOUS_SESSION_DAYS: ${ANONYMOUS_SESSION_DAYS:-30}
+      CSRF_TTL_SECONDS: ${CSRF_TTL_SECONDS:-3600}
+      REDEMPTION_IP_LIMIT: ${REDEMPTION_IP_LIMIT:-30}
+      REDEMPTION_CODE_LIMIT: ${REDEMPTION_CODE_LIMIT:-20}
+      ANONYMOUS_READ_IP_LIMIT: ${ANONYMOUS_READ_IP_LIMIT:-120}
+      ANONYMOUS_WRITE_IP_LIMIT: ${ANONYMOUS_WRITE_IP_LIMIT:-120}
+      REDEMPTION_WINDOW_SECONDS: ${REDEMPTION_WINDOW_SECONDS:-900}
+      ASSET_STORAGE_DRIVER: ${ASSET_STORAGE_DRIVER:-local}
+      ASSET_DIRECTORY: .local/assets
+      ASSET_MAX_IMAGE_BYTES: ${ASSET_MAX_IMAGE_BYTES:-10485760}
+      ASSET_MAX_VIDEO_BYTES: ${ASSET_MAX_VIDEO_BYTES:-104857600}
+      SUPABASE_URL: ${SUPABASE_URL:-}
+      SUPABASE_PUBLISHABLE_KEY: ${SUPABASE_PUBLISHABLE_KEY:-}
+      AUTH_SESSION_ENCRYPTION_KEY: ${AUTH_SESSION_ENCRYPTION_KEY:-}
+      ACCOUNT_SESSION_DAYS: ${ACCOUNT_SESSION_DAYS:-30}
+      AUTH_REQUEST_TIMEOUT_MS: ${AUTH_REQUEST_TIMEOUT_MS:-8000}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 127.0.0.1:${API_PORT:-4100}:4100
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  pgdata:
