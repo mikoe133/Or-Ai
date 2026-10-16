@@ -14,6 +14,7 @@ import { ApiException } from '../src/common/http-errors';
 import { SupabaseAuthGateway, type SupabaseIdentity } from '../src/accounts/supabase-auth.gateway';
 import { DemoIdentityScenarios, demoId } from '../scripts/demo-fixtures';
 import { createLocalFixture } from './local-fixture';
+import { runAdminCommand } from '../scripts/admin-command';
 
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>, app: INestApplication, base: string, directory: string;
 let configuration: ReturnType<typeof loadConfiguration>;
@@ -306,4 +307,48 @@ test('disabling an administrator invalidates an existing cookie and all manageme
   assert.equal((await browser.request('/admin/overview')).status, 200);
   await fixture.owner.client.user.update({ where: { id: user.id }, data: { disabledAt: new Date() } });
   assert.equal((await browser.request('/admin/overview')).status, 401);
+});
+
+test('only the explicit local owner CLI can grant or revoke roles; retries retain one audit and existing sessions recheck roles', async () => {
+  const input = credentials(), browser = await new Browser().bootstrap();
+  await browser.request('/account/session', 'POST', input);
+  const supabaseUserId = proofs.get(input.accessToken)!.supabaseUserId;
+  const user = await fixture.owner.client.user.findUniqueOrThrow({ where: { supabaseUserId } });
+  assert.equal((await browser.request('/admin/overview')).status, 403);
+  await assert.rejects(fixture.runtime.client.user.update({ where: { id: user.id }, data: { role: 'ADMIN' } }));
+  const args = ['grant', '--supabase-user', supabaseUserId, '--request-id', randomUUID()];
+  const granted = await runAdminCommand(args, fixture.env);
+  assert.equal(granted.role, 'admin'); assert.equal(granted.userId, user.id);
+  assert.deepEqual(await runAdminCommand(args, fixture.env), granted);
+  assert.equal((await browser.request('/admin/overview')).status, 200);
+  assert.equal(await fixture.runtime.client.adminAuditLog.count({ where: { entityId: user.id, action: 'administrator.grant' } }), 1);
+  await runAdminCommand(['revoke', '--supabase-user', supabaseUserId, '--request-id', randomUUID()], fixture.env);
+  assert.equal((await browser.request('/admin/overview')).status, 403);
+  await assert.rejects(runAdminCommand(args, { ...fixture.env, APP_ENV: 'production' }));
+  await assert.rejects(runAdminCommand(args, { ...fixture.env, DEMO_SEED_DATABASE: 'different' }));
+  await assert.rejects(runAdminCommand(['grant', '--supabase-user', randomUUID(), '--request-id', randomUUID()], fixture.env));
+});
+
+test('a READY file stays private until explicitly selected as the current published product cover; archives remove public access', async () => {
+  const pending = await uploaded();
+  await (await admin.raw(pending.uploadPath, 'PUT', image, { 'content-type': 'application/octet-stream' })).arrayBuffer();
+  await admin.request('/admin/uploads/' + pending.id + '/complete', 'POST', { requestId: randomUUID() });
+  let cover = await asset({ kind: 'cover', text: null, fileId: pending.id });
+  const publicPath = '/api/assets/' + cover.id + '/files/' + pending.id + '/content';
+  assert.equal((await new Browser().raw(publicPath)).status, 404);
+  const seed = await fixture.runtime.client.product.findUniqueOrThrow({ where: { slug: 'demo-partner' } });
+  assert.equal((await admin.request('/admin/products/' + seed.id + '/cover', 'POST', {
+    assetId: cover.id, expectedRevision: seed.revision, requestId: randomUUID() })).status, 409);
+  cover = (await admin.request('/admin/assets/' + cover.id + '/review', 'POST', { expectedRevision: cover.revision, requestId: randomUUID() })).body;
+  cover = (await admin.request('/admin/assets/' + cover.id + '/ready', 'POST', { expectedRevision: cover.revision, requestId: randomUUID() })).body;
+  assert.equal((await new Browser().raw(publicPath)).status, 404);
+  const selected = await admin.request('/admin/products/' + seed.id + '/cover', 'POST', {
+    assetId: cover.id, expectedRevision: seed.revision, requestId: randomUUID() });
+  assert.equal(selected.status, 200); assert.equal(selected.body.coverUrl, publicPath);
+  const visitor = new Browser(), response = await visitor.raw(publicPath);
+  assert.equal(response.status, 200); assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
+  assert.equal(sha(Buffer.from(await response.arrayBuffer())), sha(image));
+  assert.equal((await visitor.raw(publicPath.replace(pending.id, randomUUID()))).status, 404);
+  await admin.request('/admin/assets/' + cover.id + '/archive', 'POST', { expectedRevision: cover.revision, requestId: randomUUID() });
+  assert.equal((await visitor.raw(publicPath)).status, 404);
 });
