@@ -45,7 +45,7 @@
 
 支持 q、category、tags、min/maxPriceFen、min/maxDurationMinutes、experienceType（score/tendency）、sort（latest/recommended）、page、pageSize。q 去首尾空格、最多 100 字，只搜索公开名称/钩子/摘要/描述，大小写不敏感；`%`、`_` 和反斜杠按字面字符匹配，不搜索报告模板。tags 支持逗号列表或重复参数（如 `tags=demo&tags=cooperation`），规范化为去重排序 key；上限 10 个，不接受 `tags[]`。page 默认 1，上限 10000；pageSize 默认 20，最多 50。价格范围为 0–10000000 分，耗时范围为 1–120 分钟，上下界均包含；过滤下限不得高于上限。
 
-分类单选、标签多选，必须同时满足全部所选标签。最新按 publishedAt 降序、id 升序；推荐按 recommended 降序、recommendationOrder 升序、publishedAt 降序、id 升序，未推荐商品排在其后。默认 latest，没有销量/热度排序。total 和 items 在同一 RepeatableRead 事务中使用相同过滤/范围顺序读取；页码超过结果仍返回真实 total 和空 items。T08 前端再将规范化条件写入 URL。
+分类单选、标签多选，必须同时满足全部所选标签。最新按 publishedAt 降序、id 升序；推荐按 recommended 降序、recommendationOrder 升序、publishedAt 降序、id 升序，未推荐商品排在其后。默认 latest，没有销量/热度排序。total 和 items 在同一 RepeatableRead 事务中使用相同过滤/范围顺序读取；页码超过结果仍返回真实 total 和空 items。T08 前端已将筛选条件与页码写入 URL。
 
 ProductPage 示例（ID 是示意 UUID，不要求与 seed 相同）：
 
@@ -77,7 +77,7 @@ ProductPage 示例（ID 是示意 UUID，不要求与 seed 相同）：
 }
 ```
 
-`GET /api/products/:slug` 在卡片字段上增加 description、publicSample、purchaseNotice、purchaseUrl、redemptionNotice。公开样例是独立撰写的摘要和演示维度，不来自用户报告，不包含完整结果模板。测试商品 `purchaseUrl: null`，文案明确“演示内容，不用于购买”。公开投影逐字段构造，不返回数据库 record 或完整 configuration。
+`GET /api/products/:slug` 在卡片字段上增加 versionId、description、publicSample、purchaseNotice、purchaseUrl、redemptionNotice。T08 增加的 versionId 是当前公开版本的 UUID，供已存在的浏览事件接口校验目标；列表卡片不增加此字段。公开样例是独立撰写的摘要和演示维度，不来自用户报告，不包含完整结果模板。测试商品 `purchaseUrl: null`，文案明确“演示内容，不用于购买”。公开投影逐字段构造，不返回数据库 record 或完整 configuration。
 
 ## 领取、恢复与匿名会话（T04 已实现）
 
@@ -377,4 +377,14 @@ LocalAssetStorage 仅用于开发/测试，保存到 ASSET_DIRECTORY，API 默�
 | 商品/版本运营 | AdminProductInput、configuration、draft/reviewed/published/archived | 草稿预览与公众展示分开；已发布改动创建新版本 |
 | 订单/码/素材运营 | platform、reference、quantity、amountFen；素材 kind/status/storageKey/text | 平台来源和测试标记；补发继承旧权益；视频未上传有独立状态 |
 
-布局、颜色和组件外观继续由用户 UI 决定。T08 只用简单功能页面联调；设计可以据此补齐 loading/empty/error/success、unauthorized/expired/revoked、信息不足等状态。
+布局、颜色和组件外观继续由用户 UI 决定。T08 已用简单功能页面联调并验证 loading/empty/error/success、unauthorized/expired/revoked、信息不足等状态，正式视觉按 T10 接入。
+
+## T08 浏览器接入（本地已验收）
+
+`apps/web/src/api` 处理同域、no-store、Zod 响应校验、内存 CSRF、超时/取消、原意图单次 CSRF 刷新和身份过期回复丢弃。网络/权限/限流/服务故障不会自动重放写入；明确重试相同操作保留 requestId，修改内容产生新请求意图。私密查询在退出、绑定或身份切换时取消/移除，跨标签页只传变更信号，不传令牌、用户 ID 或内容；页面恢复前重新检查会话。
+
+`apps/web/src/admin/api.ts` 共用上述客户端，并以 AdminCategory/Tag、AdminOrderDetail、AdminCsvResult、AdminOverview、AdminAudit 等响应 schema 验证现有 T07 响应。旧 seed 兑换码的 batchId 可以为 null；概览兑换事件名为 redemption。没有增加管理授权方式或数据库迁移。
+
+真实 `/apps`、`/reports` 用 source 参数分别展示匿名与账户数据；设计预览在 `/preview/*`。报告导出只取 productName/resultLabel/totalScore/versionNumber/isDemo/disclaimer，长内容自适应图片高度，不含报告 ID、账户、答案或凭据。删除使用现有 DELETE/204，恢复和退款继续以服务器状态为准。媒体新文件未校验/保存时不允许审核或采用，修订冲突可重新读取；当前封面商品查询支持跨页查找。
+
+22 项隔离浏览器流程通过。外部认证事实仅由测试提供；长文本和故障响应夹具不计为真实云服务验收。T06-C/T09 的邮件、云 Auth、持久化对象存储和公网链路仍待完成。

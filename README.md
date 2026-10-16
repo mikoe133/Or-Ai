@@ -4,17 +4,17 @@
 
 主平台正在按 [v1 任务](prd/v1/README.md) 开发；商品先使用测试占位内容，用户已完成 Figma 手机/网页设计，采用[本地开发优先](prd/v1/LOCAL-FIRST.md)、云端接入后置。
 
-2026-10-14 已接入 Figma 商城主页的本地视觉与搜索、分类、收藏等预览交互；当前商品与价格为设计演示，商品/兑换业务尚未接入首页。双端截图与验证见[主页实现记录](output/implementation/homepage/README.md)。
+2026-10-14 已接入 Figma 商城主页的本地视觉与搜索、分类、收藏等预览交互，现保留在独立的[设计预览](http://127.0.0.1:5173/preview)。双端截图与验证见[主页实现记录](output/implementation/homepage/README.md)。
 
-2026-10-15 已按 Figma 已采用草稿完成[商品详情](http://127.0.0.1:5173/products/partner) → [兑换](http://127.0.0.1:5173/redeem) → [成功](http://127.0.0.1:5173/redeem/success) → [答题与反馈](http://127.0.0.1:5173/assessment/partner) → [完整报告](http://127.0.0.1:5173/reports/partner)，尽量复用首页的公共导航、字体、玻璃面板、按钮、商品卡片与问候栏。示例码 `DEMO-XXXX-XXXX`，支持 16 道公开示例题、确认/修改、进度恢复、独立的设计展示状态和 PNG 分享卡。当前为可交互 UI 预览，真实兑换、权益、计分与报告 API 尚未接入；不代表 T08 业务前端已验收。实现、素材依据与完整流程验证见[实现记录](output/implementation/store-flow/README.md)。
+2026-10-15 的 Figma 流程预览现位于[商品详情](http://127.0.0.1:5173/preview/products/partner) → [兑换](http://127.0.0.1:5173/preview/redeem) → [成功](http://127.0.0.1:5173/preview/redeem/success) → [答题与反馈](http://127.0.0.1:5173/preview/assessment/partner) → [完整报告](http://127.0.0.1:5173/preview/reports/partner)。示例码 `DEMO-XXXX-XXXX` 和 16 道公开示例题只用于设计预览；真实业务入口使用后端发布的商品、题量与权益。预览实现依据见[实现记录](output/implementation/store-flow/README.md)。
 
-T01–T05、T06-L 及 T07 本地后台接口已实现并验收。当前后端 158 项、前端 23 项测试通过，新增后台/存储有 31 项回归；运营 API 已支持商品发布、人工订单/CSV、首次发码、补发退款、基础素材/文件和概览。T06-C 真实 Supabase/Resend 收信与云端账户跨设备、对象存储持久化仍待 T09 验收。T08 的真实业务页面接入尚未执行，双端正式视觉在 T10；详细证据见 [执行记录](prd/v1/PROGRESS.md)。
+T01–T05、T06-L、T07 和 T08 本地功能已验收。[业务商城](http://127.0.0.1:5173/)已接入真实目录、兑换、答题、报告和简单运营页面。后端 158 项、前端 40 项测试及 22 项浏览器流程通过。真实 Supabase/Resend 收信、云端账户和对象存储持久化仍待 T09；正式双端视觉在 T10。证据见[执行记录](prd/v1/PROGRESS.md)。
 
 2026-10-16 新增[内容后台规划](prd/v1/CONTENT-BACKOFFICE.md)：[T12](prd/v1/tasks/T12-content-backoffice.md) 管理同一选题下题库/报告、封面、视频、文案及相互引用，[T13](prd/v1/tasks/T13-style-skills.md) 提供四类各自的 skill 库，[T14](prd/v1/tasks/T14-mcp-ingestion.md) 提供四领域 MCP 读取/上传和按用途共享上下文。视频可固定引用具体题目与文案修订，上游更新提示下游复查。首期由外部 AI 制作后回传，后台执行生成另行排期；新增任务均未实现，可在 T07/T08 后本地推进。
 
 后续[多形态商品规划](prd/v1/EXPERIENCE-PLATFORM.md) 拆为 T15 体验模板/协议、T16 网页/2.5D/Three.js 试点、T17 小游戏新输入/评估。明确选择型沉浸呈现可复用现有计分，排序/分支/动作需另实现后端能力；这些是规划，当前没有 3D 或游戏运行器。
 
-当前没有活动 Goal；此前因认证配置缺失而停止的记录保留。下一开发任务为 T08，本轮完成 T07 后停止，未启动 T08、Goal 或定时任务。原执行范围仍到 T08 本地验收后停止；真实云端认证、对象存储及公网链路后续统一验收。
+本轮已完成 T08，并按原范围停止，未启动新的 Goal、定时任务或云资源。后续可独立安排 T10 本地视觉，或按内容后台规划继续 T12 → T13 → T14-L；这些扩展尚未实现。
 
 ## 本地工具链
 
@@ -108,11 +108,34 @@ ASSET_STORAGE_DRIVER 默认在开发/测试为 local，ASSET_DIRECTORY 相对 AP
 node --env-file=../../.env --test --experimental-test-coverage --test-coverage-include='.test-build/src/operations/**' --test-coverage-include='.test-build/scripts/admin-command.js' --test-coverage-lines=80 --test-coverage-functions=80 --test-coverage-branches=80 .test-build/test/operations.test.js .test-build/test/asset-storage.test.js
 ```
 
-T08 将接入简单管理页面；完整内容工作台、素材历史修订/引用、风格 skill、MCP 和 3D/小游戏仍按 T12–T17 后续实现。
+T08 已接入受保护的简单管理页面；完整内容工作台、素材历史修订/引用、风格 skill、MCP 和 3D/小游戏仍按 T12–T17 后续实现。
+
+## 本地功能页面（T08 已验收）
+
+真实业务页面共用现有布局和临时功能样式：`/`、`/products/:slug`、`/redeem`、`/apps`、`/reports`、`/attempts/:id`、`/reports/:id`。商城筛选、排序与页码保存在 URL；匿名/账户列表用 `source=anonymous|account` 独立显示。答题只将服务端确认的答案计入进度，断网重试保留原请求 ID；统计暂不可用仍能继续。报告支持缺失分数、完整声明的 PNG 摘要导出和确认后永久删除。
+
+`/admin`、`/admin/products`、`/admin/assets`、`/admin/orders` 接入真实 T07 API，支持商品资料与配置版本、发布/下架、四类素材、文件校验/预览/封面采用、CSV 预演/导入、首次交付/补发/退款和审计概览。代码/文件/报告权限由服务器复核；退出或切换身份会取消并清除私密查询，通知其他打开的标签页。
+
+当前未配置 Auth，手动登录账户和后台需先按 [AUTH-SETUP.md](prd/v1/AUTH-SETUP.md) 配置服务。浏览器验收仅在隔离 Nest 测试进程替换外部身份事实；真实业务库、Cookie、权限、绑定和售后流程照常执行，没有交付测试登录后门。
+
+本机 PostgreSQL 和 `.env` 就绪后运行：
+
+```sh
+pnpm test
+pnpm test:e2e
+```
+
+E2E 自动迁移、初始化并清理自己的随机测试库，启动独立测试 API 与 Vite `5175`，不使用开发业务库。macOS 默认使用已安装 Chrome，可通过 `ORAI_BROWSER_PATH` 指定浏览器；Linux 先执行 `pnpm exec playwright install chromium`。截图和结果位于忽略目录 `.local/t08/e2e/`。断网、统计不可用和长文本展示采用显式故障/响应夹具；数据库事务、恢复、绑定、删除及撤权实际执行。真实邮件/云 Auth 验收仍由 T09 完成。
+
+数据客户端、身份缓存、请求意图、筛选模型和分享导出的单元覆盖率为行 98.49%、分支 91.41%、函数 97.30%，不是整个 React 页面覆盖率。可在 `pnpm test` 编译后从根目录重跑：
+
+```sh
+node --test --experimental-test-coverage --test-coverage-lines=80 --test-coverage-branches=80 --test-coverage-functions=80 --test-coverage-include='apps/web/.test-build/src/api/{client,privacy,intent}.js' --test-coverage-include='apps/web/.test-build/src/business/{model,download}.js' apps/web/.test-build/test/runtime-client.test.js apps/web/.test-build/test/share-card.test.js
+```
 
 ## 兑换与测试交付
 
-T04 已实现 session/context、redemptions/claim/recover、session/entitlements（分页/单项）及 session/logout。浏览器先经同域 GET context 获取签名 CSRF，再用 JSON、X-CSRF-Token 和本站 Origin 发起兑换；会话凭据只放在 HttpOnly Cookie。没有登录要求，换设备输入未绑定有效码恢复同一权益，重试不增报告次数。到期、绑定、补发旧码和退款撤权均由后端检查。T05 已接入题目/报告路由，功能前端操作在 T08 接入。
+T04 已实现 session/context、redemptions/claim/recover、session/entitlements（分页/单项）及 session/logout。浏览器先经同域 GET context 获取签名 CSRF，再用 JSON、X-CSRF-Token 和本站 Origin 发起兑换；会话凭据只放在 HttpOnly Cookie。没有登录要求，换设备输入未绑定有效码恢复同一权益，重试不增报告次数。到期、绑定、补发旧码和退款撤权均由后端检查。T05 提供题目/报告接口，T08 已完成对应功能页面接入。
 
 `pnpm delivery:manage` 提供 order/issue/replace/refund，使用同样的本地 owner＋ADMIN 权限；订单为手工测试记录，不代表平台核单/资金退款。完整兑换码只在首次写入的独占 0600 文件中交付，stdout/日志/数据库无明文；同 request-id 重放只有回执。补发承接原权益、次数、报告与绑定，退款同步撤权并剔除统计贡献。命令、返回字段及异常规则见 [接口说明](prd/v1/API-CONTRACTS.md)。
 
