@@ -1,0 +1,28 @@
+{
+  "paused": {
+    "pathsStable": true,
+    "opacities": [
+      "0.06",
+      "0.06"
+    ]
+  },
+  "resumed": {
+    "bothMoving": [
+      true,
+      true
+    ]
+  },
+  "reduced": {
+    "pathsStable": true,
+    "restingLensesEqual": true,
+    "mediaChangePolls": 2
+  },
+  "reducedImmediateSample": {
+    "pathsStable": false,
+    "restingLensesEqual": true
+  },
+  "mobile": {
+    "hidden": true,
+    "pathsStable": true
+  }
+}

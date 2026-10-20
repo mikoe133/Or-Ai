@@ -22,7 +22,7 @@ test('local storage refuses path traversal, overwrite, symlink reads and interru
     await assert.rejects(storage.receive('../outside.blob', Readable.from(bytes), expected), failure('VALIDATION_ERROR'));
     await storage.receive(key, Readable.from(bytes), expected);
     await assert.rejects(storage.receive(key, Readable.from(bytes), expected), failure('SERVICE_UNAVAILABLE'));
-    assert.deepEqual(await storage.inspect(key, bytes.length), expected);
+    assert.deepEqual(await storage.inspect(key, bytes.length), { ...expected, width: 16, height: 16, durationMs: null });
     await assert.rejects(storage.inspect(key, bytes.length - 1), failure('VALIDATION_ERROR'));
     const link = randomUUID() + '.blob'; await symlink(join(directory, key), join(directory, link));
     await assert.rejects(storage.read(link), failure('SERVICE_UNAVAILABLE'));
@@ -50,5 +50,21 @@ test('local storage refuses a symbolic storage directory and any local writes un
     assert.deepEqual(await readdir(directory), []);
     assert.throws(() => loadConfiguration({ APP_ENV: 'production', DATABASE_URL: 'postgresql://unused@127.0.0.1/orai_test',
       APP_PUBLIC_ORIGIN: 'https://example.test', CSRF_SIGNING_KEY: 'x'.repeat(43), ASSET_STORAGE_DRIVER: 'local' }), /ASSET_STORAGE_DRIVER/);
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});
+
+test('a new storage instance reads the same verified geometry and rejects a container without a video track', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'orai-media-restart-'));
+  const configuration = loadConfiguration({ APP_ENV: 'test', DATABASE_URL: 'postgresql://unused@127.0.0.1/orai_test', ASSET_DIRECTORY: directory });
+  const storage = new LocalAssetStorage(configuration), bytes = await readFile('test/fixtures/preview.mp4'), key = randomUUID() + '.blob';
+  const expected = { byteSize: bytes.length, checksum: createHash('sha256').update(bytes).digest('hex'), mimeType: 'video/mp4' };
+  try {
+    await storage.receive(key, Readable.from(bytes), expected);
+    const verified = await new LocalAssetStorage(configuration).inspect(key, bytes.length);
+    assert.equal(verified.width, 16); assert.equal(verified.height, 16); assert.ok(verified.durationMs! > 0);
+    const broken = Buffer.alloc(64); broken.writeUInt32BE(24); broken.write('ftypisom',4); broken.write('mp41',16);
+    const badKey = randomUUID() + '.blob';
+    await storage.receive(badKey, Readable.from(broken), { byteSize: broken.length, mimeType: 'video/mp4', checksum: createHash('sha256').update(broken).digest('hex') });
+    await assert.rejects(storage.inspect(badKey, broken.length), failure('VALIDATION_ERROR'));
   } finally { await rm(directory, { recursive: true, force: true }); }
 });

@@ -1,34 +1,50 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ClientError } from "../api/client.js";
 import { MutationIntent } from "../api/intent.js";
 import { AuthFlowError } from "../auth/core.js";
-import { FlowShell } from "../store/flow-shell";
+import { FlowShell, type FlowSection } from "../store/flow-shell";
 import "./business.css";
 
 export function Page({
   title,
   children,
   section = "store",
+  embedded = false,
 }: {
   title: string;
   children: ReactNode;
-  section?: "store" | "apps" | "reports";
+  section?: FlowSection;
+  embedded?: boolean;
 }) {
+  const content = useRef<HTMLElement>(null);
+  const { pathname } = useLocation();
   useEffect(() => {
     document.title = title + " · MeetMyWorld";
-    window.scrollTo(0, 0);
-  }, [title]);
-  return (
-    <FlowShell long live section={section}>
-      <section className="biz-view">
-        <h1 tabIndex={-1}>{title}</h1>
-        {children}
-      </section>
+    if (section === "admin") content.current?.scrollTo(0, 0);
+    else if (embedded) content.current?.closest("main")?.scrollTo(0, 0);
+    else window.scrollTo(0, 0);
+  }, [title, pathname, section, embedded]);
+  const view = (
+    <section
+      ref={content}
+      className={`biz-view${embedded ? " biz-workspace-view" : ""}`}
+      aria-label={section === "admin" ? title : undefined}
+      tabIndex={section === "admin" ? 0 : undefined}
+    >
+      <h1 tabIndex={-1}>{title}</h1>
+      {children}
+    </section>
+  );
+  return embedded ? view : (
+    <FlowShell long={section !== "admin"} live section={section}>
+      {view}
     </FlowShell>
   );
 }
-export const Loading = () => <p role="status">正在读取…</p>;
+export const Loading = ({ label = "正在读取…" }: { label?: string }) => (
+  <p className="ux-loading" role="status"><span className="ux-loading-indicator" aria-hidden="true" />{label}</p>
+);
 export function Failure({
   error,
   retry,

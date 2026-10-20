@@ -230,9 +230,10 @@ test('publication revalidates configuration and metadata and rolls all state bac
   try { await reject(versions.publish(access, partner, version3.id, { requestId: randomUUID() }), 'INVALID_CONFIGURATION'); }
   finally { await fixture.runtime.client.product.update({ where: { id: partner }, data: { publicSample: original.publicSample as Prisma.InputJsonValue } }); }
   const invalid = structuredClone(changedConfiguration); invalid.questions[0]!.dimensionId = 'unknown-dimension';
-  await fixture.owner.client.productVersion.update({ where: { id: version3.id }, data: { configuration: invalid as Prisma.InputJsonValue } });
+  // Even deliberately corrupted owner fixtures retain a new history revision.
+  await fixture.owner.client.productVersion.update({ where: { id: version3.id }, data: { configuration: invalid as Prisma.InputJsonValue, revision: { increment: 1 } } });
   try { await reject(versions.publish(access, partner, version3.id, { requestId: randomUUID() }), 'INVALID_CONFIGURATION'); }
-  finally { await fixture.owner.client.productVersion.update({ where: { id: version3.id }, data: { configuration: changedConfiguration as Prisma.InputJsonValue } }); }
+  finally { await fixture.owner.client.productVersion.update({ where: { id: version3.id }, data: { configuration: changedConfiguration as Prisma.InputJsonValue, revision: { increment: 1 } } }); }
   assert.equal((await fixture.runtime.client.product.findUniqueOrThrow({ where: { id: partner } })).currentVersionId, original.currentVersionId);
   assert.equal((await fixture.runtime.client.productVersion.findUniqueOrThrow({ where: { id: version3.id } })).status, 'REVIEWED');
   assert.equal(await fixture.runtime.client.adminAuditLog.count(), beforeAudits);

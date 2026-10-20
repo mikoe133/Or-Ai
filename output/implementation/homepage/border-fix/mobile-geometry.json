@@ -1,0 +1,52 @@
+{
+  "border": null,
+  "brokenVisibleImages": [],
+  "clientWidth": 384,
+  "failures": [],
+  "featuredColumns": "repeat(2, minmax(0px, 1fr))",
+  "fonts": "loaded",
+  "mode": "mobile",
+  "panel": {
+    "bottom": 714,
+    "height": 519,
+    "right": 384,
+    "width": 384,
+    "x": 0,
+    "y": 195
+  },
+  "root": {
+    "bottom": 832,
+    "height": 832,
+    "right": 384,
+    "width": 384,
+    "x": 0,
+    "y": 0
+  },
+  "scrollY": 0,
+  "sidebar": {
+    "bottom": 0,
+    "height": 0,
+    "right": 0,
+    "width": 0,
+    "x": 0,
+    "y": 0
+  },
+  "viewport": [
+    384,
+    832
+  ],
+  "decorationFailures": [],
+  "decorationLayers": [
+    {
+      "name": "mobile atmosphere",
+      "rect": {
+        "bottom": 831.9998779296875,
+        "height": 831.9998779296875,
+        "right": 384,
+        "width": 384,
+        "x": 0,
+        "y": 0
+      }
+    }
+  ]
+}

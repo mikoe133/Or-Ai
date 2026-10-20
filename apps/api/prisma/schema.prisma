@@ -197,6 +197,7 @@ model Product {
   currentVersionId    String?          @unique @map("current_version_id") @db.Uuid
   currentVersion      ProductVersion?  @relation("CurrentVersion", fields: [currentVersionId, id, scope], references: [id, productId, scope], onDelete: Restrict)
   versions            ProductVersion[] @relation("ProductVersions")
+  creativeProfiles    CreativeProfileRevision[]
   publishedAt         DateTime?        @map("published_at") @db.Timestamptz(3)
   createdAt           DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
   updatedAt           DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
@@ -207,6 +208,7 @@ model Product {
   @@index([scope, status, recommended, recommendationOrder])
   @@map("products")
   @@schema("orai")
+  fileCleanups FileCleanupPlan[]
 }
 
 model ProductTag {
@@ -244,6 +246,7 @@ model ProductVersion {
   campaigns     Campaign[]
   events        Event[]
   files         AssetFile[]
+  contentRevisions ContentRevision[]
 
   @@unique([productId, number])
   @@unique([id, scope])
@@ -327,6 +330,7 @@ model User {
   id             String               @id @default(uuid(7)) @db.Uuid
   supabaseUserId String               @unique @map("supabase_user_id") @db.Uuid
   assetFiles     AssetFile[]
+  productionRecords ProductionRecord[]
   scope          DataScope
   role           UserRole             @default(USER)
   disabledAt     DateTime?            @map("disabled_at") @db.Timestamptz(3)
@@ -340,6 +344,9 @@ model User {
   @@unique([id, scope])
   @@map("users")
   @@schema("orai")
+  contentReviews ContentReviewRecord[]
+  contentPackages ContentPackage[]
+  fileCleanups FileCleanupPlan[]
 }
 
 model AccountSession {
@@ -568,10 +575,13 @@ model CampaignAsset {
   revision         Int            @default(0)
   fileId           String?        @map("file_id") @db.Uuid
   file             AssetFile?     @relation(fields: [fileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  authoring        Json?
+  contentRevisions ContentRevision[]
   createdAt        DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
   updatedAt        DateTime       @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   @@unique([productVersionId, platform, kind, variant])
+  @@unique([id, productVersionId, scope])
   @@index([scope, platform, kind, status])
   @@map("campaign_assets")
   @@schema("orai")
@@ -584,6 +594,8 @@ enum AssetFileStatus {
   AVAILABLE
   FAILED
   EXPIRED
+  DELETING
+  DELETED
 
   @@schema("orai")
 }
@@ -601,12 +613,17 @@ model AssetFile {
   byteSize         Int             @map("byte_size")
   checksum         String
   storageKey       String          @unique @map("storage_key")
+  width            Int?
+  height           Int?
+  durationMs       Int?            @map("duration_ms")
   status           AssetFileStatus @default(PENDING)
   expiresAt        DateTime        @map("expires_at") @db.Timestamptz(3)
   verifiedAt       DateTime?       @map("verified_at") @db.Timestamptz(3)
   createdAt        DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
   updatedAt        DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
   assets           CampaignAsset[]
+  contentDeliveries ContentRevision[] @relation("ContentDeliveryFile")
+  contentPreviews   ContentRevision[] @relation("ContentPreviewFile")
 
   @@unique([id, productVersionId, scope])
   @@index([scope, ownerUserId, status, expiresAt])
@@ -694,5 +711,172 @@ model RequestRateBucket {
 
   @@index([windowEndsAt])
   @@map("request_rate_buckets")
+  @@schema("orai")
+}
+
+model CreativeProfileRevision {
+  id        String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope     DataScope
+  product   Product @relation(fields: [productId, scope], references: [id, scope], onDelete: Restrict)
+  number    Int
+  profile   Json
+  digest    String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  contentRevisions ContentRevision[]
+  productionRecords ProductionRecord[]
+  packages ContentPackage[]
+
+  @@unique([productId, number])
+  @@unique([id, productId, scope])
+  @@index([scope, productId, createdAt])
+  @@map("creative_profile_revisions")
+  @@schema("orai")
+}
+
+model ContentRevision {
+  id        String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  productVersionId String @map("product_version_id") @db.Uuid
+  scope     DataScope
+  version   ProductVersion @relation(fields: [productVersionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  assetId   String? @map("asset_id") @db.Uuid
+  asset     CampaignAsset? @relation(fields: [assetId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  domain    String
+  sourceRevision Int @map("source_revision")
+  creativeProfileRevisionId String? @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision? @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "content_revision_profile_scope_fkey")
+  snapshot  Json
+  digest    String
+  fileId    String? @map("file_id") @db.Uuid
+  file      AssetFile? @relation("ContentDeliveryFile", fields: [fileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  previewFileId String? @map("preview_file_id") @db.Uuid
+  previewFile AssetFile? @relation("ContentPreviewFile", fields: [previewFileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  inputs    ContentReference[] @relation("ReferenceTarget")
+  usedBy    ContentReference[] @relation("ReferenceSource")
+  production ProductionRecord?
+  reviews ContentReviewRecord[]
+  packageItems ContentPackageItem[]
+
+  @@unique([id, productId, scope])
+  @@unique([assetId, sourceRevision])
+  @@index([productVersionId, domain, sourceRevision])
+  @@index([scope, productId, createdAt])
+  @@map("content_revisions")
+  @@schema("orai")
+}
+
+model ContentReference {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  targetRevisionId String @map("target_revision_id") @db.Uuid
+  target ContentRevision @relation("ReferenceTarget", fields: [targetRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  sourceRevisionId String @map("source_revision_id") @db.Uuid
+  source ContentRevision @relation("ReferenceSource", fields: [sourceRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  locator Json
+  locatorKey String @map("locator_key")
+  targetLocator Json @map("target_locator")
+  targetLocatorKey String @map("target_locator_key")
+  role String
+  mode String
+  sourceDigest String @map("source_digest")
+  sourceSnapshot Json @map("source_snapshot")
+  usedText String @map("used_text")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([targetRevisionId, sourceRevisionId, locatorKey, targetLocatorKey, role], map: "content_reference_position_key")
+  @@index([sourceRevisionId])
+  @@map("content_references")
+  @@schema("orai")
+}
+
+model ProductionRecord {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  outputRevisionId String @unique @map("output_revision_id") @db.Uuid
+  output ContentRevision @relation(fields: [outputRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  creativeProfileRevisionId String? @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision? @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "production_profile_scope_fkey")
+  actorUserId String? @map("actor_user_id") @db.Uuid
+  actor User? @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict)
+  source String
+  batchKey String? @map("batch_key")
+  externalLabel String? @map("external_label")
+  skillVersionId String? @map("skill_version_id") @db.Uuid
+  inputManifest Json @map("input_manifest")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([outputRevisionId, productId, scope])
+  @@index([scope, productId, batchKey, createdAt])
+  @@map("production_records")
+  @@schema("orai")
+}
+
+model ContentReviewRecord {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  revisionId String @map("revision_id") @db.Uuid
+  revision ContentRevision @relation(fields:[revisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  fingerprint String
+  note String
+  impact Json
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields:[actorUserId,scope],references:[id,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@unique([revisionId,fingerprint])
+  @@map("content_review_records")
+  @@schema("orai")
+}
+model ContentPackage {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  creativeProfileRevisionId String @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision @relation(fields:[creativeProfileRevisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  number Int
+  label String
+  digest String
+  manifest Json
+  note String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields:[actorUserId,scope],references:[id,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  items ContentPackageItem[]
+  @@unique([productId,number])
+  @@unique([id,productId,scope])
+  @@map("content_packages")
+  @@schema("orai")
+}
+model ContentPackageItem {
+  id String @id @default(uuid(7)) @db.Uuid
+  packageId String @map("package_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  package ContentPackage @relation(fields:[packageId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  revisionId String @map("revision_id") @db.Uuid
+  revision ContentRevision @relation(fields:[revisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  @@unique([packageId,revisionId])
+  @@map("content_package_items")
+  @@schema("orai")
+}
+model FileCleanupPlan {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields:[actorUserId,scope],references:[id,scope],onDelete:Restrict)
+  product Product @relation(fields:[productId,scope],references:[id,scope],onDelete:Restrict)
+  digest String
+  files Json
+  results Json
+  status String @default("prepared")
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@index([scope,productId,createdAt])
+  @@map("file_cleanup_plans")
   @@schema("orai")
 }

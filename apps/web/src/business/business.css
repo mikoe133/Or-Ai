@@ -212,7 +212,7 @@
   background: #f7f3fc;
   color-scheme: light;
 }
-.store-home:has(.biz-view) .store-mobile-nav {
+.store-home:not(.store-workspace-page):has(.biz-view) .store-mobile-nav {
   background: #24212b;
 }
 @media (max-width: 767px) {
@@ -236,4 +236,28 @@
   .biz-view select {
     font-size: 16px;
   }
+}
+
+.biz-view.biz-workspace-view {
+  max-width: none;
+  margin: 0;
+  padding: 4px 0 24px;
+  color: var(--store-text);
+  color-scheme: dark;
+  background: transparent;
+  border-radius: 0;
+}
+.biz-workspace-view h1 { font-size: 26px; }
+.biz-workspace-view a { color: var(--store-brand); }
+.biz-workspace-view :is(p, small, .biz-note) { color: var(--store-secondary); }
+.biz-workspace-view .biz-card { background: var(--store-raised); border-color: rgb(204 212 229 / 18%); }
+.biz-workspace-view button,
+.biz-workspace-view .biz-button { border-color: rgb(204 212 229 / 20%); border-radius: 100px; color: var(--store-text); background: var(--store-raised); font-size: 13px; }
+.biz-workspace-view button[aria-pressed="true"],
+.biz-workspace-view button[type="submit"] { color: #21182a; background: var(--store-brand); }
+.biz-workspace-view .biz-error { color: var(--store-text); border-color: #74535f; background: #30242d; }
+.biz-workspace-view .biz-demo { background: #332c42; }
+@media (max-width: 767px), (max-width: 1023px) and (max-height: 500px) and (orientation: landscape) {
+  .biz-view.biz-workspace-view { padding: 12px 18px 24px; }
+  .biz-workspace-view h1 { font-size: 23px; }
 }

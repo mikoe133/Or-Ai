@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { contentWorkbench } from "./content-workbench.mjs";
+import { contentAdoption } from "./content-adoption.mjs";
 import { createRequire } from "node:module";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { join, resolve } from "node:path";
@@ -15,6 +17,8 @@ import { randomUUID, randomBytes } from "node:crypto";
 import { chromium, expect } from "playwright/test";
 import {
   catalogFilters,
+  workspaceNavigation,
+  workspaceFeedback,
   textContrast,
   productPublication,
   textAssets,
@@ -165,6 +169,12 @@ try {
   await expect(
     page.getByText("伴侣协作测试 · 演示", { exact: true }).first(),
   ).toBeVisible();
+  checks.push(phase);
+  phase = "mall, apps, reports and help share the same page frame";
+  await workspaceNavigation(page);
+  checks.push(phase);
+  phase = "motion preserves sidebar, filter input and dialog focus with reduced motion support";
+  await workspaceFeedback(page);
   checks.push(phase);
   phase = "admin denies unsigned users";
   await page.goto("/admin");
@@ -607,6 +617,10 @@ try {
     "copy and script assets retain their version link through edits and archival";
   await textAssets({ admin, fixture, versionId });
   checks.push(phase);
+  phase = "four-domain content workbench edits, media and suite preview";
+  checks.push(...await contentWorkbench({ admin, fixture, productId: demoId('demo-partner'), root, output: join(root, '.local/t12-b/e2e') }));
+  phase = "fixed references, adoption, impact recheck and protected cleanup";
+  checks.push(...await contentAdoption({ admin, browser, fixture, base, root, output: join(root,'.local/t12-c/e2e'), directory, adminUserId:DemoIdentityScenarios.admin.id, sourceProductId:demoId('demo-partner') }));
   phase =
     "empty, long, null-score, deleted and expired reports remain truthful";
   await seededReportStates({ browser, fixture, base, demoId, output });
@@ -641,6 +655,7 @@ try {
   phase =
     "mobile pages fit, remain legible and keep the design preview separate";
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.route('**/api/assets/*/files/*/content', route => route.abort('failed'));
   await page.goto("/");
   await expect(
     page.locator('a[href="/products/demo-partner"]').first(),
@@ -659,7 +674,9 @@ try {
         )) >= 4.5,
         "functional page text must contrast against its actual surface",
       ))(),
-    expect(page.getByText("封面暂不可用", { exact: true })).toBeVisible(),
+    expect.poll(() => page.locator('.catalog-featured img').evaluateAll(images =>
+      images.length > 0 && images.every(image => image.complete && image.naturalWidth > 0)
+    )).toBe(true),
   ]);
   assert.deepEqual(
     visualChecks.map((result) => result.status),

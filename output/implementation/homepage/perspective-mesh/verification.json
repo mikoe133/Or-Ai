@@ -1,0 +1,36 @@
+{
+  "observedDurationMs": 172052,
+  "sampledFrames": 120,
+  "rotationLoopMs": 120000,
+  "layoutStable": true,
+  "noHorizontalOverflow": true,
+  "validVectors": true,
+  "firstSecondVerticalTravelPx": [
+    20.20361538461532,
+    -2.220717097355646
+  ],
+  "inwardDirections": true,
+  "originalMaterialGradientPreserved": true,
+  "oldGridRemoved": true,
+  "originalLightingAssetsPreserved": {
+    "green-floor-glow.svg": true,
+    "multicolor-corner-glow.svg": true,
+    "left-edge-bright-exterior.svg": true
+  },
+  "demo": {
+    "frames": 64,
+    "size": [
+      909,
+      601
+    ],
+    "durationMs": 16080,
+    "playsOnce": true,
+    "fullColorWebpFrames": 64
+  },
+  "finalViewport": [
+    1373,
+    1248
+  ],
+  "finalContainmentFailures": [],
+  "consoleErrorsOrWarnings": []
+}

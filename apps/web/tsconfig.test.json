@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
+    "rootDir": ".",
+    "outDir": ".test-build"
+  },
+  "include": ["src/auth/core.ts", "src/auth/storage.ts", "src/auth/account-api.ts", "test/**/*.ts"]
+}

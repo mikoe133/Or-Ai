@@ -1,0 +1,81 @@
+{
+  "observedSeconds": 31.948,
+  "frames": 65,
+  "layoutStable": true,
+  "horizontalOverflow": false,
+  "rangeFailures": [],
+  "observedRanges": {
+    "Green-floor-bloom": {
+      "x": [
+        -27.927678125000003,
+        35.99910652777778
+      ],
+      "y": [
+        -11.9997028125,
+        15.998896875
+      ],
+      "duration": "22s"
+    },
+    "07-multicolor-corner-atmosphere": {
+      "x": [
+        -19.955124791666663,
+        17.973523472222222
+      ],
+      "y": [
+        -25.955109375000003,
+        27.985546874999997
+      ],
+      "duration": "29s"
+    },
+    "store-left-light": {
+      "x": [
+        0,
+        0
+      ],
+      "y": [
+        -11.9878,
+        11.9797
+      ],
+      "duration": "10s"
+    }
+  },
+  "reducedMotionPassed": true,
+  "pausePassed": true,
+  "productionBuild": "passed",
+  "originalSvgAssetsUnchanged": true,
+  "gif": "32-second real browser capture, cropped to the annotated lower area; plays once",
+  "date": "2026-10-15",
+  "responsiveViewports": [
+    [
+      384,
+      832
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1024,
+      900
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1440,
+      1024
+    ],
+    [
+      1920,
+      1080
+    ]
+  ],
+  "responsiveFailures": 0,
+  "gifFrames": 65,
+  "gifSize": [
+    2746,
+    1096
+  ],
+  "gifDecodedSuccessfully": true
+}

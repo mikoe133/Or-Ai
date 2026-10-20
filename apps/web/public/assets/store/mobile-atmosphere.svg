@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="384" height="832" viewBox="0 0 384 832">
+<defs>
+<linearGradient id="canvas" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#28282C"/><stop offset=".24" stop-color="#19191E"/><stop offset=".67" stop-color="#1C1B24"/><stop offset="1" stop-color="#24262B"/></linearGradient>
+<radialGradient id="purple" cx=".24" cy=".98" r=".8" gradientTransform="translate(0 .13) scale(1 .87)"><stop stop-color="#965ABB" stop-opacity=".64"/><stop offset=".38" stop-color="#784390" stop-opacity=".28"/><stop offset="1" stop-color="#603975" stop-opacity="0"/></radialGradient>
+<radialGradient id="green" cx=".87" cy="1" r=".52"><stop stop-color="#BEC88B" stop-opacity=".85"/><stop offset=".35" stop-color="#A7AE79" stop-opacity=".48"/><stop offset="1" stop-color="#9DA26E" stop-opacity="0"/></radialGradient>
+<linearGradient id="search" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#49494D"/><stop offset="1" stop-color="#333338"/></linearGradient>
+<linearGradient id="searchEdge" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#B9B7C1" stop-opacity=".36"/><stop offset=".6" stop-color="#B9B7C1" stop-opacity=".18"/><stop offset="1" stop-color="#B9B7C1" stop-opacity=".32"/></linearGradient>
+<linearGradient id="navGlass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A998B0" stop-opacity=".15"/><stop offset=".5" stop-color="#998C9B" stop-opacity=".15"/><stop offset="1" stop-color="#DDE7CB" stop-opacity=".18"/></linearGradient>
+<linearGradient id="navEdge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#DACBE3" stop-opacity=".27"/><stop offset=".55" stop-color="#E3DFF0" stop-opacity=".16"/><stop offset="1" stop-color="#F0F8D8" stop-opacity=".33"/></linearGradient>
+<linearGradient id="selected" x1="0" y1="0" x2="1" y2=".5"><stop stop-color="#E3A1F5"/><stop offset=".55" stop-color="#E8A7F8"/><stop offset="1" stop-color="#ECB5F7"/></linearGradient>
+<clipPath id="avatarClip"><circle cx="347.5" cy="29.5" r="17"/></clipPath>
+<clipPath id="lavenderClip"><rect x="19" y="258" width="274" height="316" rx="12"/></clipPath>
+<clipPath id="tealClip"><rect x="305" y="258" width="274" height="316" rx="12"/></clipPath>
+</defs>
+<g><rect width="384" height="832" fill="url(#canvas)"/><rect opacity=".7" y="536" width="384" height="296" fill="url(#purple)"/><rect y="602" width="384" height="230" fill="url(#green)"/></g>
+<g id="Orbital grid" opacity=".7" fill="none" stroke="#B7AEC9" stroke-opacity=".075" stroke-width=".7"><path d="M-30 726C57 639 197 586 417 593M-26 756C64 661 222 625 413 631M-10 792C66 699 230 665 415 674M36 839C109 750 249 711 421 726M76 558C126 630 189 674 361 737M129 556C110 638 151 730 249 832M204 560C226 638 256 736 275 845M276 548C267 642 300 730 327 844M340 560C324 659 348 745 382 838"/></g>
+</svg>

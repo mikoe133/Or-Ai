@@ -1,0 +1,776 @@
+[
+  {
+    "size": {
+      "width": 384,
+      "height": 832
+    },
+    "display": "none",
+    "containment": {
+      "border": null,
+      "brokenVisibleImages": [],
+      "clientWidth": 384,
+      "failures": [],
+      "featuredColumns": "repeat(2, minmax(0px, 1fr))",
+      "fonts": "loaded",
+      "mode": "mobile",
+      "panel": {
+        "bottom": 714,
+        "height": 519,
+        "right": 384,
+        "width": 384,
+        "x": 0,
+        "y": 195
+      },
+      "root": {
+        "bottom": 832,
+        "height": 832,
+        "right": 384,
+        "width": 384,
+        "x": 0,
+        "y": 0
+      },
+      "scrollY": 0,
+      "sidebar": {
+        "bottom": 0,
+        "height": 0,
+        "right": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "viewport": [
+        384,
+        832
+      ]
+    },
+    "field": {
+      "bottom": 0,
+      "height": 0,
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "width": 0,
+      "x": 0,
+      "y": 0
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "center": {
+          "x": 0,
+          "y": 0
+        },
+        "className": "store-wireframe store-wireframe-upper",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "transform": "none"
+      },
+      {
+        "box": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "center": {
+          "x": 0,
+          "y": 0
+        },
+        "className": "store-wireframe store-wireframe-lower",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 0,
+          "height": 0,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "width": 0,
+          "x": 0,
+          "y": 0
+        },
+        "transform": "none"
+      }
+    ],
+    "check": {
+      "mobileHidden": true
+    },
+    "fieldStartsAfterFeatured": true
+  },
+  {
+    "size": {
+      "width": 768,
+      "height": 1024
+    },
+    "display": "grid",
+    "containment": {
+      "border": {
+        "bottom": 1576,
+        "left": 141.7,
+        "right": 687,
+        "top": 181.2
+      },
+      "brokenVisibleImages": [],
+      "clientWidth": 753,
+      "failures": [],
+      "featuredColumns": "246px 246px",
+      "fonts": "loaded",
+      "mode": "desktop",
+      "panel": {
+        "bottom": 1590,
+        "height": 1410,
+        "right": 701,
+        "width": 649,
+        "x": 52,
+        "y": 180
+      },
+      "root": {
+        "bottom": 1634,
+        "height": 1634,
+        "right": 753,
+        "width": 753,
+        "x": 0,
+        "y": 0
+      },
+      "scrollY": 0,
+      "sidebar": {
+        "bottom": 1590,
+        "height": 1410,
+        "right": 140,
+        "width": 88,
+        "x": 52,
+        "y": 180
+      },
+      "viewport": [
+        768,
+        1024
+      ]
+    },
+    "field": {
+      "bottom": 1550,
+      "height": 626,
+      "left": 161,
+      "right": 665,
+      "top": 924,
+      "width": 504,
+      "x": 161,
+      "y": 924
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 1237,
+          "height": 313,
+          "left": 161,
+          "right": 665,
+          "top": 924,
+          "width": 504,
+          "x": 161,
+          "y": 924
+        },
+        "center": {
+          "x": 413,
+          "y": 1334.325732421875
+        },
+        "className": "store-wireframe store-wireframe-upper",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 1440.4453125,
+          "height": 516.4453125,
+          "left": 161,
+          "right": 665,
+          "top": 924,
+          "width": 504,
+          "x": 161,
+          "y": 924
+        },
+        "transform": "none"
+      },
+      {
+        "box": {
+          "bottom": 1550,
+          "height": 313,
+          "left": 161,
+          "right": 665,
+          "top": 1237,
+          "width": 504,
+          "x": 161,
+          "y": 1237
+        },
+        "center": {
+          "x": 413,
+          "y": 1139.674267578125
+        },
+        "className": "store-wireframe store-wireframe-lower",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 1550,
+          "height": 516.4453125,
+          "left": 161,
+          "right": 665,
+          "top": 1033.5546875,
+          "width": 504,
+          "x": 161,
+          "y": 1033.5546875
+        },
+        "transform": "matrix(1, 0, 0, -1, 0, 0)"
+      }
+    ],
+    "check": {
+      "axisY": 1237,
+      "equalPaths": true,
+      "equalSize": true,
+      "mirroredBounds": true,
+      "mirroredPoint": true,
+      "lowerReflected": true,
+      "withinField": true,
+      "noHorizontalOverflow": true
+    },
+    "fieldStartsAfterFeatured": true
+  },
+  {
+    "size": {
+      "width": 1024,
+      "height": 900
+    },
+    "display": "grid",
+    "containment": {
+      "border": {
+        "bottom": 1576,
+        "left": 263.7,
+        "right": 943,
+        "top": 181.2
+      },
+      "brokenVisibleImages": [],
+      "clientWidth": 1009,
+      "failures": [],
+      "featuredColumns": "313px 313px",
+      "fonts": "loaded",
+      "mode": "desktop",
+      "panel": {
+        "bottom": 1590,
+        "height": 1410,
+        "right": 957,
+        "width": 905,
+        "x": 52,
+        "y": 180
+      },
+      "root": {
+        "bottom": 1634,
+        "height": 1634,
+        "right": 1009,
+        "width": 1009,
+        "x": 0,
+        "y": 0
+      },
+      "scrollY": 0,
+      "sidebar": {
+        "bottom": 1590,
+        "height": 1410,
+        "right": 262,
+        "width": 210,
+        "x": 52,
+        "y": 180
+      },
+      "viewport": [
+        1024,
+        900
+      ]
+    },
+    "field": {
+      "bottom": 1550,
+      "height": 626,
+      "left": 283,
+      "right": 921,
+      "top": 924,
+      "width": 638,
+      "x": 283,
+      "y": 924
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 1237,
+          "height": 313,
+          "left": 283,
+          "right": 921,
+          "top": 924,
+          "width": 638,
+          "x": 283,
+          "y": 924
+        },
+        "center": {
+          "x": 602,
+          "y": 1336.0290087890626
+        },
+        "className": "store-wireframe store-wireframe-upper",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 1440.4453125,
+          "height": 516.4453125,
+          "left": 283,
+          "right": 921,
+          "top": 924,
+          "width": 638,
+          "x": 283,
+          "y": 924
+        },
+        "transform": "none"
+      },
+      {
+        "box": {
+          "bottom": 1550,
+          "height": 313,
+          "left": 283,
+          "right": 921,
+          "top": 1237,
+          "width": 638,
+          "x": 283,
+          "y": 1237
+        },
+        "center": {
+          "x": 602,
+          "y": 1137.9709912109374
+        },
+        "className": "store-wireframe store-wireframe-lower",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 1550,
+          "height": 516.4453125,
+          "left": 283,
+          "right": 921,
+          "top": 1033.5546875,
+          "width": 638,
+          "x": 283,
+          "y": 1033.5546875
+        },
+        "transform": "matrix(1, 0, 0, -1, 0, 0)"
+      }
+    ],
+    "check": {
+      "axisY": 1237,
+      "equalPaths": true,
+      "equalSize": true,
+      "mirroredBounds": true,
+      "mirroredPoint": true,
+      "lowerReflected": true,
+      "withinField": true,
+      "noHorizontalOverflow": true
+    },
+    "fieldStartsAfterFeatured": true
+  },
+  {
+    "size": {
+      "width": 1280,
+      "height": 800
+    },
+    "display": "grid",
+    "containment": {
+      "border": {
+        "bottom": 966,
+        "left": 317.7,
+        "right": 1179,
+        "top": 181.2
+      },
+      "brokenVisibleImages": [],
+      "clientWidth": 1265,
+      "failures": [],
+      "featuredColumns": "196px 196px 196px 196px",
+      "fonts": "loaded",
+      "mode": "desktop",
+      "panel": {
+        "bottom": 980,
+        "height": 800,
+        "right": 1193,
+        "width": 1121,
+        "x": 72,
+        "y": 180
+      },
+      "root": {
+        "bottom": 1024,
+        "height": 1024,
+        "right": 1265,
+        "width": 1265,
+        "x": 0,
+        "y": 0
+      },
+      "scrollY": 0,
+      "sidebar": {
+        "bottom": 980,
+        "height": 800,
+        "right": 316,
+        "width": 244,
+        "x": 72,
+        "y": 180
+      },
+      "viewport": [
+        1280,
+        800
+      ]
+    },
+    "field": {
+      "bottom": 940,
+      "height": 370,
+      "left": 337,
+      "right": 1157,
+      "top": 570,
+      "width": 820,
+      "x": 337,
+      "y": 570
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 755,
+          "height": 185,
+          "left": 337,
+          "right": 1157,
+          "top": 570,
+          "width": 820,
+          "x": 337,
+          "y": 570
+        },
+        "center": {
+          "x": 747,
+          "y": 814.5375360576923
+        },
+        "className": "store-wireframe store-wireframe-upper",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 875.25,
+          "height": 305.25,
+          "left": 337,
+          "right": 1157,
+          "top": 570,
+          "width": 820,
+          "x": 337,
+          "y": 570
+        },
+        "transform": "none"
+      },
+      {
+        "box": {
+          "bottom": 940,
+          "height": 185,
+          "left": 337,
+          "right": 1157,
+          "top": 755,
+          "width": 820,
+          "x": 337,
+          "y": 755
+        },
+        "center": {
+          "x": 747,
+          "y": 695.4624639423077
+        },
+        "className": "store-wireframe store-wireframe-lower",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 940,
+          "height": 305.25,
+          "left": 337,
+          "right": 1157,
+          "top": 634.75,
+          "width": 820,
+          "x": 337,
+          "y": 634.75
+        },
+        "transform": "matrix(1, 0, 0, -1, 0, 0)"
+      }
+    ],
+    "check": {
+      "axisY": 755,
+      "equalPaths": true,
+      "equalSize": true,
+      "mirroredBounds": true,
+      "mirroredPoint": true,
+      "lowerReflected": true,
+      "withinField": true,
+      "noHorizontalOverflow": true
+    },
+    "fieldStartsAfterFeatured": true
+  },
+  {
+    "size": {
+      "width": 1440,
+      "height": 1024
+    },
+    "display": "grid",
+    "containment": {
+      "border": {
+        "bottom": 966,
+        "left": 317.7,
+        "right": 1354,
+        "top": 181.2
+      },
+      "brokenVisibleImages": [],
+      "clientWidth": 1440,
+      "failures": [],
+      "featuredColumns": "239.75px 239.75px 239.75px 239.75px",
+      "fonts": "loaded",
+      "mode": "desktop",
+      "panel": {
+        "bottom": 980,
+        "height": 800,
+        "right": 1368,
+        "width": 1296,
+        "x": 72,
+        "y": 180
+      },
+      "root": {
+        "bottom": 1024,
+        "height": 1024,
+        "right": 1440,
+        "width": 1440,
+        "x": 0,
+        "y": 0
+      },
+      "scrollY": 0,
+      "sidebar": {
+        "bottom": 980,
+        "height": 800,
+        "right": 316,
+        "width": 244,
+        "x": 72,
+        "y": 180
+      },
+      "viewport": [
+        1440,
+        1024
+      ]
+    },
+    "field": {
+      "bottom": 940,
+      "height": 370,
+      "left": 337,
+      "right": 1332,
+      "top": 570,
+      "width": 995,
+      "x": 337,
+      "y": 570
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 755,
+          "height": 185,
+          "left": 337,
+          "right": 1332,
+          "top": 570,
+          "width": 995,
+          "x": 337,
+          "y": 570
+        },
+        "center": {
+          "x": 834.5,
+          "y": 815.7291850961539
+        },
+        "className": "store-wireframe store-wireframe-upper",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 875.25,
+          "height": 305.25,
+          "left": 337,
+          "right": 1332,
+          "top": 570,
+          "width": 995,
+          "x": 337,
+          "y": 570
+        },
+        "transform": "none"
+      },
+      {
+        "box": {
+          "bottom": 940,
+          "height": 185,
+          "left": 337,
+          "right": 1332,
+          "top": 755,
+          "width": 995,
+          "x": 337,
+          "y": 755
+        },
+        "center": {
+          "x": 834.5,
+          "y": 694.2708149038461
+        },
+        "className": "store-wireframe store-wireframe-lower",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 940,
+          "height": 305.25,
+          "left": 337,
+          "right": 1332,
+          "top": 634.75,
+          "width": 995,
+          "x": 337,
+          "y": 634.75
+        },
+        "transform": "matrix(1, 0, 0, -1, 0, 0)"
+      }
+    ],
+    "check": {
+      "axisY": 755,
+      "equalPaths": true,
+      "equalSize": true,
+      "mirroredBounds": true,
+      "mirroredPoint": true,
+      "lowerReflected": true,
+      "withinField": true,
+      "noHorizontalOverflow": true
+    },
+    "fieldStartsAfterFeatured": true
+  },
+  {
+    "size": {
+      "width": 1920,
+      "height": 1080
+    },
+    "display": "grid",
+    "containment": {
+      "border": {
+        "bottom": 1030,
+        "left": 317.7,
+        "right": 1819,
+        "top": 181.2
+      },
+      "brokenVisibleImages": [],
+      "clientWidth": 1905,
+      "failures": [],
+      "featuredColumns": "356px 356px 356px 356px",
+      "fonts": "loaded",
+      "mode": "desktop",
+      "panel": {
+        "bottom": 1044,
+        "height": 864,
+        "right": 1833,
+        "width": 1761,
+        "x": 72,
+        "y": 180
+      },
+      "root": {
+        "bottom": 1088,
+        "height": 1088,
+        "right": 1905,
+        "width": 1905,
+        "x": 0,
+        "y": 0
+      },
+      "scrollY": 0,
+      "sidebar": {
+        "bottom": 1044,
+        "height": 864,
+        "right": 316,
+        "width": 244,
+        "x": 72,
+        "y": 180
+      },
+      "viewport": [
+        1920,
+        1080
+      ]
+    },
+    "field": {
+      "bottom": 1004,
+      "height": 370,
+      "left": 337,
+      "right": 1797,
+      "top": 634,
+      "width": 1460,
+      "x": 337,
+      "y": 634
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 819,
+          "height": 185,
+          "left": 337,
+          "right": 1797,
+          "top": 634,
+          "width": 1460,
+          "x": 337,
+          "y": 634
+        },
+        "center": {
+          "x": 1067,
+          "y": 881.0118221153846
+        },
+        "className": "store-wireframe store-wireframe-upper",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 939.25,
+          "height": 305.25,
+          "left": 337,
+          "right": 1797,
+          "top": 634,
+          "width": 1460,
+          "x": 337,
+          "y": 634
+        },
+        "transform": "none"
+      },
+      {
+        "box": {
+          "bottom": 1004,
+          "height": 185,
+          "left": 337,
+          "right": 1797,
+          "top": 819,
+          "width": 1460,
+          "x": 337,
+          "y": 819
+        },
+        "center": {
+          "x": 1067,
+          "y": 756.9881778846154
+        },
+        "className": "store-wireframe store-wireframe-lower",
+        "opacity": "0.19",
+        "svg": {
+          "bottom": 1004,
+          "height": 305.25,
+          "left": 337,
+          "right": 1797,
+          "top": 698.75,
+          "width": 1460,
+          "x": 337,
+          "y": 698.75
+        },
+        "transform": "matrix(1, 0, 0, -1, 0, 0)"
+      }
+    ],
+    "check": {
+      "axisY": 819,
+      "equalPaths": true,
+      "equalSize": true,
+      "mirroredBounds": true,
+      "mirroredPoint": true,
+      "lowerReflected": true,
+      "withinField": true,
+      "noHorizontalOverflow": true
+    },
+    "fieldStartsAfterFeatured": true
+  }
+]

@@ -1,0 +1,140 @@
+/* A shared motion rhythm; keep the surrounding frame still during navigation. */
+.store-home, .store-dialog, .store-dialog-overlay {
+  --ux-fast: 140ms;
+  --ux-base: 220ms;
+  --ux-slow: 300ms;
+  --ux-ease: cubic-bezier(.22, 1, .36, 1);
+}
+.workspace-view {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  animation: ux-content-enter var(--ux-slow) var(--ux-ease) both;
+}
+@keyframes ux-content-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.workspace-view :is(.catalog-featured, .catalog-filtered-grid, .store-latest-grid, .biz-grid) > article,
+.workspace-view .biz-workspace-view > .biz-card {
+  animation: ux-card-enter var(--ux-slow) var(--ux-ease) both;
+}
+.workspace-view :is(.catalog-featured, .catalog-filtered-grid, .store-latest-grid, .biz-grid) > article:nth-child(2),
+.workspace-view .biz-workspace-view > .biz-card:nth-of-type(2) { animation-delay: 30ms; }
+.workspace-view :is(.catalog-featured, .catalog-filtered-grid, .store-latest-grid, .biz-grid) > article:nth-child(3),
+.workspace-view .biz-workspace-view > .biz-card:nth-of-type(3) { animation-delay: 60ms; }
+.workspace-view :is(.catalog-featured, .catalog-filtered-grid, .store-latest-grid, .biz-grid) > article:nth-child(n+4) { animation-delay: 90ms; }
+@keyframes ux-card-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.store-flow :is(.store-button, .store-rail-button, .store-appearance, .store-header-plus, .store-sidebar-heading button),
+.store-flow .store-personal-nav :is(a, button),
+.store-flow .store-filters button,
+.biz-workspace-view :is(button, .biz-button) {
+  transition: color var(--ux-fast) ease, background-color var(--ux-base) ease,
+    border-color var(--ux-base) ease, box-shadow var(--ux-base) ease,
+    transform var(--ux-base) var(--ux-ease), gap var(--ux-slow) var(--ux-ease);
+}
+.store-flow .store-icon { transition: opacity var(--ux-fast) ease, transform var(--ux-base) var(--ux-ease); }
+.store-flow .store-personal-nav a.is-current { box-shadow: inset 0 0 0 1px rgb(217 172 241 / 9%); }
+.store-flow .store-personal-nav a.is-current i { animation: ux-dot-enter var(--ux-base) var(--ux-ease); }
+@keyframes ux-dot-enter { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: scale(1); } }
+.store-flow :is(.store-button, .store-rail-button, .store-appearance, .store-header-plus):active,
+.store-flow .store-personal-nav :is(a, button):active,
+.store-flow .store-filters button:not(:disabled):active,
+.biz-workspace-view :is(button, .biz-button):not(:disabled):active { transform: scale(.97); }
+.store-flow :is(button:disabled, [aria-disabled="true"]) { transform: none; }
+.store-flow .store-product-art { transition: transform var(--ux-slow) var(--ux-ease); }
+.biz-workspace-view .biz-card { transition: border-color var(--ux-base) ease, box-shadow var(--ux-base) ease; }
+.store-flow .store-search,
+.store-flow .catalog-filter-panel :is(input, select) { transition: border-color var(--ux-base) ease, box-shadow var(--ux-base) ease, background-color var(--ux-base) ease; }
+.store-flow .store-search:focus-within { border-color: rgb(217 172 241 / 65%); box-shadow: 0 0 0 3px rgb(217 172 241 / 10%); }
+.store-flow .catalog-filter-panel :is(input, select):focus-visible { outline: 2px solid var(--store-brand); outline-offset: 2px; }
+.store-flow .store-footer a { transition: color var(--ux-fast) ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .store-flow .store-button:hover,
+  .biz-workspace-view :is(button, .biz-button):not(:disabled):hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgb(0 0 0 / 14%); }
+  .store-flow .store-personal-nav a:not(.is-current):hover { transform: translateX(3px); }
+  .store-flow .store-rail-button:hover > .store-icon { opacity: 1; }
+  .store-flow .store-product:hover .store-product-art { transform: scale(1.025); }
+  .store-flow .store-product:hover .store-product-cta > .store-icon:last-child { transform: translateX(2px); }
+  .biz-workspace-view .biz-card:hover { border-color: rgb(217 172 241 / 34%); }
+  .store-flow .store-footer a:hover { color: var(--store-brand); }
+  .store-flow .store-button:active,
+  .biz-workspace-view :is(button, .biz-button):not(:disabled):active { transform: scale(.97); }
+}
+
+/* The decorative divider follows the actual sidebar width while the grid animates. */
+@media (min-width: 1024px) {
+  .store-flow .store-panel { transition: grid-template-columns var(--ux-slow) var(--ux-ease); }
+  .store-flow .glass-divider { left: var(--store-sidebar-rendered-width, var(--store-sidebar-width)); }
+  .store-flow .glass-sidebar-base { width: calc(var(--store-sidebar-rendered-width, var(--store-sidebar-width)) - 48px); }
+  .store-flow .glass-main-base { left: calc(var(--store-sidebar-rendered-width, var(--store-sidebar-width)) + 34px); }
+  .store-flow .flow-sidebar-tint { width: var(--store-sidebar-rendered-width, var(--store-sidebar-width)); }
+  .store-flow .store-wireframes { left: calc(var(--store-sidebar-rendered-width, var(--store-sidebar-width)) + 21px); width: calc(100% - var(--store-sidebar-rendered-width, var(--store-sidebar-width)) - 57px); }
+  .store-flow .store-personal-nav a > span:not(.store-icon),
+  .store-flow .store-sidebar-heading h2 { max-width: 180px; white-space: nowrap; overflow: hidden; opacity: 1; transition: opacity var(--ux-fast) ease, max-width var(--ux-slow) var(--ux-ease); }
+  .store-flow.is-collapsed .store-personal-nav a > span:not(.store-icon),
+  .store-flow.is-collapsed .store-sidebar-heading h2 { display: block; max-width: 0; opacity: 0; }
+  .store-flow.is-collapsed .store-personal-nav a { gap: 0; }
+}
+
+.store-flow .store-rail-tooltip {
+  opacity: 0;
+  transform: translate(6px, -50%);
+  transition: opacity var(--ux-fast) ease, transform var(--ux-base) var(--ux-ease), visibility 0s var(--ux-fast);
+}
+.store-flow .store-rail-button:hover .store-rail-tooltip,
+.store-flow .store-rail-button:focus-visible .store-rail-tooltip {
+  opacity: 1;
+  transform: translate(0, -50%);
+  transition-delay: 100ms, 100ms, 0s;
+}
+
+/* Native details keeps keyboard and form behaviour; height animation is progressive. */
+.catalog-filter-panel > summary > span:last-child > .store-icon { transform: rotate(-90deg); }
+.catalog-filter-panel[open] > summary > span:last-child > .store-icon { transform: rotate(90deg); }
+@supports (interpolate-size: allow-keywords) and selector(details::details-content) {
+  .catalog-filter-panel, .catalog-filter-panel details { interpolate-size: allow-keywords; }
+  .catalog-filter-panel::details-content,
+  .catalog-filter-panel details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--ux-slow) var(--ux-ease), content-visibility var(--ux-slow) allow-discrete;
+  }
+  .catalog-filter-panel[open]::details-content,
+  .catalog-filter-panel details[open]::details-content { block-size: auto; }
+}
+
+.ux-loading { display: flex; align-items: center; gap: 10px; min-height: 44px; color: var(--store-secondary, #655971); font-size: 13px; }
+.ux-loading-indicator { width: 16px; height: 16px; flex: 0 0 16px; border: 2px solid rgb(164 162 178 / 25%); border-top-color: var(--store-brand, #73559c); border-radius: 50%; animation: ux-loading-spin 800ms linear infinite; }
+@keyframes ux-loading-spin { to { transform: rotate(360deg); } }
+
+.store-dialog-overlay[data-state="open"] { animation: ux-overlay-in 180ms ease both; }
+.store-dialog-overlay[data-state="closed"] { animation: ux-overlay-out 140ms ease both; pointer-events: none; }
+.store-dialog[data-state="open"] { animation: ux-dialog-in 240ms var(--ux-ease) both; }
+.store-dialog[data-state="closed"] { animation: ux-dialog-out 140ms ease both; pointer-events: none; }
+@keyframes ux-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ux-overlay-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes ux-dialog-in {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(.97); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes ux-dialog-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, calc(-50% + 4px)) scale(.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-home *, .store-dialog, .store-dialog-overlay {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

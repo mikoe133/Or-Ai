@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1296" height="800" viewBox="0 0 1296 800" fill="none">
+<rect width="1296" height="800" fill="#FFFFFF" fill-opacity="0"/>
+<g id="Glass-material-clipped-at-inner-right" clip-path="url(#transparent-right-edge)">
+
+<path d="M1296 0H0V800H1296V0Z" fill="url(#paint0_linear_40_443)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_40_443" x1="0" y1="0" x2="715.153" y2="1158.55" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9DBBB5" stop-opacity="0"/>
+<stop offset="0.6" stop-color="#BCCAD8" stop-opacity="0.03"/>
+<stop offset="1" stop-color="#DDBEE8" stop-opacity="0.11"/>
+</linearGradient>
+<clipPath id="transparent-right-edge"><rect width="1282" height="800"/></clipPath></defs>
+
+</svg>

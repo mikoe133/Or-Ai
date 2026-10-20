@@ -1,0 +1,65 @@
+.store-flow.flow-admin-page {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  min-height: 0;
+  overflow: clip;
+}
+
+.flow-admin-page > .store-header,
+.flow-admin-page > .store-footer {
+  flex-shrink: 0;
+}
+
+.flow-admin-page > .store-workspace {
+  flex: 1;
+  min-height: 0;
+}
+
+.store-flow.flow-admin-page .store-panel {
+  height: 100%;
+  min-height: 0;
+}
+
+.flow-admin-page .store-sidebar {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.store-flow.flow-admin-page .flow-content {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.flow-admin-page .biz-view {
+  flex: 1;
+  min-height: 0;
+  grid-auto-rows: max-content;
+  align-content: start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #b6a3cc #eee6f5;
+}
+
+.flow-admin-page .biz-nav {
+  gap: 8px;
+}
+
+.flow-admin-page .biz-nav a {
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.flow-admin-page .biz-nav a[aria-current="page"] {
+  color: #fff;
+  background: #66518b;
+}
+
+.flow-admin-page .store-mobile-nav {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}

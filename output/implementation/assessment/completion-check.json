@@ -1,0 +1,53 @@
+{
+  "flowChecks": [
+    {
+      "question": 5,
+      "confirmed": 5
+    },
+    {
+      "question": 6,
+      "confirmed": 6
+    },
+    {
+      "question": 7,
+      "confirmed": 7
+    },
+    {
+      "question": 8,
+      "confirmed": 8
+    },
+    {
+      "question": 9,
+      "confirmed": 9
+    },
+    {
+      "question": 10,
+      "confirmed": 10
+    },
+    {
+      "question": 11,
+      "confirmed": 11
+    },
+    {
+      "question": 12,
+      "confirmed": 12
+    },
+    {
+      "question": 13,
+      "confirmed": 13
+    },
+    {
+      "question": 14,
+      "confirmed": 14
+    },
+    {
+      "question": 15,
+      "confirmed": 15
+    },
+    {
+      "question": 16,
+      "confirmed": 16
+    }
+  ],
+  "url": "http://127.0.0.1:5173/reports/partner"
+}

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { accountApi } from "../auth/browser.js";
 import { Page, Loading, Failure, Demo, Pager } from "../business/shared.js";
 import { adminApi } from "./api.js";
 import { Orders } from "./orders.js";
 import { Assets } from "./assets.js";
 import { Products } from "./products.js";
+import { ContentWorkbench } from "./content.js";
+import "./admin.css";
 function Overview() {
   const result = useQuery({
       queryKey: ["private", "admin", "overview"],
@@ -120,10 +122,11 @@ function Management() {
   return (
     <>
       <nav className="biz-nav" aria-label="后台导航">
-        <Link to="/admin">概览与审计</Link>
-        <Link to="/admin/products">商品与版本</Link>
-        <Link to="/admin/assets">素材与文件</Link>
-        <Link to="/admin/orders">订单与售后</Link>
+        <NavLink to="/admin" end>概览与审计</NavLink>
+        <NavLink to="/admin/products">商品与版本</NavLink>
+        <NavLink to="/admin/content">内容工作台</NavLink>
+        <NavLink to="/admin/assets">素材与文件</NavLink>
+        <NavLink to="/admin/orders">订单与售后</NavLink>
         <Link to="/account">账户</Link>
       </nav>
       <Routes>
@@ -133,6 +136,7 @@ function Management() {
           element={<Products scope={result.data.scope} />}
         />
         <Route path="assets" element={<Assets />} />
+        <Route path="content/*" element={<ContentWorkbench />} />
         <Route path="orders" element={<Orders scope={result.data.scope} />} />
         <Route path="*" element={<p>后台页面不存在。</p>} />
       </Routes>
@@ -146,7 +150,7 @@ export function AdminApp() {
     retry: false,
   });
   return (
-    <Page title="运营后台">
+    <Page title="运营后台" section="admin">
       {context.isPending ? (
         <Loading />
       ) : context.isError ? (

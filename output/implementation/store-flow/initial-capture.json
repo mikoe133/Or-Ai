@@ -1,0 +1,2981 @@
+{
+  "shots": [
+    {
+      "name": "product",
+      "geometry": {
+        "width": 1440,
+        "height": 2169,
+        "content": {
+          "width": 1052,
+          "height": 2052
+        },
+        "images": [
+          {
+            "source": "/assets/store/homepage-meetmyworld-symbol.svg",
+            "loaded": true,
+            "width": 40,
+            "height": 40
+          },
+          {
+            "source": "/assets/store/icons/search.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/moon.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/heart.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/headphones.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/bag.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/featured-lavender.png",
+            "loaded": true,
+            "width": 598.828125,
+            "height": 698.890625
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 23,
+            "height": 23
+          },
+          {
+            "source": "/assets/store/icons/clock.svg",
+            "loaded": true,
+            "width": 23,
+            "height": 23
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 18,
+            "height": 18
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 18,
+            "height": 18
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 18,
+            "height": 18
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 18,
+            "height": 18
+          },
+          {
+            "source": "/assets/store/featured-teal.png",
+            "loaded": true,
+            "width": 183.359375,
+            "height": 214
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 12,
+            "height": 12
+          },
+          {
+            "source": "/assets/store/featured-periwinkle.png",
+            "loaded": true,
+            "width": 183.359375,
+            "height": 214
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 12,
+            "height": 12
+          },
+          {
+            "source": "/assets/store/featured-blush.png",
+            "loaded": true,
+            "width": 183.359375,
+            "height": 214
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 12,
+            "height": 12
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/sparkles.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          }
+        ],
+        "fragments": [
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1024
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E5%BA%95%E9%83%A8%E8%BD%A8%E9%81%93%E7%BD%91%E6%A0%BC",
+            "bounds": {
+              "x": 382,
+              "y": 820,
+              "width": 960,
+              "height": 288
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+            "bounds": {
+              "x": 73.19999694824219,
+              "y": 73.19999694824219,
+              "width": 244,
+              "height": 905
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Entertainment%20info",
+            "bounds": {
+              "x": 22.75,
+              "y": 19.75,
+              "width": 16.5,
+              "height": 16.5
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Metadata%20%C2%B7%205%20%E4%B8%AA%E7%BB%B4%E5%BA%A6",
+            "bounds": {
+              "x": 321.875,
+              "y": 48,
+              "width": 87.0625,
+              "height": 21
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Dimension%20%C2%B7%20%E5%AE%B6%E5%8A%A1%E4%B8%BB%E5%8A%A8%E6%80%A7",
+            "bounds": {
+              "x": 0,
+              "y": 130,
+              "width": 189.39999389648438,
+              "height": 140
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Dimension%20%C2%B7%20%E6%89%BF%E8%AF%BA%E5%85%91%E7%8E%B0",
+            "bounds": {
+              "x": 205.39999389648438,
+              "y": 130,
+              "width": 189.39999389648438,
+              "height": 140
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Dimension%20%C2%B7%20%E5%85%B1%E5%90%8C%E5%86%B3%E7%AD%96",
+            "bounds": {
+              "x": 410.79998779296875,
+              "y": 130,
+              "width": 189.39996337890625,
+              "height": 140
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Dimension%20%C2%B7%20%E6%B2%9F%E9%80%9A%E4%BF%AE%E5%A4%8D",
+            "bounds": {
+              "x": 616.2000122070312,
+              "y": 130,
+              "width": 189.39996337890625,
+              "height": 140
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Dimension%20%C2%B7%20%E8%BE%B9%E7%95%8C%E5%B0%8A%E9%87%8D",
+            "bounds": {
+              "x": 821.5999755859375,
+              "y": 130,
+              "width": 189.4000244140625,
+              "height": 140
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Step%201%20%C2%B7%20%E5%B9%B3%E5%8F%B0%E8%B4%AD%E4%B9%B0",
+            "bounds": {
+              "x": 0,
+              "y": 52,
+              "width": 237.75,
+              "height": 120
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Step%202%20%C2%B7%20%E8%8E%B7%E5%8F%96%E5%85%91%E6%8D%A2%E7%A0%81",
+            "bounds": {
+              "x": 257.75,
+              "y": 52,
+              "width": 237.75,
+              "height": 120
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Step%203%20%C2%B7%20%E8%BE%93%E5%85%A5%E5%85%91%E6%8D%A2%E7%A0%81",
+            "bounds": {
+              "x": 515.5,
+              "y": 52,
+              "width": 237.75,
+              "height": 120
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Step%204%20%C2%B7%20%E5%AE%8C%E6%88%90%E6%B5%8B%E8%AF%84",
+            "bounds": {
+              "x": 773.25,
+              "y": 52,
+              "width": 237.75,
+              "height": 120
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Entertainment%20info",
+            "bounds": {
+              "x": 22.75,
+              "y": 19.75,
+              "width": 16.5,
+              "height": 16.5
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Entertainment%20info",
+            "bounds": {
+              "x": 22.75,
+              "y": 19.75,
+              "width": 16.5,
+              "height": 16.5
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "answer",
+      "geometry": {
+        "width": 1440,
+        "height": 1024,
+        "content": {
+          "width": 1051,
+          "height": 799.390625
+        },
+        "images": [
+          {
+            "source": "/assets/store/homepage-meetmyworld-symbol.svg",
+            "loaded": true,
+            "width": 40,
+            "height": 40
+          },
+          {
+            "source": "/assets/store/icons/search.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/moon.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "source": "/assets/store/icons/user.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/heart.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/headphones.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/bag.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/featured-lavender.png",
+            "loaded": true,
+            "width": 72,
+            "height": 82
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/sparkles.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          }
+        ],
+        "fragments": [
+          {
+            "source": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1024
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-atmosphere.svg#%E5%BA%95%E9%83%A8%E8%BD%A8%E9%81%93%E7%BD%91%E6%A0%BC",
+            "bounds": {
+              "x": 382,
+              "y": 820,
+              "width": 960,
+              "height": 288
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+            "bounds": {
+              "x": 73.19999694824219,
+              "y": 73.19999694824219,
+              "width": 244,
+              "height": 905
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-answer-content.svg#%E9%80%80%E5%87%BA%E5%9B%BE%E6%A0%87",
+            "bounds": {
+              "x": 908,
+              "y": 9,
+              "width": 12.75,
+              "height": 12
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "feedback",
+      "geometry": {
+        "width": 1440,
+        "height": 1024,
+        "content": {
+          "width": 1051,
+          "height": 799.390625
+        },
+        "images": [
+          {
+            "source": "/assets/store/homepage-meetmyworld-symbol.svg",
+            "loaded": true,
+            "width": 40,
+            "height": 40
+          },
+          {
+            "source": "/assets/store/icons/search.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/moon.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "source": "/assets/store/icons/user.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/heart.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/headphones.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/bag.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/featured-lavender.png",
+            "loaded": true,
+            "width": 72,
+            "height": 82
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/sparkles.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          }
+        ],
+        "fragments": [
+          {
+            "source": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1024
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-atmosphere.svg#%E5%BA%95%E9%83%A8%E8%BD%A8%E9%81%93%E7%BD%91%E6%A0%BC",
+            "bounds": {
+              "x": 382,
+              "y": 820,
+              "width": 960,
+              "height": 288
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+            "bounds": {
+              "x": 73.19999694824219,
+              "y": 73.19999694824219,
+              "width": 244,
+              "height": 905
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-answer-content.svg#%E9%80%80%E5%87%BA%E5%9B%BE%E6%A0%87",
+            "bounds": {
+              "x": 908,
+              "y": 9,
+              "width": 12.75,
+              "height": 12
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "report",
+      "geometry": {
+        "width": 1440,
+        "height": 2780,
+        "content": {
+          "width": 1052,
+          "height": 2555
+        },
+        "images": [
+          {
+            "source": "/assets/store/ambient-orbits.svg",
+            "loaded": true,
+            "width": 1440,
+            "height": 2780
+          },
+          {
+            "source": "/assets/store/top-right-lilac-glow.svg",
+            "loaded": true,
+            "width": 1440,
+            "height": 977.34375
+          },
+          {
+            "source": "/assets/store/homepage-meetmyworld-symbol.svg",
+            "loaded": true,
+            "width": 40,
+            "height": 40
+          },
+          {
+            "source": "/assets/store/icons/search.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/moon.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "source": "/assets/store/icons/user.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/heart.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/headphones.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/bag.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/arrow.svg",
+            "loaded": true,
+            "width": 22,
+            "height": 22
+          },
+          {
+            "source": "/assets/store/featured-lavender.png",
+            "loaded": true,
+            "width": 658.671875,
+            "height": 768.71875
+          },
+          {
+            "source": "/assets/store/featured-blush.png",
+            "loaded": true,
+            "width": 211,
+            "height": 244
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/sparkles.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          }
+        ],
+        "fragments": [
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+            "bounds": {
+              "x": 73.19999694824219,
+              "y": 73.19999694824219,
+              "width": 244,
+              "height": 905
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+            "bounds": {
+              "x": 20,
+              "y": 950,
+              "width": 1427,
+              "height": 60
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+            "bounds": {
+              "x": 72,
+              "y": 380,
+              "width": 1296,
+              "height": 600
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+            "bounds": {
+              "x": 72,
+              "y": 180,
+              "width": 1296,
+              "height": 800
+            }
+          },
+          {
+            "source": "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour",
+            "bounds": {
+              "x": 86,
+              "y": 202,
+              "width": 1268,
+              "height": 764
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#Group%20reference%20info",
+            "bounds": {
+              "x": 48,
+              "y": 132,
+              "width": 18,
+              "height": 18
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%AE%B6%E5%8A%A1%E4%B8%BB%E5%8A%A8%E6%80%A7%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 128.37930297851562,
+              "width": 955,
+              "height": 44.620689392089844
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%89%BF%E8%AF%BA%E5%85%91%E7%8E%B0%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 195.37930297851562,
+              "width": 955,
+              "height": 44.620689392089844
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%85%B1%E5%90%8C%E5%86%B3%E7%AD%96%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 262.3793029785156,
+              "width": 955,
+              "height": 44.620689392089844
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%B2%9F%E9%80%9A%E4%BF%AE%E5%A4%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 329.3793029785156,
+              "width": 955,
+              "height": 44.620689392089844
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%BE%B9%E7%95%8C%E5%B0%8A%E9%87%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 31.25,
+              "y": 396.3793029785156,
+              "width": 836.68310546875,
+              "height": 29.89655303955078
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%AE%B6%E5%8A%A1%E4%B8%BB%E5%8A%A8%E6%80%A7%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 128,
+              "width": 955,
+              "height": 45
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%89%BF%E8%AF%BA%E5%85%91%E7%8E%B0%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 195,
+              "width": 955,
+              "height": 45
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%85%B1%E5%90%8C%E5%86%B3%E7%AD%96%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 262,
+              "width": 955,
+              "height": 45
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%B2%9F%E9%80%9A%E4%BF%AE%E5%A4%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 28,
+              "y": 329,
+              "width": 955,
+              "height": 45
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%BE%B9%E7%95%8C%E5%B0%8A%E9%87%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+            "bounds": {
+              "x": 31.25,
+              "y": 396,
+              "width": 836.75,
+              "height": 31
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E4%BD%A0%E7%9A%84%E5%8D%8F%E4%BD%9C%E4%BC%98%E5%8A%BF",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 495.5,
+              "height": 278
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E4%BD%A0%E7%9A%84%E5%8D%8F%E4%BD%9C%E4%BC%98%E5%8A%BF",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 495.5,
+              "height": 278
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%80%BC%E5%BE%97%E7%95%99%E6%84%8F",
+            "bounds": {
+              "x": 515.5,
+              "y": 0,
+              "width": 495.5,
+              "height": 278
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%80%BC%E5%BE%97%E7%95%99%E6%84%8F",
+            "bounds": {
+              "x": 515.5,
+              "y": 0,
+              "width": 495.5,
+              "height": 278
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%A1%8C%E5%8A%A8%2001%20%C2%B7%20%E6%AF%8F%E5%91%A8%E4%B8%80%E6%AC%A1%E5%88%86%E5%B7%A5%E5%AF%B9%E9%BD%90",
+            "bounds": {
+              "x": 28,
+              "y": 99,
+              "width": 307.6666564941406,
+              "height": 164
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%A1%8C%E5%8A%A8%2002%20%C2%B7%20%E5%86%B2%E7%AA%81%E6%97%B6%E5%85%88%E5%9B%9E%E5%BA%94%E6%84%9F%E5%8F%97",
+            "bounds": {
+              "x": 351.6666564941406,
+              "y": 99,
+              "width": 307.6666564941406,
+              "height": 164
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%A1%8C%E5%8A%A8%2003%20%C2%B7%20%E7%BB%99%E5%BD%BC%E6%AD%A4%E7%95%99%E5%87%BA%E4%BC%91%E6%81%AF%E6%97%B6%E9%97%B4",
+            "bounds": {
+              "x": 675.3333129882812,
+              "y": 99,
+              "width": 307.6666564941406,
+              "height": 164
+            }
+          },
+          {
+            "source": "/assets/flow/full-report-wide-hero-content.svg#Save%20share%20card%20icon",
+            "bounds": {
+              "x": 731.75,
+              "y": 127.75,
+              "width": 16.5,
+              "height": 16.5
+            }
+          },
+          {
+            "source": "/assets/flow/product-detail-wide-hero-content.svg#Entertainment%20info",
+            "bounds": {
+              "x": 22.75,
+              "y": 19.75,
+              "width": 16.5,
+              "height": 16.5
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "redeem",
+      "geometry": {
+        "width": 1440,
+        "height": 1024,
+        "content": {
+          "width": 1052,
+          "height": 907.390625
+        },
+        "images": [
+          {
+            "source": "/assets/store/homepage-meetmyworld-symbol.svg",
+            "loaded": true,
+            "width": 40,
+            "height": 40
+          },
+          {
+            "source": "/assets/store/icons/search.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/moon.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 24,
+            "height": 24
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/heart.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/headphones.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "source": "/assets/store/icons/bag.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/grid.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/chevron.svg",
+            "loaded": true,
+            "width": 22,
+            "height": 22
+          },
+          {
+            "source": "/assets/store/featured-lavender.png",
+            "loaded": true,
+            "width": 154,
+            "height": 112
+          },
+          {
+            "source": "/assets/store/icons/file.svg",
+            "loaded": true,
+            "width": 19,
+            "height": 19
+          },
+          {
+            "source": "/assets/store/icons/clock.svg",
+            "loaded": true,
+            "width": 19,
+            "height": 19
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 21,
+            "height": 21
+          },
+          {
+            "source": "/assets/store/icons/headphones.svg",
+            "loaded": true,
+            "width": 21,
+            "height": 21
+          },
+          {
+            "source": "/assets/store/icons/bookmark.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/plus.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/sparkles.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          },
+          {
+            "source": "/assets/store/icons/help.svg",
+            "loaded": true,
+            "width": 20,
+            "height": 20
+          }
+        ],
+        "fragments": [
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 1024
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E5%BA%95%E9%83%A8%E8%BD%A8%E9%81%93%E7%BD%91%E6%A0%BC",
+            "bounds": {
+              "x": 382,
+              "y": 820,
+              "width": 960,
+              "height": 288
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+            "bounds": {
+              "x": 73.19999694824219,
+              "y": 73.19999694824219,
+              "width": 244,
+              "height": 905
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+            "bounds": {
+              "x": 58,
+              "y": 72,
+              "width": 1324,
+              "height": 921.4000244140625
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BE%20%C2%B7%205%20%E4%B8%AA%E7%BB%B4%E5%BA%A6",
+            "bounds": {
+              "x": 462,
+              "y": 102,
+              "width": 120,
+              "height": 38
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E7%B2%98%E8%B4%B4%E5%9B%BE%E6%A0%87",
+            "bounds": {
+              "x": 532.7916870117188,
+              "y": 280.9166564941406,
+              "width": 13.4166259765625,
+              "height": 18.208343505859375
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%E5%9B%BE%E6%A0%87",
+            "bounds": {
+              "x": 35,
+              "y": 512,
+              "width": 18,
+              "height": 18
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E5%8F%AF%E7%BC%96%E8%BE%91%E7%8E%BB%E7%92%83%E5%85%91%E6%8D%A2%E5%88%B8",
+            "bounds": {
+              "x": 47.031951904296875,
+              "y": 102.45835876464844,
+              "width": 252.96804809570312,
+              "height": 248.54164123535156
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%9C%A8%E8%B4%AD%E4%B9%B0%E5%B9%B3%E5%8F%B0%E5%AE%8C%E6%88%90%E8%B4%AD%E4%B9%B0",
+            "bounds": {
+              "x": 27,
+              "y": 379,
+              "width": 201,
+              "height": 44
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%9C%A8%E8%AE%A2%E5%8D%95%E4%B8%AD%E6%9F%A5%E7%9C%8B%E5%85%91%E6%8D%A2%E7%A0%81",
+            "bounds": {
+              "x": 27,
+              "y": 437,
+              "width": 201,
+              "height": 44
+            }
+          },
+          {
+            "source": "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%A4%8D%E5%88%B6%E5%90%8E%E7%B2%98%E8%B4%B4%E5%88%B0%E8%BF%99%E9%87%8C",
+            "bounds": {
+              "x": 27,
+              "y": 495,
+              "width": 185,
+              "height": 44
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "failures": []
+}

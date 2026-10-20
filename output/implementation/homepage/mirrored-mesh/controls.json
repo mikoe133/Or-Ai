@@ -1,0 +1,15 @@
+{
+  "pause": true,
+  "resume": true,
+  "reducedStatic": true,
+  "reducedSymmetry": {
+    "axisY": 867,
+    "equalPaths": true,
+    "equalSize": true,
+    "mirroredBounds": true,
+    "mirroredPoint": true,
+    "lowerReflected": true,
+    "withinField": true,
+    "noHorizontalOverflow": true
+  }
+}

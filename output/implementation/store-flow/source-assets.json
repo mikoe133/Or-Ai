@@ -1,0 +1,134 @@
+[
+  {
+    "path": "apps/web/public/assets/flow/full-report-wide-hero-content.svg",
+    "bytes": 4436386,
+    "original": "output/figma/full-report-wide-hero-content.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1011",
+      "height": "2502",
+      "viewBox": "0 0 1011 2502"
+    },
+    "semanticGroups": 46,
+    "sha256": "5cffdce6361a7718ea8ae0233395d40f702ff5f83ed0960679be5086c32f78b8"
+  },
+  {
+    "path": "apps/web/public/assets/flow/option-grid-answer-content.svg",
+    "bytes": 2137815,
+    "original": "output/figma/option-grid-answer-content.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1011",
+      "height": "750",
+      "viewBox": "0 0 1011 750"
+    },
+    "semanticGroups": 23,
+    "sha256": "2f097c5e181819422c1045cb254099ba257491c93d8d84134ab7f972a9a26f54"
+  },
+  {
+    "path": "apps/web/public/assets/flow/option-grid-atmosphere.svg",
+    "bytes": 2449,
+    "original": "output/figma/option-grid-atmosphere.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1440",
+      "height": "1024",
+      "viewBox": "0 0 1440 1024"
+    },
+    "semanticGroups": 3,
+    "sha256": "a2ce43b9d1693c0aea589002b02ce4157c0ace86eb9715e1dd06f2c5c4977d81"
+  },
+  {
+    "path": "apps/web/public/assets/flow/option-grid-double-contours.svg",
+    "bytes": 6792,
+    "original": "output/figma/option-grid-double-contours.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1440",
+      "height": "1024",
+      "viewBox": "0 0 1440 1024"
+    },
+    "semanticGroups": 5,
+    "sha256": "5e64be9ab7c9bcd4b483dd710033fb520f749be9539f69f1ee0c598da62adf83"
+  },
+  {
+    "path": "apps/web/public/assets/flow/product-detail-wide-hero-content.svg",
+    "bytes": 9091467,
+    "original": "output/figma/product-detail-wide-hero-content.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1011",
+      "height": "1990",
+      "viewBox": "0 0 1011 1990"
+    },
+    "semanticGroups": 57,
+    "sha256": "c533c5f5a4d74010f9da3c289f4b02a72e82ce699793651be2fa505df8710898"
+  },
+  {
+    "path": "apps/web/public/assets/redemption/guided-redemption-atmosphere.svg",
+    "bytes": 2404,
+    "original": "output/figma/guided-redemption-atmosphere.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1440",
+      "height": "1024",
+      "viewBox": "0 0 1440 1024"
+    },
+    "semanticGroups": 4,
+    "sha256": "4428f306ae200c371add79dd5ca1c88a7371c14f172917675f18448f665fa36d"
+  },
+  {
+    "path": "apps/web/public/assets/redemption/guided-redemption-content.svg",
+    "bytes": 2140092,
+    "original": "output/figma/guided-redemption-content.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1011",
+      "height": "866",
+      "viewBox": "0 0 1011 866"
+    },
+    "semanticGroups": 32,
+    "sha256": "85b347b4e65e3c277dea2e97bfef82e41efa75290cf0cb9ec158ca6c64c7ed86"
+  },
+  {
+    "path": "apps/web/public/assets/redemption/guided-redemption-success-content.svg",
+    "bytes": 2140076,
+    "original": "output/figma/guided-redemption-success-content.svg",
+    "byteIdentical": true,
+    "dimensions": {
+      "width": "1011",
+      "height": "866",
+      "viewBox": "0 0 1011 866"
+    },
+    "semanticGroups": 32,
+    "sha256": "13049b93087b5391f7d3adf33198442509f234a014e388f340e4bce2c4393284"
+  },
+  {
+    "path": "apps/web/public/assets/store/featured-lavender.png",
+    "bytes": 1595616,
+    "original": "output/figma/assets/featured-lavender.png",
+    "byteIdentical": true,
+    "sha256": "c13ead2ca37403b95f4398153dbd106f162594067914c3c2a969bf506edcbed8"
+  },
+  {
+    "path": "apps/web/public/assets/store/featured-teal.png",
+    "bytes": 1662656,
+    "original": "output/figma/assets/featured-teal.png",
+    "byteIdentical": true,
+    "sha256": "fe8734aafb4da9b02e72237c1e38f6371474786ba6f114970f5ff75aacdeb90e"
+  },
+  {
+    "path": "apps/web/public/assets/store/featured-periwinkle.png",
+    "bytes": 1828972,
+    "original": "output/figma/assets/featured-periwinkle.png",
+    "byteIdentical": true,
+    "sha256": "4d8c87414cb70f838b2bf17ab8fcfc6884b5f3e72b589c1ce2a3d74967c5c791"
+  },
+  {
+    "path": "apps/web/public/assets/store/featured-blush.png",
+    "bytes": 1708341,
+    "original": "output/figma/assets/featured-blush.png",
+    "byteIdentical": true,
+    "sha256": "7cb6c60b2e8c19b0f812bcd29a11632b25239f69bbd517e20cbb93a36d41aa8a"
+  }
+]

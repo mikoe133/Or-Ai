@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { DataScopeSchema, ExperienceTypeSchema, IdSchema, KeySchema, MoneyFenSchema, PageSchema, PlatformSchema, ProductStatusSchema, TimestampSchema } from './shared.js';
 import { ProductDetailSchema, PublicReportSampleSchema } from './public.js';
+import { ContentRevisionSchema, ContentReferenceSchema, ProductionRecordSchema } from './content.js';
 
 const text = (max: number) => z.string().trim().min(1).max(max);
 export const RetentionPolicySchema = z.object({
@@ -150,8 +151,13 @@ export const AdminUploadPrepareSchema = z.object({ productVersionId: IdSchema, k
   byteSize: z.number().int().min(1).max(536_870_912), checksum: z.string().regex(/^[0-9a-f]{64}$/), requestId: IdSchema }).strict();
 export const AdminFileSchema = z.object({ id: IdSchema, productVersionId: IdSchema, scope: DataScopeSchema,
   kind: z.enum(['cover', 'video']), fileName: z.string(), mimeType: z.string(), byteSize: z.number().int(), checksum: z.string(),
-  status: z.enum(['pending', 'verifying', 'uploaded', 'available', 'failed', 'expired']),
+  width: z.number().int().positive().nullable(), height: z.number().int().positive().nullable(), durationMs: z.number().int().positive().nullable(),
+  status: z.enum(['pending', 'verifying', 'uploaded', 'available', 'failed', 'expired', 'deleting', 'deleted']),
   expiresAt: TimestampSchema, verifiedAt: TimestampSchema.nullable(), uploadPath: z.string(), downloadPath: z.string().nullable() }).strict();
+export const ContentRevisionDetailSchema = ContentRevisionSchema.extend({
+  inputs: z.array(ContentReferenceSchema), production: ProductionRecordSchema.nullable(),
+  deliveryFile: AdminFileSchema.nullable(), previewFile: AdminFileSchema.nullable(),
+}).strict();
 export const ClientViewEventSchema = z.object({ kind: z.literal('view'), productVersionId: IdSchema,
   requestId: IdSchema, campaignCode: KeySchema.optional() }).strict();
 
@@ -172,3 +178,4 @@ export const AdminOverviewSchema=z.object({scope:DataScopeSchema,generatedAt:Tim
   products:z.number().int(),assets:z.number().int(),
 }).strict();
 export const AdminAuditSchema=z.object({id:IdSchema,actorUserId:IdSchema.nullable(),scope:DataScopeSchema,action:text(160),entityKind:text(80),entityId:IdSchema,requestId:IdSchema.nullable(),createdAt:TimestampSchema}).strict();
+export * from './content-workflow.js';

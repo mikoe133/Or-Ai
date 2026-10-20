@@ -1,0 +1,144 @@
+.store-assessment { --store-brand: #d8afe9; --store-text: #f7f3fb; --store-secondary: #a8a3b4; }
+.store-assessment .store-intro::before { border-width: 1.25px; border-radius: 54px 0 0 54px; background: linear-gradient(90deg, #11131b, #11121a 65%, #242131); }
+.store-assessment .store-greeting { top: 31px; width: 192px; height: 48px; padding: 8px 12px; border: 1px solid rgb(68 68 80 / 30%); background: linear-gradient(135deg, #2b2d38, #232631); }
+.store-assessment .store-greeting-avatar { flex-shrink: 0; width: 30px; height: 30px; }
+.store-assessment .flow-panel-fill { background: linear-gradient(90deg, rgb(25 27 36 / 88%) calc(100% - 14px), transparent); }
+.store-assessment .flow-content { display: block; container: assessment / inline-size; padding: 21px 19px 28.4px 20px; }
+.assessment-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.assessment-layout.has-feedback { grid-template-columns: minmax(0, 1fr) 337px; }
+.assessment-main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.assessment-navigation { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 28px; color: var(--store-secondary); }
+.assessment-navigation .flow-text-link { gap: 32px; min-height: 28px; color: var(--store-secondary); white-space: nowrap; }
+.assessment-product { display: flex; align-items: center; gap: 24px; min-height: 82px; }
+.assessment-product > img { flex: 0 0 72px; width: 72px; height: 82px; border-radius: 13px; object-fit: cover; }
+.assessment-product > div { min-width: 0; }
+.assessment-product-heading { display: flex; align-items: center; gap: 104px; }
+.assessment-product-heading h1 { font-size: 32px; line-height: 44px; font-weight: 700; white-space: nowrap; }
+.assessment-product-heading .flow-tag { min-width: 80px; padding-inline: 12px; color: var(--store-brand); }
+.assessment-product p { margin-top: 8px; color: var(--store-secondary); font-size: 15px; line-height: 24px; }
+.assessment-progress { display: grid; grid-template-columns: 122px minmax(0, 1fr) 60px; align-items: center; min-height: 36px; color: var(--store-secondary); }
+.assessment-progress > .assessment-number { color: var(--store-text); text-align: right; }
+.assessment-progress-segments { display: flex; gap: 5px; }
+.assessment-progress-segments i { flex: 1; height: 10px; border-radius: 5px; background: #353744; }
+.assessment-progress-segments .is-complete { background: var(--store-brand); }
+.assessment-number, .assessment-option-letter { font-family: Manrope, sans-serif; font-weight: 500; }
+.assessment-question { min-width: 0; min-height: 500px; padding: 15px 27px 3px; border: 1px solid #444451; border-radius: 24px; background: linear-gradient(135deg, #252630, #1b1d25); }
+.assessment-question-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 28px; color: var(--store-secondary); font-size: 14px; line-height: 22px; }
+.assessment-answer-status { flex-shrink: 0; min-width: 137px; color: #d2b58b; background: #3a302b; border-color: #61516e; }
+.assessment-answer-status.is-saved { min-width: 125px; color: #9ee0cb; background: #233e38; }
+.assessment-question h2 { margin-top: 22px; font-size: 28px; font-weight: 700; line-height: 34px; outline: none; overflow-wrap: anywhere; }
+.assessment-option-hint { margin-top: 12px !important; color: var(--store-secondary); font-size: 16px; line-height: 24px; }
+.assessment-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 21px; }
+.assessment-option { position: relative; display: flex; align-items: center; gap: 16px; min-width: 0; min-height: 98px; padding: 18px 15px; border: 1px solid #414450; border-radius: 16px; background: linear-gradient(135deg, #292a35, #22242d); font-size: 18px; line-height: 26px; cursor: pointer; transition: border-color 150ms ease, background 150ms ease; }
+.assessment-option:hover:not(:has(input:disabled)) { border-color: #80728e; }
+.assessment-option.is-selected { border-color: var(--store-brand); background: #332d40; }
+.assessment-option:has(input:disabled) { cursor: default; }
+.assessment-option:has(input:focus-visible) { outline: 2px solid var(--store-brand); outline-offset: 4px; }
+.assessment-option input { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; clip-path: inset(50%); opacity: 0; }
+.assessment-option-radio { display: grid; place-items: center; flex: 0 0 20px; width: 20px; height: 20px; border: 1.5px solid #d0cdd8; border-radius: 50%; }
+.is-selected .assessment-option-radio { border-color: var(--store-brand); background: var(--store-brand); }
+.is-selected .assessment-option-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #523065; }
+.assessment-option-letter { flex: 0 0 16px; font-size: 19px; line-height: 26px; }
+.is-selected .assessment-option-letter { color: var(--store-brand); }
+.assessment-option > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+.assessment-question-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 26px; padding-top: 19px; border-top: 1px solid #45434f; }
+.assessment-question-actions .flow-button { gap: 26px; min-height: 54px; line-height: 24px; }
+.assessment-previous { width: 158px; border-color: #64616f; background: #23252f; }
+.assessment-previous .store-icon { transform: rotate(180deg); }
+.assessment-confirm { width: 268px; margin-left: auto; }
+.assessment-next { width: 206px; }
+.assessment-edit { color: var(--store-secondary); font-size: 14px; }
+.assessment-confirm-hint { margin-top: 6px !important; color: var(--store-secondary); font-size: 12px; line-height: 18px; text-align: right; }
+.assessment-disclaimer { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 24px; color: var(--store-secondary); font-size: 12px; line-height: 20px; }
+.assessment-disclaimer .flow-text-link { min-height: 24px; font-size: 12px; }
+.assessment-feedback { display: flex; flex-direction: column; min-width: 0; min-height: 750px; padding: 21px 21px 0; border: 1px solid #63586e; border-radius: 24px; background: linear-gradient(135deg, #232530, #23212d 70%, #32273f); }
+.assessment-feedback-heading { display: flex; align-items: center; gap: 8px; min-height: 36px; }
+.assessment-feedback-heading h2 { flex-shrink: 0; font-size: 24px; font-weight: 700; line-height: 36px; }
+.assessment-feedback-heading .flow-tag { padding-inline: 14px; color: var(--store-brand); }
+.assessment-feedback-heading button { align-self: center; min-height: 36px; margin-left: auto; color: var(--store-secondary); font-size: 12px; white-space: nowrap; }
+.assessment-feedback-note { margin-top: 4px !important; color: var(--store-secondary); font-size: 12px; line-height: 18px; }
+.assessment-your-answer { min-height: 80px; margin-top: 19px; padding: 10px 14px 12px; border: 1px solid #806691; border-radius: 14px; background: #302b3c; }
+.assessment-your-answer > span { color: var(--store-brand); font-size: 13px; line-height: 20px; }
+.assessment-your-answer p { margin-top: 8px; font-size: 16px; line-height: 24px; }
+.assessment-answer-distribution { margin-top: 6px; }
+.assessment-feedback h3 { font-size: 19px; font-weight: 700; line-height: 28px; }
+.assessment-feedback section > p { color: var(--store-secondary); font-size: 12px; line-height: 18px; }
+.assessment-distribution { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 0; padding: 0; list-style: none; }
+.assessment-distribution li { --distribution-color: #b6d0ec; min-width: 0; }
+.assessment-distribution .distribution-lilac { --distribution-color: var(--store-brand); }
+.assessment-distribution .distribution-mint { --distribution-color: #9ee0cb; }
+.assessment-distribution li > div:first-child { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; line-height: 20px; }
+.assessment-distribution .assessment-number { flex-shrink: 0; color: var(--distribution-color); }
+.assessment-answer-distribution .distribution-lilac > div:first-child { color: var(--store-brand); }
+.assessment-distribution-track { height: 9px; margin-top: 7px; overflow: hidden; border-radius: 5px; background: #393b49; }
+.assessment-distribution-track i { display: block; height: 100%; border-radius: inherit; background: var(--distribution-color); }
+.assessment-result-distribution { margin-top: 28px; padding-top: 10px; border-top: 1px solid #61576b; }
+.assessment-result-distribution .assessment-distribution { margin-top: 20px; }
+.assessment-feedback-footer { min-height: 60px; margin-top: auto; padding-top: 13px; border-top: 1px solid #514957; color: var(--store-secondary); font-size: 12px; line-height: 23px; }
+.assessment-result-distribution { margin-bottom: 32px; }
+.assessment-notice { margin-top: 12px !important; color: var(--store-secondary); font-size: 12px; line-height: 20px; }
+
+@container assessment (min-width: 931px) {
+  .has-feedback .assessment-question { padding-bottom: 19px; }
+  .has-feedback .assessment-question h2 { margin-top: 16px; }
+  .has-feedback .assessment-question-clause { display: block; }
+  .has-feedback .assessment-option-clause { display: block; }
+  .has-feedback .assessment-option-hint { margin-top: 8px !important; font-size: 15px; }
+  .has-feedback .assessment-options { margin-top: 18px; }
+  .has-feedback .assessment-option { min-height: 92px; font-size: 16px; line-height: 24px; }
+}
+@container assessment (max-width: 930px) {
+  .assessment-layout.has-feedback { grid-template-columns: minmax(0, 1fr); }
+  .assessment-feedback { min-height: 0; padding-bottom: 20px; }
+  .assessment-feedback-footer { margin-top: 0; }
+  .assessment-product-heading { gap: 32px; }
+  .assessment-question { min-height: 0; padding-bottom: 20px; }
+  .assessment-confirm { width: 220px; }
+}
+@container assessment (max-width: 580px) {
+  .assessment-product-heading { flex-wrap: wrap; gap: 4px 12px; }
+  .assessment-product-heading h1 { font-size: 26px; line-height: 38px; }
+  .assessment-product-heading .flow-tag { min-width: 64px; min-height: 24px; padding: 2px 10px; font-size: 10px; }
+  .assessment-product { gap: 16px; }
+  .assessment-product p { font-size: 12px; line-height: 20px; }
+  .assessment-question { padding: 20px 18px; }
+  .assessment-question-header { align-items: flex-start; flex-wrap: wrap; font-size: 12px; }
+  .assessment-answer-status { min-width: 110px; min-height: 24px; padding: 2px 10px; font-size: 10px; }
+  .assessment-answer-status.is-saved { min-width: 100px; }
+  .assessment-question h2 { font-size: 23px; line-height: 34px; }
+  .assessment-options { gap: 12px; }
+  .assessment-option { gap: 10px; min-height: 104px; padding: 14px 12px; font-size: 14px; line-height: 23px; }
+  .assessment-question-actions { gap: 12px; flex-wrap: wrap; }
+  .assessment-question-actions .flow-button { gap: 12px; width: auto; min-width: 120px; flex: 1; padding-inline: 14px; font-size: 15px !important; }
+  .assessment-edit { order: 3; justify-content: center; width: 100%; min-height: 32px; }
+  .assessment-progress { grid-template-columns: 96px minmax(0, 1fr) 42px; font-size: 12px; }
+  .assessment-progress-segments { gap: 3px; }
+  .assessment-progress-segments i { height: 8px; }
+  .assessment-navigation { font-size: 12px; }
+  .assessment-navigation .flow-text-link { gap: 8px; }
+  .assessment-disclaimer { flex-wrap: wrap; font-size: 11px; }
+}
+@container assessment (max-width: 420px) {
+  .assessment-options { grid-template-columns: minmax(0, 1fr); }
+  .assessment-option { min-height: 72px; gap: 16px; font-size: 15px; }
+  .assessment-product > img { flex-basis: 58px; width: 58px; height: 70px; }
+  .assessment-product-heading h1 { font-size: 24px; line-height: 34px; }
+  .assessment-product-heading { gap: 4px 8px; }
+  .assessment-product-heading .flow-tag { min-width: 60px; }
+  .assessment-product p { margin-top: 4px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .assessment-option { transition: none; }
+}
+@media (min-width: 1280px) {
+  .store-assessment { --store-sidebar-width: 245px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .store-assessment .store-greeting { display: flex; }
+}
+@media (min-width: 1600px) {
+  .store-assessment .store-panel { min-height: max(799.4px, calc(100dvh - 224.6px)); }
+}
+@media (max-width: 767px), (max-width: 1023px) and (max-height: 500px) and (orientation: landscape) {
+  .store-assessment .flow-content { padding: 8px 18px 28px; }
+}

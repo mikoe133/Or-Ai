@@ -1,0 +1,45 @@
+[
+  {
+    "asset": "apps/web/public/assets/flow/option-grid-atmosphere.svg",
+    "source": "output/figma/option-grid-atmosphere.svg",
+    "bytes": 2449,
+    "sha256": "a2ce43b9d1693c0aea589002b02ce4157c0ace86eb9715e1dd06f2c5c4977d81",
+    "exactOriginal": true,
+    "rootDimensions": {
+      "width": "1440",
+      "height": "1024",
+      "viewBox": "0 0 1440 1024"
+    }
+  },
+  {
+    "asset": "apps/web/public/assets/flow/option-grid-double-contours.svg",
+    "source": "output/figma/option-grid-double-contours.svg",
+    "bytes": 6792,
+    "sha256": "5e64be9ab7c9bcd4b483dd710033fb520f749be9539f69f1ee0c598da62adf83",
+    "exactOriginal": true,
+    "rootDimensions": {
+      "width": "1440",
+      "height": "1024",
+      "viewBox": "0 0 1440 1024"
+    }
+  },
+  {
+    "asset": "apps/web/public/assets/flow/option-grid-answer-content.svg",
+    "source": "output/figma/option-grid-answer-content.svg",
+    "bytes": 2137815,
+    "sha256": "2f097c5e181819422c1045cb254099ba257491c93d8d84134ab7f972a9a26f54",
+    "exactOriginal": true,
+    "rootDimensions": {
+      "width": "1011",
+      "height": "750",
+      "viewBox": "0 0 1011 750"
+    }
+  },
+  {
+    "asset": "apps/web/public/assets/store/featured-lavender.png",
+    "source": "output/figma/assets/featured-lavender.png",
+    "bytes": 1595616,
+    "sha256": "c13ead2ca37403b95f4398153dbd106f162594067914c3c2a969bf506edcbed8",
+    "exactOriginal": true
+  }
+]

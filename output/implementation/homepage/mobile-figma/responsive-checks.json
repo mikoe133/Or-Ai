@@ -1,0 +1,145 @@
+[
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 305,
+    "mobile": true,
+    "scrollWidth": 305,
+    "viewport": [
+      320,
+      568
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 360,
+    "mobile": true,
+    "scrollWidth": 360,
+    "viewport": [
+      375,
+      812
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 384,
+    "mobile": true,
+    "scrollWidth": 384,
+    "viewport": [
+      384,
+      832
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 390,
+    "mobile": true,
+    "scrollWidth": 390,
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 430,
+    "mobile": true,
+    "scrollWidth": 430,
+    "viewport": [
+      430,
+      932
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 600,
+    "mobile": true,
+    "scrollWidth": 600,
+    "viewport": [
+      600,
+      900
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 753,
+    "mobile": false,
+    "scrollWidth": 753,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 829,
+    "mobile": true,
+    "scrollWidth": 829,
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 1009,
+    "mobile": false,
+    "scrollWidth": 1009,
+    "viewport": [
+      1024,
+      800
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 1280,
+    "mobile": false,
+    "scrollWidth": 1280,
+    "viewport": [
+      1280,
+      1024
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 1440,
+    "mobile": false,
+    "scrollWidth": 1440,
+    "viewport": [
+      1440,
+      1024
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 1905,
+    "mobile": false,
+    "scrollWidth": 1905,
+    "viewport": [
+      1920,
+      1080
+    ]
+  },
+  {
+    "brokenVisible": [],
+    "cardTextOverflow": 0,
+    "clientWidth": 2545,
+    "mobile": false,
+    "scrollWidth": 2545,
+    "viewport": [
+      2560,
+      1080
+    ]
+  }
+]

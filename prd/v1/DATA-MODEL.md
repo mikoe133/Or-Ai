@@ -1,6 +1,6 @@
 # 数据模型与维护约定
 
-2026-10-16。模型/迁移/契约/seed、目录、兑换/交付、动态答题/报告/反馈、清理预演、账户会话/绑定及 T07 运营 HTTP/文件基础已实现；真实云端认证/收信和对象存储验收待 T09 完成。证据见 PROGRESS.md。字段定义以 `apps/api/prisma/schema.prisma` 为准，数据库额外约束以迁移 SQL 为准。
+2026-10-20。现有业务与 T12-A/B/C 内容后台已实现，共 37 模型/11 迁移；真实云端认证/收信和对象存储验收待 T09。内容修订与混合存储见 [CONTENT-FOUNDATION.md](CONTENT-FOUNDATION.md)，采用/清理见 [CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)，证据见 PROGRESS.md。字段以 `apps/api/prisma/schema.prisma` 为准，额外约束以迁移 SQL 为准。
 
 ## 模型分组
 
@@ -17,16 +17,21 @@
 | 汇总 | question_stats、question_option_stats、result_stats、result_type_stats | 按版本聚合；题目/选项、类型复合键唯一；计数非负；回答与完成答卷使用不同分母 |
 | 运营 | campaign_assets、campaigns、events | 素材按版本＋平台＋类别＋变体唯一；事件去重键唯一；演示事件强制使用 DEMO 来源 |
 | 文件/上传 | asset_files | 同一记录管理上传状态与文件；版本/上传者/scope 复合引用；就绪元数据不可改；READY 媒体要求匹配的 AVAILABLE 文件 |
+| 内容底座 | creative_profile_revisions、content_revisions、content_references、production_records | 共同创作设定、旧题库/素材快照、固定输入位置与制作来源；历史只追加、同商品/scope 复合引用、拒绝循环 |
+| 复查/采用 | content_review_records、content_packages、content_package_items | 影响 fingerprint、不可变采用清单与依赖；同商品/scope、包序号唯一、只追加 |
+| 清理计划 | file_cleanup_plans | 固定文件清单/摘要、执行结果、到期/重试状态；仅原管理员/范围读取和执行，保留元数据 |
 | 重试/审计 | idempotent_requests、admin_audit_logs | 主体＋操作＋请求 ID 唯一；请求摘要和到期时间；运行账号不能修改或删除审计 |
 | 防猜测 | request_rate_buckets | scope＋种类＋主体的摘要主键；正数 hits 与 window_ends_at；数据库原子窗口计数，跨 API 进程共享 |
 
-共 29 个模型、七份迁移，均位于私有 `orai` schema。T07 新增 `20261016171000_operations_and_files`，前六份已应用迁移未改写。新业务 ID 默认由 Prisma 生成 UUIDv7；演示数据使用确定性 UUID；安全交付/文件记录也可使用服务端 UUIDv4。时间存带时区时间戳，API 输出 ISO 8601；金额以人民币分存储，`990` 表示 ¥9.90。
+共 37 个模型、十一份迁移，均位于私有 `orai` schema。T07 为第七份迁移，T12-A 追加结构迁移与独立历史回填，T12-B 再追加媒体实际尺寸/时长迁移，T12-C 追加复查/采用/清理计划与文件终态迁移，旧迁移未改写。业务 ID 默认由 Prisma 生成 UUIDv7，数据库快照/交付/文件也可生成 UUIDv4，演示 seed 使用确定性 UUID。时间存带时区时间戳，API 输出 ISO 8601；金额以分存储。
 
-T07 为 categories/tags/products/product_versions/campaign_assets 增加非负 revision。AssetFile 保存服务端文件键、原始名称、实际 MIME/字节数/SHA-256、上传者、到期/验证时间及 PENDING/VERIFYING/UPLOADED/AVAILABLE/FAILED/EXPIRED；当前将上传会话与最终文件合为一表。CampaignAsset.fileId 使用同版本/scope 复合外键，数据库触发器进一步检查用途、AVAILABLE 状态和元数据逐项一致；缺文件媒体不能 READY。AVAILABLE 内容元数据冻结，替换需新文件。旧占位素材可以保留非 READY 状态，不冒充真实文件。
+T07 为 categories/tags/products/product_versions/campaign_assets 增加非负 revision。AssetFile 保存服务端文件键、原始名称、实际 MIME/字节数/SHA-256、上传者、到期/验证时间及 PENDING/VERIFYING/UPLOADED/AVAILABLE/FAILED/EXPIRED/DELETING/DELETED；当前将上传会话与最终文件合为一表。CampaignAsset.fileId 使用同版本/scope 复合外键，数据库触发器进一步检查用途、AVAILABLE 状态和元数据逐项一致；缺文件媒体不能 READY。AVAILABLE 内容元数据冻结，替换需新文件。旧占位素材可以保留非 READY 状态，不冒充真实文件。
 
-### 内容后台扩展规划 2026-10-16 尚未迁移
+T12-B 的 `width / height / durationMs` 在新上传完成时从真实文件探测并保存，AVAILABLE 后不可修改。旧文件保留空值并明确显示未记录。第八/九份迁移为 T12-A 结构及历史回填，第十份为 `20261019110000_verified_media_metadata`。详情见 [工作台交接](CONTENT-WORKBENCH.md)。
 
-[CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md#41-逻辑数据实体) 定义 T12–T14 的逻辑实体：共享选题说明修订、素材/题库草稿历史修订、跨内容引用及使用快照、带 domain 的 StyleSkill 与版本/商品绑定、制作记录及 MCP 凭据。基础文件/上传由 T07 的 AssetFile 提供；其他实体仍待向前迁移，不计入已实现模型数。
+### 内容后台底座与后续扩展
+
+[CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md#41-逻辑数据实体) 定义扩展实体。T12-A 已实现设定修订、题库/素材历史、跨内容引用/使用快照及制作来源四表，计入 33 模型；文件复用 AssetFile，原件归档元数据放在受校验的 authoring 中。T12-C 已增加 ContentReviewRecord、ContentPackage、ContentPackageItem、FileCleanupPlan 四模型，计入当前 37 模型。StyleSkill/绑定及 MCP 凭据仍待后续迁移。
 
 - 题目/计分/报告模板复用 `ProductVersion.configuration`，素材沿用 `CampaignAsset` 的商品版本、平台、类别和变体；变体与历史修订分别记录。
 - 文件记录受控存储键与实际元数据，视频/图片字节由存储适配器保存。上传可用状态与素材审核状态独立，历史缺失文件不视为已就绪。
@@ -35,7 +40,9 @@ T07 为 categories/tags/products/product_versions/campaign_assets 增加非负 r
 - skill 按 assessment/cover/video/copy 四领域校验和授权，共用存储底座；方法版本绑定与产物间内容引用分别保存。循环、失效、越范围和领域不匹配的引用拒绝写入/采用。
 - 机器凭据保存摘要与授权范围，版本/文件引用校验 DEMO/LIVE 范围；MCP 与网页共用业务服务，不给适配器 owner 数据库连接。
 
-共享说明按 [PRODUCT-CREATIVE-SYSTEM.md](PRODUCT-CREATIVE-SYSTEM.md) 完善为商品创作设定修订，含情绪/理解目标、参与视角、世界观、形式、视觉/语言/声音及报告方案；各领域/采用清单固定同一修订。报告结构化内容模板与呈现模板/主题分别版本化，旧结果事实和快照不受设定更新影响。当前 report schema 尚无这些新结构，需 T12/T15 契约/迁移及兼容适配，不改变现有 29 模型的实现状态。
+共享说明已在 T12-A 固定为商品创作设定修订，含情绪/理解目标、参与视角、世界观、形式、视觉/语言/声音及独立报告方案草稿。新方案是 authoring-only，旧 report 运行 schema 不变；呈现 renderer 与兼容投影留 T15，旧结果事实和个人报告快照不受设定更新影响。
+
+第十一份迁移 `20261020010000_content_adoption_and_cleanup` 固定历史采用/复查、商品级内容写锁与文件引用锁。清理仅允许过期且无当前/历史引用文件，经预演确认后进入 DELETING/DELETED；保留文件名/摘要/大小等不可变元数据，禁止复活或直接删除记录。采用包保存完整内容/输入快照及受保护文件引用，不含消费者数据或存储路径；采用不会发布商品。新表权限由 db:provision 收紧，旧迁移不改写。
 
 ### 多形态体验扩展规划 尚未迁移
 
@@ -70,7 +77,7 @@ pnpm test
 
 `db:migrate` 使用 `migrate deploy` 应用已保存迁移，不重置数据。`db:provision` 在迁移后设置账号权限和环境标记。seed 在事务中校验并装载占位商品；重复执行保留稳定 ID、码摘要、快照和会话，不新增副本。公开 CLI 不输出完整码或会话令牌。
 
-当前七份迁移依次是 `20261009113000_initial_business`、`20261009114500_binding_trigger_record`、`20261009115500_user_role_insert_guard`、`20261009121000_delivery_scope_consistency`、`20261009133000_anonymous_rate_control`、`20261009155000_account_sessions`、`20261016171000_operations_and_files`。第 2/3 份修复绑定触发器与 USER 初始插入，第 4 份补齐交付复合引用，第 5 份新增限流表，第 6 份新增账户会话，第 7 份新增修订、文件/上传、素材文件关系和检查。新表的本地运行账号授权由迁移后的 db:provision 设置。不得改写已经应用的迁移。
+前七份迁移依次是 `20261009113000_initial_business`、`20261009114500_binding_trigger_record`、`20261009115500_user_role_insert_guard`、`20261009121000_delivery_scope_consistency`、`20261009133000_anonymous_rate_control`、`20261009155000_account_sessions`、`20261016171000_operations_and_files`。第 2/3 份修复绑定触发器与 USER 初始插入，第 4 份补齐交付复合引用，第 5 份新增限流表，第 6 份新增账户会话，第 7 份新增修订、文件/上传、素材文件关系和检查。新表的本地运行账号授权由迁移后的 db:provision 设置。不得改写已经应用的迁移。
 
 新增模型或约束时，在独立开发库生成并审阅新迁移，包含必要的数据回填、CHECK/触发器和运行账号授权；不能仅运行 `db push` 代替迁移记录。跨 scope、版本锁定等手写约束也必须保留在迁移中。
 

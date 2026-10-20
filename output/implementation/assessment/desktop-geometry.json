@@ -1,0 +1,44 @@
+{
+  ".assessment-disclaimer": {
+    "h": 24,
+    "w": 650,
+    "x": 338,
+    "y": 927
+  },
+  ".assessment-feedback": {
+    "h": 750,
+    "w": 337,
+    "x": 1012,
+    "y": 201
+  },
+  ".assessment-main": {
+    "h": 750,
+    "w": 650,
+    "x": 338,
+    "y": 201
+  },
+  ".assessment-options": {
+    "h": 202,
+    "w": 594,
+    "x": 366,
+    "y": 585
+  },
+  ".assessment-question": {
+    "h": 500,
+    "w": 650,
+    "x": 338,
+    "y": 407
+  },
+  ".assessment-question-actions": {
+    "h": 74,
+    "w": 594,
+    "x": 366,
+    "y": 813
+  },
+  ".store-panel": {
+    "h": 799.3984375,
+    "w": 1296,
+    "x": 72,
+    "y": 180
+  }
+}

@@ -5,11 +5,14 @@ import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { APP_CONFIG, type AppConfiguration } from '../config/configuration';
 import { ApiException } from '../common/http-errors';
+import { imageSize } from 'image-size';
+import { Input, CustomSource, MP4, WEBM } from 'mediabunny';
 
 export interface InspectedFile { byteSize: number; checksum: string; mimeType: string }
+export interface VerifiedMedia extends InspectedFile { width: number; height: number; durationMs: number | null }
 export abstract class AssetStorage {
   abstract receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile): Promise<void>;
-  abstract inspect(key: string, maxBytes: number): Promise<InspectedFile>;
+  abstract inspect(key: string, maxBytes: number): Promise<VerifiedMedia>;
   abstract read(key: string): Promise<FileHandle>;
   abstract remove(key: string): Promise<void>;
 }
@@ -98,7 +101,44 @@ export class LocalAssetStorage extends AssetStorage {
     const file = await this.read(key), inspection = new Inspection();
     try {
       for await (const chunk of file.createReadStream({ autoClose: false })) inspection.add(chunk as Buffer, maxBytes);
-      return inspection.result();
+      const result = inspection.result();
+      const deadline = Date.now() + 15000;
+      let bytesRead = 0;
+      const read = async (start: number, end: number) => {
+        if (Date.now() > deadline || (bytesRead += end - start) > maxBytes * 4 || end - start > maxBytes)
+          throw new Error('Media metadata budget exceeded');
+        const data = Buffer.alloc(end - start);
+        let offset = 0;
+        while (offset < data.length) {
+          const value = await file.read(data, offset, data.length - offset, start + offset);
+          if (!value.bytesRead) throw new Error('Incomplete media');
+          offset += value.bytesRead;
+        }
+        return data;
+      };
+      try {
+        let width: number, height: number, durationMs: number | null = null;
+        if (result.mimeType.startsWith('image/')) {
+          const dimensions = imageSize(await read(0, result.byteSize));
+          width = dimensions.width; height = dimensions.height;
+        } else {
+          const input = new Input({ formats: [MP4, WEBM], source: new CustomSource({
+            getSize: () => result.byteSize, read, maxCacheSize: 1024 * 1024,
+          }) });
+          try {
+            const track = await input.getPrimaryVideoTrack();
+            if (!track) throw new Error('No video track');
+            width = Math.round(await track.getDisplayWidth()); height = Math.round(await track.getDisplayHeight());
+            const duration = await track.computeDuration();
+            // A one-packet WebM can omit packet duration. Its container still
+            // carries the finite recorded duration.
+            durationMs = Math.ceil((duration > 0 ? duration : await track.getDurationFromMetadata() ?? 0) * 1000);
+          } finally { input.dispose(); }
+        }
+        if (![width, height].every(value => Number.isInteger(value) && value > 0 && value <= 16384) ||
+          durationMs !== null && (!Number.isSafeInteger(durationMs) || durationMs < 1 || durationMs > 86400000)) throw new Error('Invalid media geometry');
+        return { ...result, width, height, durationMs };
+      } catch { throw new ApiException('VALIDATION_ERROR', '无法读取媒体尺寸或时长，请使用完整且支持的文件', 400); }
     } finally { await file.close(); }
   }
   async remove(key: string) {

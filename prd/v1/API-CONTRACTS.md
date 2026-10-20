@@ -1,5 +1,7 @@
 # 接口契约与 UI 字段映射
 
+2026-10-19 新增 T12-A 内容接口，字段、保护范围、混合存储状态和验证说明见 [内容底座交接](CONTENT-FOUNDATION.md)；原消费者 API 保持兼容。T12-B 已接入四类工作台，增加当前稿筛选、严格内容详情 DTO 和可空媒体尺寸/时长，见 [工作台交接](CONTENT-WORKBENCH.md)。skill 和 MCP 尚未实现。
+
 2026-10-16。已实现健康检查、目录/版本、兑换/恢复/交付、动态答题/报告/群体反馈/清理预演、账户/绑定，以及 T07 运营 HTTP、基础素材/文件和售后接口。真实云端认证/收信与持久化对象存储仍待 T09 验收。示例内容均为演示，不含有效兑换码、用户令牌或真实订单；证据见 PROGRESS.md。
 
 ## 边界与通用格式
@@ -347,17 +349,45 @@ LocalAssetStorage 仅用于开发/测试，保存到 ASSET_DIRECTORY，API 默�
 
 `POST /api/events` 通过浏览器来源/CSRF/限流后，仅接受 `{kind:"view",productVersionId,campaignCode?,requestId}`，目标必须是当前可见已发布版本。服务器确定 DEMO/WEB 来源，以浏览器摘要和 requestId 去重；改变目标/渠道返回 409。开始、完成、兑换、退款由对应后端事务产生。overview 按 kind/source 分组，人工订单金额单列 recordedAmountFen、paymentVerified=false，attribution=unconfirmed；浏览仍是客户端观察，不计为确认销售或确认归因。
 
-## 内容后台与 MCP 扩展规划 2026-10-16 尚未实现
+## T12 内容后台（本地已实现）
 
-统一能力契约维护在 [CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md#4-实现契约)，对应 T12 内容后台、T13 风格 skill 库、T14 MCP。T07 已有基础 HTTP 服务，完整内容工作台、skill 库、引用快照与 MCP 仍未实现。
+2026-10-20，T12-A/B/C 全部本地通过。结构化内容契约为 `packages/contracts/src/content.ts` 与 `content-workflow.ts`，只通过 `@orai/contracts/admin` 导出。所有接口沿用前述管理员/范围/Origin/CSRF/限流/no-store；写请求携带 requestId，追加/更新使用预期修订或固定 fingerprint。具体操作和演示入口见 [CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)。
 
-- T07 固定基础 `/api/admin/assets`、`/api/admin/uploads` 等接口族；T12 补四类内容工作台、共享说明、内容引用/影响分析和采用清单，T13 补四领域 skill/版本/绑定，T14 分别映射 MCP 工具。
-- 网页和 MCP 共用题库配置校验、商品版本、素材、skill 与上传服务。更新携带预期修订，写入携带 requestId；返回冲突或真实校验状态，不用一个 success 布尔值掩盖异步校验和失败。
-- MCP 按 assessment/cover/video/copy 提供各域内容与 skill 查询/草稿保存/上传；共享 context_bundle_get 按用途和授权返回固定输入清单。视频回传分镜、questionRefs/copyRefs/coverRefs、brief/skill 版本和实际使用快照；引用需逐项授权与校验。
-- 文件字节走受控流式通道，完成接口校验上传领域/身份/用途。机器权限分领域读写和上下文读取；视频写权限不隐含完整题库或文案写权限。私人答卷/报告不在内容工具范围，发布/退款/发码/物理删除不作为首期工具。
-- 本地 T14-L 以四份 stdio domain 配置分别连接，远程 T14-C 规划 `/api/mcp/:domain`；同一后端共用业务数据。SDK、DTO、错误码和认证细节实现时按官方规范固定。
+| 方法与路径（以 `/api/admin` 开头） | 输入/用途 |
+| --- | --- |
+| GET/POST /products/:id/creative-profiles | 分页读取；POST profile、expectedRevision、requestId，追加共同设定 |
+| GET /creative-profiles/:id | 固定设定读取 |
+| GET /creative-profiles/:id/diff?to=:revisionId | 同商品两份设定差异 |
+| GET /content-revisions、/content-revisions/:id | 分页历史/详情；列表支持 productId/productVersionId/assetId/domain、current、creativeProfileRevisionId/platform/status/style；current=true 必须给 productId |
+| POST /content-assets | productVersionId/platform/variant/fileId、authoring、expectedRevision/requestId；修改另给 assetId，原子保存素材/输入/来源 |
+| GET /content-references | 按 sourceRevisionId/targetRevisionId 分页反查输入及使用者 |
+| GET/POST /production-records | 分页查询来源；POST 为 outputRevisionId 登记 creativeProfileRevisionId/production/requestId |
+| POST /content-contexts/resolve | 固定设定、domain、明确输入修订/digest/locator；宣传用途只返回题干/公开选项等必要节选 |
+| GET /content-revisions/:id/impact | 固定依赖链、设定/上游更新与归档、fingerprint、needsReview/blocked/reviewNote |
+| GET /content-revisions/:id/diff?to=:revisionId | 同一内容历史差异，稳定 ID 对齐、保留顺序变化；最多 500 项，返回 truncated |
+| POST /content-revisions/:id/recheck | expectedFingerprint、note、requestId；确认合法旧稿，不绕过归档输入 |
+| POST /content-packages/preview | ContentPackageSelection：productId、creativeProfileRevisionId、assessmentRevisionId、assetRevisionIds、reportMode=compatible_standard、label |
+| POST /content-packages | selection、expectedFingerprint、expectedPackageNumber、note、consistencyConfirmed=true、requestId；再验后保存固定采用包 |
+| GET /content-packages/:id | 固定 manifest/摘要，供管理页面 JSON 导出 |
+| GET /products/:id/content-packages | 按包号倒序分页，包含已固定内容 |
+| GET /products/:id/cleanup-candidates | 分页列出过期且无当前/历史引用文件 |
+| POST /file-cleanups/preview | productId、fileIds（1–50 个）、requestId；返回固定清单/digest，十分钟有效 |
+| GET /file-cleanups/:id | 原管理员读取固定计划与恢复结果 |
+| POST /file-cleanups/:id/execute | expectedDigest、confirmed=true、requestId；重新检查引用、受控清理/重试 |
 
-各领域制作输入还需绑定 [商品创作设定](PRODUCT-CREATIVE-SYSTEM.md)：creativeProfileRevisionId、情绪/理解目标、参与视角、形式、报告方案、领域/用途、skill 与最小引用；输出声明同一设定及实际风格变体。公开报告样例/宣传素材与私人报告分开，模板新增结构和报告呈现按 T12/T15 定义兼容 schema，不属于当前 ReportContentSchema 已支持的任意格式。
+设定含独立 authoring-only 报告叙事方案，旧严格运行 schema 保留。引用固定 questionId/blockId/sceneId 等位置、来源摘要、原文和实际使用文本；缩写题干记录 adapted。当前稿先取每对象最新修订再筛选，历史匹配项不冒充当前稿。状态流转保留快照，但不作为内容语义更新；复查 fingerprint 固定当时影响，后续更新重新待复查，历史采用包不变。
+
+采用要求同商品/scope/设定、已审核题库和就绪封面/视频/文案、兼容引用、制作来源、实际完整文件及已处理更新；完整依赖最多 1000 节点。当前只支持单人 web、dimensions_v1 与兼容标准图文报告；双方/3D/新报告 renderer 等拒绝采用。JSON 清单包含内容与受保护文件引用，媒体另行授权下载，没有 ZIP；不包含消费者数据、账户凭据和存储路径。采用不会自动发布商品。
+
+清理在预演和执行时检查当前素材及全部历史修订引用，新增引用会保护文件。prepared 计划到期后需重新预演，running 计划可按原清单恢复，不增加候选。失败结果可重试，同计划不重复追加审计；文件经 deleting/deleted 保留不可变元数据，不能复活。没有新增公众文件读取入口。
+
+## skill 与 MCP 扩展（尚未实现）
+
+统一能力约定见 [CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md#4-实现契约)。T13 提供 assessment/cover/video/copy 四类 skill 库/版本/商品绑定，T14 映射共用业务服务的四领域工具。当前 skillVersionId 明确为空，batchKey 只是来源分组，不代表任务认领或执行队列。
+
+- 网页和 MCP 共用题库/素材/版本/上传校验，四域保存草稿；最小共享上下文需逐项授权，不向宣传工具开放消费者资料或完整私有评分。
+- T14-L 先提供四份本地 stdio 配置；T14-C 远程规划 `/api/mcp/:domain`，认证/发现和真实客户端另验。浏览器 Cookie 不充当机器凭据，首期不开放发布、退款、发码或物理删除。
+- 各领域输入固定共同创作设定、情绪/理解目标、形式、专业用途、skill 版本和最小内容引用，升级不漂移历史。后台保存 skill 与外部制作来源，不执行模型、渲染或每日任务调度。
 
 ## 设计区域与字段
 

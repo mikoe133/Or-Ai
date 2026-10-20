@@ -1,0 +1,17 @@
+{
+  "figmaNode": "74:466",
+  "geometryMatches": true,
+  "responsiveSizes": 13,
+  "overflow": 0,
+  "missingVisibleAssets": 0,
+  "tabletThumbnailsLoaded": true,
+  "mobileInteractions": [
+    "notifications",
+    "category",
+    "search",
+    "carousel"
+  ],
+  "landscapeDialogScrollAndStickyClose": true,
+  "landscapeSearchShortcut": true,
+  "browserConsoleErrors": 0
+}

@@ -1,0 +1,752 @@
+[
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 1024,
+      "height": 1024,
+      "left": 0,
+      "right": 1440,
+      "top": 0,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "src": "/assets/store/ambient-orbits.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 1024,
+      "height": 1024,
+      "left": 0,
+      "right": 1440,
+      "top": 0,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "src": "/assets/store/green-floor-glow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 1024,
+      "height": 1024,
+      "left": 0,
+      "right": 1440,
+      "top": 0,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "src": "/assets/store/multicolor-corner-glow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 360,
+      "height": 360,
+      "left": 0,
+      "right": 1440,
+      "top": 0,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "src": "/assets/store/top-right-lilac-glow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 925,
+      "height": 370,
+      "left": -2,
+      "right": 72,
+      "top": 555,
+      "width": 74,
+      "x": -2,
+      "y": 555
+    },
+    "src": "/assets/store/left-edge-bright-exterior.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 210,
+      "height": 210,
+      "left": 0,
+      "right": 1440,
+      "top": 0,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "src": "/assets/store/adopted-inner-connected-top.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 1024,
+      "height": 1024,
+      "left": 0,
+      "right": 1440,
+      "top": 0,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "src": "/assets/store/adopted-left-strip-seamless.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 55.5,
+      "height": 40,
+      "left": 24,
+      "right": 64,
+      "top": 15.5,
+      "width": 40,
+      "x": 24,
+      "y": 15.5
+    },
+    "src": "/assets/store/homepage-meetmyworld-symbol.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 45.5,
+      "height": 20,
+      "left": 158.4921875,
+      "right": 178.4921875,
+      "top": 25.5,
+      "width": 20,
+      "x": 158.4921875,
+      "y": 25.5
+    },
+    "src": "/assets/store/icons/search.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 45.5,
+      "height": 20,
+      "left": 1129.9140625,
+      "right": 1149.9140625,
+      "top": 25.5,
+      "width": 20,
+      "x": 1129.9140625,
+      "y": 25.5
+    },
+    "src": "/assets/store/icons/moon.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 47.5,
+      "height": 24,
+      "left": 1386,
+      "right": 1410,
+      "top": 23.5,
+      "width": 24,
+      "x": 1386,
+      "y": 23.5
+    },
+    "src": "/assets/store/icons/plus.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 139,
+      "height": 20,
+      "left": 40,
+      "right": 60,
+      "top": 119,
+      "width": 20,
+      "x": 40,
+      "y": 119
+    },
+    "src": "/assets/store/icons/user.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 256,
+      "height": 20,
+      "left": 28,
+      "right": 48,
+      "top": 236,
+      "width": 20,
+      "x": 28,
+      "y": 236
+    },
+    "src": "/assets/store/icons/grid.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 312,
+      "height": 20,
+      "left": 28,
+      "right": 48,
+      "top": 292,
+      "width": 20,
+      "x": 28,
+      "y": 292
+    },
+    "src": "/assets/store/icons/heart.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 368,
+      "height": 20,
+      "left": 28,
+      "right": 48,
+      "top": 348,
+      "width": 20,
+      "x": 28,
+      "y": 348
+    },
+    "src": "/assets/store/icons/file.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 948,
+      "height": 20,
+      "left": 28,
+      "right": 48,
+      "top": 928,
+      "width": 20,
+      "x": 28,
+      "y": 928
+    },
+    "src": "/assets/store/icons/headphones.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 980,
+      "height": 800,
+      "left": 72,
+      "right": 1368,
+      "top": 180,
+      "width": 1296,
+      "x": 72,
+      "y": 180
+    },
+    "src": "/assets/store/panel-surface-soft-upper-left.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 981.1953125,
+      "height": 800,
+      "left": 73.1953125,
+      "right": 339.1953125,
+      "top": 181.1953125,
+      "width": 266,
+      "x": 73.1953125,
+      "y": 181.1953125
+    },
+    "src": "/assets/store/sidebar-transition-soft-base.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 980,
+      "height": 800,
+      "left": 72,
+      "right": 1368,
+      "top": 180,
+      "width": 1296,
+      "x": 72,
+      "y": 180
+    },
+    "src": "/assets/store/glass-tint-transparent-right.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 222,
+      "height": 16,
+      "left": 276,
+      "right": 292,
+      "top": 206,
+      "width": 16,
+      "x": 276,
+      "y": 206
+    },
+    "src": "/assets/store/icons/chevron.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 280,
+      "height": 20,
+      "left": 104,
+      "right": 124,
+      "top": 260,
+      "width": 20,
+      "x": 104,
+      "y": 260
+    },
+    "src": "/assets/store/icons/bag.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 332,
+      "height": 20,
+      "left": 104,
+      "right": 124,
+      "top": 312,
+      "width": 20,
+      "x": 104,
+      "y": 312
+    },
+    "src": "/assets/store/icons/grid.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 384,
+      "height": 20,
+      "left": 104,
+      "right": 124,
+      "top": 364,
+      "width": 20,
+      "x": 104,
+      "y": 364
+    },
+    "src": "/assets/store/icons/file.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 436,
+      "height": 20,
+      "left": 104,
+      "right": 124,
+      "top": 416,
+      "width": 20,
+      "x": 104,
+      "y": 416
+    },
+    "src": "/assets/store/icons/bookmark.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 488,
+      "height": 20,
+      "left": 104,
+      "right": 124,
+      "top": 468,
+      "width": 20,
+      "x": 104,
+      "y": 468
+    },
+    "src": "/assets/store/icons/help.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 228,
+      "height": 18,
+      "left": 1183,
+      "right": 1201,
+      "top": 210,
+      "width": 18,
+      "x": 1183,
+      "y": 210
+    },
+    "src": "/assets/store/icons/clock.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 228,
+      "height": 18,
+      "left": 1299,
+      "right": 1317,
+      "top": 210,
+      "width": 18,
+      "x": 1299,
+      "y": 210
+    },
+    "src": "/assets/store/icons/sparkles.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 560,
+      "height": 300,
+      "left": 337,
+      "right": 576.75,
+      "top": 260,
+      "width": 239.75,
+      "x": 337,
+      "y": 260
+    },
+    "src": "/assets/store/featured-lavender.png"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 538,
+      "height": 16,
+      "left": 448.765625,
+      "right": 464.765625,
+      "top": 522,
+      "width": 16,
+      "x": 448.765625,
+      "y": 522
+    },
+    "src": "/assets/store/icons/arrow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 560,
+      "height": 300,
+      "left": 588.75,
+      "right": 828.5,
+      "top": 260,
+      "width": 239.75,
+      "x": 588.75,
+      "y": 260
+    },
+    "src": "/assets/store/featured-teal.png"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 538,
+      "height": 16,
+      "left": 700.515625,
+      "right": 716.515625,
+      "top": 522,
+      "width": 16,
+      "x": 700.515625,
+      "y": 522
+    },
+    "src": "/assets/store/icons/arrow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 560,
+      "height": 300,
+      "left": 840.5,
+      "right": 1080.25,
+      "top": 260,
+      "width": 239.75,
+      "x": 840.5,
+      "y": 260
+    },
+    "src": "/assets/store/featured-periwinkle.png"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 538,
+      "height": 16,
+      "left": 952.265625,
+      "right": 968.265625,
+      "top": 522,
+      "width": 16,
+      "x": 952.265625,
+      "y": 522
+    },
+    "src": "/assets/store/icons/arrow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 560,
+      "height": 300,
+      "left": 1092.25,
+      "right": 1332,
+      "top": 260,
+      "width": 239.75,
+      "x": 1092.25,
+      "y": 260
+    },
+    "src": "/assets/store/featured-blush.png"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 538,
+      "height": 16,
+      "left": 1204.015625,
+      "right": 1220.015625,
+      "top": 522,
+      "width": 16,
+      "x": 1204.015625,
+      "y": 522
+    },
+    "src": "/assets/store/icons/arrow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 604,
+      "height": 16,
+      "left": 1316,
+      "right": 1332,
+      "top": 588,
+      "width": 16,
+      "x": 1316,
+      "y": 588
+    },
+    "src": "/assets/store/icons/arrow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 654,
+      "height": 18,
+      "left": 349,
+      "right": 367,
+      "top": 636,
+      "width": 18,
+      "x": 349,
+      "y": 636
+    },
+    "src": "/assets/store/icons/heart.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 654,
+      "height": 18,
+      "left": 550.3984375,
+      "right": 568.3984375,
+      "top": 636,
+      "width": 18,
+      "x": 550.3984375,
+      "y": 636
+    },
+    "src": "/assets/store/icons/briefcase.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 654,
+      "height": 18,
+      "left": 751.796875,
+      "right": 769.796875,
+      "top": 636,
+      "width": 18,
+      "x": 751.796875,
+      "y": 636
+    },
+    "src": "/assets/store/icons/sparkles.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 654,
+      "height": 18,
+      "left": 953.1953125,
+      "right": 971.1953125,
+      "top": 636,
+      "width": 18,
+      "x": 953.1953125,
+      "y": 636
+    },
+    "src": "/assets/store/icons/bag.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 654,
+      "height": 18,
+      "left": 1154.59375,
+      "right": 1172.59375,
+      "top": 636,
+      "width": 18,
+      "x": 1154.59375,
+      "y": 636
+    },
+    "src": "/assets/store/icons/smile.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 766,
+      "height": 16,
+      "left": 1316,
+      "right": 1332,
+      "top": 750,
+      "width": 16,
+      "x": 1316,
+      "y": 750
+    },
+    "src": "/assets/store/icons/arrow.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 882.0000610351562,
+      "height": 68.00006103515625,
+      "left": 335,
+      "right": 421.0000305175781,
+      "top": 814,
+      "width": 86.00003051757812,
+      "x": 335,
+      "y": 814
+    },
+    "src": "/assets/store/mini-blush.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 882.0000610351562,
+      "height": 68.00006103515625,
+      "left": 587.75,
+      "right": 673.75,
+      "top": 814,
+      "width": 86,
+      "x": 587.75,
+      "y": 814
+    },
+    "src": "/assets/store/mini-lavender.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 882.0000610351562,
+      "height": 68.00006103515625,
+      "left": 840.5,
+      "right": 926.5,
+      "top": 814,
+      "width": 86,
+      "x": 840.5,
+      "y": 814
+    },
+    "src": "/assets/store/mini-teal.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 882.0000610351562,
+      "height": 68.00006103515625,
+      "left": 1093.25,
+      "right": 1179.25,
+      "top": 814,
+      "width": 86,
+      "x": 1093.25,
+      "y": 814
+    },
+    "src": "/assets/store/mini-periwinkle.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 256,
+      "height": 20,
+      "left": 1392,
+      "right": 1412,
+      "top": 236,
+      "width": 20,
+      "x": 1392,
+      "y": 236
+    },
+    "src": "/assets/store/icons/bookmark.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 312,
+      "height": 20,
+      "left": 1392,
+      "right": 1412,
+      "top": 292,
+      "width": 20,
+      "x": 1392,
+      "y": 292
+    },
+    "src": "/assets/store/icons/plus.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 368,
+      "height": 20,
+      "left": 1392,
+      "right": 1412,
+      "top": 348,
+      "width": 20,
+      "x": 1392,
+      "y": 348
+    },
+    "src": "/assets/store/icons/sparkles.svg"
+  },
+  {
+    "complete": true,
+    "loaded": true,
+    "rect": {
+      "bottom": 948,
+      "height": 20,
+      "left": 1392,
+      "right": 1412,
+      "top": 928,
+      "width": 20,
+      "x": 1392,
+      "y": 928
+    },
+    "src": "/assets/store/icons/help.svg"
+  }
+]

@@ -1,0 +1,331 @@
+{
+  "card": {
+    "bottom": 574,
+    "height": 316,
+    "left": 19,
+    "right": 293,
+    "top": 258,
+    "width": 274,
+    "x": 19,
+    "y": 258
+  },
+  "chipTouchHeights": [
+    44,
+    44,
+    44,
+    44,
+    44
+  ],
+  "images": [
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 831.9998779296875,
+        "height": 831.9998779296875,
+        "left": 0,
+        "right": 384,
+        "top": 0,
+        "width": 384,
+        "x": 0,
+        "y": 0
+      },
+      "src": "/assets/store/mobile-atmosphere.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 43,
+        "height": 25,
+        "left": 18,
+        "right": 43,
+        "top": 18,
+        "width": 25,
+        "x": 18,
+        "y": 18
+      },
+      "src": "/assets/store/mobile-account-mark.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 42.5,
+        "height": 25,
+        "left": 288.5,
+        "right": 313.5,
+        "top": 17.5,
+        "width": 25,
+        "x": 288.5,
+        "y": 17.5
+      },
+      "src": "/assets/store/mobile-notification.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 47.5,
+        "height": 36,
+        "left": 329.5,
+        "right": 365.5,
+        "top": 11.5,
+        "width": 36,
+        "x": 329.5,
+        "y": 11.5
+      },
+      "src": "/assets/store/mobile-avatar-source.png"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 185,
+        "height": 22,
+        "left": 49,
+        "right": 71,
+        "top": 163,
+        "width": 22,
+        "x": 49,
+        "y": 163
+      },
+      "src": "/assets/store/icons/search.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 186,
+        "height": 24,
+        "left": 311,
+        "right": 335,
+        "top": 162,
+        "width": 24,
+        "x": 311,
+        "y": 162
+      },
+      "src": "/assets/store/icons/search-star.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 596,
+        "height": 320,
+        "left": 19,
+        "right": 293,
+        "top": 276,
+        "width": 274,
+        "x": 19,
+        "y": 276
+      },
+      "src": "/assets/store/featured-lavender.png"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 553.5,
+        "height": 17,
+        "left": 48,
+        "right": 65,
+        "top": 536.5,
+        "width": 17,
+        "x": 48,
+        "y": 536.5
+      },
+      "src": "/assets/store/icons/bag.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 578,
+        "height": 320,
+        "left": 305,
+        "right": 579,
+        "top": 258,
+        "width": 274,
+        "x": 305,
+        "y": 258
+      },
+      "src": "/assets/store/featured-teal.png"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 553.5,
+        "height": 17,
+        "left": 334,
+        "right": 351,
+        "top": 536.5,
+        "width": 17,
+        "x": 334,
+        "y": 536.5
+      },
+      "src": "/assets/store/icons/bag.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 578,
+        "height": 320,
+        "left": 591,
+        "right": 865,
+        "top": 258,
+        "width": 274,
+        "x": 591,
+        "y": 258
+      },
+      "src": "/assets/store/featured-periwinkle.png"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 553.5,
+        "height": 17,
+        "left": 620,
+        "right": 637,
+        "top": 536.5,
+        "width": 17,
+        "x": 620,
+        "y": 536.5
+      },
+      "src": "/assets/store/icons/bag.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 578,
+        "height": 320,
+        "left": 877,
+        "right": 1151,
+        "top": 258,
+        "width": 274,
+        "x": 877,
+        "y": 258
+      },
+      "src": "/assets/store/featured-blush.png"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 553.5,
+        "height": 17,
+        "left": 906,
+        "right": 923,
+        "top": 536.5,
+        "width": 17,
+        "x": 906,
+        "y": 536.5
+      },
+      "src": "/assets/store/icons/bag.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 668,
+        "height": 18,
+        "left": 32,
+        "right": 50,
+        "top": 650,
+        "width": 18,
+        "x": 32,
+        "y": 650
+      },
+      "src": "/assets/store/icons/heart.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 668,
+        "height": 18,
+        "left": 193,
+        "right": 211,
+        "top": 650,
+        "width": 18,
+        "x": 193,
+        "y": 650
+      },
+      "src": "/assets/store/icons/briefcase.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 668,
+        "height": 18,
+        "left": 354,
+        "right": 372,
+        "top": 650,
+        "width": 18,
+        "x": 354,
+        "y": 650
+      },
+      "src": "/assets/store/icons/bag.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 799,
+        "height": 22,
+        "left": 47,
+        "right": 69,
+        "top": 777,
+        "width": 22,
+        "x": 47,
+        "y": 777
+      },
+      "src": "/assets/store/icons/home.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 799,
+        "height": 22,
+        "left": 136,
+        "right": 158,
+        "top": 777,
+        "width": 22,
+        "x": 136,
+        "y": 777
+      },
+      "src": "/assets/store/icons/game.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 799,
+        "height": 22,
+        "left": 226,
+        "right": 248,
+        "top": 777,
+        "width": 22,
+        "x": 226,
+        "y": 777
+      },
+      "src": "/assets/store/icons/report.svg"
+    },
+    {
+      "loaded": true,
+      "rect": {
+        "bottom": 799,
+        "height": 22,
+        "left": 315,
+        "right": 337,
+        "top": 777,
+        "width": 22,
+        "x": 315,
+        "y": 777
+      },
+      "src": "/assets/store/icons/profile.svg"
+    }
+  ],
+  "navCenters": [
+    58,
+    147,
+    237,
+    326
+  ],
+  "selected": {
+    "bottom": 822,
+    "height": 56,
+    "left": 10,
+    "right": 106,
+    "top": 766,
+    "width": 96,
+    "x": 10,
+    "y": 766
+  }
+}

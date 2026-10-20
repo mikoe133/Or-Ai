@@ -1,0 +1,25 @@
+{
+  "persistenceChecks": [
+    {
+      "test": "reload restores confirmed progress and current question",
+      "progress": "1",
+      "question": "答应对方的事情有了变化时，你通常会？"
+    },
+    {
+      "test": "unconfirmed edit does not replace persisted answer",
+      "choice": "B · 先听听对方的想法",
+      "progress": "1"
+    },
+    {
+      "test": "homepage continue resumes saved B",
+      "progress": "1",
+      "choice": "B · 先听听对方的想法"
+    }
+  ],
+  "homepageRegression": {
+    "h": 800,
+    "w": 1296,
+    "x": 72,
+    "y": 180
+  }
+}

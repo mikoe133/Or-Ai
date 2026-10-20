@@ -1,0 +1,146 @@
+.store-flow { min-height: max(1024px, 100dvh); }
+.store-flow .store-header { border-bottom: 0; }
+.store-flow .store-panel { min-height: max(907.4px, calc(100dvh - 116.6px)); }
+.store-flow .store-panel-scene { clip-path: none; }
+.flow-panel-fill { position: absolute; inset: 0; border: 1px solid rgb(204 212 229 / 12%); border-radius: inherit; background: rgb(25 27 36 / 88%); }
+.flow-sidebar-tint { position: absolute; inset: 0 auto 0 0; width: var(--store-sidebar-width); overflow: hidden; opacity: .12; }
+.flow-sidebar-tint svg { display: block; width: 244px; height: 907.4px; max-width: none; transform: scale(var(--sidebar-x), var(--guided-sidebar-y, 1)); transform-origin: left top; }
+.guided-glass-frame { position: absolute; z-index: 3; inset: -72px calc(-1 * var(--store-workspace-gutter)) -44.6px; overflow: hidden; pointer-events: none; }
+.guided-glass-surface { position: absolute; inset: 72px var(--store-workspace-gutter) 44.6px; }
+.guided-glass-frame .store-glass-slice > div { position: relative; transform-origin: top left; }
+.guided-glass-frame .store-glass-slice svg { position: absolute; width: 1440px; height: 1024px; max-width: none; }
+.guided-top-left, .guided-top-band, .guided-top-right { top: -72px; height: 130px; }
+.guided-top-left, .guided-left-wall, .guided-bottom-left { left: -72px; width: 120px; }
+.guided-top-right, .guided-right-wall, .guided-bottom-right { right: -72px; width: 130px; }
+.guided-top-band, .guided-bottom-band { left: 48px; right: 58px; }
+.guided-top-band > div, .guided-bottom-band > div { transform: scaleX(var(--guided-band-x, 1)); }
+.guided-left-wall, .guided-right-wall { top: 58px; bottom: 35.4px; }
+.guided-left-wall > div, .guided-right-wall > div { transform: scaleY(var(--guided-wall-y, 1)); }
+.guided-bottom-left, .guided-bottom-band, .guided-bottom-right { bottom: -44.6px; height: 80px; }
+.flow-content { display: flex; flex-direction: column; gap: 24px; min-width: 0; padding: 20px; border-left: 1px solid rgb(204 212 229 / 12%); outline: none; }
+.store-flow .store-scene-native > svg { position: absolute; top: 0; left: 0; max-width: none; }
+.flow-mobile-account { display: none; }
+.store-flow .store-personal-nav a { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 12px; color: var(--store-secondary); text-decoration: none; }
+.store-flow .store-personal-nav a > .store-icon { opacity: .65; }
+.store-flow .store-personal-nav a:hover { color: var(--store-text); background: rgb(204 212 229 / 5%); }
+.store-flow .store-personal-nav a.is-current { color: var(--store-text); background: #30323e; }
+.store-flow .store-personal-nav a.is-current .store-icon { opacity: 1; }
+.store-flow .store-personal-nav a.is-current i { display: block; }
+.store-flow.is-collapsed .store-personal-nav a { justify-content: center; padding: 10px; }
+.store-flow.is-collapsed .store-personal-nav a > span:not(.store-icon) { display: none; }
+.store-flow.is-collapsed .store-personal-nav a.is-current i { display: none; }
+.store-flow .store-footer { min-height: 44.6px; align-items: center; }
+.store-flow .store-footer small { font-size: 10px; color: var(--store-secondary); }
+.store-flow .store-mobile-nav a { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; font-size: 10px; }
+
+.flow-with-greeting .store-panel { min-height: max(799.4px, calc(100dvh - 224.6px)); }
+.flow-with-greeting .store-glass-slice svg { position: absolute; width: 1440px; height: 1024px; max-width: none; }
+.flow-with-greeting .flow-panel-fill { border: 0; background: linear-gradient(90deg, rgb(25 27 36 / 88%) 98.92%, transparent); }
+.flow-with-greeting .store-intro::before { content: ''; position: absolute; z-index: -1; inset: 0; border: 1px solid rgb(167 164 184 / 35%); border-right: 0; border-radius: 60px 0 0 60px; background: linear-gradient(100deg, rgb(17 19 27 / 85%), rgb(36 33 49 / 65%)); }
+.flow-intro-compact .store-greeting { font-size: 14px; font-weight: 500; }
+.flow-intro-compact .store-greeting small { font-size: 11px; font-weight: 400; }
+.flow-long-page .store-sidebar { position: sticky; top: 20px; align-self: start; min-height: 907.4px; }
+.flow-long-page.flow-with-greeting .store-sidebar { min-height: 799.4px; }
+.flow-design-icon { display: inline-block; flex-shrink: 0; max-width: none; vertical-align: middle; overflow: hidden; }
+.flow-card { min-width: 0; padding: 28px; border: 1px solid rgb(74 70 85 / 72%); border-radius: 18px; background: #20212b; }
+.flow-section-title { font-size: 26px; font-weight: 700; line-height: 38px; }
+.flow-subtitle { margin-top: 8px !important; color: var(--store-secondary); font-size: 16px; line-height: 26px; }
+.flow-tag { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 28px; padding: 4px 16px; border: 1px solid #61516e; border-radius: 100px; color: #e1c3f0; background: #332c42; font-size: 12px; line-height: 18px; white-space: nowrap; }
+.flow-muted { color: var(--store-secondary); }
+.flow-button { min-height: 54px; padding: 14px 24px; font-size: 17px !important; line-height: 24px; }
+.store-flow .flow-button:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.flow-note { display: flex; align-items: center; gap: 16px; min-height: 56px; padding: 14px 20px; border: 1px solid rgb(68 64 76 / 75%); border-radius: 16px; color: #bfb6cc; background: #1d1e28; font-size: 14px; line-height: 24px; }
+.flow-note a { margin-left: auto; color: var(--store-secondary); font-size: 13px; white-space: nowrap; }
+.flow-text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #ccc6da; }
+.flow-text-link:hover { color: var(--store-brand); }
+.flow-heading { outline: none; }
+
+@media (min-width: 1600px) {
+  .store-flow .store-panel { min-height: max(907.4px, calc(100dvh - 116.6px)); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .flow-with-greeting .store-glass-frame { display: none; }
+  .flow-with-greeting .flow-panel-fill { border: 1px solid rgb(204 212 229 / 12%); background: rgb(25 27 36 / 88%); }
+  .store-flow .store-personal-nav a { justify-content: center; gap: 0; padding: 10px; }
+  .store-flow .store-personal-nav a > span:not(.store-icon) { display: none; }
+  .store-flow .store-personal-nav a.is-current i { display: none; }
+}
+@media (max-width: 767px), (max-width: 1023px) and (max-height: 500px) and (orientation: landscape) {
+  .store-flow { min-height: 100svh; }
+  .store-flow .store-header { padding-inline: 18px; }
+  .flow-mobile-account { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; margin-left: auto; color: var(--store-brand); font-size: 12px; }
+  .store-flow .store-panel { min-height: 0; }
+  .store-flow .guided-glass-frame { display: none; }
+  .store-flow .flow-content { gap: 22px; padding: 8px 18px 28px; border: 0; }
+  .store-flow .store-footer { display: flex; justify-content: center; min-height: 32px; padding: 0 18px 20px; }
+  .store-flow .store-footer small { display: block; }
+  .store-flow .store-intro { display: none; }
+  .store-flow .store-sidebar { display: none; }
+  .flow-card { padding: 22px 18px; border-radius: 18px; }
+  .flow-section-title { font-size: 21px; line-height: 32px; }
+  .flow-subtitle { font-size: 13px; line-height: 22px; }
+  .flow-note { gap: 10px; padding: 14px; font-size: 12px; line-height: 22px; }
+  .flow-note a { font-size: 12px; }
+  .flow-button { min-height: 48px; padding: 12px 18px; font-size: 15px !important; }
+}
+
+.flow-with-greeting .store-intro-copy h2 { font-size: 32px; font-weight: 700; line-height: 44px; letter-spacing: -.5px; }
+
+/* Keep the desktop frame stationary; only its main content scrolls. */
+@media (min-width: 1024px) {
+  html:has(.store-flow), body:has(.store-flow) { overflow: hidden; }
+  .store-home.store-flow {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .store-flow > .store-header,
+  .store-flow > .store-intro,
+  .store-flow > .store-footer { flex-shrink: 0; }
+  .store-flow > .store-workspace { flex: 1; min-height: 0; }
+  .store-flow .store-panel { height: 100%; min-height: 0; }
+  /* Trim the decorative SVG frame to the panel's rounded outline. */
+  .store-flow .guided-glass-frame {
+    clip-path: inset(72px var(--store-workspace-gutter) 44.6px round 28px);
+  }
+  .store-flow .store-glass-frame {
+    clip-path: inset(180px var(--store-workspace-gutter) 44px round 28px);
+  }
+  .store-flow .store-sidebar { position: relative; top: auto; align-self: stretch; min-height: 0; }
+  .store-flow .flow-content {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    margin: 20px 8px 20px 0;
+    padding: 0 12px 0 20px;
+  }
+  .store-flow .flow-content::-webkit-scrollbar { display: none; }
+  .store-flow .flow-content > * { flex-shrink: 0; }
+}
+
+.flow-developer-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 100%; text-align: center; }
+.flow-developer-placeholder > .store-icon { opacity: .7; }
+
+.flow-upcoming-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; min-height: 100%; text-align: center; }
+.flow-upcoming-placeholder > .store-icon { opacity: .7; }
+.store-flow .store-rail-left { z-index: 4; }
+.store-flow .store-rail-button:has(.store-rail-tooltip) { position: relative; }
+.store-rail-tooltip { position: absolute; z-index: 1; left: calc(100% + 10px); top: 50%; transform: translateY(-50%); padding: 8px 12px; border: 1px solid rgb(204 212 229 / 20%); border-radius: 8px; color: var(--store-text); background: #292a35; box-shadow: 0 4px 16px rgb(0 0 0 / 25%); font-size: 12px; line-height: 20px; white-space: nowrap; pointer-events: none; visibility: hidden; }
+.store-rail-button:hover .store-rail-tooltip,
+.store-rail-button:focus-visible .store-rail-tooltip { visibility: visible; }
+
+/* Shared frame for the mall, application library, reports and help. */
+.store-workspace-page .store-panel-scene { background: linear-gradient(125deg, rgb(37 42 48 / 35%), transparent 55%); }
+.store-workspace-page .store-intro::before { display: none; }
+@media (min-width: 1024px) {
+  .store-workspace-page .flow-content { padding-right: 20px; }
+  /* Keep the original header and intro curves; trim only the extra bottom edge. */
+  .store-workspace-page .store-glass-frame { clip-path: inset(0 0 44px); }
+}
+@media (max-width: 767px), (max-width: 1023px) and (max-height: 500px) and (orientation: landscape) {
+  .store-workspace-page .store-intro { display: flex; }
+  .store-workspace-page .flow-content { padding: 0 0 28px; gap: 22px; }
+}

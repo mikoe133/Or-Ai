@@ -175,7 +175,7 @@ export class ApiClient {
     );
   }
   blob(path: string, signal?: AbortSignal) {
-    return this.request(
+    return this.request<Blob>(
       path,
       {
         safeParse: (value) =>

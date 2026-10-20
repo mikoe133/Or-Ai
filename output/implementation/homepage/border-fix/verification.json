@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-14",
+  "design": {
+    "desktop": "40:371",
+    "mobile": "74:466",
+    "fileKey": "TluUhd92v2Z2HztvQeGqxe"
+  },
+  "viewportCount": 13,
+  "contentBoundaryFailures": 0,
+  "decorationGeometryFailures": 0,
+  "brokenVisibleImages": 0,
+  "productionBuild": "passed",
+  "existingFrontendTests": {
+    "passed": 15,
+    "failed": 0,
+    "scope": "existing authentication regression tests"
+  },
+  "additionalObservedStates": [
+    "collapsed sidebar at 1280",
+    "desktop search results at 1280",
+    "mobile search results at 384",
+    "mobile product dialog at 384",
+    "two-column page bottom at 1024",
+    "cold reload"
+  ],
+  "sourceAssetChanges": false,
+  "references": "saved native Figma exports, authoring source and layer records; no new MCP design context available due to quota",
+  "pixelEqualityClaimed": false,
+  "screenshots": [
+    "desktop.jpg",
+    "mobile.jpg",
+    "tablet-bottom.jpg",
+    "collapsed-1280.jpg"
+  ]
+}

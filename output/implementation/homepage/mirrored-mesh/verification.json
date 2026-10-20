@@ -1,0 +1,28 @@
+{
+  "sampledFrames": 65,
+  "observedDurationMs": 20246,
+  "field": {
+    "bottom": 1164,
+    "height": 594,
+    "left": 337,
+    "right": 1265,
+    "top": 570,
+    "width": 928,
+    "x": 337,
+    "y": 570
+  },
+  "axisY": 867,
+  "allFramesMirrored": true,
+  "layoutStable": true,
+  "initialVerticalTravelPx": [
+    6.361185396634596,
+    -6.3611853966344825
+  ],
+  "bothMoveTowardAxis": true,
+  "equalOppositeTravel": true,
+  "responsiveChecksPassed": true,
+  "collapsedCheckPassed": true,
+  "pauseResumeReducedMotionPassed": true,
+  "previewFrames": 65,
+  "buildPassed": true
+}

@@ -43,6 +43,75 @@ export async function textContrast(locator) {
   });
 }
 
+export async function workspaceNavigation(page) {
+  await page.goto("/");
+  await expect(page.locator(".catalog-featured article").first()).toBeVisible();
+  const frameGeometry = () => page.locator(".store-workspace-page").evaluate((element) => {
+    const rectangle = (selector) => {
+      const { x, y, width, height } = element.querySelector(selector).getBoundingClientRect();
+      return { x, y, width, height };
+    };
+    return { intro: rectangle(".store-intro"), panel: rectangle(".store-panel") };
+  });
+  const baseline = await frameGeometry();
+  for (const [label, path] of [["我的应用", "/apps"], ["我的报告", "/reports"], ["使用帮助", "/help"]]) {
+    const link = page.getByRole("navigation", { name: "空间导航", exact: true }).getByRole("link", { name: label, exact: true });
+    await link.click();
+    await expect(page).toHaveURL(new RegExp(path + "$"));
+    await expect(page.getByRole("heading", { name: label, exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "发现有趣的自己", exact: true })).toBeVisible();
+    await expect(link).toHaveAttribute("aria-current", "page");
+    assert.deepEqual(await frameGeometry(), baseline);
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+  }
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "使用帮助", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "发现有趣的自己", exact: true })).toBeVisible();
+  await page.getByRole("navigation", { name: "空间导航", exact: true }).getByRole("link", { name: "应用商城", exact: true }).click();
+  await expect(page.locator(".catalog-featured article").first()).toBeVisible();
+}
+
+export async function workspaceFeedback(page) {
+  const reduced = await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  try {
+    await page.goto("/help");
+    await expect(page.getByRole("heading", { name: "使用帮助", exact: true })).toBeVisible();
+    const sidebar = page.locator(".store-sidebar");
+    const expandedWidth = await sidebar.evaluate(element => getComputedStyle(element).width);
+    await page.getByRole("button", { name: "收起侧栏", exact: true }).click();
+    await expect(sidebar).toHaveCSS("width", "88px");
+    await page.getByRole("button", { name: "展开侧栏", exact: true }).click();
+    await expect(sidebar).toHaveCSS("width", expandedWidth);
+    const trigger = page.getByRole("navigation", { name: "帮助导航" }).getByRole("button", { name: "兑换说明", exact: true });
+    await trigger.click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await expect(trigger).toBeFocused();
+    await trigger.click();
+    await page.getByRole("button", { name: "关闭帮助", exact: true }).click();
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+    await expect(trigger).toBeFocused();
+    await page.getByRole("navigation", { name: "空间导航" }).getByRole("link", { name: "应用商城", exact: true }).click();
+    const disclosure = page.locator(".catalog-filter-panel > summary");
+    await disclosure.click();
+    const search = page.getByLabel("搜索测试", { exact: true });
+    await search.fill("伴侣");
+    await disclosure.click();
+    await expect(search).toBeHidden();
+    await disclosure.click();
+    await expect(search).toBeVisible();
+    await expect(search).toHaveValue("伴侣");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.getByRole("navigation", { name: "空间导航" }).getByRole("link", { name: "使用帮助", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "使用帮助", exact: true })).toBeVisible();
+    assert.equal(await page.locator(".workspace-view").evaluate(element => element.getAnimations({ subtree: true }).length), 0);
+  } finally {
+    await page.emulateMedia({ reducedMotion: reduced ? "reduce" : "no-preference" });
+  }
+}
+
 export async function catalogFilters(page) {
   await page.goto("/?sort=recommended&pageSize=1&page=2");
   await expect(
@@ -53,9 +122,10 @@ export async function catalogFilters(page) {
   await expect(page.locator("article h2")).toHaveText(title);
   await page.getByRole("button", { name: "上一页", exact: true }).click();
   await expect(page).toHaveURL(/page=1/);
+  await page.getByText("搜索与筛选", { exact: true }).click();
   await page.getByLabel("搜索测试", { exact: true }).fill("伴侣");
   await page
-    .getByLabel("商品分类", { exact: true })
+    .getByRole("combobox", { name: "商品分类", exact: true })
     .selectOption("relationships");
   await page.getByText("更多筛选", { exact: true }).click();
   await page.getByLabel("最低价格（元）", { exact: true }).fill("9.9");

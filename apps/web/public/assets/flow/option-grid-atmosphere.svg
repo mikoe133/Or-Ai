@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024">
+<rect id="背景布局边界" width="1440" height="1024" fill="#FFFFFF" fill-opacity=".001"/><defs>
+<radialGradient id="lilac" cx=".98" cy=".98" r=".7"><stop stop-color="#9F72B1" stop-opacity=".48"/><stop offset=".5" stop-color="#5D4B74" stop-opacity=".19"/><stop offset="1" stop-color="#101118" stop-opacity="0"/></radialGradient>
+<radialGradient id="green" cx=".02" cy=".99" r=".7"><stop stop-color="#BBCB9E" stop-opacity=".35"/><stop offset=".35" stop-color="#729584" stop-opacity=".17"/><stop offset="1" stop-color="#101118" stop-opacity="0"/></radialGradient>
+<linearGradient id="sidebar" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#274B60" stop-opacity=".02"/><stop offset=".6" stop-color="#618DA1" stop-opacity=".16"/><stop offset="1" stop-color="#A7C1C5" stop-opacity=".25"/></linearGradient>
+<linearGradient id="edge" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#8E9AB2" stop-opacity=".26"/><stop offset=".44" stop-color="#839DB7" stop-opacity=".3"/><stop offset=".86" stop-color="#ACCAD1" stop-opacity=".65"/><stop offset="1" stop-color="#E7DFF1" stop-opacity=".85"/></linearGradient>
+<linearGradient id="outer" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#C9C1DE" stop-opacity="0"/><stop offset=".7" stop-color="#C9C1DE" stop-opacity=".02"/><stop offset=".91" stop-color="#CBD2E3" stop-opacity=".17"/><stop offset="1" stop-color="#F5ECFF" stop-opacity=".64"/></linearGradient>
+<linearGradient id="panel-right-fade" x1="0" y1="0" x2="1" y2="0">
+<stop stop-color="#191B24" stop-opacity=".88"/>
+<stop offset=".98919753" stop-color="#191B24" stop-opacity=".88"/>
+<stop offset="1" stop-color="#191B24" stop-opacity="0"/>
+</linearGradient></defs>
+<g id="双色环境光"><rect width="1440" height="1024" fill="url(#lilac)"/><rect width="1440" height="1024" fill="url(#green)"/></g>
+<g id="侧栏渐变玻璃"><rect x="73.2" y="181.2" width="244" height="797" rx="26" fill="url(#sidebar)"/></g>
+<g id="底部轨道网格" fill="none" stroke="#B3AEC7" stroke-opacity=".05"><ellipse cx="862" cy="964" rx="480" ry="144"/><ellipse cx="862" cy="964" rx="380" ry="105"/><ellipse cx="862" cy="964" rx="230" ry="144"/><ellipse cx="862" cy="964" rx="115" ry="144"/><path d="M382 964h960M454 891h816M862 820v204"/></g>
+
+<rect id="面板底色 · 右缘透明过渡" x="72" y="180" width="1296" height="799.4" rx="28" fill="url(#panel-right-fade)"/></svg>

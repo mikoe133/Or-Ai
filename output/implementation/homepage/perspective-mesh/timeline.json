@@ -1,0 +1,5223 @@
+{
+  "rotationLoopMs": 120000,
+  "observedDurationMs": 172052,
+  "note": "120 screenshots sampled in three batches while the real animation remained running; sampling gaps are represented by elapsedMs. Viewport geometry shown here precedes the final responsive width/aspect adjustment. The final 16-second demo was captured without sampling gaps.",
+  "baselineLayout": {
+    "viewport": [
+      1373,
+      1248
+    ],
+    "scroll": [
+      0,
+      0
+    ],
+    "page": [
+      1373,
+      1248
+    ],
+    "panel": {
+      "bottom": 1204,
+      "height": 1024,
+      "left": 72,
+      "right": 1301,
+      "top": 180,
+      "width": 1229,
+      "x": 72,
+      "y": 180
+    },
+    "content": {
+      "bottom": 1204,
+      "height": 1024,
+      "left": 316,
+      "right": 1301,
+      "top": 180,
+      "width": 985,
+      "x": 316,
+      "y": 180
+    },
+    "frame": {
+      "bottom": 1204,
+      "height": 1024,
+      "left": 72,
+      "right": 1301,
+      "top": 180,
+      "width": 1229,
+      "x": 72,
+      "y": 180
+    },
+    "cards": [
+      {
+        "bottom": 560,
+        "height": 300,
+        "left": 337,
+        "right": 560,
+        "top": 260,
+        "width": 223,
+        "x": 337,
+        "y": 260
+      },
+      {
+        "bottom": 560,
+        "height": 300,
+        "left": 572,
+        "right": 795,
+        "top": 260,
+        "width": 223,
+        "x": 572,
+        "y": 260
+      },
+      {
+        "bottom": 560,
+        "height": 300,
+        "left": 807,
+        "right": 1030,
+        "top": 260,
+        "width": 223,
+        "x": 807,
+        "y": 260
+      },
+      {
+        "bottom": 560,
+        "height": 300,
+        "left": 1042,
+        "right": 1265,
+        "top": 260,
+        "width": 223,
+        "x": 1042,
+        "y": 260
+      },
+      {
+        "bottom": 722,
+        "height": 100,
+        "left": 337,
+        "right": 513,
+        "top": 622,
+        "width": 176,
+        "x": 337,
+        "y": 622
+      },
+      {
+        "bottom": 722,
+        "height": 100,
+        "left": 525,
+        "right": 701,
+        "top": 622,
+        "width": 176,
+        "x": 525,
+        "y": 622
+      },
+      {
+        "bottom": 722,
+        "height": 100,
+        "left": 713,
+        "right": 889,
+        "top": 622,
+        "width": 176,
+        "x": 713,
+        "y": 622
+      },
+      {
+        "bottom": 722,
+        "height": 100,
+        "left": 901,
+        "right": 1077,
+        "top": 622,
+        "width": 176,
+        "x": 901,
+        "y": 622
+      },
+      {
+        "bottom": 722,
+        "height": 100,
+        "left": 1089,
+        "right": 1265,
+        "top": 622,
+        "width": 176,
+        "x": 1089,
+        "y": 622
+      },
+      {
+        "bottom": 912,
+        "height": 128,
+        "left": 337,
+        "right": 557,
+        "top": 784,
+        "width": 220,
+        "x": 337,
+        "y": 784
+      },
+      {
+        "bottom": 912,
+        "height": 128,
+        "left": 573,
+        "right": 793,
+        "top": 784,
+        "width": 220,
+        "x": 573,
+        "y": 784
+      },
+      {
+        "bottom": 912,
+        "height": 128,
+        "left": 809,
+        "right": 1029,
+        "top": 784,
+        "width": 220,
+        "x": 809,
+        "y": 784
+      },
+      {
+        "bottom": 912,
+        "height": 128,
+        "left": 1045,
+        "right": 1265,
+        "top": 784,
+        "width": 220,
+        "x": 1045,
+        "y": 784
+      }
+    ]
+  },
+  "frames": [
+    {
+      "elapsedMs": 95,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 873.6072692307692
+          },
+          "pathDigest": "c8693df4376a30fbcb2585cddc73ef9111dcdd1d54263185fefdc7fae589cf34"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1225.3626041165865
+          },
+          "pathDigest": "60340317a4e2b8d97e00b9f3ac465f81f4b8447195686faef1946ad42dc0de08"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 1194,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 893.8108846153846
+          },
+          "pathDigest": "d3a48c35cd04d4d95b3975d073b33f8c8a4fe9b25bfc62cad1b370d650a02b7b"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1223.1418870192308
+          },
+          "pathDigest": "5e4cc7b32c36931cb5fd0f8d93a97dafd2fc1e49350c6f0da5d93bcd451b906e"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 2063,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 915.258346153846
+          },
+          "pathDigest": "0df31ba94c2bff3f86fbde79c15910f0272c300cbe6f4f6ba40c1afe9594cf75"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1220.9242217548076
+          },
+          "pathDigest": "fe01cf0734141a5f97cdd63843db71d84be7c626853ce3a67304e1eb88312970"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 3126,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 936.0927692307692
+          },
+          "pathDigest": "9326a880a0a6499220ccb2a1076551e4af825c76e50b9fcc4bac1ce2d6b9d429"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1218.8967874098555
+          },
+          "pathDigest": "a71836bb750c450b415af5dc28950985981bca69cc47e8a7ba8ea8b6d65ac58e"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 4140,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 958.4642307692308
+          },
+          "pathDigest": "78161f24787bac768233379833ee364db8a54fa90e74c391e6a094e013c0693d"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1216.8510420673076
+          },
+          "pathDigest": "10115bce20f30dece078593d4e0fd93c2ec04f699680c92d85ceababd9e0254c"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 5111,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 980.8268076923076
+          },
+          "pathDigest": "9ef9b6030ac589ac296ab35f9bb995badd9c3be9f8e6fdaa8a20a4da63f1ebc8"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1214.9355082632212
+          },
+          "pathDigest": "262158b9b8fcaed84df3a6f623355a9e9b6c444971721d2fe728d6feddd13641"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 6175,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1003.8823846153846
+          },
+          "pathDigest": "bb712627ad37223590d0ed947ea15fd0ec926462ab022709cbb6ba0b3972f0d2"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1213.0891493389422
+          },
+          "pathDigest": "618c64eebb53c55396f84bbd570227db9fe887b3d0bb1752489b449f7533dbc9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 7121,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1026.7958076923078
+          },
+          "pathDigest": "865926c50ed7d78cd5a99f034c8a0cd66e82faa015599a617ac83893689d7df3"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1211.3791056189905
+          },
+          "pathDigest": "4578797dcfbae6cabe347891eec08a19533c6c0caa875e7421706f3df5edfcd9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 8177,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1049.886923076923
+          },
+          "pathDigest": "70b5dcc0a6d227f6279e2da7fe34b807113b6099fac7cd7e260bedd1a92a4789"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1209.778927884615
+          },
+          "pathDigest": "ed081ad79f7c5aff2c319204e641cd48bd1e27c77731b5dca3e278436b77f408"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 9147,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1073.0846538461535
+          },
+          "pathDigest": "44c99961f3fa259d6506c042ab42cf961d2ce0f2fa0d24cc807cd1c5d78d42a6"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1208.2926852463945
+          },
+          "pathDigest": "eb705a53d3babe1d9d89bce4cc6c93af745d8a1d33ede79b3292858f06b8b988"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 10198,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1096.362346153846
+          },
+          "pathDigest": "0fbce77319d82faa13419dd51b562d6443941c55126eaf61883d0ebf7727e489"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1206.9224122596154
+          },
+          "pathDigest": "3f6869c424386ecddb783876cc05ebeb1c71c191a9e25fe711c8ac1072068bbf"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 11210,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1119.6133846153846
+          },
+          "pathDigest": "0d295a57819baefaad87eded92759e802a84e25b90119ab4a08b4ebc8b4c4905"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1205.6742125901442
+          },
+          "pathDigest": "94351fd6b3898512cff17821a452e249705d0a6650225e8b9a2fbfb010cbc52f"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 12223,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1142.7844615384615
+          },
+          "pathDigest": "fd1879633d5684558248510b2344b7c30db5bee2b087c4bd5882f07bb282bceb"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1204.5511380709136
+          },
+          "pathDigest": "46d02b787037cc1e66e965bedd4a1f95f00bbadf1827e1fce99af524ad87bed0"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 13230,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1165.8133846153846
+          },
+          "pathDigest": "54c5334938e71f230bed090f1a8af84109958cbfa2ec0ae1152ffc29dde1dabe"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1203.5552232572115
+          },
+          "pathDigest": "e0a38013abbff8c5102eb751583472fccf597115c66e9b7d97aa6c18540ec0ef"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 14137,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1188.2736923076925
+          },
+          "pathDigest": "d6407077a53cb1e2a3d2adfbd4ef96b259b1c621d4b84de29b9497d67e558fbb"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1202.7047791466346
+          },
+          "pathDigest": "3b3cc30c725a69d771eda818df38abc8b6590114d1e12e619cf546ccf474e1af"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 15103,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1211.196
+          },
+          "pathDigest": "5fd8f37a5b5a9215a7cc60ee03f1f4914145d61717ea7dbf999a8f1495b12881"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1201.961149188702
+          },
+          "pathDigest": "b733707584b26dab1a06c108a4b935fd795b78082e5fbcc0fd9c7d7714c5d00f"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 16123,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1233.4519615384615
+          },
+          "pathDigest": "dc90502445d1795313e598d91b573c5b7e03b369a34633a659dcf4dac3cbf8ea"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1201.3640072115384
+          },
+          "pathDigest": "fff6fe038f3d95b161f787d9c792ffd7e0a890e6d73be95e72fe2e2b043668da"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 17150,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1255.2992307692307
+          },
+          "pathDigest": "81c343466d9dcd7ef44f0a8851185f83bb0f4dd768a3e9f961f876e2096fbe89"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.904197716346
+          },
+          "pathDigest": "dd9701d99b02c7fb63813f162d9fadfa28d00fffb043778f9d2af040634c7731"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 18178,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1277.0576538461537
+          },
+          "pathDigest": "3a3a67d9c1fd6f9be3071271c30b18d3566c00b5d1665fde3fc66bb53a510efc"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.5786688701924
+          },
+          "pathDigest": "fc101801faa79c732275bd0610f4cff268036cd879fad91296ab0b38a2c4c686"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 19143,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1297.6077692307692
+          },
+          "pathDigest": "2f6fb4e6ad3b1624e169514abfc58824e9d25ed82e35ce579e4e72069b372c82"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.400645282452
+          },
+          "pathDigest": "aecebb0e21b92c7f9338c165cbec168fe4ebdb577bc17eba9d44d6a9d1851a31"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 20099,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1317.589269230769
+          },
+          "pathDigest": "aa8430be1ff714fcc9bda3bb7f4d58f79b940790a750739b9c023c996ea420d6"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1302.08059765625
+          },
+          "pathDigest": "cc72d42428ed4a357d7115c25d8f966acb6cf35cbcd9e0c16ae3f298a4a3986a"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 21108,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1337.9794615384617
+          },
+          "pathDigest": "5ea77565edf82dce0e7243ea05cc1a17f650056c1a03051925078e8a89c3ec80"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.980904447115
+          },
+          "pathDigest": "eccddc9b99c5f1728f628988ec9fc3056f6b2883ee0cdd944f3233f0df9f01ce"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 22111,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1357.001423076923
+          },
+          "pathDigest": "f9accc5da3a11548d316c5053464cef4a0838e3543c5b4e4a0d5de87ce4d4ae1"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.7428614783653
+          },
+          "pathDigest": "e40d8f4ea1458458e002cd5fcbccd5cb0ef4b85dbcb54851e547045aa453e4af"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 23131,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1375.0105384615383
+          },
+          "pathDigest": "599768fda3acfa00ca352842593bdd070e8e4194b4f40eebe65669938efcfb55"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.3746069711538
+          },
+          "pathDigest": "fc2312a5f1370624c62855f73fd22a93ff00e113d48a11ac8c06f1ebe4686075"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 24123,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1392.2555769230771
+          },
+          "pathDigest": "9809d843a8c13fb58ea6b8934a6fb8e2a09f43479c3e14a0ac361d461e7a9f89"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1300.8720718149038
+          },
+          "pathDigest": "b73c2bf61e06ef603675eddb8e35ebf4962040776173247d8455c02a9ab2a6fc"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 25157,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1409.2607307692308
+          },
+          "pathDigest": "64122dca8863b5722fb782fce51c01191c124dc4cdb60c3c1cd545506628fcb7"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1300.2149104567306
+          },
+          "pathDigest": "3fd3e125fa22d4b63b55a82f5c93b530217d2cd8249e255e676020715135f1e9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 26167,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1425.3507692307694
+          },
+          "pathDigest": "c6f232f9f0cee30cd0ff63d71f4193471e2c4960ee21abe2252927ec097a37bb"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1299.418382061298
+          },
+          "pathDigest": "dd03012383079e9b1bd3ce1f796e42bc0b389f90333a5b496ffa63c87783f975"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 27109,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1440.2769230769231
+          },
+          "pathDigest": "7541785910a885d8b03f1030620991c4287d5137bf2d50b6ae53869263c2efdc"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1298.5018149038465
+          },
+          "pathDigest": "e4be617a13c13d295348fccb2c6f6398cb3ef051f7c3106941b0465f7486935c"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 28676,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1454.2346538461538
+          },
+          "pathDigest": "354e7c20946ed0776bc329ce5aeee767539ae3beebfb630aa31d659d1f4bd7d5"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1297.4550362079326
+          },
+          "pathDigest": "cfbcd17cd07728cc09df42868cac748d468825a23e42b998301a67925c8e5029"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 29380,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1468.0324615384616
+          },
+          "pathDigest": "f74ef71ff254c2f4bda5af95477cde79cb41c3210ca5ba0a31fb4b42cd04271d"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1296.1997155949518
+          },
+          "pathDigest": "1a973f8b8fda202d401f550315b1604a23c6b132b581fcb907f89e8c6367959f"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 30203,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1478.3741538461538
+          },
+          "pathDigest": "fd5e02c9406e48334aae0f09e0e14eb0a594a66d16ce3932805e9728be11c5fd"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1295.075623798077
+          },
+          "pathDigest": "28a17cb22106f8c20ce2dbc2f5fe97aa9e0a1c49b6522328c55522cd861048b0"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 31143,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1490.172923076923
+          },
+          "pathDigest": "489aedbb5e79a09dd6694d78701fafcdc87093301a6c2a545c88c5f16b1bed7e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1293.545638221154
+          },
+          "pathDigest": "956b9c32f79b07cc10e1158891f0e53d55308b0157788cb6aa8e5f6d11d7ac02"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 32129,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1499.946
+          },
+          "pathDigest": "10484612caad16216a379a56ece021e4d6ea2eb30523231c8581e04982c52f2c"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1292.0095489783653
+          },
+          "pathDigest": "11c2119fbb68cc7a78ee1cce24adf9dd165ed6993475c4f22c69f0c423d06b8b"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 33148,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1508.3241923076923
+          },
+          "pathDigest": "0b233491c91403a4f08fb8c3817ee5a35b717e5834bdea0d81da2645e57110a7"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1290.4195440204328
+          },
+          "pathDigest": "68ee78153c1d683adda8c5484a9ceb39898a03b745beb60fefcbcf2336d69efc"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 34186,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1515.867230769231
+          },
+          "pathDigest": "03764976462fb05b6d1dd96f61b6423d5855f265b1e691c8b63a763494a18a8c"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1288.6688091947117
+          },
+          "pathDigest": "c139f5e902b3466ae79e6f4daab3c35c0bf334b0f484fd8f951ad77d85fde8f9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 35191,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1522.2463846153846
+          },
+          "pathDigest": "dc6ff76a668fef7ffd5c95cc8fd71b6a238f7aaaceb2d8797e3b998989d5ec72"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1286.8163466045671
+          },
+          "pathDigest": "3db902556d66dcecc10c4f7db41080f0fb31866756d056cc04c4fd92817e3578"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 36203,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1527.4438846153846
+          },
+          "pathDigest": "0416e5793cae866b8c3761da2a88f8a76cbb6cbec93b2fb8ec12d62c830bff9e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1284.8641908052884
+          },
+          "pathDigest": "18aa662f7a5fbc794b4ca82d683737afbfb1ad7abc241c2a55f66cfadcbbdbef"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 37136,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1531.5041538461537
+          },
+          "pathDigest": "ecf90dd1848cfde05e254cb2245280891cc3df009fa934a94cef7dddc2c74905"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1282.7869098557692
+          },
+          "pathDigest": "ad86c381ee41c2c2dd51c92e65130bbf884a7bb87e9b34a8dbe409e9ba0db83c"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 38162,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1534.2495
+          },
+          "pathDigest": "3fcc5e5a8e8820155fccdb8bcf886067d6586b33c251afa354b7edf0175a71fc"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1280.692335186298
+          },
+          "pathDigest": "daf1f1b8775a06aecc0be4f3a3516e10fb8e70f1b4af8ef60aecf681bd359307"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 39106,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1535.8665
+          },
+          "pathDigest": "6b6739641c9714d77399143f385b9acd55f9d13147271aa54ef531004f285474"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1278.4065123197115
+          },
+          "pathDigest": "618acfafccafb3c3e088f5b58e7fa9fb2194636e8b43a79e599fe34057bf09f1"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 53693,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 757.7607692307693
+          },
+          "pathDigest": "c980efc7445ad1b3529979458faaafb38310c0ce20639673833fbd34198418e0"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1241.3379322415865
+          },
+          "pathDigest": "362acb71a535dc53ba3f4295c3fa33b7f7e819841f6bf1b66d1a800c1a320086"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 54597,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 770.5723846153846
+          },
+          "pathDigest": "c2ead4223959f70a4742599742d0b144cfe6c6c8c1e9a78cc95ecbd5bffad10a"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1239.214873798077
+          },
+          "pathDigest": "10b952d196e66e1ca5640bc196fc2b12ac42096e21065f74bdf6312f912e3119"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 55470,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 787.3643076923076
+          },
+          "pathDigest": "946eaaf3e3afce127f584d122c5fd00a03af7441fc31c808b3d32abd9fc05018"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1236.5984356971153
+          },
+          "pathDigest": "9b23ad1380e0cbbdfe8a326eb0c667c8e6416936925e0f10f404788a9ab957df"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 56474,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 804.7070769230769
+          },
+          "pathDigest": "407ae06f82defc4fd3f559771b5f832ea30bd7f0687ba12a0caeb9ca9762bc40"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1234.0684661959135
+          },
+          "pathDigest": "b74d44ca96997a24525e57f8a713753d7dfd950041af85b6a0a405eed6531c51"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 57447,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 822.5296153846153
+          },
+          "pathDigest": "10efff4e6cc5d45f0d6448fabed320196b95910657c7f1da62bfc970807ea984"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1231.6259825721154
+          },
+          "pathDigest": "539c0e835daff55413795805f07cf3818513157357582dcc72ace187fee0899b"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 58554,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 841.3916538461539
+          },
+          "pathDigest": "1fee4f83edab3edf85bfa7951ccab8908ab332dfcbe9cae1e21dae8e2c9261e5"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1229.194689002404
+          },
+          "pathDigest": "3135e311cdd8dc02b47c6aa91ca1b87c6c4287513c2277c3c209173542ad5e0d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 59563,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 860.6001923076923
+          },
+          "pathDigest": "7a3fd75755526e63bd123eb8cd8bc3b995e2a79bf41d1516687cfc650ba9e836"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1226.864105919471
+          },
+          "pathDigest": "ba7f38af9fb1964f323c902ce6c608d2c492fba2907cde48ed38c2b9b01617bc"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 60572,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 881.1147692307692
+          },
+          "pathDigest": "bae44e9437ae17acfb432105a7b602b9a36afb1d0d1a5c8078513ec738401b6d"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1224.522332782452
+          },
+          "pathDigest": "528de490b61b7241905263475c9f91543dc7e4cb306766ca502b3bc478cd0fb7"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 61593,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 902.58
+          },
+          "pathDigest": "f6fb7da212b205726e4ec4bfbbe597ead71e4123dd1156a4c43a796bb9f9a773"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1222.2192161959135
+          },
+          "pathDigest": "331d05b7a9e9b5f20567119b82cae3f4cfafd42122295f4f3b8f749916299147"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 62600,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 922.7925
+          },
+          "pathDigest": "6055537d8a61f99212438d0cb53d557e79278dee090b5a0b2726c9a482a6ff6c"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1220.176522686298
+          },
+          "pathDigest": "31b4f4da62239ba1ddc5b5261fbfc5f82a003582cfe5c9a23cd4ba9e621d65db"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 63570,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 944.8974230769232
+          },
+          "pathDigest": "3ebbe9f9267dc606be0d9140be4806ef04cd71c03cd6e28600e8f1200be1c4c5"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1218.0758443509617
+          },
+          "pathDigest": "ca8af3f2ed79e69cfc1b715c5647f6987f7168a0a2e6a0a1342b75261d49e440"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 64507,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 967.419923076923
+          },
+          "pathDigest": "d81dd2432802190a6005ba1ed2ac8c2333eed0bf03b7bbce8b5663f28fe0ab2e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1216.0697728365385
+          },
+          "pathDigest": "ad212fde0467dedd12a49f0546b53e0fa03cbf4cfb36fbaaff580d31748ebf5d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 65513,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 989.1516923076924
+          },
+          "pathDigest": "7caa06990fe641c867df0047fe6a90d99a8b23b2486a29c2b7c0850a1fe5d0ed"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1214.2539322415864
+          },
+          "pathDigest": "1a44b6c8a8598355dcbd521578c4244f10fec93ae17a4e133781ae06d642dab2"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 66514,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1013.0513076923075
+          },
+          "pathDigest": "47579a384626cdc7bd9d49ef0c6a33cbbb1680e73fb24478f3c961c3efcf648d"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1212.390279597356
+          },
+          "pathDigest": "817119d5adc519bea845b20d262877083bd6568fa3dffb9608cccbf742a60090"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 67505,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1035.2717307692308
+          },
+          "pathDigest": "a6088ecd24e28059d780594b59f634f8921fda048755c584e517b5d073e68e42"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1210.77789453125
+          },
+          "pathDigest": "6d34b61b94b18f6b240689bda6997b9057183b26bdaf1d8872257382761ae222"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 68501,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1058.807076923077
+          },
+          "pathDigest": "88991dee8eb068df6bacde6101b546f8d6403e033fe4931d51d676791702b62a"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1209.1929759615384
+          },
+          "pathDigest": "319641440c6a261e00067be484cd3dabcc8e0b4bc59b49c63cd57b02d9bd5b54"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 69528,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1082.0581153846151
+          },
+          "pathDigest": "3aafcaed567bcd81414b76e2c5c6717208c7311cf5ca6eef6bbcd8d6c21785a4"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1207.749458984375
+          },
+          "pathDigest": "44bdc58cf66f6966d9305e691809f9cc8314f73d7572d8361ecc240c992140fe"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 70529,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1105.7089615384616
+          },
+          "pathDigest": "cfaab89b3943e8e8568f121ccca9e2d0c639f923feedcc89509e3d961bba2ceb"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1206.405635216346
+          },
+          "pathDigest": "1ba6316c487156440eb82db1b0575aa1b9e9d22ec4a05be9abca58d5c173dbbc"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 71537,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1128.1603846153846
+          },
+          "pathDigest": "30ab2e8ea86666955e76460216c90fc04d44edccec13ef4807d7e122cbdb584d"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1205.2449214242788
+          },
+          "pathDigest": "6c44d135d075226e1baa865daf21cc1278faefb0aad8923e4293979247b69974"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 72540,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1152.06
+          },
+          "pathDigest": "bf5742541077c6999404a9dcfb74a85eec737575a057484a317f7d651ab7149b"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1204.135071514423
+          },
+          "pathDigest": "0e88a6a2c9191a4cde7a6b0cd894346bc0bf63bb016a091a58bbc1a312435b22"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 73552,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1174.626923076923
+          },
+          "pathDigest": "2b6323bced646ca73c4cccd568030cd78dcb88aab17ac4a0b92edf41d57813fa"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1203.2073143028847
+          },
+          "pathDigest": "fe4a583c346f0062a3b45c3913337cbf3dce9ac750c898c98d6f52ebc5be5a1d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 74555,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1196.9983846153846
+          },
+          "pathDigest": "2058825064d0dd85d6ab405a121e889cfd04240466a4bb02c4995ced275bf67c"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1202.406716796875
+          },
+          "pathDigest": "969db70c82959910716f87ab831e00823e014835a5f48b4406101a9656312576"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 75550,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1219.4586923076922
+          },
+          "pathDigest": "622cf5ac70e01c8305a5703f4d9255643ee4ad9cae9b918894e4983902772388"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1201.724123497596
+          },
+          "pathDigest": "1d4e27cab64984358015e5e3be9a8ae23a485f1bf2c0343e3d9c1f6af04581c9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 76537,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1241.9101153846154
+          },
+          "pathDigest": "ef24fbcccd6d462ed1b21e9c0f825b9ff10110b221b740a4dc8ed053ec1f7add"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1201.1707244591346
+          },
+          "pathDigest": "3a0690aef7954145f95c0955a1c3fe6e206a123f0bca4fb9f4bf59cd447ade83"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 77534,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1263.606346153846
+          },
+          "pathDigest": "ebbc7a794f094015e28c8840a866d690c171778a258ebd62361f62812a003a3f"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.7648306790866
+          },
+          "pathDigest": "02012f4408115293f71d124e038bfe0a1b6dc82d4a1e3889ad256a3fbbf92851"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 78501,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1284.8228076923078
+          },
+          "pathDigest": "8c1f7429483642a97c9a4d5facca387ceacbd9b08b153663a51fd274af9dba39"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.4962693810096
+          },
+          "pathDigest": "1cd50d9e7be696f5c7072fc7b6629396ced0cec82781c631717ec17c32873a3b"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 79491,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1305.8526923076925
+          },
+          "pathDigest": "fe1e25a6ad5a1d4f88a0ab8d3735c048f919d5cfaba6f780047c22f39761d3de"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.366057842548
+          },
+          "pathDigest": "70c93e9e849b6390416c8d868f6e8874eaedcbea3097c4cc91a845e397445027"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 80550,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1325.2833461538462
+          },
+          "pathDigest": "5b2ba1e7fb85321a1853807ac64610ac4ace88c619c32a6d439a8a3386867b1e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1302.0612693810097
+          },
+          "pathDigest": "b50cfcb4a022b6f1ce4db63dea050212eddf9000bece314965200c7b330d6c5d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 81540,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1345.3892307692308
+          },
+          "pathDigest": "8754b3e412fd5716e3c09e401f7dd1328025f6e97114dab8f60ae85148e2df07"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.9056259014424
+          },
+          "pathDigest": "6787fa33b2a35b8e4d7c5b28355069b5d8389ab98f1182a680eaebe4e6856aa3"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 82550,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1363.842576923077
+          },
+          "pathDigest": "b08eb35c8e64cb79977106d06df58daed11e0b7d27367d25c7e435b67dafbb7b"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.6207881610576
+          },
+          "pathDigest": "2b3bf5b3730f1435a8a5072c4638c0452f908cf6b200f50332a54e5b7edfd76d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 83562,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1381.5496153846152
+          },
+          "pathDigest": "72c205645c348c3bfb3fdc54b31bc01adbe94ea17beec9f8cf1c8ea04126fabe"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.201669771635
+          },
+          "pathDigest": "439c0ef7c2d73d4ef6e4ddb6d8e57f482448b21270376fc1454e4772372ee66f"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 84573,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1399.3632692307692
+          },
+          "pathDigest": "4d44cb95f3ffdd314f570a2fa5e77582ff591a08c7560fe1634d28578f0ba06e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1300.6187696814904
+          },
+          "pathDigest": "f2e7669abbe592ade12d8fd0c0c4c0d275af2c2b4fcef8bd2c706a51799bf811"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 85588,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1415.471076923077
+          },
+          "pathDigest": "5e314c96e4593f10f3b8e22457f4376ddf48b8ebe21d82a8a45c849da7d7c935"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1299.929055438702
+          },
+          "pathDigest": "0c41d622e48cf406f02c830161e748f28dd9a6fcaeaf7de8336963f2ff7f9b50"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 86611,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1431.2235
+          },
+          "pathDigest": "210ae75e74eaa161a96a81d4c307723d86ef38e181d93322cf02843e098c36d6"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1299.0806458834136
+          },
+          "pathDigest": "7c60335f398f52e0095eb6489bdfe7b7842f031573f80723ea1dc69079f8a964"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 87609,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1446.0075000000002
+          },
+          "pathDigest": "cdfc4e3a5b08755ab9a301cdb449717d51c4a3572dc41e3ed1d84d6adfce1de7"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1298.0969384014422
+          },
+          "pathDigest": "fcccbcdc97c2bf8f9bffd2eb959a0f967061a16b055f9a891b45704b12401f63"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 88613,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1459.130076923077
+          },
+          "pathDigest": "59f3bd99ef4966cf2e6f3e582c01f0d5b7f7632235e97216b0cbe989c2b394f6"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1297.037952373798
+          },
+          "pathDigest": "36dbce6fafd716827f44b2dd7eff5b71916fd7bce010e998b6234ddec2cadf8a"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 89570,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1471.719576923077
+          },
+          "pathDigest": "4b0ea25859afdeff9d9f0ed00e590518081ff4d6dbfa107011b2365ae72435cf"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1295.8182364783654
+          },
+          "pathDigest": "135448ee9b3bce4926230d6965c1a99496b2165e0df16fff571001a15910d991"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 90546,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1483.6249615384615
+          },
+          "pathDigest": "ff735f90de2dffaa194e94106bb30b64d864ddcd65d9d7814a7cf9fad54a7e36"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1294.431687049279
+          },
+          "pathDigest": "2d1caff82429f6e80596e254fad3df71a8e7b3c8cb9e3b1a87edff4b333c9824"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 91562,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1493.9133461538463
+          },
+          "pathDigest": "dec9bd5db73275ba829a8b5c86cc79e827006e616e3150a52066b4b91598993e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1292.991221905048
+          },
+          "pathDigest": "6a9000c3cc35707748ff48f4e4d6ad6e729edf4348e6c0c9d873af059533a744"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 92572,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1503.268846153846
+          },
+          "pathDigest": "8e4401cf2e9b89034509d5e55d9aac57d31e614eb2c522b299737d876db7e79d"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1291.4154588341346
+          },
+          "pathDigest": "fce895d05f8ecd195a10ebd3e3c0f1ee5a8bd6983556e5b7ba01665fae958d0b"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 132113,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1141.7183076923077
+          },
+          "pathDigest": "e58901594a12fc836ea90ff06ee1139dd257b7de30856ffa4cb6b18d3258dffa"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1204.5999673978365
+          },
+          "pathDigest": "2d1499f7644ff84d32dd1616cf7ee6ca60dee2da70747181e047007c3cf350db"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 133123,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1165.1203846153844
+          },
+          "pathDigest": "4e0e12278dff403ecc32079bf86576b4242aff136ed489a29d3fd851c778334b"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1203.58370703125
+          },
+          "pathDigest": "cc4987c371c6803c819ae26d577ecbdc433e58804cd05eff80da6bfbca3089ad"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 134144,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1187.9805
+          },
+          "pathDigest": "7b91d85745cac2e9290a9f016f01a33d4d8de593a989d6a9453c03fb3006ca04"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1202.714951923077
+          },
+          "pathDigest": "1ba010c94188b8169d305155c0f6e1bea932570f1d02c13e8c00ac44afc57922"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 135076,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1210.1831538461538
+          },
+          "pathDigest": "17d7c4baca9405d855830a3412f82706e92d7c7c78a25ff75583f8767176cbc1"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1201.9906502403846
+          },
+          "pathDigest": "854eb9efb7b4e7bda70de06591b4ff3051c259b1dfaec493969a90bc86c7aff2"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 136185,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1232.8033846153846
+          },
+          "pathDigest": "9f4835b07b61365d969e33010fbacab09b5d3c5a749a10e815c37f38c4e76080"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1201.379266376202
+          },
+          "pathDigest": "88f66b114abaa6ee7cccc492ff26a522184868fb28313a35fdd30034d5e9164a"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 137291,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1257.8935384615384
+          },
+          "pathDigest": "ae17af4ff1d69d6f3d5a4f480a47fcb659b01d476bb2427016e507b99478f57e"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.8584202223558
+          },
+          "pathDigest": "e0b902e301313a91f89fa06f4149a4a755b9e18b8ad5eec15823a562cdbe5e47"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 138101,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1276.0892307692309
+          },
+          "pathDigest": "38a93bcf8e3625f235c99d18e099e7966d078b22fa8baf9528a74e884dc851ce"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.590876201923
+          },
+          "pathDigest": "b38355c82c75183e7c1f06fb9ce7e71b120124f3d8a2e83767df9ee6ba18d20a"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 139212,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1297.0036153846154
+          },
+          "pathDigest": "33660d435ea5d7874fcad2e9330bd4743831e4bfa320724b9f40c53761fa0b94"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1200.4036971153846
+          },
+          "pathDigest": "093e8fa9774ed6c31a23e5aa6e6dbbb0eca270906610cc52eefb6eb083d6c264"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 140220,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1317.6692307692308
+          },
+          "pathDigest": "00633f610643e5a20451ca09efc4f5ac193b449a6e1d9c755e618d7a91b3a33f"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1302.08059765625
+          },
+          "pathDigest": "137e267aeef7988930074755b0200bd1cad21b6f5cc05f352319844aae0754c9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 141110,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1337.4108461538465
+          },
+          "pathDigest": "8c866fc99e2260858ab2cf4424eaecaa6b443e8b28fb09a1126b1c2a6ba20c7a"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.9859908353365
+          },
+          "pathDigest": "f7aff7de3503c1b69d1fcb58c4712df8fb8f933a62912b7553c81de68ad9c135"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 142113,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1356.1396153846154
+          },
+          "pathDigest": "fa36ce272ce98532f551634813dd3a28bcdb3a6731c076662c5022ce1caf2f79"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.7571033653846
+          },
+          "pathDigest": "f1281252597ac9f26bb4d476927f4c967203ade2942a1920fc6d408b73a347ef"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 143116,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1374.4685769230769
+          },
+          "pathDigest": "3660a6b71ec3ea4e7999f816367323087bd5d119d46e8ffe3d4a155474d23e14"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1301.3878315805289
+          },
+          "pathDigest": "7fbc378db9c4eed05da251be20de3d9cab07aac85c4be93a524279a9cbb27f94"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 144121,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1392.0423461538462
+          },
+          "pathDigest": "3acce6cc57375ea5f82caa901fa77615be700813785e798de9e024dd9c42e38f"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1300.8791927584134
+          },
+          "pathDigest": "cfa55231e3daa8b638bfaa87d130a114fba4570161668c30bcc9476a739722f6"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 145109,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1408.5055384615384
+          },
+          "pathDigest": "7241db4fb3bcaecb53029f524ccfdde2d1163057f7cd0c4851e02f1ee7c9b358"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1300.2474633413462
+          },
+          "pathDigest": "4f4b43389b709d9b050c0417146c37246c627a034fd5ccae113331dc7c9091b7"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 146137,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1424.9065384615385
+          },
+          "pathDigest": "dc3f3e2ee54326e4a83b73d4de15fab312cece96c8ec5b6db34f705be9f2de35"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1299.4427967247595
+          },
+          "pathDigest": "67500dbe8c4febff1bfe02b91124fc33a4c76614aab07e6346e6fa23e99e5ab3"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 147098,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1439.610576923077
+          },
+          "pathDigest": "47d4648c1ef5d6dac5e033bb041cad1f3ceb4d96fef1e5702cc190f70f76d5a6"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1298.5465751201923
+          },
+          "pathDigest": "8b8a4937283d578b0c8ee091c3db6cac8677b7ff505f25c00c2c33d59ef5b7f5"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 148328,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1453.390615384615
+          },
+          "pathDigest": "f9374e17722a3f1252cf03aa5773b50f443faf4ef88804ba1cea3a20b3bc93be"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1297.5242110877405
+          },
+          "pathDigest": "b4383d801743471463e505a38bdbab6acdd58fbf4ef5237a7a9b92e601571099"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 149126,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1467.0373846153848
+          },
+          "pathDigest": "d497af4f5c71c8ff214555b6e9b84671531e41f3f173a0e04d7455935563646f"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1296.2983915264424
+          },
+          "pathDigest": "122ac8077c925ca89d20d89b8d4225cc24dd0eaa5d2a8e3b5ba2b08d710274ea"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 150137,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1478.9871923076923
+          },
+          "pathDigest": "771e36697152fb8cdcae49e23dd86b4c407ff849f5369a4b26538f749d693c38"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1295.0033970853365
+          },
+          "pathDigest": "0d8a9c579911a695dd23ee109bdf00e4dd83a6a918fb6831e91d45658819d628"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 151219,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1489.5243461538462
+          },
+          "pathDigest": "81f653c1eaf102ce96bb3a83789408edb931d0940e28b670db7a05dff34b6fe3"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1293.638210486779
+          },
+          "pathDigest": "4d682512b40afd276cc62afa6611ea2864372528eed1936b703bc5343d3f6f6a"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 152155,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1499.6794615384615
+          },
+          "pathDigest": "705e7db0bd69072ce91b0cbe3b936646789b2617091d434fea702f7b73800890"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1292.05634375
+          },
+          "pathDigest": "591ad7116b8154d1c72f4118391454a760c51ec3bfe010ceaf30f84f48956f4a"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 153164,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1508.3597307692307
+          },
+          "pathDigest": "50ec33a8c3fe403a3e3de707a64081de7f228432119886aaeef24b484bc421f7"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1290.412423076923
+          },
+          "pathDigest": "c9d18a858b56550087664554c02e24268e80659fb5373aefab834a9dc27c7967"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 154169,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1515.6628846153849
+          },
+          "pathDigest": "88c7887f669aa11f0b9eccb4d9cdb6c597af689279a5d3af365c17bf85b7a676"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1288.7217076322115
+          },
+          "pathDigest": "6a3df0cc084abfe0a3cd2041cc20dd3948748b55a2a62a855b170134c4b371f0"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 155173,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1522.264153846154
+          },
+          "pathDigest": "523c99f8d37952383899ef56c1274975b8110ae0771008bd2e58da4fb9351dfd"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1286.810242938702
+          },
+          "pathDigest": "4f16d06eae8b0867a73c21c2fe0987677317a5bb1e377af775ae09b09c427988"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 156177,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1527.3816923076922
+          },
+          "pathDigest": "7cb5984623bc7fd62df2632857c2e3af65d4ace22590e7725ed98aa4f07610ee"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1284.8906400240385
+          },
+          "pathDigest": "78c6bdbc41915836d29f7f9a2c78eaea04ba6b8a6798d8d7812912409c1cfbd5"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 157183,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1531.4064230769231
+          },
+          "pathDigest": "be99767e6cb89ae0d1a431a517454dca988facfc38f5ce4c534b44c0e1ca52cb"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1282.847946514423
+          },
+          "pathDigest": "046e086bbdd2f27dabfe2d2e092d47f8bb9a5b70103e988f0a583b6f3a919630"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 158182,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1534.222846153846
+          },
+          "pathDigest": "e67d75e7c3c4f84098fc5bf6889b010c3c2580f8c1ba31be30fa5e0fc4b5fb68"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1280.7198016826924
+          },
+          "pathDigest": "d5605480cacd56bde5869755c54720bcb7a2443c71664bf927f886663656191e"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 159141,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 1535.839846153846
+          },
+          "pathDigest": "f1e8b330e44c18dffb5c605e03d55e1497ae62ab58c58caac440c529e42813e6"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1278.4726353665865
+          },
+          "pathDigest": "11f75021279b1c876cdc1aecdd8d70fa8f7fc8a3a553a5c363a1770751794fa4"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 160202,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 647.787
+          },
+          "pathDigest": "55936802137639f8d6a822f85762ef185e8b25ac1d74f96000365ed831869f8b"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1276.2254690504808
+          },
+          "pathDigest": "276353b8d3bde2b3458acc1abff8f3b034cd87c998f4cbdbd57a10ac27566f09"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 161203,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 648.6488076923077
+          },
+          "pathDigest": "58cd41aa474bb3e1554491a693067116fee0742ae470177a1ab2dead16238ec5"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1273.83283203125
+          },
+          "pathDigest": "84fc6587ac8abd1908cb0eea568a5e63b1ccebb596b3233c794e0cfc472ac1e8"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 162164,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 650.6300769230769
+          },
+          "pathDigest": "9a0397b95f44ebf7e4935007eac1996fa967348eb239c66ec3c73193d556bd26"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1271.497162560096
+          },
+          "pathDigest": "8289d44c13be45dbce98b70df7e47c74c0470f1f1317a5477138be8216bf363d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 163174,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 653.9973461538461
+          },
+          "pathDigest": "fd603b2ecfcb2b066a3d2ec9aa568b1d2fd9c5676469cf726e215a27fcf46b61"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1268.9458302283654
+          },
+          "pathDigest": "5529b3958d2f73d45c726fdc95e85d0ef7ad3fa47228f18cad1917955956179d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 164182,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 658.3063846153846
+          },
+          "pathDigest": "e31ce1e93d783e06ab75052d5b81e1a29ae1fcf6e4ed4df862ad5cb6356113ce"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1266.5094502704328
+          },
+          "pathDigest": "0d8485323c9571084aaf1ff623b0b03b6949e5451e15b5201d4d17ba0a5e79bf"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 165192,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 664.1435769230769
+          },
+          "pathDigest": "0697ae1c83ebf095cc1ab3e20b14de21276f019becf0cdad1d4879cf0ddc3775"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1263.8624938401442
+          },
+          "pathDigest": "2573fafcdee9ba3916c16bfdb460f224bfcffefb74bb55a272d5d3f5199ce18c"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 166203,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 670.9847307692307
+          },
+          "pathDigest": "d797fb15429db82a20c787c00c109972044bf59715994310e6ddb6a03eeaf3e9"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1261.2684358473557
+          },
+          "pathDigest": "9271949a6596e2f1289aded85e9457d6abcd34e4cf492fc6362e4e867eb9680d"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 167215,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 678.7054615384616
+          },
+          "pathDigest": "5949ac9763c7877f726ef95414d4019e17b4b306dc62b6c01fb9aea2bf989d9a"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1258.7293108473557
+          },
+          "pathDigest": "c635aed7c484a1beeffe92bc9e1edb4d4ec265b55adf23fb23b693a20cc9aca5"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 168136,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 688.1142692307692
+          },
+          "pathDigest": "4aab0d349916509210594064bbf8e4a31d8d897a347538ecba498e475f5b568c"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1255.997920372596
+          },
+          "pathDigest": "a178676fcbbdbbd14c8e02aec633645434de58f2ff2fe4b114d6567473e88ee9"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 169204,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 698.3582307692308
+          },
+          "pathDigest": "2a3c6a893a0d8ab42c0b153cc94dccd7ae2fcf05dab8d272bc7910432baf18bb"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1253.339773888221
+          },
+          "pathDigest": "457e43569aea5586e880cf93ad87e8d9e008d53fdd278178d808da510530e4a8"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 170235,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 709.2863076923077
+          },
+          "pathDigest": "dfd5b835b533cc6e46be3edebfa7a7c586b22b5b34663a8be556e66fca679cd4"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1250.765044170673
+          },
+          "pathDigest": "60d9eeb73bd15c7b774ea8044910feb7424bfb0568054cb38e9a741cf5e656ee"
+        }
+      ]
+    },
+    {
+      "elapsedMs": 171167,
+      "layoutStable": true,
+      "meshes": [
+        {
+          "className": "store-wireframe store-wireframe-upper",
+          "rect": {
+            "bottom": 1190,
+            "height": 560,
+            "left": 336,
+            "right": 1279,
+            "top": 630,
+            "width": 943,
+            "x": 336,
+            "y": 630
+          },
+          "center": {
+            "x": 807.5,
+            "y": 721.8136153846153
+          },
+          "pathDigest": "2c11f4fdb0d7983487695d5f0c58bb7a0601bee269ac7d26a54bbc6690ee910b"
+        },
+        {
+          "className": "store-wireframe store-wireframe-lower",
+          "rect": {
+            "bottom": 1248,
+            "height": 46,
+            "left": 336,
+            "right": 1279,
+            "top": 1202,
+            "width": 943,
+            "x": 336,
+            "y": 1202
+          },
+          "center": {
+            "x": 807.49609375,
+            "y": 1248.0611201923075
+          },
+          "pathDigest": "e5f9a1907633881595875fac4fe71d389721ec185b2efb7f7a42d00c9915749e"
+        }
+      ]
+    }
+  ]
+}

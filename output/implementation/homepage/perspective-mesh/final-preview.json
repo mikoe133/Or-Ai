@@ -1,0 +1,251 @@
+{
+  "containment": {
+    "border": {
+      "bottom": 1190,
+      "left": 317.7,
+      "right": 1287,
+      "top": 181.2
+    },
+    "brokenVisibleImages": [],
+    "clientWidth": 1373,
+    "failures": [],
+    "featuredColumns": "223px 223px 223px 223px",
+    "fonts": "loaded",
+    "mode": "desktop",
+    "panel": {
+      "bottom": 1204,
+      "height": 1024,
+      "right": 1301,
+      "width": 1229,
+      "x": 72,
+      "y": 180
+    },
+    "root": {
+      "bottom": 1248,
+      "height": 1248,
+      "right": 1373,
+      "width": 1373,
+      "x": 0,
+      "y": 0
+    },
+    "scrollY": 0,
+    "sidebar": {
+      "bottom": 1204,
+      "height": 1024,
+      "right": 316,
+      "width": 244,
+      "x": 72,
+      "y": 180
+    },
+    "viewport": [
+      1373,
+      1248
+    ]
+  },
+  "logs": [
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.css",
+      "timestamp": "2026-10-14T17:36:43.365Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.tsx",
+      "timestamp": "2026-10-14T17:36:43.513Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:36:43.513Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.css",
+      "timestamp": "2026-10-14T17:37:36.685Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] connecting...",
+      "timestamp": "2026-10-14T17:37:46.920Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "info",
+      "message": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "timestamp": "2026-10-14T17:37:46.922Z",
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=9b52f6e6"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] connected.",
+      "timestamp": "2026-10-14T17:37:46.964Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:38:21.921Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/perspective-wireframe.tsx",
+      "timestamp": "2026-10-14T17:38:21.922Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:40:06.678Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] invalidate /src/store/perspective-wireframe.tsx: Could not Fast Refresh (export \"PerspectiveWireframe\" removed)",
+      "timestamp": "2026-10-14T17:40:06.679Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/perspective-wireframe.tsx",
+      "timestamp": "2026-10-14T17:40:06.679Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.tsx",
+      "timestamp": "2026-10-14T17:40:06.888Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:40:06.888Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.css",
+      "timestamp": "2026-10-14T17:40:06.888Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.tsx",
+      "timestamp": "2026-10-14T17:40:06.889Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:40:25.576Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/perspective-wireframe.tsx",
+      "timestamp": "2026-10-14T17:40:25.578Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:41:15.290Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/perspective-wireframe.tsx",
+      "timestamp": "2026-10-14T17:41:15.290Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:41:29.780Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/perspective-wireframe.tsx",
+      "timestamp": "2026-10-14T17:41:29.780Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] connecting...",
+      "timestamp": "2026-10-14T17:42:26.191Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "info",
+      "message": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "timestamp": "2026-10-14T17:42:26.195Z",
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=9b52f6e6"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] connected.",
+      "timestamp": "2026-10-14T17:42:26.227Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.css",
+      "timestamp": "2026-10-14T17:46:16.814Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.css",
+      "timestamp": "2026-10-14T17:47:55.073Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] connecting...",
+      "timestamp": "2026-10-14T17:50:36.815Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] connected.",
+      "timestamp": "2026-10-14T17:50:36.828Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "info",
+      "message": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+      "timestamp": "2026-10-14T17:50:36.890Z",
+      "url": "http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=9b52f6e6"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/app.tsx",
+      "timestamp": "2026-10-14T17:52:00.952Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:52:00.952Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/store/home.tsx",
+      "timestamp": "2026-10-14T17:52:00.983Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    },
+    {
+      "level": "debug",
+      "message": "[vite] hot updated: /src/styles.css",
+      "timestamp": "2026-10-14T17:52:00.983Z",
+      "url": "http://127.0.0.1:5173/@vite/client"
+    }
+  ]
+}

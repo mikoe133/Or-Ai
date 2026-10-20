@@ -16,9 +16,14 @@ import { MediaAdminController } from './media-admin.controller';
 import { OverviewService } from './overview.service';
 import { EventsController, OverviewController } from './overview.controller';
 import { PublicAssetsController } from './public-assets.controller';
+import { ContentService } from './content.service';
+import { ContentController } from './content.controller';
+import { ContentWorkflowService } from './content-workflow.service';
+import { ContentPackagesService } from './content-packages.service';
+import { FileCleanupService } from './file-cleanup.service';
 
 @Module({ imports: [DatabaseModule, AccountCoreModule, CatalogModule, RedemptionModule],
-  controllers: [CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController],
+  controllers: [CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController, ContentController],
   providers: [AdminRequestGuard, AdminMutationService, CatalogAdminService, OrdersAdminService, AssetsService, FilesService,
-    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService] })
+    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService] })
 export class OperationsModule {}

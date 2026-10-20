@@ -1,0 +1,1703 @@
+{
+  "viewport": [
+    1373,
+    1248
+  ],
+  "field": {
+    "bottom": 1164,
+    "height": 594,
+    "left": 337,
+    "right": 1265,
+    "top": 570,
+    "width": 928,
+    "x": 337,
+    "y": 570
+  },
+  "baseline": [
+    {
+      "box": {
+        "bottom": 867,
+        "height": 297,
+        "left": 337,
+        "right": 1265,
+        "top": 570,
+        "width": 928,
+        "x": 337,
+        "y": 570
+      },
+      "center": {
+        "x": 801,
+        "y": 700.6257641225961
+      },
+      "className": "store-wireframe store-wireframe-upper",
+      "opacity": "0.19",
+      "svg": {
+        "bottom": 1060.046875,
+        "height": 490.046875,
+        "left": 337,
+        "right": 1265,
+        "top": 570,
+        "width": 928,
+        "x": 337,
+        "y": 570
+      },
+      "transform": "none"
+    },
+    {
+      "box": {
+        "bottom": 1164,
+        "height": 297,
+        "left": 337,
+        "right": 1265,
+        "top": 867,
+        "width": 928,
+        "x": 337,
+        "y": 867
+      },
+      "center": {
+        "x": 801,
+        "y": 1033.374235877404
+      },
+      "className": "store-wireframe store-wireframe-lower",
+      "opacity": "0.19",
+      "svg": {
+        "bottom": 1164,
+        "height": 490.046875,
+        "left": 337,
+        "right": 1265,
+        "top": 673.953125,
+        "width": 928,
+        "x": 337,
+        "y": 673.953125
+      },
+      "transform": "matrix(1, 0, 0, -1, 0, 0)"
+    }
+  ],
+  "frames": [
+    {
+      "elapsedMs": 404,
+      "file": "demo-000.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 701.7048096454326
+        },
+        {
+          "x": 801,
+          "y": 1032.2951903545672
+        }
+      ]
+    },
+    {
+      "elapsedMs": 591,
+      "file": "demo-001.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 705.1492737379808
+        },
+        {
+          "x": 801,
+          "y": 1028.8507262620192
+        }
+      ]
+    },
+    {
+      "elapsedMs": 857,
+      "file": "demo-002.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 708.0659950420672
+        },
+        {
+          "x": 801,
+          "y": 1025.9340049579328
+        }
+      ]
+    },
+    {
+      "elapsedMs": 1137,
+      "file": "demo-003.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 711.01098828125
+        },
+        {
+          "x": 801,
+          "y": 1022.98901171875
+        }
+      ]
+    },
+    {
+      "elapsedMs": 1358,
+      "file": "demo-004.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 713.2256231971154
+        },
+        {
+          "x": 801,
+          "y": 1020.7743768028846
+        }
+      ]
+    },
+    {
+      "elapsedMs": 1632,
+      "file": "demo-005.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 716.5805594951923
+        },
+        {
+          "x": 801,
+          "y": 1017.4194405048077
+        }
+      ]
+    },
+    {
+      "elapsedMs": 1906,
+      "file": "demo-006.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 718.8281783353366
+        },
+        {
+          "x": 801,
+          "y": 1015.1718216646634
+        }
+      ]
+    },
+    {
+      "elapsedMs": 2075,
+      "file": "demo-007.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 721.6506598557692
+        },
+        {
+          "x": 801,
+          "y": 1012.3493401442308
+        }
+      ]
+    },
+    {
+      "elapsedMs": 2412,
+      "file": "demo-008.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 724.4919893329327
+        },
+        {
+          "x": 801,
+          "y": 1009.5080106670672
+        }
+      ]
+    },
+    {
+      "elapsedMs": 2658,
+      "file": "demo-009.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 727.7291259014423
+        },
+        {
+          "x": 801,
+          "y": 1006.2708740985576
+        }
+      ]
+    },
+    {
+      "elapsedMs": 2921,
+      "file": "demo-010.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 730.4102477463942
+        },
+        {
+          "x": 801,
+          "y": 1003.5897522536058
+        }
+      ]
+    },
+    {
+      "elapsedMs": 3092,
+      "file": "demo-011.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 733.2892731370192
+        },
+        {
+          "x": 801,
+          "y": 1000.7107268629808
+        }
+      ]
+    },
+    {
+      "elapsedMs": 3411,
+      "file": "demo-012.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 736.5876655649039
+        },
+        {
+          "x": 801,
+          "y": 997.412334435096
+        }
+      ]
+    },
+    {
+      "elapsedMs": 3602,
+      "file": "demo-013.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 739.1085797776442
+        },
+        {
+          "x": 801,
+          "y": 994.8914202223558
+        }
+      ]
+    },
+    {
+      "elapsedMs": 3851,
+      "file": "demo-014.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 742.0394370492788
+        },
+        {
+          "x": 801,
+          "y": 991.9605629507212
+        }
+      ]
+    },
+    {
+      "elapsedMs": 4160,
+      "file": "demo-015.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 744.9797182992788
+        },
+        {
+          "x": 801,
+          "y": 989.0202817007212
+        }
+      ]
+    },
+    {
+      "elapsedMs": 4410,
+      "file": "demo-016.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 748.3158066406249
+        },
+        {
+          "x": 801,
+          "y": 985.6841933593752
+        }
+      ]
+    },
+    {
+      "elapsedMs": 4575,
+      "file": "demo-017.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 751.0911682692308
+        },
+        {
+          "x": 801,
+          "y": 982.9088317307692
+        }
+      ]
+    },
+    {
+      "elapsedMs": 4871,
+      "file": "demo-018.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 754.2623369891827
+        },
+        {
+          "x": 801,
+          "y": 979.7376630108172
+        }
+      ]
+    },
+    {
+      "elapsedMs": 5117,
+      "file": "demo-019.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 757.2497381310096
+        },
+        {
+          "x": 801,
+          "y": 976.7502618689904
+        }
+      ]
+    },
+    {
+      "elapsedMs": 5427,
+      "file": "demo-020.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 760.4444667968751
+        },
+        {
+          "x": 801,
+          "y": 973.5555332031248
+        }
+      ]
+    },
+    {
+      "elapsedMs": 5662,
+      "file": "demo-021.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 762.8475812800481
+        },
+        {
+          "x": 801,
+          "y": 971.152418719952
+        }
+      ]
+    },
+    {
+      "elapsedMs": 5847,
+      "file": "demo-022.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 765.6606388221154
+        },
+        {
+          "x": 801,
+          "y": 968.3393611778846
+        }
+      ]
+    },
+    {
+      "elapsedMs": 6141,
+      "file": "demo-023.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 769.0862549579326
+        },
+        {
+          "x": 801,
+          "y": 964.9137450420674
+        }
+      ]
+    },
+    {
+      "elapsedMs": 6439,
+      "file": "demo-024.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 771.9087364783654
+        },
+        {
+          "x": 801,
+          "y": 962.0912635216346
+        }
+      ]
+    },
+    {
+      "elapsedMs": 6777,
+      "file": "demo-025.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 774.3401228966346
+        },
+        {
+          "x": 801,
+          "y": 959.6598771033654
+        }
+      ]
+    },
+    {
+      "elapsedMs": 7181,
+      "file": "demo-026.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 779.2123197115385
+        },
+        {
+          "x": 801,
+          "y": 954.7876802884616
+        }
+      ]
+    },
+    {
+      "elapsedMs": 7438,
+      "file": "demo-027.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 784.3012680288462
+        },
+        {
+          "x": 801,
+          "y": 949.6987319711538
+        }
+      ]
+    },
+    {
+      "elapsedMs": 7608,
+      "file": "demo-028.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 787.566676532452
+        },
+        {
+          "x": 801,
+          "y": 946.433323467548
+        }
+      ]
+    },
+    {
+      "elapsedMs": 7919,
+      "file": "demo-029.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 790.8367970252405
+        },
+        {
+          "x": 801,
+          "y": 943.1632029747597
+        }
+      ]
+    },
+    {
+      "elapsedMs": 8117,
+      "file": "demo-030.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 793.2917433894231
+        },
+        {
+          "x": 801,
+          "y": 940.7082566105768
+        }
+      ]
+    },
+    {
+      "elapsedMs": 8364,
+      "file": "demo-031.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 796.7644794170674
+        },
+        {
+          "x": 801,
+          "y": 937.2355205829326
+        }
+      ]
+    },
+    {
+      "elapsedMs": 8884,
+      "file": "demo-032.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 799.2288497596154
+        },
+        {
+          "x": 801,
+          "y": 934.7711502403846
+        }
+      ]
+    },
+    {
+      "elapsedMs": 9243,
+      "file": "demo-033.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 806.8292883112981
+        },
+        {
+          "x": 801,
+          "y": 927.170711688702
+        }
+      ]
+    },
+    {
+      "elapsedMs": 9405,
+      "file": "demo-034.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 809.7177376802885
+        },
+        {
+          "x": 801,
+          "y": 924.2822623197115
+        }
+      ]
+    },
+    {
+      "elapsedMs": 9696,
+      "file": "demo-035.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 812.5920510817308
+        },
+        {
+          "x": 801,
+          "y": 921.4079489182692
+        }
+      ]
+    },
+    {
+      "elapsedMs": 9944,
+      "file": "demo-036.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 815.6784039963942
+        },
+        {
+          "x": 801,
+          "y": 918.3215960036058
+        }
+      ]
+    },
+    {
+      "elapsedMs": 10227,
+      "file": "demo-037.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 818.5574293870193
+        },
+        {
+          "x": 801,
+          "y": 915.4425706129808
+        }
+      ]
+    },
+    {
+      "elapsedMs": 10432,
+      "file": "demo-038.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 822.2610528846153
+        },
+        {
+          "x": 801,
+          "y": 911.7389471153848
+        }
+      ]
+    },
+    {
+      "elapsedMs": 10657,
+      "file": "demo-039.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 824.9327507512019
+        },
+        {
+          "x": 801,
+          "y": 909.067249248798
+        }
+      ]
+    },
+    {
+      "elapsedMs": 10960,
+      "file": "demo-040.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 828.424334735577
+        },
+        {
+          "x": 801,
+          "y": 905.575665264423
+        }
+      ]
+    },
+    {
+      "elapsedMs": 11183,
+      "file": "demo-041.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 831.501263671875
+        },
+        {
+          "x": 801,
+          "y": 902.498736328125
+        }
+      ]
+    },
+    {
+      "elapsedMs": 11414,
+      "file": "demo-042.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 834.5781926081731
+        },
+        {
+          "x": 801,
+          "y": 899.4218073918269
+        }
+      ]
+    },
+    {
+      "elapsedMs": 11668,
+      "file": "demo-043.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 837.8577370793269
+        },
+        {
+          "x": 801,
+          "y": 896.1422629206731
+        }
+      ]
+    },
+    {
+      "elapsedMs": 11916,
+      "file": "demo-044.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 840.7179145132211
+        },
+        {
+          "x": 801,
+          "y": 893.2820854867789
+        }
+      ]
+    },
+    {
+      "elapsedMs": 12183,
+      "file": "demo-045.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 843.5780919471154
+        },
+        {
+          "x": 801,
+          "y": 890.4219080528846
+        }
+      ]
+    },
+    {
+      "elapsedMs": 12508,
+      "file": "demo-046.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 846.8435004507212
+        },
+        {
+          "x": 801,
+          "y": 887.1564995492788
+        }
+      ]
+    },
+    {
+      "elapsedMs": 12741,
+      "file": "demo-047.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 849.8968694411058
+        },
+        {
+          "x": 801,
+          "y": 884.1031305588942
+        }
+      ]
+    },
+    {
+      "elapsedMs": 13008,
+      "file": "demo-048.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 852.3376798377404
+        },
+        {
+          "x": 801,
+          "y": 881.6623201622596
+        }
+      ]
+    },
+    {
+      "elapsedMs": 13296,
+      "file": "demo-049.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 855.3769128605769
+        },
+        {
+          "x": 801,
+          "y": 878.6230871394231
+        }
+      ]
+    },
+    {
+      "elapsedMs": 13635,
+      "file": "demo-050.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 860.6307807992789
+        },
+        {
+          "x": 801,
+          "y": 873.3692192007211
+        }
+      ]
+    },
+    {
+      "elapsedMs": 13941,
+      "file": "demo-051.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 863.8584933894231
+        },
+        {
+          "x": 801,
+          "y": 870.1415066105769
+        }
+      ]
+    },
+    {
+      "elapsedMs": 14559,
+      "file": "demo-052.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 867.4725890925481
+        },
+        {
+          "x": 801,
+          "y": 866.5274109074519
+        }
+      ]
+    },
+    {
+      "elapsedMs": 15038,
+      "file": "demo-053.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 875.0636036658653
+        },
+        {
+          "x": 801,
+          "y": 858.9363963341347
+        }
+      ]
+    },
+    {
+      "elapsedMs": 15318,
+      "file": "demo-054.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 880.0206162860577
+        },
+        {
+          "x": 801,
+          "y": 853.9793837139423
+        }
+      ]
+    },
+    {
+      "elapsedMs": 15917,
+      "file": "demo-055.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 883.3755525841345
+        },
+        {
+          "x": 801,
+          "y": 850.6244474158655
+        }
+      ]
+    },
+    {
+      "elapsedMs": 16352,
+      "file": "demo-056.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 891.0089750600962
+        },
+        {
+          "x": 801,
+          "y": 842.9910249399038
+        }
+      ]
+    },
+    {
+      "elapsedMs": 17575,
+      "file": "demo-057.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 895.8576119290865
+        },
+        {
+          "x": 801,
+          "y": 838.1423880709135
+        }
+      ]
+    },
+    {
+      "elapsedMs": 17929,
+      "file": "demo-058.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 909.9747315204328
+        },
+        {
+          "x": 801,
+          "y": 824.0252684795673
+        }
+      ]
+    },
+    {
+      "elapsedMs": 18346,
+      "file": "demo-059.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 914.0930100661058
+        },
+        {
+          "x": 801,
+          "y": 819.9069899338942
+        }
+      ]
+    },
+    {
+      "elapsedMs": 18651,
+      "file": "demo-060.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 918.1830166766828
+        },
+        {
+          "x": 801,
+          "y": 815.8169833233173
+        }
+      ]
+    },
+    {
+      "elapsedMs": 18985,
+      "file": "demo-061.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 921.500257061298
+        },
+        {
+          "x": 801,
+          "y": 812.499742938702
+        }
+      ]
+    },
+    {
+      "elapsedMs": 19406,
+      "file": "demo-062.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 926.0614625901442
+        },
+        {
+          "x": 801,
+          "y": 807.9385374098558
+        }
+      ]
+    },
+    {
+      "elapsedMs": 19859,
+      "file": "demo-063.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 929.8451899038462
+        },
+        {
+          "x": 801,
+          "y": 804.1548100961538
+        }
+      ]
+    },
+    {
+      "elapsedMs": 20246,
+      "file": "demo-064.jpg",
+      "check": {
+        "axisY": 867,
+        "equalPaths": true,
+        "equalSize": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "lowerReflected": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "layoutStable": true,
+      "centers": [
+        {
+          "x": 801,
+          "y": 934.4912112379808
+        },
+        {
+          "x": 801,
+          "y": 799.5087887620193
+        }
+      ]
+    }
+  ]
+}

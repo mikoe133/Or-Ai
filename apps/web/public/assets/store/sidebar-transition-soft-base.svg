@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="266" height="800" viewBox="0 0 266 800">
+  <defs>
+    <linearGradient id="sidebar-depth" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="800">
+      <stop stop-color="#5A789D" stop-opacity="0"/>
+      <stop offset=".38" stop-color="#5A789D" stop-opacity="0"/>
+      <stop offset=".62" stop-color="#648DB3" stop-opacity=".06"/>
+      <stop offset=".82" stop-color="#79A6C4" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#9CC5D1" stop-opacity=".32"/>
+    </linearGradient>
+    <radialGradient id="cool-wash">
+      <stop stop-color="#93BDE5" stop-opacity=".19"/>
+      <stop offset=".4" stop-color="#739DBF" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#597AAB" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mint-foot">
+      <stop stop-color="#C0DAD5" stop-opacity=".15"/>
+      <stop offset=".45" stop-color="#A1CED1" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#86AFAF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="workspace-lower-left-cutout"><path d="M0 0H244V762.8Q244 784.8 266 784.8V798.8H0Z"/></clipPath>
+    <linearGradient id="sidebar-foot-fade" gradientUnits="userSpaceOnUse" x1="0" y1="728.8" x2="0" y2="798.8">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".57" stop-color="#FFFFFF"/>
+      <stop offset=".8" stop-color="#FFFFFF" stop-opacity=".9"/>
+      <stop offset=".91" stop-color="#FFFFFF" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sidebar-corner-tail-horizontal-fade" gradientUnits="userSpaceOnUse" x1="244" y1="0" x2="266" y2="0">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".25" stop-color="#FFFFFF" stop-opacity=".85"/>
+      <stop offset=".65" stop-color="#FFFFFF" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="sidebar-corner-tail-feather" maskUnits="userSpaceOnUse" x="0" y="0" width="266" height="800" style="mask-type:alpha">
+      <rect width="266" height="800" fill="url(#sidebar-corner-tail-horizontal-fade)"/>
+    </mask>
+    <mask id="sidebar-foot-feather" maskUnits="userSpaceOnUse" x="0" y="0" width="266" height="800" style="mask-type:alpha">
+      <rect width="266" height="800" fill="url(#sidebar-foot-fade)" mask="url(#sidebar-corner-tail-feather)"/>
+    </mask>
+  </defs>
+  <rect width="266" height="800" fill="#FFFFFF" fill-opacity="0"/>
+  <g id="Sidebar-transition-behind-workspace-corner" clip-path="url(#workspace-lower-left-cutout)" mask="url(#sidebar-foot-feather)">
+  <path id="Sidebar-blue-to-cyan-depth" d="M0 0H266V800H26Q0 800 0 774Z" fill="url(#sidebar-depth)"/>
+  <ellipse id="Sidebar-blue-diffusion" cx="30" cy="735" rx="230" ry="330" fill="url(#cool-wash)"/>
+  <ellipse id="Sidebar-mint-base" cx="120" cy="840" rx="240" ry="245" fill="url(#mint-foot)"/>
+  </g>
+</svg>

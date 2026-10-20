@@ -1,0 +1,509 @@
+{
+  "reason": "Full-page capture changed scrollbar geometry during sampling; excluded from the final motion verification.",
+  "frames": [
+    {
+      "elapsedMs": 483,
+      "file": "demo-000.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 782.6181654897837
+        },
+        {
+          "x": 747,
+          "y": 727.3728357872596
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 1089,
+      "file": "demo-001.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 786.3686092998798
+        },
+        {
+          "x": 747,
+          "y": 723.6221657151443
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 1662,
+      "file": "demo-002.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 754.5,
+          "y": 790.7914434344952
+        },
+        {
+          "x": 754.5,
+          "y": 719.1990647536059
+        }
+      ],
+      "layoutStable": false
+    },
+    {
+      "elapsedMs": 2070,
+      "file": "demo-003.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 795.7036283052885
+        },
+        {
+          "x": 747,
+          "y": 714.2865835336538
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 2747,
+      "file": "demo-004.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 799.0170184044471
+        },
+        {
+          "x": 747,
+          "y": 710.9729935396634
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 3350,
+      "file": "demo-005.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 803.5070915715144
+        },
+        {
+          "x": 747,
+          "y": 706.4826494891827
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 4032,
+      "file": "demo-006.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 808.0382552584135
+        },
+        {
+          "x": 747,
+          "y": 701.9512124399039
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 4690,
+      "file": "demo-007.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 813.3725518329327
+        },
+        {
+          "x": 747,
+          "y": 696.6165940504808
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 5213,
+      "file": "demo-008.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 818.0606065955528
+        },
+        {
+          "x": 747,
+          "y": 691.9282564603366
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 5966,
+      "file": "demo-009.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 754.5,
+          "y": 821.7699598858173
+        },
+        {
+          "x": 754.5,
+          "y": 688.2186793870192
+        }
+      ],
+      "layoutStable": false
+    },
+    {
+      "elapsedMs": 6468,
+      "file": "demo-010.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 826.2301490384616
+        },
+        {
+          "x": 747,
+          "y": 683.7582211538461
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 7059,
+      "file": "demo-011.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 829.7489917367789
+        },
+        {
+          "x": 747,
+          "y": 680.2391661658653
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 7634,
+      "file": "demo-012.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 833.3985769981971
+        },
+        {
+          "x": 747,
+          "y": 676.5893607271635
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 8239,
+      "file": "demo-013.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 837.1602273137019
+        },
+        {
+          "x": 747,
+          "y": 672.8274834735578
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 8667,
+      "file": "demo-014.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 754.5,
+          "y": 841.0190006760818
+        },
+        {
+          "x": 754.5,
+          "y": 668.9684773137019
+        }
+      ],
+      "layoutStable": false
+    },
+    {
+      "elapsedMs": 9157,
+      "file": "demo-015.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 843.2005337289663
+        },
+        {
+          "x": 747,
+          "y": 666.7868126502403
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 9869,
+      "file": "demo-016.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 846.3308842397837
+        },
+        {
+          "x": 747,
+          "y": 663.6562732872596
+        }
+      ],
+      "layoutStable": true
+    },
+    {
+      "elapsedMs": 10248,
+      "file": "demo-017.jpg",
+      "check": {
+        "axisY": 755,
+        "upperDistance": 29.6015625,
+        "lowerDistance": 29.59375,
+        "positiveGap": true,
+        "equalDistances": true,
+        "equalSize": true,
+        "mirroredPaths": true,
+        "mirroredBounds": true,
+        "mirroredPoint": true,
+        "withinField": true,
+        "noHorizontalOverflow": true
+      },
+      "centers": [
+        {
+          "x": 747,
+          "y": 849.4462927433894
+        },
+        {
+          "x": 747,
+          "y": 660.5406768329326
+        }
+      ],
+      "layoutStable": true
+    }
+  ]
+}

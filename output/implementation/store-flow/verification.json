@@ -1,0 +1,14 @@
+{
+  "checked": "2026-10-14T19:50:33.903Z",
+  "result": "passed",
+  "interactiveGroups": [
+    "home and favorites open product; legacy product URL; instructions anchor; product/redemption return links",
+    "redemption validation, clipboard and navigation; keyboard single select; confirmed-only progress; distinct sample denominators; feedback collapse; edit/cancel/confirm",
+    "pause/resume; reload restores confirmed answers and current question; previous/next retains selections",
+    "all sixteen confirmations enter report; five score values and advice; PNG share download; report dialog; explicit restart resets only preview progress",
+    "Figma preview states do not overwrite saved progress; collapse/expand sidebar; search shortcut and return to catalog",
+    "blocked storage remains usable and reports loss of progress honestly"
+  ],
+  "responsiveCases": 84,
+  "errors": []
+}

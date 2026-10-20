@@ -137,6 +137,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
   return (
     <Page
       title={reports ? "我的报告" : "我的应用"}
+      embedded
       section={reports ? "reports" : "apps"}
     >
       <div className="biz-row">

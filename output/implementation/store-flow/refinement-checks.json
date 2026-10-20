@@ -1,0 +1,413 @@
+{
+  "checked": "2026-10-14T19:55:41.302Z",
+  "result": "passed",
+  "cases": [
+    {
+      "name": "product",
+      "width": 320,
+      "pageHeight": 3526,
+      "main": {
+        "x": 0,
+        "width": 320
+      },
+      "hero": {
+        "bottom": 558,
+        "top": 154,
+        "width": 284,
+        "height": 404
+      },
+      "art": {
+        "top": 151,
+        "bottom": 447.203125,
+        "width": 253.796875,
+        "height": 296.203125
+      },
+      "imageErrors": [],
+      "dimensions": []
+    },
+    {
+      "name": "report",
+      "width": 320,
+      "pageHeight": 4181,
+      "main": {
+        "x": 0,
+        "width": 320
+      },
+      "hero": {
+        "bottom": 557,
+        "top": 168,
+        "width": 284,
+        "height": 389
+      },
+      "art": {
+        "top": 169,
+        "bottom": 531.015625,
+        "width": 310.1875,
+        "height": 362.015625
+      },
+      "imageErrors": [],
+      "dimensions": [
+        {
+          "name": "家务主动性",
+          "inside": true
+        },
+        {
+          "name": "承诺兑现",
+          "inside": true
+        },
+        {
+          "name": "共同决策",
+          "inside": true
+        },
+        {
+          "name": "沟通修复",
+          "inside": true
+        },
+        {
+          "name": "边界尊重",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "width": 384,
+      "pageHeight": 3399,
+      "main": {
+        "x": 0,
+        "width": 384
+      },
+      "hero": {
+        "bottom": 558,
+        "top": 154,
+        "width": 348,
+        "height": 404
+      },
+      "art": {
+        "top": 151,
+        "bottom": 514.421875,
+        "width": 311.390625,
+        "height": 363.421875
+      },
+      "imageErrors": [],
+      "dimensions": []
+    },
+    {
+      "name": "report",
+      "width": 384,
+      "pageHeight": 4024,
+      "main": {
+        "x": 0,
+        "width": 384
+      },
+      "hero": {
+        "bottom": 556,
+        "top": 168,
+        "width": 348,
+        "height": 388
+      },
+      "art": {
+        "top": 169,
+        "bottom": 613.1875,
+        "width": 380.59375,
+        "height": 444.1875
+      },
+      "imageErrors": [],
+      "dimensions": [
+        {
+          "name": "家务主动性",
+          "inside": true
+        },
+        {
+          "name": "承诺兑现",
+          "inside": true
+        },
+        {
+          "name": "共同决策",
+          "inside": true
+        },
+        {
+          "name": "沟通修复",
+          "inside": true
+        },
+        {
+          "name": "边界尊重",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "width": 768,
+      "pageHeight": 3046,
+      "main": {
+        "x": 140,
+        "width": 576
+      },
+      "hero": {
+        "bottom": 560,
+        "top": 180,
+        "width": 535,
+        "height": 380
+      },
+      "art": {
+        "top": 181,
+        "bottom": 562.640625,
+        "width": 327,
+        "height": 381.640625
+      },
+      "imageErrors": [],
+      "dimensions": []
+    },
+    {
+      "name": "report",
+      "width": 768,
+      "pageHeight": 3922,
+      "main": {
+        "x": 140,
+        "width": 576
+      },
+      "hero": {
+        "bottom": 660,
+        "top": 280,
+        "width": 535,
+        "height": 380
+      },
+      "art": {
+        "top": 191,
+        "bottom": 661.328125,
+        "width": 403,
+        "height": 470.328125
+      },
+      "imageErrors": [],
+      "dimensions": [
+        {
+          "name": "家务主动性",
+          "inside": true
+        },
+        {
+          "name": "承诺兑现",
+          "inside": true
+        },
+        {
+          "name": "共同决策",
+          "inside": true
+        },
+        {
+          "name": "沟通修复",
+          "inside": true
+        },
+        {
+          "name": "边界尊重",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "width": 1024,
+      "pageHeight": 3001,
+      "main": {
+        "x": 262,
+        "width": 710
+      },
+      "hero": {
+        "bottom": 560,
+        "top": 180,
+        "width": 669,
+        "height": 380
+      },
+      "art": {
+        "top": 181,
+        "bottom": 643,
+        "width": 395.859375,
+        "height": 462
+      },
+      "imageErrors": [],
+      "dimensions": []
+    },
+    {
+      "name": "report",
+      "width": 1024,
+      "pageHeight": 3922,
+      "main": {
+        "x": 262,
+        "width": 710
+      },
+      "hero": {
+        "bottom": 660,
+        "top": 280,
+        "width": 669,
+        "height": 380
+      },
+      "art": {
+        "top": 191,
+        "bottom": 699.15625,
+        "width": 435.40625,
+        "height": 508.15625
+      },
+      "imageErrors": [],
+      "dimensions": [
+        {
+          "name": "家务主动性",
+          "inside": true
+        },
+        {
+          "name": "承诺兑现",
+          "inside": true
+        },
+        {
+          "name": "共同决策",
+          "inside": true
+        },
+        {
+          "name": "沟通修复",
+          "inside": true
+        },
+        {
+          "name": "边界尊重",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "width": 1280,
+      "pageHeight": 2149,
+      "main": {
+        "x": 316,
+        "width": 892
+      },
+      "hero": {
+        "bottom": 560,
+        "top": 180,
+        "width": 851,
+        "height": 380
+      },
+      "art": {
+        "top": 181,
+        "bottom": 769.0625,
+        "width": 503.875,
+        "height": 588.0625
+      },
+      "imageErrors": [],
+      "dimensions": []
+    },
+    {
+      "name": "report",
+      "width": 1280,
+      "pageHeight": 2774,
+      "main": {
+        "x": 316,
+        "width": 892
+      },
+      "hero": {
+        "bottom": 660,
+        "top": 280,
+        "width": 851,
+        "height": 380
+      },
+      "art": {
+        "top": 191,
+        "bottom": 837.8125,
+        "width": 554.21875,
+        "height": 646.8125
+      },
+      "imageErrors": [],
+      "dimensions": [
+        {
+          "name": "家务主动性",
+          "inside": true
+        },
+        {
+          "name": "承诺兑现",
+          "inside": true
+        },
+        {
+          "name": "共同决策",
+          "inside": true
+        },
+        {
+          "name": "沟通修复",
+          "inside": true
+        },
+        {
+          "name": "边界尊重",
+          "inside": true
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "width": 1440,
+      "pageHeight": 2149,
+      "main": {
+        "x": 316,
+        "width": 1052
+      },
+      "hero": {
+        "bottom": 560,
+        "top": 180,
+        "width": 1011,
+        "height": 380
+      },
+      "art": {
+        "top": 181,
+        "bottom": 879.890625,
+        "width": 598.828125,
+        "height": 698.890625
+      },
+      "imageErrors": [],
+      "dimensions": []
+    },
+    {
+      "name": "report",
+      "width": 1440,
+      "pageHeight": 2774,
+      "main": {
+        "x": 316,
+        "width": 1052
+      },
+      "hero": {
+        "bottom": 660,
+        "top": 280,
+        "width": 1011,
+        "height": 380
+      },
+      "art": {
+        "top": 191,
+        "bottom": 959.71875,
+        "width": 658.671875,
+        "height": 768.71875
+      },
+      "imageErrors": [],
+      "dimensions": [
+        {
+          "name": "家务主动性",
+          "inside": true
+        },
+        {
+          "name": "承诺兑现",
+          "inside": true
+        },
+        {
+          "name": "共同决策",
+          "inside": true
+        },
+        {
+          "name": "沟通修复",
+          "inside": true
+        },
+        {
+          "name": "边界尊重",
+          "inside": true
+        }
+      ]
+    }
+  ],
+  "additional": [
+    "tablet greeting",
+    "PNG export preserves artwork aspect ratio"
+  ],
+  "errors": []
+}

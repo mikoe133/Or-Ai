@@ -10,11 +10,15 @@
 
 T01–T05、T06-L、T07 和 T08 本地功能已验收。[业务商城](http://127.0.0.1:5173/)已接入真实目录、兑换、答题、报告和简单运营页面。后端 158 项、前端 40 项测试及 22 项浏览器流程通过。真实 Supabase/Resend 收信、云端账户和对象存储持久化仍待 T09；正式双端视觉在 T10。证据见[执行记录](prd/v1/PROGRESS.md)。
 
-2026-10-16 新增[内容后台规划](prd/v1/CONTENT-BACKOFFICE.md)：[T12](prd/v1/tasks/T12-content-backoffice.md) 管理同一选题下题库/报告、封面、视频、文案及相互引用，[T13](prd/v1/tasks/T13-style-skills.md) 提供四类各自的 skill 库，[T14](prd/v1/tasks/T14-mcp-ingestion.md) 提供四领域 MCP 读取/上传和按用途共享上下文。视频可固定引用具体题目与文案修订，上游更新提示下游复查。首期由外部 AI 制作后回传，后台执行生成另行排期；新增任务均未实现，可在 T07/T08 后本地推进。
+2026-10-19 [T12-A 内容底座](prd/v1/CONTENT-FOUNDATION.md) 已完成：创作设定与内容历史、稳定引用、来源记录及混合存储元数据接口。`pnpm test:content` 的 20 项新增检查和完整后端 178＋前端 40 项回归、类型/构建通过；本机实际迁移保留既有业务数据，该批次为 33 模型/9 迁移。T12-B/C 工作台和成套采用现已完成，[T13 skill 库](prd/v1/tasks/T13-style-skills.md)、[T14 MCP](prd/v1/tasks/T14-mcp-ingestion.md) 待执行。具体约定见[内容规划](prd/v1/CONTENT-BACKOFFICE.md)。
+
+2026-10-19 [T12-B 四类内容工作台](http://127.0.0.1:5173/admin/content) 已完成：创作设定、题库/报告、封面、视频分镜、文案块、三类媒体状态、制作来源与整套试读。后端 182＋前端 42 项测试、31 项隔离浏览器流程及类型/构建通过；该批次为 33 模型/10 迁移，六类原业务表内容不变。11 项完整真实 Auth 流程沿用此前证据。
+
+2026-10-20 [T12-C 引用与成套采用](prd/v1/CONTENT-ADOPTION.md) 已完成，整项 T12 本地验收通过：固定引用与上下游反查、差异/更新复查、不可变采用包/JSON 导出、清理预演/恢复和完整演示视频可用。后端 195＋前端 43，共 238 项测试、35 项浏览器流程及类型/构建通过；当前 37 模型/11 迁移。迁移保留旧业务，另新增未发布的[关系花园演示商品](http://127.0.0.1:5173/admin/content/01a157f3-3f92-77db-8967-0d27328e3eb6?version=01a157f3-3fcf-704d-8cca-1706f9d52a2a&profile=01a157f3-3fed-768f-9f0b-f373cf84150d&tab=adoption)和采用包；媒体另行授权下载，采用不会发布。
 
 后续[多形态商品规划](prd/v1/EXPERIENCE-PLATFORM.md) 拆为 T15 体验模板/协议、T16 网页/2.5D/Three.js 试点、T17 小游戏新输入/评估。明确选择型沉浸呈现可复用现有计分，排序/分支/动作需另实现后端能力；这些是规划，当前没有 3D 或游戏运行器。
 
-T08 与 T06-O 已完成，后续顺序见[任务路线](prd/v1/ROADMAP.md)：下一批次 T12-A/B/C 内容后台 → T13 skill 库 → T14-L 本地 MCP → T15 体验/报告模板 → T16-A 网页/2.5D → T10-L 正式视觉 → T09 云端 → T14-C 远程 MCP → T10-V 平台验收 → T11 首款试运营。Three.js 与新小游戏评估留在后续扩展队列。本轮仅执行 T06-O，真实本地 Auth/收件/后台已可操作；未启动 T12、Goal、自动化或云资源。
+T08、T06-O 和 T12-A/B/C 已完成，后续顺序见[任务路线](prd/v1/ROADMAP.md)：下一批次 T13-A skill 库底座 → T13-B 绑定/来源 → T14-L 本地 MCP → T15 体验/报告模板 → T16-A 网页/2.5D → T10-L 正式视觉 → T09 云端 → T14-C 远程 MCP → T10-V 平台验收 → T11 首款试运营。Three.js 与新玩法留扩展队列。当前四类内容工作台可用，见 [工作台交接](prd/v1/CONTENT-WORKBENCH.md)；四个每日制作任务、skill、MCP 与云资源尚未实施。
 
 本机账户环境使用独立 Supabase Auth 与 Mailpit。执行 `pnpm auth:setup`、`pnpm auth:up` 后重启本项目 `pnpm dev`，即可[登录](http://127.0.0.1:5173/auth/login)并访问[后台](http://127.0.0.1:5173/admin)，邮件在[本地收件箱](http://127.0.0.1:54324/)。本轮私有管理员凭据在 Git 忽略的 `.local/auth/operator-account.json`，操作和恢复步骤见 [AUTH-SETUP.md](prd/v1/AUTH-SETUP.md)。25 项新增配置/运行栈检查、11 项真实 Auth 浏览器流程及停用/恢复通过，原 198 项测试与 22 项业务浏览器回归亦通过；云端/外部邮件仍待 T09。
 
@@ -110,7 +114,7 @@ ASSET_STORAGE_DRIVER 默认在开发/测试为 local，ASSET_DIRECTORY 相对 AP
 node --env-file=../../.env --test --experimental-test-coverage --test-coverage-include='.test-build/src/operations/**' --test-coverage-include='.test-build/scripts/admin-command.js' --test-coverage-lines=80 --test-coverage-functions=80 --test-coverage-branches=80 .test-build/test/operations.test.js .test-build/test/asset-storage.test.js
 ```
 
-T08 已接入受保护的简单管理页面；完整内容工作台、素材历史修订/引用、风格 skill、MCP 和 3D/小游戏仍按 T12–T17 后续实现。
+T08 已接入受保护的简单管理页面；T12 已完成四类内容工作台、素材历史/固定引用与成套采用。风格 skill、MCP 和 3D/小游戏仍按 T13–T17 后续实现。
 
 ## 本地功能页面（T08 已验收）
 
@@ -193,4 +197,4 @@ pnpm runtime:stop
 
 ## 进度与执行方式
 
-每次按 ROADMAP 处理一个明确批次并验证。原范围到 T08 后停止；用户随后授权的本轮已完成 T06-O，下一批次 T12-A 尚未开始。未创建 Goal 或调整自动化。云端未验收项见 [LOCAL-FIRST.md](prd/v1/LOCAL-FIRST.md)，实现与测试证据记录在 [PROGRESS.md](prd/v1/PROGRESS.md)。
+每次按 ROADMAP 处理一个明确批次并验证。用户后续授权已完成 T06-O 和整项 T12；下一批次为 T13-A skill 库底座。本轮未创建 Goal 或自动化。云端待验收项见 [LOCAL-FIRST.md](prd/v1/LOCAL-FIRST.md)，证据见 [PROGRESS.md](prd/v1/PROGRESS.md)。

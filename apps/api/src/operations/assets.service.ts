@@ -66,6 +66,7 @@ export class AssetsService {
     const id = parseInput(IdSchema, inputId).toLowerCase(), body = parseInput(AdminAssetPatchSchema, input);
     return this.mutations.run(access, 'assets.update:' + id, body.requestId, body, async tx => {
       const old = await this.lock(tx, access, id, body.expectedRevision);
+      if (old.authoring !== null) throw new ApiException('CONFLICT', '此素材已使用结构化内容，请通过内容修订接口编辑', 409);
       if (['COVER','VIDEO'].includes(old.kind) && body.text) throw new ApiException('VALIDATION_ERROR', '媒体与文本请分别保存', 400);
       const row = await tx.campaignAsset.update({ where: { id }, data: {
         ...(body.text !== undefined ? { text: body.text?.trim() || null } : {}), ...(body.variant ? { variant: body.variant } : {}),

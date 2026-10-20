@@ -1,0 +1,19 @@
+{
+  "checked": "2026-10-14T18:05:07.203Z",
+  "interactiveChecks": [
+    "empty input",
+    "reject real codes in preview",
+    "normalized example code",
+    "success navigation",
+    "sample answer and keyboard radio navigation",
+    "back to product preview",
+    "product entry to redemption",
+    "help dialog and Escape",
+    "sidebar collapse and expand",
+    "paste success",
+    "paste permission fallback",
+    "search shortcut and navigation"
+  ],
+  "responsiveCases": 22,
+  "errors": []
+}

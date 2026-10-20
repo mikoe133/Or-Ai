@@ -10,6 +10,22 @@
 
 进入前列明云账户、域名/回调、资源区域与预算/套餐授权。未就绪时保留 T09 待执行，可继续独立本地任务；不能用 T06-O 的本地 Auth/收件或隔离身份关闭 T06-C。已启用的附件/体验资源纳入 `.5/.8` 的持久化与恢复，随后才验证 T14-C 的远程依赖；T09 不反向等待 T14-C 或 T10-V。
 
+## 已购域名与默认接入方案
+
+2026-10-19 用户确认已在 Cloudflare 购买 `meetmyworld.com`。域名购买条件已具备；DNS/站点绑定、云资源、HTTPS 和邮件域验证仍待执行，T09 保持未完成。
+
+| 用途 | 默认规划 |
+| --- | --- |
+| 正式商城 | `https://meetmyworld.com/`，作为唯一正式站点 Origin |
+| 运营后台 | `https://meetmyworld.com/admin`，沿用已有账户与管理员权限 |
+| 业务 API | `https://meetmyworld.com/api/*`，Worker 同域转发至 NestJS 容器 |
+| 邮箱验证/重置回调 | `https://meetmyworld.com/auth/callback`、`https://meetmyworld.com/auth/reset` |
+| www 入口 | `www.meetmyworld.com` 保留路径及查询参数，重定向到主域名 |
+
+T09.1 在隔离的云环境配置 `APP_PUBLIC_ORIGIN`、`VITE_APP_PUBLIC_ORIGIN` 为 `https://meetmyworld.com`；Supabase Site URL 和允许的回调与上述入口一致。预发布环境使用独立 Origin、回调和数据，不混用生产身份与业务记录。本机仍使用现有 loopback 配置。
+
+接入顺序：确认 Cloudflare Zone 可管理和托管目标 → 部署并验证 Worker/容器的临时地址 → 绑定域名/DNS、HTTPS 与 www 重定向 → 配置 Auth 回调和 Resend 发信域验证 → 执行公网业务验收。Resend 的发信子域和 R2 的公开素材域按实际服务提供的记录配置；私有素材继续走鉴权或短期授权链接。域名购买不等于托管套餐、用量预算或公开部署授权；本次仅登记规划。
+
 ## 子任务
 
 - [ ] T09.1 配置隔离的测试环境、生产环境变量示例、域名与允许的认证回调；密钥用厂商管理，不提交 Git。

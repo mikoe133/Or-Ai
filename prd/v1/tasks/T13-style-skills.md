@@ -1,10 +1,10 @@
 # T13：四类 skill 库、版本与内容绑定
 
-状态：2026-10-16 新增规划，待执行。依赖：T12 的内容/文件修订与工作台，沿用 T07 的鉴权和审计。对应扩展需求：FR-15。业务约定见 [CONTENT-BACKOFFICE.md](../CONTENT-BACKOFFICE.md)。首期交付 skill 保存、读取和外部制作来源管理；后台执行生成任务另行排期。
+状态：2026-10-20，T12-A/B/C 已全部本地验收，本任务为下一项；先执行 T13-A，尚未开始实现。依赖：T12 的内容/文件修订与工作台，沿用 T07 的鉴权和审计。对应扩展需求：FR-15。业务约定见 [CONTENT-BACKOFFICE.md](../CONTENT-BACKOFFICE.md)。首期交付 skill 保存、读取和外部制作来源管理；后台执行生成任务另行排期。
 
 ## 执行批次
 
-位于 [ROADMAP.md](../ROADMAP.md) 顺序 4，T12 全部通过后执行，不与体验制作 domain 同时扩张。
+位于 [ROADMAP.md](../ROADMAP.md) 顺序 4，前置 T12 已通过，交接见 [CONTENT-ADOPTION.md](../CONTENT-ADOPTION.md)；不与体验制作 domain 同时扩张。
 
 - T13-A：`.1–.4`，固定元数据与包格式、受控参考附件用途、四库维护、版本生命周期与差异/导出。Markdown/文档附件不伪装成图片/视频，不自动安装或执行内容。
 - T13-B：`.5–.8`，商品设定下的专业用途绑定、输入/产物与 skill 来源、授权查询和四库演示。assessment 同时覆盖题目设计和报告写作；体验/报告 renderer 的 experience 扩展留给 T15。

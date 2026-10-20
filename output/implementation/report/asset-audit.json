@@ -1,0 +1,784 @@
+{
+  "icons": [
+    {
+      "box": {
+        "bottom": 239,
+        "height": 22,
+        "left": 337,
+        "right": 359,
+        "top": 217,
+        "width": 22,
+        "x": 337,
+        "y": 217
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#Back%20arrow",
+      "viewBox": "0 16 22 22"
+    },
+    {
+      "box": {
+        "bottom": 837,
+        "height": 24,
+        "left": 383,
+        "right": 407,
+        "top": 813,
+        "width": 24,
+        "x": 383,
+        "y": 813
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#Group%20reference%20info",
+      "viewBox": "45 129 24 24"
+    },
+    {
+      "box": {
+        "bottom": 1051,
+        "height": 29,
+        "left": 386,
+        "right": 415,
+        "top": 1022,
+        "width": 29,
+        "x": 386,
+        "y": 1022
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%AE%B6%E5%8A%A1%E4%B8%BB%E5%8A%A8%E6%80%A7%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 128 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1051,
+        "height": 29,
+        "left": 576.796875,
+        "right": 605.796875,
+        "top": 1022,
+        "width": 29,
+        "x": 576.796875,
+        "y": 1022
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%89%BF%E8%AF%BA%E5%85%91%E7%8E%B0%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 195 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1051,
+        "height": 29,
+        "left": 767.59375,
+        "right": 796.59375,
+        "top": 1022,
+        "width": 29,
+        "x": 767.59375,
+        "y": 1022
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%85%B1%E5%90%8C%E5%86%B3%E7%AD%96%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 262 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1051,
+        "height": 29,
+        "left": 958.3984375,
+        "right": 987.3984375,
+        "top": 1022,
+        "width": 29,
+        "x": 958.3984375,
+        "y": 1022
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%B2%9F%E9%80%9A%E4%BF%AE%E5%A4%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 329 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1051,
+        "height": 29,
+        "left": 1149.1953125,
+        "right": 1178.1953125,
+        "top": 1022,
+        "width": 29,
+        "x": 1149.1953125,
+        "y": 1022
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%BE%B9%E7%95%8C%E5%B0%8A%E9%87%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 396 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1370,
+        "height": 26,
+        "left": 366,
+        "right": 392,
+        "top": 1344,
+        "width": 26,
+        "x": 366,
+        "y": 1344
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%AE%B6%E5%8A%A1%E4%B8%BB%E5%8A%A8%E6%80%A7%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 128 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1437,
+        "height": 26,
+        "left": 366,
+        "right": 392,
+        "top": 1411,
+        "width": 26,
+        "x": 366,
+        "y": 1411
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%89%BF%E8%AF%BA%E5%85%91%E7%8E%B0%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 195 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1504,
+        "height": 26,
+        "left": 366,
+        "right": 392,
+        "top": 1478,
+        "width": 26,
+        "x": 366,
+        "y": 1478
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%85%B1%E5%90%8C%E5%86%B3%E7%AD%96%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 262 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1571,
+        "height": 26,
+        "left": 366,
+        "right": 392,
+        "top": 1545,
+        "width": 26,
+        "x": 366,
+        "y": 1545
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E6%B2%9F%E9%80%9A%E4%BF%AE%E5%A4%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 329 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1638.5,
+        "height": 26,
+        "left": 366,
+        "right": 392,
+        "top": 1612.5,
+        "width": 26,
+        "x": 366,
+        "y": 1612.5
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%BE%B9%E7%95%8C%E5%B0%8A%E9%87%8D%20%C2%B7%20%E5%B1%95%E5%BC%80%E8%A7%A3%E6%9E%90",
+      "viewBox": "28 396 26 26"
+    },
+    {
+      "box": {
+        "bottom": 1858,
+        "height": 50,
+        "left": 377,
+        "right": 427,
+        "top": 1808,
+        "width": 50,
+        "x": 377,
+        "y": 1808
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E4%BD%A0%E7%9A%84%E5%8D%8F%E4%BD%9C%E4%BC%98%E5%8A%BF",
+      "viewBox": "40 95 50 50"
+    },
+    {
+      "box": {
+        "bottom": 1946,
+        "height": 50,
+        "left": 377,
+        "right": 427,
+        "top": 1896,
+        "width": 50,
+        "x": 377,
+        "y": 1896
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E4%BD%A0%E7%9A%84%E5%8D%8F%E4%BD%9C%E4%BC%98%E5%8A%BF",
+      "viewBox": "40 183 50 50"
+    },
+    {
+      "box": {
+        "bottom": 1858,
+        "height": 50,
+        "left": 885,
+        "right": 935,
+        "top": 1808,
+        "width": 50,
+        "x": 885,
+        "y": 1808
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%80%BC%E5%BE%97%E7%95%99%E6%84%8F",
+      "viewBox": "555.5 95 50 50"
+    },
+    {
+      "box": {
+        "bottom": 1946,
+        "height": 50,
+        "left": 885,
+        "right": 935,
+        "top": 1896,
+        "width": 50,
+        "x": 885,
+        "y": 1896
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E5%80%BC%E5%BE%97%E7%95%99%E6%84%8F",
+      "viewBox": "555.5 183 50 50"
+    },
+    {
+      "box": {
+        "bottom": 2169,
+        "height": 28,
+        "left": 618,
+        "right": 646,
+        "top": 2141,
+        "width": 28,
+        "x": 618,
+        "y": 2141
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%A1%8C%E5%8A%A8%2001%20%C2%B7%20%E6%AF%8F%E5%91%A8%E4%B8%80%E6%AC%A1%E5%88%86%E5%B7%A5%E5%AF%B9%E9%BD%90",
+      "viewBox": "285.6666666666667 123 28 28"
+    },
+    {
+      "box": {
+        "bottom": 2169,
+        "height": 28,
+        "left": 936,
+        "right": 964,
+        "top": 2141,
+        "width": 28,
+        "x": 936,
+        "y": 2141
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%A1%8C%E5%8A%A8%2002%20%C2%B7%20%E5%86%B2%E7%AA%81%E6%97%B6%E5%85%88%E5%9B%9E%E5%BA%94%E6%84%9F%E5%8F%97",
+      "viewBox": "609.3333333333334 123 28 28"
+    },
+    {
+      "box": {
+        "bottom": 2169,
+        "height": 28,
+        "left": 1254,
+        "right": 1282,
+        "top": 2141,
+        "width": 28,
+        "x": 1254,
+        "y": 2141
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#%E8%A1%8C%E5%8A%A8%2003%20%C2%B7%20%E7%BB%99%E5%BD%BC%E6%AD%A4%E7%95%99%E5%87%BA%E4%BC%91%E6%81%AF%E6%97%B6%E9%97%B4",
+      "viewBox": "933 123 28 28"
+    },
+    {
+      "box": {
+        "bottom": 2466,
+        "height": 22,
+        "left": 1074.984375,
+        "right": 1096.984375,
+        "top": 2444,
+        "width": 22,
+        "x": 1074.984375,
+        "y": 2444
+      },
+      "source": "/assets/flow/full-report-wide-hero-content.svg#Save%20share%20card%20icon",
+      "viewBox": "729 125 22 22"
+    },
+    {
+      "box": {
+        "bottom": 2685,
+        "height": 22,
+        "left": 358,
+        "right": 380,
+        "top": 2663,
+        "width": 22,
+        "x": 358,
+        "y": 2663
+      },
+      "source": "/assets/flow/product-detail-wide-hero-content.svg#Entertainment%20info",
+      "viewBox": "20 17 22 22"
+    }
+  ],
+  "images": [
+    {
+      "box": {
+        "bottom": 2769,
+        "height": 2769,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "loaded": true,
+      "source": "/assets/store/ambient-orbits.svg"
+    },
+    {
+      "box": {
+        "bottom": 973.4765625,
+        "height": 973.4765625,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "loaded": true,
+      "source": "/assets/store/top-right-lilac-glow.svg"
+    },
+    {
+      "box": {
+        "bottom": 56,
+        "height": 40,
+        "left": 28,
+        "right": 68,
+        "top": 16,
+        "width": 40,
+        "x": 28,
+        "y": 16
+      },
+      "loaded": true,
+      "source": "/assets/store/homepage-meetmyworld-symbol.svg"
+    },
+    {
+      "box": {
+        "bottom": 46,
+        "height": 20,
+        "left": 158.4921875,
+        "right": 178.4921875,
+        "top": 26,
+        "width": 20,
+        "x": 158.4921875,
+        "y": 26
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/search.svg"
+    },
+    {
+      "box": {
+        "bottom": 46,
+        "height": 20,
+        "left": 1114.9140625,
+        "right": 1134.9140625,
+        "top": 26,
+        "width": 20,
+        "x": 1114.9140625,
+        "y": 26
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/moon.svg"
+    },
+    {
+      "box": {
+        "bottom": 48,
+        "height": 24,
+        "left": 1371,
+        "right": 1395,
+        "top": 24,
+        "width": 24,
+        "x": 1371,
+        "y": 24
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/plus.svg"
+    },
+    {
+      "box": {
+        "bottom": 134,
+        "height": 16,
+        "left": 42,
+        "right": 58,
+        "top": 118,
+        "width": 16,
+        "x": 42,
+        "y": 118
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/user.svg"
+    },
+    {
+      "box": {
+        "bottom": 256,
+        "height": 20,
+        "left": 28,
+        "right": 48,
+        "top": 236,
+        "width": 20,
+        "x": 28,
+        "y": 236
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/grid.svg"
+    },
+    {
+      "box": {
+        "bottom": 312,
+        "height": 20,
+        "left": 28,
+        "right": 48,
+        "top": 292,
+        "width": 20,
+        "x": 28,
+        "y": 292
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/heart.svg"
+    },
+    {
+      "box": {
+        "bottom": 368,
+        "height": 20,
+        "left": 28,
+        "right": 48,
+        "top": 348,
+        "width": 20,
+        "x": 28,
+        "y": 348
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/file.svg"
+    },
+    {
+      "box": {
+        "bottom": 2692.3984375,
+        "height": 20,
+        "left": 28,
+        "right": 48,
+        "top": 2672.3984375,
+        "width": 20,
+        "x": 28,
+        "y": 2672.3984375
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/headphones.svg"
+    },
+    {
+      "box": {
+        "bottom": 225,
+        "height": 16,
+        "left": 276,
+        "right": 292,
+        "top": 209,
+        "width": 16,
+        "x": 276,
+        "y": 209
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/chevron.svg"
+    },
+    {
+      "box": {
+        "bottom": 280,
+        "height": 20,
+        "left": 104,
+        "right": 124,
+        "top": 260,
+        "width": 20,
+        "x": 104,
+        "y": 260
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/bag.svg"
+    },
+    {
+      "box": {
+        "bottom": 332,
+        "height": 20,
+        "left": 104,
+        "right": 124,
+        "top": 312,
+        "width": 20,
+        "x": 104,
+        "y": 312
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/grid.svg"
+    },
+    {
+      "box": {
+        "bottom": 384,
+        "height": 20,
+        "left": 104,
+        "right": 124,
+        "top": 364,
+        "width": 20,
+        "x": 104,
+        "y": 364
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/file.svg"
+    },
+    {
+      "box": {
+        "bottom": 436,
+        "height": 20,
+        "left": 104,
+        "right": 124,
+        "top": 416,
+        "width": 20,
+        "x": 104,
+        "y": 416
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/bookmark.svg"
+    },
+    {
+      "box": {
+        "bottom": 488,
+        "height": 20,
+        "left": 104,
+        "right": 124,
+        "top": 468,
+        "width": 20,
+        "x": 104,
+        "y": 468
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/help.svg"
+    },
+    {
+      "box": {
+        "bottom": 948.3046875,
+        "height": 757.3046875,
+        "left": 774.5625,
+        "right": 1423.4453125,
+        "top": 191,
+        "width": 648.8828125,
+        "x": 774.5625,
+        "y": 191
+      },
+      "loaded": true,
+      "source": "/assets/store/featured-lavender.png"
+    },
+    {
+      "box": {
+        "bottom": 2648,
+        "height": 244,
+        "left": 361,
+        "right": 572,
+        "top": 2404,
+        "width": 211,
+        "x": 361,
+        "y": 2404
+      },
+      "loaded": true,
+      "source": "/assets/store/featured-blush.png"
+    },
+    {
+      "box": {
+        "bottom": 256,
+        "height": 20,
+        "left": 1377,
+        "right": 1397,
+        "top": 236,
+        "width": 20,
+        "x": 1377,
+        "y": 236
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/bookmark.svg"
+    },
+    {
+      "box": {
+        "bottom": 312,
+        "height": 20,
+        "left": 1377,
+        "right": 1397,
+        "top": 292,
+        "width": 20,
+        "x": 1377,
+        "y": 292
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/plus.svg"
+    },
+    {
+      "box": {
+        "bottom": 368,
+        "height": 20,
+        "left": 1377,
+        "right": 1397,
+        "top": 348,
+        "width": 20,
+        "x": 1377,
+        "y": 348
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/sparkles.svg"
+    },
+    {
+      "box": {
+        "bottom": 2692.3984375,
+        "height": 20,
+        "left": 1377,
+        "right": 1397,
+        "top": 2672.3984375,
+        "width": 20,
+        "x": 1377,
+        "y": 2672.3984375
+      },
+      "loaded": true,
+      "source": "/assets/store/icons/help.svg"
+    }
+  ],
+  "page": {
+    "height": 2769,
+    "width": 1425
+  },
+  "route": "/reports/partner",
+  "viewport": {
+    "height": 1024,
+    "width": 1440
+  },
+  "localFiles": {
+    "/assets/store/ambient-orbits.svg": {
+      "bytes": 663,
+      "root": {
+        "width": "1440",
+        "height": "1024",
+        "viewBox": "0 0 1440 1024"
+      }
+    },
+    "/assets/store/top-right-lilac-glow.svg": {
+      "bytes": 1025,
+      "root": {
+        "width": "1440",
+        "height": "360",
+        "viewBox": "0 0 1440 360"
+      }
+    },
+    "/assets/store/homepage-meetmyworld-symbol.svg": {
+      "bytes": 617,
+      "root": {
+        "width": "40",
+        "height": "40",
+        "viewBox": "0 0 64 64"
+      }
+    },
+    "/assets/store/icons/search.svg": {
+      "bytes": 243,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/moon.svg": {
+      "bytes": 244,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/plus.svg": {
+      "bytes": 212,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/user.svg": {
+      "bytes": 251,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/grid.svg": {
+      "bytes": 376,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/heart.svg": {
+      "bytes": 298,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/file.svg": {
+      "bytes": 289,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/headphones.svg": {
+      "bytes": 318,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/chevron.svg": {
+      "bytes": 209,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/bag.svg": {
+      "bytes": 249,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/bookmark.svg": {
+      "bytes": 244,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/icons/help.svg": {
+      "bytes": 288,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/store/featured-lavender.png": {
+      "bytes": 1595616
+    },
+    "/assets/store/featured-blush.png": {
+      "bytes": 1708341
+    },
+    "/assets/store/icons/sparkles.svg": {
+      "bytes": 286,
+      "root": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    "/assets/flow/full-report-wide-hero-content.svg": {
+      "bytes": 4436386,
+      "root": {
+        "width": "1011",
+        "height": "2502",
+        "viewBox": "0 0 1011 2502"
+      }
+    },
+    "/assets/flow/product-detail-wide-hero-content.svg": {
+      "bytes": 9091467,
+      "root": {
+        "width": "1011",
+        "height": "1990",
+        "viewBox": "0 0 1011 1990"
+      }
+    }
+  },
+  "localAssetsValid": true
+}

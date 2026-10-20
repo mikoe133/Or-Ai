@@ -1,0 +1,41 @@
+[
+  {
+    "test": "keyboard selection keeps progress unconfirmed",
+    "choice": "C · 谁看见谁处理，彼此补位",
+    "progress": "4"
+  },
+  {
+    "test": "confirm opens feedback and increments once",
+    "feedback": true,
+    "progress": "5"
+  },
+  {
+    "test": "collapse preserves saved answer",
+    "feedbackCount": 0,
+    "progress": "5"
+  },
+  {
+    "test": "cancel edit restores original B",
+    "choice": "B · 说好分工后，各自完成",
+    "progress": "5"
+  },
+  {
+    "test": "confirm edit updates C without double count",
+    "choice": "C · 谁看见谁处理，彼此补位",
+    "progress": "5"
+  },
+  {
+    "test": "next question resets unconfirmed draft",
+    "confirmEnabled": false,
+    "question": "对方希望独处一会儿时，你通常会？"
+  },
+  {
+    "test": "sidebar collapse keeps feedback within page",
+    "geometry": {
+      "feedbackRight": 1349,
+      "scrollWidth": 1440,
+      "sidebar": 88,
+      "viewport": 1440
+    }
+  }
+]

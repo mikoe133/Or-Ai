@@ -1,0 +1,82 @@
+[
+  {
+    "brokenImages": [],
+    "cardCount": 8,
+    "clientWidth": 305,
+    "main": {
+      "bottom": 714,
+      "height": 519,
+      "left": 0,
+      "right": 305,
+      "top": 195,
+      "width": 305,
+      "x": 0,
+      "y": 195
+    },
+    "scrollWidth": 305,
+    "viewport": [
+      320,
+      740
+    ]
+  },
+  {
+    "brokenImages": [],
+    "cardCount": 8,
+    "clientWidth": 753,
+    "main": {
+      "bottom": 1621,
+      "height": 1440,
+      "left": 233,
+      "right": 700,
+      "top": 181,
+      "width": 467,
+      "x": 233,
+      "y": 181
+    },
+    "scrollWidth": 753,
+    "viewport": [
+      768,
+      1024
+    ]
+  },
+  {
+    "brokenImages": [],
+    "cardCount": 8,
+    "clientWidth": 1009,
+    "main": {
+      "bottom": 1013,
+      "height": 832,
+      "left": 263,
+      "right": 956,
+      "top": 181,
+      "width": 693,
+      "x": 263,
+      "y": 181
+    },
+    "scrollWidth": 1009,
+    "viewport": [
+      1024,
+      900
+    ]
+  },
+  {
+    "brokenImages": [],
+    "cardCount": 8,
+    "clientWidth": 1280,
+    "main": {
+      "bottom": 980,
+      "height": 800,
+      "left": 316,
+      "right": 1208,
+      "top": 180,
+      "width": 892,
+      "x": 316,
+      "y": 180
+    },
+    "scrollWidth": 1280,
+    "viewport": [
+      1280,
+      1024
+    ]
+  }
+]

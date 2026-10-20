@@ -1,0 +1,38 @@
+{
+  "border": null,
+  "brokenVisibleImages": [],
+  "clientWidth": 384,
+  "failures": [],
+  "featuredColumns": "167px 167px",
+  "fonts": "loaded",
+  "mode": "mobile",
+  "panel": {
+    "bottom": 578,
+    "height": 383,
+    "right": 384,
+    "width": 384,
+    "x": 0,
+    "y": 195
+  },
+  "root": {
+    "bottom": 832,
+    "height": 832,
+    "right": 384,
+    "width": 384,
+    "x": 0,
+    "y": 0
+  },
+  "scrollY": 0,
+  "sidebar": {
+    "bottom": 0,
+    "height": 0,
+    "right": 0,
+    "width": 0,
+    "x": 0,
+    "y": 0
+  },
+  "viewport": [
+    384,
+    832
+  ]
+}

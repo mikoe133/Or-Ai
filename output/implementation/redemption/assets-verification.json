@@ -1,0 +1,306 @@
+{
+  "verifiedDate": "2026-10-15",
+  "designNodes": [
+    "290:83",
+    "300:777"
+  ],
+  "sourceMatches": [
+    {
+      "designSource": "output/figma/guided-redemption-content.svg",
+      "publicAsset": "apps/web/public/assets/redemption/guided-redemption-content.svg",
+      "byteIdentical": true
+    },
+    {
+      "designSource": "output/figma/guided-redemption-success-content.svg",
+      "publicAsset": "apps/web/public/assets/redemption/guided-redemption-success-content.svg",
+      "byteIdentical": true
+    },
+    {
+      "designSource": "output/figma/guided-redemption-atmosphere.svg",
+      "publicAsset": "apps/web/public/assets/redemption/guided-redemption-atmosphere.svg",
+      "byteIdentical": true
+    }
+  ],
+  "assets": [
+    {
+      "url": "/assets/redemption/guided-redemption-atmosphere.svg",
+      "bytes": 2404,
+      "sha256": "4428f306ae200c371add79dd5ca1c88a7371c14f172917675f18448f665fa36d",
+      "svgRoot": {
+        "width": "1440",
+        "height": "1024",
+        "viewBox": "0 0 1440 1024"
+      }
+    },
+    {
+      "url": "/assets/redemption/guided-redemption-content.svg",
+      "bytes": 2140092,
+      "sha256": "85b347b4e65e3c277dea2e97bfef82e41efa75290cf0cb9ec158ca6c64c7ed86",
+      "svgRoot": {
+        "width": "1011",
+        "height": "866",
+        "viewBox": "0 0 1011 866"
+      }
+    },
+    {
+      "url": "/assets/redemption/guided-redemption-success-content.svg",
+      "bytes": 2140076,
+      "sha256": "13049b93087b5391f7d3adf33198442509f234a014e388f340e4bce2c4393284",
+      "svgRoot": {
+        "width": "1011",
+        "height": "866",
+        "viewBox": "0 0 1011 866"
+      }
+    },
+    {
+      "url": "/assets/store/featured-lavender.png",
+      "bytes": 1595616,
+      "sha256": "c13ead2ca37403b95f4398153dbd106f162594067914c3c2a969bf506edcbed8"
+    },
+    {
+      "url": "/assets/store/fonts/Manrope-Bold.ttf",
+      "bytes": 94928,
+      "sha256": "b9584e099e0e7f1e1e914c3037aabb9010c50346a3ce8df5eeeeecc0563044d8"
+    },
+    {
+      "url": "/assets/store/fonts/Manrope-SemiBold.ttf",
+      "bytes": 95096,
+      "sha256": "6bad1a774228464cc88b8b0271555b266f7a3c64a7bedf15e165fdab4f6ac0ce"
+    },
+    {
+      "url": "/assets/store/fonts/NotoSansSC-400.ttf",
+      "bytes": 94216,
+      "sha256": "1d711ec28a3bd62e3e72a13690adfd5ae997a61aa1f1b02a89eb9184626b019a"
+    },
+    {
+      "url": "/assets/store/fonts/NotoSansSC-500.ttf",
+      "bytes": 94160,
+      "sha256": "c3c352550a8252289a3500708a2de5a834d9fe1e1c13578f377ed313ab03be01"
+    },
+    {
+      "url": "/assets/store/fonts/NotoSansSC-700.ttf",
+      "bytes": 94260,
+      "sha256": "2872d1444717d13e4b707f313290fe1675fc0d595f7e914a5f10388c4ff8d5ab"
+    },
+    {
+      "url": "/assets/store/homepage-meetmyworld-symbol.svg",
+      "bytes": 617,
+      "sha256": "79ed469f85d400f5c70c68796ba1c53db15b32c6c096520ede770b8351b9228a",
+      "svgRoot": {
+        "width": "40",
+        "height": "40",
+        "viewBox": "0 0 64 64"
+      }
+    },
+    {
+      "url": "/assets/store/icons/bag.svg",
+      "bytes": 249,
+      "sha256": "30c0123da45442297c7ff7a83868f5a5d7adc2b00879a401ad971bac581856e4",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/bookmark.svg",
+      "bytes": 244,
+      "sha256": "a0093a96d403d9f127cb5eba704746f4f85d51d9d3519bc4990dc15da63e3ea5",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/chevron.svg",
+      "bytes": 209,
+      "sha256": "fcea6c7d5c7953b4c429cc0a193f968db000b215d251f5b2c85d70ba9e0866d3",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/clock.svg",
+      "bytes": 238,
+      "sha256": "e2ca920e45f4eab8e3cd40ced70fbb012f7844faa9ca5b498bc4df63e1dc880d",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/file.svg",
+      "bytes": 289,
+      "sha256": "0474389a63bb64cb154e35b6cd67a8cf14a09664e5a350e2976641df38b7f259",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/game.svg",
+      "bytes": 292,
+      "sha256": "dd62caadf4e0ff4d01ca05cfa4ae6933fa459f82997b284ba5da5f22d17e18d0",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/grid.svg",
+      "bytes": 376,
+      "sha256": "f7dd6321f42c10a47ee61c3240c5f950068b3d63b6b8c075e9d55c794a5c9883",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/headphones.svg",
+      "bytes": 318,
+      "sha256": "91117c1a6667f3929c0821ed267b629620caf287a4bffaf6ae2c031e5b3b89e4",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/heart.svg",
+      "bytes": 298,
+      "sha256": "b24ea02751f1e5d09cf9349d1d129b9f9fefe2884114b3c9fd0ebc3fd919bae3",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/help.svg",
+      "bytes": 288,
+      "sha256": "99a899bb053e642ff77ff243d108aa16395f72dc91a451ad47a7841c3efb7999",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/home.svg",
+      "bytes": 253,
+      "sha256": "b1edb8d75508c5c06122b20998ac50410e30222b5651cc15b02ad9b5056c4447",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/moon.svg",
+      "bytes": 244,
+      "sha256": "1c7e176af0635c85e6ff4b23c59cafbcd06436e279166f9346a973227cc04333",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/plus.svg",
+      "bytes": 212,
+      "sha256": "909e22bcd3db8df5ea295e393e70882bb9a7bf8682d4ba839ea388200587eb29",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/profile.svg",
+      "bytes": 303,
+      "sha256": "9c4c4f20b2d351836ef379e938b8824600c75d7297c8293fcb85cd3b4edfa9cf",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/report.svg",
+      "bytes": 302,
+      "sha256": "b136a5c75316a7335098f48b7665b698b894ab2c0bd61da3bf7f1389324805a8",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/search.svg",
+      "bytes": 243,
+      "sha256": "43a5c49d3733cd18112384d404ed86cf78b47126fa1b9609a133acef0d980909",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/icons/sparkles.svg",
+      "bytes": 286,
+      "sha256": "2c9ee93db92b74d9f5a63ba977e5cb1ccd21b9bb9d96573536fe97eff263c6f3",
+      "svgRoot": {
+        "width": "24",
+        "height": "24",
+        "viewBox": "0 0 24 24"
+      }
+    },
+    {
+      "url": "/assets/store/mobile-account-mark.svg",
+      "bytes": 340,
+      "sha256": "c69d28dde00aedb5903af37e34522fa4aa1295b2821a685c409fe0e69c28e46d",
+      "svgRoot": {
+        "width": "25",
+        "height": "25",
+        "viewBox": "18 18 25 25"
+      }
+    }
+  ],
+  "originalGroupReferences": [
+    "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+    "/assets/redemption/guided-redemption-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+    "/assets/redemption/guided-redemption-atmosphere.svg#%E5%BA%95%E9%83%A8%E8%BD%A8%E9%81%93%E7%BD%91%E6%A0%BC",
+    "/assets/redemption/guided-redemption-atmosphere.svg#%E7%8E%BB%E7%92%83%E9%9D%A2%E6%9D%BF%E5%8F%8C%E6%8F%8F%E8%BE%B9",
+    "/assets/redemption/guided-redemption-content.svg#%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BE%20%C2%B7%205%20%E4%B8%AA%E7%BB%B4%E5%BA%A6",
+    "/assets/redemption/guided-redemption-content.svg#%E5%8F%AF%E7%BC%96%E8%BE%91%E7%8E%BB%E7%92%83%E5%85%91%E6%8D%A2%E5%88%B8",
+    "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%9C%A8%E8%AE%A2%E5%8D%95%E4%B8%AD%E6%9F%A5%E7%9C%8B%E5%85%91%E6%8D%A2%E7%A0%81",
+    "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%9C%A8%E8%B4%AD%E4%B9%B0%E5%B9%B3%E5%8F%B0%E5%AE%8C%E6%88%90%E8%B4%AD%E4%B9%B0",
+    "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%A4%8D%E5%88%B6%E5%90%8E%E7%B2%98%E8%B4%B4%E5%88%B0%E8%BF%99%E9%87%8C",
+    "/assets/redemption/guided-redemption-content.svg#%E6%8F%90%E7%A4%BA%E5%9B%BE%E6%A0%87",
+    "/assets/redemption/guided-redemption-content.svg#%E7%B2%98%E8%B4%B4%E5%9B%BE%E6%A0%87",
+    "/assets/redemption/guided-redemption-success-content.svg#%E5%8F%AF%E7%BC%96%E8%BE%91%E7%8E%BB%E7%92%83%E6%82%AC%E6%B5%AE%E7%90%83%E4%B8%8E%E5%BA%95%E5%BA%A7",
+    "/assets/redemption/guided-redemption-success-content.svg#%E5%8F%AF%E7%BC%96%E8%BE%91%E7%8E%BB%E7%92%83%E6%88%90%E5%8A%9F%E5%BE%BD%E7%AB%A0",
+    "/assets/redemption/guided-redemption-success-content.svg#%E5%B7%B2%E5%AE%8C%E6%88%90%E5%8B%BE%E5%8F%B7",
+    "/assets/redemption/guided-redemption-success-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E5%AE%8C%E6%88%90%E5%90%8E%E6%9F%A5%E7%9C%8B%E6%8A%A5%E5%91%8A",
+    "/assets/redemption/guided-redemption-success-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E6%8C%89%E7%AC%AC%E4%B8%80%E5%8F%8D%E5%BA%94%E4%BD%9C%E7%AD%94",
+    "/assets/redemption/guided-redemption-success-content.svg#%E6%8F%90%E7%A4%BA%20%C2%B7%20%E7%BA%A6%203%20%E5%88%86%E9%92%9F%E5%AE%8C%E6%88%90",
+    "/assets/redemption/guided-redemption-success-content.svg#%E7%8A%B6%E6%80%81%E5%9B%BE%E6%A0%87"
+  ],
+  "callsites": [
+    "apps/web/src/store/flow-shell.tsx",
+    "apps/web/src/store/glass-frame.tsx",
+    "apps/web/src/store/redemption-art.tsx",
+    "apps/web/src/store/redemption.tsx",
+    "apps/web/src/store/icons.tsx",
+    "apps/web/src/store/fonts.css",
+    "apps/web/src/store/home.css"
+  ],
+  "renderedGeometry": "responsive-checks.json records image loading and dimensions, original SVG group bounds and viewport geometry at 22 screen/viewport combinations; screenshots visually inspected."
+}

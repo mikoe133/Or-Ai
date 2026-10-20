@@ -1,0 +1,20 @@
+{
+  "redemptionEntry": {
+    "url": "http://127.0.0.1:5173/assessment/partner",
+    "progress": "0"
+  },
+  "wideVerification": {
+    "panel": {
+      "h": 855.3984375,
+      "w": 1776,
+      "x": 72,
+      "y": 180
+    },
+    "scrollHeight": 1080,
+    "scrollWidth": 1920,
+    "viewport": [
+      1920,
+      1080
+    ]
+  }
+}

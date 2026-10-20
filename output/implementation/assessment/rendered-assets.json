@@ -1,0 +1,651 @@
+{
+  "images": [
+    {
+      "box": [
+        24,
+        16,
+        40,
+        40
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        40,
+        40
+      ],
+      "src": "/assets/store/homepage-meetmyworld-symbol.svg"
+    },
+    {
+      "box": [
+        158.4921875,
+        26,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/search.svg"
+    },
+    {
+      "box": [
+        1129.9140625,
+        26,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/moon.svg"
+    },
+    {
+      "box": [
+        1386,
+        24,
+        24,
+        24
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/plus.svg"
+    },
+    {
+      "box": [
+        44,
+        119,
+        16,
+        16
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/user.svg"
+    },
+    {
+      "box": [
+        28,
+        236,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/grid.svg"
+    },
+    {
+      "box": [
+        28,
+        292,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/heart.svg"
+    },
+    {
+      "box": [
+        28,
+        348,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/file.svg"
+    },
+    {
+      "box": [
+        28,
+        927.3984375,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/headphones.svg"
+    },
+    {
+      "box": [
+        277,
+        206,
+        16,
+        16
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/chevron.svg"
+    },
+    {
+      "box": [
+        104,
+        260,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/bag.svg"
+    },
+    {
+      "box": [
+        104,
+        312,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/grid.svg"
+    },
+    {
+      "box": [
+        104,
+        364,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/file.svg"
+    },
+    {
+      "box": [
+        104,
+        416,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/bookmark.svg"
+    },
+    {
+      "box": [
+        104,
+        468,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/help.svg"
+    },
+    {
+      "box": [
+        338,
+        249,
+        72,
+        82
+      ],
+      "fit": "cover",
+      "loaded": true,
+      "natural": [
+        1161,
+        1355
+      ],
+      "src": "/assets/store/featured-lavender.png"
+    },
+    {
+      "box": [
+        396.5,
+        841,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/arrow.svg"
+    },
+    {
+      "box": [
+        1224,
+        841,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/arrow.svg"
+    },
+    {
+      "box": [
+        1392,
+        236,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/bookmark.svg"
+    },
+    {
+      "box": [
+        1392,
+        292,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/plus.svg"
+    },
+    {
+      "box": [
+        1392,
+        348,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/sparkles.svg"
+    },
+    {
+      "box": [
+        1392,
+        927.3984375,
+        20,
+        20
+      ],
+      "fit": "fill",
+      "loaded": true,
+      "natural": [
+        24,
+        24
+      ],
+      "src": "/assets/store/icons/help.svg"
+    }
+  ],
+  "vectors": [
+    {
+      "box": [
+        0,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+        "/assets/flow/option-grid-atmosphere.svg#%E5%BA%95%E9%83%A8%E8%BD%A8%E9%81%93%E7%BD%91%E6%A0%BC"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        72,
+        180,
+        245,
+        798.9986572265625
+      ],
+      "references": [
+        "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83"
+      ],
+      "root": [
+        "244",
+        "907.4"
+      ],
+      "viewBox": "72 72 244 907.4"
+    },
+    {
+      "box": [
+        0,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        0.2896270751953125,
+        1440,
+        1022.60107421875
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        -0.6015625,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        1,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        1,
+        0.2896270751953125,
+        1440,
+        1022.60107421875
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        1,
+        -0.6015625,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        0,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        0.2896270751953125,
+        1440,
+        1022.60107421875
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        0,
+        -0.6015625,
+        1440,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        -0.61224365234375,
+        -0.6015625,
+        1447.346923828125,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        1.36456298828125,
+        -0.6015625,
+        1438.5,
+        1024
+      ],
+      "references": [
+        "/assets/flow/option-grid-double-contours.svg#Pale-multicolor-bottom-reflection",
+        "/assets/flow/option-grid-double-contours.svg#Tinted-glass-border-band",
+        "/assets/flow/option-grid-double-contours.svg#Outer-open-contour",
+        "/assets/flow/option-grid-double-contours.svg#Inner-connected-contour"
+      ],
+      "root": [
+        "1440",
+        "1024"
+      ],
+      "viewBox": null
+    },
+    {
+      "box": [
+        1243,
+        206,
+        18,
+        18
+      ],
+      "references": [
+        "/assets/flow/option-grid-answer-content.svg#%E9%80%80%E5%87%BA%E5%9B%BE%E6%A0%87"
+      ],
+      "root": [
+        "18",
+        "18"
+      ],
+      "viewBox": "905 6 18 18"
+    }
+  ]
+}

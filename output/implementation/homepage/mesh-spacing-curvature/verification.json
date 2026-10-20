@@ -1,0 +1,15 @@
+{
+  "buildPassed": true,
+  "curvatureIncreasePercent": 27.27,
+  "cardsUnchangedByStyleAdjustment": true,
+  "equalDistanceOnBothSides": true,
+  "allFrameChecksPassed": true,
+  "settledPreviewFrames": 16,
+  "durationMs": 4080,
+  "responsiveChecksPassed": true,
+  "inwardVerticalTravelPx": [
+    6.469889122596214,
+    -6.470279447115331
+  ],
+  "inwardDirections": true
+}

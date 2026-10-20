@@ -1,0 +1,68 @@
+{
+  "border": {
+    "bottom": 966,
+    "left": 161.7,
+    "right": 1179,
+    "top": 181.2
+  },
+  "brokenVisibleImages": [],
+  "clientWidth": 1265,
+  "failures": [],
+  "featuredColumns": "235px 235px 235px 235px",
+  "fonts": "loaded",
+  "mode": "desktop",
+  "panel": {
+    "bottom": 980,
+    "height": 800,
+    "right": 1193,
+    "width": 1121,
+    "x": 72,
+    "y": 180
+  },
+  "root": {
+    "bottom": 1024,
+    "height": 1024,
+    "right": 1265,
+    "width": 1265,
+    "x": 0,
+    "y": 0
+  },
+  "scrollY": 0,
+  "sidebar": {
+    "bottom": 980,
+    "height": 800,
+    "right": 160,
+    "width": 88,
+    "x": 72,
+    "y": 180
+  },
+  "viewport": [
+    1280,
+    800
+  ],
+  "decorationFailures": [],
+  "decorationLayers": [
+    {
+      "name": "store-panel-native",
+      "rect": {
+        "bottom": 980,
+        "height": 800,
+        "right": 1193,
+        "width": 1121,
+        "x": 72,
+        "y": 180
+      }
+    },
+    {
+      "name": "store-panel-native",
+      "rect": {
+        "bottom": 980,
+        "height": 800,
+        "right": 1193,
+        "width": 1121,
+        "x": 72,
+        "y": 180
+      }
+    }
+  ]
+}

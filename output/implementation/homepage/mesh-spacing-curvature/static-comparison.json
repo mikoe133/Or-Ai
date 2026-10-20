@@ -1,0 +1,140 @@
+{
+  "before": {
+    "field": {
+      "bottom": 940,
+      "height": 370,
+      "left": 337,
+      "right": 1157,
+      "top": 570,
+      "width": 820,
+      "x": 337,
+      "y": 570
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 755,
+          "height": 185,
+          "left": 337,
+          "right": 1157,
+          "top": 570,
+          "width": 820,
+          "x": 337,
+          "y": 570
+        },
+        "center": {
+          "x": 747,
+          "y": 649.2475961538462
+        },
+        "reflected": false,
+        "svg": {
+          "bottom": 875.25,
+          "height": 305.25,
+          "left": 337,
+          "right": 1157,
+          "top": 570,
+          "width": 820,
+          "x": 337,
+          "y": 570
+        }
+      },
+      {
+        "box": {
+          "bottom": 940,
+          "height": 185,
+          "left": 337,
+          "right": 1157,
+          "top": 755,
+          "width": 820,
+          "x": 337,
+          "y": 755
+        },
+        "center": {
+          "x": 747,
+          "y": 860.7524038461538
+        },
+        "reflected": true,
+        "svg": {
+          "bottom": 940,
+          "height": 305.25,
+          "left": 337,
+          "right": 1157,
+          "top": 634.75,
+          "width": 820,
+          "x": 337,
+          "y": 634.75
+        }
+      }
+    ]
+  },
+  "after": {
+    "field": {
+      "bottom": 940,
+      "height": 370,
+      "left": 337,
+      "right": 1157,
+      "top": 570,
+      "width": 820,
+      "x": 337,
+      "y": 570
+    },
+    "meshes": [
+      {
+        "box": {
+          "bottom": 725.3984375,
+          "height": 155.3984375,
+          "left": 337,
+          "right": 1157,
+          "top": 570,
+          "width": 820,
+          "x": 337,
+          "y": 570
+        },
+        "center": {
+          "x": 747,
+          "y": 604.8194861778846
+        },
+        "reflected": false,
+        "svg": {
+          "bottom": 892.453125,
+          "height": 388.4921875,
+          "left": 337,
+          "right": 1157,
+          "top": 503.9609375,
+          "width": 820,
+          "x": 337,
+          "y": 503.9609375
+        }
+      },
+      {
+        "box": {
+          "bottom": 940,
+          "height": 155.40625,
+          "left": 337,
+          "right": 1157,
+          "top": 784.59375,
+          "width": 820,
+          "x": 337,
+          "y": 784.59375
+        },
+        "center": {
+          "x": 747,
+          "y": 905.1822415865385
+        },
+        "reflected": true,
+        "svg": {
+          "bottom": 1006.046875,
+          "height": 388.515625,
+          "left": 337,
+          "right": 1157,
+          "top": 617.53125,
+          "width": 820,
+          "x": 337,
+          "y": 617.53125
+        }
+      }
+    ]
+  },
+  "curvatureHeightRatio": 1.272701678951679,
+  "cardsUnchanged": true
+}
