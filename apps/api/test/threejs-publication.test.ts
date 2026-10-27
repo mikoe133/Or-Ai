@@ -18,6 +18,11 @@ import { ProductionPlansService } from '../src/operations/production-plans.servi
 import { demoId, DemoIdentityScenarios, DemoProducts } from '../scripts/demo-fixtures';
 import { createLocalFixture } from './local-fixture';
 import { policyPlanDocument } from './skill-policy-fixture';
+import { readyPublicationPlan, reviewThreejsFixture } from './publication-fixture';
+import { ProjectProductionService } from '../src/operations/project-production.service';
+import { SkillsService } from '../src/operations/skills.service';
+import { currentSkillManifest } from './skill-policy-fixture';
+import { RuntimeVersionService } from '../src/catalog/runtime-version.service';
 
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>, app: INestApplication, directory: string, access: CatalogAdminAccess;
 let versions: VersionsService, experiences: ExperienceAuthoringService;
@@ -75,4 +80,42 @@ test('pending animation and interaction remain drafts and cannot be treated as r
   await assert.rejects(experiences.review(access, draft.id, { expectedRevision: draft.revision, requestId: randomUUID() }),
     (error: unknown) => (error as { code: string }).code === 'INVALID_CONFIGURATION');
   assert.equal((await experiences.read(access, draft.id)).status, 'draft');
+});
+
+test('a complete manual Three.js draft retains its exact plan through review and publication', async () => {
+  const value = await fresh(), result = await reviewThreejsFixture(app, fixture, access, value.version.id);
+  const input = (result.draft as unknown as { productPlanInput: { planRevisionId: string; planDigest: string } }).productPlanInput;
+  assert.equal(input.planRevisionId, result.plan.id); assert.equal(input.planDigest, result.plan.digest);
+  assert.deepEqual((result.reviewed as unknown as { productPlanInput: unknown }).productPlanInput, input);
+  await versions.review(access, productId, value.version.id, { requestId: randomUUID() });
+  await versions.publish(access, productId, value.version.id, { requestId: randomUUID() });
+  const release = await fixture.runtime.client.experienceRelease.findUniqueOrThrow({ where: { productVersionId: value.version.id } });
+  assert.equal(release.authoringRevisionId, result.reviewed.id);
+  assert.equal((await app.get(RuntimeVersionService).read(value.version.id)).experience.manifest.renderer.key, 'reflection-garden');
+});
+
+test('project production accepts registered 3d authoring and retains it separately from the required original package', async () => {
+  const value = await fresh();
+  const current = await fixture.runtime.client.productionPlanRevision.aggregate({ where: { productId }, _max: { number: true } });
+  const plan = await app.get(ProductionPlansService).save(access, productId, { plan: readyPublicationPlan(value.profile.id),
+    expectedRevision: current._max.number ?? 0, requestId: randomUUID() });
+  const module = plan.modules.find(item => item.definition.domain === 'experience')!, productions = app.get(ProjectProductionService);
+  const source = await app.get(SkillsService).create(access, 'experience', { slug: 'threejs-method-' + randomUUID(), requestId: randomUUID(),
+    manifest: currentSkillManifest({ domain: 'experience', name: '隔离场景方法', description: '实际规划和注册模板校验',
+      purposes: ['scene_design', 'report_presentation'], styles: ['克制紫色'], supportedForms: ['3d'],
+      inputs: [{ key: 'creative-profile', description: '固定共同创作设定', required: true }],
+      outputs: [{ key: 'scene', description: '场景和报告清单' }], instructions: '按固定规划使用已注册模板，保留确认、恢复和故障回退。', examples: [], references: [] }) });
+  const methods = [];
+  for (const purpose of ['scene_design', 'report_presentation']) methods.push(await productions.capture(access, module.id, {
+    expectedModuleDigest: module.digest, purpose, sourceVersionId: source.id, expectedSourceRevision: source.revision,
+    expectedSourceDigest: source.digest, requestId: randomUUID() }));
+  const draft = await experiences.save(access, productId, value.version.id, { manifest: value.workspace.defaultManifest,
+    reportPlan: value.profile.profile.reportPlan, methods: [], productPlan: { revisionId: plan.id, digest: plan.digest },
+    note: '只登记制作稿，原件另交', source: 'manual', expectedRevision: 0, expectedVersionRevision: value.version.revision, requestId: randomUUID() });
+  const record = await productions.save(access, module.id, { expectedModuleDigest: module.digest, expectedRevision: 0, requestId: randomUUID(),
+    methods: methods.map(method => ({ snapshotId: method.id, digest: method.digest })), inputs: [],
+    outputs: [{ kind: 'experience_revision', outputKey: module.definition.outputs[0]!.outputKey, revisionId: draft.id, digest: draft.digest }],
+    external: { client: 'isolated-test-fixture', runKey: 'fixture-' + randomUUID(), note: '原件尚未登记', startedAt: new Date().toISOString(), finishedAt: new Date().toISOString() } });
+  assert.equal(record.outputs[0]!.purpose, 'authoring'); assert.equal(record.outputs[0]!.fileId, null);
+  assert.equal(record.archiveReady, false);
 });
