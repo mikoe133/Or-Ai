@@ -49,6 +49,7 @@
     "runtime:start": "node scripts/start-runtime.mjs",
     "runtime:stop": "node scripts/stop-runtime.mjs",
     "docker": "node scripts/docker.mjs",
+    "skills:upgrade": "pnpm --filter @orai/api skills:upgrade",
     "test:skills": "pnpm --filter @orai/contracts build && pnpm --filter @orai/api test:skills",
     "test:machine": "pnpm --filter @orai/contracts build && pnpm --filter @orai/mcp build && pnpm --filter @orai/api test:machine && pnpm --filter @orai/mcp test",
     "mcp:start": "pnpm --filter @orai/mcp start",

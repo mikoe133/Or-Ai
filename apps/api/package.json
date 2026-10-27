@@ -23,6 +23,7 @@
     "delivery:manage": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/delivery-cli.js",
     "admin:manage": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/admin-cli.js",
     "retention:preview": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/retention-cli.js",
+    "skills:upgrade": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/skill-upgrade-cli.js",
     "test:skills": "pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/skills-contract.test.js .test-build/test/skills.test.js",
     "test:machine": "pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/machine.test.js .test-build/test/machine-content.test.js"
   },
