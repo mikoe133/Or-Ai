@@ -14,12 +14,13 @@ import {AssetStorage} from '../src/operations/asset-storage';
 import {R2AssetStorage} from '../src/operations/r2-asset-storage';
 import {FilesService} from '../src/operations/files.service';
 import {SkillFilesService} from '../src/operations/skill-files.service';
+import {ProjectOriginalFilesService} from '../src/operations/project-original-files.service';
 import {DemoIdentityScenarios} from '../scripts/demo-fixtures';
 import {createLocalFixture} from './local-fixture';
 let fixture:Awaited<ReturnType<typeof createLocalFixture>>,app:INestApplication,directory:string,access:CatalogAdminAccess;
 before(async()=>{
   fixture=await createLocalFixture('t09');directory=await mkdtemp(join(tmpdir(),'orai-r2-services-'));
-  const configuration={...fixture.configuration,assets:{...fixture.configuration.assets!,driver:'r2',r2:{accountId:'a'.repeat(32),
+  const configuration={...fixture.configuration,assets:{...fixture.configuration.assets!,driver:'r2',uploadBudget:{ingressBodyBytes:100,requestEnvelopeBytes:0,maxFileBytes:100},uploadTimeoutMs:360000,r2:{accountId:'a'.repeat(32),
     endpoint:'https://'+'a'.repeat(32)+'.r2.cloudflarestorage.com',bucket:'orai-test',accessKeyId:'b'.repeat(32),secretAccessKey:'c'.repeat(64),
     spoolDirectory:directory,spoolMaxBytes:256*1024*1024,spoolMaxFiles:2,requestTimeoutMs:1000}}};
   const module=await Test.createTestingModule({imports:[AppModule]}).overrideProvider(APP_CONFIG).useValue(configuration).compile();
@@ -42,4 +43,13 @@ test('R2 Skill reference preparation uses the existing owner, domain, type and q
   const bytes=Buffer.from('Reference');const record=await app.get(SkillFilesService).prepare(access,'copy',skill.id,{fileName:'guide.md',mimeType:'text/markdown',
     byteSize:bytes.length,checksum:createHash('sha256').update(bytes).digest('hex'),requestId:randomUUID()});
   assert.equal(record.status,'pending');assert.equal(record.skillId,skill.id);
+});
+test('all upload purposes reject bytes above the configured body budget before allocating a pending file',async()=>{
+  const version=await fixture.runtime.client.productVersion.findFirstOrThrow();
+  const base={fileName:'cover.png',mimeType:'image/png',byteSize:101,checksum:'1'.repeat(64),requestId:randomUUID()};
+  await assert.rejects(app.get(FilesService).prepare(access,{...base,productVersionId:version.id,kind:'cover'}),{code:'VALIDATION_ERROR'});
+  const skill=await fixture.runtime.client.styleSkill.findFirstOrThrow({where:{domain:'copy'}});
+  await assert.rejects(app.get(SkillFilesService).prepare(access,'copy',skill.id,{...base,fileName:'guide.md',mimeType:'text/markdown'}),{code:'VALIDATION_ERROR'});
+  await assert.rejects(app.get(ProjectOriginalFilesService).prepare(access,{...base,fileName:'original.zip',mimeType:'application/zip',
+    target:{type:'project_original',planModuleId:randomUUID(),outputKey:'bundle',fileKey:'original'}}),{code:'VALIDATION_ERROR'});
 });

@@ -126,7 +126,8 @@ test('R2 enforces shared byte/file leases while a read is open and recovers capa
 test('production R2 configuration requires exact account, bucket and credentials without accepting an arbitrary network endpoint',()=>{
   const env={APP_ENV:'production',DATABASE_URL:'postgresql://app:local@db.example/orai',DATABASE_SSL_MODE:'verify-full',
     APP_PUBLIC_ORIGIN:'https://meetmyworld.com',CSRF_SIGNING_KEY:'k'.repeat(43),ASSET_STORAGE_DRIVER:'r2',
-    R2_ACCOUNT_ID:'a'.repeat(32),R2_BUCKET:'orai-private',R2_ACCESS_KEY_ID:'b'.repeat(32),R2_SECRET_ACCESS_KEY:'c'.repeat(64)};
+    R2_ACCOUNT_ID:'a'.repeat(32),R2_BUCKET:'orai-private',R2_ACCESS_KEY_ID:'b'.repeat(32),R2_SECRET_ACCESS_KEY:'c'.repeat(64),
+    UPLOAD_INGRESS_BODY_BYTES:'90000000',UPLOAD_REQUEST_ENVELOPE_BYTES:'0',ASSET_UPLOAD_TIMEOUT_MS:'360000'};
   const configuration=loadConfiguration(env);assert.equal(configuration.assets?.driver,'r2');
   for(const name of ['R2_ACCOUNT_ID','R2_BUCKET','R2_ACCESS_KEY_ID','R2_SECRET_ACCESS_KEY']){
     const bad:Record<string,string|undefined>={...env};delete bad[name];assert.throws(()=>loadConfiguration(bad));

@@ -37,8 +37,18 @@ test('valid offline production configuration cannot pass cloud deployment gaps',
   assert.equal(result.actualCloudValidationPassed, false);
   assert.equal(result.cloudConnectionsMade, 0);
   assert.equal(result.databaseConnectionsMade, 0);
-  assert.ok(has(result, 'PERSISTENT_ASSET_ADAPTER_NOT_IMPLEMENTED'));
-  assert.ok(has(result, 'WORKER_CONTAINER_ROUTING_NOT_IMPLEMENTED'));
+  assert.ok(has(result, 'PERSISTENT_ASSET_STORAGE_NOT_CONFIGURED'));
+  assert.ok(has(result, 'VPS_ROUTE_TLS_AND_RUNTIME_NOT_VERIFIED'));
+});
+
+test('implemented R2/VPS adapters are distinguished from real deployment and provider validation',()=>{
+  const result=inspect({...fixture(),ASSET_STORAGE_DRIVER:'r2',R2_ACCOUNT_ID:'a'.repeat(32),R2_BUCKET:'orai-private',
+    R2_ACCESS_KEY_ID:'b'.repeat(32),R2_SECRET_ACCESS_KEY:'c'.repeat(64),UPLOAD_INGRESS_BODY_BYTES:'90000000',
+    UPLOAD_REQUEST_ENVELOPE_BYTES:'0',ASSET_UPLOAD_TIMEOUT_MS:'360000'});
+  assert.equal(has(result,'PERSISTENT_ASSET_ADAPTER_NOT_IMPLEMENTED'),false);
+  assert.equal(has(result,'WORKER_CONTAINER_ROUTING_NOT_IMPLEMENTED'),false);
+  assert.equal(result.configurationValid,true);assert.equal(result.deployable,false);
+  assert.equal(result.cloudConnectionsMade,0);assert.equal(result.secretsIncluded,false);
 });
 
 test('production sample is incomplete and never silently uses local .env credentials', async () => {
@@ -99,7 +109,7 @@ test('local databases, wrong schema and unsafe database URL schemes fail before 
   invalid({ ...fixture(), DATABASE_URL: fixture().DATABASE_URL + '&schema=public' }, 'DATABASE_SCHEMA_OPTIONS_INVALID');
 });
 
-test('real API loader rejects production local storage and unsupported pretend R2 configuration', () => {
+test('real API loader rejects production local storage and incomplete R2 configuration', () => {
   for (const driver of ['local', 'r2']) invalid({ ...fixture(), ASSET_STORAGE_DRIVER: driver }, 'API_PRODUCTION_CONFIGURATION_REJECTED');
   assert.equal(inspect(fixture()).deployable, false);
 });
