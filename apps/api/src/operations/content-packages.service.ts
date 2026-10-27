@@ -62,6 +62,7 @@ export class ContentPackagesService {
     selection: Selection,
   ) {
     const productId = selection.productId.toLowerCase();
+    await tx.$queryRaw(Prisma.sql`SELECT id FROM orai.products WHERE id=${productId}::uuid AND scope=${access.scope}::orai."DataScope" FOR SHARE`);
     const product = await tx.product.findFirst({
         where: { id: productId, scope: access.scope },
       }),

@@ -4,7 +4,7 @@ import { BoundSkillSchema, CreativeProfileSchema, ProductConfigurationSchema, Re
 import { Prisma, type ProductVersion, type CreativeProfileRevision } from '../generated/prisma/client';
 import { ApiException } from '../common/http-errors';
 import type { AssetStorage } from '../operations/asset-storage';
-import { requireExperienceProductPolicy } from './experience-product-policy';
+import { requireExperienceProductPolicy, requireAssessmentProductPolicy } from './experience-product-policy';
 
 export const experienceDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const configurationDigest = (value: unknown) => experienceDigest(ProductConfigurationSchema.parse(value));
@@ -64,8 +64,10 @@ export async function verifyReviewedExperience(tx: Prisma.TransactionClient, ver
     version.creativeProfileRevisionId !== profile.id || experienceDraftIssues(manifest, draft.reportPlan, version, profile).length)
     throw new ApiException('INVALID_CONFIGURATION', '体验草稿未审核或内容/设定已变化，请重新校验审核', 400);
   const policy = await requireExperienceProductPolicy(tx, version, draft);
+  const assessmentMethods = await requireAssessmentProductPolicy(tx, version, policy);
   await verifyExperienceFiles(tx, manifest, version.scope, storage);
   await verifyExperienceMethodFiles(tx, draft.methods, version.scope, storage);
+  await verifyExperienceMethodFiles(tx, assessmentMethods, version.scope, storage);
   return { draft, manifest, profile, policy };
 }
 export async function verifyExperienceMethodFiles(tx: Prisma.TransactionClient, input: unknown, scope: ProductVersion['scope'], storage: AssetStorage) {
