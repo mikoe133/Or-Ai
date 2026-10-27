@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { currentSkillManifest } from './skill-policy-fixture';
 import { before, after, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID, createHash } from 'node:crypto';
@@ -80,7 +81,7 @@ async function setup(maxProjects = 5, maxMethodsPerProject = 15) {
   const body = { requestId: randomUUID(), projectKey: 'project-' + randomUUID(), product: { slug: 'project-' + randomUUID(), name: '隔离新选题',
     hook: '看见自己的节奏', summary: '新选题草稿', description: '技术验收用合成内容', categoryId: original.categoryId,
     priceFen: original.priceFen, durationMinutes: 5, experienceType: original.experienceType, themeKey: original.themeKey, publicSample }, profile,
-    plan: { schemaVersion: 1, title: '新选题计划', selection: { basis: 'manual', rationale: '隔离技术验收', evidenceKeys: [] },
+    plan: { schemaVersion: 2, productPlan: emptyProductImplementationPlan(), title: '新选题计划', selection: { basis: 'manual', rationale: '隔离技术验收', evidenceKeys: [] },
       freshnessWindowHours: 24, evidence: [], modules: [module('assessment',[output('questions','assessment'),output('report','report')]),
         module('copy',[output('copy','copy')],['assessment']),module('cover',[output('cover','image','image/png')]),
         module('video',[output('video','video','video/webm')],['assessment','copy']),experience], retention: 'platform_originals_and_exact_methods' } };
@@ -93,7 +94,7 @@ async function bootstrap(c: Awaited<ReturnType<typeof setup>>) {
 }
 type Context = Awaited<ReturnType<typeof bootstrap>>;
 function manifest(domain: keyof typeof skillPurposes) {
-  return StyleSkillManifestSchema.parse({ schemaVersion: 1, domain, name: '候选专业方法', description: '本项目外部制作使用',
+  return currentSkillManifest({ schemaVersion: 1, domain, name: '候选专业方法', description: '本项目外部制作使用',
     purposes: [...skillPurposes[domain]], styles: ['紫色纸本'], supportedForms: ['web'],
     inputs: [{ key: 'creative-profile', description: '固定创作设定', required: true }], outputs: [{ key: 'deliverable', description: '模块产物' }],
     instructions: '通过具体观察形成理解与行动，不贴诊断标签。', examples: [], references: [] });

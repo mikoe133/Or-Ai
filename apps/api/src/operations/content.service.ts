@@ -327,7 +327,7 @@ export class ContentService {
       await this.mutations.administrators.require(access, tx);
       const profile = await this.profile(tx, access, body.creativeProfileRevisionId.toLowerCase()), inputs = [];
       const set = body.skillSetId ? await this.skills.readIn(tx, access, body.skillSetId, profile.id) : null;
-      if (set) await this.skills.verifyFiles(set, tx, body.domain);
+      if (set) { await this.skills.validateForUse(tx, access, set); await this.skills.verifyFiles(set, tx, body.domain); }
       for (const input of body.inputs) {
         const row = await this.revision(tx, access, input.revisionId.toLowerCase(), profile.productId);
         this.checkSource(row, profile.id, input.digest);

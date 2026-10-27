@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import { currentSkillManifest, policyPlanDocument } from './skill-policy-fixture';
 import assert from "node:assert/strict";
 import { before, after, test } from "node:test";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -1383,7 +1384,7 @@ async function activeSkill(
   purposes: readonly string[] = purposesByDomain[domain],
   withReference = false,
 ) {
-  const manifest = {
+  const manifest = currentSkillManifest({
     schemaVersion: 1,
     domain,
     name: "固定方法 " + domain,
@@ -1398,7 +1399,7 @@ async function activeSkill(
     instructions: "阅读共同设定，避免诊断和关系结论。",
     examples: [],
     references: [],
-  };
+  });
   const created = await admin.request("/admin/skills/" + domain, "POST", {
     slug: "method-" + randomUUID(),
     manifest,
@@ -1447,7 +1448,7 @@ async function activeSkill(
       manifest: {
         ...manifest,
         references: [{ path: "references/guide.md", fileId: prepared.body.id }],
-        instructions: "阅读 [参考](references/guide.md)，给出具体表达。",
+        instructions: draft.manifest.instructions + "\n阅读 [参考](references/guide.md)，给出具体表达。",
       },
       expectedRevision: draft.revision,
       requestId: randomUUID(),
@@ -1473,6 +1474,12 @@ async function skillAction(row: any, action: string) {
   return result.body;
 }
 async function createSkillSet(brief: any) {
+  const previous = await admin.request('/admin/products/' + brief.productId + '/production-plans?pageSize=1');
+  assert.equal(previous.status, 200);
+  const savedPlan = await admin.request('/admin/products/' + brief.productId + '/production-plans', 'POST', {
+    plan: policyPlanDocument(brief.id, brief.profile.experienceForm), expectedRevision: previous.body.items[0]?.revision ?? 0, requestId: randomUUID(),
+  });
+  assert.equal(savedPlan.status, 200, JSON.stringify(savedPlan.body));
   const rows = [];
   for (const domain of ["assessment", "cover", "video", "copy"] as const)
     rows.push(
@@ -1487,10 +1494,12 @@ async function createSkillSet(brief: any) {
     expectedRevision: 0,
     requestId: randomUUID(),
     note: "温柔花园五用途组合",
+    productPlan: { revisionId: savedPlan.body.id, digest: savedPlan.body.digest },
     bindings: rows.flatMap((row) =>
       row.manifest.purposes.map((purpose: string) => ({
         purpose,
         skillVersionId: row.id,
+        planModuleId: savedPlan.body.modules.find((module: any) => module.definition.domain === row.manifest.domain).id,
       })),
     ),
   };
@@ -1506,6 +1515,7 @@ const setChoices = (set: any) =>
   set.bindings.map((row: any) => ({
     purpose: row.purpose,
     skillVersionId: row.version.id,
+    planModuleId: row.productPlanInput?.planModuleId,
   }));
 async function reviseSet(
   context: Awaited<ReturnType<typeof fresh>>,
@@ -1518,6 +1528,7 @@ async function reviseSet(
     "POST",
     {
       bindings,
+      productPlan: { revisionId: context.skillSet.bindings[0].productPlanInput.planRevisionId, digest: context.skillSet.bindings[0].productPlanInput.planDigest },
       note: "新组合保留共同意象",
       expectedRevision,
       requestId,
@@ -1585,9 +1596,10 @@ test("five-purpose skill combinations reject domain, purpose, form, draft, missi
   );
   const draft = await admin.request("/admin/skills/copy", "POST", {
     slug: "draft-" + randomUUID(),
-    manifest: { ...wrongForm.manifest, supportedForms: ["web"] },
+    manifest: { ...wrongForm.manifest, supportedForms: ["web","3d"] },
     requestId: randomUUID(),
   });
+  assert.equal(draft.status,200,JSON.stringify(draft.body));
   assert.equal(
     (
       await reviseSet(

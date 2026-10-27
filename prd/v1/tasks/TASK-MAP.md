@@ -50,7 +50,7 @@
 | T11.5 | [12 T11-B](active/12-commercial-pilot.md) | 仍未完成，按新任务执行。 |
 | T11.6 | [12 T11-B](active/12-commercial-pilot.md) | 仍未完成，按新任务执行。 |
 | T11.7 | [11 T11-A](active/11-formal-product-package.md)、[12 T11-B](active/12-commercial-pilot.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T13.C2 | [02 T13.C2](active/02-skill-policy-validation.md) | 仍未完成，按新任务执行。 |
+| T13.C2 | [02 T13.C2（已完成）](archive/completed/02-skill-policy-validation.md) | 技术范围完成；564项、13项自主CUA和类型/构建通过。旧方法前向升级由04持有。 |
 | T13.C3 | [04 T13.C3](active/04-skill-library-upgrade.md) | 仍未完成，按新任务执行。 |
 | T14.C1 | [09 T14-C](active/09-remote-mcp.md) | 仍未完成，按新任务执行。 |
 | T14.C2 | [09 T14-C](active/09-remote-mcp.md) | 仍未完成，按新任务执行。 |

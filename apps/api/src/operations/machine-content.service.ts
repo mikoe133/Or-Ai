@@ -146,8 +146,10 @@ export class MachineContentService {
       }
       case 'skill_draft_clone': {
         const { skillId, ...body } = parseInput(MachineSkillDraftCloneSchema, input);
+        if (body.manifest && body.manifest.domain !== domain) throw machineDenied();
         const scoped = await this.restrict(access, { permission: 'skills:write', extraPermissions: ['skills:read'], target: {
           type: 'skill', skillId: skillId.toLowerCase(), versionId: body.sourceVersionId.toLowerCase(),
+          fileIds: body.manifest?.references.map(reference => reference.fileId.toLowerCase()),
         } });
         return skillVersion(await this.skills.clone(scoped, domain, skillId, body));
       }

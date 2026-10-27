@@ -1,0 +1,57 @@
+{
+  "verification": "agent_autonomous_CUA_not_user_approval",
+  "checks": [
+    {
+      "check": "Existing local Auth login redirects to the storefront and retains the administrator entry",
+      "passed": true
+    },
+    {
+      "check": "Legacy active manifest is read-only and lists missing policy/input/purpose clauses",
+      "passed": true
+    },
+    {
+      "check": "Explicit legacy clone creates a new version with both purpose clauses and preserves the original method text",
+      "passed": true
+    },
+    {
+      "check": "Missing product-plan input blocks save while preserving edited instructions and input descriptions",
+      "passed": true
+    },
+    {
+      "check": "Policy repair and save preserve the unsaved method sentence and creative-profile input description",
+      "passed": true
+    },
+    {
+      "check": "Upgraded manifest can be reviewed and activated through the ordinary administrator UI",
+      "passed": true
+    },
+    {
+      "check": "Five-purpose set saves exact Skill versions and the selected plan/module digests",
+      "passed": true
+    },
+    {
+      "check": "Concurrent plan revision rejects stale binding saves and preserves the note and five selected versions",
+      "passed": true
+    },
+    {
+      "check": "Explicitly reselecting the current plan saves a new set and retains the old set in history",
+      "passed": true
+    },
+    {
+      "check": "A dropped post-commit response preserves the form; retry recovers revision 3 instead of creating revision 4",
+      "passed": true
+    },
+    {
+      "check": "390px layout keeps the plan/module controls usable and wraps the full digest without horizontal clipping",
+      "passed": true
+    },
+    {
+      "check": "Direct experience save rejects missing product-plan input and preserves both selected methods",
+      "passed": true
+    },
+    {
+      "check": "Direct experience saves scene_design and report_presentation with the selected plan and experience module",
+      "passed": true
+    }
+  ]
+}

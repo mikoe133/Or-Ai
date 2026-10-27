@@ -25,6 +25,7 @@ import { AssetStorage } from "./asset-storage";
 import { checkReferenceName } from "./reference-content";
 import { contentDigest } from "./content-projections";
 import { stableDiff } from "./content-workflow.service";
+import { requireSkillProductPolicy } from './skill-product-policy';
 const include = {
   skill: true,
   attachments: { include: { file: true } },
@@ -39,6 +40,7 @@ const projection = (manifest: StyleSkillManifest) => ({
 });
 const manifestInput = (input: unknown) => {
   const value = parseInput(StyleSkillManifestSchema, input);
+  requireSkillProductPolicy(value);
   return {
     ...value,
     references: value.references.map((ref) => ({
@@ -444,7 +446,8 @@ export class SkillsService {
             body.sourceVersionId,
             tx,
           ),
-          manifest = manifestInput(source.manifest);
+          manifest = manifestInput(body.manifest ?? source.manifest);
+        if (manifest.domain !== skill.domain) throw new ApiException('VALIDATION_ERROR', '复制升级不能改变 Skill 所属领域', 400);
         await this.validateFiles(tx, skill.id, access, manifest);
         const latest = await tx.styleSkillVersion.findFirstOrThrow({
           where: { skillId: skill.id },

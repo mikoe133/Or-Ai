@@ -10,6 +10,7 @@ test("all five skill libraries and seven purposes require Three.js while animati
   let purposes = 0;
   for (const domain of ["assessment", "cover", "video", "copy", "experience"] as const) for (const purpose of skillPurposes[domain]) {
     const manifest = defaultSkill(domain, purpose); purposes++;
+    assert.equal(manifest.schemaVersion, 2);
     assert.equal(StyleSkillManifestSchema.safeParse(manifest).success, true);
     assert.ok(
       manifest.purposes.every((value) =>
@@ -50,7 +51,7 @@ test("platform imports accept bare or exported manifests, preserve inert text an
   const manifest = {
     ...defaultSkill("assessment"),
     instructions:
-      '<script>do not execute</script>\n```js\nthrow new Error("inert")\n```',
+      '<script>do not execute</script>\n```js\nthrow new Error("inert")\n```\n' + defaultSkill('assessment').instructions,
   };
   assert.deepEqual(importSkill(JSON.stringify(manifest)), manifest);
   assert.deepEqual(

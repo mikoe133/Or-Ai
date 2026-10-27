@@ -18,6 +18,12 @@ export const purposeDomain = {
   scene_design: "experience",
   report_presentation: "experience",
 } as const;
+export const SkillProductPlanReferenceSchema = z.object({ revisionId: IdSchema.toLowerCase(), digest: z.string().regex(/^[0-9a-f]{64}$/) }).strict();
+// Optional only on historical reads. New binding services require this concrete input.
+export const SkillProductPlanInputSchema = z.object({
+  schemaVersion: z.literal(1), planRevisionId: IdSchema.toLowerCase(), planDigest: z.string().regex(/^[0-9a-f]{64}$/),
+  planModuleId: IdSchema.toLowerCase(), moduleDigest: z.string().regex(/^[0-9a-f]{64}$/), form: SkillFormSchema,
+}).strict();
 export const FixedSkillVersionSchema = z
   .object({
     id: IdSchema,
@@ -47,6 +53,7 @@ export const BoundSkillSchema = z
     purpose: SkillPurposeSchema,
     domain: ProductionDomainSchema,
     version: FixedSkillVersionSchema,
+    productPlanInput: SkillProductPlanInputSchema.optional(),
   })
   .strict()
   .refine(
@@ -78,10 +85,11 @@ export const CreativeSkillSetSaveSchema = z
     expectedRevision: z.number().int().min(0),
     requestId: IdSchema,
     note: z.string().trim().min(1).max(2000),
+    productPlan: SkillProductPlanReferenceSchema.optional(),
     bindings: z
       .array(
         z
-          .object({ purpose: CoreSkillPurposeSchema, skillVersionId: IdSchema })
+          .object({ purpose: CoreSkillPurposeSchema, skillVersionId: IdSchema, planModuleId: IdSchema.toLowerCase().optional() })
           .strict(),
       )
       .length(5),

@@ -411,19 +411,19 @@ LocalAssetStorage 仅用于开发/测试，保存到 ASSET_DIRECTORY，API 默�
 | POST / | slug、manifest、requestId；初建固定领域/标识，首版 DRAFT，不带参考文件 |
 | GET /:id | 库条目、最新稿、当前启用版本 ID |
 | GET /:id/versions | 固定历史分页，仅接受 page/pageSize |
-| POST /:id/versions | sourceVersionId、expectedSkillRevision、requestId；复制为独立新草稿，保留原文件引用 |
+| POST /:id/versions | sourceVersionId、expectedSkillRevision、requestId，可选manifest；历史政策升级需显式提供合规v2清单，复制新草稿，不改领域 |
 | GET /:id/versions/:versionId | 固定版本与参考文件元数据 |
 | PUT /:id/versions/:versionId | manifest、expectedRevision、requestId；仅编辑 DRAFT |
 | POST /:id/versions/:versionId/review、/activate、/archive | expectedRevision、requestId；审核后内容固定，启用新版时归档原 ACTIVE |
 | GET /:id/versions/:versionId/diff?to=:id | 同一 skill 两份固定 manifest 差异，最多 500 项并显示截断 |
-| GET /:id/versions/:versionId/export | 平台 v1 JSON 包；前端另可导出 Markdown 正文 |
+| GET /:id/versions/:versionId/export | 外层平台v1 JSON包保持；内含原固定manifest v1/v2，前端另可导出Markdown正文 |
 | POST /:id/files | fileName、mimeType、byteSize、checksum、requestId；专用参考上传，最多 20 份未到期待完成会话 |
 | GET /:id/files/:fileId | 原上传者查询状态 |
 | PUT /:id/files/:fileId/content | octet-stream 字节、Origin/CSRF；复用独占流式写入/摘要/限额与两分钟期限 |
 | POST /:id/files/:fileId/complete | requestId；重新检查实际类型/摘要后才 AVAILABLE |
 | GET /:id/files/:fileId/content | 当前范围管理员授权下载，attachment/nosniff，支持单段 Range |
 
-平台 v1 manifest 包括 schemaVersion/domain/name/description/purposes/styles/supportedForms、inputs/outputs、instructions、examples、references[{path,fileId}]。必填输入包含 creative-profile；assessment 的专业用途区分 assessment_design/report_writing，其他领域分别为 cover_design/video_production/copywriting。元数据支持形式不表示平台已有对应运行器。Markdown 导入只替换正文，不自动读取 YAML 元数据；JSON 可导入 bare manifest 或平台导出包的 manifest，跨环境先重新上传参考文件。
+历史v1 manifest包含schemaVersion/domain/name/description/purposes/styles/supportedForms、inputs/outputs、instructions、examples、references[{path,fileId}]，读取顺序与摘要保留。当前新写入使用v2，新增严格productPolicy v1，要求creative-profile及product-plan为必填输入，并检查共同和专业条款；五库七用途均适用，全局清单不绑定商品ID。元数据支持形式不表示已有相应运行器。Markdown导入只替换正文，不自动读取YAML；JSON可读取bare或导出包内清单，旧版需显式升级，跨环境先重新上传参考文件。
 
 参考附件接受 UTF-8 .md/.txt/.json、PDF、PNG/JPEG/WebP，每份最多 5 MiB，每版本最多 20 个路径和 25 MiB 唯一字节；拒绝未知类型、损坏文本/JSON、错误文件头/摘要及不安全内部路径。上传与归属独立于 ProductVersion/AssetFile；复用现有存储和文件流，原商品媒体接口不会因此接收文档。保存、审核与启用重新检查文件完整性。没有 skill 附件物理删除或任意路径读取入口。
 
@@ -437,7 +437,7 @@ LocalAssetStorage 仅用于开发/测试，保存到 ASSET_DIRECTORY，API 默�
 | --- | --- |
 | GET /skills/:domain/candidates | 必填 purpose/form，可选 q/page/pageSize；以 ACTIVE 版本自身的 manifest 筛选兼容候选 |
 | GET /creative-profiles/:id/skill-sets | page/pageSize；固定组合历史 |
-| POST /creative-profiles/:id/skill-sets | bindings[{purpose,skillVersionId}] 五用途、note、expectedRevision、requestId；追加组合 |
+| POST /creative-profiles/:id/skill-sets | 五用途bindings[{purpose,skillVersionId,planModuleId?}]、productPlan{revisionId,digest}、note、expectedRevision、requestId；当前v2规划下追加组合 |
 | GET /creative-skill-sets/:id | 完整固定组合，不含 actor/owner 或服务端路径 |
 | GET /creative-skill-sets/:id/domains/:domain | 可选 purpose，只返回此领域/用途固定版本 |
 | GET /creative-skill-sets/:id/domains/:domain/:purpose/references/:fileId/content | 验证文件属于该固定用途后下载，支持单段 Range |
@@ -636,3 +636,11 @@ document固定schemaVersion=1、当前工作区、已有连接、既有商品/�
 v2 的 `productPlan.implementation` 固定 `threejs`，视觉、十一项制作决定、设备与预算分别表达；模块/renderer/report 配对仍由 `modules[].target` 唯一拥有。精确来源只允许同商品/scope 的不可变内容、体验版本和项目方法快照，错误 ID 为 NOT_FOUND，错误摘要为 REVISION_CONFLICT，共同设定/领域不一致为 CONFLICT；不读取任意 URL 或文件路径。草稿允许待规划，结构校验不执行场景或认证作者依据。既有管理员/机器授权、expectedRevision、requestId、审计和事务保持。
 
 完整字段与兼容约束见[PRODUCTION-PLANS](PRODUCTION-PLANS.md#2026-10-27t16c2-a-商品规划合同)；正式 Skill 政策与发布门禁分别留给任务02/03。
+
+## 2026-10-27 · T13.C2 商品Skill政策与实际输入
+
+新建、保存、显式复制升级、审核和启用共用manifest v2政策检查。`productPolicy` v1固定Three.js基线、全部声明用途、必填v2 `product-plan`输入及按固定规划决定玩法；共同正文和每个用途条款同时检查，不向全局Skill写商品ID。归档与历史读取不追溯补字段。
+
+新组合与非空体验方法绑定提供`productPlan:{revisionId,digest}`，并明确用途对应的`planModuleId`；唯一兼容模块可由服务端解析，多模块必须显式选定。服务端把`productPlanInput` v1的计划/模块ID与摘要、形式写进固定方法快照，检查当前v2规划及同商品/scope/设定、用途、形式和精确方法版本。项目方法复用其已固定的计划/模块归属。缺声明或实际输入返回400 VALIDATION_ERROR，外部商品/scope返回404，过期修订/摘要返回409 REVISION_CONFLICT。
+
+旧组合、方法、体验和采用包按原JSON/摘要可读；新上下文或制作不能用旧组合绕过政策。原作业恢复与固定引用检查只读原固定输入并核验字节，不授权新制作。正式采用、审核与发布的完整性仍由03继续收口。

@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import { currentSkillManifest } from './skill-policy-fixture';
+import { emptyProductImplementationPlan } from '@orai/contracts/admin';
 import { before,after,test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID,createHash } from 'node:crypto';
@@ -74,7 +76,7 @@ async function fresh(sceneOnly=false){
   const project=MachineProjectResultSchema.parse(await projects.execute(grants.assessment.access,'project_bootstrap',{
     requestId:randomUUID(),projectKey:'retention-'+randomUUID(),product:{slug:'retention-'+randomUUID(),name:'合成留存项目',hook:'看见自己的节奏',summary:'隔离技术验收',
       description:'仅验证平台留存闭环',categoryId:original.categoryId,priceFen:original.priceFen,durationMinutes:5,experienceType:original.experienceType,themeKey:original.themeKey,publicSample},profile,
-    plan:{schemaVersion:1,title:'固定制作计划',selection:{basis:'manual',rationale:'技术验收',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],
+    plan:{schemaVersion:2,productPlan:emptyProductImplementationPlan(),title:'固定制作计划',selection:{basis:'manual',rationale:'技术验收',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],
       retention:'platform_originals_and_exact_methods',modules:sceneOnly?[experience]:[module('assessment',[output('questions','assessment'),output('report','report')]),
         module('cover',[output('cover','image','image/png')]),module('copy',[output('copy','copy')],['assessment']),experience,
         module('video',[output('video','video','video/webm')],['assessment','copy','cover','experience'])]}}));
@@ -85,7 +87,7 @@ async function fresh(sceneOnly=false){
 }
 type Context=Awaited<ReturnType<typeof fresh>>;
 async function methods(c:Context,domain:Domain,withReference=false){
-  const manifest=StyleSkillManifestSchema.parse({schemaVersion:1,domain,name:'项目候选方法',description:'技术验收候选方法',purposes:[...skillPurposes[domain]],styles:['紫色'],
+  const manifest=currentSkillManifest({schemaVersion:1,domain,name:'项目候选方法',description:'技术验收候选方法',purposes:[...skillPurposes[domain]],styles:['紫色'],
     supportedForms:[c.module(domain).definition.target.form],inputs:[{key:'creative-profile',description:'固定共同设定',required:true}],outputs:[{key:'deliverable',description:'本模块产物'}],
     instructions:'从具体观察解释理解与行动。',examples:[],references:[]});
   const created=await projects.execute(c.grants[domain].access,'project_method_create',{productId:c.project.productId,methodKey:domain,manifest,requestId:randomUUID()}) as {skillId:string;versionId:string};
@@ -253,7 +255,7 @@ test('historical exact methods and their attachments survive later draft edits a
   const fixed=retained.manifest.methods.find(m=>m.version.files.length)!,source=c.sources.find(s=>s.versionId===fixed.version.id)!,skills=app.get(SkillsService);
   const current=await skills.readVersion(access,'assessment',source.skillId,source.versionId);
   const changed=await skills.save(access,'assessment',source.skillId,source.versionId,{expectedRevision:current.revision,requestId:randomUUID(),
-    manifest:{...current.manifest,instructions:'新的草稿方法，不替换旧项目。',references:[]}});
+    manifest:{...current.manifest,instructions:current.manifest.instructions+'\n新的草稿方法，不替换旧项目。',references:[]}});
   await skills.transition(access,'assessment',source.skillId,source.versionId,'archive',{expectedRevision:changed.revision,requestId:randomUUID()});
   assert.deepEqual(await reviews.read(access,retained.id),retained);
   const ref=fixed.version.files[0]!.file;assert.equal(hash(await bytes(await reviews.file(access,retained.id,'method',ref.id))),ref.checksum);

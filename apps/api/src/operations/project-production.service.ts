@@ -19,6 +19,7 @@ import { AssetStorage } from './asset-storage';
 import { ProjectOriginalFilesService } from './project-original-files.service';
 import { FilesService } from './files.service';
 import { createHash } from 'node:crypto';
+import { bindSkillProductPlan, requireSkillProductPolicy } from './skill-product-policy';
 
 const id = (value: unknown) => parseInput(IdSchema, value).toLowerCase();
 const moduleInclude = { plan: true, identity: true } as const;
@@ -105,6 +106,17 @@ export class ProjectProductionService {
         throw new ApiException('VALIDATION_ERROR', '项目方法参考文件已损坏', 400);
     }
   }
+  private async checkMethodPolicy(tx: Prisma.TransactionClient, access: CatalogAdminAccess, module: ModuleRow,
+    purpose: z.infer<typeof SkillPurposeSchema>, manifest: z.infer<typeof FixedSkillVersionSchema>['manifest']) {
+    requireSkillProductPolicy(manifest);
+    const definition = ProductionPlanModuleSchema.parse(module.definition);
+    if (!manifest.purposes.includes(purpose) || manifest.domain !== definition.domain ||
+      !manifest.supportedForms.includes(definition.target.form as never))
+      throw new ApiException('VALIDATION_ERROR', '固定方法的用途、领域或形式与商品规划不一致', 400);
+    await bindSkillProductPlan(tx, access, { productId: module.productId, profileId: module.plan.creativeProfileRevisionId,
+      reference: { revisionId: module.planRevisionId, digest: module.plan.digest }, moduleId: module.id,
+      purpose, domain: definition.domain, form: definition.target.form });
+  }
   async capture(access: CatalogAdminAccess, moduleInput: unknown, input: unknown) {
     await this.human(access);
     const moduleId = id(moduleInput), body = parseInput(ProjectMethodCaptureSchema, input);
@@ -135,6 +147,7 @@ export class ProjectProductionService {
       if (current.revision !== body.expectedSourceRevision || current.digest !== body.expectedSourceDigest)
         throw new ApiException('REVISION_CONFLICT', '源 Skill 草稿已更新，请读取精确修订后重新捕获', 409);
       const manifest = StyleSkillManifestSchema.parse(current.manifest);
+      await this.checkMethodPolicy(tx, access, module, body.purpose, manifest);
       if (current.status === 'ARCHIVED' || manifest.domain !== definition.domain || !manifest.purposes.includes(body.purpose) ||
         !manifest.supportedForms.some(form => form === definition.target.form))
         throw new ApiException('VALIDATION_ERROR', '源 Skill 的状态、领域、用途或形式不符合该模块', 400);
@@ -270,18 +283,22 @@ export class ProjectProductionService {
     return { snapshot, productVersionId };
   }
   async selectedMethodsIn(tx: Prisma.TransactionClient, access: CatalogAdminAccess, moduleId: string,
-    expectedDigest: string, selections: { snapshotId: string; digest: string }[]) {
+    expectedDigest: string, selections: { snapshotId: string; digest: string }[], requireComplete = true, currentPolicy = true) {
     const module = await this.module(tx, access, moduleId), definition = ProductionPlanModuleSchema.parse(module.definition);
     const methods: ReturnType<typeof methodDto>[] = [];
     if (new Set(selections.map(item => item.snapshotId)).size !== selections.length)
       throw new ApiException('VALIDATION_ERROR', '候选方法快照不能重复', 400);
     if (module.digest !== expectedDigest) throw new ApiException('REVISION_CONFLICT', '计划模块摘要不符', 409);
+    if (currentPolicy) await bindSkillProductPlan(tx, access, { productId: module.productId, profileId: module.plan.creativeProfileRevisionId,
+      reference: { revisionId: module.planRevisionId, digest: module.plan.digest }, moduleId: module.id,
+      purpose: definition.methodPurposes[0]!, domain: definition.domain, form: definition.target.form });
     for (const choice of selections) {
       const row = await this.method(tx, access, choice.snapshotId);
       if (row.planModuleId !== module.id || row.digest !== choice.digest) throw new ApiException('CONFLICT', '候选方法不属于该固定模块或摘要已变', 409);
+      if (currentPolicy) await this.checkMethodPolicy(tx, access, module, SkillPurposeSchema.parse(row.purpose), methodDto(row).version.manifest);
       await this.verifyMethod(row); methods.push(methodDto(row));
     }
-    if (definition.methodPurposes.some(purpose => !methods.some(method => method.purpose === purpose)))
+    if (requireComplete && definition.methodPurposes.some(purpose => !methods.some(method => method.purpose === purpose)))
       throw new ApiException('CONFLICT', '候选方法没有覆盖该模块的全部专业用途', 409);
     return { module, definition, methods };
   }
@@ -303,6 +320,7 @@ export class ProjectProductionService {
         const row = await this.method(tx, access, selection.snapshotId);
         if (row.planModuleId !== module.id || row.digest !== selection.digest)
           throw new ApiException('VALIDATION_ERROR', '方法快照必须属于本次固定模块并匹配摘要', 400);
+        await this.checkMethodPolicy(tx, access, module, SkillPurposeSchema.parse(row.purpose), methodDto(row).version.manifest);
         await this.verifyMethod(row); methods.push({ ...selection, purpose: SkillPurposeSchema.parse(row.purpose) });
       }
       if (definition.methodPurposes.some(purpose => !methods.some(method => method.purpose === purpose)))

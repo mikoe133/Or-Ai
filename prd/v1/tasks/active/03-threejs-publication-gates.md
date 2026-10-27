@@ -1,6 +1,6 @@
 # 03 · 接通项目制作链与 Three.js 发布校验
 
-任务标识：T16.C2-B。状态：等待前置。队列：主线。更新：2026-10-26。
+任务标识：T16.C2-B。状态：可执行。队列：主线。更新：2026-10-27。
 
 ## 目标与现状
 
@@ -8,7 +8,7 @@
 
 ## 前置与执行位置
 
-硬前置：[01 固定每款商品的 Three.js 制作规划](01-product-plan-contract.md)、[02 让全部商品 Skill 的 Three.js 要求在服务端生效](02-skill-policy-validation.md)。
+硬前置已满足：[01 商品规划合同](../archive/completed/01-product-plan-contract.md)、[02 Skill服务端商品政策](../archive/completed/02-skill-policy-validation.md)。02已校验新方法绑定/使用的实际规划；本任务继续负责原件/制作稿配对、审核、采用与正式发布完整性。
 
 原编号覆盖：`T16.C2`；范围拆分见[编号映射](../TASK-MAP.md)。步骤前缀只表示队列位置，原业务编号不重用。
 

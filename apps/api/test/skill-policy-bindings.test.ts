@@ -17,6 +17,7 @@ import { SkillBindingsService } from '../src/operations/skill-bindings.service';
 import { ProjectProductionService } from '../src/operations/project-production.service';
 import { ExperienceAuthoringService } from '../src/operations/experience-authoring.service';
 import { ApiException } from '../src/common/http-errors';
+import { contentDigest } from '../src/operations/content-projections';
 import { demoId, DemoIdentityScenarios } from '../scripts/demo-fixtures';
 import { createLocalFixture } from './local-fixture';
 
@@ -89,14 +90,19 @@ test('new bindings retain plan, module, form, purpose and exact method while rej
       moduleDigest: module.digest, form: '3d' });
   }
   assert.deepEqual(await service.save(access, c.profile.id, body), value);
+  const contextInput = { creativeProfileRevisionId:c.profile.id,domain:'copy',skillSetId:value.id,inputs:[] };
+  assert.equal((await app.get(ContentService).context(access,contextInput)).skillVersions.length,1);
+  const other = await fresh();
   for (const change of [
     { productPlan: { revisionId: c.plan.id, digest: '0'.repeat(64) } },
     { productPlan: { revisionId: randomUUID(), digest: c.plan.digest } },
+    { productPlan: { revisionId: other.plan.id, digest: other.plan.digest } },
     { bindings: c.bindings.map((choice, index) => index ? choice : { ...choice, planModuleId: c.plan.modules.find(module => module.definition.domain === 'experience')!.id }) },
   ]) await assert.rejects(service.save(access, c.profile.id, { ...body, expectedRevision: 1, requestId: randomUUID(), ...change }), rejected);
   const next = await app.get(ProductionPlansService).save(access, c.product.id, { plan: c.plan.plan, expectedRevision: 1, requestId: randomUUID() });
   assert.notEqual(next.id, c.plan.id);
   await assert.rejects(service.save(access, c.profile.id, { ...body, expectedRevision: 1, requestId: randomUUID() }), rejected);
+  await assert.rejects(app.get(ContentService).context(access,contextInput),rejected);
   assert.deepEqual(await service.read(access, value.id), value, 'Historical reads keep the exact earlier plan input');
 });
 
@@ -114,4 +120,49 @@ test('direct experience method bindings cannot omit the actual product plan inpu
   const c = await fresh(), version = c.versions.find(version => version.manifest.domain === 'experience')!;
   await assert.rejects(fixture.runtime.client.$transaction(tx => app.get(ExperienceAuthoringService).methods(tx, access,
     [{ purpose: 'scene_design', skillVersionId: version.id }, { purpose: 'report_presentation', skillVersionId: version.id }], [], '3d')), rejected);
+  const module = c.plan.modules.find(module=>module.definition.domain==='experience')!;
+  const choices = [{purpose:'scene_design' as const,skillVersionId:version.id,planModuleId:module.id},
+    {purpose:'report_presentation' as const,skillVersionId:version.id,planModuleId:module.id}];
+  const bound = await fixture.runtime.client.$transaction(tx=>app.get(ExperienceAuthoringService).methods(tx,access,choices,[],'3d',
+    {productId:c.product.id,profileId:c.profile.id,productPlan:{revisionId:c.plan.id,digest:c.plan.digest}}));
+  assert.deepEqual(bound.map(binding=>binding.productPlanInput?.planModuleId),[module.id,module.id]);
+  assert.deepEqual(bound.map(binding=>binding.purpose),['scene_design','report_presentation']);
+});
+
+test('historical Skill sets and manifests remain readable but cannot authorize new bindings, contexts or project methods', async () => {
+  const c = await fresh(), historical = [];
+  for (const current of c.versions) {
+    const { productPolicy: _policy, ...fields } = current.manifest as typeof current.manifest & {productPolicy?:unknown};
+    const manifest = StyleSkillManifestSchema.parse({...fields,schemaVersion:1});
+    const skill = await fixture.owner.client.styleSkill.create({data:{scope:'DEMO',domain:manifest.domain,slug:'legacy-policy-'+randomUUID(),
+      name:manifest.name,description:manifest.description,styles:manifest.styles,purposes:manifest.purposes,supportedForms:manifest.supportedForms}});
+    let version = await fixture.owner.client.styleSkillVersion.create({data:{skillId:skill.id,scope:'DEMO',number:1,
+      manifest,digest:contentDigest(manifest),actorUserId:access.actorUserId}});
+    for (const status of ['REVIEWED','ACTIVE'] as const) version = await fixture.owner.client.styleSkillVersion.update({where:{id:version.id},data:{status,revision:{increment:1}}});
+    historical.push({version,manifest});
+  }
+  const bindings = historical.filter(item=>item.manifest.domain!=='experience').flatMap(({version,manifest})=>manifest.purposes.map(purpose=>({
+    purpose,domain:manifest.domain,version:{id:version.id,skillId:version.skillId,number:version.number,digest:version.digest,manifest,files:[]},
+  })));
+  const stored = await fixture.owner.client.$transaction(async tx=>{
+    const row = await tx.creativeSkillSet.create({data:{productId:c.product.id,scope:'DEMO',creativeProfileRevisionId:c.profile.id,number:1,
+      digest:contentDigest({profileDigest:c.profile.digest,bindings}),note:'政策上线前已保存的固定组合'}});
+    await tx.creativeSkillBinding.createMany({data:bindings.map(binding=>({skillSetId:row.id,productId:c.product.id,scope:'DEMO',
+      purpose:binding.purpose,domain:binding.domain,skillId:binding.version.skillId,skillVersionId:binding.version.id,snapshot:binding}))});
+    return row;
+  });
+  const service = app.get(SkillBindingsService), before = await service.read(access,stored.id);
+  assert.ok(before.bindings.every(binding=>binding.productPlanInput===undefined&&binding.version.manifest.schemaVersion===1));
+  assert.equal((await service.domain(access,stored.id,'assessment')).skillVersions.length,2);
+  await assert.rejects(app.get(ContentService).context(access,{creativeProfileRevisionId:c.profile.id,domain:'copy',skillSetId:stored.id,inputs:[]}),rejected);
+  await assert.rejects(service.save(access,c.profile.id,{...saveBody(c),expectedRevision:1,bindings:before.bindings.map(binding=>({
+    purpose:binding.purpose,skillVersionId:binding.version.id,planModuleId:c.plan.modules.find(module=>module.definition.domain===binding.domain)!.id,
+  }))}),rejected);
+  for (const {version,manifest} of historical) for (const purpose of manifest.purposes) {
+    const module = c.plan.modules.find(module=>module.definition.domain===manifest.domain)!;
+    await assert.rejects(app.get(ProjectProductionService).capture(access,module.id,{expectedModuleDigest:module.digest,purpose,sourceVersionId:version.id,
+      expectedSourceRevision:version.revision,expectedSourceDigest:version.digest,requestId:randomUUID()}),rejected);
+    assert.deepEqual((await app.get(SkillsService).readVersion(access,manifest.domain,version.skillId,version.id)).manifest,manifest);
+  }
+  assert.deepEqual(await service.read(access,stored.id),before);
 });

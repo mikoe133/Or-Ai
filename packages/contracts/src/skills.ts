@@ -6,6 +6,7 @@ import {
   TimestampSchema,
 } from "./shared.js";
 import { ProductionDomainSchema } from "./content-domain.js";
+import { SkillProductPolicySchema, threejsSkillPolicyIssues } from './product-policy.js';
 const text = (max: number) => z.string().trim().min(1).max(max);
 const checksum = z.string().regex(/^[0-9a-f]{64}$/);
 export const CoreSkillPurposeSchema = z.enum([
@@ -69,7 +70,7 @@ export function missingSkillReferences(markdown: string, paths: string[]) {
     ),
   ];
 }
-export const StyleSkillManifestSchema = z
+const manifestObject = z
   .object({
     schemaVersion: z.literal(1),
     domain: ProductionDomainSchema,
@@ -108,8 +109,8 @@ export const StyleSkillManifestSchema = z
       )
       .max(20),
   })
-  .strict()
-  .superRefine((value, ctx) => {
+  .strict();
+const validateManifest = (value: z.infer<typeof manifestObject>, ctx: z.RefinementCtx) => {
     if (
       value.purposes.some(
         (purpose) =>
@@ -151,7 +152,15 @@ export const StyleSkillManifestSchema = z
       });
     if (JSON.stringify(value).length > 200000)
       ctx.addIssue({ code: "custom", message: "skill 内容超出大小限制" });
+  };
+// Keep V1 normalization order and values unchanged for historical digests and retries.
+export const StyleSkillManifestV1Schema = manifestObject.superRefine(validateManifest);
+export const StyleSkillManifestV2Schema = manifestObject.extend({ schemaVersion: z.literal(2), productPolicy: SkillProductPolicySchema })
+  .strict().superRefine((value, ctx) => {
+    validateManifest({ ...value, schemaVersion: 1 }, ctx);
+    for (const issue of threejsSkillPolicyIssues(value)) ctx.addIssue({ code: 'custom', path: [issue.path], message: issue.message });
   });
+export const StyleSkillManifestSchema = z.discriminatedUnion('schemaVersion', [StyleSkillManifestV1Schema, StyleSkillManifestV2Schema]);
 export type StyleSkillManifest = z.infer<typeof StyleSkillManifestSchema>;
 export const SkillCreateSchema = z
   .object({
@@ -172,6 +181,7 @@ export const SkillCloneSchema = z
     sourceVersionId: IdSchema,
     expectedSkillRevision: z.number().int().min(0),
     requestId: IdSchema,
+    manifest: StyleSkillManifestSchema.optional(),
   })
   .strict();
 export const SkillActionSchema = z

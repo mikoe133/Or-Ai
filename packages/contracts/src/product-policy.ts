@@ -1,10 +1,11 @@
 import type { StyleSkillManifest } from './skills.js';
+import { z } from 'zod';
 
 // Authoring policy, separate from registered runtime capabilities and immutable releases.
 export const productImplementationPolicy = {
   id: 'threejs-products-v1', runtime: 'threejs', form: '3d',
   summary: '所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。',
-  mcpInstructions: 'Product authoring policy: every normal product experience must use Three.js. Every product skill must state this requirement. Animation, camera and interaction are determined by the fixed product plan; do not assume a universal scene or game. Preserve immutable historical versions and declare unsupported capabilities honestly.',
+  mcpInstructions: 'Product authoring policy: every normal product experience must use Three.js. New Skill writes require manifest schemaVersion=2, productPolicy v1, the required product-plan input, and the shared plus purpose-specific clauses. A reusable Skill must not bind a product ID. Actual use requires the fixed v2 product plan, matching module, purpose, form and exact method version. Animation, camera and interaction are determined by the fixed product plan; do not assume a universal scene or game. Preserve immutable historical versions and declare unsupported capabilities honestly.',
 } as const;
 
 export const threejsSkillInstructions = `## 商品实现约束 · Three.js
@@ -26,20 +27,47 @@ export const threejsPurposeInstructions = {
   report_presentation: '结果呈现承接 Three.js 商品的场景意象、配色和节奏；报告的图文、可导出或交互形式按商品规划和已注册能力选择，保留可读性与恢复能力。',
 } as const;
 
+export const SkillProductPolicySchema = z.object({
+  schemaVersion: z.literal(1), implementation: z.literal('threejs'), applicability: z.literal('all_declared_purposes'),
+  planInput: z.object({ key: z.literal('product-plan'), schemaVersion: z.literal(2), required: z.literal(true) }).strict(),
+  decisions: z.literal('fixed_product_plan'),
+}).strict();
+export const currentSkillProductPolicy = SkillProductPolicySchema.parse({
+  schemaVersion: 1, implementation: 'threejs', applicability: 'all_declared_purposes',
+  planInput: { key: 'product-plan', schemaVersion: 2, required: true }, decisions: 'fixed_product_plan',
+});
+type PolicyCandidate = { schemaVersion: number; productPolicy?: unknown; supportedForms: string[];
+  inputs: { key: string; required: boolean }[]; instructions: string; purposes: (keyof typeof threejsPurposeInstructions)[] };
+export function threejsSkillPolicyIssues(manifest: PolicyCandidate): { path: string; message: string }[] {
+  const issues: { path: string; message: string }[] = [];
+  if (manifest.schemaVersion !== 2 || !SkillProductPolicySchema.safeParse(manifest.productPolicy).success)
+    issues.push({ path: 'productPolicy', message: '需要 manifest v2 和完整的 Three.js 商品政策 v1' });
+  if (!manifest.supportedForms.includes('3d')) issues.push({ path: 'supportedForms', message: '需要声明 Three.js 商品形式 3d' });
+  if (!manifest.inputs.some(input => input.key === 'product-plan' && input.required))
+    issues.push({ path: 'inputs', message: '必须声明 product-plan 为必填输入' });
+  if (!manifest.instructions.includes(threejsSkillInstructions))
+    issues.push({ path: 'instructions', message: '正文缺少共同 Three.js 商品条款' });
+  for (const purpose of manifest.purposes) if (!manifest.instructions.includes(threejsPurposeInstructions[purpose]))
+    issues.push({ path: 'instructions', message: '正文缺少专业用途条款：' + purpose });
+  return issues;
+}
+
 export function withThreejsSkillPolicy(manifest: StyleSkillManifest): StyleSkillManifest {
   const hasPlan = manifest.inputs.some(input => input.key === 'product-plan');
+  const clauses = [threejsSkillInstructions, ...manifest.purposes.map(purpose => threejsPurposeInstructions[purpose])];
   return {
     ...manifest,
+    schemaVersion: 2,
+    productPolicy: structuredClone(currentSkillProductPolicy),
     supportedForms: manifest.supportedForms.includes('3d') ? [...manifest.supportedForms] : [...manifest.supportedForms, '3d'],
     inputs: hasPlan ? manifest.inputs.map(input => input.key === 'product-plan' ? { ...input, required: true } : { ...input }) : [
       ...manifest.inputs.map(input => ({ ...input })),
       { key: 'product-plan', description: '固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划', required: true },
     ],
-    instructions: manifest.instructions.includes(threejsSkillInstructions) ? manifest.instructions : `${manifest.instructions.trim()}\n\n${threejsSkillInstructions}`,
+    instructions: [manifest.instructions.trim(), ...clauses.filter(clause => !manifest.instructions.includes(clause))].join('\n\n'),
   };
 }
 
 export function hasThreejsSkillPolicy(manifest: StyleSkillManifest) {
-  return manifest.supportedForms.includes('3d') && manifest.inputs.some(input => input.key === 'product-plan' && input.required) &&
-    manifest.instructions.includes(threejsSkillInstructions);
+  return threejsSkillPolicyIssues(manifest).length === 0;
 }

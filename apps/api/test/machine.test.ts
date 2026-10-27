@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import { currentSkillManifest } from './skill-policy-fixture';
 import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -238,7 +239,7 @@ async function skill(domain = "cover") {
   const response = await admin.request("/admin/skills/" + domain, "POST", {
     requestId: randomUUID(),
     slug: "t14-" + randomUUID().slice(0, 8),
-    manifest: {
+    manifest: currentSkillManifest({
       schemaVersion: 1,
       domain,
       name: "温柔表达参考",
@@ -259,7 +260,7 @@ async function skill(domain = "cover") {
       instructions: "观察具体需要，给出温柔的表达建议。",
       examples: [],
       references: [],
-    },
+    }),
   });
   assert.equal(response.status, 200, JSON.stringify(response.body));
   return response.body;

@@ -11,11 +11,13 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ProductionDomainSchema,
   StyleSkillManifestSchema,
+  StyleSkillManifestV1Schema,
   SkillReferencePathSchema,
   skillPurposes,
   productImplementationPolicy,
   hasThreejsSkillPolicy,
   withThreejsSkillPolicy,
+  threejsSkillPolicyIssues,
   type StyleSkillManifest,
 } from "@orai/contracts/admin";
 import { Failure, Loading, Pager, useAction } from "../business/shared.js";
@@ -456,6 +458,10 @@ function SkillEditor({
     (!skill && !!slug) ||
     pending;
   const editable = !version || version.status === "draft";
+  const policyIssues = (() => {
+    try { return threejsSkillPolicyIssues({ ...draft, inputs: StyleSkillManifestV1Schema.shape.inputs.parse(JSON.parse(inputs)) }); }
+    catch { return [{ path: 'inputs', message: '输入规范 JSON 格式不正确；请先修复，当前文字会保留。' }]; }
+  })();
   useEffect(() => {
     onDirty(dirty);
     return () => onDirty(false);
@@ -517,10 +523,11 @@ function SkillEditor({
       )}
       <div className="content-note" role="note" aria-label="Three.js 商品制作要求">
         <p>{productImplementationPolicy.summary} 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。</p>
-        <p>{hasThreejsSkillPolicy(draft) ? '当前正文已包含统一条款及必填商品规划输入。具体方法与产物仍需审核。' : editable ? '此草稿尚缺统一条款。补入后核对并保存；动画与交互仍由具体商品规划确定。' : '此历史版本保持原文。需要用于新的 Three.js 商品时，先复制为新版本，再补入条款并审核。'}</p>
-        {editable && <button type="button" disabled={action.busy || pending || hasThreejsSkillPolicy(draft)} onClick={() => void action.run(async () => StyleSkillManifestSchema.parse(withThreejsSkillPolicy(StyleSkillManifestSchema.parse({
+        <p>{!policyIssues.length ? '已声明商品政策 v1、共同条款、专业条款和必填规划输入；具体方法与产物仍需审核。' : editable ? '此草稿尚缺商品政策。补齐后核对并保存；动画与交互仍由具体商品规划确定。' : '此历史版本保持原文。用于新的 Three.js 商品前，复制并补齐商品政策，再审核。'}</p>
+        {!!policyIssues.length && <ul>{policyIssues.map(issue => <li key={issue.path + issue.message}>{issue.message}</li>)}</ul>}
+        {editable && <button type="button" disabled={action.busy || pending || !policyIssues.length} onClick={() => void action.run(async () => StyleSkillManifestSchema.parse(withThreejsSkillPolicy({
           ...draft, inputs: JSON.parse(inputs), outputs: JSON.parse(outputs), examples: JSON.parse(examples),
-        }))), install)}>补入 Three.js 商品要求</button>}
+        })), install)}>补齐 Three.js 商品政策</button>}
       </div>
       {Boolean(action.error) && <Failure error={action.error} />}
       <div className="skill-editor-workspace">
@@ -729,8 +736,7 @@ function SkillEditor({
                 </label>
               </div>
               <p className="content-note">
-                Markdown 导入只替换正文，元数据在表单中填写。JSON 使用平台 v1
-                清单；跨环境导入需重新上传参考文件并登记本机文件 ID。
+                Markdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。
               </p>
             </>
           )}
@@ -1049,13 +1055,14 @@ function SkillEditor({
                       action.intent("clone", {
                         sourceVersionId: version.id,
                         expectedSkillRevision: skill.revision,
+                        manifest: withThreejsSkillPolicy(version.manifest),
                       }),
                     ),
                   onSaved,
                 )
               }
             >
-              复制为新版本
+              {hasThreejsSkillPolicy(version.manifest) ? '复制为新版本' : '复制并补齐商品政策'}
             </button>
             {(["review", "activate", "archive"] as const).map((kind, index) => (
               <button

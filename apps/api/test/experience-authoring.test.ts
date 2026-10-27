@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import { currentSkillManifest, policyPlanDocument } from './skill-policy-fixture';
+import { ProductionPlansService } from '../src/operations/production-plans.service';
 import { before, after, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
@@ -54,7 +56,11 @@ async function fresh(onlyCover = false, overrides: Partial<z.infer<typeof Creati
   })});
   const version=await versions.importConfiguration(access,productId,{configuration:DemoProducts[0]!.configurations[1],requestId:randomUUID()});
   const workspace=await experiences.workspace(access,productId,version.id,{profileId:profile.id});
+  const currentPlan=await fixture.runtime.client.productionPlanRevision.aggregate({where:{productId},_max:{number:true}});
+  const plan=await app.get(ProductionPlansService).save(access,productId,{plan:policyPlanDocument(profile.id,profile.profile.experienceForm),
+    expectedRevision:currentPlan._max.number??0,requestId:randomUUID()});
   const input:z.infer<typeof ExperienceSaveSchema>={manifest:workspace.defaultManifest,reportPlan:profile.profile.reportPlan,methods:[],note:'人工体验制作',
+    productPlan:{revisionId:plan.id,digest:plan.digest},
     source:'manual',expectedRevision:0,expectedVersionRevision:version.revision,requestId:randomUUID()};
   return {version,profile,input};
 }
@@ -71,7 +77,7 @@ async function call(token:string,operation:string,body:unknown={},domain='experi
 }
 async function methods(supportedForms: ('web'|'3d')[] = ['web']) {
   const service=app.get(SkillsService);
-  const created=await service.create(access,'experience',{slug:'experience-'+randomUUID(),requestId:randomUUID(),manifest:StyleSkillManifestSchema.parse({
+  const created=await service.create(access,'experience',{slug:'experience-'+randomUUID(),requestId:randomUUID(),manifest:currentSkillManifest({
     schemaVersion:1,domain:'experience',name:'温柔花园体验方法',description:'同设定的场景与报告呈现',purposes:['scene_design','report_presentation'],
     styles:['温柔'],supportedForms,inputs:[{key:'creative-profile',description:'固定共同设定',required:true}],outputs:[{key:'experience',description:'已注册模板的结构化清单'}],
     instructions:'只使用已注册模板与脱敏选项；保留明确确认和同内容降级。',examples:[],references:[],
@@ -252,10 +258,10 @@ test('dedicated experience pictures verify actual bytes and protect even histori
 
 test('experience machine scopes expose no scoring or consumer records and bind trustworthy methods and source',async()=>{
   const value=await saved(),method=await methods(),issued=await machine('experience',[productId],[method.skillId]);
-  const context=await call(issued.token!,'context_bundle_get',{productVersionId:value.version.id,skillVersionIds:[method.id]});
+  const context=await call(issued.token!,'context_bundle_get',{productVersionId:value.version.id,skillVersionIds:[method.id],productPlan:value.input.productPlan});
   assert.equal(context.status,200,JSON.stringify(context.body));assert.equal(context.body.methods.length,2);
   assert.equal('templates' in context.body.supported,false);
-  const capabilities=await call(issued.token!,'context_bundle_get',{productVersionId:value.version.id,skillVersionIds:[method.id],includeTemplates:true});
+  const capabilities=await call(issued.token!,'context_bundle_get',{productVersionId:value.version.id,skillVersionIds:[method.id],includeTemplates:true,productPlan:value.input.productPlan});
   assert.equal(capabilities.status,200);assert.ok(capabilities.body.supported.templates.some((template:{renderer:string;report:string;maxOptions:number})=>
     template.renderer==='quiet-room@1'&&template.report==='field-notes@1'&&template.maxOptions===4));
   const text=JSON.stringify(context.body);for(const field of ['points','weight','templates','bands','answers','snapshot','storageKey'])assert.equal(text.includes('"'+field+'"'),false);
@@ -281,7 +287,7 @@ test('real MCP SDK can read context, upload an experience resource, save once an
   const picture=join(directory,'sdk-scene.jpg');await writeFile(picture,await readFile(join(__dirname,'../../test/fixtures/cover.jpg')));
   const result=await execute(process.execPath,[resolve(__dirname,'../../../../packages/mcp/test/real-experience-client.mjs')],{env:{...process.env,
     ORAI_MCP_API_URL:base,ORAI_MCP_TOKEN:issued.token!,ORAI_MCP_DOMAIN:'experience',ORAI_MCP_ALLOWED_ROOT:directory,
-    ORAI_MCP_EXPERIENCE_SCENARIO_JSON:JSON.stringify({productVersionId:value.version.id,skillVersionId:method.id,expectedRevision:1,expectedVersionRevision:1,filePath:picture})},maxBuffer:1000000});
+    ORAI_MCP_EXPERIENCE_SCENARIO_JSON:JSON.stringify({productVersionId:value.version.id,productPlan:value.input.productPlan,skillVersionId:method.id,expectedRevision:1,expectedVersionRevision:1,filePath:picture})},maxBuffer:1000000});
   assert.equal(result.stdout.includes(issued.token!),false);
   const checked=JSON.parse(result.stdout);assert.equal(checked.ok,true);assert.equal(checked.tools,36);
   const stored=await experiences.read(access,checked.revisionId);assert.equal(stored.source,'mcp');assert.equal(stored.manifest.resources.length,1);
@@ -300,13 +306,15 @@ test('the 3D garden has an opt-in v2 declaration, form-specific methods and a re
   assert.equal(current.capabilities?.schemaVersion,2);assert.equal(current.capabilities?.status,'compatible');
   assert.equal(current.capabilities?.selected?.renderer,'reflection-garden@1');
   const wrong=await methods();
-  await assert.rejects(experiences.save(access,productId,value.version.id,{...value.input,expectedRevision:1,expectedVersionRevision:1,requestId:randomUUID(),
-    methods:[{purpose:'scene_design',skillVersionId:wrong.id},{purpose:'report_presentation',skillVersionId:wrong.id}]}));
+  // New method creation itself rejects a web-only declaration; the common
+  // Three.js policy can no longer be bypassed to reach experience binding.
+  await assert.rejects(app.get(SkillsService).create(access,'experience',{slug:'web-only-'+randomUUID(),requestId:randomUUID(),
+    manifest:{...wrong.manifest,supportedForms:['web']}}));
   const method=await methods(['3d']),issued=await machine('experience',[productId],[method.skillId]);
   const picture=join(directory,'sdk-garden.jpg');await writeFile(picture,await readFile(join(__dirname,'../../test/fixtures/cover.jpg')));
   const result=await execute(process.execPath,[resolve(__dirname,'../../../../packages/mcp/test/real-experience-client.mjs')],{env:{...process.env,
     ORAI_MCP_API_URL:base,ORAI_MCP_TOKEN:issued.token!,ORAI_MCP_DOMAIN:'experience',ORAI_MCP_ALLOWED_ROOT:directory,
-    ORAI_MCP_EXPERIENCE_SCENARIO_JSON:JSON.stringify({productVersionId:value.version.id,skillVersionId:method.id,expectedRevision:1,expectedVersionRevision:1,filePath:picture,renderer:'reflection-garden@1'})},maxBuffer:1000000});
+    ORAI_MCP_EXPERIENCE_SCENARIO_JSON:JSON.stringify({productVersionId:value.version.id,productPlan:value.input.productPlan,skillVersionId:method.id,expectedRevision:1,expectedVersionRevision:1,filePath:picture,renderer:'reflection-garden@1'})},maxBuffer:1000000});
   assert.equal(result.stdout.includes(issued.token!),false);const checked=JSON.parse(result.stdout);assert.equal(checked.ok,true);
   const saved=await experiences.read(access,checked.revisionId);assert.equal(saved.source,'mcp');assert.equal(saved.revision,2);
   assert.equal(saved.methods.length,2);assert.equal(saved.manifest.resources.length,1);

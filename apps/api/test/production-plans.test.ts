@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { currentSkillManifest } from './skill-policy-fixture';
 import {before,after,test} from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -83,13 +84,13 @@ test('v2 fixed origins and source IDs must belong to the same product and scope 
 });
 
 test('v2 pins actual content and retained methods, rejects stale or foreign sources, and never treats sources as new captured output',async()=>{
-  const value=await fresh(),legacy=await save(value),configuration=(await fixture.runtime.client.productVersion.findFirstOrThrow({where:{productId:demoId('demo-partner')}})).configuration,
+  const value=await fresh(),legacy=await service.save(access,value.product.id,{plan:{...value.plan,schemaVersion:2,productPlan:emptyProductImplementationPlan()},expectedRevision:0,requestId:randomUUID()}),configuration=(await fixture.runtime.client.productVersion.findFirstOrThrow({where:{productId:demoId('demo-partner')}})).configuration,
     version=await app.get(VersionsService).importConfiguration(access,value.product.id,{configuration,requestId:randomUUID()}),
     content=await app.get(ContentService).saveAsset(access,{productVersionId:version.id,platform:'manual',variant:'contract',expectedRevision:0,requestId:randomUUID(),fileId:null,
       authoring:{schemaVersion:1,creativeProfileRevisionId:value.profile.id,content:{kind:'copy',blocks:[{blockId:'hook',role:'hook',text:'合成固定来源'}]},
         media:{localArchive:null,previewFileId:null},inputs:[],production:{source:'manual',batchKey:null,externalLabel:'合同验收',skillVersionId:null}}}),
-    skill=await app.get(SkillsService).create(access,'copy',{slug:'contract-'+randomUUID(),requestId:randomUUID(),manifest:{schemaVersion:1,domain:'copy',name:'合成方法',description:'合同验收',
-      purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],inputs:[{key:'creative-profile',description:'设定',required:true}],outputs:[{key:'copy',description:'文案'}],instructions:'人工静态合同夹具。',examples:[],references:[]}}),
+    skill=await app.get(SkillsService).create(access,'copy',{slug:'contract-'+randomUUID(),requestId:randomUUID(),manifest:currentSkillManifest({schemaVersion:1,domain:'copy',name:'合成方法',description:'合同验收',
+      purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],inputs:[{key:'creative-profile',description:'设定',required:true}],outputs:[{key:'copy',description:'文案'}],instructions:'人工静态合同夹具。',examples:[],references:[]})}),
     module=legacy.modules.find(item=>item.moduleKey==='copy')!,method=await app.get(ProjectProductionService).capture(access,module.id,{
       expectedModuleDigest:module.digest,purpose:'copywriting',sourceVersionId:skill.id,expectedSourceRevision:skill.revision,expectedSourceDigest:skill.digest,requestId:randomUUID()}),
     productPlan=emptyProductImplementationPlan(legacy.id);

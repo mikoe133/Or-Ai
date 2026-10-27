@@ -1,6 +1,8 @@
 # T14-LB：四领域本地 MCP 内容接入
 
-2026-10-26 商品制作规则：全部商品正常体验统一 Three.js，七用途 Skill 明示要求，动画/镜头/交互依固定商品规划，见 [统一规范](PRODUCT-IMPLEMENTATION-POLICY.md)。四领域及 experience 的 skill/context 工具描述已同步制作指引；真实输入/输出结构、权限与原摘要继续兼容。工具说明不等于服务端强制门禁，新的规划/保存/新绑定和发布约束由 T16.C2/T13.C2 补齐，旧 Skill 须新版本升级。
+2026-10-27：02已完成新Skill服务端政策。新写入须manifest v2＋productPolicy v1＋共同/专业条款和必填product-plan声明；实际制作固定当前v2规划及对应模块。历史v1仍可读取，复制升级须显式传manifest；MCP同样校验领域、文件与连接权限。正式发布完整性留给03，旧库批量升级留给04。
+
+2026-10-26 商品制作规则：全部商品正常体验统一 Three.js，七用途 Skill 明示要求，动画/镜头/交互依固定商品规划，见 [统一规范](PRODUCT-IMPLEMENTATION-POLICY.md)。四领域及 experience 的 skill/context 工具描述已同步制作指引；真实输入/输出结构、权限与原摘要继续兼容。工具说明不等于服务端强制门禁，后续01/02已补规划和新写入/新绑定校验，发布完整性仍由03持有，旧 Skill 须新版本升级。
 
 2026-10-23：四领域与可选 experience 的 `context_bundle_get` 支持显式 `includeCapabilities:true`，返回共享的 v1 能力/编辑模块/预算和待开发形式；默认旧响应保持。四领域为 `basis=creative_profile`，不据设定选择运行版本；experience 为 `basis=content_version`，依据实际固定内容。能力描述不提供执行、审核或发布权限。`includeTemplates:true` 原体验发现保持兼容，详细约束见 [商品能力](EXPERIENCE-PLATFORM.md#7-2026-10-23--商品能力声明与内容工作台适配本地已完成)。
 
@@ -132,13 +134,24 @@ context 请求示意；其中尖括号均替换为实际 ID 或 SHA-256：
 
 ```json
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "domain": "copy",
   "name": "温柔提问与具体邀请",
   "description": "围绕共同创作设定写宣传文案，邀请用户了解自己或双方关系。",
-  "purposes": ["copywriting"],
-  "styles": ["温柔", "具体"],
-  "supportedForms": ["web", "cards", "2.5d", "3d", "game"],
+  "purposes": [
+    "copywriting"
+  ],
+  "styles": [
+    "温柔",
+    "具体"
+  ],
+  "supportedForms": [
+    "web",
+    "cards",
+    "2.5d",
+    "3d",
+    "game"
+  ],
   "inputs": [
     {
       "key": "creative-profile",
@@ -149,6 +162,11 @@ context 请求示意；其中尖括号均替换为实际 ID 或 SHA-256：
       "key": "selected-fragments",
       "description": "经过授权读取的题目片段及实际定位，不包含私人回答。",
       "required": false
+    },
+    {
+      "key": "product-plan",
+      "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+      "required": true
     }
   ],
   "outputs": [
@@ -157,7 +175,7 @@ context 请求示意；其中尖括号均替换为实际 ID 或 SHA-256：
       "description": "包含稳定 blockId 的 title、hook、body、cta 文案块及实际使用快照。"
     }
   ],
-  "instructions": "先阅读共同创作设定，围绕情绪目标和理解目标表达。使用具体场景和邀请式语言，不用诊断性标签或确定性关系判断。形式和语言与当前商品一致。引用题目时保留来源修订、摘要、questionId和实际使用文本；改写明确标注adapted。输出可编辑草稿，交由运营审核。",
+  "instructions": "先阅读共同创作设定，围绕情绪目标和理解目标表达。使用具体场景和邀请式语言，不用诊断性标签或确定性关系判断。形式和语言与当前商品一致。引用题目时保留来源修订、摘要、questionId和实际使用文本；改写明确标注adapted。输出可编辑草稿，交由运营审核。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。",
   "examples": [
     {
       "title": "邀请用户观察自己的沟通方式",
@@ -165,11 +183,22 @@ context 请求示意；其中尖括号均替换为实际 ID 或 SHA-256：
       "output": "hook：你通常在什么时候，才愿意说出真正的感受？cta：留几分钟，看看自己更需要怎样的回应。"
     }
   ],
-  "references": []
+  "references": [],
+  "productPolicy": {
+    "schemaVersion": 1,
+    "implementation": "threejs",
+    "applicability": "all_declared_purposes",
+    "planInput": {
+      "key": "product-plan",
+      "schemaVersion": 2,
+      "required": true
+    },
+    "decisions": "fixed_product_plan"
+  }
 }
 ```
 
-保存工具参数还需 `skillId`、`versionId`、`expectedRevision`、`requestId` 与上述 `manifest`。版本已经审核/启用/归档时先调用 skill_draft_clone，使用返回的新 versionId 和 revision 保存。管理员随后审核、启用并创建新的固定组合；原组合和历史内容继续保留原版本。
+保存工具参数还需 `skillId`、`versionId`、`expectedRevision`、`requestId` 与上述 `manifest`。版本已固定时先调用skill_draft_clone；旧manifest升级时显式传入合规v2 manifest，再使用返回的新versionId和revision保存。新清单参考文件仍须属于授权Skill；尚未关联的上传必须由当前连接拥有，复制不扩大上传权限。管理员随后审核、启用并创建新的固定组合；原组合和历史内容继续保留原版本。
 
 首次创建新库、改变授权范围、采用新的风格组合都通过后台完成。MCP 保存 manifest 不会把该 skill 安装到客户端或执行其中的命令。
 

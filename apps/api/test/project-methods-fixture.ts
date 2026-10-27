@@ -1,6 +1,7 @@
 import {randomUUID} from 'node:crypto';
 import type {INestApplication} from '@nestjs/common';
-import {CreativeProfileSchema,ProductionPlanDocumentSchema,StyleSkillManifestSchema,skillPurposes} from '@orai/contracts/admin';
+import {CreativeProfileSchema,ProductionPlanDocumentSchema,StyleSkillManifestSchema,skillPurposes,emptyProductImplementationPlan} from '@orai/contracts/admin';
+import {currentSkillManifest} from './skill-policy-fixture';
 import {CatalogAdminAccessService,type CatalogAdminAccess} from '../src/catalog/admin-access.service';
 import {CatalogAdminService} from '../src/operations/catalog-admin.service';
 import {CodexConnectionsService} from '../src/operations/codex-connections.service';
@@ -12,7 +13,7 @@ import {SkillsService} from '../src/operations/skills.service';
 import {demoId} from '../scripts/demo-fixtures';
 import type {createLocalFixture} from './local-fixture';
 
-export function methodManifest(domain:keyof typeof skillPurposes){return StyleSkillManifestSchema.parse({schemaVersion:1,domain,name:'日常观察方法 · '+domain,
+export function methodManifest(domain:keyof typeof skillPurposes){return currentSkillManifest({schemaVersion:1,domain,name:'日常观察方法 · '+domain,
  description:'隔离功能样例，不代表正式商品内容',purposes:[...skillPurposes[domain]],styles:['精密工具紫'],supportedForms:['web'],
  inputs:[{key:'creative-profile',description:'固定共同设定',required:true}],outputs:[{key:'deliverable',description:'本领域交付'}],
  instructions:'用一个具体日常观察提出开放问题；保留用户自己的解释空间。',examples:[],references:[]});}
@@ -34,7 +35,7 @@ export async function methodProject(app:INestApplication,fixture:Awaited<ReturnT
  const boot=await projects.execute(machine.get('assessment')!,'project_bootstrap',{projectKey:'method-project-'+randomUUID(),requestId:randomUUID(),
   product:{slug:'method-project-'+randomUUID(),name:'把话说开之前 · 隔离样例',hook:'看见自己的表达',summary:'仅用于隔离功能验收',description:'不是正式销售内容',categoryId:original.categoryId,
    priceFen:0,durationMinutes:5,experienceType:original.experienceType,themeKey:original.themeKey,publicSample},profile,
-  plan:{schemaVersion:1,title:'关系表达制作计划',selection:{basis:'manual',rationale:'隔离交接验证',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],
+  plan:{schemaVersion:2,productPlan:emptyProductImplementationPlan(),title:'关系表达制作计划',selection:{basis:'manual',rationale:'隔离交接验证',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],
    modules:[module('assessment',[output('questions','assessment'),output('report','report')]),module('copy',[output('copy','copy')],coverDependency?['assessment','cover']:['assessment']),module('cover',[output('cover','image')])],retention:'platform_originals_and_exact_methods'}}) as {productId:string;planRevisionId:string;creativeProfileRevisionId:string};
  const fixed=await app.get(ProductionPlansService).read(access,boot.planRevisionId);
  return {app,fixture,access,connection:issued.connection,machine,boot,plan:fixed,module:(domain:string)=>fixed.modules.find(m=>m.definition.domain===domain)!};

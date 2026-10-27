@@ -5,6 +5,7 @@ import {ProjectMethodCandidateQuerySchema,ProjectMethodCandidatePageSchema,Proje
  ProjectHandoffOptionsQuerySchema,ProjectHandoffOptionsSchema,ProjectHandoffSelectionSchema,ProjectHandoffPreviewSchema,
  ProjectHandoffManifestSchema,ProjectRecoveryFixedManifestSchema,ProjectRecoveryFixedPreviewSchema,ProjectHandoffExportSchema,ProjectHandoffExportedSchema,ProductionPlanModuleSchema,
  ProductConfigurationSchema,type ContentLocator} from '@orai/contracts/admin';
+import { threejsSkillPolicyIssues } from '@orai/contracts/admin';
 import type {CatalogAdminAccess} from '../catalog/admin-access.service';
 import {requireMachineTarget} from '../catalog/machine-authorization';
 import {DatabaseService} from '../database/database.service';
@@ -58,7 +59,7 @@ export class ProjectMethodOperationsService{
     orderBy:[{skill:{name:'asc'}},{number:'desc'},{id:'desc'}],skip:(query.page-1)*query.pageSize,take:query.pageSize});
    const owned=await tx.machineProjectSkill.findMany({where:{skillId:{in:rows.map(r=>r.skillId)}}});
    return ProjectMethodCandidatePageSchema.parse({items:rows.map(row=>{const version=fixedVersion(row),manifest=version.manifest;
-    const reason=row.status==='ARCHIVED'?'已归档版本不能用于新固定':!manifest.supportedForms.includes(definition.target.form as never)?'方法形式与本模块不兼容':
+    const reason=row.status==='ARCHIVED'?'已归档版本不能用于新固定':threejsSkillPolicyIssues(manifest).length?'需复制或修复商品政策后再固定':!manifest.supportedForms.includes(definition.target.form as never)?'方法形式与本模块不兼容':
      row.attachments.some(a=>a.file.status!=='AVAILABLE')?'参考附件尚未就绪':null;
     return {skillId:row.skillId,versionId:row.id,revision:row.revision,status:row.status.toLowerCase(),
      origin:owned.some(o=>o.skillId===row.skillId)?'project':'shared',compatible:!reason,unavailableReason:reason,version};}),
@@ -123,7 +124,9 @@ export class ProjectMethodOperationsService{
   const failure=(e:unknown)=>{if(e instanceof ApiException)issue(e.code,e.publicMessage);else throw e;};
   if(module.digest!==body.expectedModuleDigest)throw new ApiException('REVISION_CONFLICT','模块摘要已变化，请重新读取',409);
   let methods:Awaited<ReturnType<ProjectProductionService['selectedMethodsIn']>>['methods']=[];
-  try{methods=(await this.production.selectedMethodsIn(tx,access,module.id,module.digest,body.methods)).methods;
+  // Recovery only reads the original job's immutable selections. It does not
+  // authorize a new capture, handoff or production under an obsolete policy.
+  try{methods=(await this.production.selectedMethodsIn(tx,access,module.id,module.digest,body.methods,true,!fixedHistory)).methods;
    if(!fixedHistory&&(methods.length!==definition.methodPurposes.length||new Set(methods.map(m=>m.purpose)).size!==methods.length))
     issue('METHOD_SELECTION','每个专业用途必须明确选择一份固定方法');
   }catch(e){failure(e);}

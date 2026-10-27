@@ -229,8 +229,8 @@ test('legacy manifests remain readable and exportable while new saves, clones an
     manifest:withThreejsSkillPolicy(StyleSkillManifestSchema.parse(legacy)),requestId:randomUUID()});
   assert.equal(upgraded.status,200,JSON.stringify(upgraded.body)); assert.notEqual(upgraded.body.id,row.id); assert.equal(upgraded.body.manifest.schemaVersion,2);
   assert.deepEqual((await admin.request(versionPath+'/export')).body.version,before);
-  await fixture.owner.client.styleSkillVersion.update({where:{id:row.id},data:{status:'REVIEWED'}});
-  assert.equal((await admin.request(versionPath+'/activate','POST',{expectedRevision:0,requestId:randomUUID()})).status,400);
+  await fixture.owner.client.styleSkillVersion.update({where:{id:row.id},data:{status:'REVIEWED',revision:{increment:1}}});
+  assert.equal((await admin.request(versionPath+'/activate','POST',{expectedRevision:1,requestId:randomUUID()})).status,400);
   assert.equal((await fixture.owner.client.styleSkillVersion.findUniqueOrThrow({where:{id:row.id}})).digest,digest);
 });
 

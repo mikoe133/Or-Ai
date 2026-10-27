@@ -25,6 +25,7 @@ export { productionDto } from "./content-projections";
 import { contentLock } from "./content-workflow.service";
 import { SkillFilesService, skillFileDto } from "./skill-files.service";
 import { AssetStorage } from "./asset-storage";
+import { bindSkillProductPlan, requireSkillProductPolicy } from './skill-product-policy';
 
 const include = {
   skill: true,
@@ -149,6 +150,7 @@ export class SkillBindingsService {
       status: "ACTIVE",
       skill: { domain },
       AND: [
+        { manifest: { path: ['schemaVersion'], equals: 2 } },
         { manifest: { path: ["purposes"], array_contains: [query.purpose] } },
         {
           manifest: { path: ["supportedForms"], array_contains: [query.form] },
@@ -268,6 +270,7 @@ export class SkillBindingsService {
             );
           const manifest = StyleSkillManifestSchema.parse(row.manifest),
             domain = purposeDomain[choice.purpose];
+          requireSkillProductPolicy(manifest);
           if (
             row.skill.domain !== domain ||
             manifest.domain !== domain ||
@@ -312,6 +315,9 @@ export class SkillBindingsService {
               purpose: choice.purpose,
               domain,
               version: fixedVersion(row),
+              productPlanInput: await bindSkillProductPlan(tx, access, { productId: profile.productId, profileId: profile.id,
+                reference: body.productPlan, moduleId: choice.planModuleId, purpose: choice.purpose, domain,
+                form: (profile.profile as { experienceForm: string }).experienceForm }),
             }),
           );
         }
@@ -423,6 +429,7 @@ export class SkillBindingsService {
       };
     }
     const set = await this.readIn(tx, access, source.skillSetId, profileId);
+    await this.validateForUse(tx, access, set);
     await this.verifyFiles(set, tx, domain);
     const versions = set.bindings.filter((item) => item.domain === domain),
       primary = versions.find(
@@ -443,5 +450,20 @@ export class SkillBindingsService {
       skillVersionId: primary.version.id,
       skillVersions: versions as Prisma.InputJsonValue,
     };
+  }
+  async validateForUse(tx: Prisma.TransactionClient, access: CatalogAdminAccess, set: SkillSet) {
+    const references = new Set<string>();
+    for (const binding of set.bindings) {
+      requireSkillProductPolicy(binding.version.manifest);
+      const fixed = binding.productPlanInput;
+      if (!fixed) throw new ApiException('VALIDATION_ERROR', '历史组合缺少实际商品规划输入，请追加新的合规组合后制作', 400);
+      if (!binding.version.manifest.supportedForms.includes(fixed.form)) throw new ApiException('CONFLICT', '固定方法不支持声明的商品形式', 409);
+      const checked = await bindSkillProductPlan(tx, access, { productId: set.productId, profileId: set.creativeProfileRevisionId,
+        purpose: binding.purpose, domain: binding.domain, form: fixed.form,
+        reference: { revisionId: fixed.planRevisionId, digest: fixed.planDigest }, moduleId: fixed.planModuleId });
+      if (checked.moduleDigest !== fixed.moduleDigest) throw new ApiException('CONFLICT', '方法绑定与固定规划模块的摘要不一致', 409);
+      references.add(fixed.planRevisionId + ':' + fixed.planDigest);
+    }
+    if (references.size !== 1) throw new ApiException('CONFLICT', '五用途方法必须引用同一固定商品规划', 409);
   }
 }

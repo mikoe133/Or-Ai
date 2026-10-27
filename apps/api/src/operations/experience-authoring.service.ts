@@ -18,6 +18,7 @@ import { scoreAnswers } from '../runtime/scoring';
 import { AdminMutationService } from './admin-mutation.service';
 import { AssetStorage } from './asset-storage';
 import { fixedVersion } from './skill-bindings.service';
+import { bindSkillProductPlan, requireSkillProductPolicy } from './skill-product-policy';
 
 const id = (value: unknown) => parseInput(IdSchema, value).toLowerCase();
 export const experienceRevisionDto = (row: ExperienceAuthoringRevision) => {
@@ -81,7 +82,27 @@ export class ExperienceAuthoringService {
     ]);
     return { items: rows.map(experienceRevisionDto), total, page: args.page, pageSize: args.pageSize };
   }
-  async methods(tx: Prisma.TransactionClient, access: CatalogAdminAccess, choices: DraftInput['methods'], retained: unknown = [], form: z.infer<typeof CreativeProfileSchema>['experienceForm'] = 'web') {
+  async checkReferences(access: CatalogAdminAccess, key: unknown) {
+    const draft = await this.read(access, key);
+    return this.database.client.$transaction(async tx => {
+      await this.mutations.administrators.require(access, tx);
+      const { version, issues } = await this.inspect(tx, access, draft.productId, draft.productVersionId,
+        { manifest: draft.manifest, reportPlan: draft.reportPlan, methods: [], note: draft.note });
+      for (const binding of draft.methods) for (const ref of binding.version.files) {
+        const file = await tx.skillReferenceFile.findFirst({ where: { id: ref.file.id, skillId: binding.version.skillId, scope: access.scope, status: 'AVAILABLE' } });
+        if (!file || file.checksum !== ref.file.checksum || file.byteSize !== ref.file.byteSize || file.mimeType !== ref.file.mimeType)
+          throw new ApiException('CONFLICT', '固定体验方法参考文件与历史快照不一致', 409);
+        const actual = await this.storage.inspectReference(file.storageKey, ref.file.byteSize, ref.file.mimeType);
+        if (actual.checksum !== ref.file.checksum || actual.byteSize !== ref.file.byteSize || actual.mimeType !== ref.file.mimeType)
+          throw new ApiException('CONFLICT', '固定体验方法参考文件完整性校验失败', 409);
+      }
+      if (draft.configurationDigest !== configurationDigest(version.configuration)) issues.push('题库已变化，请重新保存并审核');
+      return ExperienceCheckSchema.parse({ valid: !issues.length, issues });
+    });
+  }
+  async methods(tx: Prisma.TransactionClient, access: CatalogAdminAccess, choices: DraftInput['methods'], retained: unknown = [],
+    form: z.infer<typeof CreativeProfileSchema>['experienceForm'] = 'web',
+    context?: { productId: string; profileId: string; productPlan?: DraftInput['productPlan'] }) {
     const previous = z.array(BoundSkillSchema).parse(retained);
     const result: z.infer<typeof BoundSkillSchema>[] = [];
     for (const key of [...new Set(choices.map(v => id(v.skillVersionId)))].sort())
@@ -91,6 +112,10 @@ export class ExperienceAuthoringService {
         include: { skill: true, attachments: { include: { file: true } } } });
       if (!row) throw new ApiException('NOT_FOUND', '体验方法版本不属于当前领域或范围', 404);
       const version = fixedVersion(row), allowedOld = row.status === 'ARCHIVED' && previous.some(p => p.purpose === choice.purpose && p.version.id === row.id);
+      requireSkillProductPolicy(version.manifest);
+      if (!context) throw new ApiException('VALIDATION_ERROR', '体验方法必须提供实际的商品规划输入', 400);
+      const productPlanInput = await bindSkillProductPlan(tx, access, { productId: context.productId, profileId: context.profileId,
+        reference: context.productPlan, moduleId: choice.planModuleId, purpose: choice.purpose, domain: 'experience', form });
       if ((row.status !== 'ACTIVE' && !allowedOld) || !version.manifest.purposes.includes(choice.purpose) || !version.manifest.supportedForms.includes(form))
         throw new ApiException('CONFLICT', '体验方法需匹配用途和当前创作形式；新绑定必须使用已启用版本', 409);
       for (const ref of row.attachments) {
@@ -99,7 +124,7 @@ export class ExperienceAuthoringService {
         if (actual.checksum !== ref.file.checksum || actual.byteSize !== ref.file.byteSize || actual.mimeType !== ref.file.mimeType)
           throw new ApiException('CONFLICT', '体验方法参考文件摘要不一致', 409);
       }
-      result.push(BoundSkillSchema.parse({ purpose: choice.purpose, domain: 'experience', version }));
+      result.push(BoundSkillSchema.parse({ purpose: choice.purpose, domain: 'experience', version, productPlanInput }));
     }
     return result;
   }
@@ -119,7 +144,8 @@ export class ExperienceAuthoringService {
       await this.mutations.administrators.require(access, tx);
       const { issues, profile } = await this.inspect(tx, access, id(product), id(version), parsed.data);
       const latest = await tx.experienceAuthoringRevision.findFirst({ where: { productVersionId: id(version) }, orderBy: { number: 'desc' } });
-      await this.methods(tx, access, parsed.data.methods, latest?.creativeProfileRevisionId === profile.id ? latest.methods : [], CreativeProfileSchema.parse(profile.profile).experienceForm);
+      await this.methods(tx, access, parsed.data.methods, latest?.creativeProfileRevisionId === profile.id ? latest.methods : [], CreativeProfileSchema.parse(profile.profile).experienceForm,
+        { productId: id(product), profileId: profile.id, productPlan: parsed.data.productPlan });
       return ExperienceCheckSchema.parse({ valid: !issues.length, issues });
     });
   }
@@ -143,7 +169,8 @@ export class ExperienceAuthoringService {
       const { profile } = await this.inspect(tx, access, productId, versionId, body);
       if (body.manifest.content.versionId !== versionId || (version.creativeProfileRevisionId && version.creativeProfileRevisionId !== profile.id))
         throw new ApiException('CONFLICT', '体验必须使用此题库版本及其固定设定', 409);
-      const methods = await this.methods(tx, access, body.methods, latest?.creativeProfileRevisionId === profile.id ? latest.methods : [], CreativeProfileSchema.parse(profile.profile).experienceForm);
+      const methods = await this.methods(tx, access, body.methods, latest?.creativeProfileRevisionId === profile.id ? latest.methods : [], CreativeProfileSchema.parse(profile.profile).experienceForm,
+        { productId, profileId: profile.id, productPlan: body.productPlan });
       if (!version.creativeProfileRevisionId) {
         const changed = await tx.productVersion.update({ where: { id: versionId }, data: { creativeProfileRevisionId: profile.id, status: 'DRAFT', revision: { increment: 1 } } });
         version = { ...version, ...changed };
@@ -173,7 +200,10 @@ export class ExperienceAuthoringService {
         methods: value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id })) });
       if (issues.length) throw new ApiException('INVALID_CONFIGURATION', issues.join('；'), 400);
       const fixedProfile = await this.profile(tx, access, previous.productId, previous.creativeProfileRevisionId);
-      await this.methods(tx, access, value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id })), previous.methods, CreativeProfileSchema.parse(fixedProfile.profile).experienceForm);
+      const input = value.methods[0]?.productPlanInput;
+      await this.methods(tx, access, value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id,
+        planModuleId: m.productPlanInput?.planModuleId })), previous.methods, CreativeProfileSchema.parse(fixedProfile.profile).experienceForm,
+        { productId: previous.productId, profileId: fixedProfile.id, productPlan: input ? { revisionId: input.planRevisionId, digest: input.planDigest } : undefined });
       const { id: _id, digest: _digest, createdAt: _created, ...data } = previous;
       const row = await this.append(tx, { ...data, manifest: value.manifest, reportPlan: value.reportPlan, methods: value.methods,
         number: previous.number + 1, status: 'reviewed' });

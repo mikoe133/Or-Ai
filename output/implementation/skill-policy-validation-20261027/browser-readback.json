@@ -1,0 +1,1400 @@
+{
+  "experience": {
+    "id": "01a17d1b-7f7f-7699-b1e1-2f9d129021cf",
+    "productId": "01a17d0e-79ca-7448-a753-bf6934340dfa",
+    "productVersionId": "01a17d0e-79e2-7761-9a91-64180ac371ba",
+    "scope": "demo",
+    "revision": 1,
+    "status": "draft",
+    "versionRevision": 1,
+    "configurationDigest": "f06a8d189069c6358976d4c800bbb05ced9af75aab77ddc539350e4ddd5da52d",
+    "manifest": {
+      "schemaVersion": 1,
+      "content": {
+        "versionId": "01a17d0e-79e2-7761-9a91-64180ac371ba",
+        "inputSchema": "single_choice_v1",
+        "engine": "dimensions_v1"
+      },
+      "creativeProfileRevisionId": "01a17d0e-79ed-7405-847a-6e59a330f8fd",
+      "intent": {
+        "emotionalGoal": "验证清晰表达",
+        "understandingGoal": "验证方法与规划一致",
+        "world": "隔离功能样例",
+        "language": "具体温和"
+      },
+      "renderer": {
+        "key": "reflection-garden",
+        "version": 1
+      },
+      "fallback": {
+        "key": "dom-choice",
+        "version": 1
+      },
+      "report": {
+        "contentSchema": "report_content_v1",
+        "renderer": {
+          "key": "garden-notes",
+          "version": 1
+        }
+      },
+      "theme": {
+        "key": "demo-partner",
+        "revision": 1
+      },
+      "confirmation": "explicit",
+      "recovery": "server_confirmed_answers",
+      "scenes": [
+        {
+          "sceneId": "question-1",
+          "questionId": "question-1",
+          "checkpointId": "question-1",
+          "choices": [
+            {
+              "objectId": "rarely",
+              "optionId": "rarely"
+            },
+            {
+              "objectId": "sometimes",
+              "optionId": "sometimes"
+            },
+            {
+              "objectId": "often",
+              "optionId": "often"
+            },
+            {
+              "objectId": "na",
+              "optionId": "na"
+            }
+          ]
+        },
+        {
+          "sceneId": "question-2",
+          "questionId": "question-2",
+          "checkpointId": "question-2",
+          "choices": [
+            {
+              "objectId": "rarely",
+              "optionId": "rarely"
+            },
+            {
+              "objectId": "sometimes",
+              "optionId": "sometimes"
+            },
+            {
+              "objectId": "often",
+              "optionId": "often"
+            },
+            {
+              "objectId": "na",
+              "optionId": "na"
+            }
+          ]
+        },
+        {
+          "sceneId": "question-3",
+          "questionId": "question-3",
+          "checkpointId": "question-3",
+          "choices": [
+            {
+              "objectId": "rarely",
+              "optionId": "rarely"
+            },
+            {
+              "objectId": "sometimes",
+              "optionId": "sometimes"
+            },
+            {
+              "objectId": "often",
+              "optionId": "often"
+            },
+            {
+              "objectId": "na",
+              "optionId": "na"
+            }
+          ]
+        },
+        {
+          "sceneId": "question-4",
+          "questionId": "question-4",
+          "checkpointId": "question-4",
+          "choices": [
+            {
+              "objectId": "rarely",
+              "optionId": "rarely"
+            },
+            {
+              "objectId": "sometimes",
+              "optionId": "sometimes"
+            },
+            {
+              "objectId": "often",
+              "optionId": "often"
+            },
+            {
+              "objectId": "na",
+              "optionId": "na"
+            }
+          ]
+        },
+        {
+          "sceneId": "question-5",
+          "questionId": "question-5",
+          "checkpointId": "question-5",
+          "choices": [
+            {
+              "objectId": "rarely",
+              "optionId": "rarely"
+            },
+            {
+              "objectId": "sometimes",
+              "optionId": "sometimes"
+            },
+            {
+              "objectId": "often",
+              "optionId": "often"
+            },
+            {
+              "objectId": "na",
+              "optionId": "na"
+            }
+          ]
+        },
+        {
+          "sceneId": "question-6",
+          "questionId": "question-6",
+          "checkpointId": "question-6",
+          "choices": [
+            {
+              "objectId": "rarely",
+              "optionId": "rarely"
+            },
+            {
+              "objectId": "sometimes",
+              "optionId": "sometimes"
+            },
+            {
+              "objectId": "often",
+              "optionId": "often"
+            },
+            {
+              "objectId": "na",
+              "optionId": "na"
+            }
+          ]
+        }
+      ],
+      "resources": []
+    },
+    "reportPlan": {
+      "schemaVersion": 1,
+      "title": "功能观察报告",
+      "narrative": "只验证结构与引用",
+      "presentation": "standard",
+      "sections": [
+        {
+          "sectionId": "next",
+          "title": "下一步",
+          "purpose": "验证结构"
+        }
+      ]
+    },
+    "methods": [
+      {
+        "purpose": "scene_design",
+        "domain": "experience",
+        "version": {
+          "id": "01a17d0e-7a97-7575-ad08-7261c991fe59",
+          "skillId": "01a17d0e-7a97-7575-ad08-6f9792455956",
+          "number": 1,
+          "digest": "f07a9b2fec6fbab14850cad0e79328e6a5ce6b3627074ffedb9eb4c8419ae30c",
+          "manifest": {
+            "schemaVersion": 2,
+            "domain": "experience",
+            "name": "当前合规方法 · experience",
+            "description": "仅用于隔离功能验收",
+            "purposes": [
+              "scene_design",
+              "report_presentation"
+            ],
+            "styles": [
+              "精密工具紫"
+            ],
+            "supportedForms": [
+              "3d"
+            ],
+            "inputs": [
+              {
+                "key": "creative-profile",
+                "description": "固定设定",
+                "required": true
+              },
+              {
+                "key": "product-plan",
+                "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                "required": true
+              }
+            ],
+            "outputs": [
+              {
+                "key": "deliverable",
+                "description": "本领域交付"
+              }
+            ],
+            "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n按商品规划制作实际 Three.js 场景、资源和交互映射；镜头与动画按需设计，兼顾性能、键盘、触摸与减少动态，不把所有商品固定成同一场景。\n\n结果呈现承接 Three.js 商品的场景意象、配色和节奏；报告的图文、可导出或交互形式按商品规划和已注册能力选择，保留可读性与恢复能力。",
+            "examples": [],
+            "references": [],
+            "productPolicy": {
+              "schemaVersion": 1,
+              "implementation": "threejs",
+              "applicability": "all_declared_purposes",
+              "planInput": {
+                "key": "product-plan",
+                "schemaVersion": 2,
+                "required": true
+              },
+              "decisions": "fixed_product_plan"
+            }
+          },
+          "files": []
+        },
+        "productPlanInput": {
+          "schemaVersion": 1,
+          "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+          "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+          "planModuleId": "01a17d15-c90f-72ed-ba11-b3e0e484ac03",
+          "moduleDigest": "b0e15008990d2532404620fd0722dcf6171d3a4c5dc985e5ca96acb068ec676c",
+          "form": "3d"
+        }
+      },
+      {
+        "purpose": "report_presentation",
+        "domain": "experience",
+        "version": {
+          "id": "01a17d0e-7a97-7575-ad08-7261c991fe59",
+          "skillId": "01a17d0e-7a97-7575-ad08-6f9792455956",
+          "number": 1,
+          "digest": "f07a9b2fec6fbab14850cad0e79328e6a5ce6b3627074ffedb9eb4c8419ae30c",
+          "manifest": {
+            "schemaVersion": 2,
+            "domain": "experience",
+            "name": "当前合规方法 · experience",
+            "description": "仅用于隔离功能验收",
+            "purposes": [
+              "scene_design",
+              "report_presentation"
+            ],
+            "styles": [
+              "精密工具紫"
+            ],
+            "supportedForms": [
+              "3d"
+            ],
+            "inputs": [
+              {
+                "key": "creative-profile",
+                "description": "固定设定",
+                "required": true
+              },
+              {
+                "key": "product-plan",
+                "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                "required": true
+              }
+            ],
+            "outputs": [
+              {
+                "key": "deliverable",
+                "description": "本领域交付"
+              }
+            ],
+            "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n按商品规划制作实际 Three.js 场景、资源和交互映射；镜头与动画按需设计，兼顾性能、键盘、触摸与减少动态，不把所有商品固定成同一场景。\n\n结果呈现承接 Three.js 商品的场景意象、配色和节奏；报告的图文、可导出或交互形式按商品规划和已注册能力选择，保留可读性与恢复能力。",
+            "examples": [],
+            "references": [],
+            "productPolicy": {
+              "schemaVersion": 1,
+              "implementation": "threejs",
+              "applicability": "all_declared_purposes",
+              "planInput": {
+                "key": "product-plan",
+                "schemaVersion": 2,
+                "required": true
+              },
+              "decisions": "fixed_product_plan"
+            }
+          },
+          "files": []
+        },
+        "productPlanInput": {
+          "schemaVersion": 1,
+          "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+          "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+          "planModuleId": "01a17d15-c90f-72ed-ba11-b3e0e484ac03",
+          "moduleDigest": "b0e15008990d2532404620fd0722dcf6171d3a4c5dc985e5ca96acb068ec676c",
+          "form": "3d"
+        }
+      }
+    ],
+    "note": "按共同创作设定制作体验与报告",
+    "source": "manual",
+    "machineCredentialId": null,
+    "machineRequestId": null,
+    "digest": "a763216d70bb0804e4f4bdf4b0b2b6398fce75900b3e0e3ca0b82f3f51686886",
+    "createdAt": "2026-10-27T11:25:16.543Z"
+  },
+  "checkedBy": "agent_autonomous_CUA",
+  "productId": "01a17d0e-79ca-7448-a753-bf6934340dfa",
+  "profileId": "01a17d0e-79ed-7405-847a-6e59a330f8fd",
+  "currentPlanId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+  "sets": [
+    {
+      "id": "01a17d17-1f9f-733b-9fdc-d4f21c98e948",
+      "productId": "01a17d0e-79ca-7448-a753-bf6934340dfa",
+      "scope": "demo",
+      "creativeProfileRevisionId": "01a17d0e-79ed-7405-847a-6e59a330f8fd",
+      "revision": 3,
+      "digest": "f5352f31ecbfd1431c2e8f3711b5ee354ad254ff98afafdeb3f0cbd8f154e8c1",
+      "note": "CUA 响应丢失后使用同一请求恢复",
+      "createdAt": "2026-10-27T11:20:29.855Z",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "domain": "assessment",
+          "version": {
+            "id": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+            "skillId": "01a17d0e-7a10-7067-bc73-14ae2ba069a3",
+            "number": 1,
+            "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "assessment",
+              "name": "当前合规方法 · assessment",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "assessment_design",
+                "report_writing"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n将题意和可确认的答案映射到商品规划中的 Three.js 场景任务；操作语义与评估规则分别定义，不根据镜头、路径或动画擅自推断结果。\n\n报告承接 Three.js 商品的世界观、真实选择与理解目标，提供具体解释和行动线索；场景回顾必须有真实输入依据，报告形式依商品规划。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c909-77e0-b46c-e9719586e560",
+            "moduleDigest": "4e9cc95f0e11b1fac5757f263d0beec673bebacc259125d968056db8017c73fc",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "copywriting",
+          "domain": "copy",
+          "version": {
+            "id": "01a17d0e-7a7d-74a0-b266-63cd33b1d1de",
+            "skillId": "01a17d0e-7a7c-774a-9d50-ef9045f0e599",
+            "number": 1,
+            "digest": "6c7d7208838bf7a641d0b099aefc03cd2e52d9f3ad2272948a6c6617a7115b03",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "copy",
+              "name": "当前合规方法 · copy",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "copywriting"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c90d-76e2-a0a7-fd3b47c00a44",
+            "moduleDigest": "a774d3477cfebda2276eace2a7d4e5da484dc5a3e9d09049b3326c960906a841",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "cover_design",
+          "domain": "cover",
+          "version": {
+            "id": "01a17d0e-7a3b-709f-b058-15e7a80eda71",
+            "skillId": "01a17d0e-7a3a-70ce-b6c4-bd028bd847fb",
+            "number": 1,
+            "digest": "226873c71d6bdbcfe4d134c226b5680d22f45fef3107abd1fc740b0e50c9b7e8",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "cover",
+              "name": "当前合规方法 · cover",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "cover_design"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n封面对应商品规划中的 Three.js 世界、物件和配色；真实体验画面与概念示意分别标识，不展示尚未实现的交互承诺。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c90b-762f-9483-7d7b649db5d6",
+            "moduleDigest": "24bac43771dc966d5c9eeda50628c3ec0f390356ddfe6c0ceb9f007f2cba0b32",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "report_writing",
+          "domain": "assessment",
+          "version": {
+            "id": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+            "skillId": "01a17d0e-7a10-7067-bc73-14ae2ba069a3",
+            "number": 1,
+            "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "assessment",
+              "name": "当前合规方法 · assessment",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "assessment_design",
+                "report_writing"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n将题意和可确认的答案映射到商品规划中的 Three.js 场景任务；操作语义与评估规则分别定义，不根据镜头、路径或动画擅自推断结果。\n\n报告承接 Three.js 商品的世界观、真实选择与理解目标，提供具体解释和行动线索；场景回顾必须有真实输入依据，报告形式依商品规划。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c909-77e0-b46c-e9719586e560",
+            "moduleDigest": "4e9cc95f0e11b1fac5757f263d0beec673bebacc259125d968056db8017c73fc",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "video_production",
+          "domain": "video",
+          "version": {
+            "id": "01a17d0e-7a60-717b-9406-6b88c173de7c",
+            "skillId": "01a17d0e-7a5f-728d-8d10-91b00215243f",
+            "number": 1,
+            "digest": "56f107b7761d7bf0b161c57723e064365ffc230903f84e03ff35c04aac01c3e6",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "video",
+              "name": "当前合规方法 · video",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "video_production"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n视频展示商品实际具备的 Three.js 场景、动画和交互；未实现部分只作为明确的分镜方案，不把脚本或概念镜头当作成片与已交付体验。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c90c-7369-9b2e-d6fa0ca4c75d",
+            "moduleDigest": "b24c9f38f02fc1253e7ea7e85f0901d73bab2d494483c91f99b707cb07d763a8",
+            "form": "3d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "01a17d16-8f62-715e-a019-b942eb5bc84c",
+      "productId": "01a17d0e-79ca-7448-a753-bf6934340dfa",
+      "scope": "demo",
+      "creativeProfileRevisionId": "01a17d0e-79ed-7405-847a-6e59a330f8fd",
+      "revision": 2,
+      "digest": "f5352f31ecbfd1431c2e8f3711b5ee354ad254ff98afafdeb3f0cbd8f154e8c1",
+      "note": "CUA 并发后保留这段组合说明",
+      "createdAt": "2026-10-27T11:19:52.930Z",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "domain": "assessment",
+          "version": {
+            "id": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+            "skillId": "01a17d0e-7a10-7067-bc73-14ae2ba069a3",
+            "number": 1,
+            "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "assessment",
+              "name": "当前合规方法 · assessment",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "assessment_design",
+                "report_writing"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n将题意和可确认的答案映射到商品规划中的 Three.js 场景任务；操作语义与评估规则分别定义，不根据镜头、路径或动画擅自推断结果。\n\n报告承接 Three.js 商品的世界观、真实选择与理解目标，提供具体解释和行动线索；场景回顾必须有真实输入依据，报告形式依商品规划。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c909-77e0-b46c-e9719586e560",
+            "moduleDigest": "4e9cc95f0e11b1fac5757f263d0beec673bebacc259125d968056db8017c73fc",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "copywriting",
+          "domain": "copy",
+          "version": {
+            "id": "01a17d0e-7a7d-74a0-b266-63cd33b1d1de",
+            "skillId": "01a17d0e-7a7c-774a-9d50-ef9045f0e599",
+            "number": 1,
+            "digest": "6c7d7208838bf7a641d0b099aefc03cd2e52d9f3ad2272948a6c6617a7115b03",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "copy",
+              "name": "当前合规方法 · copy",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "copywriting"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c90d-76e2-a0a7-fd3b47c00a44",
+            "moduleDigest": "a774d3477cfebda2276eace2a7d4e5da484dc5a3e9d09049b3326c960906a841",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "cover_design",
+          "domain": "cover",
+          "version": {
+            "id": "01a17d0e-7a3b-709f-b058-15e7a80eda71",
+            "skillId": "01a17d0e-7a3a-70ce-b6c4-bd028bd847fb",
+            "number": 1,
+            "digest": "226873c71d6bdbcfe4d134c226b5680d22f45fef3107abd1fc740b0e50c9b7e8",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "cover",
+              "name": "当前合规方法 · cover",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "cover_design"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n封面对应商品规划中的 Three.js 世界、物件和配色；真实体验画面与概念示意分别标识，不展示尚未实现的交互承诺。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c90b-762f-9483-7d7b649db5d6",
+            "moduleDigest": "24bac43771dc966d5c9eeda50628c3ec0f390356ddfe6c0ceb9f007f2cba0b32",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "report_writing",
+          "domain": "assessment",
+          "version": {
+            "id": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+            "skillId": "01a17d0e-7a10-7067-bc73-14ae2ba069a3",
+            "number": 1,
+            "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "assessment",
+              "name": "当前合规方法 · assessment",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "assessment_design",
+                "report_writing"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n将题意和可确认的答案映射到商品规划中的 Three.js 场景任务；操作语义与评估规则分别定义，不根据镜头、路径或动画擅自推断结果。\n\n报告承接 Three.js 商品的世界观、真实选择与理解目标，提供具体解释和行动线索；场景回顾必须有真实输入依据，报告形式依商品规划。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c909-77e0-b46c-e9719586e560",
+            "moduleDigest": "4e9cc95f0e11b1fac5757f263d0beec673bebacc259125d968056db8017c73fc",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "video_production",
+          "domain": "video",
+          "version": {
+            "id": "01a17d0e-7a60-717b-9406-6b88c173de7c",
+            "skillId": "01a17d0e-7a5f-728d-8d10-91b00215243f",
+            "number": 1,
+            "digest": "56f107b7761d7bf0b161c57723e064365ffc230903f84e03ff35c04aac01c3e6",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "video",
+              "name": "当前合规方法 · video",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "video_production"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n视频展示商品实际具备的 Three.js 场景、动画和交互；未实现部分只作为明确的分镜方案，不把脚本或概念镜头当作成片与已交付体验。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+            "planDigest": "94245419bb729015263253e0ad4eeac34075bc64dd2eb624407c561a4b057684",
+            "planModuleId": "01a17d15-c90c-7369-9b2e-d6fa0ca4c75d",
+            "moduleDigest": "b24c9f38f02fc1253e7ea7e85f0901d73bab2d494483c91f99b707cb07d763a8",
+            "form": "3d"
+          }
+        }
+      ]
+    },
+    {
+      "id": "01a17d13-262f-7743-897a-e968e778c4eb",
+      "productId": "01a17d0e-79ca-7448-a753-bf6934340dfa",
+      "scope": "demo",
+      "creativeProfileRevisionId": "01a17d0e-79ed-7405-847a-6e59a330f8fd",
+      "revision": 1,
+      "digest": "8a99b8751815e87704e71bfbe58ac00e77a6ea22d2f71bcad55351ef919e9b86",
+      "note": "CUA 五用途与具体商品规划保持一致",
+      "createdAt": "2026-10-27T11:16:09.391Z",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "domain": "assessment",
+          "version": {
+            "id": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+            "skillId": "01a17d0e-7a10-7067-bc73-14ae2ba069a3",
+            "number": 1,
+            "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "assessment",
+              "name": "当前合规方法 · assessment",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "assessment_design",
+                "report_writing"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n将题意和可确认的答案映射到商品规划中的 Three.js 场景任务；操作语义与评估规则分别定义，不根据镜头、路径或动画擅自推断结果。\n\n报告承接 Three.js 商品的世界观、真实选择与理解目标，提供具体解释和行动线索；场景回顾必须有真实输入依据，报告形式依商品规划。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d0e-79ff-769f-a70a-0b7e5cbd8f50",
+            "planDigest": "9749c574b085ac6ed0759511205aca68d927324202482464f11b752c5c55a9ba",
+            "planModuleId": "01a17d0e-7a00-717b-b436-881ac5bae006",
+            "moduleDigest": "4e9cc95f0e11b1fac5757f263d0beec673bebacc259125d968056db8017c73fc",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "copywriting",
+          "domain": "copy",
+          "version": {
+            "id": "01a17d0e-7a7d-74a0-b266-63cd33b1d1de",
+            "skillId": "01a17d0e-7a7c-774a-9d50-ef9045f0e599",
+            "number": 1,
+            "digest": "6c7d7208838bf7a641d0b099aefc03cd2e52d9f3ad2272948a6c6617a7115b03",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "copy",
+              "name": "当前合规方法 · copy",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "copywriting"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d0e-79ff-769f-a70a-0b7e5cbd8f50",
+            "planDigest": "9749c574b085ac6ed0759511205aca68d927324202482464f11b752c5c55a9ba",
+            "planModuleId": "01a17d0e-7a02-76de-b02a-7c04e774f359",
+            "moduleDigest": "a774d3477cfebda2276eace2a7d4e5da484dc5a3e9d09049b3326c960906a841",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "cover_design",
+          "domain": "cover",
+          "version": {
+            "id": "01a17d0e-7a3b-709f-b058-15e7a80eda71",
+            "skillId": "01a17d0e-7a3a-70ce-b6c4-bd028bd847fb",
+            "number": 1,
+            "digest": "226873c71d6bdbcfe4d134c226b5680d22f45fef3107abd1fc740b0e50c9b7e8",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "cover",
+              "name": "当前合规方法 · cover",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "cover_design"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n封面对应商品规划中的 Three.js 世界、物件和配色；真实体验画面与概念示意分别标识，不展示尚未实现的交互承诺。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d0e-79ff-769f-a70a-0b7e5cbd8f50",
+            "planDigest": "9749c574b085ac6ed0759511205aca68d927324202482464f11b752c5c55a9ba",
+            "planModuleId": "01a17d0e-7a01-75fc-97a7-276d6e517120",
+            "moduleDigest": "24bac43771dc966d5c9eeda50628c3ec0f390356ddfe6c0ceb9f007f2cba0b32",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "report_writing",
+          "domain": "assessment",
+          "version": {
+            "id": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+            "skillId": "01a17d0e-7a10-7067-bc73-14ae2ba069a3",
+            "number": 1,
+            "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "assessment",
+              "name": "当前合规方法 · assessment",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "assessment_design",
+                "report_writing"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n将题意和可确认的答案映射到商品规划中的 Three.js 场景任务；操作语义与评估规则分别定义，不根据镜头、路径或动画擅自推断结果。\n\n报告承接 Three.js 商品的世界观、真实选择与理解目标，提供具体解释和行动线索；场景回顾必须有真实输入依据，报告形式依商品规划。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d0e-79ff-769f-a70a-0b7e5cbd8f50",
+            "planDigest": "9749c574b085ac6ed0759511205aca68d927324202482464f11b752c5c55a9ba",
+            "planModuleId": "01a17d0e-7a00-717b-b436-881ac5bae006",
+            "moduleDigest": "4e9cc95f0e11b1fac5757f263d0beec673bebacc259125d968056db8017c73fc",
+            "form": "3d"
+          }
+        },
+        {
+          "purpose": "video_production",
+          "domain": "video",
+          "version": {
+            "id": "01a17d0e-7a60-717b-9406-6b88c173de7c",
+            "skillId": "01a17d0e-7a5f-728d-8d10-91b00215243f",
+            "number": 1,
+            "digest": "56f107b7761d7bf0b161c57723e064365ffc230903f84e03ff35c04aac01c3e6",
+            "manifest": {
+              "schemaVersion": 2,
+              "domain": "video",
+              "name": "当前合规方法 · video",
+              "description": "仅用于隔离功能验收",
+              "purposes": [
+                "video_production"
+              ],
+              "styles": [
+                "精密工具紫"
+              ],
+              "supportedForms": [
+                "3d"
+              ],
+              "inputs": [
+                {
+                  "key": "creative-profile",
+                  "description": "固定设定",
+                  "required": true
+                },
+                {
+                  "key": "product-plan",
+                  "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+                  "required": true
+                }
+              ],
+              "outputs": [
+                {
+                  "key": "deliverable",
+                  "description": "本领域交付"
+                }
+              ],
+              "instructions": "保留具体观察与开放表达，不贴诊断标签。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n视频展示商品实际具备的 Three.js 场景、动画和交互；未实现部分只作为明确的分镜方案，不把脚本或概念镜头当作成片与已交付体验。",
+              "examples": [],
+              "references": [],
+              "productPolicy": {
+                "schemaVersion": 1,
+                "implementation": "threejs",
+                "applicability": "all_declared_purposes",
+                "planInput": {
+                  "key": "product-plan",
+                  "schemaVersion": 2,
+                  "required": true
+                },
+                "decisions": "fixed_product_plan"
+              }
+            },
+            "files": []
+          },
+          "productPlanInput": {
+            "schemaVersion": 1,
+            "planRevisionId": "01a17d0e-79ff-769f-a70a-0b7e5cbd8f50",
+            "planDigest": "9749c574b085ac6ed0759511205aca68d927324202482464f11b752c5c55a9ba",
+            "planModuleId": "01a17d0e-7a02-76de-b02a-7bbf01cfbfea",
+            "moduleDigest": "b24c9f38f02fc1253e7ea7e85f0901d73bab2d494483c91f99b707cb07d763a8",
+            "form": "3d"
+          }
+        }
+      ]
+    }
+  ],
+  "legacyUnchanged": true,
+  "events": [
+    {
+      "kind": "browser_binding_matches_official_mcp_skill",
+      "versionId": "01a17d0e-7a11-7196-b73e-4c2cdccbefc2",
+      "digest": "bc006e1ff5d898c0310440484e7f1fe08b29159280cfef789336f4a03ddb5e95"
+    },
+    {
+      "kind": "concurrent_plan",
+      "id": "01a17d15-c8fc-778a-8fe9-d37b77a2b3d8",
+      "revision": 2
+    },
+    {
+      "kind": "post_commit_response_loss_recovered",
+      "setRevision": 3,
+      "duplicateRevisionCreated": false
+    }
+  ]
+}

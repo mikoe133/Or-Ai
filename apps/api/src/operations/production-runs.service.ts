@@ -242,6 +242,7 @@ export class ProductionRunsService {
     const body=parseInput(ProductionAttemptClaimSchema,input),scoped=await this.restrict(access,'content:write',{runId:body.runId,planModuleId:body.planModuleId},['projects:read','skills:read','context:read']);
     const result=await this.mutations.run(scoped,'external.attempt.claim',body.requestId,body,async tx=>{
       await this.lockRun(tx,body.runId);const run=await this.run(tx,scoped,body.runId,body.planModuleId),limits=this.available(run),context=await this.context(tx,scoped,run,body.planModuleId,body.methods,body.inputs);
+      await this.production.selectedMethodsIn(tx,scoped,context.module.id,context.module.digest,body.methods,false);
       const previous=await tx.externalProductionAttempt.findFirst({where:{runId:run.id,planModuleId:body.planModuleId},orderBy:{generation:'desc'},include:relations});
       if(previous&&previous.inputFingerprint===context.inputFingerprint){
         if(previous.state==='saved_draft'&&!body.retryOfAttemptId||(!body.retryOfAttemptId&&(!this.active(previous)||previous.clientKey===body.clientKey&&previous.credentialId===access.machineCredentialId)))

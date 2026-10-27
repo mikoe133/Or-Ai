@@ -18,7 +18,7 @@ try {
     check(!r.isError&&r.structuredContent?.ok===true);check(!JSON.stringify(r).includes(process.env.ORAI_MCP_TOKEN));return r.structuredContent.data;};
   const tools=await client.listTools();check(tools.tools.length===5+businessToolNames('experience').length);
   check(!tools.tools.some(t=>/publish|review|refund|consumer/.test(t.name)));
-  const contextInput={productVersionId:scenario.productVersionId,skillVersionIds:[scenario.skillVersionId],...(scenario.renderer?{includeTemplates:true}:{})};
+  const contextInput={productVersionId:scenario.productVersionId,skillVersionIds:[scenario.skillVersionId],productPlan:scenario.productPlan,...(scenario.renderer?{includeTemplates:true}:{})};
   const legacy=await call('context_bundle_get',contextInput);check(!('capabilities' in legacy));
   const context=await call('context_bundle_get',{...contextInput,includeCapabilities:true,capabilityVersion:2});
   check(context.capabilities.schemaVersion===2&&context.capabilities.status==='compatible'&&context.capabilities.modules.experience==='editable');
@@ -37,7 +37,7 @@ try {
     const [key,version]=template.renderer.split('@'),[reportKey,reportVersion]=template.report.split('@');
     manifest.renderer={key,version:Number(version)};manifest.report.renderer={key:reportKey,version:Number(reportVersion)};}
   manifest.resources=[{resourceId:'sdk-picture',fileId:file.fileId,purpose:'illustration',label:scenario.label??'SDK 场景插画',mimeType,byteSize:bytes.length,checksum}];
-  const input={manifest,reportPlan:context.reportPlan,methods:context.methods.map(m=>({purpose:m.purpose,skillVersionId:m.version.id})),note:'真实 SDK 体验制作',
+  const input={manifest,reportPlan:context.reportPlan,productPlan:scenario.productPlan,methods:context.methods.map(m=>({purpose:m.purpose,skillVersionId:m.version.id,planModuleId:m.productPlanInput.planModuleId})),note:'真实 SDK 体验制作',
     expectedRevision:scenario.expectedRevision,expectedVersionRevision:scenario.expectedVersionRevision,requestId:randomUUID()};
   const {expectedRevision:_r,expectedVersionRevision:_v,requestId:_i,...proposal}=input;
   check((await call('experience_validate',proposal)).valid===true);

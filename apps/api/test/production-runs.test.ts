@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import { currentSkillManifest } from './skill-policy-fixture';
+import { emptyProductImplementationPlan } from '@orai/contracts/admin';
 import { before,after,beforeEach,test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -61,7 +63,7 @@ async function fresh(overrides:Partial<RunLimits>={},maxRunsPerProject=3){
   const project=MachineProjectResultSchema.parse(await projects.execute(grants.assessment.access,'project_bootstrap',{requestId:randomUUID(),projectKey:'run-project-'+randomUUID(),
     product:{slug:'run-project-'+randomUUID(),name:'运行接续合成项目',hook:'观察自己的节奏',summary:'隔离协议验收',description:'技术测试草稿',categoryId:original.categoryId,
       priceFen:original.priceFen,durationMinutes:5,experienceType:original.experienceType,themeKey:original.themeKey,publicSample},profile,
-    plan:{schemaVersion:1,title:'运行计划',selection:{basis:'manual',rationale:'隔离测试',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],retention:'platform_originals_and_exact_methods',
+    plan:{schemaVersion:2,productPlan:emptyProductImplementationPlan(),title:'运行计划',selection:{basis:'manual',rationale:'隔离测试',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],retention:'platform_originals_and_exact_methods',
       modules:[module('assessment',[output('questions','assessment'),output('report','report')]),module('cover',[output('cover','image','image/png')]),
         module('copy',[output('copy','copy')],['assessment']),module('video',[output('video','video','video/webm')],['assessment','copy']),module('experience',[output('web','web_bundle','text/html')],['assessment'])]}}));
   const plan=ProductionPlanRevisionSchema.parse(await projects.execute(grants.assessment.access,'project_plan_get',{planRevisionId:project.planRevisionId}));
@@ -73,7 +75,7 @@ async function fresh(overrides:Partial<RunLimits>={},maxRunsPerProject=3){
 }
 type Context=Awaited<ReturnType<typeof fresh>>;
 async function methods(c:Context,domain:Domain){
-  const manifest=StyleSkillManifestSchema.parse({schemaVersion:1,domain,name:'运行候选方法',description:'技术测试',purposes:[...skillPurposes[domain]],styles:['紫色'],supportedForms:['web'],
+  const manifest=currentSkillManifest({schemaVersion:1,domain,name:'运行候选方法',description:'技术测试',purposes:[...skillPurposes[domain]],styles:['紫色'],supportedForms:['web'],
     inputs:[{key:'creative-profile',description:'固定共同设定',required:true}],outputs:[{key:'deliverable',description:'模块产物'}],instructions:'以具体观察形成理解与下一步。',examples:[],references:[]});
   const created=await projects.execute(c.grants[domain].access,'project_method_create',{productId:c.project.productId,methodKey:domain,manifest,requestId:randomUUID()}) as {skillId:string;versionId:string};
   const version=await app.get(SkillsService).readVersion(access,domain,created.skillId,created.versionId),module=c.module(domain),selected=[];

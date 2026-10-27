@@ -5,6 +5,7 @@ import { purposeDomain } from "@orai/contracts/admin";
 import { Failure, Loading, Pager, useAction } from "../business/shared.js";
 import { allPages, type Profile } from "./content-api.js";
 import { bindingsApi, type SkillSet } from "./skill-bindings-api.js";
+import { SkillPlanInput, type SkillPlanChoice } from './skill-plan-input.js';
 
 export const purposeNames = {
   assessment_design: "题目设计",
@@ -32,6 +33,7 @@ export function SkillSetSummary({ set }: { set: SkillSet }) {
       <p>
         <strong>组合 r{set.revision}</strong> · {set.note}
       </p>
+      <p>{set.bindings[0]?.productPlanInput ? `已固定商品规划 ${set.bindings[0].productPlanInput.planRevisionId}` : '历史组合 · 未固定商品规划输入；新制作需追加合规组合。'}</p>
       <ul>
         {set.bindings.map((binding) => (
           <li key={binding.purpose}>
@@ -278,11 +280,16 @@ function BindingForm({
     ),
     [choices, setChoices] = useState<Record<string, string>>(initial),
     [note, setNote] = useState(""),
+    [planChoice, setPlanChoice] = useState<SkillPlanChoice>({
+      reference: latest?.bindings[0]?.productPlanInput ? { revisionId: latest.bindings[0].productPlanInput.planRevisionId, digest: latest.bindings[0].productPlanInput.planDigest } : undefined,
+      modules: Object.fromEntries(latest?.bindings.map(binding => [binding.purpose,binding.productPlanInput?.planModuleId ?? '']) ?? []),
+    }),
+    [initialPlan] = useState(JSON.stringify(planChoice)),
     [historyId, setHistoryId] = useState(latest?.id ?? ""),
     [notice, setNotice] = useState(""),
     action = useAction(),
     client = useQueryClient();
-  const dirty = JSON.stringify(initial) !== JSON.stringify(choices) || !!note;
+  const dirty = JSON.stringify(initial) !== JSON.stringify(choices) || !!note || JSON.stringify(planChoice) !== initialPlan;
   useEffect(() => {
     onDirty(dirty);
     return () => onDirty(false);
@@ -328,10 +335,12 @@ function BindingForm({
                 action.intent("skill-set:" + profile.id, {
                   expectedRevision: latest?.revision ?? 0,
                   note,
+                  productPlan: planChoice.reference,
                   bindings: (Object.keys(purposeNames) as Purpose[]).map(
                     (purpose) => ({
                       purpose,
                       skillVersionId: choices[purpose] ?? "",
+                      planModuleId: planChoice.modules[purpose],
                     }),
                   ),
                 }),
@@ -349,6 +358,8 @@ function BindingForm({
         }}
       >
         <fieldset disabled={action.busy}>
+          <SkillPlanInput productId={profile.productId} profileId={profile.id} form={profile.profile.experienceForm}
+            purposes={Object.keys(purposeNames) as Purpose[]} value={planChoice} onChange={setPlanChoice} />
           <div className="content-purpose-list">
             {(Object.keys(purposeNames) as Purpose[]).map((purpose) => (
               <PurposePicker
@@ -385,6 +396,7 @@ function BindingForm({
               onClick={() => {
                 setChoices(initial);
                 setNote("");
+                setPlanChoice(JSON.parse(initialPlan) as SkillPlanChoice);
               }}
             >
               放弃组合修改

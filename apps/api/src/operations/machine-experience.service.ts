@@ -77,9 +77,10 @@ export class MachineExperienceService {
           const choices=body.skillVersionIds.length ? (['scene_design','report_presentation'] as const).map(purpose=>{
             const found=rows.find(row=>(row.manifest as {purposes:string[]}).purposes.includes(purpose));
             if(!found) throw new ApiException('CONFLICT','需要分别提供场景设计与报告呈现方法',409);
-            return {purpose,skillVersionId:found.id};
+            return {purpose,skillVersionId:found.id,planModuleId:body.planModuleId};
           }):[];
-          const methods=await this.experiences.methods(tx,scoped,choices,[],p.experienceForm);
+          const methods=await this.experiences.methods(tx,scoped,choices,[],p.experienceForm,
+            {productId:v.productId,profileId:v.creativeProfile.id,productPlan:body.productPlan});
           const defaultManifest=defaultExperience(v,v.product.themeKey,v.creativeProfile);
           const latest=body.includeCapabilities?await tx.experienceAuthoringRevision.findFirst({where:{productVersionId:v.id},orderBy:{number:'desc'}}):null;
           return ExperienceContextSchema.parse(safePaths({productVersionId:v.id,versionRevision:v.revision,creativeProfile:profileDto(v.creativeProfile),
@@ -94,11 +95,7 @@ export class MachineExperienceService {
       case 'references_validate': {
         const body=parseInput(identity,input);
         const scoped=await this.scope(access,{type:'experience',revisionId:body.revisionId},'context:read',['content:read']);
-        const draft=await this.experiences.read(scoped,body.revisionId), v=await this.version(scoped,draft.productVersionId);
-        const result=await this.experiences.check(scoped,v.productId,v.id,{manifest:draft.manifest,reportPlan:draft.reportPlan,note:draft.note,
-          methods:draft.methods.map(m=>({purpose:m.purpose,skillVersionId:m.version.id}))});
-        if(draft.configurationDigest!==configurationDigest(v.configuration)) return {valid:false,issues:[...result.issues,'题库已变化，请重新保存并审核']};
-        return result;
+        return this.experiences.checkReferences(scoped,body.revisionId);
       }
       case 'skill_reference_get': {
         const body=parseInput(ExperienceReferenceInputSchema,input);

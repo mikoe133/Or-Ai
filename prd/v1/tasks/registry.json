@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-27",
-  "currentTask": "T13.C2",
+  "currentTask": "T16.C2-B",
   "scope": "implementation",
   "rules": {
     "allNormalProductsRequireThreejs": true,
@@ -31,10 +31,10 @@
     {
       "order": 2,
       "id": "T13.C2",
-      "file": "active/02-skill-policy-validation.md",
+      "file": "archive/completed/02-skill-policy-validation.md",
       "title": "让全部商品 Skill 的 Three.js 要求在服务端生效",
       "lane": "主线",
-      "status": "可执行",
+      "status": "已完成（技术范围）",
       "dependsOn": [
         1
       ],
@@ -43,7 +43,9 @@
       "legacyIds": [
         "T13.C2"
       ],
-      "complete": false
+      "complete": true,
+      "completedAt": "2026-10-27",
+      "evidence": "output/implementation/skill-policy-validation-20261027/verification.md"
     },
     {
       "order": 3,
@@ -51,7 +53,7 @@
       "file": "active/03-threejs-publication-gates.md",
       "title": "接通项目制作链与 Three.js 发布校验",
       "lane": "主线",
-      "status": "等待前置",
+      "status": "可执行",
       "dependsOn": [
         1,
         2
@@ -596,13 +598,13 @@
     {
       "legacyId": "T13.C2",
       "parent": "T13",
-      "disposition": "pending",
+      "disposition": "completed",
       "owners": [
         2
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T13-style-skills.md",
-      "note": "仍未完成，按新任务执行。"
+      "note": "02技术范围完成：564项、类型/构建、24项离线检查和13项自主CUA；旧库升级仍由04持有。"
     },
     {
       "legacyId": "T13.C3",

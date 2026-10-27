@@ -12,6 +12,7 @@ import { bindingsApi } from './skill-bindings-api.js';
 import { fileDigest } from './content-media.js';
 import { ProductionOrigin } from './content-parts.js';
 import './experience.css';
+import { SkillPlanInput } from './skill-plan-input.js';
 
 type Proposal=ReturnType<typeof ExperienceDraftInputSchema.parse>;
 type Revision=NonNullable<ExperienceWorkspace['latest']>;
@@ -53,7 +54,9 @@ export function ExperienceDesk({productId,versionId,profile,active,view='experie
 function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,onDirty,onSaved}:{productId:string;workspace:ExperienceWorkspace;row:Revision|null;historical:boolean;view:'experience'|'result';contentDirty:boolean;onDirty:(v:boolean)=>void;onSaved:(v:string)=>Promise<void>}) {
   const initial:Proposal={manifest:row?.manifest??workspace.release?.manifest??workspace.defaultManifest,
     reportPlan:row?.reportPlan??workspace.reportPlan??{schemaVersion:1,title:'旧版兼容报告',narrative:'按原版本展示',presentation:'standard',sections:[{sectionId:'report',title:'观察与建议',purpose:'保留已有结果'}]},
-    methods:row?.methods.map(m=>({purpose:m.purpose as 'scene_design'|'report_presentation',skillVersionId:m.version.id}))??[],note:row?.note??'按共同创作设定制作体验与报告'};
+    methods:row?.methods.map(m=>({purpose:m.purpose as 'scene_design'|'report_presentation',skillVersionId:m.version.id,planModuleId:m.productPlanInput?.planModuleId}))??[],
+    productPlan:row?.methods[0]?.productPlanInput?{revisionId:row.methods[0].productPlanInput.planRevisionId,digest:row.methods[0].productPlanInput.planDigest}:undefined,
+    note:row?.note??'按共同创作设定制作体验与报告'};
   const [form,setForm]=useState<Proposal>(initial),[original]=useState(JSON.stringify(initial)),[raw,setRaw]=useState(JSON.stringify(initial,null,2)),
     [check,setCheck]=useState<Awaited<ReturnType<typeof experienceApi.check>>|null>(null),[preview,setPreview]=useState<Awaited<ReturnType<typeof experienceApi.preview>>|null>(null),
     [uploading,setUploading]=useState(false),[pending,setPending]=useState(false),[questionIndex,setQuestionIndex]=useState(0),
@@ -117,6 +120,10 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
       </section>
       <section className="content-form-section"><header className="content-form-section-heading"><h4>04 / 制作方法与说明</h4><p>方法版本与当前体验修订一起保留。</p></header>
         <label className="content-checkbox"><input type="checkbox" checked={form.methods.length===0} onChange={e=>update({...form,methods:e.target.checked?[]:[{purpose:'scene_design',skillVersionId:''},{purpose:'report_presentation',skillVersionId:''}]})}/>人工制作（不绑定方法）</label>
+        {!!form.methods.length && <SkillPlanInput productId={productId} profileId={form.manifest.creativeProfileRevisionId ?? ''} form={methodForm}
+          purposes={form.methods.map(method=>method.purpose)} value={{reference:form.productPlan,modules:Object.fromEntries(form.methods.map(method=>[method.purpose,method.planModuleId??'']))}}
+          disabled={readonly||action.busy||jsonPending} onChange={choice=>update({...form,productPlan:choice.reference,
+            methods:form.methods.map(method=>({...method,planModuleId:choice.modules[method.purpose]}))})} />}
         {form.methods.map((m,i)=>{const options=candidates.data?.[m.purpose==='scene_design'?0:1]??[],fixed=row?.methods.find(v=>v.purpose===m.purpose)?.version;return <label key={m.purpose}>{methodNames[m.purpose]}<select aria-label={methodNames[m.purpose]+'方法'} value={m.skillVersionId} onChange={e=>update({...form,methods:form.methods.map((v,j)=>j===i?{...v,skillVersionId:e.target.value}:v)})}>
           <option value="">选择已启用版本</option>{fixed&&!options.some(v=>v.id===fixed.id)&&<option value={fixed.id}>{fixed.manifest.name} · v{fixed.number}（固定历史）</option>}
           {options.map(v=><option key={v.id} value={v.id}>{v.manifest.name} · v{v.number}</option>)}</select></label>;})}

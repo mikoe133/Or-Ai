@@ -2,16 +2,18 @@ import { z } from 'zod';
 import { IdSchema, PageSchema, DataScopeSchema, TimestampSchema, QuestionSchema, ReportContentSchema } from './shared.js';
 import { ExperienceManifestSchema, ExperienceReleaseSchema, ReportPresentationSchema } from './experience.js';
 import { ReportPlanDraftSchema, CreativeProfileRevisionSchema } from './content.js';
-import { BoundSkillSchema } from './skill-bindings.js';
+import { BoundSkillSchema, SkillProductPlanReferenceSchema } from './skill-bindings.js';
 import { ExperienceSkillPurposeSchema } from './skills.js';
 import { CapabilityVersionSchema, ProductCapabilitiesSchema } from './product-capabilities.js';
 
-export const ExperienceMethodChoiceSchema = z.object({ purpose: ExperienceSkillPurposeSchema, skillVersionId: IdSchema }).strict();
+export const ExperienceMethodChoiceSchema = z.object({ purpose: ExperienceSkillPurposeSchema, skillVersionId: IdSchema,
+  planModuleId: IdSchema.toLowerCase().optional() }).strict();
 const methods = z.array(ExperienceMethodChoiceSchema).max(2).refine(values =>
   (values.length === 0 || values.length === 2) && new Set(values.map(v => v.purpose)).size === values.length,
   '体验方法需分别绑定场景设计和报告呈现，或明确采用人工制作');
 export const ExperienceDraftInputSchema = z.object({
   manifest: ExperienceManifestSchema, reportPlan: ReportPlanDraftSchema, methods,
+  productPlan: SkillProductPlanReferenceSchema.optional(),
   note: z.string().trim().min(1).max(2000),
 }).strict();
 export const ExperienceSaveSchema = ExperienceDraftInputSchema.extend({
@@ -53,6 +55,7 @@ export const ExperiencePreviewSchema = z.object({
   questions: z.array(QuestionSchema), report: ReportContentSchema, presentation: ReportPresentationSchema,
 }).strict();
 export const ExperienceContextInputSchema = z.object({ productVersionId: IdSchema, skillVersionIds: z.array(IdSchema).max(2).default([]),
+  productPlan: SkillProductPlanReferenceSchema.optional(), planModuleId: IdSchema.toLowerCase().optional(),
   includeTemplates: z.boolean().default(false), includeCapabilities: z.boolean().default(false),
   capabilityVersion: CapabilityVersionSchema.default(1),
 }).strict();

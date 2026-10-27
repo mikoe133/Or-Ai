@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { currentSkillManifest } from './skill-policy-fixture';
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
@@ -122,8 +123,8 @@ test('stale summaries, bad expiry and foreign Skill selections cannot create or 
   const input=plan();input.domains[0]!.skillIds=[randomUUID()];await code(service.preview(access,input),'FORBIDDEN');assert.deepEqual(await counts(),before);
 });
 test('explicit shared Skill selection is scoped to its domain and retained in the confirmed summary',async()=>{
-  const shared=await app.get(SkillsService).create(access,'copy',{requestId:randomUUID(),slug:'test-'+randomUUID(),manifest:{schemaVersion:1,domain:'copy',name:'隔离共享方法',description:'仅测试授权',
-    purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],inputs:[{key:'creative-profile',description:'共同设定',required:true}],outputs:[{key:'copy',description:'文案'}],instructions:'用具体观察表达理解，不作诊断。',examples:[],references:[]}});
+  const shared=await app.get(SkillsService).create(access,'copy',{requestId:randomUUID(),slug:'test-'+randomUUID(),manifest:currentSkillManifest({schemaVersion:1,domain:'copy',name:'隔离共享方法',description:'仅测试授权',
+    purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],inputs:[{key:'creative-profile',description:'共同设定',required:true}],outputs:[{key:'copy',description:'文案'}],instructions:'用具体观察表达理解，不作诊断。',examples:[],references:[]})});
   const input=plan(),copy=input.domains.find(d=>d.domain==='copy')!;copy.skillIds=[shared.skillId];
   const {result}=await issue(input);assert.equal(result.connection.summary.sharedSkills[0]!.id,shared.skillId);
   assert.deepEqual(result.connection.credentials.find(c=>c.domain==='copy')!.skillIds,[shared.skillId]);

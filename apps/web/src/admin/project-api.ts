@@ -1,9 +1,10 @@
 import { IdSchema } from '@orai/contracts';
 import { ProjectWorkspaceSchema,ProjectWorkspaceQuerySchema,ProjectReviewPreviewSchema,ProjectReviewRevisionSchema,ProductionAttemptSchema,
-  ProductionPlanRevisionSchema,ProductionPlanSaveSchema,ProjectCanvasStateSchema,ProjectCanvasLayoutSaveSchema,ProjectCanvasLayoutRevisionSchema } from '@orai/contracts/admin';
+  ProductionPlanRevisionSchema,ProductionPlanPageSchema,ProductionPlanSaveSchema,ProjectCanvasStateSchema,ProjectCanvasLayoutSaveSchema,ProjectCanvasLayoutRevisionSchema } from '@orai/contracts/admin';
 import { api } from '../api/consumer.js';
 const id=(value:string)=>IdSchema.parse(value).toLowerCase();
 export const projectApi={
+  plans:(productId:string,signal?:AbortSignal)=>api.request(`/api/admin/products/${id(productId)}/production-plans?pageSize=1`,ProductionPlanPageSchema,{signal}),
   canvas:(planId:string,signal?:AbortSignal)=>api.request(`/api/admin/production-plans/${id(planId)}/canvas-layout`,ProjectCanvasStateSchema,{signal}),
   savePlan:(productId:string,body:unknown)=>api.request(`/api/admin/products/${id(productId)}/production-plans`,ProductionPlanRevisionSchema,{method:'POST',body:ProductionPlanSaveSchema.parse(body)}),
   saveLayout:(planId:string,body:unknown)=>api.request(`/api/admin/production-plans/${id(planId)}/canvas-layout`,ProjectCanvasLayoutRevisionSchema,{method:'POST',body:ProjectCanvasLayoutSaveSchema.parse(body)}),

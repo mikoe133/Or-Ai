@@ -10,7 +10,8 @@ import type { Request } from 'express';
 import { Test } from '@nestjs/testing';
 import type { INestApplication } from '@nestjs/common';
 import { AdminProductInputSchema, CreativeProfileSchema, ProductionPlanDocumentSchema, StyleSkillManifestSchema,
-  skillPurposes, type StyleSkillManifest } from '@orai/contracts/admin';
+  skillPurposes, emptyProductImplementationPlan, type StyleSkillManifest } from '@orai/contracts/admin';
+import { currentSkillManifest } from './skill-policy-fixture';
 import { AppModule } from '../src/app.module';
 import { APP_CONFIG } from '../src/config/configuration';
 import { configureApp } from '../src/common/configure-app';
@@ -71,7 +72,7 @@ async function fresh() {
   experience.target.runtime = { renderer: { key: 'dom-choice', version: 1 }, reportRenderer: { key: 'legacy-text', version: 1 },
     inputSchema: 'single_choice_v1', engine: 'dimensions_v1', reportSchema: 'report_content_v1' };
   const plan = await app.get(ProductionPlansService).save(access, product.id, { expectedRevision: 0, requestId: randomUUID(), plan: ProductionPlanDocumentSchema.parse({
-    schemaVersion: 1, title: '合成商品计划', creativeProfileRevisionId: profile.id, selection: { basis: 'manual', rationale: '隔离技术验收', evidenceKeys: [] },
+    schemaVersion: 2, productPlan: emptyProductImplementationPlan(), title: '合成商品计划', creativeProfileRevisionId: profile.id, selection: { basis: 'manual', rationale: '隔离技术验收', evidenceKeys: [] },
     freshnessWindowHours: 24, evidence: [], modules: [module('copy',[output('copy','copy'),output('alternate','copy')]),
       module('cover',[output('cover','image'),output('illustration','image')]),module('video',[output('video','video')],['copy','cover']),
       module('assessment',[output('questions','assessment'),output('report','report')]),experience], retention: 'platform_originals_and_exact_methods',
@@ -79,7 +80,7 @@ async function fresh() {
   return { product, version, profile, plan, module: (key: string) => plan.modules.find(row => row.moduleKey === key)! };
 }
 function manifest(domain: keyof typeof skillPurposes, instructions = '以具体观察给出理解与行动，不贴诊断标签。') {
-  return StyleSkillManifestSchema.parse({ schemaVersion: 1, domain, name: '候选方法', description: '隔离项目候选方法',
+  return currentSkillManifest({ schemaVersion: 1, domain, name: '候选方法', description: '隔离项目候选方法',
     purposes: [...skillPurposes[domain]], styles: ['紫色纸本'], supportedForms: ['web'],
     inputs: [{ key: 'creative-profile', description: '固定创作设定', required: true }], outputs: [{ key: 'deliverable', description: '本模块产物' }],
     instructions, examples: [], references: [] });
@@ -144,7 +145,7 @@ test('draft changes create new snapshots while old outputs retain the original i
   const oldOutput = await copy(context), first = await service.save(access,context.module('copy').id,production(context,'copy',[oldMethod],
     [{ kind: 'content_revision', outputKey: 'copy', revisionId: oldOutput.id, digest: oldOutput.digest }]));
   const changed = await app.get(SkillsService).save(access,'copy',source.skillId,source.id,{ expectedRevision: ref.version.revision,
-    manifest: { ...source.manifest, instructions: '改用新的外部制作指令。' }, requestId: randomUUID() });
+    manifest: { ...source.manifest, instructions: source.manifest.instructions + '\n改用新的外部制作指令。' }, requestId: randomUUID() });
   const newMethod = await capture(context,'copy',changed), newOutput = await copy(context,'试着先表达自己的需要');
   const second = await service.save(access,context.module('copy').id,production(context,'copy',[newMethod],
     [{ kind: 'content_revision', outputKey: 'copy', revisionId: newOutput.id, digest: newOutput.digest }],1));
@@ -182,7 +183,7 @@ test('wrong domain, purpose, form, changed source revision and missing or corrup
   await assert.rejects(capture(context,'copy',cover)); await assert.rejects(capture(context,'copy',source,'report_writing'));
   await assert.rejects(capture(context,'copy',incompatible));
   const changed = await app.get(SkillsService).save(access,'copy',source.skillId,source.id,{ expectedRevision:source.revision,
-    manifest:{...source.manifest,instructions:'新修订指令。'},requestId:randomUUID() });
+    manifest:{...source.manifest,instructions:source.manifest.instructions+'\n新修订指令。'},requestId:randomUUID() });
   await assert.rejects(capture(context,'copy',source));
   await assert.rejects(app.get(SkillsService).save(access,'copy',source.skillId,source.id,{ expectedRevision:changed.revision,
     manifest:{...changed.manifest,instructions:'[缺失参考](references/missing.md)'},requestId:randomUUID() }));

@@ -61,7 +61,7 @@ test('candidate projection filters exact purpose/scope and excludes another proj
  await rejected(service.candidates({...access,scope:'LIVE'},c.module('copy').id,{purpose:'copywriting'}));
 });
 test('archived and incompatible source forms remain explained but cannot be newly captured',async()=>{
- const c=await fresh(),skills=app.get(SkillsService),created=await skills.create(access,'copy',{slug:'forms-'+randomUUID(),manifest:{...methodManifest('copy'),supportedForms:['game']},requestId:randomUUID()});
+ const c=await fresh(),skills=app.get(SkillsService),created=await skills.create(access,'copy',{slug:'forms-'+randomUUID(),manifest:{...methodManifest('copy'),supportedForms:['game','3d']},requestId:randomUUID()});
  const page=await service.candidates(access,c.module('copy').id,{purpose:'copywriting'});assert.equal(page.items.find(s=>s.versionId===created.id)?.compatible,false);
  await rejected(service.capture(access,c.module('copy').id,{expectedModuleDigest:c.module('copy').digest,purpose:'copywriting',sourceVersionId:created.id,expectedSourceRevision:created.revision,expectedSourceDigest:created.digest,requestId:randomUUID()}),'VALIDATION_ERROR');
  const original=await captureMethod(c,'copy'),archived=await skills.transition(access,'copy',original.source.skillId,original.source.id,'archive',{expectedRevision:original.source.revision,requestId:randomUUID()});
@@ -81,7 +81,7 @@ test('capture is immutable, exact and idempotent; product customization never re
 });
 test('source changes and cross-project candidate capture are rejected without partial snapshots',async()=>{
  const c=await fresh(),base=await captureMethod(c,'copy'),skills=app.get(SkillsService);
- await skills.save(access,'copy',base.source.skillId,base.source.id,{expectedRevision:base.source.revision,manifest:{...base.source.manifest,instructions:'新版基础正文'},requestId:randomUUID()});
+ await skills.save(access,'copy',base.source.skillId,base.source.id,{expectedRevision:base.source.revision,manifest:{...base.source.manifest,instructions:base.source.manifest.instructions+'\n新版基础正文'},requestId:randomUUID()});
  const before=await fixture.runtime.client.projectMethodSnapshot.count();await rejected(service.capture(access,c.module('copy').id,{...base.body,requestId:randomUUID()}),'REVISION_CONFLICT');
  const other=await fresh(),created=await app.get(MachineProjectsService).execute(other.machine.get('copy')!,'project_method_create',{productId:other.boot.productId,methodKey:'private',manifest:methodManifest('copy'),requestId:randomUUID()}) as {skillId:string;versionId:string};
  const version=await skills.readVersion(access,'copy',created.skillId,created.versionId);
