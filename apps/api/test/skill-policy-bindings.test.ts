@@ -15,6 +15,7 @@ import { ProductionPlansService } from '../src/operations/production-plans.servi
 import { SkillsService } from '../src/operations/skills.service';
 import { SkillBindingsService } from '../src/operations/skill-bindings.service';
 import { ProjectProductionService } from '../src/operations/project-production.service';
+import { ExperienceAuthoringService } from '../src/operations/experience-authoring.service';
 import { ApiException } from '../src/common/http-errors';
 import { demoId, DemoIdentityScenarios } from '../scripts/demo-fixtures';
 import { createLocalFixture } from './local-fixture';
@@ -107,4 +108,10 @@ test('all seven new project methods require a v2 product plan even when the reus
       expectedSourceRevision: version.revision, expectedSourceDigest: version.digest, requestId: randomUUID() }), rejected);
   }
   assert.equal(await fixture.runtime.client.projectMethodSnapshot.count({ where: { productId: c.product.id } }), 0);
+});
+
+test('direct experience method bindings cannot omit the actual product plan input', async () => {
+  const c = await fresh(), version = c.versions.find(version => version.manifest.domain === 'experience')!;
+  await assert.rejects(fixture.runtime.client.$transaction(tx => app.get(ExperienceAuthoringService).methods(tx, access,
+    [{ purpose: 'scene_design', skillVersionId: version.id }, { purpose: 'report_presentation', skillVersionId: version.id }], [], '3d')), rejected);
 });
