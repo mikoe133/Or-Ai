@@ -41,11 +41,16 @@ export function CleanupPanel({
     localPlan ??
     (restored.data?.productId === productId ? restored.data : null);
   return (
-    <section className="content-editor" aria-label="临时文件清理工作台">
+    <section className="content-editor content-cleanup-editor" aria-label="临时文件清理工作台">
       <h3>临时文件清理</h3>
       <p>
         仅列出上传期限已过、没有任何当前或历史内容引用的文件。归档稿、历史预览和采用包使用过的文件继续保留。
       </p>
+      <ol className="content-process-steps" aria-label="清理流程">
+        <li><span>01</span> 选择过期文件</li>
+        <li><span>02</span> 生成清理预演</li>
+        <li><span>03</span> 核对后执行</li>
+      </ol>
       {candidates.isPending ? (
         <Loading />
       ) : candidates.isError ? (

@@ -1,0 +1,200 @@
+{
+  "date": "2026-10-26",
+  "files": [
+    {
+      "path": "PRODUCT.md",
+      "sha256": "e7c65ba89252521ab193f09100546a52135f16db95ac40476b892d6ca2e603be",
+      "baselineSha256": "12a12b948e6aa9d3a2476373b32229913c1d3d614fa7748504c804300f7d20e9"
+    },
+    {
+      "path": "apps/web/src/admin/content-model.ts",
+      "sha256": "dbd20264f559edd89407d8f2ef6e7454e4f1261f1d7863f56d580af7541729ee",
+      "baselineSha256": "e70b28e9f83061c08c796b811a99658c74886a8a691882e920c072c337cf7ec3"
+    },
+    {
+      "path": "apps/web/src/admin/content-profile.tsx",
+      "sha256": "28da87ccf6ace0d1a509abf38e2941c34a367e71ead51aa94fca23c532f60491",
+      "baselineSha256": "0c72789d347214be6b77c7d4a179bf9c47826ea1a5c6ee6712a855c62d992883"
+    },
+    {
+      "path": "apps/web/src/admin/skills-model.ts",
+      "sha256": "ffa05ab70fb51f13cdd5fc9973e03d0de9c22b62ac40a4a824f058d6dafd9688",
+      "baselineSha256": "061fd2048d80fb9b70669a4e1fc3c51158c494e8b78031dea9a404f69139af28"
+    },
+    {
+      "path": "apps/web/src/admin/skills.tsx",
+      "sha256": "0a54d2efc58136103b8dda3b4d88c305a1f5d52cd26fa048774462bc8d5f4bcc",
+      "baselineSha256": "abceed6f1bb824ca5c5f06e79db12b35c1e33e0eb9e59de1ed46d03e80e1e53c"
+    },
+    {
+      "path": "apps/web/test/content-workbench.test.ts",
+      "sha256": "dca9c49d8236169a09ad0a4ab8e1d6cf7c3a4301dd5146c3af20ab25c841345a",
+      "baselineSha256": "ccdeed16a3b74ff50d7a4ad5329a24c0a3ff330c8c6464e9d3523817559f0a63"
+    },
+    {
+      "path": "apps/web/test/product-capabilities.test.ts",
+      "sha256": "4db89b75dcc79564d695895bb5b98e9a3631da9fb1d1cbd4cfe099966c30ecd2",
+      "note": "Existing test; historical DOM fixtures made explicit, reviewed directly."
+    },
+    {
+      "path": "apps/web/test/skills.test.ts",
+      "sha256": "cb1a395c7278e6c7dcfb93daca732da718ffa9bfa39c1655dc56d2b5a57273ba",
+      "baselineSha256": "7c17baea72149bb2538b80fca28dbf7fbae05bf2fd5d60dd5b2869e4a2eacf4a"
+    },
+    {
+      "path": "examples/threejs-products/README.md",
+      "sha256": "89020eff3ce5ef954f80e015d00c6e89d34d31eec8478e81dc28400258d868cb",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skill-index.json",
+      "sha256": "f6ea182db4a4a903969c415bb0e83e8884948ddd150497019212550054c73d07",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/assessment_design.skill.json",
+      "sha256": "c1d50bc8466d6af6eb19251b0943c0b6944f178df7e35e848317ed2f0fe482fd",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/copywriting.skill.json",
+      "sha256": "d610ff86a4e480444c1095dc4b7b55c32e0d2df308034a56145d914f1541eb3d",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/cover_design.skill.json",
+      "sha256": "ada251a1445175d93e3088aa01669667cee1e49070006a8950540e4a9d6926de",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/report_presentation.skill.json",
+      "sha256": "fbf14dd15d7df7478c1964582fb95e286c0b38ca8402d629b564818f070ef184",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/report_writing.skill.json",
+      "sha256": "83ea3537b2c86c6101760eef21b2c323f471fa42a6b6f5835547d3841dcc985a",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/scene_design.skill.json",
+      "sha256": "a0e6cdcc8cd6438219231e93ce7c594c249b0757212cb4fb8241d66a0a9e023d",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "examples/threejs-products/skills/video_production.skill.json",
+      "sha256": "321c33402bf13190fa8623e2abe2fb8f7b46bb1ebd64773cddb38112cde9f443",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "packages/contracts/src/admin.ts",
+      "sha256": "beb8f6587b8446e7b3b80c8357f83306c2da4111be4aab8ca1647b86d154893b",
+      "baselineSha256": "69620ce4e4bc350b8a1149fe18e5672e589caee44471d5c2043fb02c7fb3fa27"
+    },
+    {
+      "path": "packages/contracts/src/product-policy.ts",
+      "sha256": "dca2cac741d74d8ff1f84faf100a03cc385d4bdba197fa5f0ccae886a9b0dda8",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "packages/mcp/src/content-tools.ts",
+      "sha256": "8dc4901fce268a912eff6ab969c9acbab6d282c7945878a9c1b5f4f124dd7ecf",
+      "baselineSha256": "d283d330ed0423f072d3a038ed385e92bb9a5ab21591b65a61572be714afc24e"
+    },
+    {
+      "path": "packages/mcp/src/experience-tools.ts",
+      "sha256": "8bed428667a2dea0dafab3c55a27f25c4e1d2c553bce2b72c962323ddd75bbcc",
+      "baselineSha256": "847ef2c0b038853bafa42f1f87a88f6af6eb5c2adcbf6ff8de9e7de978ad111a"
+    },
+    {
+      "path": "packages/mcp/test/stdio.test.mjs",
+      "sha256": "1c4bda45adce4892f21a3c9653df0cdf68a626092f6d49f4da53f8a3e0470bc9",
+      "baselineSha256": "7023dc9645c658819baa6fa05ed52808f40552bdb412d3d9df87a465d513a0e3"
+    },
+    {
+      "path": "prd/v1/CODEX-PRODUCTION-HANDOFF.md",
+      "sha256": "b1e65d55a09d2c7fa51022ec0e675c1cd7ecf91366fa3d0b6daf5edce60cfc61",
+      "baselineSha256": "41586e3b3168b46616cf5119a516b2f92e5ce2c338fbcd513db44eb81f0b6851"
+    },
+    {
+      "path": "prd/v1/CONTENT-BACKOFFICE.md",
+      "sha256": "4beec5591c6987db0e389ca4bdd2d3b19338dd53ab95b93305169a9898ce3271",
+      "baselineSha256": "dadc6273fa1a0a08925db1d4a4b62ba7a32b4ef42f3f7e74b74254ff6ee8104d"
+    },
+    {
+      "path": "prd/v1/EXPERIENCE-PLATFORM.md",
+      "sha256": "0059bfbef862bddbc8dde0da00d89cd3caf94a833cccfdb92457853117a39fb6",
+      "baselineSha256": "b62fcd02854d7c39774fbb62b19aac7cfd86b22ead0fd4686a04f4d638c03dff"
+    },
+    {
+      "path": "prd/v1/MCP-CONTENT-TOOLS.md",
+      "sha256": "fc224f45a64f5bcbcde5bebde3324629ac24bf02d17f87d56943030ed7a816c5",
+      "baselineSha256": "d85e5b574cf43fc0c2b52bae0a35de1ae507d0b411ad996705dd3a5168e8bf73"
+    },
+    {
+      "path": "prd/v1/PRD.md",
+      "sha256": "7bb849ebaf2111781b9a73bee84744612d925fbdea67c0ea65c423a7f6962eed",
+      "baselineSha256": "cb1dbc5bade7b6e8fa8043f7c6cf8c1fd61bfbe6c2fb9e99a90c65eb4a116f98"
+    },
+    {
+      "path": "prd/v1/PRODUCT-CREATIVE-SYSTEM.md",
+      "sha256": "94866a9ca746f118bbdd007c55dce7365dcdc4387885fac1215d66b6e37b5480",
+      "baselineSha256": "ea1218ae977d5f266959fa912790b29eb4e7369dd5e524de61f0c74163c5520f"
+    },
+    {
+      "path": "prd/v1/PRODUCT-IMPLEMENTATION-POLICY.md",
+      "sha256": "1ac21c5d619017409cb9bcd92c3b4f57606c55642c916572bb37627f231beb5f",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "prd/v1/PRODUCTION-PLANS.md",
+      "sha256": "46fcfeda8d3b0419d33c06a86627b67d0a4e4db18540310f0fb9769ebc054ce9",
+      "baselineSha256": "82526886b63c1c1330c40891c52114daa80005058245de6578ccdef979c553ca"
+    },
+    {
+      "path": "prd/v1/PROGRESS.md",
+      "sha256": "2044939cc9391fe9cdb4a3deda63057ac29952b15afe84ba2b9c4f3db67f83bf",
+      "baselineSha256": "39cca4bac7ca1bb0b589df4dae658a690ba17f7a8f572b0700fc46fd8f156631"
+    },
+    {
+      "path": "prd/v1/README.md",
+      "sha256": "8e2ec7c9ae4389603889c3d2b2801266ad4b10c71cefc4adf40a32d53711b1b8",
+      "baselineSha256": "fee0786356d2743e30c08c30eb37b40691a8017590d73e60eb93b0cedea7095c"
+    },
+    {
+      "path": "prd/v1/ROADMAP.md",
+      "sha256": "64febebbebe06a6c63f6cb4833cfc860d1b9abb4a3e8d418f061f9a76b52cfe0",
+      "baselineSha256": "fd71f61f8aca0f448451b22bcccf3e4708afa1c164b26beed8e7f1c5bce81fd1"
+    },
+    {
+      "path": "prd/v1/SKILL-BINDINGS.md",
+      "sha256": "4d431180bcd03d89639aac835d302ea63b0420da18bf0fe00f5daaadea78b4d9",
+      "baselineSha256": "826c4254cf887967cc4afec70d746e45b94460694fea68a8763bb0c7d4f740e6"
+    },
+    {
+      "path": "prd/v1/STYLE-SKILLS.md",
+      "sha256": "48954dfd16bb9e2069b8b3a01a338f66acc07a3ca0918fce0d79ca3765bb13c4",
+      "baselineSha256": "94aed6887a21342e5ebc3c70a1f5b21dfd3932ccf3c430d43070933bfdba6e30"
+    },
+    {
+      "path": "prd/v1/tasks/T11-commercial-launch.md",
+      "sha256": "a81a574ae9c3efd86e5f005ab122f475de7082160f5738820b633d74df83c682",
+      "baselineSha256": "8806bd91db0d76e5ad1bccd07c71fecc2e0a31541694e85327f8f89d2fcab76a"
+    },
+    {
+      "path": "prd/v1/tasks/T13-style-skills.md",
+      "sha256": "cebb1eba345449182534ecac6315b45730519dff8c69945fabf4740ac0b6fba7",
+      "baselineSha256": "f9f445e6794de100c1e28b453322a8b2dc9c9595adb4d5897d5976cfb9ce3113"
+    },
+    {
+      "path": "prd/v1/tasks/T16-immersive-products.md",
+      "sha256": "c721e4f07e1ae968e197189091e09aae4afa2e38d34434f14dfa5a487be70fcb",
+      "baselineSha256": "4b29197ce6f2823f3963dbd3c757beb6e03bb53badc41836c07fee031141926c"
+    },
+    {
+      "path": "prd/v1/tasks/T17-interactive-evaluation.md",
+      "sha256": "f80c072eef8d53ae88f5198c5a4f54fc580617218b79d6ecc23f373a609ad041",
+      "baselineSha256": "362abecb31e3ddbecef73ef67480dc601ba71e21a4cff5d70efd12857152a752"
+    }
+  ]
+}

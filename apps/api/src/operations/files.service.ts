@@ -28,17 +28,17 @@ export class FilesService {
   async prepare(access: CatalogAdminAccess, input: unknown) {
     const body = parseInput(AdminUploadPrepareSchema, input), settings = this.configuration.assets;
     if (!settings || settings.driver !== 'local' || this.configuration.environment === 'production') throw new ApiException('SERVICE_UNAVAILABLE', '持久化文件存储尚未配置', 503);
-    const image = body.kind === 'cover';
+    const image = body.kind !== 'video';
     const extensions: Record<string, string[]> = { 'image/png': ['png'], 'image/jpeg': ['jpg','jpeg'], 'image/webp': ['webp'], 'video/mp4': ['mp4'], 'video/webm': ['webm'] };
-    if (body.byteSize > (image ? settings.maxImageBytes : settings.maxVideoBytes) || body.mimeType.startsWith('image/') !== image ||
+    if (body.byteSize > (body.kind === 'experience' ? Math.min(settings.maxImageBytes,4194304) : image ? settings.maxImageBytes : settings.maxVideoBytes) || body.mimeType.startsWith('image/') !== image ||
       !extensions[body.mimeType]!.includes(body.fileName.split('.').at(-1)!.toLowerCase())) throw new ApiException('VALIDATION_ERROR', '文件用途、扩展名、类型或大小不符合限制', 400);
-    const result = await this.mutations.run(access, 'files.prepare', body.requestId, body, async tx => {
+    const result = await this.mutations.run(access, access.machineCredentialId ? 'machine.files.prepare' : 'files.prepare', body.requestId, body, async tx => {
       if (!await tx.productVersion.findFirst({ where: { id: body.productVersionId, scope: access.scope } })) throw new ApiException('NOT_FOUND', '商品版本不存在于当前管理范围', 404);
       await tx.$queryRaw(Prisma.sql`SELECT 1 FROM pg_advisory_xact_lock(hashtextextended(${'uploads:' + access.scope + ':' + access.actorUserId},0))`);
       if (await tx.assetFile.count({ where: { ownerUserId: access.actorUserId, scope: access.scope, status: { in: ['PENDING','VERIFYING','UPLOADED'] }, expiresAt: { gt: new Date() } } }) >= 20) throw new ApiException('CONFLICT', '待完成上传过多，请先完成或等待过期', 409);
       const id = randomUUID();
       await tx.assetFile.create({ data: { id, productVersionId: body.productVersionId.toLowerCase(), scope: access.scope,
-        ownerUserId: access.actorUserId, kind: image ? 'COVER' : 'VIDEO', originalName: body.fileName, mimeType: body.mimeType,
+        ownerUserId: access.actorUserId, kind: body.kind.toUpperCase() as 'COVER'|'VIDEO'|'EXPERIENCE', originalName: body.fileName, mimeType: body.mimeType,
         byteSize: body.byteSize, checksum: body.checksum, storageKey: id + '.blob', expiresAt: new Date(Date.now() + 3_600_000) } });
       return { response: { id }, entityKind: 'asset_file', entityId: id };
     });
@@ -122,7 +122,7 @@ export class FilesService {
     const id = parseInput(IdSchema, inputId).toLowerCase();
     const row = await this.database.client.assetFile.findFirst({ where: { id, scope: access.scope, status: 'AVAILABLE' } });
     if (!row) throw new ApiException('NOT_FOUND', '文件尚未就绪或不可访问', 404);
-    return this.stream(row, range);
+    return this.storedContent(row, range);
   }
   async publicCover(inputAssetId: unknown, inputFileId: unknown, range?: string) {
     const id = parseInput(IdSchema, inputAssetId).toLowerCase(), fileId = parseInput(IdSchema, inputFileId).toLowerCase();
@@ -130,9 +130,13 @@ export class FilesService {
     const asset = await this.database.client.campaignAsset.findFirst({ where: { id, fileId, scope, kind: 'COVER', status: 'READY',
       file: { status: 'AVAILABLE' }, productVersion: { status: 'PUBLISHED', currentFor: { status: 'PUBLISHED', scope, coverUrl: publicCoverPath(id, fileId) } } }, include: { file: true } });
     if (!asset?.file) throw new ApiException('NOT_FOUND', '封面当前不可公开访问', 404);
-    return this.stream(asset.file, range);
+    return this.storedContent(asset.file, range);
   }
-  private async stream(row: AssetFile, range?: string) {
+  async storedContent(row: Pick<AssetFile,'byteSize'|'storageKey'|'mimeType'|'originalName'>, range?: string) {
+    return storedFileContent(this.storage, row, range);
+  }
+}
+export async function storedFileContent(storage: AssetStorage, row: Pick<AssetFile,'byteSize'|'storageKey'|'mimeType'|'originalName'>, range?: string) {
     let start = 0, end = row.byteSize - 1;
     if (range) {
       const match = /^bytes=(\d*)-(\d*)$/.exec(range);
@@ -141,9 +145,8 @@ export class FilesService {
       else { start = Number(match[1]); if (match[2]) end = Math.min(end, Number(match[2])); }
       if (!Number.isSafeInteger(start) || !Number.isSafeInteger(end) || start < 0 || start > end || start >= row.byteSize) throw new ApiException('VALIDATION_ERROR', '文件范围不可用', 416);
     }
-    const file = await this.storage.read(row.storageKey);
+    const file = await storage.read(row.storageKey);
     if ((await file.stat()).size !== row.byteSize) { await file.close(); throw new ApiException('SERVICE_UNAVAILABLE', '文件完整性检查失败', 503); }
     return { stream: file.createReadStream({ start, end, autoClose: true }), mimeType: row.mimeType, length: end - start + 1,
       name: row.originalName, range: range ? `bytes ${start}-${end}/${row.byteSize}` : null };
-  }
 }

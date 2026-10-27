@@ -1,3 +1,4 @@
+import { expandSavedAssets } from "./admin-workbench.mjs";
 import assert from "node:assert/strict";
 import { randomUUID, createHash } from "node:crypto";
 import { mkdir, readFile, writeFile, access } from "node:fs/promises";
@@ -211,13 +212,13 @@ export async function contentAdoption({
   const profileId = await admin
     .getByLabel("共同创作设定", { exact: true })
     .inputValue();
-  await enter("题库与报告");
+  await enter("商品内容");
   await admin.getByLabel("题库制作批次", { exact: true }).fill("garden-demo");
   await admin
     .getByRole("button", { name: "登记本修订制作来源", exact: true })
     .click();
   await expect(
-    admin.getByText("manual · 批次 garden-demo · Skill 未关联", {
+    admin.getByText("manual · 批次 garden-demo · 未关联 skill", {
       exact: true,
     }),
   ).toBeVisible();
@@ -552,6 +553,7 @@ export async function contentAdoption({
     )
     .toBe(3);
   await enter("视频与分镜");
+  await expandSavedAssets(video);
   await video
     .getByRole("row")
     .filter({ hasText: "garden-video" })

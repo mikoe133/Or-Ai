@@ -15,7 +15,8 @@ export class AdminMutationService {
     work: (tx: Prisma.TransactionClient) => Promise<{ response: T; entityKind: string; entityId: string }>): Promise<T> {
     await this.administrators.require(access);
     const requestId = parseInput(IdSchema, inputId).toLowerCase();
-    const actorKey = 'operations:' + access.scope + ':' + access.actorUserId;
+    const actorKey = 'operations:' + access.scope + ':' + access.actorUserId +
+      (access.machineCredentialId ? ':machine:' + access.machineCredentialId : '');
     const digest = createHash('sha256').update(JSON.stringify(payload)).digest('hex');
     try {
       return await this.database.client.$transaction(async tx => {
@@ -27,6 +28,7 @@ export class AdminMutationService {
           return previous.response as T;
         }
         const changed = await work(tx);
+        if (access.machineCredentialId) await this.administrators.require(access, tx);
         await tx.adminAuditLog.create({ data: { actorUserId: access.actorUserId, scope: access.scope,
           action: operation.split(':')[0]!, entityKind: changed.entityKind, entityId: changed.entityId, requestId } });
         await tx.idempotentRequest.create({ data: { actorKey, operation, requestId, requestDigest: digest,

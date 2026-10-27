@@ -1,0 +1,27 @@
+{
+  "title": "社交电量小屋",
+  "questions": [
+    {"id":"quiet-time","dimensionId":"recovery","text":"和别人相处之后，我会给自己留一段安静的时间。"},
+    {"id":"say-rest","dimensionId":"boundaries","text":"没有余力时，我能把「今天想早点休息」说出口。"},
+    {"id":"notice-tired","dimensionId":"recovery","text":"我能察觉自己开始疲惫，不等到完全耗尽才停下。"},
+    {"id":"check-invitation","dimensionId":"boundaries","text":"收到新的邀约时，我会先看看自己的状态。"},
+    {"id":"small-recovery","dimensionId":"recovery","text":"独处时，我会做一点让自己恢复的小事。"},
+    {"id":"explain-space","dimensionId":"boundaries","text":"我能和在意的人说明，暂时离开并不等于疏远。"}
+  ],
+  "options": [
+    {"id":"rarely","label":"很少如此","notApplicable":false},
+    {"id":"sometimes","label":"有时如此","notApplicable":false},
+    {"id":"often","label":"经常如此","notApplicable":false},
+    {"id":"not-applicable","label":"这周没有类似情况","notApplicable":true}
+  ],
+  "reportExample": {
+    "schemaVersion":1,"productName":"社交电量小屋 · 排版示例","versionNumber":1,"resultTypeId":"space","resultLabel":"为自己留了空间",
+    "totalScore":62,"dimensions":[
+      {"id":"recovery","label":"独处恢复","score":66,"applicableAnswers":3,"requiredAnswers":2,"missingReason":null},
+      {"id":"boundaries","label":"边界表达","score":58,"applicableAnswers":3,"requiredAnswers":2,"missingReason":null}
+    ],
+    "explanation":"这是一份固定的排版样本，与你刚才的练习选择无关。正式体验中，手记会记录服务端根据已确认答案生成的观察。你不必一直有回应别人的余力，也可以先照顾自己的节奏。",
+    "suggestion":"下次感觉累的时候，试着说：「我很在意这次相处，不过我今天需要先休息。我们换个时间好吗？」选一句说得出口的话，就够了。",
+    "disclaimer":"本地设计样本，仅供娱乐与自我观察，不构成心理诊断、关系判断或重要决策依据。","isDemo":true
+  }
+}

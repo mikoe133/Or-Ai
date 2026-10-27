@@ -1,4 +1,15 @@
 import type { AssetAuthoring } from "@orai/contracts/admin";
+export function ProductionOrigin({ source }: { source: {
+  source: string; machineCredentialId?: string; machineRequestId?: string;
+} | null }) {
+  if (!source) return null;
+  if (source.machineCredentialId && source.machineRequestId) return <div className="content-note" aria-label="已核实机器保存来源">
+    <strong>已核实 MCP 接入</strong>
+    <p>机器连接：<code>{source.machineCredentialId}</code><br />请求：<code>{source.machineRequestId}</code></p>
+    <small>已确认通过授权机器接口保存；模型与 skill 的实际执行由制作端负责。</small>
+  </div>;
+  return source.source === "mcp" ? <p className="content-note">MCP 来源申报 · 未核实机器接入</p> : null;
+}
 export function StructuredEditor({
   content,
   onChange,
@@ -37,7 +48,8 @@ export function StructuredEditor({
     return (
       <>
         {content.blocks.map((block, index) => (
-          <div className="content-block" key={index}>
+          <div className="content-block content-structured-block" key={index}>
+            <h4><span>{String(index + 1).padStart(2, "0")}</span> 文案块</h4>
             <div className="content-fields">
               <label>
                 文案块 ID
@@ -149,7 +161,8 @@ export function StructuredEditor({
   return (
     <>
       {content.scenes.map((scene, index) => (
-        <div className="content-block" key={index}>
+        <div className="content-block content-structured-block" key={index}>
+          <h4><span>{String(index + 1).padStart(2, "0")}</span> 分镜 <small>{scene.startMs / 1000}–{scene.endMs / 1000} 秒</small></h4>
           <div className="content-fields">
             <label>
               分镜 ID

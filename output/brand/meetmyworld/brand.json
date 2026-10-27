@@ -1,0 +1,37 @@
+{
+  "brand": "meetmyworld",
+  "displayName": "MeetMyWorld",
+  "sourceFigmaFileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "sourceDesktopNode": "40:371",
+  "sourceMobileNode": "74:466",
+  "date": "2026-10-13",
+  "font": "Manrope Bold",
+  "palette": {
+    "canvas": "#101118",
+    "surface": "#191B24",
+    "border": "#353744",
+    "text": "#F7F3FB",
+    "muted": "#A8A3B4",
+    "brand": "#D8AFE9",
+    "brandOnLight": "#8250A5",
+    "lavender": "#E9E1F9",
+    "teal": "#DDF2EC"
+  },
+  "concept": "An open world, a rounded W-shaped discovery path, and the person arriving as a small dot.",
+  "variants": [
+    "primary lavender",
+    "dark on light",
+    "white monochrome",
+    "black monochrome",
+    "favicon",
+    "app icon"
+  ],
+  "minimumIconSize": 24,
+  "faviconSizes": [
+    16,
+    32,
+    48,
+    64
+  ],
+  "clearSpace": "At least 1/4 of the icon width around isolated marks; half a wordmark x-height around horizontal logos."
+}

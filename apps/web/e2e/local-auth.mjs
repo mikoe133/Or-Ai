@@ -159,7 +159,7 @@ try {
   await page.screenshot({ path: join(output, 'admin-overview.png'), fullPage: true }); await passed(phase);
 
   phase = 'real administrator records an order and anonymous redemption stays usable';
-  await page.goto(base + '/admin/orders');
+  await page.goto(base + '/admin/orders'); await page.getByRole('button', { name: '人工录入', exact: true }).click();
   const selector = page.getByLabel('商品版本', { exact: true });
   await expect.poll(() => selector.locator('option').count()).toBeGreaterThan(1);
   const versionId = await selector.locator('option').evaluateAll(items => items.map(x => x.value).find(Boolean));
@@ -184,8 +184,8 @@ try {
   assert.equal(anonymousEntitlements.items.length, 1); await passed(phase);
 
   phase = 'real administrator can save a version-linked copy draft and browse existing backoffice pages';
-  await page.goto(base + '/admin/products'); await expect(page.getByRole('heading', { name: '商品管理', exact: true })).toBeVisible();
-  await page.goto(base + '/admin/assets');
+  await page.goto(base + '/admin/products'); await expect(page.getByRole('heading', { name: '商品与版本', exact: true })).toBeVisible();
+  await page.goto(base + '/admin/assets'); await page.getByRole('button', { name: '新建素材', exact: true }).click();
   await page.getByLabel('素材类别', { exact: true }).selectOption('copy');
   await page.getByLabel('商品版本', { exact: true }).selectOption(versionId);
   await page.getByLabel('变体名', { exact: true }).fill('local-auth-' + id);
@@ -195,7 +195,7 @@ try {
   await page.screenshot({ path: join(output, 'admin-copy-draft.png'), fullPage: true }); await passed(phase);
 
   phase = 'revoking administrator access immediately blocks an already open write form';
-  await page.goto(base + '/admin/orders'); await page.getByLabel('商品版本', { exact: true }).selectOption(versionId);
+  await page.goto(base + '/admin/orders'); await page.getByRole('button', { name: '人工录入', exact: true }).click(); await page.getByLabel('商品版本', { exact: true }).selectOption(versionId);
   await page.getByLabel('订单引用', { exact: true }).fill(reference + ':must-deny');
   const revokeId = role('revoke', operator);
   const denied = page.waitForResponse(r => new URL(r.url()).pathname === '/api/admin/orders' && r.request().method() === 'POST');
@@ -232,7 +232,8 @@ try {
   await page.getByRole('button', { name: '更新密码', exact: true }).click();
   await expect(page).toHaveURL(base + '/account'); operator.password = newPassword; await privateSave();
   await logout(page); await login(page, operator, oldPassword); await expect(page.getByRole('alert')).toHaveText('邮箱或密码不正确。');
-  await login(page, operator); await expect(page).toHaveURL(base + '/account'); await storageSafe(page);
+  await login(page, operator); await expect(page).toHaveURL(base + '/'); await storageSafe(page);
+  await expect(page.getByRole('navigation', { name: '快捷导航', exact: true }).getByRole('link', { name: '运营后台', exact: true })).toBeVisible();
   await readerPage.goto(base + '/auth/callback?code=used-or-invalid&sb_flow_id=missing-flow');
   await expect(readerPage.getByRole('status')).toContainText('验证链接已失效');
   assert.equal(new URL(readerPage.url()).search, ''); await passed(phase);
@@ -249,14 +250,15 @@ try {
   assert.equal(stableKeys(await readFile(join(root, '.env'), 'utf8')), keysBefore);
   assert.deepEqual((await database.query(countsSql)).rows, countsBefore);
   const secondDevice = await browser.newContext({ baseURL: base, viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' }), secondPage = await secondDevice.newPage();
-  await login(secondPage, operator); await expect(secondPage).toHaveURL(base + '/account');
+  await login(secondPage, operator); await expect(secondPage).toHaveURL(base + '/');
+  await expect(secondPage.getByRole('navigation', { name: '手机主导航', exact: true }).getByRole('link', { name: '运营后台', exact: true })).toBeVisible();
   const deviceAccount = (await context(secondDevice)).account;
   assert.equal(deviceAccount.id, operator.businessUserId); assert.equal(deviceAccount.role, 'admin');
   await secondPage.goto(base + '/admin'); await expect(secondPage.getByRole('heading', { name: '运营概览', exact: true })).toBeVisible();
   await secondPage.screenshot({ path: join(output, 'admin-mobile.png'), fullPage: true });
   await logout(secondPage); await passed(phase);
   assert.deepEqual(consoleErrors, []);
-  await login(page, operator); await expect(page).toHaveURL(base + '/account');
+  await login(page, operator); await expect(page).toHaveURL(base + '/');
   await page.goto(base + '/admin'); await expect(page.getByRole('heading', { name: '运营概览', exact: true })).toBeVisible();
   adminId = operator.businessUserId; success = true;
   await writeFile(join(output, 'result.json'), JSON.stringify({ passed: checks.length, checks, authProvider: 'Supabase Auth v2.197.0', mail: 'Mailpit v1.31.6',

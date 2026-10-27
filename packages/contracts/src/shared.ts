@@ -36,6 +36,7 @@ export const QuestionSchema = z.object({
   id: KeySchema, text: z.string().min(1).max(300), dimensionId: KeySchema,
   required: z.literal(true), options: z.array(AnswerChoiceSchema).min(2).max(10),
 }).strict();
+export type QuestionDto = z.infer<typeof QuestionSchema>;
 export const DimensionResultSchema = z.object({
   id: KeySchema, label: z.string().min(1).max(80), score: z.number().min(0).max(100).nullable(),
   applicableAnswers: z.number().int().min(0), requiredAnswers: z.number().int().min(1),

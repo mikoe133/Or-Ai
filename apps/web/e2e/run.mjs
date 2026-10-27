@@ -1,6 +1,13 @@
 import assert from "node:assert/strict";
+import { adminWorkbench } from "./admin-workbench.mjs";
+import { experienceRuntime } from "./experience-runtime.mjs";
+import { experienceAuthoring } from './experience-authoring.mjs';
+import { quietRoomPilot } from './quiet-room.mjs';
 import { contentWorkbench } from "./content-workbench.mjs";
 import { contentAdoption } from "./content-adoption.mjs";
+import {skillLibraries} from "./skills.mjs";
+import { skillBindings } from "./skill-bindings.mjs";
+import { machineConnections } from "./machine.mjs";
 import { createRequire } from "node:module";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { join, resolve } from "node:path";
@@ -194,8 +201,9 @@ try {
   phase = "operator records an order and receives a first-only secret delivery";
   await admin.goto("/admin/orders");
   await expect(
-    admin.getByRole("heading", { name: "订单管理", exact: true }),
+    admin.getByRole("heading", { name: "订单与售后", exact: true }),
   ).toBeVisible();
+  await admin.getByRole("button", { name: "人工录入", exact: true }).click();
   const versionId = demoId("demo-partner-v2"),
     reference = "demo:e2e:" + randomUUID();
   await admin.getByLabel("商品版本", { exact: true }).selectOption(versionId);
@@ -433,6 +441,8 @@ try {
   ).toHaveCount(0);
   checks.push(phase);
   phase = "operator CSV preview reports row failures without creating orders";
+  await admin.getByRole("button", { name: "返回订单列表", exact: true }).click();
+  await admin.getByRole("button", { name: "CSV 导入", exact: true }).click();
   await admin
     .getByLabel("CSV 内容", { exact: true })
     .fill(
@@ -479,6 +489,7 @@ try {
   phase =
     "operator verifies, previews and reviews actual image and video files";
   await admin.goto("/admin/assets");
+  await admin.getByRole("button", { name: "新建素材", exact: true }).click();
   for (const [kind, name] of [
     ["cover", "cover.jpg"],
     ["video", "preview.webm"],
@@ -528,11 +539,12 @@ try {
   });
   checks.push(phase);
   phase = "unsaved media cannot be reviewed or adopted as the previous asset";
+  await admin.getByRole("button", { name: "返回素材列表", exact: true }).click();
   await admin
     .getByRole("article")
     .filter({
       has: admin.getByRole("heading", {
-        name: "cover · e2e-cover",
+        name: "e2e-cover",
         exact: true,
       }),
     })
@@ -621,6 +633,12 @@ try {
   checks.push(...await contentWorkbench({ admin, fixture, productId: demoId('demo-partner'), root, output: join(root, '.local/t12-b/e2e') }));
   phase = "fixed references, adoption, impact recheck and protected cleanup";
   checks.push(...await contentAdoption({ admin, browser, fixture, base, root, output: join(root,'.local/t12-c/e2e'), directory, adminUserId:DemoIdentityScenarios.admin.id, sourceProductId:demoId('demo-partner') }));
+  phase = "four skill libraries, reference attachments and immutable versions";
+  checks.push(...await skillLibraries({admin,base,output:join(root,".local/t13-a/e2e")}));
+  phase = "five-purpose skill binding, fixed provenance and package history";
+  checks.push(...await skillBindings({ admin, fixture, base, root, output: join(root, '.local/t13-b/e2e'), sourceProductId: demoId('demo-partner') }));
+  phase = "scoped MCP credential issuance, one-time secret and revocation";
+  checks.push(...await machineConnections({ admin, fixture, base, sourceProductId: demoId('demo-partner') }));
   phase =
     "empty, long, null-score, deleted and expired reports remain truthful";
   await seededReportStates({ browser, fixture, base, demoId, output });
@@ -631,7 +649,7 @@ try {
   await admin.getByLabel("已核对订单并在原平台处理退款").check();
   await admin.getByRole("button", { name: "退款并撤权", exact: true }).click();
   await expect(
-    admin.getByText("订单状态：refunded", { exact: true }),
+    admin.getByText("已退款", { exact: true }),
   ).toBeVisible();
   await devicePage.reload();
   await expect(devicePage.getByRole("alert")).toBeVisible();
@@ -692,6 +710,14 @@ try {
     page.getByText("独立设计预览 · 数据为示例", { exact: false }),
   ).toBeVisible();
   checks.push(phase);
+  phase = "admin navigation, contained scrolling and storefront isolation";
+  checks.push(...await adminWorkbench({ admin }));
+  phase = "fixed experience release, confirmation, recovery and renderer fallback";
+  checks.push(...await experienceRuntime({ browser, operator, base, versionId, output }));
+  phase = 'experience authoring, verified MCP draft, reviewed publication and owned runtime';
+  checks.push(...await experienceAuthoring({ admin, browser, fixture, base, root, output: join(root,'.local/t15-b/e2e'), productId: demoId('demo-partner') }));
+  phase = 'quiet room pilot, matching hand notes, real SDK and deliverable sources';
+  checks.push(...await quietRoomPilot({admin,browser,fixture,base,root,output:join(root,'.local/t16-a/e2e'),productId:demoId('demo-partner')}));
   await anonymous.close();
   await recovery.close();
   await device.close();

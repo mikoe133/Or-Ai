@@ -1,0 +1,73 @@
+{
+  "id": "01a15ef9-986c-71dd-9f1d-16279b3684f8",
+  "productId": "01a15ef9-97a3-7518-b4db-17819be32cd7",
+  "scope": "demo",
+  "planRevisionId": "01a15ef9-97d5-76f6-8640-7936bf23b1bb",
+  "planModuleId": "01a15ef9-97d7-72ff-90b8-581a1f2b48ce",
+  "moduleId": "01a15ef9-97d2-72cd-97ac-c1c6caf30755",
+  "moduleDigest": "f52210df224f473a47223f139cafbcad7b267190076c63a427c754a021ebc990",
+  "creativeProfileRevisionId": "01a15ef9-97c1-778c-a2de-1f47421ed853",
+  "creativeProfileDigest": "efeb6d4630dc0625220392279e7d7bbd99ad823c432f530a8e6b96c45c3745c3",
+  "purpose": "copywriting",
+  "sourceRevision": 1,
+  "version": {
+    "id": "01a15ef9-982a-73fc-bc29-b5fdab5c0cc2",
+    "skillId": "01a15ef9-982a-73fc-bc29-b2cfd66bc385",
+    "number": 1,
+    "digest": "e3903d99053b17a17c4a4f3caa10e3b0509a38d824eccf04058b94b274034eba",
+    "manifest": {
+      "schemaVersion": 1,
+      "domain": "copy",
+      "name": "引流文案 · 候选方法",
+      "description": "供设计审核的合成项目方法",
+      "purposes": [
+        "copywriting"
+      ],
+      "styles": [
+        "克制紫",
+        "具体温和"
+      ],
+      "supportedForms": [
+        "web"
+      ],
+      "inputs": [
+        {
+          "key": "creative-profile",
+          "description": "本项目固定创作设定",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "key": "deliverable",
+          "description": "引流文案"
+        }
+      ],
+      "instructions": "先读取固定创作设定与被引用的题目。\n\n以一个具体的生活片段开头，不为用户贴标签。\n给出一句可尝试的表达，保留不同相处方式的空间。\n\n输出标题、开场与行动邀请，并标注引用的题目修订。\n\n[语气参考](references/voice-notes.md)",
+      "examples": [],
+      "references": [
+        {
+          "path": "references/voice-notes.md",
+          "fileId": "695289d4-b600-48b7-8dbd-f20d67d09e5a"
+        }
+      ]
+    },
+    "files": [
+      {
+        "path": "references/voice-notes.md",
+        "file": {
+          "id": "695289d4-b600-48b7-8dbd-f20d67d09e5a",
+          "fileName": "voice-notes.md",
+          "mimeType": "text/markdown",
+          "byteSize": 120,
+          "checksum": "1919a123fd3c38098ded35569a3e1fa6fec34900eb5b63d2b0447c99d7cca312",
+          "downloadPath": "/api/admin/skills/copy/01a15ef9-982a-73fc-bc29-b2cfd66bc385/files/695289d4-b600-48b7-8dbd-f20d67d09e5a/content"
+        }
+      }
+    ]
+  },
+  "digest": "771ebb6274fa9a469f1a784177fa04bacdbaf48d083a793077e543238c4a44a6",
+  "createdAt": "2026-10-21T14:59:38.220Z",
+  "status": "captured",
+  "activationEffect": "none"
+}

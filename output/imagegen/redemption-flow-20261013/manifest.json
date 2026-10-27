@@ -1,0 +1,73 @@
+{
+  "status": "complete",
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "id": "redeem-01",
+      "file": "redeem-01-centered-card.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1378186,
+      "sha256": "f84f08efffba0c721e06ccfffa3a1382fde99ce8375bc78b0d219cb8a78061e9"
+    },
+    {
+      "id": "redeem-02",
+      "file": "redeem-02-wide-hero.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1519938,
+      "sha256": "e7cfa34290351abd7022c2c500f83d0f7c07765814da062503140e2c03ca9b15"
+    },
+    {
+      "id": "redeem-03",
+      "file": "redeem-03-guided-steps.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1518023,
+      "sha256": "b43de24bfd5679d6b38a4a936106572a7e5bab7ccb28eacc379b130538e8a591"
+    },
+    {
+      "id": "redeem-04",
+      "file": "redeem-04-side-drawer.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1568345,
+      "sha256": "7ed7a961aebe338fa6e334f91c0f8f39cb67d9bf8bb4a8aee5d87cdd4ad07a4e"
+    },
+    {
+      "id": "success-01",
+      "file": "success-01-centered-card.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1541148,
+      "sha256": "8a944f05389c49f3ea0e7aee5933cbd9558d976e7146f4b29689f73cf9723b99"
+    },
+    {
+      "id": "success-02",
+      "file": "success-02-wide-hero.png",
+      "width": 1486,
+      "height": 1058,
+      "bytes": 1520739,
+      "sha256": "f2888ffdf1aaa232bda661b899a565212f6c21d1efd4ca5ce34366df86011e4b"
+    },
+    {
+      "id": "success-03",
+      "file": "success-03-guided-steps.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1635252,
+      "sha256": "1cb6891cc0f7be8ee03ca62fcc60386103f1d5736116e4901bcdadbd84a7ae1c"
+    },
+    {
+      "id": "success-04",
+      "file": "success-04-side-drawer.png",
+      "width": 1487,
+      "height": 1058,
+      "bytes": 1626888,
+      "sha256": "19ed33e7ed840265bbc18f8680b7cab145a98a0b9dfba085042d52bf673cb9b3"
+    }
+  ],
+  "review": "README.md",
+  "prompts": "generation-prompts.json",
+  "visualReview": "Eight final screenshots inspected; guided success screen Chinese corrected with a targeted image edit. All foreground form/success states, product summaries and primary actions present."
+}

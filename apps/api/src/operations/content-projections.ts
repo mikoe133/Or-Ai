@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { AssetAuthoringSchema, ContentRevisionSchema, CreativeProfileRevisionSchema, ProductConfigurationSchema,
   type ContentLocator } from '@orai/contracts/admin';
-import type { ContentRevision, CreativeProfileRevision, AssetFile } from '../generated/prisma/client';
+import type { ContentRevision, CreativeProfileRevision, AssetFile, ProductionRecord } from '../generated/prisma/client';
 import { ApiException } from '../common/http-errors';
 
 export const contentDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
@@ -11,6 +11,16 @@ export const profileDto = (row: CreativeProfileRevision) => CreativeProfileRevis
   id: row.id, productId: row.productId, scope: row.scope.toLowerCase(), revision: row.number,
   profile: row.profile, digest: row.digest, createdAt: row.createdAt.toISOString(), runtimeSupport: 'authoring_only',
 });
+export function productionDto(row: ProductionRecord) {
+  const { skillSetId, skillVersions, machineCredentialId, machineRequestId, ...rest } = row;
+  return {
+    ...rest,
+    scope: row.scope.toLowerCase(),
+    createdAt: row.createdAt.toISOString(),
+    ...(skillSetId ? { skillSetId, skillVersions } : {}),
+    ...(machineCredentialId && machineRequestId ? { machineCredentialId, machineRequestId } : {}),
+  };
+}
 export function snapshotAuthoring(snapshot: unknown) {
   const result = AssetAuthoringSchema.safeParse((snapshot as Record<string, unknown>)?.authoring);
   return result.success ? result.data : null;

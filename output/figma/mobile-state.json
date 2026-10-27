@@ -1,0 +1,122 @@
+{
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "fileUrl": "https://www.figma.com/design/TluUhd92v2Z2HztvQeGqxe?node-id=74-466",
+  "pageId": "74:465",
+  "pageName": "02 · 移动端设计",
+  "wrapperId": "74:466",
+  "wrapperName": "Or-Ai / Homepage / Mobile",
+  "size": {
+    "width": 384,
+    "height": 832
+  },
+  "position": {
+    "x": 200,
+    "y": 120
+  },
+  "reference": "design/phone.jpg",
+  "sourceSvg": "output/figma/mobile-homepage.svg",
+  "nativeExport": "output/figma/mobile-preview.png",
+  "editorProof": "output/figma/mobile-editor-proof.png",
+  "method": "Figma editor UI; SVG import verified to preserve editable text, vectors and discrete image fills. MCP was unavailable due to Starter quota.",
+  "reuse": {
+    "artwork": [
+      "output/figma/assets/featured-lavender.png",
+      "output/figma/assets/featured-teal.png"
+    ],
+    "icons": "Existing web design SVG paths from output/figma/helpers.js",
+    "copy": "Existing web product and scenario labels, with readable text replacing garbled sketch copy",
+    "avatar": "Discrete avatar extracted from phone.jpg, crop x=329 y=11 w=36 h=36; no complete-UI raster imported",
+    "fonts": [
+      "Noto Sans SC",
+      "Manrope"
+    ]
+  },
+  "components": {
+    "lavender": {
+      "mainId": "74:601",
+      "instanceId": "74:602",
+      "mainPosition": {
+        "x": 720,
+        "y": 120
+      }
+    },
+    "teal": {
+      "mainId": "74:619",
+      "instanceId": "74:533",
+      "mainPosition": {
+        "x": 1026,
+        "y": 120
+      }
+    }
+  },
+  "layout": {
+    "featuredCarousel": {
+      "id": "74:637",
+      "direction": "HORIZONTAL",
+      "width": 560,
+      "height": 316,
+      "gap": 12,
+      "x": 19,
+      "y": 258
+    },
+    "scenarios": {
+      "id": "74:552",
+      "direction": "HORIZONTAL",
+      "width": 473,
+      "height": 76,
+      "gap": 10,
+      "x": 19,
+      "y": 638
+    },
+    "categories": "Horizontal auto layout",
+    "overflow": "Intentional right-edge clipping as in phone.jpg"
+  },
+  "validation": {
+    "method": "Native editor properties and Figma PNG exports",
+    "sourceTextCount": 31,
+    "note": "Source count is from semantic SVG, not an independent full Plugin API node audit; MCP quota prevented the latter.",
+    "nativeTextVerified": {
+      "nodeId": "74:524",
+      "characters": "伴侣协作体检",
+      "fontFamily": "Noto Sans SC",
+      "fontStyle": "Bold",
+      "fontSize": 21
+    },
+    "brandFontVerified": {
+      "fontFamily": "Manrope",
+      "fontStyle": "Bold",
+      "fontSize": 14
+    },
+    "nativeImageVerified": {
+      "nodeId": "74:522",
+      "fillType": "IMAGE",
+      "opacity": 100,
+      "width": 274,
+      "height": 320
+    },
+    "fullUiRasterImported": false,
+    "finalExport": "/Users/mac/Downloads/Or-Ai · 主页 UI (14).zip",
+    "finalVisualPass": true,
+    "desktopChanged": false,
+    "temporaryTextImport": "Removed by Undo before mobile page creation"
+  },
+  "status": "complete",
+  "navigationCorrection": {
+    "selectedTab": "发现",
+    "inactiveTabs": [
+      "应用",
+      "报告",
+      "我的"
+    ],
+    "pillId": "78:34",
+    "pillBounds": {
+      "x": 10,
+      "y": 766,
+      "width": 96,
+      "height": 56
+    },
+    "inactiveColor": "#F2EDF4",
+    "proof": "output/figma/mobile-navigation-single-selection.png",
+    "visualVerification": "Passed in Figma editor; only Discover is highlighted"
+  }
+}

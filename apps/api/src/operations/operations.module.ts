@@ -1,3 +1,4 @@
+import {ProductionRunOperationsService} from './production-run-operations.service';
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../database/database.module';
 import { AccountCoreModule } from '../accounts/account-core.module';
@@ -21,9 +22,44 @@ import { ContentController } from './content.controller';
 import { ContentWorkflowService } from './content-workflow.service';
 import { ContentPackagesService } from './content-packages.service';
 import { FileCleanupService } from './file-cleanup.service';
+import {SkillsService} from './skills.service';
+import {SkillFilesService} from './skill-files.service';
+import {SkillsController} from './skills.controller';
+import { SkillBindingsService } from './skill-bindings.service';
+import { SkillBindingsController } from './skill-bindings.controller';
+import { MachineCredentialsService } from './machine-credentials.service';
+import { MachineCredentialsController } from './machine-credentials.controller';
+import { MachineRequestGuard } from './machine-request.guard';
+import { MachineUploadService } from './machine-upload.service';
+import { MachineController } from './machine.controller';
+import { MachineContentService } from './machine-content.service';
+import { ExperienceAuthoringService } from './experience-authoring.service';
+import { ExperienceAuthoringController } from './experience-authoring.controller';
+import { MachineExperienceService } from './machine-experience.service';
+import { ProductionPlansService } from './production-plans.service';
+import { ProductionPlansController } from './production-plans.controller';
+import { ProductionRunsService, productionRunClock } from './production-runs.service';
+import { ProductionRunsController } from './production-runs.controller';
+import { ProjectReviewService } from './project-review.service';
+import { ProjectReviewController } from './project-review.controller';
+import { ProjectOriginalFilesService } from './project-original-files.service';
+import { ProjectOriginalFilesController } from './project-original-files.controller';
+import { MachineProjectsService } from './machine-projects.service';
+import { MachineWorkspacesController } from './machine-workspaces.controller';
+import { ProjectProductionService } from './project-production.service';
+import { ProjectProductionController } from './project-production.controller';
+import { ProjectMethodOperationsService } from './project-method-operations.service';
+import { ProjectWorkspaceService } from './project-workspace.service';
+import { ProjectWorkspaceController } from './project-workspace.controller';
+import { ProjectCanvasService } from './project-canvas.service';
+import { CodexConnectionsService } from './codex-connections.service';
+import { CodexConnectionsController } from './codex-connections.controller';
+import {ExternalRunConfigurationsController} from './external-run-configurations.controller';
+import {ExternalRunConfigurationsService,externalConfigurationClock} from './external-run-configurations.service';
 
 @Module({ imports: [DatabaseModule, AccountCoreModule, CatalogModule, RedemptionModule],
-  controllers: [CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController, ContentController],
-  providers: [AdminRequestGuard, AdminMutationService, CatalogAdminService, OrdersAdminService, AssetsService, FilesService,
-    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService] })
+  controllers: [ExternalRunConfigurationsController, CodexConnectionsController, CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController, ContentController, SkillsController, SkillBindingsController, MachineCredentialsController, MachineController, ExperienceAuthoringController, ProductionPlansController, ProjectProductionController, MachineWorkspacesController, ProjectOriginalFilesController, ProjectReviewController, ProductionRunsController, ProjectWorkspaceController],
+  providers: [ProductionRunOperationsService,AdminRequestGuard, AdminMutationService, CatalogAdminService, OrdersAdminService, AssetsService, FilesService,
+    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService, SkillsService, SkillFilesService, SkillBindingsService,
+    ExternalRunConfigurationsService, externalConfigurationClock, CodexConnectionsService, MachineCredentialsService, MachineRequestGuard, MachineUploadService, MachineContentService, ExperienceAuthoringService, MachineExperienceService, ProductionPlansService, ProjectProductionService, ProjectMethodOperationsService, MachineProjectsService, ProjectOriginalFilesService, ProjectReviewService, ProductionRunsService, productionRunClock, ProjectWorkspaceService, ProjectCanvasService] })
 export class OperationsModule {}

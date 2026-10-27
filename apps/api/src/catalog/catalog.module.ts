@@ -6,8 +6,9 @@ import { CatalogAdminAccessService } from './admin-access.service';
 import { VersionsService } from './versions.service';
 import { RuntimeVersionService } from './runtime-version.service';
 import { AccountCoreModule } from '../accounts/account-core.module';
+import { AssetStorage, LocalAssetStorage } from '../operations/asset-storage';
 
 @Module({ imports: [DatabaseModule, AccountCoreModule], controllers: [CatalogController],
-  providers: [CatalogService, CatalogAdminAccessService, VersionsService, RuntimeVersionService],
+  providers: [CatalogService, CatalogAdminAccessService, VersionsService, RuntimeVersionService, { provide: AssetStorage, useClass: LocalAssetStorage }],
   exports: [CatalogService, CatalogAdminAccessService, VersionsService, RuntimeVersionService] })
 export class CatalogModule {}

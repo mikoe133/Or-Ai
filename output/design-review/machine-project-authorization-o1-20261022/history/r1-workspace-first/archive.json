@@ -1,0 +1,35 @@
+{
+  "kind": "o1_r1_history",
+  "archivedAt": "2026-10-22T17:32:39.238859+08:00",
+  "uiApproved": false,
+  "disposition": "superseded_by_simplification_direction",
+  "feedback": {
+    "forwardedByThread": "01a15d49-f07b-77f4-aefd-c07074fc9015",
+    "userAt": "2026-10-22T09:20:44Z",
+    "userQuote": "这些是什么业务，我没懂",
+    "direction": "连接我的 Codex 为主入口，技术范围与额度放高级设置",
+    "directionAcceptedAt": "2026-10-22T09:29:00Z",
+    "directionReply": "可以",
+    "scope": "仅认可简化方向；不批准旧稿或尚未交付的新 UI，不授权真实凭据"
+  },
+  "sha256": {
+    "README.md": "922a7242a8035bb0f0c23c98e755bfbc9f3a18547b7e0510d13397f9771cc51f",
+    "check.mjs": "cdfdded09cad6a8839609da1a1f2c713c40911066e0a2c47d73b927d05caddd7",
+    "desktop-connection.png": "42bc429b4899ecc2d3ad5f805d3eca0c4ce0b5e672ffc54ede3aaba0aac7369c",
+    "desktop-create.png": "18a1973cea65345d303e911ac3ab6656416610acff60bbf6da35dfad4810846e",
+    "desktop-empty.png": "e00093cac3ea731e7be131ca10f43efd38975bc4f07b314d8b11cd1d6fcca3de",
+    "desktop-handoff.png": "dedee6f295efa105c16c6d1629e91d10e2e9c137e289ebb54609e20e7b63ff41",
+    "desktop-list.png": "7b3d97f5d93c4e09efbe2e7905d350c8601bbf34882ed8881dd51973228e1e22",
+    "desktop-revoked.png": "40e4f8c8c994d05496ee9ebae1e959693b873ed8e55b59d112194af35ffaecc9",
+    "index.html": "cd1bc38c87873080da1e5b452a40f1ed2682c8b61755739bfbf8afb692ac02e5",
+    "mobile-connection.png": "eca171bdbce04b47b9b69c3d41aa8c8bbecd0d8405775bbfed38503579c17587",
+    "mobile-create-limits.png": "7cd6865319d148835300039817071abe3b8177891cd316aa97832250e953b545",
+    "mobile-create.png": "b546cdd11510bf24d86d5823836844a454e36e814007035a64a2d26b4c2a046b",
+    "mobile-empty.png": "a047f61f03f346e871cabdb94daa86a79a2b70b4ecb0d6d09c860309f5dc7878",
+    "mobile-handoff.png": "97bd0d13f22c5528dad034dfa263b5a8602240ffe452759098b90d09005394ef",
+    "mobile-list.png": "c3fe3db6a557864a80f134731714914fc545b4be23ba3abc3c53b7d97e3af4b8",
+    "mobile-revoked.png": "a70a8d5525f6b1fbd056cbb25e52db36ac1cef6691683e47f1004d207cee68cd",
+    "mobile-video-permissions.png": "440cd2e93038728a45746b73eb2d5206d79c8651e2a65e399bd1bfc03f270264",
+    "verification.json": "c7b66a44f937a38f1abe54256208191e6f0e44433e73ffcda21942bfd73f8848"
+  }
+}

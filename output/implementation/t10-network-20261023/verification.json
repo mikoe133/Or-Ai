@@ -1,0 +1,3606 @@
+{
+  "passed": true,
+  "checks": [
+    "desktop first visit uses an empty cache and CDP latency/bandwidth limits against a newly started production preview",
+    "mobile first visit independently starts with empty storage/cache and retrieves the actual product under the same network limits",
+    "an offline initial navigation fails honestly and a manual retry after reconnection loads the same published product",
+    "a save interrupted by actual browser offline mode stays unsaved in the real TEST database",
+    "reconnection obtains the required CSRF context and saves once; the server checkpoint survives a slow reload"
+  ],
+  "screens": [
+    "desktop-cold-throttled-product.png",
+    "mobile-cold-throttled-product.png",
+    "mobile-offline-first-visit-recovered.png",
+    "mobile-offline-save-unsaved.png",
+    "mobile-slow-reload-saved-checkpoint.png"
+  ],
+  "network": {
+    "offline": false,
+    "latency": 250,
+    "downloadThroughput": 131072,
+    "uploadThroughput": 65536,
+    "connectionType": "cellular3g"
+  },
+  "timings": {
+    "freshNestInstanceReadyMs": 85,
+    "productionBuildMs": 727,
+    "previewReadyMs": 8,
+    "desktopFirstProductReadyMs": 5111,
+    "mobileFirstProductReadyMs": 3864
+  },
+  "sessions": [
+    {
+      "label": "desktop-cold",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "emptyInitialStorage": true,
+      "cacheCleared": true,
+      "cacheDisabled": true,
+      "serviceWorkers": "block",
+      "throttle": {
+        "offline": false,
+        "latency": 250,
+        "downloadThroughput": 131072,
+        "uploadThroughput": 65536,
+        "connectionType": "cellular3g"
+      },
+      "requests": [
+        {
+          "id": "D0F7A55577F29DA9A32114A161D69810",
+          "path": "/products/demo-partner",
+          "method": "GET",
+          "type": "Document"
+        },
+        {
+          "id": "64871.2",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.3",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.4",
+          "path": "/assets/react-Biqg-U6H.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.5",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.6",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.7",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.8",
+          "path": "/assets/index-CsoRINY_.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64871.16",
+          "path": "/assets/catalog-UsRfkNg3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.17",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.18",
+          "path": "/assets/home-CZvRqwT9.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.19",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64871.20",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64871.21",
+          "path": "/assets/shared-DdTl9H33.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.22",
+          "path": "/assets/shared-BQlXQneY.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64871.23",
+          "path": "/assets/model-CB7yIOHO.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64871.24",
+          "path": "/assets/catalog-tPp-bDZK.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64871.25",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64871.26",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64871.27",
+          "path": "/assets/store/favicon.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64871.33",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64871.44",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.45",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.46",
+          "path": "/assets/store/icons/search.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.47",
+          "path": "/assets/store/icons/moon.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.48",
+          "path": "/assets/store/icons/plus.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.49",
+          "path": "/assets/store/icons/grid.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.50",
+          "path": "/assets/store/icons/users.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.51",
+          "path": "/assets/store/icons/partnership.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.52",
+          "path": "/assets/store/icons/headphones.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.53",
+          "path": "/assets/store/icons/chevron.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.54",
+          "path": "/assets/store/icons/bag.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.56",
+          "path": "/assets/store/icons/file.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.57",
+          "path": "/assets/store/icons/help.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.59",
+          "path": "/assets/store/icons/sparkles.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.61",
+          "path": "/assets/store/icons/home.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.62",
+          "path": "/assets/store/icons/game.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.63",
+          "path": "/assets/store/icons/report.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.64",
+          "path": "/assets/store/icons/profile.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.28",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64871.29",
+          "path": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64871.30",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64871.32",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64871.86",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64871.87",
+          "path": "/api/products/demo-partner",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64871.90",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64871.92",
+          "path": "/assets/store/icons/clock.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.31",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64871.91",
+          "path": "/demo/partner.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64871.94",
+          "path": "/api/events",
+          "method": "POST",
+          "type": "Fetch"
+        }
+      ],
+      "responses": [
+        {
+          "id": "D0F7A55577F29DA9A32114A161D69810",
+          "path": "/products/demo-partner",
+          "status": 200,
+          "type": "Document",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.3",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.8",
+          "path": "/assets/index-CsoRINY_.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.5",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.4",
+          "path": "/assets/react-Biqg-U6H.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.6",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.7",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.2",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.19",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.20",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.22",
+          "path": "/assets/shared-BQlXQneY.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.24",
+          "path": "/assets/catalog-tPp-bDZK.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.16",
+          "path": "/assets/catalog-UsRfkNg3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.17",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.21",
+          "path": "/assets/shared-DdTl9H33.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.23",
+          "path": "/assets/model-CB7yIOHO.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.25",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.26",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.27",
+          "path": "/assets/store/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.18",
+          "path": "/assets/home-CZvRqwT9.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.33",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.44",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.45",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.46",
+          "path": "/assets/store/icons/search.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.47",
+          "path": "/assets/store/icons/moon.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.48",
+          "path": "/assets/store/icons/plus.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.54",
+          "path": "/assets/store/icons/bag.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.53",
+          "path": "/assets/store/icons/chevron.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.51",
+          "path": "/assets/store/icons/partnership.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.59",
+          "path": "/assets/store/icons/sparkles.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.56",
+          "path": "/assets/store/icons/file.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.57",
+          "path": "/assets/store/icons/help.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.52",
+          "path": "/assets/store/icons/headphones.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.49",
+          "path": "/assets/store/icons/grid.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.50",
+          "path": "/assets/store/icons/users.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.86",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.87",
+          "path": "/api/products/demo-partner",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.61",
+          "path": "/assets/store/icons/home.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.62",
+          "path": "/assets/store/icons/game.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.63",
+          "path": "/assets/store/icons/report.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.90",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.92",
+          "path": "/assets/store/icons/clock.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.94",
+          "path": "/api/events",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.64",
+          "path": "/assets/store/icons/profile.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.29",
+          "path": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.28",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.30",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.32",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.91",
+          "path": "/demo/partner.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64871.31",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        }
+      ],
+      "failures": [],
+      "bytes": 735846,
+      "servedFromCache": 0,
+      "internalResources": 0,
+      "internalCacheSignals": 0
+    },
+    {
+      "label": "mobile-cold",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "emptyInitialStorage": true,
+      "cacheCleared": true,
+      "cacheDisabled": true,
+      "serviceWorkers": "block",
+      "throttle": {
+        "offline": false,
+        "latency": 250,
+        "downloadThroughput": 131072,
+        "uploadThroughput": 65536,
+        "connectionType": "cellular3g"
+      },
+      "requests": [
+        {
+          "id": "761E0E28E82DD8386AFFA87FF7416907",
+          "path": "/products/demo-partner",
+          "method": "GET",
+          "type": "Document"
+        },
+        {
+          "id": "64886.2",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.3",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.4",
+          "path": "/assets/react-Biqg-U6H.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.5",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.6",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.7",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.8",
+          "path": "/assets/index-CsoRINY_.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.16",
+          "path": "/assets/catalog-UsRfkNg3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.17",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.18",
+          "path": "/assets/home-CZvRqwT9.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.19",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.20",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.21",
+          "path": "/assets/shared-DdTl9H33.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.22",
+          "path": "/assets/shared-BQlXQneY.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.23",
+          "path": "/assets/model-CB7yIOHO.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.24",
+          "path": "/assets/catalog-tPp-bDZK.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.25",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.26",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.27",
+          "path": "/assets/store/favicon.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.33",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.44",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.45",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.46",
+          "path": "/assets/store/icons/search.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.47",
+          "path": "/assets/store/icons/moon.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.48",
+          "path": "/assets/store/icons/plus.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.49",
+          "path": "/assets/store/icons/grid.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.50",
+          "path": "/assets/store/icons/users.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.51",
+          "path": "/assets/store/icons/partnership.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.52",
+          "path": "/assets/store/icons/headphones.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.53",
+          "path": "/assets/store/icons/chevron.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.54",
+          "path": "/assets/store/icons/bag.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.56",
+          "path": "/assets/store/icons/file.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.57",
+          "path": "/assets/store/icons/help.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.59",
+          "path": "/assets/store/icons/sparkles.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.28",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.31",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.30",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.78",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.79",
+          "path": "/api/products/demo-partner",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.80",
+          "path": "/assets/store/icons/home.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.81",
+          "path": "/assets/store/icons/game.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.82",
+          "path": "/assets/store/icons/report.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.83",
+          "path": "/assets/store/icons/profile.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.86",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.88",
+          "path": "/assets/store/icons/clock.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.32",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.87",
+          "path": "/demo/partner.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.90",
+          "path": "/api/events",
+          "method": "POST",
+          "type": "Fetch"
+        },
+        {
+          "id": "06DC7361A09082763D2F9FC185A152EA",
+          "path": "/attempts/:id",
+          "method": "GET",
+          "type": "Document"
+        },
+        {
+          "id": "64886.92",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.93",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.94",
+          "path": "/assets/react-Biqg-U6H.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.95",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.96",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.97",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.98",
+          "path": "/assets/index-CsoRINY_.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.106",
+          "path": "/assets/assessment-x3CKO7EH.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.107",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.108",
+          "path": "/assets/home-CZvRqwT9.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.109",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.110",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.111",
+          "path": "/assets/shared-DdTl9H33.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.112",
+          "path": "/assets/shared-BQlXQneY.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.113",
+          "path": "/assets/report-host-XrL0pg7Z.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.114",
+          "path": "/assets/model-CB7yIOHO.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.115",
+          "path": "/assets/model-MurD8Ir5.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.116",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.117",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.118",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.119",
+          "path": "/assets/store/favicon.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.125",
+          "path": "/assets/flow/option-grid-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.128",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.137",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.138",
+          "path": "/assets/store/icons/search.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.139",
+          "path": "/assets/store/icons/moon.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.140",
+          "path": "/assets/store/icons/plus.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.141",
+          "path": "/assets/store/icons/grid.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.142",
+          "path": "/assets/store/icons/users.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.143",
+          "path": "/assets/store/icons/partnership.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.144",
+          "path": "/assets/store/icons/headphones.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.145",
+          "path": "/assets/store/icons/chevron.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.146",
+          "path": "/assets/store/icons/bag.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.148",
+          "path": "/assets/store/icons/file.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.149",
+          "path": "/assets/store/icons/help.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.120",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.123",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.122",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.168",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.169",
+          "path": "/api/attempts/:id/questions",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.170",
+          "path": "/assets/store/icons/sparkles.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.171",
+          "path": "/assets/store/icons/home.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.172",
+          "path": "/assets/store/icons/game.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.173",
+          "path": "/assets/store/icons/report.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.174",
+          "path": "/assets/store/icons/profile.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.175",
+          "path": "/assets/dom-choice-_EcDPtPZ.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.124",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.176",
+          "path": "/assets/store/favicon.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.177",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.178",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.179",
+          "path": "/api/attempts/:id/questions",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.180",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.181",
+          "path": "/api/attempts/:id/answers/question-2",
+          "method": "PUT",
+          "type": "Fetch"
+        },
+        {
+          "id": "C52B36DA3A945F42FFAC8DAAA7285A71",
+          "path": "/attempts/:id",
+          "method": "GET",
+          "type": "Document"
+        },
+        {
+          "id": "64886.183",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.184",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.185",
+          "path": "/assets/react-Biqg-U6H.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.186",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.187",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.188",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.189",
+          "path": "/assets/index-CsoRINY_.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.197",
+          "path": "/assets/assessment-x3CKO7EH.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.198",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.199",
+          "path": "/assets/home-CZvRqwT9.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.200",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.201",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.202",
+          "path": "/assets/shared-DdTl9H33.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.203",
+          "path": "/assets/shared-BQlXQneY.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64886.204",
+          "path": "/assets/report-host-XrL0pg7Z.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.205",
+          "path": "/assets/model-CB7yIOHO.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.206",
+          "path": "/assets/model-MurD8Ir5.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.207",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.208",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.209",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.210",
+          "path": "/assets/store/favicon.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.216",
+          "path": "/assets/flow/option-grid-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.219",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64886.228",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.229",
+          "path": "/assets/store/icons/search.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.230",
+          "path": "/assets/store/icons/moon.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.231",
+          "path": "/assets/store/icons/plus.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.232",
+          "path": "/assets/store/icons/grid.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.233",
+          "path": "/assets/store/icons/users.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.234",
+          "path": "/assets/store/icons/partnership.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.235",
+          "path": "/assets/store/icons/headphones.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.236",
+          "path": "/assets/store/icons/chevron.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.237",
+          "path": "/assets/store/icons/bag.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.239",
+          "path": "/assets/store/icons/file.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.240",
+          "path": "/assets/store/icons/help.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.211",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.214",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.213",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64886.259",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.260",
+          "path": "/api/attempts/:id/questions",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.261",
+          "path": "/assets/store/icons/sparkles.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.262",
+          "path": "/assets/store/icons/home.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.263",
+          "path": "/assets/store/icons/game.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.264",
+          "path": "/assets/store/icons/report.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.265",
+          "path": "/assets/store/icons/profile.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64886.266",
+          "path": "/assets/dom-choice-_EcDPtPZ.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64886.267",
+          "path": "/api/attempts/:id/feedback",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64886.215",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "method": "GET",
+          "type": "Font"
+        }
+      ],
+      "responses": [
+        {
+          "id": "761E0E28E82DD8386AFFA87FF7416907",
+          "path": "/products/demo-partner",
+          "status": 200,
+          "type": "Document",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.3",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.8",
+          "path": "/assets/index-CsoRINY_.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.5",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.4",
+          "path": "/assets/react-Biqg-U6H.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.6",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.7",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.2",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.20",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.19",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.21",
+          "path": "/assets/shared-DdTl9H33.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.16",
+          "path": "/assets/catalog-UsRfkNg3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.17",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.18",
+          "path": "/assets/home-CZvRqwT9.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.22",
+          "path": "/assets/shared-BQlXQneY.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.24",
+          "path": "/assets/catalog-tPp-bDZK.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.23",
+          "path": "/assets/model-CB7yIOHO.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.25",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.26",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.27",
+          "path": "/assets/store/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.33",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.44",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.45",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.78",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.79",
+          "path": "/api/products/demo-partner",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.46",
+          "path": "/assets/store/icons/search.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.83",
+          "path": "/assets/store/icons/profile.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.82",
+          "path": "/assets/store/icons/report.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.81",
+          "path": "/assets/store/icons/game.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.80",
+          "path": "/assets/store/icons/home.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.86",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.88",
+          "path": "/assets/store/icons/clock.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.56",
+          "path": "/assets/store/icons/file.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.90",
+          "path": "/api/events",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.47",
+          "path": "/assets/store/icons/moon.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.48",
+          "path": "/assets/store/icons/plus.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.49",
+          "path": "/assets/store/icons/grid.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.50",
+          "path": "/assets/store/icons/users.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.51",
+          "path": "/assets/store/icons/partnership.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.52",
+          "path": "/assets/store/icons/headphones.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.53",
+          "path": "/assets/store/icons/chevron.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.54",
+          "path": "/assets/store/icons/bag.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.57",
+          "path": "/assets/store/icons/help.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.28",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.31",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.30",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.59",
+          "path": "/assets/store/icons/sparkles.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.87",
+          "path": "/demo/partner.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.32",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "06DC7361A09082763D2F9FC185A152EA",
+          "path": "/attempts/:id",
+          "status": 200,
+          "type": "Document",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.93",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.98",
+          "path": "/assets/index-CsoRINY_.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.95",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.94",
+          "path": "/assets/react-Biqg-U6H.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.96",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.97",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.92",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.110",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.109",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.111",
+          "path": "/assets/shared-DdTl9H33.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.106",
+          "path": "/assets/assessment-x3CKO7EH.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.107",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.108",
+          "path": "/assets/home-CZvRqwT9.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.112",
+          "path": "/assets/shared-BQlXQneY.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.114",
+          "path": "/assets/model-CB7yIOHO.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.113",
+          "path": "/assets/report-host-XrL0pg7Z.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.117",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.115",
+          "path": "/assets/model-MurD8Ir5.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.118",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.119",
+          "path": "/assets/store/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.116",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.125",
+          "path": "/assets/flow/option-grid-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.128",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.137",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.168",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.169",
+          "path": "/api/attempts/:id/questions",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.171",
+          "path": "/assets/store/icons/home.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.174",
+          "path": "/assets/store/icons/profile.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.172",
+          "path": "/assets/store/icons/game.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.173",
+          "path": "/assets/store/icons/report.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.120",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.122",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.124",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.123",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.176",
+          "path": "/assets/store/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.175",
+          "path": "/assets/dom-choice-_EcDPtPZ.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.178",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.179",
+          "path": "/api/attempts/:id/questions",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.180",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.181",
+          "path": "/api/attempts/:id/answers/question-2",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "C52B36DA3A945F42FFAC8DAAA7285A71",
+          "path": "/attempts/:id",
+          "status": 200,
+          "type": "Document",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.184",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.189",
+          "path": "/assets/index-CsoRINY_.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.186",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.185",
+          "path": "/assets/react-Biqg-U6H.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.187",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.188",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.183",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.201",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.200",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.202",
+          "path": "/assets/shared-DdTl9H33.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.197",
+          "path": "/assets/assessment-x3CKO7EH.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.198",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.199",
+          "path": "/assets/home-CZvRqwT9.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.203",
+          "path": "/assets/shared-BQlXQneY.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.205",
+          "path": "/assets/model-CB7yIOHO.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.204",
+          "path": "/assets/report-host-XrL0pg7Z.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.208",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.206",
+          "path": "/assets/model-MurD8Ir5.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.209",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.210",
+          "path": "/assets/store/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.207",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.216",
+          "path": "/assets/flow/option-grid-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.219",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.228",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.259",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.260",
+          "path": "/api/attempts/:id/questions",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.263",
+          "path": "/assets/store/icons/game.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.265",
+          "path": "/assets/store/icons/profile.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.262",
+          "path": "/assets/store/icons/home.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.264",
+          "path": "/assets/store/icons/report.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.266",
+          "path": "/assets/dom-choice-_EcDPtPZ.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.267",
+          "path": "/api/attempts/:id/feedback",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.229",
+          "path": "/assets/store/icons/search.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.230",
+          "path": "/assets/store/icons/moon.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.231",
+          "path": "/assets/store/icons/plus.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.232",
+          "path": "/assets/store/icons/grid.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.233",
+          "path": "/assets/store/icons/users.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.234",
+          "path": "/assets/store/icons/partnership.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.235",
+          "path": "/assets/store/icons/headphones.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.236",
+          "path": "/assets/store/icons/chevron.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.237",
+          "path": "/assets/store/icons/bag.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.239",
+          "path": "/assets/store/icons/file.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.240",
+          "path": "/assets/store/icons/help.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.211",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.261",
+          "path": "/assets/store/icons/sparkles.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.214",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.213",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64886.215",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        }
+      ],
+      "failures": [
+        {
+          "id": "64886.138",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.139",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.140",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.141",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.142",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.143",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.144",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.145",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.146",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.148",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.149",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.170",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        },
+        {
+          "id": "64886.177",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        }
+      ],
+      "bytes": 1938004,
+      "servedFromCache": 0,
+      "internalResources": 0,
+      "internalCacheSignals": 0
+    },
+    {
+      "label": "offline-first-visit",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "emptyInitialStorage": true,
+      "cacheCleared": true,
+      "cacheDisabled": true,
+      "serviceWorkers": "block",
+      "throttle": {
+        "offline": false,
+        "latency": 250,
+        "downloadThroughput": 131072,
+        "uploadThroughput": 65536,
+        "connectionType": "cellular3g"
+      },
+      "requests": [
+        {
+          "id": "EA01BD20BF0C4E8DC311BE4D488B174D",
+          "path": "/products/demo-partner",
+          "method": "GET",
+          "type": "Document"
+        },
+        {
+          "id": "977098F124472A0DB51C0F039CE95E6F",
+          "path": "/products/demo-partner",
+          "method": "GET",
+          "type": "Document"
+        },
+        {
+          "id": "64891.2",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.3",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.4",
+          "path": "/assets/react-Biqg-U6H.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.5",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.6",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.7",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.8",
+          "path": "/assets/index-CsoRINY_.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64891.16",
+          "path": "/assets/catalog-UsRfkNg3.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.17",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.18",
+          "path": "/assets/home-CZvRqwT9.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.19",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64891.20",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64891.21",
+          "path": "/assets/shared-DdTl9H33.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.22",
+          "path": "/assets/shared-BQlXQneY.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64891.23",
+          "path": "/assets/model-CB7yIOHO.js",
+          "method": "GET",
+          "type": "Script"
+        },
+        {
+          "id": "64891.24",
+          "path": "/assets/catalog-tPp-bDZK.css",
+          "method": "GET",
+          "type": "Stylesheet"
+        },
+        {
+          "id": "64891.25",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64891.26",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64891.27",
+          "path": "/assets/store/favicon.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64891.33",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "method": "GET",
+          "type": "Other"
+        },
+        {
+          "id": "64891.44",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.45",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.46",
+          "path": "/assets/store/icons/search.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.47",
+          "path": "/assets/store/icons/moon.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.48",
+          "path": "/assets/store/icons/plus.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.49",
+          "path": "/assets/store/icons/grid.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.50",
+          "path": "/assets/store/icons/users.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.51",
+          "path": "/assets/store/icons/partnership.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.52",
+          "path": "/assets/store/icons/headphones.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.28",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64891.31",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64891.30",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64891.66",
+          "path": "/api/account/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64891.67",
+          "path": "/api/products/demo-partner",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64891.68",
+          "path": "/assets/store/icons/chevron.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.69",
+          "path": "/assets/store/icons/bag.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.70",
+          "path": "/assets/store/icons/file.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.71",
+          "path": "/assets/store/icons/help.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.72",
+          "path": "/assets/store/icons/sparkles.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.74",
+          "path": "/assets/store/icons/home.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.75",
+          "path": "/assets/store/icons/game.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.76",
+          "path": "/assets/store/icons/report.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.77",
+          "path": "/assets/store/icons/profile.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.80",
+          "path": "/api/session/context",
+          "method": "GET",
+          "type": "Fetch"
+        },
+        {
+          "id": "64891.82",
+          "path": "/assets/store/icons/clock.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.32",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "method": "GET",
+          "type": "Font"
+        },
+        {
+          "id": "64891.81",
+          "path": "/demo/partner.svg",
+          "method": "GET",
+          "type": "Image"
+        },
+        {
+          "id": "64891.84",
+          "path": "/api/events",
+          "method": "POST",
+          "type": "Fetch"
+        }
+      ],
+      "responses": [
+        {
+          "id": "977098F124472A0DB51C0F039CE95E6F",
+          "path": "/products/demo-partner",
+          "status": 200,
+          "type": "Document",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.3",
+          "path": "/assets/jsx-runtime-BkSabwWG.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.8",
+          "path": "/assets/index-CsoRINY_.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.5",
+          "path": "/assets/tslib.es6-CwtSMShq.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.4",
+          "path": "/assets/react-Biqg-U6H.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.6",
+          "path": "/assets/experience-DfQHiaGT.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.7",
+          "path": "/assets/privacy-BV3FWEQ3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.2",
+          "path": "/assets/index-Dfnsoz-n.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.20",
+          "path": "/assets/flow-shell-DmO_DUur.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.19",
+          "path": "/assets/home-ZFzT8y5Y.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.21",
+          "path": "/assets/shared-DdTl9H33.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.16",
+          "path": "/assets/catalog-UsRfkNg3.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.17",
+          "path": "/assets/flow-shell-Up0ikydu.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.22",
+          "path": "/assets/shared-BQlXQneY.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.18",
+          "path": "/assets/home-CZvRqwT9.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.24",
+          "path": "/assets/catalog-tPp-bDZK.css",
+          "status": 200,
+          "type": "Stylesheet",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.23",
+          "path": "/assets/model-CB7yIOHO.js",
+          "status": 200,
+          "type": "Script",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.25",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.26",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.27",
+          "path": "/assets/store/favicon.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.33",
+          "path": "/assets/redemption/guided-redemption-atmosphere.svg",
+          "status": 200,
+          "type": "Other",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.44",
+          "path": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.45",
+          "path": "/assets/store/mobile-account-mark.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.66",
+          "path": "/api/account/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.67",
+          "path": "/api/products/demo-partner",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.46",
+          "path": "/assets/store/icons/search.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.76",
+          "path": "/assets/store/icons/report.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.75",
+          "path": "/assets/store/icons/game.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.77",
+          "path": "/assets/store/icons/profile.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.74",
+          "path": "/assets/store/icons/home.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.80",
+          "path": "/api/session/context",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.82",
+          "path": "/assets/store/icons/clock.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.70",
+          "path": "/assets/store/icons/file.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.84",
+          "path": "/api/events",
+          "status": 200,
+          "type": "Fetch",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.47",
+          "path": "/assets/store/icons/moon.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.48",
+          "path": "/assets/store/icons/plus.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.49",
+          "path": "/assets/store/icons/grid.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.50",
+          "path": "/assets/store/icons/users.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.51",
+          "path": "/assets/store/icons/partnership.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.52",
+          "path": "/assets/store/icons/headphones.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.68",
+          "path": "/assets/store/icons/chevron.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.69",
+          "path": "/assets/store/icons/bag.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.71",
+          "path": "/assets/store/icons/help.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.28",
+          "path": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.31",
+          "path": "/assets/store/fonts/Manrope-Bold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.30",
+          "path": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.72",
+          "path": "/assets/store/icons/sparkles.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.81",
+          "path": "/demo/partner.svg",
+          "status": 200,
+          "type": "Image",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        },
+        {
+          "id": "64891.32",
+          "path": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "status": 200,
+          "type": "Font",
+          "fromDiskCache": false,
+          "fromServiceWorker": false
+        }
+      ],
+      "failures": [
+        {
+          "id": "EA01BD20BF0C4E8DC311BE4D488B174D",
+          "error": "net::ERR_INTERNET_DISCONNECTED"
+        }
+      ],
+      "bytes": 826277,
+      "servedFromCache": 0,
+      "internalResources": 3,
+      "internalCacheSignals": 3
+    }
+  ],
+  "pageErrors": [],
+  "externalRequests": [],
+  "browserVersion": "155.0.8059.85",
+  "uiAcceptance": "autonomous verification",
+  "userApprovedScreens": false,
+  "actualWrites": "isolated TEST Nest API; offline CSRF prerequisite failure sends no PUT, reconnection sends one save",
+  "referenceReads": "APIRequestContext reads bypass browser throttling and only check real server state",
+  "coldScope": "new browser contexts, empty/disabled HTTP cache, blocked service workers, new test process and Nest instance, newly started prebuilt Vite preview",
+  "notValidated": [
+    "public internet",
+    "cloud/container/VM cold start",
+    "cold database or operating-system disk cache",
+    "physical phone",
+    "embedded browser",
+    "real Auth"
+  ],
+  "cloudCalls": 0,
+  "modelCalls": 0
+}

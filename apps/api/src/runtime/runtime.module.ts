@@ -12,8 +12,11 @@ import { AttemptsController, ReportsController } from './runtime.controller';
 import { AccountCoreModule } from '../accounts/account-core.module';
 import { AccountsModule } from '../accounts/accounts.module';
 import { ConsumerAccessService } from './consumer-access.service';
+import { AssetStorage, LocalAssetStorage } from '../operations/asset-storage';
+import { ExperienceResourcesService } from './experience-resources.service';
 
 @Module({ imports: [DatabaseModule, CatalogModule, RedemptionModule, AccountCoreModule, AccountsModule], controllers: [AttemptsController, ReportsController],
-  providers: [ConsumerAccessService, OwnedRuntimeService, StatContributionsService, FeedbackService, AttemptsService, ReportsService, RetentionService],
+  providers: [ConsumerAccessService, OwnedRuntimeService, StatContributionsService, FeedbackService, AttemptsService, ReportsService, RetentionService,
+    ExperienceResourcesService, { provide: AssetStorage, useClass: LocalAssetStorage }],
   exports: [AttemptsService, FeedbackService, ReportsService, RetentionService] })
 export class RuntimeModule {}

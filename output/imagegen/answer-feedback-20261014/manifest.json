@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-14",
+  "mode": "built-in image_gen",
+  "referenceImages": [
+    "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/figma/homepage-adopted-preview.png",
+    "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/figma/assets/featured-lavender.png"
+  ],
+  "question": "当家里有事情需要处理时，你们通常会怎么分工？",
+  "selectedOption": "B",
+  "layouts": [
+    {
+      "id": "01",
+      "name": "居中题卡",
+      "answer": {
+        "id": "01",
+        "name": "居中题卡",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/answer-01-centered-card.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-36c13856-8d72-4b10-b7b8-81d053734c82.png"
+      },
+      "feedback": {
+        "id": "01",
+        "name": "居中题卡",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/feedback-01-centered-card.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-8d82ebfd-c074-43dc-aa44-2d00ffffa11a.png"
+      }
+    },
+    {
+      "id": "02",
+      "name": "横幅主视觉",
+      "answer": {
+        "id": "02",
+        "name": "横幅主视觉",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/answer-02-wide-hero.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-a9ed353b-d628-4e2a-9943-6e761d108b03.png"
+      },
+      "feedback": {
+        "id": "02",
+        "name": "横幅主视觉",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/feedback-02-wide-hero.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-f2c24033-4512-497a-9d42-91840a0d3882.png"
+      }
+    },
+    {
+      "id": "03",
+      "name": "题号导航",
+      "answer": {
+        "id": "03",
+        "name": "题号导航",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/answer-03-question-map.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-be1896c5-fa71-45ef-8a5c-570d487701c5.png"
+      },
+      "feedback": {
+        "id": "03",
+        "name": "题号导航",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/feedback-03-question-map.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-4081b50c-6be1-4cd6-8305-4685ed143fcd.png"
+      }
+    },
+    {
+      "id": "04",
+      "name": "选项网格",
+      "answer": {
+        "id": "04",
+        "name": "选项网格",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/answer-04-option-grid.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-777622c0-5213-48b7-ac83-18c9dac31f09.png"
+      },
+      "feedback": {
+        "id": "04",
+        "name": "选项网格",
+        "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/imagegen/answer-feedback-20261014/feedback-04-option-grid.png",
+        "source": "/Users/mac/.codex/generated_images/01a13631-fe63-7b83-bb93-1b4de381c5e7/exec-7bb56c0b-caf7-443d-b80c-057cef9dd600.png"
+      }
+    }
+  ],
+  "count": 8
+}

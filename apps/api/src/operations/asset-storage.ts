@@ -7,12 +7,25 @@ import { APP_CONFIG, type AppConfiguration } from '../config/configuration';
 import { ApiException } from '../common/http-errors';
 import { imageSize } from 'image-size';
 import { Input, CustomSource, MP4, WEBM } from 'mediabunny';
+import { referenceContent } from './reference-content';
+import { inspectOriginal } from './original-content';
 
 export interface InspectedFile { byteSize: number; checksum: string; mimeType: string }
 export interface VerifiedMedia extends InspectedFile { width: number; height: number; durationMs: number | null }
 export abstract class AssetStorage {
   abstract receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile): Promise<void>;
   abstract inspect(key: string, maxBytes: number): Promise<VerifiedMedia>;
+  async receiveOriginal(_key: string, _source: AsyncIterable<Uint8Array>, _expected: InspectedFile): Promise<void> {
+    throw new ApiException('SERVICE_UNAVAILABLE', '原件存储尚未配置', 503);
+  }
+  async inspectOriginal(key: string, maxBytes: number, mimeType: string): Promise<InspectedFile> {
+    const file = await this.read(key); try { return await inspectOriginal(file,maxBytes,mimeType); } finally { await file.close(); }
+  }
+  async inspectReference(key:string,maxBytes:number,mimeType:string):Promise<InspectedFile> {
+    if(mimeType.startsWith('image/')) return this.inspect(key,maxBytes);
+    const file=await this.read(key),inspection=new Inspection(mimeType);
+    try {for await(const chunk of file.createReadStream({autoClose:false}))inspection.add(chunk as Buffer,maxBytes);return inspection.result();}finally{await file.close();}
+  }
   abstract read(key: string): Promise<FileHandle>;
   abstract remove(key: string): Promise<void>;
 }
@@ -34,16 +47,19 @@ export function mediaType(header: Buffer, tail: Buffer, size: number): string | 
 
 class Inspection {
   bytes = 0; header = Buffer.alloc(0); tail = Buffer.alloc(0); readonly hash = createHash('sha256');
+  readonly referenceChunks:Buffer[]|undefined;
+  constructor(private readonly referenceMime?:string){if(referenceMime && !/^(image|video)\//.test(referenceMime))this.referenceChunks=[];}
   add(chunk: Uint8Array, max: number) {
     this.bytes += chunk.byteLength;
     if (this.bytes > max) throw new ApiException('VALIDATION_ERROR', '实际文件大小超出上传限制', 400);
     const bytes = Buffer.from(chunk);
+    if(this.referenceChunks){if(this.bytes>5*1024*1024)throw new ApiException('VALIDATION_ERROR','参考文件超出大小限制',400);this.referenceChunks.push(bytes);}
     if (this.header.length < 4096) this.header = Buffer.concat([this.header, bytes.subarray(0,4096 - this.header.length)]);
     this.tail = Buffer.concat([this.tail, bytes.subarray(-4096)]).subarray(-4096);
     this.hash.update(bytes);
   }
   result(): InspectedFile {
-    const mimeType = mediaType(this.header, this.tail, this.bytes);
+    const mimeType = this.referenceChunks ? referenceContent(Buffer.concat(this.referenceChunks),this.referenceMime!) : mediaType(this.header, this.tail, this.bytes);
     if (!mimeType) throw new ApiException('VALIDATION_ERROR', '文件内容不是支持的图片或视频格式', 400);
     return { byteSize: this.bytes, mimeType, checksum: this.hash.digest('hex') };
   }
@@ -61,14 +77,19 @@ export class LocalAssetStorage extends AssetStorage {
     if (!stat.isDirectory() || stat.isSymbolicLink()) throw new ApiException('SERVICE_UNAVAILABLE', '文件存储目录不可用', 503);
     return join(await realpath(settings.directory), key);
   }
-  async receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile) {
+  async receiveOriginal(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile) {
+    return this.receive(key,source,expected,true);
+  }
+  async receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile, original = false) {
     const path = await this.location(key);
     let file: FileHandle | undefined;
     try {
       file = await open(path, constants.O_CREAT | constants.O_EXCL | constants.O_WRONLY | constants.O_NOFOLLOW, 0o600);
-      const inspection = new Inspection();
+      const inspection = new Inspection(expected.mimeType);
+      const rawHash = createHash('sha256'); let rawBytes = 0;
       for await (const chunk of source) {
-        inspection.add(chunk, expected.byteSize);
+        if (original) { rawBytes += chunk.byteLength; if(rawBytes>expected.byteSize)throw new ApiException('VALIDATION_ERROR','原件超过声明大小',400); rawHash.update(chunk); }
+        else inspection.add(chunk, expected.byteSize);
         let offset = 0;
         while (offset < chunk.byteLength) {
           const result = await file.write(chunk, offset, chunk.byteLength - offset);
@@ -76,7 +97,7 @@ export class LocalAssetStorage extends AssetStorage {
           offset += result.bytesWritten;
         }
       }
-      const actual = inspection.result();
+      const actual = original ? {byteSize:rawBytes,checksum:rawHash.digest('hex'),mimeType:expected.mimeType} : inspection.result();
       if (actual.byteSize !== expected.byteSize || actual.mimeType !== expected.mimeType || actual.checksum !== expected.checksum) throw new ApiException('VALIDATION_ERROR', '文件大小、类型或摘要与上传声明不一致', 400);
       await file.sync();
     } catch (error) {

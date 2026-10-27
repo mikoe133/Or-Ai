@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><link rel="icon" href="data:,"><title>商品项目 · B 精密工具紫 · G1 设计审阅</title><link rel="stylesheet" href="canvas/bundle/g1-canvas.css"><link rel="stylesheet" href="design.css"></head>
+<body>
+<div class="review-strip"><span><b>G1</b> 项目工作台设计 <i>·</i> B 精密工具紫</span><label>查看状态 <select id="scene"><option value="work">制作中 · 实际 P1/P2 合成记录</option><option value="empty">空项目</option><option value="failures">部分失败 / 等待输入</option><option value="upload">上传 / 校验中</option><option value="review">待审核</option><option value="returned">退回修改</option><option value="retained">已留存 / 未上架</option><option value="published">已留存 / 已发布</option></select></label><span class="preview-label">交互设计预览 · 不写入后台</span></div>
+<div class="app">
+  <aside class="global-nav" aria-label="运营后台导航">
+    <div class="brand"><span class="brand-mark">m</span><div>MeetMyWorld<small>运营后台</small></div></div>
+    <p class="nav-label">工作空间</p>
+    <nav><span>◫ <span>概览与审计</span></span><span>▣ <span>商品与版本</span></span><span class="active">▤ <span>内容工作台</span></span><span>▧ <span>素材与文件</span></span><span>⌘ <span>Skill 库</span></span><span>♧ <span>MCP 连接</span></span><span>≡ <span>订单与售后</span></span></nav>
+    <div class="nav-bottom"><span class="avatar">M</span><div>本地管理员<small>本地工作空间</small></div></div>
+  </aside>
+  <div class="topbar"><span>内容工作台 <i>/</i> 商品项目 <i>/</i> <b id="breadcrumb">相处节奏观察</b></span><span class="top-right"><i class="status-dot"></i> 本地 <span class="keycap">DEMO</span></span></div>
+  <div class="body">
+    <aside class="project-tree" aria-label="项目目录"><div class="tree-heading"><span>项目目录</span><button id="close-tree" aria-label="关闭目录">×</button></div><button class="project-root" data-select="plan"><span>▾ ▱</span> 相处节奏观察</button><div class="tree-version">计划 v1 <span>固定修订</span></div>
+      <div class="tree-group"><button data-select="plan">▤　规划与依据 <small>1</small></button><button data-select="profile">◇　共同创作设定 <small>v1</small></button></div>
+      <p class="tree-label">交付模块 <span>5</span></p><div id="module-tree"></div>
+      <div class="tree-group tail"><button data-view="files">▧　平台原件 <small>2</small></button><button data-select="review">◷　审核与留存 <small>0</small></button></div>
+      <div class="tree-foot">一商品，一份项目。<br>此处查看固定版本与关系。</div>
+    </aside>
+    <main class="workspace" id="workspace">
+      <header class="project-header"><div><p class="eyebrow">商品项目 <span id="short-id"></span></p><h1 id="project-title">相处节奏观察 <span class="tag" id="project-status">私有草稿</span></h1><p class="project-subtitle">被看见，也理解对方 <span>·</span> 以同一份创作设定制作整套内容</p></div><button class="subtle-button mobile-tree" id="open-tree">项目目录</button></header>
+      <div class="project-meta"><button data-select="plan">计划 v1 <span>⌄</span></button><span>创作设定 v1</span><span id="module-progress">3 / 4 必需模块已保存原件</span><span class="private-note">仅管理员可见</span></div>
+      <div class="workspace-toolbar"><div class="segmented" role="group" aria-label="项目视图"><button data-view="canvas" aria-pressed="true">关系画布</button><button data-view="directory" aria-pressed="false">目录列表</button><button data-view="files" aria-pressed="false">文件</button></div><div class="toolbar-right"><label class="search"><span>⌕</span><input id="search" placeholder="查找模块、方法或产物" aria-label="查找模块、方法或产物"></label><button class="subtle-button" id="focus-selection">聚焦选中</button></div></div>
+      <div class="graph-commandbar"><div><button class="flow-add-button" data-flow-add>＋ 添加节点</button><button data-flow-connect>连接模块</button></div><span data-flow-revision>演示草稿 r0 · 刷新还原</span><div class="graph-secondary-actions"><button data-flow-export>导出草稿</button><button data-flow-reset>恢复示例</button></div></div>
+      <div id="project-alert"></div><div class="content-scroll" id="content-scroll"><div id="workspace-content"></div></div>
+      <footer class="workspace-footer"><span id="footer-state">原件、方法与审核状态分别记录</span><button id="review-project" class="primary" disabled>提交审核</button></footer>
+    </main>
+    <aside class="inspector" id="inspector" aria-label="选中内容详情"><div id="inspector-content"></div></aside>
+  </div>
+</div>
+<div id="toast" role="status" hidden></div>
+<dialog id="review-dialog"><form method="dialog"><div class="dialog-eyebrow">项目审核</div><h2>确认留存本次成果</h2><p>将固定本次选择的计划、方法、原件与内容修订。商品公开状态在发布页单独管理。</p><div class="dialog-detail">计划 v1 · 合成状态示例<br><span>当前为设计预览，不会产生审核记录。</span></div><label><input type="checkbox" id="confirm-review"> 我已核对本次选中的内容、方法和原件</label><div class="dialog-actions"><button value="cancel">返回检查</button><button value="confirm" class="primary" id="confirm-retain" disabled>确认留存</button></div></form></dialog>
+<script src="fixture.js"></script><script src="canvas/bundle/g1-canvas.js"></script><script src="design.js"></script>
+</body></html>

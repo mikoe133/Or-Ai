@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-26",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 2636,
+      "sha256": "35290ea7fd55c73c17124921a6e0e0b4f86d9d49544540420ecf0aed39e420a7"
+    },
+    {
+      "file": "checks.json",
+      "bytes": 652,
+      "sha256": "d5c567180ca986c536d65b91f140748916186a8b54f537a52dcb5356033c374c"
+    },
+    {
+      "file": "document-manifest.json",
+      "bytes": 10422,
+      "sha256": "ae8bf0d7e6c1bbc5e0a13ba0602666155d31e61e81edbbdadcfcfba3b53713f4"
+    }
+  ]
+}

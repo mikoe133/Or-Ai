@@ -1,5 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { accountApi } from '../auth/browser.js';
+import { privacyEpoch, subscribePrivacy } from '../api/privacy.js';
 import { Link, useNavigate } from './preview-router';
 import { GlassFrame } from './glass-frame';
 import { Icon, type IconName } from './icons';
@@ -19,13 +22,24 @@ const help = {
   disclaimer: ['免责声明', '趣味自测仅供娱乐与自我观察，不作为诊断或专业建议。示例报告中的分数与解读仅用于展示报告的阅读方式。'],
 } as const;
 
-export type FlowSection = 'store' | 'apps' | 'reports' | 'admin' | 'developer' | 'together' | 'collaboration' | 'help';
+export type FlowSection = 'store' | 'apps' | 'reports' | 'account' | 'admin' | 'developer' | 'together' | 'collaboration' | 'help';
 
 export function FlowShell({ children, section = 'store', greeting = false, long = false, variant = 'default', live = false }: {
   children: ReactNode; section?: FlowSection; greeting?: boolean | 'compact'; long?: boolean; variant?: 'default' | 'assessment' | 'catalog' | 'workspace'; live?: boolean;
 }) {
   const appsPath=live?'/apps':'/assessment/partner',reportsPath=live?'/reports':'/reports/partner';
   const workspace = variant === 'catalog' || variant === 'workspace';
+  // Public storefront routes stay mounted when another tab changes identity.
+  useSyncExternalStore(subscribePrivacy, privacyEpoch);
+  const account = useQuery({
+    queryKey: ['account-context'],
+    queryFn: () => accountApi.context(),
+    enabled: live,
+    retry: false,
+    refetchOnWindowFocus: true,
+  });
+  const signedIn = live && account.isSuccess && !!account.data.account;
+  const administrator = signedIn && account.data?.account?.role === 'admin' && account.data.account.emailVerified;
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
   const [ambient, setAmbient] = useState(true);
@@ -80,10 +94,10 @@ export function FlowShell({ children, section = 'store', greeting = false, long 
       <div className="store-header-actions">
         <button type="button" className="store-appearance" aria-label="切换氛围光" title="切换氛围光" aria-pressed={ambient} onClick={() => setAmbient(value => !value)}><Icon name="moon" /></button>
         <Link className="store-button store-button-secondary" to="/account">我的空间</Link>
-        <Link className="store-button store-button-primary" to="/auth/login">登录 / 注册</Link>
+        <Link className="store-button store-button-primary" to={signedIn ? '/account' : '/auth/login'}>{signedIn ? '我的账户' : '登录 / 注册'}</Link>
         <Link className="store-header-plus" to="/redeem" aria-label="输入兑换码"><Icon name="plus" size={24} /></Link>
       </div>
-      <Link className="flow-mobile-account" to="/auth/login">登录 / 注册</Link>
+      <Link className="flow-mobile-account" to={signedIn ? '/account' : '/auth/login'}>{signedIn ? '我的账户' : '登录 / 注册'}</Link>
     </header>
     {greeting && <StoreGreeting compact={greeting === 'compact'} headingLevel={variant === 'catalog' ? 'h1' : 'h2'} />}
     <div className="store-workspace">
@@ -93,7 +107,7 @@ export function FlowShell({ children, section = 'store', greeting = false, long 
           {railLink('users', '共同探索／双人报告', '/together', section === 'together', true)}
           {railLink('partnership', '品牌、IP 联名或定制', '/collaborations', section === 'collaboration', true)}
         </> : <>{railLink('heart', '我的收藏', '/?view=favorites')}{railLink('file', '我的报告', reportsPath, section === 'reports')}</>}
-        {section === 'admin' && railLink('briefcase', '运营后台', '/admin', true)}
+        {administrator && railLink('briefcase', '运营后台', '/admin', section === 'admin', true)}
         <span className="store-rail-spacer" /><button type="button" className="store-rail-button" aria-label="联系我们" onClick={event => openHelp('contact', event.currentTarget)}><Icon name="headphones" /></button>
       </nav>
       <div className="store-panel">
@@ -120,7 +134,7 @@ export function FlowShell({ children, section = 'store', greeting = false, long 
       </nav>
     </div>
     <footer className="store-footer"><span>meetmyworld © 2026</span><span className="store-footer-promise">每一个小问题，都藏着一点新的自己。</span>{(workspace || section !== 'reports') && <small>{live?'仅供娱乐与自我观察':'设计预览 · 示例内容'}</small>}<nav aria-label="帮助导航">{live ? <Link to="/help">使用帮助</Link> : <button type="button" onClick={event => openHelp('guide', event.currentTarget)}>使用帮助</button>}<span>/</span><button type="button" onClick={event => openHelp(section === 'reports' && !workspace ? 'disclaimer' : 'code', event.currentTarget)}>{section === 'reports' && !workspace ? '免责声明' : '兑换说明'}</button><span>/</span><button type="button" onClick={event => openHelp('contact', event.currentTarget)}>联系我们</button></nav></footer>
-    <nav className="store-mobile-nav" aria-label="手机主导航"><Link to="/" className={section === 'store' ? 'is-current' : ''} aria-current={section === 'store' ? 'page' : undefined}><Icon name="home" size={22} /><span>发现</span></Link><Link to={appsPath} className={section === 'apps' ? 'is-current' : ''} aria-current={section === 'apps' ? 'page' : undefined}><Icon name="game" size={22} /><span>应用</span></Link><Link to={reportsPath} className={section === 'reports' ? 'is-current' : ''} aria-current={section === 'reports' ? 'page' : undefined}><Icon name="report" size={22} /><span>报告</span></Link><Link to="/account"><Icon name="profile" size={22} /><span>我的</span></Link>{section === 'admin' && <Link to="/admin" className="is-current" aria-current="page"><Icon name="briefcase" size={22} /><span>后台</span></Link>}</nav>
+    <nav className={`store-mobile-nav${administrator ? ' has-admin-access' : ''}`} aria-label="手机主导航"><Link to="/" className={section === 'store' ? 'is-current' : ''} aria-current={section === 'store' ? 'page' : undefined}><Icon name="home" size={22} /><span>发现</span></Link><Link to={appsPath} className={section === 'apps' ? 'is-current' : ''} aria-current={section === 'apps' ? 'page' : undefined}><Icon name="game" size={22} /><span>应用</span></Link><Link to={reportsPath} className={section === 'reports' ? 'is-current' : ''} aria-current={section === 'reports' ? 'page' : undefined}><Icon name="report" size={22} /><span>报告</span></Link><Link to="/account" className={section === 'account' ? 'is-current' : ''} aria-current={section === 'account' ? 'page' : undefined}><Icon name="profile" size={22} /><span>我的</span></Link>{administrator && <Link to="/admin" aria-label="运营后台"><Icon name="briefcase" size={22} /><span>后台</span></Link>}</nav>
     <Dialog.Root open={helpTopic !== null} onOpenChange={open => { if (!open) setHelpTopic(null); }}><Dialog.Portal><Dialog.Overlay className="store-dialog-overlay" /><Dialog.Content className="store-dialog" onCloseAutoFocus={event => { event.preventDefault(); helpTrigger.current?.focus({ preventScroll: true }); }}><Dialog.Close className="store-dialog-close" aria-label="关闭帮助">×</Dialog.Close><div className="store-dialog-body"><span className="store-preview-label">meetmyworld</span><Dialog.Title>{help[helpTopic ?? lastHelpTopic.current][0]}</Dialog.Title><Dialog.Description>{help[helpTopic ?? lastHelpTopic.current][1]}</Dialog.Description><Dialog.Close className="store-button store-button-primary">知道了</Dialog.Close></div></Dialog.Content></Dialog.Portal></Dialog.Root>
   </div>;
 }

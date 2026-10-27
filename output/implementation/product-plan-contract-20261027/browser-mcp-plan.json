@@ -1,0 +1,560 @@
+{
+  "plan": {
+    "id": "01a17cc0-9f11-76fe-8603-1fdd7b5a3ea3",
+    "productId": "01a17cbc-7d51-707a-b919-0ee071bd32b0",
+    "scope": "demo",
+    "revision": 2,
+    "creativeProfileRevisionId": "bf125b62-a728-418c-a51a-5e40c33a966e",
+    "creativeProfileDigest": "391b17d80e5b873fe3413a6a58c8d86f6e8a127b77fa61af96c7570896c541ad",
+    "plan": {
+      "schemaVersion": 2,
+      "title": "规划合同合成验收制作计划",
+      "selection": {
+        "basis": "manual",
+        "rationale": "仅验证平台业务，不制作或评价商品内容。",
+        "evidenceKeys": []
+      },
+      "freshnessWindowHours": 24,
+      "evidence": [],
+      "modules": [
+        {
+          "moduleKey": "assessment",
+          "title": "题目与报告",
+          "domain": "assessment",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "assessment_design",
+            "report_writing"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "assessment",
+              "original": {
+                "storage": "platform",
+                "representation": "structured"
+              },
+              "files": []
+            }
+          ]
+        },
+        {
+          "moduleKey": "copy",
+          "title": "引流文案",
+          "domain": "copy",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "copywriting"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "copy",
+              "label": "交付原件",
+              "required": true,
+              "kind": "copy",
+              "original": {
+                "storage": "platform",
+                "representation": "structured"
+              },
+              "files": []
+            }
+          ]
+        },
+        {
+          "moduleKey": "cover",
+          "title": "宣传封面",
+          "domain": "cover",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "cover_design"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "image",
+              "original": {
+                "storage": "platform",
+                "representation": "file"
+              },
+              "files": [
+                {
+                  "fileKey": "source",
+                  "purpose": "original",
+                  "label": "原件",
+                  "required": true,
+                  "mimeTypes": [
+                    "image/png"
+                  ],
+                  "sourceUrl": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "moduleKey": "experience",
+          "title": "网页体验",
+          "domain": "experience",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [
+            "assessment",
+            "cover"
+          ],
+          "target": {
+            "form": "3d",
+            "runtime": {
+              "renderer": {
+                "key": "reflection-garden",
+                "version": 1
+              },
+              "reportRenderer": {
+                "key": "garden-notes",
+                "version": 1
+              },
+              "inputSchema": "single_choice_v1",
+              "engine": "dimensions_v1",
+              "reportSchema": "report_content_v1"
+            }
+          },
+          "methodPurposes": [
+            "scene_design",
+            "report_presentation"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "web_bundle",
+              "original": {
+                "storage": "platform",
+                "representation": "file"
+              },
+              "files": [
+                {
+                  "fileKey": "source",
+                  "purpose": "original",
+                  "label": "原件",
+                  "required": true,
+                  "mimeTypes": [
+                    "text/html"
+                  ],
+                  "sourceUrl": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "moduleKey": "video",
+          "title": "宣传视频",
+          "domain": "video",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [
+            "copy"
+          ],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "video_production"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "video",
+              "original": {
+                "storage": "platform",
+                "representation": "file"
+              },
+              "files": [
+                {
+                  "fileKey": "source",
+                  "purpose": "original",
+                  "label": "原件",
+                  "required": true,
+                  "mimeTypes": [
+                    "video/webm"
+                  ],
+                  "sourceUrl": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "retention": "platform_originals_and_exact_methods",
+      "productPlan": {
+        "schemaVersion": 1,
+        "implementation": "threejs",
+        "basedOnPlanRevisionId": "74617242-c095-4076-8dd0-3f6a33289dbc",
+        "visualDimension": "undecided",
+        "experienceModuleKey": "experience",
+        "assessmentModuleKey": null,
+        "decisions": {
+          "scene": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "animation": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "camera": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "interaction": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "feedback": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "confirmation": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "recovery": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "report": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "accessibility": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "fallback": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          },
+          "resources": {
+            "requirement": "undecided",
+            "status": "unplanned",
+            "details": "",
+            "evidence": []
+          }
+        },
+        "budgets": {
+          "devices": [],
+          "maxRendererGzipBytes": null,
+          "maxTotalResourceBytes": null,
+          "maxFirstFrameMs": null,
+          "maxPixelRatio": null,
+          "maxCanvasPixels": null,
+          "maxTriangles": null,
+          "maxDrawCalls": null,
+          "minFps": null
+        },
+        "sources": []
+      },
+      "creativeProfileRevisionId": "bf125b62-a728-418c-a51a-5e40c33a966e"
+    },
+    "digest": "a77656c44a47a6e7223441e90c4635d3eb859af45faab496363912202286faba",
+    "status": "planning_only",
+    "createdAt": "2026-10-27T09:46:00.849Z",
+    "modules": [
+      {
+        "id": "01a17cc0-9f13-76d8-afb9-a99a28c2f19c",
+        "moduleId": "01a17cbc-7d69-7339-83f4-f579e45b35e3",
+        "moduleKey": "assessment",
+        "dependencyIds": [],
+        "digest": "60e549ed75f549e8b83494c69ae4f587f8ad1ffbbd5db18b78d5a140520d9d83",
+        "definition": {
+          "moduleKey": "assessment",
+          "title": "题目与报告",
+          "domain": "assessment",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "assessment_design",
+            "report_writing"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "assessment",
+              "original": {
+                "storage": "platform",
+                "representation": "structured"
+              },
+              "files": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "01a17cc0-9f13-76d8-afb9-ae0def91b775",
+        "moduleId": "01a17cbc-7d6a-70af-9a9a-a60cea5d47a2",
+        "moduleKey": "copy",
+        "dependencyIds": [],
+        "digest": "0ee4d77112e9dfe1c498beb0ab1431c710da4d924d9b738373140893b4194f96",
+        "definition": {
+          "moduleKey": "copy",
+          "title": "引流文案",
+          "domain": "copy",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "copywriting"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "copy",
+              "label": "交付原件",
+              "required": true,
+              "kind": "copy",
+              "original": {
+                "storage": "platform",
+                "representation": "structured"
+              },
+              "files": []
+            }
+          ]
+        }
+      },
+      {
+        "id": "01a17cc0-9f14-7117-95b7-f808c2e44770",
+        "moduleId": "01a17cbc-7d6b-7038-9050-8d52f8c228b1",
+        "moduleKey": "cover",
+        "dependencyIds": [],
+        "digest": "58f26e06261a51d22aa91c4cb25c0ec1043896b6b7973e0c809675bd40dda332",
+        "definition": {
+          "moduleKey": "cover",
+          "title": "宣传封面",
+          "domain": "cover",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "cover_design"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "image",
+              "original": {
+                "storage": "platform",
+                "representation": "file"
+              },
+              "files": [
+                {
+                  "fileKey": "source",
+                  "purpose": "original",
+                  "label": "原件",
+                  "required": true,
+                  "mimeTypes": [
+                    "image/png"
+                  ],
+                  "sourceUrl": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "01a17cc0-9f15-705d-be5c-e8afa103d118",
+        "moduleId": "01a17cbc-7d6c-76ef-abb4-80fcf0faa665",
+        "moduleKey": "experience",
+        "dependencyIds": [
+          "01a17cbc-7d69-7339-83f4-f579e45b35e3",
+          "01a17cbc-7d6b-7038-9050-8d52f8c228b1"
+        ],
+        "digest": "e9e5eeba5a2fbb13f5d163e1166eb8b6a0bf0bb0c21508eaaf83695243339b84",
+        "definition": {
+          "moduleKey": "experience",
+          "title": "网页体验",
+          "domain": "experience",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [
+            "assessment",
+            "cover"
+          ],
+          "target": {
+            "form": "3d",
+            "runtime": {
+              "renderer": {
+                "key": "reflection-garden",
+                "version": 1
+              },
+              "reportRenderer": {
+                "key": "garden-notes",
+                "version": 1
+              },
+              "inputSchema": "single_choice_v1",
+              "engine": "dimensions_v1",
+              "reportSchema": "report_content_v1"
+            }
+          },
+          "methodPurposes": [
+            "scene_design",
+            "report_presentation"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "web_bundle",
+              "original": {
+                "storage": "platform",
+                "representation": "file"
+              },
+              "files": [
+                {
+                  "fileKey": "source",
+                  "purpose": "original",
+                  "label": "原件",
+                  "required": true,
+                  "mimeTypes": [
+                    "text/html"
+                  ],
+                  "sourceUrl": null
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "01a17cc0-9f15-705d-be5c-efc3d04e265b",
+        "moduleId": "01a17cbc-7d6d-712a-ac1b-fa2358a5cafb",
+        "moduleKey": "video",
+        "dependencyIds": [
+          "01a17cbc-7d6a-70af-9a9a-a60cea5d47a2"
+        ],
+        "digest": "61b67b37842f7a27d32e0a7b3a1350d75475c098ae55b6574ee325206c089999",
+        "definition": {
+          "moduleKey": "video",
+          "title": "宣传视频",
+          "domain": "video",
+          "required": true,
+          "purpose": "静态规划功能测试",
+          "dependsOn": [
+            "copy"
+          ],
+          "target": {
+            "form": "web",
+            "runtime": null
+          },
+          "methodPurposes": [
+            "video_production"
+          ],
+          "methodRetention": "manifest_instructions_and_references",
+          "outputs": [
+            {
+              "outputKey": "main",
+              "label": "交付原件",
+              "required": true,
+              "kind": "video",
+              "original": {
+                "storage": "platform",
+                "representation": "file"
+              },
+              "files": [
+                {
+                  "fileKey": "source",
+                  "purpose": "original",
+                  "label": "原件",
+                  "required": true,
+                  "mimeTypes": [
+                    "video/webm"
+                  ],
+                  "sourceUrl": null
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "events": [
+    {
+      "kind": "browser_saved_plan_equals_official_mcp_read",
+      "revision": 2,
+      "id": "01a17cc0-9f11-76fe-8603-1fdd7b5a3ea3",
+      "digest": "a77656c44a47a6e7223441e90c4635d3eb859af45faab496363912202286faba"
+    }
+  ]
+}

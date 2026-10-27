@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["caseId", "briefRevision", "decision", "title", "questions", "reportOutline", "copy", "coverDirection", "videoOutline", "issues", "mediaStatus"],
+  "properties": {
+    "caseId": { "type": "string" },
+    "briefRevision": { "type": "string" },
+    "decision": { "type": "string", "enum": ["text_draft", "needs_review"] },
+    "title": { "type": "string" },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "options"],
+        "properties": {
+          "id": { "type": "string" },
+          "text": { "type": "string" },
+          "options": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "reportOutline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "reflectionQuestions", "smallAction", "boundary"],
+      "properties": {
+        "summary": { "type": "string" },
+        "reflectionQuestions": { "type": "array", "items": { "type": "string" } },
+        "smallAction": { "type": "string" },
+        "boundary": { "type": "string" }
+      }
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hook", "cta"],
+      "properties": { "hook": { "type": "string" }, "cta": { "type": "string" } }
+    },
+    "coverDirection": { "type": "string" },
+    "videoOutline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["durationSeconds", "visual", "text", "questionRefs", "copyRefs"],
+        "properties": {
+          "durationSeconds": { "type": "integer" },
+          "visual": { "type": "string" },
+          "text": { "type": "string" },
+          "questionRefs": { "type": "array", "items": { "type": "string", "enum": ["Q1", "Q2"] } },
+          "copyRefs": { "type": "array", "items": { "type": "string", "enum": ["hook", "cta"] } }
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "evidence", "action"],
+        "properties": {
+          "code": { "type": "string", "enum": ["conflicting_copy", "missing_input", "scope_limit"] },
+          "evidence": { "type": "string" },
+          "action": { "type": "string" }
+        }
+      }
+    },
+    "mediaStatus": { "type": "string", "enum": ["not_generated"] }
+  }
+}

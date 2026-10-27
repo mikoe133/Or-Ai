@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>商品方法与交接 · O2 设计样例</title><link rel="stylesheet" href="design.css"><script src="design.js" defer></script></head>
+<body>
+<aside class="sidebar" aria-label="运营导航"><div class="brand"><span class="brand-mark">◉</span><div>meetmyworld<small>运营后台</small></div></div><small class="nav-caption">工作空间 <span>01</span></small><nav><span>▦　概览与审计</span><span>▣　商品与版本</span><span class="current" aria-current="page">▤　内容工作台</span><span>▧　素材与文件</span><span>⌘　Skill 库</span><span>♧　Codex 连接</span><span>▤　订单与售后</span></nav><footer>本地设计样例<small>← 返回商城</small></footer></aside>
+<div class="frame"><header class="topbar"><span>运营后台 <i>/</i> 内容工作台 <i>/</i> 商品方法</span><span class="prototype">设计样例 · 无业务连接</span></header>
+<main class="operating" aria-label="运营后台"><div class="page-title"><div><small class="eyebrow">PRODUCT / METHODS</small><h1>为商品选好制作方法</h1><p>选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。</p></div><button id="handoff-open" class="primary">整理交接说明 <span>↗</span></button></div>
+<div class="project-context"><div><span class="context-label">当前商品</span><strong>把话说开之前</strong><span class="tag">私有草稿</span></div><div><span>制作计划 r4</span><span>共同设定 r2</span><select id="view-mode" aria-label="查看计划版本"><option value="current">当前计划</option><option value="history">历史计划 r3 · 只读</option><option value="unsaved">未保存的规划 · 情境样例</option></select></div></div>
+<div class="goal"><span>这款商品留给用户的体验</span><p>从日常的小选择里，看见自己的表达习惯，找到一个能与对方继续聊下去的具体线索。</p></div>
+<p class="notice" id="global-note" role="status" hidden></p>
+<section class="workspace" aria-label="模块方法工作区"><aside class="modules"><header><h2>交付模块</h2><small id="module-progress"></small></header><div id="module-list"></div><div class="module-foot">每个模块使用自己的方法。<br>题目与报告、画面、文案仍围绕同一份商品设定。</div></aside>
+<section class="method-editor" aria-label="商品方法编辑"><header class="module-heading"><div><small id="module-overline"></small><h2 id="module-title"></h2><p id="module-description"></p></div><span class="tag" id="method-state">待选方法</span></header>
+<div id="purpose-list" class="purpose-list" aria-label="模块专业用途"></div>
+<div class="steps" aria-label="设置商品方法"><button data-step="1">01 <span>选择基础 Skill</span></button><button data-step="2">02 <span>商品定制</span></button><button data-step="3">03 <span>确认并固定</span></button></div>
+<div id="editor-body"></div><footer class="editor-actions" id="editor-actions"></footer>
+</section></section>
+<details class="scenario-panel"><summary>原型情境 · 只改变本页样例</summary><label>验证状态<select id="scenario" aria-label="验证状态"><option value="normal">正常保存</option><option value="source-changed">源方法在保存前更新</option><option value="missing-file">参考附件缺失</option><option value="failed">保存失败，未写入</option><option value="unknown">保存成功但响应丢失</option></select></label><button id="upgrade">模拟共享库升级至 v4</button><button id="reset">重置设计样例</button></details>
+<footer class="page-footer"><span>meetmyworld</span><span>仅演示交互，不保存业务数据、不调用模型、不配置连接。</span></footer></main></div>
+<dialog id="leave-dialog" aria-labelledby="leave-title"><header><h2 id="leave-title">保留这份商品定制？</h2></header><p>修改还没有固定成商品方法。可以继续编辑，或放弃本次修改再切换。</p><footer><button id="keep-editing">继续编辑</button><button id="discard" class="danger">放弃并切换</button></footer></dialog>
+<dialog id="handoff-dialog" class="handoff-dialog" aria-labelledby="handoff-title"><header><div><small class="eyebrow">HANDOFF / FIXED VERSION</small><h2 id="handoff-title">交给 Codex 制作</h2></div><button class="icon-button" id="handoff-close" aria-label="关闭交接说明">×</button></header><div id="handoff-body"></div><footer id="handoff-footer"></footer></dialog>
+</body></html>

@@ -1,0 +1,91 @@
+{
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "pageId": "290:82",
+  "pageName": "05 · 兑换流程 · 步骤引导",
+  "redemptionFrameId": "290:83",
+  "sources": [
+    "output/imagegen/redemption-flow-20261013/redeem-03-guided-steps.png",
+    "output/imagegen/redemption-flow-20261013/success-03-guided-steps.png"
+  ],
+  "status": "complete",
+  "discovery": {
+    "codeConnect": "No Code Connect source files in this product-design workspace.",
+    "existingScreens": "Native editor confirms source header/sidebar instances, Noto Sans SC text styles, bound color/canvas and Space/400; local ledger contains button, nav, chip and icon component IDs.",
+    "librarySearch": "Figma MCP Starter monthly quota exhausted; native editor and existing local foundation ledger used."
+  },
+  "scope": "Two editable desktop screens; preserve existing marketplace navigation, use three-step progress states, code form and corresponding success state; validate Chinese copy and visible layout.",
+  "successFrameId": "300:777",
+  "redemptionContentId": "297:616",
+  "redemptionPrimaryButtonId": "300:767",
+  "redemptionBackgroundId": "299:749",
+  "screenSize": [
+    1440,
+    1024
+  ],
+  "layout": {
+    "root": "vertical auto layout, gap 0",
+    "content": "vertical auto layout, gap 24",
+    "workspaceHeight": 907.4,
+    "contentBounds": [
+      1011,
+      866
+    ],
+    "screenOrigins": [
+      [
+        0,
+        0
+      ],
+      [
+        1480,
+        0
+      ]
+    ]
+  },
+  "successContentId": "300:1162",
+  "successPrimaryButtonId": "308:158",
+  "successSecondaryButtonId": "309:167",
+  "successButtons": {
+    "primary": {
+      "component": "Button",
+      "variant": "Primary",
+      "label": "开始测评",
+      "size": [
+        280,
+        58
+      ],
+      "positionInContent": [
+        27.80005,
+        626
+      ],
+      "radius": 16,
+      "textStyle": "Or-Ai/card · 18/26"
+    },
+    "secondary": {
+      "component": "Button",
+      "variant": "Secondary",
+      "label": "返回商城",
+      "size": [
+        280,
+        58
+      ],
+      "positionInContent": [
+        331.8,
+        625.8
+      ],
+      "radius": 16,
+      "textStyle": "Or-Ai/card · 18/26"
+    }
+  },
+  "exports": {
+    "redemption": "output/figma/guided-redemption-preview.png",
+    "success": "output/figma/guided-redemption-success-preview.png",
+    "editableBackup": "output/figma/guided-redemption-editable-backup.fig"
+  },
+  "validation": {
+    "font": "Native imported TEXT explicitly verified as Noto Sans SC; native button Labels retain Or-Ai/card · 18/26.",
+    "editable": "Native TEXT, vectors, form shapes, semantic groups, Auto layout containers and reusable Button instances; one independent product artwork image per screen.",
+    "visual": "Both native 1x PNG exports viewed. Clear Chinese copy, full 1440 × 1024 layout, no visible overlap or clipping; product artwork proportions retained.",
+    "cloudSync": "Reopened file in a new Chrome tab at node 309:167. Secondary variant, 返回商城 label, 280 × 58 dimensions and final coordinates persisted; both complete screens visible on page 290:82.",
+    "verifiedDate": "2026-10-14"
+  }
+}

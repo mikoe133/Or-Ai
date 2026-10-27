@@ -1,0 +1,25 @@
+.project-workspace .pp-panel{border-bottom:1px solid var(--pw-line);background:#1c1c27;font-size:11px;line-height:1.8}
+.project-workspace .pp-panel>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 20px;cursor:pointer;list-style:none}
+.project-workspace .pp-panel>summary::before{content:'▸';color:#b79ad7}.project-workspace .pp-panel[open]>summary::before{content:'▾'}
+.project-workspace .pp-panel>summary>strong{font-size:12px;font-weight:500;margin-right:auto}.project-workspace .pp-panel>summary>span{color:#aa98bc;font-size:10px}
+.project-workspace .pp-body{border-top:1px solid var(--pw-line);padding:18px 22px 22px;max-height:680px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#51435e transparent}
+.project-workspace .pp-body h4{font-size:13px;font-weight:500;margin:14px 0 7px}.project-workspace .pp-body p{color:#a79ab3;font-size:11px;margin:8px 0 12px}
+.project-workspace .pp-heading{display:flex;justify-content:space-between;gap:18px;align-items:center}.project-workspace .pp-heading h4{margin-top:0}
+.project-workspace .pp-policy{display:flex;align-items:center;gap:14px;border-left:2px solid #bca0e0;background:#262131;padding:10px 13px;margin:10px 0 17px;color:#b9aac9}
+.project-workspace .pp-policy strong{color:#d8c3f0;font-size:12px;font-weight:500;white-space:nowrap}
+.project-workspace .pp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:12px 0}
+.project-workspace .pp-body label{display:flex;flex-direction:column;gap:5px;min-width:0;color:#b3a4c2;font-size:10px}
+.project-workspace .pp-decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
+.project-workspace .pp-decision{border-bottom:1px solid #393142;min-width:0;align-self:start}
+.project-workspace .pp-decision>summary{display:flex;justify-content:space-between;gap:12px;cursor:pointer;padding:12px 2px;list-style:none}
+.project-workspace .pp-decision>summary>strong{font-weight:500;color:#ddd0ea}.project-workspace .pp-decision>summary>span{color:#a994ba;font-size:10px}
+.project-workspace .pp-decision[open]{grid-column:1/-1}.project-workspace .pp-decision-content{padding:0 0 16px}
+.project-workspace .pp-decision-content>.pp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.project-workspace .pp-section{border-top:1px solid #393142;margin-top:15px;padding-top:12px}.project-workspace .pp-section>summary,.project-workspace .pp-decision-content details>summary{cursor:pointer;color:#c4afd8;padding:4px 0}
+.project-workspace .pp-devices{display:flex;gap:12px 18px;flex-wrap:wrap;margin:15px 0}.project-workspace .pp-devices label{flex-direction:row;align-items:center;font-size:11px}
+.project-workspace .pp-json{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}.project-workspace .pp-json textarea{flex-basis:100%;font-family:ui-monospace,monospace;resize:vertical;line-height:1.7}
+.project-workspace .pp-json small{color:#d5b988}.project-workspace .pp-json p{flex-basis:100%;color:#e1a9ac}
+.project-workspace .pp-validation{border-left:2px solid #d6ab84;background:#30262b;padding:10px 13px;margin:15px 0;color:#e2bc9a;overflow-wrap:anywhere}
+.project-workspace .pp-body ul{padding-left:18px}.project-workspace .pp-section li{margin:10px 0;overflow-wrap:anywhere}.project-workspace .pp-section li>span{display:block;color:#ab98bc;font-size:10px;white-space:pre-wrap}
+.project-workspace .pp-foot{border-top:1px solid #393142;padding-top:13px;margin-bottom:0!important}
+@media(max-width:820px){.project-workspace .pp-panel>summary{padding:12px 14px;flex-wrap:wrap;gap:5px 8px}.project-workspace .pp-panel>summary>span{flex-basis:100%;padding-left:18px}.project-workspace .pp-body{padding:15px;max-height:65dvh}.project-workspace .pp-grid,.project-workspace .pp-decisions{grid-template-columns:1fr}.project-workspace .pp-decision-content>.pp-grid{grid-template-columns:1fr}.project-workspace .pp-heading{align-items:flex-start;flex-direction:column;gap:5px}.project-workspace .pp-policy{align-items:flex-start;flex-direction:column;gap:3px}}

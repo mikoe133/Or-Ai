@@ -1,0 +1,168 @@
+{
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "pageId": "441:82",
+  "wrapperId": "539:515",
+  "pageName": "07 · 完整报告 · 横幅叙事",
+  "frameName": "完整报告 · 伴侣协作体检 · 横幅叙事 · 已采用",
+  "source": "output/imagegen/full-report-20261014/02-wide-hero-story.png",
+  "shellSourceId": "184:452",
+  "contentAsset": "output/figma/full-report-wide-hero-content.svg",
+  "contentSize": [
+    1011,
+    2502
+  ],
+  "plannedWrapperSize": [
+    1440,
+    2769
+  ],
+  "fonts": [
+    "Noto Sans SC",
+    "Manrope"
+  ],
+  "sections": [
+    {
+      "name": "01 · 返回与报告标题",
+      "height": 56,
+      "y": 0
+    },
+    {
+      "name": "02 · 结果横幅 · 协作型队友",
+      "height": 380,
+      "y": 80
+    },
+    {
+      "name": "03 · 结果解读",
+      "height": 194,
+      "y": 484
+    },
+    {
+      "name": "04 · 五个协作维度",
+      "height": 288,
+      "y": 702
+    },
+    {
+      "name": "05 · 维度解析 · 全部展开",
+      "height": 474,
+      "y": 1014
+    },
+    {
+      "name": "06 · 协作优势与值得留意",
+      "height": 278,
+      "y": 1512
+    },
+    {
+      "name": "07 · 行动建议",
+      "height": 280,
+      "y": 1814
+    },
+    {
+      "name": "08 · 分享你的发现",
+      "height": 304,
+      "y": 2118
+    },
+    {
+      "name": "09 · 趣味自测说明",
+      "height": 56,
+      "y": 2446
+    }
+  ],
+  "nativeTextPlanned": 83,
+  "discreteImages": 2,
+  "scores": [
+    82.0,
+    76.0,
+    80.0,
+    68.0,
+    88.0
+  ],
+  "overallScore": 78.8,
+  "designSystemDiscovery": {
+    "codeConnect": "No Code Connect files found in repository.",
+    "existingScreens": "Native editor: source frame 184:452 uses vertical Auto layout, color/canvas variable #101118 and existing marketplace navigation, header and CTA components; Noto Sans SC and Manrope match local foundation ledger.",
+    "librarySearch": "MCP Starter limit blocks library inspection; existing native screen and local ledger provide authoritative foundations and component evidence."
+  },
+  "status": "Existing adopted frame updated in native Figma editor; native PNG export verified",
+  "contentFrameId": "491:923",
+  "atmosphereAsset": "output/figma/full-report-wide-hero-atmosphere.svg",
+  "fileUrl": "https://www.figma.com/design/TluUhd92v2Z2HztvQeGqxe?node-id=539-515",
+  "cloudSync": "Updated existing frame 539:515; native editor selection and 1440x2769 PNG export confirmed",
+  "shellDraftFrameId": "444:83",
+  "contentDraftFrameId": "491:923",
+  "authoringMethod": "Semantic SVG import followed by native layer transfer into existing adopted frame",
+  "fullEditableSource": "output/figma/完整报告-伴侣协作体检-横幅叙事-已采用.svg",
+  "wrapperSize": [
+    1440,
+    2769
+  ],
+  "preview": "full-report-with-greeting-native-preview.png",
+  "previewKind": "Native Figma PNG export",
+  "uploadReceipt": {
+    "success": true,
+    "imageHash": "6220e51e5c08cd3c9447e252d044bac0df4916ae",
+    "sizeBytes": 4449141,
+    "contentType": "image/svg+xml",
+    "placedOnNodeId": "539:515"
+  },
+  "sourceTextElements": 102,
+  "sourceImages": 2,
+  "validation": {
+    "nativeVisual": "Native 1440x2769 Figma export inspected: complete greeting capsule, avatar, centered heading/subtitle, brand vectors, all report sections, and footer visible; no overlap or clipping found.",
+    "sourceVisual": "Semantic SVG maintains report layout and shifts report content by 108px beneath the new marketplace greeting band.",
+    "fontSource": "Noto Sans SC and Manrope match project foundations; native greeting heading inspected as editable Noto Sans SC text at 32px.",
+    "editability": "Native editor confirmed eight top-level semantic groups, six greeting children, and editable heading typography. Source contains 102 text elements and two decorative bitmap images.",
+    "limitations": "MCP metadata quota remains exhausted; full native node-type counts are unavailable. Native editing and export verification succeeded."
+  },
+  "nativeExport": "/Users/mac/Downloads/完整报告 · 伴侣协作体检 · 横幅叙事 · 已采用 (1).png",
+  "topGreetingProof": "full-report-top-greeting-native-proof.png",
+  "lastImportReceipt": {
+    "success": true,
+    "imageHash": "6e5e8abe3370ede6a7b4bea8fa26a542543cc5ad",
+    "sizeBytes": 4450212,
+    "contentType": "image/svg+xml",
+    "placedOnNodeId": "629:515"
+  },
+  "greetingUpdate": {
+    "date": "2026-10-15",
+    "targetFrameId": "539:515",
+    "greetingGroupId": "626:127",
+    "greetingBounds": [
+      0,
+      72,
+      1440,
+      108
+    ],
+    "capsuleBounds": [
+      24,
+      104,
+      172,
+      44
+    ],
+    "greeting": "你好，探索者",
+    "caption": "今天，也多了解自己一点",
+    "heading": "发现有趣的自己",
+    "subtitle": "从一个问题开始，看看你的生活倾向。",
+    "reportContentOrigin": [
+      338.2,
+      200
+    ],
+    "reportContentOffsetY": 108,
+    "atmosphereOffset": [
+      0,
+      108
+    ],
+    "sourceFix": "Emitted unprefixed SVG child tags and flattened the brand symbol into a scaled vector group so Figma imports both the greeting capsule and logo.",
+    "nativeGreetingChildren": 6,
+    "nativeTypographyCheck": {
+      "nodeName": "Greeting · centered heading",
+      "type": "Text",
+      "fontFamily": "Noto Sans SC",
+      "fontSize": 32
+    },
+    "removedTemporaryFrameIds": [
+      "619:515",
+      "624:515",
+      "629:515"
+    ],
+    "preservedExistingDraftFrameId": "444:83"
+  }
+}

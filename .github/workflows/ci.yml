@@ -40,6 +40,10 @@ jobs:
       - run: pnpm check:toolchain
       - run: pnpm typecheck
       - run: pnpm build
+      - name: Check offline production configuration boundaries
+        run: node --test scripts/test/cloud-preflight.test.mjs
+      - name: Check provider-independent upload byte budgets
+        run: node --test scripts/test/upload-budget.test.mjs
       - run: pnpm db:validate
       - run: pnpm db:migrate
       - run: pnpm db:provision
@@ -47,3 +51,5 @@ jobs:
       - run: pnpm test
       - name: Build Linux API image
         run: docker build --platform linux/amd64 -f apps/api/Dockerfile -t orai-api:ci .
+      - name: Verify isolated production image liveness and readiness
+        run: node scripts/cloud-container-smoke.mjs --image orai-api:ci

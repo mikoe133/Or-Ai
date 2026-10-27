@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "orai.w6-effort-cases.v1",
+  "cases": [
+    {
+      "caseId": "alone-after-busy-day",
+      "briefRevision": "synthetic-brief-a-v1",
+      "parameters": {
+        "audience": "希望理解自己休息偏好的成年人",
+        "emotionalGoal": "让不同休息偏好都被接纳",
+        "understandingGoal": "识别忙碌后需要的空间和支持",
+        "style": "安静、具体、温和；不使用人格标签",
+        "form": "普通网页上的单选反思题与纸本感报告提纲",
+        "deliverableScope": "纯文本制作草案；不执行网页、图片或视频生成"
+      },
+      "questions": [
+        { "id": "Q1", "text": "忙碌一天后，哪一种安排更接近你此刻的需要？", "options": ["先独处一会儿", "和熟悉的人轻松聊聊"] },
+        { "id": "Q2", "text": "有人关心你的近况时，你更希望对方怎么开始？", "options": ["先问我现在想不想聊", "先分享一点自己的日常"] }
+      ],
+      "candidateCopy": [],
+      "missingInputs": [],
+      "additionalInstructions": "保留两种偏好的平等性。视频文字提纲 3 段，每段 5 秒；最后一段使用 CTA。封面方向只描述一个主体、字位和淡紫色。通用报告提纲不能推断使用者的答案。"
+    },
+    {
+      "caseId": "two-people-different-pace",
+      "briefRevision": "synthetic-brief-b-v1",
+      "parameters": {
+        "audience": "希望了解彼此沟通节奏的两位成年人",
+        "emotionalGoal": "减少互相责备，接纳不同表达节奏",
+        "understandingGoal": "讨论回应的时机和支持方式，不判断关系优劣",
+        "style": "平视、清楚、双方对等；轻巧手记风格",
+        "form": "双方分别作答的普通网页单选反思体验",
+        "deliverableScope": "纯文本制作草案；尚无双方真实答卷或授权画面"
+      },
+      "questions": [
+        { "id": "Q1", "text": "遇到需要商量的事时，你更习惯哪种开始方式？", "options": ["边聊边整理想法", "先想一想再一起聊"] },
+        { "id": "Q2", "text": "对方暂时没有回复时，你希望双方事先约定什么？", "options": ["方便时给一句状态说明", "约好之后再聊的时间"] }
+      ],
+      "candidateCopy": [
+        { "id": "legacy-hook", "text": "测出你们的匹配度，准确率 99%" },
+        { "id": "legacy-claim", "text": "不立刻回复就是不在乎你" }
+      ],
+      "missingInputs": ["双方真实答卷", "宣传视频使用双方肖像的授权画面"],
+      "additionalInstructions": "候选文案与共同设定冲突，需要明确标记并改写。没有私人答卷时只交通用反思提纲；视频文字提纲只能建议抽象符号和题目文字，不能假装已取得肖像授权或已生成成片。保留这些限制供人工复查。视频文字提纲 3 段，每段 5 秒；最后一段使用 CTA。"
+    }
+  ]
+}

@@ -16,6 +16,9 @@ test("workbench starting drafts satisfy the real authoring and runtime schemas, 
   for (const name of ["观察自己", "长".repeat(160)]) {
     const profile = defaultProfile({ name });
     assert.equal(CreativeProfileSchema.safeParse(profile).success, true);
+    assert.equal(profile.experienceForm, '3d');
+    assert.match(profile.pace, /按商品规划/);
+    assert.match(profile.visual, /Three.js/);
     assert.ok(
       profile.reportPlan.sections.every(
         (section) => KeySchema.safeParse(section.sectionId).success,
@@ -50,7 +53,8 @@ test("workbench labels distinguish a supported single-person runtime from planne
     capability({ ...profile, perspective: "planned_two_person" }),
     /规划中.*不可运行/,
   );
-  for (const experienceForm of ["3d", "2.5d", "cards", "game"] as const)
+  assert.match(capability({ ...profile, experienceForm: '3d' }), /当前支持单人/);
+  for (const experienceForm of ["2.5d", "cards", "game"] as const)
     assert.match(capability({ ...profile, experienceForm }), /待运行端支持/);
 });
 

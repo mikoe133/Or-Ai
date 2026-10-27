@@ -1,0 +1,27 @@
+{
+  "reference": "design/phone.jpg",
+  "dimensions": {
+    "width": 384,
+    "height": 832
+  },
+  "fonts": [
+    "Noto Sans SC",
+    "Manrope"
+  ],
+  "assets": [
+    "featured-lavender.png",
+    "featured-teal.png",
+    "mobile-avatar-source.png"
+  ],
+  "source": "Native SVG import with editable text, vector shapes and discrete image fills; no flattened UI image.",
+  "sections": [
+    "Mobile header",
+    "Hero",
+    "Search",
+    "Categories",
+    "Featured carousel",
+    "Scenarios",
+    "Bottom navigation"
+  ],
+  "componentStrategy": "Reuse existing brand fonts, card artwork, icons and copy; componentize mobile repeated controls after import."
+}

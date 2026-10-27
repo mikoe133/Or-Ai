@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-21",
+  "task": "T16-A",
+  "status": "technical verification passed; awaiting new UI review; physical devices not accepted",
+  "previousGate": "T15-B UI approved by user",
+  "tests": {
+    "api": 266,
+    "web": 50,
+    "mcpSdk": 19,
+    "uniqueTotal": 335
+  },
+  "browser": {
+    "uniqueTotal": 57,
+    "newPilotChecks": 4,
+    "passed": true,
+    "identityFactsIsolated": true,
+    "cloudAuthAccepted": false
+  },
+  "database": {
+    "models": 50,
+    "preservedTables": 42,
+    "originalRows": 1156,
+    "migrations": 17,
+    "releases": 5,
+    "available_versions": 5,
+    "missing_attempts": 0,
+    "missing_presentations": 0,
+    "temporary_databases": 0,
+    "profile_mismatches": 0,
+    "newMigrations": 0,
+    "newLiveBusinessSamples": 0
+  },
+  "performance": {
+    "newTemplateFiles": [
+      {
+        "name": "field-notes-Du6EYjwo.js",
+        "bytes": 2447,
+        "gzipBytes": 1065
+      },
+      {
+        "name": "quiet-room-B7lNFKJT.css",
+        "bytes": 8627,
+        "gzipBytes": 2339
+      },
+      {
+        "name": "quiet-room-DUrZz7jZ.js",
+        "bytes": 3176,
+        "gzipBytes": 1458
+      },
+      {
+        "name": "quiet-room-DeGvDAUf.js",
+        "bytes": 3422,
+        "gzipBytes": 1310
+      }
+    ],
+    "gzipBytes": 6172,
+    "budgetBytes": 46080,
+    "passed": true,
+    "scope": "quiet-room, shared room illustration, field-notes and their CSS; existing shared React/contracts excluded",
+    "physicalDeviceAccepted": false
+  },
+  "media": {
+    "coverBytes": 85904,
+    "videoBytes": 1695498,
+    "videoDurationMs": 22200
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "prismaValidate": "passed",
+  "liveSchemaDiff": "no difference",
+  "physicalDeviceAccepted": false,
+  "cloudConnected": false,
+  "next": "Await new UI approval before T10-L. Keep actual handset/in-app browser verification pending. Wait for separate service approval before T09."
+}

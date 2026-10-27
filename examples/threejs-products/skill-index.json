@@ -1,0 +1,40 @@
+{
+  "policy": "threejs-products-v1",
+  "templates": [
+    {
+      "domain": "assessment",
+      "purpose": "assessment_design",
+      "file": "skills/assessment_design.skill.json"
+    },
+    {
+      "domain": "assessment",
+      "purpose": "report_writing",
+      "file": "skills/report_writing.skill.json"
+    },
+    {
+      "domain": "cover",
+      "purpose": "cover_design",
+      "file": "skills/cover_design.skill.json"
+    },
+    {
+      "domain": "video",
+      "purpose": "video_production",
+      "file": "skills/video_production.skill.json"
+    },
+    {
+      "domain": "copy",
+      "purpose": "copywriting",
+      "file": "skills/copywriting.skill.json"
+    },
+    {
+      "domain": "experience",
+      "purpose": "scene_design",
+      "file": "skills/scene_design.skill.json"
+    },
+    {
+      "domain": "experience",
+      "purpose": "report_presentation",
+      "file": "skills/report_presentation.skill.json"
+    }
+  ]
+}

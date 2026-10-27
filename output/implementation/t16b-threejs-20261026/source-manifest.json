@@ -1,0 +1,225 @@
+{
+  "date": "2026-10-26",
+  "files": [
+    {
+      "path": "apps/api/src/catalog/experience-authoring.ts",
+      "sha256": "ecb7a13380fc877c7202c967a15a12b52e6d32b0e117779e4a2af84012071e6e",
+      "baselineSha256": "84a8124923e62fcecb1da84fb7c799377d54e1ad3f6e117681aa2e26f72bd6a7"
+    },
+    {
+      "path": "apps/api/src/operations/experience-authoring.service.ts",
+      "sha256": "39d3de2d4fd2793c3adc35e82cd98068760728b3817affbed9445803073b92ed",
+      "baselineSha256": "0d2176c57cbdcb4d4dde66e6cb1180cdf09b071d2700beb3226ddd109db318e1"
+    },
+    {
+      "path": "apps/api/src/operations/machine-content.service.ts",
+      "sha256": "abc22e66ffdcc1e2275d5e5f2b010258272c63fd8353759888bf93f6708f8ebb",
+      "baselineSha256": "9385ae9e5e596f9db9f9eafd8125575692b1aefe5e6e76296af26964863b649f"
+    },
+    {
+      "path": "apps/api/src/operations/machine-experience.service.ts",
+      "sha256": "5de15a730a8250f8dde11f3bcc5ed048785f8f5f809154332953742de225e2da",
+      "baselineSha256": "ac84358c95c1fa1c8d48881c2ab160a02be8b4a93e36a5fac8e0c18c9651c2fc"
+    },
+    {
+      "path": "apps/api/test/experience-authoring.test.ts",
+      "sha256": "bc1f3c35e3b74913b368f2f3143ae3643f650b9ffcfaa8a7b6161cb986de7ec0",
+      "baselineSha256": "6bdd21fa783934382c7a37a6812d769eb086e4cca5dbbbd7b81a1ffed1b669d0"
+    },
+    {
+      "path": "apps/api/test/experience.test.ts",
+      "sha256": "391915e704b200b5a6fa1eddb550ce9fe1e53427d8dd692a7ca4520f30b73f6c",
+      "baselineSha256": "63d9b5aae84f010cdabefbc620791ddb1e8afd2b27bc5a632f15b8ddedfa71d6"
+    },
+    {
+      "path": "apps/api/test/machine-content.test.ts",
+      "sha256": "e6c77a83df786a1bac48d24ddcabdc32400406445d86182c343f0d495f4043ad",
+      "baselineSha256": "0f7c2e921395be9e09293a7479bcc8caf3b6916eefdaa075d8917d77b37b13c7"
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "2640c9e34e883c2ce8db7773af0ec6f6c32784e2851495ded7fccffda940a99e",
+      "baselineSha256": "abfe93bf22a73b5290fc75faacfccce091389c5d0ee0e791f56832177dca78b8"
+    },
+    {
+      "path": "apps/web/src/admin/content-capabilities.tsx",
+      "sha256": "7c00d8c013fe3df74c8dd69524e8184b2bc92580d596eaf96172dac7cab334c2",
+      "baselineSha256": "25a61b1be7cf7a43e13071ce7af2488e086b204beed20b1a52c4d2b0b24821d8"
+    },
+    {
+      "path": "apps/web/src/admin/content-experience.tsx",
+      "sha256": "a485b95a97b5c26d466395a3359f58452da8370bd1d12acf2d52d5824b39b6a7",
+      "baselineSha256": "a129e2a8b2f163672f96693b9a8ee13927c3c48b5ffa2c22b5482e257e934b7c"
+    },
+    {
+      "path": "apps/web/src/admin/content-model.ts",
+      "sha256": "e70b28e9f83061c08c796b811a99658c74886a8a691882e920c072c337cf7ec3",
+      "baselineSha256": "056367b1586082a1c31ab93384436656fa95b1b27cc42bd66295912f477fedb4"
+    },
+    {
+      "path": "apps/web/src/admin/content-profile.tsx",
+      "sha256": "0c72789d347214be6b77c7d4a179bf9c47826ea1a5c6ee6712a855c62d992883",
+      "baselineSha256": "40cbebf5a052d8931cca0c3738fa2bda5d635c87e12330cef60e141692f56bef"
+    },
+    {
+      "path": "apps/web/src/admin/content.tsx",
+      "sha256": "9815261f6687ee993575e81ae0e3dc695c224801fa5883adb6f356bdb232459a",
+      "baselineSha256": "72d948ec222204ac91633ab216067def4b3b8ff79c56cfdee17df9e1dd8be504"
+    },
+    {
+      "path": "apps/web/src/admin/experience-api.ts",
+      "sha256": "565372db4ec7c434f5a9919c95e30bed4c641f6d05cb5288d2b947c5bc9a886f",
+      "baselineSha256": "f5ada9a77f051b461d676dc94fa512a70e883001f3d820f0a21cf448cde77716"
+    },
+    {
+      "path": "apps/web/src/app.tsx",
+      "sha256": "a4fd16e38723dba146b3bdd823358de82a0ddeff1b916d8d66459ad9f24ae3b0",
+      "baselineSha256": "36ecbf1b7cbc85e8e1bc9c15c1d7693c547823cef02165ece32cea2335e04d20"
+    },
+    {
+      "path": "apps/web/src/experience/field-notes.tsx",
+      "sha256": "939b3544c01a88ea1b28072e37ef813bbc6272b54eb98ac00181cddcec2068ed",
+      "note": "Existing untracked source; variant changes reviewed directly, no initial snapshot available."
+    },
+    {
+      "path": "apps/web/src/experience/garden-art.tsx",
+      "sha256": "2ef9e4f9e765b4c13569538bfa7e2960d1e20384ae597b9e22324f7fe9741a99",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/garden-model.ts",
+      "sha256": "44ec39cc7c135ef69df174099cecb802158b438a880e32b4c39343c6e753a91e",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/garden-notes.tsx",
+      "sha256": "765d90623cab705c0667a1be6ce7f7bd0782f5678550de3bd95fb3f61b9555aa",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/garden-preview.tsx",
+      "sha256": "7dfd4e7cd6987b3adf25745d30769bdad177f7709a1b6a8a50cb728f4dafd6bb",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/garden-renderer.ts",
+      "sha256": "a21d32886b719f0658f0ffe9ace9ff2f236f226d836c3d5143b7eae7eb96c6a1",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/garden-scene.ts",
+      "sha256": "3b6fbb53708206b7f4bab181d7b82c6f618f032e0f18fb98693969d6f77dbad2",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/host.css",
+      "sha256": "02376e8c9e7194ebf6180a85113ec7ea9d3732472e1b0246bdf4f160a7ee0662",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/host.tsx",
+      "sha256": "d5b72df743dfeb1a3bec61e21c9c7ef047698c0046c59f50c8580534d3f256e7",
+      "baselineSha256": "283d0f41b16be13ef41d3d9f2a2514d0e0eaee671b3c97866f410bacf603d72d"
+    },
+    {
+      "path": "apps/web/src/experience/reflection-garden.css",
+      "sha256": "c44c324aa385fb591b737a7ced00b2a8498d61388758e23eb43dbdc2185a957a",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/reflection-garden.tsx",
+      "sha256": "ec0a066238a6a16a6c5ddc8bf45ac3a4775e031fd6c8a3a753afe16682b95a09",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/src/experience/report-host.tsx",
+      "sha256": "f4c1e9a685bec6be343f827a222d67c0084b2d5d34a3907da7ee9d15406b5222",
+      "baselineSha256": "1e98ded3d03c04bb7cca1de3bf7cc155021eb5fe8a28b490432ff2c293d86a2f"
+    },
+    {
+      "path": "apps/web/test/content-workbench.test.ts",
+      "sha256": "ccdeed16a3b74ff50d7a4ad5329a24c0a3ff330c8c6464e9d3523817559f0a63",
+      "baselineSha256": "f8e4ecc5beb135be7f36aca4c652d84844ead2a33fca9375111cc93bfb39f779"
+    },
+    {
+      "path": "apps/web/test/garden.test.ts",
+      "sha256": "ad883441fb4e905b098656a63f80517e0371a9c1323689ec51e7bf0fe634e440",
+      "note": "New file for this batch."
+    },
+    {
+      "path": "apps/web/test/product-capabilities.test.ts",
+      "sha256": "1bfd4e0c9318831efcfb0b8056df97fb4ad0b2979f336586b124f97901c6efbe",
+      "baselineSha256": "ea6812aa2068463829da59313caed4e374ee1feca29d864002e7a3eca38a7d43"
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "sha256": "f73a0c56415ab25d0ce9edbe5d30c65b6707fb8a4dab1df5e52e46021fcaec28",
+      "baselineSha256": "57e979c7b1a5d4541d1743617475a4f5286b44e9ef6b49701e35e2e38c3993b9"
+    },
+    {
+      "path": "packages/contracts/src/experience-authoring.ts",
+      "sha256": "de6816d3c1c6b819daa93e2cf0c15b2366f0c8bb4369939b198e91c7dbbe8270",
+      "baselineSha256": "0b2168528313c6936c0b9a1eddef1cd8832216765a25850575cbc0de44c355de"
+    },
+    {
+      "path": "packages/contracts/src/experience.ts",
+      "sha256": "f36e66a63ca3e8f2e4f581b9f400b4e1740338e5a550f04ebc3155acc73d305b",
+      "baselineSha256": "a05584bb083858b3d2957db109909270dd5d949ce0b652fc19e6df1235de8608"
+    },
+    {
+      "path": "packages/contracts/src/machine-content.ts",
+      "sha256": "f92bb64929380a60f6aae7ee43c4a6b14aff914fdaa0017102602d2a7249944f",
+      "baselineSha256": "214346a493c2a82087d28ba038a7acc72685a531871566ffc690281b9c571a42"
+    },
+    {
+      "path": "packages/contracts/src/product-capabilities.ts",
+      "sha256": "ed2d5e1eb77b20b77e6915edba525701884ba5f5a6bb321bc4caf349b964e7c6",
+      "baselineSha256": "1ac86cb9db755f2ac16f0eff93b9cd4a1ce1f8b098971993484a653a88c0d4c7"
+    },
+    {
+      "path": "packages/mcp/src/content-tools.ts",
+      "sha256": "d283d330ed0423f072d3a038ed385e92bb9a5ab21591b65a61572be714afc24e",
+      "baselineSha256": "08ae49c7427a04d16cda1b650cad37721d5b8126234593f8384ce03c87de1701"
+    },
+    {
+      "path": "packages/mcp/src/experience-tools.ts",
+      "sha256": "847ef2c0b038853bafa42f1f87a88f6af6eb5c2adcbf6ff8de9e7de978ad111a",
+      "baselineSha256": "3749d48deba3a2491c9ace8c0ce89ce9aeb8dafdac18b177f3cec569263b6fb6"
+    },
+    {
+      "path": "packages/mcp/test/real-experience-client.mjs",
+      "sha256": "101243c371022b5c7251a1c8725b3e63cd58c312dda1793567dea7a18ff6ce16",
+      "baselineSha256": "177225971046607b69f5b75246d2d3b3466944c2d193ccdc0fd110dcb0b407a1"
+    },
+    {
+      "path": "packages/mcp/test/stdio.test.mjs",
+      "sha256": "7023dc9645c658819baa6fa05ed52808f40552bdb412d3d9df87a465d513a0e3",
+      "baselineSha256": "1bf415ba385c3346d7d2f8c65cc541a5b91e1d2d7df1d7fb0909820dbcca3597"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "b983743d1027a5619f0876806eab6bdb6cbafe8ae92236fbe2f6ce16f35a0aed",
+      "baselineSha256": "99e9e210bf19652b88687e44ccfac9d1069ed0b6dac5a776f2adb3df3d7e1de7"
+    },
+    {
+      "path": "prd/v1/EXPERIENCE-PLATFORM.md",
+      "sha256": "b62fcd02854d7c39774fbb62b19aac7cfd86b22ead0fd4686a04f4d638c03dff",
+      "baselineSha256": "df5971a5446398703a0e6030af7a9062c007ab9410f06ef6ebe9bb770b94d505"
+    },
+    {
+      "path": "prd/v1/PROGRESS.md",
+      "sha256": "39cca4bac7ca1bb0b589df4dae658a690ba17f7a8f572b0700fc46fd8f156631",
+      "baselineSha256": "363a3f13608ff46aecf1dbf792b34082eff8feb1e1cfb97ffdb8049ba6375089"
+    },
+    {
+      "path": "prd/v1/ROADMAP.md",
+      "sha256": "fd71f61f8aca0f448451b22bcccf3e4708afa1c164b26beed8e7f1c5bce81fd1",
+      "baselineSha256": "4dd8ca1c46a9a94369c00fe5e2c7abe3a758bfe34b8c2c993a32f8a11a644bb4"
+    },
+    {
+      "path": "prd/v1/tasks/T16-immersive-products.md",
+      "sha256": "4b29197ce6f2823f3963dbd3c757beb6e03bb53badc41836c07fee031141926c",
+      "baselineSha256": "9d0c91c51f8008c347c760541ed1526a23b8015c8819f90a42406b356ee39e66"
+    }
+  ]
+}

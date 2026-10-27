@@ -1,0 +1,13 @@
+{
+  "generator": "built-in image_gen",
+  "refinements": [
+    {
+      "id": "02",
+      "reason": "补齐页标题",
+      "referenced_image_paths": [
+        "/Users/mac/.codex/generated_images/01a13632-876b-7f72-b386-f52ec7807e67/exec-b271dc3b-c98f-4c09-9030-8b75d88f9d0c.png"
+      ],
+      "prompt": "Use case: text-localization.\nAsset type: an existing generated complete expanded Chinese report UI mockup.\nInput image 1: EDIT TARGET, the existing wide-hero complete report page.\nMake exactly one small UI text addition. In the currently empty dark top row directly above the large purple glass result hero, preserve the left-aligned back arrow and \"返回我的报告\". Add a clean white page title \"伴侣协作体检 · 完整报告\" in the same top row to its right, using the existing Chinese sans-serif typography, medium/semibold weight, about 24px at the logical 1440px width. Make the full exact title clearly legible. Use the existing blank space; do not move the hero or any sections.\nEverything else must remain unchanged: same full long page composition and canvas, header and symbol, sidebar, purple glass ribbon and sphere, result name \"协作型队友\", 78.80 / 100, five dimension names and exact scores 82.00, 76.00, 80.00, 68.00, 88.00, all expanded explanations, strengths, observation points, three numbered suggestions, share card, footer, color palette, dark glass styling, borders, spacing, rounded shapes and original readable text. Do not redesign. No extra text anywhere else. Output exactly one full portrait webpage screenshot with no crop."
+    }
+  ]
+}

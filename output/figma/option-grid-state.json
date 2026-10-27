@@ -1,0 +1,147 @@
+{
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "pageId": "382:162",
+  "pageName": "06 · 答题与反馈 · 选项网格",
+  "status": "completed; right outer contour fades out within lower 45% on both screens",
+  "sourceImages": [
+    "output/imagegen/answer-feedback-20261014/answer-04-option-grid.png",
+    "output/imagegen/answer-feedback-20261014/feedback-04-option-grid.png"
+  ],
+  "scope": "two editable desktop screens; keep 2x2 single-select cards and nonmodal right feedback; both distributions show distinct sample sizes",
+  "discovery": {
+    "codeConnect": "No *.figma.ts/tsx/js, Kotlin or Swift Code Connect files found in this workspace.",
+    "existingScreens": "Native Figma editor and existing local foundation ledgers verify marketplace shell, Button instances, Or-Ai text styles and color/canvas bindings.",
+    "librarySearch": "MCP Starter quota blocks use_figma and library inspection; native editor is the fallback.",
+    "fonts": [
+      "Noto Sans SC",
+      "Manrope"
+    ],
+    "referenceLedger": "output/figma/orai-state.json"
+  },
+  "assets": [
+    {
+      "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/figma/option-grid-answer-content.svg",
+      "width": 1011,
+      "height": 750,
+      "nativeTextElements": 23,
+      "discreteImages": 1,
+      "feedback": false
+    },
+    {
+      "path": "/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/output/figma/option-grid-feedback-content.svg",
+      "width": 1011,
+      "height": 750,
+      "nativeTextElements": 52,
+      "discreteImages": 1,
+      "feedback": true
+    }
+  ],
+  "updatedAt": "2026-10-15T01:56:23.667421+08:00",
+  "frames": {
+    "answer": {
+      "id": "463:162",
+      "name": "答题页 · 伴侣协作体检 · 选项网格",
+      "contentId": "564:1330",
+      "size": [
+        1440,
+        1024
+      ],
+      "preview": "output/figma/option-grid-answer-outer-fade-preview.png",
+      "url": "https://www.figma.com/design/TluUhd92v2Z2HztvQeGqxe/Or-Ai?node-id=463-162",
+      "contourId": "612:183",
+      "atmosphereId": "612:253",
+      "mainPanelId": "463:212"
+    },
+    "feedback": {
+      "id": "490:635",
+      "name": "反馈展开 · 伴侣协作体检 · 选项网格",
+      "contentId": "571:1897",
+      "size": [
+        1440,
+        1024
+      ],
+      "preview": "output/figma/option-grid-feedback-outer-fade-preview.png",
+      "url": "https://www.figma.com/design/TluUhd92v2Z2HztvQeGqxe/Or-Ai?node-id=490-635",
+      "contourId": "612:211",
+      "atmosphereId": "618:268",
+      "mainPanelId": "567:1521"
+    }
+  },
+  "shellCorrections": {
+    "greeting": {
+      "bounds": [
+        0,
+        72,
+        1440,
+        108
+      ],
+      "text": [
+        "你好，探索者",
+        "今天，也多了解自己一点"
+      ],
+      "curve": "continuous navigation lower edge and rounded greeting band"
+    },
+    "workspace": {
+      "y": 180,
+      "height": 799.4,
+      "sidebarHeight": 797,
+      "contentContainerHeight": 797,
+      "contentHeight": 750
+    },
+    "doubleContour": {
+      "outerX": 72,
+      "innerX": 86,
+      "outerBottom": 980,
+      "innerBottom": 966,
+      "layerPositioning": "absolute overlay; environment layer behind content",
+      "nativeVectorLayers": true,
+      "rightOuterFadeTopY": 620,
+      "rightOuterFadeBottomY": 980,
+      "visibleGeometricHeight": 360,
+      "visibleWorkspaceFraction": 0.45,
+      "rightOuterLineAbove620": "fully transparent",
+      "fadeAppliesTo": [
+        "outer stroke",
+        "wide reflection",
+        "glass band"
+      ],
+      "topRightCornerConnectsTo": "inner contour at x1354",
+      "solidSurfaceRightFadeWidth": 14,
+      "nativeMainPanelFillVisible": false,
+      "nativeMainPanelEffectStyleRemoved": true
+    },
+    "reference": "/var/folders/dz/wts3ggms3ndcfgb1yy58zy4h0000gn/T/codex-clipboard-26efda8e-59e5-450e-ac4c-3f2125e4ba0d.png"
+  },
+  "validation": {
+    "actualFigmaPNGExports": true,
+    "greetingAndDoubleBordersVisible": true,
+    "sidebarRedemptionButtonVisible": true,
+    "questionOptionsAndActionsFullyVisible": true,
+    "feedbackBothSamplePopulationsFullyVisible": true,
+    "nativeTextAndVectorContent": true,
+    "wholePageRasterImport": false,
+    "contentAutoLayout": true,
+    "newQuestionComponentsCreated": false,
+    "cloudReloadConfirmedBothShells": true,
+    "outerRimFadeVisuallyVerifiedBothScreens": true,
+    "outerRimFullHeightContributorsRemoved": true,
+    "latestActualFigmaPNGExports": true,
+    "temporaryImportFramesRemoved": true,
+    "outerFadeCloudReloadConfirmed": true,
+    "cloudFadeEvidence": {
+      "selectedSavedNode": "612:211",
+      "size": [
+        1440,
+        1024
+      ],
+      "absolutePositioning": true
+    }
+  },
+  "backup": {
+    "path": "output/figma/option-grid-editable-backup.fig",
+    "format": "fig",
+    "scope": "full Figma file snapshot; corrected screens on page 06",
+    "bytes": 8325077,
+    "sha256": "1470926193b814e27cc3c2c0836a1b312a42dffff0cfb2e27dbad22ed0e6d184"
+  }
+}

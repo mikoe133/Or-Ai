@@ -1,0 +1,32 @@
+{
+  "syntheticIsolatedData": true,
+  "productId": "01a15dc2-7c08-777c-a41b-8833abe46bd3",
+  "productVersionId": "01a15dc2-7c52-772d-94b8-e83be4ce4336",
+  "creativeProfileRevisionId": "01a15dc2-7c30-751f-a46e-8c34d8322a42",
+  "releaseId": "4dcdc0d1-0029-4aba-b762-b8b3c80badb7",
+  "releaseDigest": "aaf1ff0f1ceb6383bf821e4c9f6612e1208fadd7d146cbbadaa36f4f54d84347",
+  "authoringRevisionId": "01a15dc2-8580-71ce-814e-d5a76328da3d",
+  "contentPackageId": "01a15dc2-896b-719c-8b96-e7a6b5951fad",
+  "template": "quiet-room@1",
+  "report": "field-notes@1",
+  "methodVersionId": "01a15dc2-80e6-71bc-b133-2eea8983a3d1",
+  "contentRevisions": {
+    "assessment": "8089292c-c537-4afa-bebf-39cfeb66c20d",
+    "copy": "c6deb934-ed69-4117-af1c-e4875e3bd909",
+    "cover": "15983742-d31a-4677-9280-96c15261ce82",
+    "video": "a606811b-6a16-4358-b215-2667d53c42be"
+  },
+  "fileIds": [
+    "08120a90-c7b8-447f-be52-119328f55d02",
+    "c45b4670-b4aa-47b8-9208-b3ea475614a7",
+    "d1ca6b03-84a4-45b2-af7c-42bfaf1bb5ff"
+  ],
+  "videoMetadata": {
+    "width": 1280,
+    "height": 720,
+    "durationMs": 22200,
+    "byteSize": 1695498
+  },
+  "scoreParity": 100,
+  "physicalDeviceAccepted": false
+}

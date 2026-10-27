@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import {
@@ -12,12 +12,18 @@ import {
   type AdminProduct,
 } from "./api.js";
 import { Failure, Loading, Pager, useAction } from "../business/shared.js";
+import "./management.css";
+
+const productStatuses: Record<string, string> = { draft: "草稿", reviewed: "已审核", published: "已发布", archived: "已下架" };
 type Version = Awaited<ReturnType<typeof adminApi.importVersion>>;
 export function Products({ scope }: { scope: "demo" | "live" }) {
+  const headingRef = useRef<HTMLElement>(null);
   const [params, setParams] = useSearchParams(),
     client = useQueryClient(),
     action = useAction(),
     [current, setCurrent] = useState<AdminProduct | null>(null),
+    [editorOpen, setEditorOpen] = useState(false),
+    [activeTab, setActiveTab] = useState<"metadata" | "versions">("metadata"),
     [metadata, setMetadata] = useState(""),
     [recommendationOrder, setRecommendationOrder] = useState(0),
     [configuration, setConfiguration] = useState(""),
@@ -28,6 +34,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
       ReturnType<typeof adminApi.preview>
     > | null>(null),
     [notice, setNotice] = useState("");
+  useEffect(() => { headingRef.current?.scrollIntoView({ block: "start" }); }, [editorOpen, current?.id]);
   const list = useQuery({
     queryKey: ["private", "admin", "products", params.toString()],
     queryFn: ({ signal }) => adminApi.products(params.toString(), signal),
@@ -59,6 +66,8 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
     void client.invalidateQueries({ queryKey: ["public"] });
   }
   function choose(value: AdminProduct) {
+    setEditorOpen(true);
+    setActiveTab("metadata");
     setCurrent(value);
     setMetadata(JSON.stringify(productMetadata(value), null, 2));
     setRecommendationOrder(value.recommendationOrder);
@@ -70,6 +79,8 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
     setNotice("");
   }
   function newProduct() {
+    setEditorOpen(true);
+    setActiveTab("metadata");
     setCurrent(null);
     setVersion(null);
     setPreview(null);
@@ -111,13 +122,20 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
     );
   }
   return (
-    <>
-      <h2>商品管理</h2>
-      <p>
-        先维护商品资料，再导入、预览、审核并发布具体版本。公开样例与私人报告分开。
-      </p>
+    <div className="admin-management admin-products">
+      <header ref={headingRef} className="admin-management-heading">
+        <div><span className="admin-eyebrow">CATALOG / PRODUCTS</span>
+          <h2>{editorOpen ? (current ? current.name : "新建商品") : "商品与版本"}</h2>
+          <p>{editorOpen ? "维护商品资料与配置版本，审核后再发布。" : "管理商品资料、配置版本与发布状态。公开样例与私人报告分开保存。"}</p>
+        </div>
+        <div className="biz-row">
+          {editorOpen ? <button type="button" disabled={action.busy} onClick={() => { setEditorOpen(false); setNotice(""); }}>返回商品列表</button> :
+            <button className="admin-primary" type="button" disabled={action.busy} onClick={newProduct}>新建商品 <span aria-hidden="true">↗</span></button>}
+        </div>
+      </header>
+      {!editorOpen && <>
       <form
-        className="biz-row"
+        className="biz-row admin-filterbar"
         onSubmit={(event) => {
           event.preventDefault();
           const form = new FormData(event.currentTarget);
@@ -148,14 +166,11 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
           >
             <option value="">全部</option>
             {["draft", "reviewed", "published", "archived"].map((value) => (
-              <option key={value}>{value}</option>
+              <option key={value} value={value}>{productStatuses[value] ?? value}</option>
             ))}
           </select>
         </label>
         <button>筛选商品</button>
-        <button type="button" disabled={action.busy} onClick={newProduct}>
-          新建商品
-        </button>
       </form>
       {list.isPending ? (
         <Loading />
@@ -163,19 +178,18 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
         <Failure error={list.error} retry={() => void list.refetch()} />
       ) : (
         <>
-          <div className="biz-grid">
-            {list.data.items.map((value) => (
-              <article className="biz-card" key={value.id}>
-                <h3>{value.name}</h3>
-                <p>
-                  {value.slug} · {value.status} · 修订 {value.revision}
-                </p>
-                <button onClick={() => choose(value)} disabled={action.busy}>
-                  编辑商品
-                </button>
-              </article>
-            ))}
+          <div className="admin-section-heading"><h3>全部商品</h3><span>{list.data.total} 个商品</span></div>
+          <div className="biz-table-wrap admin-data-table">
+            <table><thead><tr><th>商品名称</th><th>状态</th><th>价格</th><th>时长</th><th>修订</th><th><span className="admin-sr-only">操作</span></th></tr></thead>
+              <tbody>{list.data.items.map((value) => <tr key={value.id}>
+                <td><strong>{value.name}</strong><small className="admin-table-subtitle">{value.slug}</small></td>
+                <td><span className="admin-status" data-status={value.status}>{productStatuses[value.status] ?? value.status}</span></td>
+                <td>¥ {(value.priceFen / 100).toFixed(2)}</td><td>{value.durationMinutes} 分钟</td><td>r{value.revision}</td>
+                <td><button className="admin-table-action" onClick={() => choose(value)} disabled={action.busy}>编辑商品 <span aria-hidden="true">↗</span></button></td>
+              </tr>)}</tbody>
+            </table>
           </div>
+          {!list.data.items.length && <div className="admin-empty-state"><h3>没有匹配的商品</h3><p>调整搜索条件，或创建第一份商品资料。</p></div>}
           <Pager
             {...list.data}
             onChange={(page) =>
@@ -184,30 +198,21 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
           />
         </>
       )}
-      <details>
-        <summary>分类与标签参考</summary>
-        {categories.isError || tags.isError ? (
-          <Failure error={categories.error ?? tags.error} />
-        ) : (
-          <>
-            <h3>分类</h3>
-            {categories.data?.items.map((value) => (
-              <p key={value.id}>
-                {value.name}：{value.id}
-              </p>
-            ))}
-            <h3>标签</h3>
-            {tags.data?.items.map((value) => (
-              <p key={value.id}>
-                {value.name}：{value.id}
-              </p>
-            ))}
-          </>
-        )}
-      </details>
-      {metadata && (
-        <section className="biz-card">
-          <h3>{current ? "商品资料" : "新增商品资料"}</h3>
+      </>}
+      {editorOpen && (
+        <section className="admin-editor-panel">
+          {current && <div className="admin-editor-tabs" role="tablist" aria-label="商品编辑区域" onKeyDown={(event) => {
+            if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+            event.preventDefault();
+            const next = event.key === "Home" ? "metadata" : event.key === "End" ? "versions" : activeTab === "metadata" ? "versions" : "metadata";
+            setActiveTab(next);
+            event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next === "metadata" ? 0 : 1]?.focus();
+          }}>
+            <button id="admin-product-metadata-tab" type="button" role="tab" tabIndex={activeTab === "metadata" ? 0 : -1} aria-controls="admin-product-metadata-panel" aria-selected={activeTab === "metadata"} onClick={() => setActiveTab("metadata")}>商品资料</button>
+            <button id="admin-product-versions-tab" type="button" role="tab" tabIndex={activeTab === "versions" ? 0 : -1} aria-controls="admin-product-versions-panel" aria-selected={activeTab === "versions"} onClick={() => setActiveTab("versions")}>配置版本</button>
+          </div>}
+          {activeTab === "metadata" && <div className="admin-form-panel" id="admin-product-metadata-panel" role={current ? "tabpanel" : undefined} aria-labelledby={current ? "admin-product-metadata-tab" : undefined}>
+          <div className="admin-section-heading"><h3>{current ? "商品资料" : "新增商品资料"}</h3>{current && <span>r{current.revision}</span>}</div>
           {current && (
             <>
               <p>
@@ -258,6 +263,8 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
               商品元数据 JSON
               <textarea
                 aria-label="商品元数据 JSON"
+                className="admin-code-editor"
+                spellCheck={false}
                 value={metadata}
                 maxLength={100000}
                 onChange={(event) => setMetadata(event.target.value)}
@@ -276,13 +283,14 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
                 }
               />
             </label>
-            <button disabled={action.busy} type="submit">
+            <button className="admin-primary" disabled={action.busy} type="submit">
               {current ? "保存商品资料" : "创建商品"}
             </button>
           </form>
-          {current && (
-            <>
-              <h3>配置版本</h3>
+          </div>}
+          {current && activeTab === "versions" && (
+            <div className="admin-form-panel" id="admin-product-versions-panel" role="tabpanel" aria-labelledby="admin-product-versions-tab">
+              <div className="admin-section-heading"><h3>配置版本</h3><span>审核后发布</span></div>
               {versions.isPending ? (
                 <Loading />
               ) : versions.isError ? (
@@ -345,6 +353,8 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
                 题目与报告配置 JSON
                 <textarea
                   aria-label="题目与报告配置 JSON"
+                  className="admin-code-editor"
+                  spellCheck={false}
                   value={configuration}
                   maxLength={524288}
                   onChange={(event) => setConfiguration(event.target.value)}
@@ -352,6 +362,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
               </label>
               <div className="biz-row">
                 <button
+                  className="admin-primary"
                   disabled={action.busy || !configuration}
                   onClick={() =>
                     void action.run(
@@ -423,6 +434,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
                   <div className="biz-row">
                     {(["review", "publish"] as const).map((command) => (
                       <button
+                        className={command === "publish" ? "admin-primary" : undefined}
                         key={command}
                         disabled={
                           action.busy ||
@@ -467,6 +479,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
                 </details>
               )}
               <button
+                className="admin-danger"
                 disabled={action.busy || current.status !== "published"}
                 onClick={() =>
                   void action.run(
@@ -484,14 +497,35 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
               >
                 下架商品
               </button>
-            </>
+            </div>
           )}
         </section>
       )}
+      <details className="admin-reference-details">
+        <summary>分类与标签参考</summary>
+        {categories.isError || tags.isError ? (
+          <Failure error={categories.error ?? tags.error} />
+        ) : (
+          <>
+            <h3>分类</h3>
+            {categories.data?.items.map((value) => (
+              <p key={value.id}>
+                {value.name}：{value.id}
+              </p>
+            ))}
+            <h3>标签</h3>
+            {tags.data?.items.map((value) => (
+              <p key={value.id}>
+                {value.name}：{value.id}
+              </p>
+            ))}
+          </>
+        )}
+      </details>
       {notice && <p role="status">{notice}</p>}
       {Boolean(action.error) && (
         <Failure error={action.error} retry={changed} />
       )}
-    </>
+    </div>
   );
 }

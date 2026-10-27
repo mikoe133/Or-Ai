@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Link,
@@ -24,7 +24,14 @@ import { PublicSampleEditor, SuitePreview } from "./content-preview.js";
 import { ContentHistory, CreativeProfileDiff } from "./content-history.js";
 import { AdoptionPanel } from "./content-adoption.js";
 import { CleanupPanel } from "./content-cleanup.js";
+import { ContentSkills } from './content-skills.js';
+import { ExperienceDesk } from './content-experience.js';
+import { productCapabilities } from '@orai/contracts/admin';
+import { experienceApi } from './experience-api.js';
+import { ContentCapabilities } from './content-capabilities.js';
+import { isAccessFailure } from '../api/access-verification.js';
 import "./content.css";
+const ProjectWorkspace = lazy(() => import('./project-workspace.js').then(module => ({ default: module.ProjectWorkspace })));
 export function ContentWorkbench() {
   return (
     <Routes>
@@ -40,17 +47,17 @@ function ContentProducts() {
       queryFn: ({ signal }) => adminApi.products(params.toString(), signal),
     });
   return (
-    <>
+    <section className="content-index" aria-label="内容商品目录">
       <div className="content-section-heading">
         <div>
-          <span className="content-eyebrow">CONTENT STUDIO</span>
+          <span className="content-eyebrow">CONTENT / WORKSPACE</span>
           <h2>内容工作台</h2>
-          <p>从共同设定出发，制作同一商品的题库、报告与传播内容。</p>
+          <p>从共同设定出发，组织商品内容、交互体验、结果交付与传播内容。</p>
         </div>
         <Link to="/admin/products">管理商品资料</Link>
       </div>
       <form
-        className="biz-row"
+        className="biz-row content-index-search"
         onSubmit={(event) => {
           event.preventDefault();
           const form = new FormData(event.currentTarget);
@@ -63,6 +70,7 @@ function ContentProducts() {
             name="query"
             aria-label="搜索内容商品"
             maxLength={100}
+            placeholder="按商品名称或关键词查找"
             defaultValue={params.get("query") ?? ""}
           />
         </label>
@@ -74,21 +82,25 @@ function ContentProducts() {
         <Failure error={list.error} retry={() => void list.refetch()} />
       ) : (
         <>
+          <div className="content-list-caption" aria-hidden="true">
+            <span>商品 / 创作入口</span><span>当前状态</span><span />
+          </div>
           <div className="content-product-list">
-            {list.data.items.map((product) => (
+            {list.data.items.map((product, index) => (
               <Link
                 className="content-product-row"
                 key={product.id}
                 to={"/admin/content/" + product.id}
               >
-                <span>
+                <span className="content-product-number" aria-hidden="true">{String((list.data.page - 1) * list.data.pageSize + index + 1).padStart(2, "0")}</span>
+                <span className="content-product-name">
                   <strong>{product.name}</strong>
                   <small>{product.summary}</small>
                 </span>
                 <span className="content-badge">
                   {statuses[product.status]}
                 </span>
-                <span aria-hidden="true">↗</span>
+                <span className="content-product-enter">进入工作台 <span aria-hidden="true">↗</span></span>
               </Link>
             ))}
           </div>
@@ -103,7 +115,7 @@ function ContentProducts() {
           />
         </>
       )}
-    </>
+    </section>
   );
 }
 function ProductWorkbench() {
@@ -142,7 +154,7 @@ function ProductWorkbench() {
     [versionChoice, setVersionChoice] = useState<string | null>(
       params.get("version"),
     ),
-    [tab, setTab] = useState(params.get("tab") ?? "profile"),
+    [tab, setTab] = useState(params.get("tab") ?? (params.has('version') || params.has('profile') ? 'profile' : 'project')),
     [inspectionId, setInspectionId] = useState(""),
     [dirty, setDirty] = useState<Record<string, boolean>>({}),
     [navigationNotice, setNavigationNotice] = useState(""),
@@ -160,6 +172,12 @@ function ProductWorkbench() {
   const profile = profiles.data?.find(
     (value) => value.id === (profileId ?? profiles.data[0]?.id),
   );
+  const experience = useQuery({
+    queryKey: ['private', 'admin', 'experience', productId, versionId, profile?.id],
+    enabled: !!versionId && tab !== 'project',
+    queryFn: ({ signal }) => experienceApi.workspace(productId, versionId, profile?.id, signal),
+    refetchOnWindowFocus: false,
+  });
   const rows = useQuery({
     queryKey: ["private", "admin", "content-heads", productId, versionId],
     queryFn: ({ signal }) =>
@@ -175,10 +193,29 @@ function ProductWorkbench() {
           signal,
         ),
       ),
-    enabled: !!versionId,
+    enabled: !!versionId && tab !== 'project',
     refetchOnWindowFocus: false,
   });
   const hasDirty = Object.values(dirty).some(Boolean);
+  const tabsRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const node = tabsRef.current;
+    if (!node) return;
+    const reveal = () => {
+      const selected = node.querySelector<HTMLElement>('[aria-current="page"]');
+      if (!selected) return;
+      const host = node.getBoundingClientRect(), item = selected.getBoundingClientRect();
+      if (item.left < host.left) node.scrollLeft += item.left - host.left - 8;
+      else if (item.right > host.right) node.scrollLeft += item.right - host.right + 8;
+    };
+    reveal();
+    const observer = new ResizeObserver(reveal);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [tab, product.data?.id, profiles.data?.length, versions.data?.length]);
+  const skillsDirty = useCallback((value: boolean) => setDirty(current => ({ ...current, skills: value })), []);
+  const projectDirty = useCallback((value:boolean)=>setDirty(current=>({...current,project:value})),[]);
+  const experienceDirty = useCallback((value: boolean) => setDirty(current => ({ ...current, experience: value })), []);
   const profileDirty = useCallback(
       (value: boolean) =>
         setDirty((current) => ({ ...current, profile: value })),
@@ -245,6 +282,9 @@ function ProductWorkbench() {
       "content-links",
       "content-adoption-options",
       "content-packages",
+      "experience",
+      "experience-history",
+      "project-workspace",
     ])
       void client.invalidateQueries({ queryKey: ["private", "admin", key] });
     void client.invalidateQueries({
@@ -268,9 +308,10 @@ function ProductWorkbench() {
     });
     refresh();
   }
-  if (product.isPending || profiles.isPending || versions.isPending)
+  if ((product.isPending && !product.data) || (profiles.isPending && !profiles.data) || (versions.isPending && !versions.data))
     return <Loading />;
-  if (product.isError || profiles.isError || versions.isError)
+  const contextError = product.error ?? profiles.error ?? versions.error;
+  if (!product.data || !profiles.data || !versions.data || isAccessFailure(contextError))
     return (
       <Failure
         error={product.error ?? profiles.error ?? versions.error}
@@ -301,12 +342,23 @@ function ProductWorkbench() {
         row.snapshot.status !== "archived"),
   );
   const callbacks = { cover: coverDirty, video: videoDirty, copy: copyDirty };
+  const currentVersion = versions.data.find((value) => value.id === versionId);
+  const capabilities = experience.data?.capabilities ?? productCapabilities({
+    profile: profile?.profile, profileRevisionId: profile?.id, hasContentVersion: !!versionId, capabilityVersion: 2,
+  });
+  const fixedProfile = capabilities.profileRevisionId ? profiles.data.find(value => value.id === capabilities.profileRevisionId) : profile;
+  const capabilityPending = !!versionId && !experience.data;
+  const contentEditable = !capabilityPending && capabilities.modules.content === 'editable';
   return (
     <div className="content-workbench">
-      <Link to="/admin/content">← 全部内容商品</Link>
+      <Link className="content-back" to="/admin/content">← 全部内容商品</Link>
+      {contextError && <Failure error={contextError} retry={() => {
+        void product.refetch(); void profiles.refetch(); void versions.refetch();
+      }} />}
+      <div className="content-context-bar" hidden={tab === 'project'}>
       <div className="content-section-heading">
         <div>
-          <span className="content-eyebrow">CONTENT STUDIO</span>
+          <span className="content-eyebrow">CONTENT / WORKSPACE</span>
           <h2>{product.data.name}</h2>
           <p>{capability(profile?.profile)}</p>
         </div>
@@ -314,11 +366,11 @@ function ProductWorkbench() {
           {product.data.scope === "demo" ? "演示范围" : "正式范围"}
         </span>
       </div>
-      <div className="content-controls">
+      <div className="content-controls" hidden={tab === 'project'}>
         <label>
-          题库版本
+          内容版本 · 单选 v1
           <select
-            aria-label="工作台题库版本"
+            aria-label="工作台内容版本"
             disabled={hasDirty}
             value={versionId || "new"}
             onChange={(event) => {
@@ -331,7 +383,7 @@ function ProductWorkbench() {
                 v{value.number} · {statuses[value.status]}
               </option>
             ))}
-            <option value="new">建立新版本</option>
+            <option value="new">建立单选内容版本</option>
           </select>
         </label>
         <label>
@@ -356,40 +408,24 @@ function ProductWorkbench() {
           </select>
         </label>
       </div>
+      </div>
       {hasDirty && (
         <p className="content-note">
-          有未保存修改。页签间可切换；保存或放弃后可切换版本、设定与稿件。
+          {dirty.project?'项目规划有未保存修改。保存或放弃后可切换页签和版本。':'有未保存修改。页签间可切换；保存或放弃后可切换版本、设定与稿件。'}
         </p>
       )}
       {navigationNotice && <p role="alert">{navigationNotice}</p>}
-      <div className="content-readiness" aria-label="四类内容齐备情况">
-        {(Object.keys(domains) as (keyof typeof domains)[]).map((domain) => {
-          const items = selectedRows.filter((value) => value.domain === domain),
-            complete =
-              domain === "assessment"
-                ? items.length > 0
-                : domain === "copy"
-                  ? items.some((value) => !!value.snapshot.authoring)
-                  : items.some((value) => value.storage.deliveryUploaded);
-          return (
-            <div key={domain}>
-              <strong>{domains[domain]}</strong>
-              <span className={complete ? "is-complete" : ""}>
-                {items.length === 0
-                  ? "待制作"
-                  : complete
-                    ? "可预览"
-                    : "草稿 / 待正式文件"}
-              </span>
-              <small>{items.length} 份当前稿</small>
-            </div>
-          );
-        })}
-      </div>
-      <nav className="content-tabs" aria-label="内容工作台页签">
+      <nav ref={tabsRef} className="content-tabs" aria-label="内容工作台页签">
         {Object.entries({
+          project: '项目工作区',
           profile: "创作设定",
-          ...domains,
+          skills: 'skill 组合',
+          assessment: '商品内容',
+          experience: '体验设计',
+          result: '结果交付',
+          cover: domains.cover,
+          video: domains.video,
+          copy: domains.copy,
           preview: "整套预览",
           history: "引用与历史",
           adoption: "成套采用",
@@ -399,19 +435,27 @@ function ProductWorkbench() {
             key={key}
             aria-current={tab === key ? "page" : undefined}
             onClick={() => {
+              if(dirty.project&&key!=='project'){setNavigationNotice('请先保存或放弃项目规划，再切换页签。');return;}
               setTab(key);
               remember("tab", key);
             }}
           >
             {label}
-            {dirty[key] ? " ·" : ""}
+            {(dirty[key] || (key === 'result' && (dirty.assessment || dirty.experience || dirty.sample))) ? " ·" : ""}
           </button>
         ))}
       </nav>
-      {rows.isError && (
+      {rows.isError && tab !== 'project' && (
         <Failure error={rows.error} retry={() => void rows.refetch()} />
       )}
-      {rows.isPending && !!versionId && <Loading />}
+      {rows.isPending && !!versionId && tab !== 'project' && <Loading />}
+      {tab === 'project' && <Suspense fallback={<Loading />}><ProjectWorkspace productId={productId} productName={product.data.name} initialProfile={profile??null} onDirty={projectDirty}
+        onEdit={value=>{if(dirty.project){setNavigationNotice('请先保存或放弃项目规划，再打开内容编辑。');return;}setTab(value);remember('tab',value);}} /></Suspense>}
+      <div className="content-workspace" hidden={tab === 'project'}>
+      <div className="content-workspace-main">
+      {experience.isError && <Failure error={experience.error} retry={() => void experience.refetch()} />}
+      {!capabilityPending && <ContentCapabilities value={capabilities} selectedProfile={profile} fixedProfile={fixedProfile} hasVersion={!!versionId} />}
+      {capabilityPending && !experience.isError && <p role="status" className="content-note">正在读取此版本的制作能力…</p>}
       <div hidden={tab !== "profile"}>
         <ProfileEditor
           key={profile?.id ?? "new"}
@@ -435,16 +479,23 @@ function ProductWorkbench() {
           active={tab === "profile"}
         />
       </div>
-      <div hidden={tab !== "assessment"}>
-        <AssessmentDesk
+      <div hidden={tab !== "assessment" && tab !== 'result'}>
+        {!contentEditable && !capabilityPending && <p className="content-note">{versionId
+          ? '此设定超出当前运行能力。已有单选内容与结果保留为只读；可先继续完善创作设定和制作计划。'
+          : '此形式的内容与结果编辑器尚未实现。请先在创作设定和项目工作区完善方案。'}</p>}
+        {(!!versionId || contentEditable) && <AssessmentDesk
           key={versionId}
           product={product.data}
           versionId={versionId}
-          profile={profile}
+          profile={fixedProfile}
+          view={tab === 'result' ? 'result' : 'content'}
+          readOnly={!contentEditable}
           assessment={all.find((value) => value.domain === "assessment")}
           onVersionSaved={versionSaved}
           onDirty={assessmentDirty}
-        />
+        />}
+      </div>
+      <div hidden={tab !== 'result' || (!versionId && !contentEditable)}>
         <PublicSampleEditor
           key={product.data.revision}
           product={product.data}
@@ -455,6 +506,9 @@ function ProductWorkbench() {
           }}
         />
       </div>
+      <div hidden={tab !== 'skills'}><ContentSkills profile={profile} active={tab === 'skills'} onDirty={skillsDirty} /></div>
+      <div hidden={tab !== 'experience' && tab !== 'result'}><ExperienceDesk key={versionId+':'+profile?.id} productId={productId} versionId={versionId} profile={profile}
+        active={tab==='experience'||tab==='result'} view={tab === 'result' ? 'result' : 'experience'} contentDirty={!!dirty.assessment} onDirty={experienceDirty} onChanged={refresh}/></div>
       <div
         hidden={!["cover", "video", "copy"].includes(tab)}
         className="content-filters"
@@ -511,7 +565,7 @@ function ProductWorkbench() {
           {!profile ? (
             <p>请先保存共同创作设定。</p>
           ) : !versionId ? (
-            <p>请先在题库与报告页签建立题库版本。</p>
+            <p>请先在商品内容页签建立受支持的内容版本。当前使用单选内容协议。</p>
           ) : (
             <AssetDesk
               key={versionId + profile.id}
@@ -566,6 +620,49 @@ function ProductWorkbench() {
           profile={profile}
           rows={all}
         />
+      </div>
+      </div>
+      <aside className="content-inspector" aria-label="当前创作上下文">
+        <div className="content-inspector-title">
+          <span className="content-eyebrow">CONTEXT</span>
+          <h3>制作依据</h3>
+        </div>
+        <dl className="content-context-facts">
+          <div><dt>内容版本 · 单选</dt><dd>{currentVersion ? `v${currentVersion.number} · ${statuses[currentVersion.status]}` : "尚未建立"}</dd></div>
+          <div><dt>共同创作设定</dt><dd>{profile ? `r${profile.revision} · ${profile.profile.title}` : "尚未保存"}</dd></div>
+          <div><dt>保存状态</dt><dd className={hasDirty ? "content-pending" : ""}>{hasDirty ? "有未保存修改" : "无未保存修改"}</dd></div>
+        </dl>
+        <h4>四类内容</h4>
+        <div className="content-readiness" aria-label="四类内容齐备情况">
+          {(Object.keys(domains) as (keyof typeof domains)[]).map((domain) => {
+            const items = selectedRows.filter((value) => value.domain === domain),
+              complete =
+                domain === "assessment"
+                  ? items.length > 0
+                  : domain === "copy"
+                    ? items.some((value) => !!value.snapshot.authoring)
+                    : items.some((value) => value.storage.deliveryUploaded);
+            return (
+              <div key={domain}>
+                <strong>{domains[domain]}</strong>
+                <small>{items.length} 份</small>
+                <span className={complete ? "is-complete" : ""}>
+                  {rows.isPending && versionId ? "读取中" : rows.isError ? "读取失败" : items.length === 0 ? "待制作" : complete ? "可预览" : "草稿 / 待正式文件"}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+        {profile && <>
+          <h4>共同目标</h4>
+          <dl className="content-context-goals">
+            <div><dt>情绪感受</dt><dd>{profile.profile.emotionalGoal}</dd></div>
+            <div><dt>加深理解</dt><dd>{profile.profile.understandingGoal}</dd></div>
+            <div><dt>语言风格</dt><dd>{profile.profile.language}</dd></div>
+          </dl>
+        </>}
+        <p className="content-inspector-note">各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。</p>
+      </aside>
       </div>
     </div>
   );

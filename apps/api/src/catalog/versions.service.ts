@@ -12,6 +12,9 @@ import { ApiException } from '../common/http-errors';
 import { CatalogAdminAccessService, type CatalogAdminAccess } from './admin-access.service';
 import { catalogInclude } from './catalog.service';
 import { toPublicProduct, type PublicProductRecord } from './projections';
+import { experienceRelease } from './experience-release';
+import { prepareAuthoredExperience } from './experience-authoring';
+import { AssetStorage } from '../operations/asset-storage';
 
 const versionDto = (version: ProductVersion) => AdminVersionSchema.parse({
   id: version.id, productId: version.productId, scope: version.scope.toLowerCase(), number: version.number,
@@ -25,7 +28,7 @@ const productDto = (product: Product) => AdminProductStateResponseSchema.parse({
 
 @Injectable()
 export class VersionsService {
-  constructor(private readonly database: DatabaseService, private readonly administrators: CatalogAdminAccessService) {}
+  constructor(private readonly database: DatabaseService, private readonly administrators: CatalogAdminAccessService, private readonly storage: AssetStorage) {}
 
   async validate(access: CatalogAdminAccess, configuration: unknown) {
     await this.administrators.require(access);
@@ -151,7 +154,10 @@ export class VersionsService {
       if (version.status !== 'REVIEWED') throw new ApiException('CONFLICT', '需要先审核一个未发布的新版本', 409);
       this.publicPreview(product, version);
       const publishedAt = new Date();
+      await prepareAuthoredExperience(tx, version, this.storage);
       const published = await tx.productVersion.update({ where: { id }, data: { status: 'PUBLISHED', publishedAt, revision: { increment: 1 } } });
+      experienceRelease(await tx.experienceRelease.findUnique({ where: { productVersionId: id } }),
+        parseInput(ProductConfigurationSchema, published.configuration, 'INVALID_CONFIGURATION'), published.creativeProfileRevisionId);
       await tx.product.update({ where: { id: product.id }, data: { status: 'PUBLISHED', currentVersionId: id, publishedAt, revision: { increment: 1 } } });
       return { response: versionDto(published), entityId: id, entityKind: 'product_version' };
     });

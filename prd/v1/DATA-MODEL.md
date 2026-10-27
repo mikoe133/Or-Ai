@@ -1,6 +1,6 @@
 # 数据模型与维护约定
 
-2026-10-20。现有业务与 T12-A/B/C 内容后台已实现，共 37 模型/11 迁移；真实云端认证/收信和对象存储验收待 T09。内容修订与混合存储见 [CONTENT-FOUNDATION.md](CONTENT-FOUNDATION.md)，采用/清理见 [CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)，证据见 PROGRESS.md。字段以 `apps/api/prisma/schema.prisma` 为准，额外约束以迁移 SQL 为准。
+2026-10-23。当前73模型/26迁移；平台优先的T14-P/W、G5布局历史及O1统一连接已分批向前迁移，O2/O3复用既有方法/run模型，本地指定范围已通过。O4在设计批准后新增稳定配置容器与不可变修订两表，第26迁移已应用，保存/历史、校验/导出及隔离验证通过，指定正式三图已获[独立批准](../../output/design-review/external-run-configuration-o4-formal-20261023/APPROVAL.md)，原技术pending不改写。64类表1157行旧字段、原25迁移校验和及历史引用保持，新配置/修订与临时库均0，详见文末O4约定。G8、本地T10-G及O1–O3指定批准范围保持，真实账户连接/真机另验。T15-B批准保留，T16-A小屋/手记仅技术样例，云端验收留T09。内容修订见[CONTENT-FOUNDATION.md](CONTENT-FOUNDATION.md)，采用/清理见[CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)，体验运行/制作见[EXPERIENCE-RUNTIME.md](EXPERIENCE-RUNTIME.md)，项目当前范围见[PROJECT-WORKSPACE.md](PROJECT-WORKSPACE.md)；字段和额外约束以Prisma schema/迁移SQL为准。
 
 ## 模型分组
 
@@ -11,19 +11,26 @@
 | 版本 | product_versions | 商品＋版本号唯一；结构化配置；发布后不能覆盖、删除或退回草稿 |
 | 交付 | orders、code_batches、redemption_codes | 平台＋订单引用唯一；码摘要唯一；订单、版本、权益、批次的数据范围一致；补发关联旧码 |
 | 身份 | users、entitlement_bindings | Supabase 用户 ID 唯一；无邮箱密码；每权益最多一份绑定，绑定与所有者在同一事务中一致 |
+| 机器接入 | machine_credentials、machine_uploads、machine_calls | 凭据/票据只存摘要；单领域/范围、有效期、不可变授权/上传关联/日志；仅可追加撤销，详见 MCP-LOCAL-TRANSPORT |
+| Codex 连接 | codex_connections | 当前管理员/scope 的持久连接业务键、固定授权摘要与工作区/各域凭据分组；不保存原始密钥，仅可追加撤销 |
 | 账户会话 | account_sessions | 本站 Cookie 摘要；Auth 会话＋scope 唯一；访问/刷新凭据分别认证加密；撤销时清空凭据，重新交接不延长期限 |
 | 权益 | entitlements、access_sessions、access_grants | 归属与有效状态分开；版本锁定；消费次数不能回退；会话可持有多个权益，每条授权可单独撤销 |
 | 答卷 | attempts、attempt_answers、reports | 权益＋答卷序号唯一；答卷＋题目唯一；每答卷唯一报告；历史版本和报告快照锁定；删除报告留下墓碑 |
+| 体验发布/资源 | experience_releases、experience_resources | 每商品版本一份不可变清单；固定设定/内容/主题/模板与资源摘要；答卷锁定同版本/scope release，报告呈现不可改写 |
+| 体验制作/资源 | experience_authoring_revisions、experience_authoring_resources | 草稿/审核均追加历史；固定配置摘要/设定/两方法/资源与可信来源，发布捕获精确最新审核稿；草稿资源亦受清理保护 |
 | 汇总 | question_stats、question_option_stats、result_stats、result_type_stats | 按版本聚合；题目/选项、类型复合键唯一；计数非负；回答与完成答卷使用不同分母 |
 | 运营 | campaign_assets、campaigns、events | 素材按版本＋平台＋类别＋变体唯一；事件去重键唯一；演示事件强制使用 DEMO 来源 |
 | 文件/上传 | asset_files | 同一记录管理上传状态与文件；版本/上传者/scope 复合引用；就绪元数据不可改；READY 媒体要求匹配的 AVAILABLE 文件 |
 | 内容底座 | creative_profile_revisions、content_revisions、content_references、production_records | 共同创作设定、旧题库/素材快照、固定输入位置与制作来源；历史只追加、同商品/scope 复合引用、拒绝循环 |
+| 项目制作 | production_plan_revisions、production_module_identities、production_plan_modules、project_method_snapshots、project_method_references、project_production_records、project_production_methods、project_production_outputs | 精确计划/模块/设定与方法/实际产物来源，不可变、同项目/scope、完整性与原件清理保护；不代表执行或审核留存 |
+| 项目画布布局 | project_canvas_layout_revisions | 精确计划/商品/scope，独立顺序与摘要，仅可追加；坐标不改变业务计划摘要或方法/审核依据 |
 | 复查/采用 | content_review_records、content_packages、content_package_items | 影响 fingerprint、不可变采用清单与依赖；同商品/scope、包序号唯一、只追加 |
 | 清理计划 | file_cleanup_plans | 固定文件清单/摘要、执行结果、到期/重试状态；仅原管理员/范围读取和执行，保留元数据 |
+| skill 库 | style_skills、style_skill_versions、skill_reference_files、style_skill_attachments | 四领域及可选 experience 专业用途、稳定标识、版本与参考路径；同 skill/scope 外键，单一 ACTIVE，审核后内容/文件不可覆盖 |
 | 重试/审计 | idempotent_requests、admin_audit_logs | 主体＋操作＋请求 ID 唯一；请求摘要和到期时间；运行账号不能修改或删除审计 |
 | 防猜测 | request_rate_buckets | scope＋种类＋主体的摘要主键；正数 hits 与 window_ends_at；数据库原子窗口计数，跨 API 进程共享 |
 
-共 37 个模型、十一份迁移，均位于私有 `orai` schema。T07 为第七份迁移，T12-A 追加结构迁移与独立历史回填，T12-B 再追加媒体实际尺寸/时长迁移，T12-C 追加复查/采用/清理计划与文件终态迁移，旧迁移未改写。业务 ID 默认由 Prisma 生成 UUIDv7，数据库快照/交付/文件也可生成 UUIDv4，演示 seed 使用确定性 UUID。时间存带时区时间戳，API 输出 ISO 8601；金额以分存储。
+当前共 71 个模型、二十五份迁移，均位于私有 `orai` schema。T07 为第七份迁移，T12-A 追加结构迁移与独立历史回填，T12-B 再追加媒体实际尺寸/时长迁移，T12-C 追加复查/采用/清理计划与文件终态迁移，T15-A/B 增加体验运行/制作及精确发布约束；后续 T14-P/W、G5 和 O1 增加项目、留存、外部回执、布局历史及统一连接，旧迁移未改写。业务 ID 默认由 Prisma 生成 UUIDv7，数据库快照/交付/文件也可生成 UUIDv4，演示 seed 使用确定性 UUID。时间存带时区时间戳，API 输出 ISO 8601；金额以分存储。
 
 T07 为 categories/tags/products/product_versions/campaign_assets 增加非负 revision。AssetFile 保存服务端文件键、原始名称、实际 MIME/字节数/SHA-256、上传者、到期/验证时间及 PENDING/VERIFYING/UPLOADED/AVAILABLE/FAILED/EXPIRED/DELETING/DELETED；当前将上传会话与最终文件合为一表。CampaignAsset.fileId 使用同版本/scope 复合外键，数据库触发器进一步检查用途、AVAILABLE 状态和元数据逐项一致；缺文件媒体不能 READY。AVAILABLE 内容元数据冻结，替换需新文件。旧占位素材可以保留非 READY 状态，不冒充真实文件。
 
@@ -31,24 +38,46 @@ T12-B 的 `width / height / durationMs` 在新上传完成时从真实文件探�
 
 ### 内容后台底座与后续扩展
 
-[CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md#41-逻辑数据实体) 定义扩展实体。T12-A 已实现设定修订、题库/素材历史、跨内容引用/使用快照及制作来源四表，计入 33 模型；文件复用 AssetFile，原件归档元数据放在受校验的 authoring 中。T12-C 已增加 ContentReviewRecord、ContentPackage、ContentPackageItem、FileCleanupPlan 四模型，计入当前 37 模型。StyleSkill/绑定及 MCP 凭据仍待后续迁移。
+[CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md#41-逻辑数据实体) 定义扩展实体。T12-A 已实现设定修订、题库/素材历史、跨内容引用/使用快照及制作来源四表，计入 33 模型；文件复用 AssetFile，原件归档元数据放在受校验的 authoring 中。T12-C 已增加 ContentReviewRecord、ContentPackage、ContentPackageItem、FileCleanupPlan 四模型，该批达到 37 模型。T13-A 又新增 StyleSkill、StyleSkillVersion、SkillReferenceFile、StyleSkillAttachment，达到 41 模型；T13-B 新增 CreativeSkillSet/CreativeSkillBinding 并扩展 ProductionRecord，达到 43 模型；T14-LA 新增三类机器记录达到 46 模型。T14-LB 增加题库版本的固定设定引用及机器制作来源字段，模型数不变、累计 15 迁移。组合/绑定只追加，按设定固定五用途快照与同 scope 的版本外键；机器权限与共用业务服务在每次读取和写入事务中复核。
 
 - 题目/计分/报告模板复用 `ProductVersion.configuration`，素材沿用 `CampaignAsset` 的商品版本、平台、类别和变体；变体与历史修订分别记录。
 - 文件记录受控存储键与实际元数据，视频/图片字节由存储适配器保存。上传可用状态与素材审核状态独立，历史缺失文件不视为已就绪。
 - 商品与 skill/素材包固定引用明确版本/修订；新 skill 或新采用稿不改变历史制作记录，消费者报告快照仍走原权益与期限规则。
 - 单题引用固定 productVersionId/questionId，草稿额外带配置修订/摘要；文案块固定素材修订/blockId，视频分镜记录使用位置、引用/改写及实际使用快照。上游新稿触发影响提示，不覆盖既有视频；采用组合 manifest 固定全部输入。
-- skill 按 assessment/cover/video/copy 四领域校验和授权，共用存储底座；方法版本绑定与产物间内容引用分别保存。循环、失效、越范围和领域不匹配的引用拒绝写入/采用。
+- 原 skill 组合按 assessment/cover/video/copy 四领域校验和授权；T15-B 的可选 experience 另存场景/报告呈现方法。共用存储底座，方法绑定与产物间内容引用分别保存。循环、失效、越范围和领域不匹配的引用拒绝写入/采用。
 - 机器凭据保存摘要与授权范围，版本/文件引用校验 DEMO/LIVE 范围；MCP 与网页共用业务服务，不给适配器 owner 数据库连接。
 
-共享说明已在 T12-A 固定为商品创作设定修订，含情绪/理解目标、参与视角、世界观、形式、视觉/语言/声音及独立报告方案草稿。新方案是 authoring-only，旧 report 运行 schema 不变；呈现 renderer 与兼容投影留 T15，旧结果事实和个人报告快照不受设定更新影响。
+共享说明已在 T12-A 固定为商品创作设定修订，含情绪/理解目标、参与视角、世界观、形式、视觉/语言/声音及独立报告方案草稿。新方案仍是 authoring-only，旧 report 运行 schema 不变；T15-A 注册旧图文报告，T15-B 增加制作/兼容校验与样例预览，任意新 renderer 的实现继续留后续批次。旧结果事实和个人报告快照不受设定更新影响。
 
 第十一份迁移 `20261020010000_content_adoption_and_cleanup` 固定历史采用/复查、商品级内容写锁与文件引用锁。清理仅允许过期且无当前/历史引用文件，经预演确认后进入 DELETING/DELETED；保留文件名/摘要/大小等不可变元数据，禁止复活或直接删除记录。采用包保存完整内容/输入快照及受保护文件引用，不含消费者数据或存储路径；采用不会发布商品。新表权限由 db:provision 收紧，旧迁移不改写。
 
-### 多形态体验扩展规划 尚未迁移
+第十二份迁移 `20261020020000_style_skill_libraries` 新建上述四表与 SkillVersionStatus。参考文件独立于商品媒体用途，复用受控流式存储；本批不改 AssetFile 的商品关系或给媒体上传开放文档类型。skill 领域/标识不可变，版本按修订锁更新，审核后正文与附件固定；启用新版会归档原版，数据库约束每个 skill 最多一份 ACTIVE。版本和文件元数据无物理删除权限，触发器固定 orai search_path。详见 [skill 库交接](STYLE-SKILLS.md)。
 
-[EXPERIENCE-PLATFORM.md](EXPERIENCE-PLATFORM.md) 为 T15–T17 定义待实现的体验发布清单/模板与资源版本、场景题目映射、检查点及未来类型化答案/任务状态。现有 `engine=dimensions_v1`、单选答案与严格 v1 配置保持原含义；运行器扩展需要契约和向前迁移，不能直接向 JSON 添加未校验字段。
+第十三份迁移 `20261020030000_creative_skill_bindings` 固定五用途组合和制作记录的方法快照。第十四份 `20261020040000_machine_transport` 增加机器凭据、上传绑定和调用日志；长期凭据和票据只保存摘要，权限/范围不可原地扩大，撤销后保留合法历史。
 
-内容、体验模板和实际使用资源固定引用；首期不同正式交互模板使用独立商品版本以沿用现有统计隔离。旧权益/答卷仍使用原版本，新输入/玩法按独立引擎验收，不增加当前“已实现模型数”。
+第十五份 `20261020050000_machine_content_provenance` 已在本机应用：`ProductVersion.creativeProfileRevisionId` 以同商品/scope 复合外键固定设定；`ProductionRecord.machineCredentialId/machineRequestId` 成对保存，只有 source=mcp 时允许存在。数据库触发器核对凭据领域、内容写权限、商品范围和操作者归属；服务端写入事务另检查即时有效期/撤销/停用状态。审核、就绪等状态修订复制完整机器来源与输入，不改历史含义。
+
+旧题库没有固定设定字段时，内容快照继续保持旧 JSON 形状与 digest，不给旧版本/旧采用包注入新默认值。迁移及本机四域新稿之后，23 类既有表每条旧记录摘要一致；对新增结构列按迁移前字段投影比较。没有 reset、重播 seed 或覆盖历史题目/报告/采用包。最终 Prisma validate、迁移/provision 与 schema diff 检查通过。实际样例和最终验证证据见 `.local/t14-lb/` 与 PROGRESS.md。
+
+### T15-A 体验兼容运行底座
+
+第十六份迁移 `20261021010000_experience_runtime` 新增 ExperienceRelease/ExperienceResource，以及 Attempt.experienceReleaseId/runtimeCheckpoint、Report.presentation。可用历史版本回填默认 DOM/图文清单，答卷/报告回填固定引用；新发布、开始和报告生成通过触发器捕获。清单摘要、设定一致性、同版本/scope 资源及不可变性在数据库检查，发布/读取另验证严格契约、注册模板和全部题目/选项映射。运行账号不能更新或删除两张新表。
+
+现有 `engine=dimensions_v1`、单选答案、报告结果与严格 v1 配置保持原含义。确认答案和服务端检查点原子保存；完成后原始答案移除也不能重新进入未完成状态。资源只读取权益/报告所属 release 的已验证文件，并保护其历史清理引用。当前仅启用插画/纹理图片；model/audio/font 为未启用契约，T15-B 的后台制作/图片上传见下节。
+
+本机迁移/provision、Prisma validate、隔离和实际 schema diff 全部通过。40 类表共 1151 条旧记录按迁移前字段摘要一致，前十五份已应用迁移校验和不变；没有 reset、重播 seed 或替换旧报告。详见 [运行交接](EXPERIENCE-RUNTIME.md) 与 `.local/t15-a/`。
+
+### T15-B 体验与报告制作
+
+第十七份迁移 `20261021020000_experience_authoring` 已本机应用：新增 ExperienceAuthoringRevision/ExperienceAuthoringResource，ExperienceRelease 增 nullable authoringRevisionId 同版本/scope 复合引用。保存 draft、审核 reviewed 均只追加，固定配置摘要、设定/报告方案、两用途方法快照、制作来源与资源引用；数据库检查方法版本/可信机器来源、资源齐备、同版本绑定及精确最新审核发布。原来没有 authoring 的版本继续使用默认发布清单；有 authoring 时不能绕过审核。
+
+AssetKind 增 EXPERIENCE，独立限制 PNG/JPEG/WebP 和 4 MiB。style_skills / machine_credentials / machine_calls 的领域检查扩展为可选 experience，原四类交付物与五用途组合不变。新表无 UPDATE/DELETE 权限，历史草稿和发布清单都保护文件引用；移除当前资源不会释放历史引用。
+
+隔离与实际 schema diff 均无差异，实际 migrate/provision 完成；42 类表共 1156 条旧记录按迁移前字段摘要一致，前十六份迁移 checksum 不变。5 个旧 release 保留、答卷/报告无缺失引用，临时测试库残留 0。没有 reset、重播 seed 或新增实际商品/订单/机器凭据。私有证据在 `.local/t15-b/`；T15-B 界面本次已获用户批准。
+
+T16-A 复用同一模型：静态注册 `quiet-room@1` / `field-notes@1`，后台和机器继续保存原 authoring/release/资源与来源；四类采用包保持原形状，试点 manifest 额外固定精确 experience release。所有新业务样本均来自一次性隔离库，开发库无新增商品/订单/凭据。回归后再次核验同一 42 类表/1156 旧记录、17 迁移和历史引用一致，实际 schema diff 无差异、临时测试库残留 0，证据 `.local/t16-a/`。
+
+[EXPERIENCE-PLATFORM.md](EXPERIENCE-PLATFORM.md) 中的 2.5D/Three.js 模板和未来类型化答案/任务状态仍待 T16/T17。首期不同正式交互模板使用独立商品版本以沿用现有统计隔离，新输入/玩法按独立引擎验收。
 
 ## 账号与 schema 隔离
 
@@ -137,3 +166,75 @@ seed 同时要求：development/test 环境、非 production NODE_ENV、loopback
 演示商品/订单/码/权益/答卷/报告/素材/文件/事件使用 DEMO 范围，跨 DEMO/LIVE 引用被复合外键阻止。生产目录排除 DEMO，开发/测试仅展示 DEMO；T07 管理查询、上传和售后也检查范围，公开封面仅允许当前可见商品明确采用的文件。隔离由服务端检查，真实云端认证验收仍待完成。
 
 三款主占位商品、状态 fixture、统计口径和真实认证限制见 [PLACEHOLDERS.md](PLACEHOLDERS.md)。完整码/令牌仅在 seed 库函数首次创建时返回内存，数据库只保存 SHA-256 摘要；seed CLI 丢弃秘密，重复 seed 不恢复完整码。delivery:manage 与 T07 受保护 HTTP 均执行受控首次交付。
+
+T13-B 的组合快照不保存生命周期状态或上传会话；ProductionRecord 增加 skillSetId/skillVersions，主 skillVersionId 受同范围外键约束。审核/发布/就绪修订复制完整来源。v1 历史包原样解码，新 v2 包固定完整 skillSet。详见 [SKILL-BINDINGS.md](SKILL-BINDINGS.md)。
+
+## T14.P1 商品计划与稳定模块（已验收）
+
+production_plan_revisions 固定同商品/scope 的设定、证据、模块声明与摘要；production_module_identities 维持 productId/moduleKey 的稳定 ID 和不可换用领域；production_plan_modules 固定逐计划位置/定义/依赖。三表不可变，完整性与依赖循环由延迟约束校验；规划不表示文件已导入、方法已捕获或模板已运行。详见 [实现与证据](PRODUCTION-PLANS.md)。
+
+## T14.P2 项目方法与外部来源（已验收）
+
+project_method_snapshots 固定精确计划模块、源 Skill 草稿修订、用途/正文/manifest/摘要；project_method_references 独立保留参考文件，不依赖源草稿当前附件。project_production_records 固定同计划依赖输入与外部申报；project_production_methods 约束同模块方法，project_production_outputs 固定实际内容/体验稿/文件及摘要。五表不可变，受限账号无 UPDATE/DELETE，延迟约束验证完整性；文件清理与数据库状态变化均保护原件。原生体验清单不等于网页/3D 原包，不新增执行器或全局激活，见 [实现与证据](PRODUCTION-PLANS.md)。
+
+### T14.P3 受限项目授权（2026-10-22，本地验收通过）
+
+迁移 `20261022010000_machine_projects` 新增四个模型：`MachineProjectWorkspace`（范围、有限额度、到期/撤销）、`MachineProject`（不可变的工作区/商品归属和初始化业务键）、`MachineProjectSkill`（本项目领域候选库归属和方法业务键）、`ProjectCandidateDraft`（固定方法、原生稿及机器来源）。`MachineCredential.workspaceId` 可空，旧凭证不变；P2 方法/制作记录新增可空的成对机器来源；experience authoring 新增可空 `projectPlanModuleId`，旧记录不追写。商品仍为唯一项目根；新记录均受 scope 外键与 SQL 校验，成员关系和候选来源禁止 UPDATE/DELETE。详见 [MCP-PROJECTS.md](MCP-PROJECTS.md)。
+
+
+### T14.P4 项目留存（2026-10-22，本地验收通过）
+
+迁移 `20261022020000_project_retention` 新增 ProjectOriginalFile、ProjectReviewRevision、ProjectReviewRecord，累计 21 迁移/65 模型。原件按 planModule/输出/文件槽位绑定，AVAILABLE 元数据/字节记录不可重写；MachineUpload 和 ProjectProductionOutput 增加可空 originalFileId，旧行不追写。审核修订/所选记录链接不可改写，状态、固定选择和完整链接由 SQL 约束保障；文件取回重新校验字节。56 类原有业务表 1157 行及旧迁移摘要保留，详见 [PROJECT-RETENTION.md](PROJECT-RETENTION.md)。
+
+### T10.G5 计划布局历史（2026-10-22，本地技术验收通过）
+
+迁移 `20261022040000_project_canvas_layouts` 追加 `ProjectCanvasLayoutRevision`，从 W1/W2 的 69 模型/22 迁移增至 70 模型/23 迁移。每行固定计划修订、商品、scope、独立序号、布局 JSON、摘要和创建者；数据库限制同计划归属、连续追加及不可变历史，运行账号无 UPDATE/DELETE。布局只保存计划根/稳定模块坐标，独立保存不修改业务计划摘要，初始布局可与新计划同事务写入；方法/产物/审核的旧关系不变。
+
+G5 当批 schema diff 无差异；G6/G7 最终保全再次确认 63 类既有表 1157 行旧字段、旧迁移校验和、5 份 release/历史答卷报告引用保持，临时库 0。最终 427 项测试/类型/构建与真实本地 Auth 编辑验证见 [PROJECT-WORKSPACE.md](PROJECT-WORKSPACE.md)；G8 后续仅指定三图获批，原验证时的 pending 状态保留为历史证据。
+
+### T14.O1 统一 Codex 连接（2026-10-22，本地 UI 已批准）
+
+第 24 份向前迁移 `20261022050000_codex_connections` 新增 `CodexConnection`，累计 71 模型。连接保存 owner/scope、所属工作区、稳定 clientKey、规范化输入摘要、预览摘要和固定授权 document；`MachineCredential.codexConnectionId` 可空，旧单领域授权不追写或改动。owner/scope/clientKey 唯一，各连接/domain 唯一，同 owner/工作区/scope 复合外键和延迟约束保证凭据领域/权限/Skill/到期与固定方案完整一致。工作区（可选新建）、分组元数据和独立领域凭据在同一业务事务创建；任一写入失败则全部回滚。
+
+元数据及关联不可变，仅允许追加 revoked_at；运行账号无整表 UPDATE/DELETE，单独授予撤销字段更新权限。原始 bearer 仍只存既有凭据摘要，连接 document、审计和幂等缓存均不保存原文；缓存只含连接 ID。提交后响应丢失，按业务键和原请求找回同一记录，不能恢复密钥。整组撤销只更新该分组的凭据和连接撤销时间，不撤销共享工作区或其他连接。
+
+第 25 份 `20261022060000_codex_connection_legacy_compat` 仅将凭据完整性延迟触发器限定为 `codex_connection_id IS NOT NULL` 的新分组记录，避免旧凭据维护产生无关待决事件；新连接完整性约束保留。已应用的第 24 份 SQL 不改写，修复通过独立向前迁移完成。最初逐领域 R1“无需新表”是当时的假设；R2 获批后要求持久分组、原子签发/恢复和整组撤销，因此明确修正，不抹去旧方案证据。
+
+本机只向前应用结构/权限，未在开发库创建连接或签发凭据。接口和页面验证仅在自动回收的隔离 TEST 库使用身份/剪贴板替身；真实账户持续访问、真实客户端和正式 UI 均不因此通过。最终 schema diff、旧字段/迁移摘要保全及测试结果见 [PROGRESS.md](PROGRESS.md) 与 [本批评审](../../output/design-review/codex-connections-o1-formal-20261022/README.md)。
+
+### T14.O2 商品方法运营与只读交接（2026-10-22，技术通过，正式 UI 待验收）
+
+复用 ProjectMethodSnapshot/ProjectMethodReference：精确计划模块、用途、基础 Skill 版本/修订/摘要、完整 manifest/附件、商品参数/补充与展开正文继续不可变。运营捕获先核对当前计划及候选归属，商品 SHARE 锁与保存计划 UPDATE 锁串行；真实并发测试保证不能在已过期计划上新固定，已成功 requestId 仍可恢复原历史。商品定制追加另一快照，不修改共享库或旧产物来源。
+
+没有新增交接表、运行记录或迁移，累计仍为 71 模型/25 迁移。方法选择/依赖记录/最小片段/连接仅留当前页面，关闭/重开保留，刷新重新选择；服务端只读预览与重新核验后导出固定清单，不将内存或 LocalStorage 冒充业务保存。清单固定真实商品名、计划/模块/共同设定、方法与输入摘要、必要原件/附件元数据，不带凭据、producer credentialId、内部存储键/下载路径或消费者答卷/报告；二进制原件需按授权另行取回。
+
+本批 64 类表/1157 行旧字段、25 迁移与源 SQL 校验和、5 份 release/历史引用保持，schema diff 无差异；临时库、开发库 Codex 连接/分组凭据均 0。验证仅使用隔离 API/TEST 库、身份/剪贴板替身；[正式 UI 仍待验收](../../output/design-review/project-methods-o2-formal-20261022/README.md)，不扩大为真实权限、客户端或真机通过。
+
+O2 后续正式 UI 批准见 [独立记录](../../output/design-review/project-methods-o2-formal-20261022/APPROVAL.md)；上节交付时 pending 保持为历史。2026-10-23 O3 仅进行实码核查及内存交互原型，不增加正式源码、模型/迁移、业务写入或运行记录。
+
+### T14.O3 运行运营与恢复核验（2026-10-23，技术通过，正式 UI 待验收）
+
+没有新增模型或迁移，仍 71/25。管理员停止复用 ExternalProductionRun 的 cancelledAt/cancelReason/cancelActorUserId，与原 MCP 共用 run 锁和取消逻辑；现有 AdminMutation/IdempotentRequest/AdminAuditLog 保证同请求恢复、一条取消/审计及真实 SQL 故障回滚。旧方法、文件、成功成果、代次/事件与审核引用保持，不复活或扩限，不改第三方作业。
+
+运营读投影从现有 run/attempt/lease 和审核/制作记录解释当前条件；历史保存成果不限于最新失败尝试，最后外部申报与当前认领/权限分列，GET 不宣称重新验过字节。恢复仅当前页选择、只读核验/导出，既有固定方法/依赖记录及最小片段不可静默换版；当前代次、期限/预算、连接和真实原件/附件字节重新核查，不创建 run/attempt/lease/event 或恢复任务，不返回凭据/认领 token/内部存储路径。
+
+最终 64 类表/1157 行旧字段、全部 25 迁移及源 SQL 校验和、5 份 release/历史答卷报告/设定引用保持，schema diff 无差异；临时库和开发库 Codex 连接/分组凭据均 0。488 项及正式隔离 API/页面验证见 [PROGRESS](PROGRESS.md)，[正式 UI 独立待验收](../../output/design-review/production-recovery-o3-formal-20261023/README.md)。
+
+
+## O4 运行配置持久化计划（待设计审核，未应用）
+
+O3指定正式UI已批，原schema仍71模型/25迁移。实码未发现配置草稿存储；O4拟采用`ExternalRunConfiguration`稳定容器与`ExternalRunConfigurationRevision`不可变修订两模型，owner/scope、clientKey、expectedRevision、requestId和写锁防止重复/覆盖，草稿JSON及摘要独立于run/attempt。具体约束见[主能力契约](PLATFORM-BUSINESS-ACCEPTANCE.md#o4-实施契约待新设计批准尚未实现)。
+
+两模型及一份向前迁移是待审设计，不是已创建对象。本轮不读写业务库、不应用迁移、不将内存原型当持久化；沿用O3保全证据且不冒称本轮重跑。设计获批后再写schema、追加迁移并复核旧业务行/全部迁移SQL校验和/历史release与答卷报告引用。
+
+## O4 正式配置持久化 · 2026-10-23
+
+上节为设计时提案。O4-A指定三图于上海03:02:52批准后，已新增`ExternalRunConfiguration`与`ExternalRunConfigurationRevision`，向前应用第26份迁移`20261023010000_external_run_configurations`；现在73模型/26迁移。没有更新旧业务表字段或回填旧行，原25迁移源码保持。
+
+稳定容器固定id/scope/owner/workspace/clientKey/首次inputDigest及createdAt，只允许currentRevision向后推进一位。修订固定配置/作用域、连续revision、document/digest、创建者/时间，禁止UPDATE/DELETE。数据库约束和延迟触发器核查工作区所有者、修订创建者/归属与完整头；运行角色对修订无修改/删除权限，对容器仅可更新currentRevision。完整document格式、额度和引用语义由服务端严格schema核对。
+
+创建/保存沿用管理员幂等和审计，同配置写锁与expectedRevision避免覆盖。真实INSERT故障全部回滚；相同requestId恢复原响应，稳定clientKey避免创建重试复制配置。修改追加修订，历史与其精确计划/方法/依赖不追随新版。配置引用的旧方法/回执/原件继续依托既有不可变快照和文件保留规则，校验/导出重新读取真实字节。
+
+配置始终未启用，没有执行状态表、定时器、模型worker或新权限签发。校验结果不长期保存为授权，导出不另写运行/回执/审计。当前没有删除配置接口；回滚应用入口仍保留历史表，任何后续结构修正以新的向前迁移处理，不改已应用SQL。
+
+迁移后复核64类表/1157行旧字段、原25迁移及全部26份源SQL校验和、5份release与历史答卷/报告/设定引用保持。开发库新配置/修订、Codex连接和分组凭据为0，业务样例仅在隔离TEST库。最终清理/健康及完整验证见[PROGRESS](PROGRESS.md)和[正式评审](../../output/design-review/external-run-configuration-o4-formal-20261023/README.md)。

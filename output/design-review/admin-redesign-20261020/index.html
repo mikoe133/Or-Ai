@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="meetmyworld 后台重设计：32 个页面与关键状态、4 种紫色方向，以及独立的生成式风格参考。">
+  <title>后台设计画册 · meetmyworld</title>
+  <link rel="stylesheet" href="./gallery.css">
+  <script type="module" src="./gallery.js"></script>
+</head>
+<body>
+  <div class="gallery-shell">
+    <aside class="gallery-sidebar" aria-label="设计页面目录">
+      <a class="gallery-brand" href="./index.html"><span class="brand-glyph" aria-hidden="true">m<span>·</span></span><span>meetmyworld<small>后台设计画册</small></span></a>
+      <div class="sidebar-intro"><span>页面目录</span><span id="page-count">32</span></div>
+      <label class="search-wrap"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="page-search" type="search" placeholder="搜索页面或工作状态" autocomplete="off" aria-label="搜索页面或工作状态"><kbd>/</kbd></label>
+      <nav id="page-nav" class="page-nav" aria-label="后台设计页面"><p class="loading-message">正在载入页面目录…</p></nav>
+      <div class="sidebar-footer"><span class="edition-dot"></span><div>紫色方向 · 2026.10.20<small>设计评审材料 · 未连接业务</small></div><a href="./README.md" target="_blank" rel="noopener" title="查看交付说明" aria-label="查看交付说明">↗</a></div>
+    </aside>
+    <main class="gallery-main" id="main-content">
+      <header class="gallery-topbar"><div class="topbar-label">设计研究 <span>/</span> 运营后台</div><div class="topbar-meta"><span id="coverage-count">128 张逐页设计</span><span class="meta-divider"></span><span>4 张生成式参考</span><a href="./PROMPTS.md" target="_blank" rel="noopener">提示词全集 ↗</a></div></header>
+      <div class="gallery-workspace">
+        <div class="intro-row"><div><div class="section-caption">MEETMYWORLD · ADMIN DESIGN</div><h1>让后台回到内容与工作本身。</h1><p>四种紫色方向，用相同的业务内容比较排版、密度与操作秩序。</p></div><div class="recommendation"><span>推荐起点</span><strong>D 深茄夜间</strong><small>延续品牌；参考 B 的工具密度</small></div></div>
+        <div class="style-overview" aria-label="四种视觉方向">
+          <div class="style-note note-a"><span class="style-letter">A</span><div><strong>纸感编辑紫</strong><p>暖白纸面 · 文档与旁注</p></div><span class="mode-note">浅色探索</span></div>
+          <div class="style-note note-b"><span class="style-letter">B</span><div><strong>精密工具紫</strong><p>冷炭灰 · 紧凑分栏</p></div><span class="mode-note">工具效率</span></div>
+          <div class="style-note note-c"><span class="style-letter">C</span><div><strong>柔雾创作紫</strong><p>浅薰衣草 · 舒展工作面</p></div><span class="mode-note">浅色探索</span></div>
+          <div class="style-note note-d"><span class="style-letter">D</span><div><strong>深茄夜间</strong><p>暖深紫 · 稳定操作区</p></div><span class="mode-note">品牌延续</span></div>
+        </div>
+        <div class="gallery-control-row"><div class="view-tabs" role="tablist" aria-label="画册内容"><button type="button" role="tab" id="tab-pages" aria-controls="comparison-panel" aria-selected="true" data-mode="pages">逐页设计 <span>128</span></button><button type="button" role="tab" id="tab-concepts" aria-controls="comparison-panel" aria-selected="false" data-mode="concepts" tabindex="-1">风格参考 <span>4</span></button></div><a class="quiet-link" href="./art-direction.md" target="_blank" rel="noopener">阅读视觉规范 ↗</a></div>
+        <section id="comparison-panel" role="tabpanel" aria-labelledby="tab-pages">
+          <div class="selection-header"><div><div id="selected-section" class="selected-section">skill 库 · 18 / 32</div><h2 id="selected-title">关系观察设计</h2><p id="selected-purpose">正在载入设计画面…</p></div><div class="page-stepper" id="page-stepper"><button type="button" id="previous-page" aria-label="上一页设计">←</button><span id="selected-index">18 / 32</span><button type="button" id="next-page" aria-label="下一页设计">→</button></div></div>
+          <p id="view-explanation" class="view-explanation">逐页设计采用精确中文排版。点击完整页面可滚动查看；PNG 用于比较首屏。</p>
+          <div id="comparison-grid" class="comparison-grid"><div class="loading-message">正在载入设计图与提示词…</div></div>
+        </section>
+        <footer class="gallery-footnote"><p>所有记录与内容均为设计示例，不代表新功能已实现。页面操作未连接业务数据。</p><p>单一主导航 · 明确当前选中 · 仅右侧运营工作区滚动</p></footer>
+      </div>
+    </main>
+  </div>
+  <dialog id="prompt-dialog" aria-labelledby="prompt-title">
+    <div class="dialog-heading"><div><span class="dialog-eyebrow">可独立复用的提示词</span><h2 id="prompt-title">设计提示词</h2></div><button type="button" class="icon-button" id="close-prompt" aria-label="关闭提示词">×</button></div>
+    <p class="dialog-description" id="prompt-description">包含页面任务、业务约束、导航、布局、颜色与反 AI 设计要求。</p>
+    <textarea id="prompt-text" readonly spellcheck="false" aria-label="完整设计提示词"></textarea>
+    <div class="dialog-actions"><span id="prompt-length"></span><div><a id="prompt-download" class="button secondary" href="#" download>下载文本</a><button type="button" class="button primary" id="copy-prompt">复制提示词</button></div></div>
+  </dialog>
+  <div id="gallery-toast" class="gallery-toast" role="status" aria-live="polite"></div>
+</body>
+</html>

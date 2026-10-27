@@ -2,6 +2,7 @@ import {
   AssetAuthoringSchema,
   CreativeProfileSchema,
   ProductConfigurationSchema,
+  creativeCapabilityIssues,
   type AssetAuthoring,
   type ContentLocator,
 } from "@orai/contracts/admin";
@@ -42,11 +43,11 @@ export function defaultProfile(product: Pick<AdminProduct, "name">) {
     understandingGoal: "辨认自己的需要与相处习惯",
     takeaway: "带走一个可以尝试的小行动",
     perspective: "self",
-    experienceForm: "web",
-    pace: "逐题思考，可暂停继续",
+    experienceForm: "3d",
+    pace: "按商品规划确定动画、镜头与交互节奏，支持暂停继续；未定项先标记待规划",
     world: "从日常生活中的具体情境出发",
     language: "温柔、具体、尊重差异",
-    visual: "柔和色彩，清晰文字与留白",
+    visual: "Three.js 场景；空间、画风、配色与文字呈现按商品规划确定",
     sound: "默认安静",
     reportPlan: {
       schemaVersion: 1,
@@ -164,11 +165,12 @@ export function capability(
   if (!profile) return "尚未设定";
   if (profile.perspective === "planned_two_person")
     return "双方参与：规划中，当前不可运行";
-  if (profile.experienceForm !== "web")
-    return `${profile.experienceForm} 形式：创作方案，待运行端支持`;
+  const issues = creativeCapabilityIssues(profile);
+  if (issues.length && !['web','3d'].includes(profile.experienceForm)) return `${profile.experienceForm} 形式：创作方案，待运行端支持`;
+  if (issues.length) return `创作方案待适配：${issues.join('；')}`;
   return profile.perspective === "self"
-    ? "当前支持单人自我探索"
-    : "当前支持单人观察关系";
+    ? "当前支持单人自我探索，体验以已注册模板为准"
+    : "当前支持单人观察关系，体验以已注册模板为准";
 }
 
 export function insertReferenceText(

@@ -33,7 +33,7 @@ export function MediaPreview({
       <h4>{label}</h4>
       {failed ? (
         <p role="alert">文件暂不可读取，请检查存储后刷新。</p>
-      ) : file.kind === "cover" ? (
+      ) : file.kind !== "video" ? (
         <img
           src={file.downloadPath}
           alt={file.fileName}
@@ -89,7 +89,7 @@ export function FileSlot({
   onPending,
 }: {
   versionId: string;
-  kind: "cover" | "video";
+  kind: "cover" | "video" | "experience";
   purpose: string;
   value: Upload | null;
   onChange: (value: Upload | null) => void;
@@ -109,7 +109,7 @@ export function FileSlot({
           aria-label={purpose + "文件"}
           type="file"
           accept={
-            kind === "cover"
+            kind !== "video"
               ? "image/png,image/jpeg,image/webp"
               : "video/mp4,video/webm"
           }
@@ -134,7 +134,7 @@ export function FileSlot({
                 onBusy(true);
                 setNotice("正在上传并校验…");
                 try {
-                  const maximum = (kind === "cover" ? 10 : 100) * 1024 * 1024;
+                  const maximum = (kind === 'experience' ? 4 : kind === "cover" ? 10 : 100) * 1024 * 1024;
                   if (!file || file.size > maximum || file.size < 1)
                     throw new ClientError(
                       "VALIDATION_ERROR",
@@ -222,8 +222,7 @@ export function FileSlot({
         )}
       </div>
       <small>
-        图片上限 10 MiB，视频上限 100
-        MiB。中断后可重试；已传完的文件会继续校验。
+        {kind === 'experience' ? '体验图片上限 4 MiB。' : '图片上限 10 MiB，视频上限 100 MiB。'}中断后可重试；已传完的文件会继续校验。
       </small>
       {notice && <p role="status">{notice}</p>}
       {Boolean(action.error) && <Failure error={action.error} />}

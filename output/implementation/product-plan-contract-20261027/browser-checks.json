@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-27",
+  "review": "autonomous_cua",
+  "userApproved": false,
+  "realExistingLocalAuth": true,
+  "isolatedTestDatabase": true,
+  "realDevice": false,
+  "viewportReset": true,
+  "checks": [
+    "explicit_v1_upgrade_only",
+    "v2_pending_decisions_remain_unknown",
+    "static_animation_not_required",
+    "verified_requires_evidence",
+    "unapplied_json_blocks_save",
+    "export_preserves_raw_json",
+    "browser_save_matches_official_mcp_read",
+    "reload_reads_exact_revision",
+    "post_commit_response_loss_freezes_edits",
+    "same_request_recovers_without_duplicate_revision",
+    "concurrent_conflict_preserves_draft",
+    "historical_v1_is_readonly",
+    "390px_layout_has_no_horizontal_overflow",
+    "mobile_edit_and_save",
+    "revocation_closes_admin_workspace",
+    "revocation_does_not_append_plan",
+    "desktop_visual_review",
+    "mobile_visual_review",
+    "exact_renderer_version_report_pair_and_engine_selection"
+  ],
+  "screenshots": [
+    "desktop-draft.png",
+    "desktop-saved.png",
+    "desktop-final.png",
+    "response-loss.png",
+    "revision-conflict.png",
+    "mobile-overview.png",
+    "mobile-edit.png",
+    "permission-revoked.png",
+    "runtime-pair-mismatch.png",
+    "runtime-pair-saved.png"
+  ],
+  "finalPatchRetested": true,
+  "observedRecoveryEvidence": {
+    "postCommitResponseLoss": {
+      "revision": 2,
+      "id": "01a17cad-6989-7458-9fe6-1129b9e7e54d"
+    },
+    "recoveredMcpDigest": "48b94b4714efc0879f6c282a6386afaf0ac1a04c06ac9f7a33da0b7343614214",
+    "revocationDidNotAppend": {
+      "revision": 4,
+      "id": "01a17caf-f08e-7369-ab75-7ef61f902ddf",
+      "digest": "1aa31e9c6d95d192a986c9b196f080e13d52e7fe44c0aa3ac69cba61b89f97e8"
+    },
+    "source": "Observed CUA actions and isolated fixture command results from this batch; temporary databases subsequently removed"
+  }
+}

@@ -5,6 +5,8 @@ import { Failure, Loading, useAction } from "../business/shared.js";
 import { adminApi, parseEditor, type AdminProduct } from "./api.js";
 import { contentApi, type Profile, type Revision } from "./content-api.js";
 import { defaultConfiguration, statuses } from "./content-model.js";
+import { SkillSetSource, SavedSkillSource } from './content-skills.js';
+import { ProductionOrigin } from "./content-parts.js";
 type Preview = Awaited<ReturnType<typeof adminApi.preview>>;
 export function AssessmentDesk({
   product,
@@ -13,6 +15,8 @@ export function AssessmentDesk({
   assessment,
   onVersionSaved,
   onDirty,
+  view = 'content',
+  readOnly = false,
 }: {
   product: AdminProduct;
   versionId: string;
@@ -20,6 +24,8 @@ export function AssessmentDesk({
   assessment?: Revision;
   onVersionSaved: (versionId: string) => void;
   onDirty: (dirty: boolean) => void;
+  view?: 'content' | 'result';
+  readOnly?: boolean;
 }) {
   const read = useQuery({
     queryKey: ["private", "admin", "content-config", product.id, versionId],
@@ -52,6 +58,8 @@ export function AssessmentDesk({
       assessment={assessment}
       source={source.data?.production}
       sourceError={source.error}
+      view={view}
+      readOnly={readOnly}
     />
   );
 }
@@ -64,6 +72,8 @@ function AssessmentEditor({
   sourceError,
   onVersionSaved,
   onDirty,
+  view,
+  readOnly,
 }: {
   product: AdminProduct;
   preview?: Preview;
@@ -73,6 +83,8 @@ function AssessmentEditor({
   sourceError: unknown;
   onVersionSaved: (versionId: string) => void;
   onDirty: (dirty: boolean) => void;
+  view: 'content' | 'result';
+  readOnly: boolean;
 }) {
   const initial = preview?.configuration ?? defaultConfiguration(),
     [draft, setDraft] = useState(initial),
@@ -82,12 +94,12 @@ function AssessmentEditor({
     [productionSource, setProductionSource] = useState<
       "manual" | "external_ai" | "mcp"
     >("manual"),
-    [batch, setBatch] = useState("");
+    [batch, setBatch] = useState(""), [skillSetId, setSkillSetId] = useState('');
   const dirty =
     JSON.stringify(initial) !== JSON.stringify(draft) ||
     raw !== JSON.stringify(draft, null, 2);
   const sourceDirty =
-    !source && (productionSource !== "manual" || batch !== "");
+    !source && (productionSource !== "manual" || batch !== "" || skillSetId !== '');
   useEffect(() => {
     onDirty(dirty || sourceDirty);
     return () => onDirty(false);
@@ -119,12 +131,12 @@ function AssessmentEditor({
         );
   }
   return (
-    <section className="content-editor" aria-label="题库报告编辑器">
+    <section className="content-editor content-assessment-editor" aria-label="题库报告编辑器">
       <div className="content-section-heading">
         <div>
-          <h3>题库与兼容报告</h3>
+          <h3>{view === 'content' ? '商品内容 · 单选评估' : '结果内容 · 解释与建议'}</h3>
           <p>
-            编辑题目、选项分值、解释与建议。规则和完整配置可通过 JSON 导入。
+            {view === 'content' ? '此内容协议使用题目、选项与维度规则。场景外观在体验设计中配置。' : '结构化结果来自本版本的评估规则，叙事方案与呈现模板在下方分别核对。'}
           </p>
         </div>
         <span className="content-badge">
@@ -136,7 +148,9 @@ function AssessmentEditor({
       <p className="content-note">
         当前引擎 dimensions_v1，单人作答。已发布版本通过“派生新版本”继续编辑。
       </p>
-      <fieldset disabled={action.busy}>
+      <fieldset disabled={action.busy || readOnly}>
+        <section className="content-form-section content-question-section" hidden={view !== 'content'}>
+        <header className="content-form-section-heading"><h4>01 / 题目与选项</h4><p>{draft.questions.length} 道题目 · 展开题目编辑选项与分值</p></header>
         {draft.questions.map((question, index) => (
           <details className="content-block" key={index} open={index === 0}>
             <summary>
@@ -362,7 +376,9 @@ function AssessmentEditor({
         >
           添加题目
         </button>
-        <h3>报告解释与建议</h3>
+        </section>
+        <section className="content-form-section" hidden={view !== 'result'}>
+        <header className="content-form-section-heading"><h4>01 / 结果解释与行动建议</h4><p>与商品内容共用同一份版本草稿；切换页签可继续编辑。</p></header>
         <label>
           报告提示
           <textarea
@@ -428,7 +444,8 @@ function AssessmentEditor({
             </label>
           </div>
         ))}
-        <details>
+        </section>
+        <details className="content-form-section" hidden={view !== 'content'}>
           <summary>规则、信息不足模板与完整 JSON</summary>
           <p>
             包含维度、阈值、结果类型、保留期和统计门槛，严格校验后才能保存。
@@ -474,7 +491,8 @@ function AssessmentEditor({
             校验并应用 JSON
           </button>
         </details>
-        <div className="biz-row">
+        <div className="biz-row content-action-bar">
+          <span>{dirty ? "题库有未保存修改" : "题库内容已与当前版本同步"}</span>
           <button
             disabled={
               !preview ||
@@ -491,7 +509,7 @@ function AssessmentEditor({
               )
             }
           >
-            保存题库草稿
+            保存内容与结果草稿
           </button>
           <button
             onClick={() =>
@@ -516,21 +534,25 @@ function AssessmentEditor({
           题库有未保存修改。公开预览展示服务器上已保存的版本。
         </p>
       )}
-      <h3>本修订制作来源</h3>
+      <section className="content-form-section" hidden={view !== 'content'}>
+      <header className="content-form-section-heading"><h4>本修订制作来源</h4></header>
       {sourceError ? (
         <Failure error={sourceError} />
       ) : source ? (
         <div className="content-block">
+          <ProductionOrigin source={source} />
           <p>
-            {source.source} · 批次 {source.batchKey ?? "未填写"} · Skill 未关联
+            {source.source} · 批次 {source.batchKey ?? "未填写"} · {source.skillSetId ? '固定 skill 来源' : '未关联 skill'}
           </p>
           <details>
             <summary>固定记录</summary>
             <pre>{JSON.stringify(source, null, 2)}</pre>
           </details>
+          <SavedSkillSource setId={source.skillSetId} />
         </div>
       ) : (
-        <fieldset disabled={action.busy || dirty}>
+        <fieldset disabled={action.busy || dirty || readOnly}>
+          {profile && <SkillSetSource profileId={profile.id} value={skillSetId} onChange={setSkillSetId} label="题库与报告 skill 组合" />}
           <div className="content-fields">
             <label>
               题库制作来源
@@ -570,6 +592,7 @@ function AssessmentEditor({
                         batchKey: batch || null,
                         externalLabel: null,
                         skillVersionId: null,
+                        ...(skillSetId ? { skillSetId } : {}),
                       },
                     }),
                   ),
@@ -583,10 +606,11 @@ function AssessmentEditor({
             登记本修订制作来源
           </button>
           <p className="content-note">
-            每个修订只登记一次；更正来源需编辑为新修订。Skill 当前为空。
+            每个修订只登记一次；更正来源需制作新修订。题目设计与报告写作分别保留版本；来源申报不代表后台已执行。
           </p>
         </fieldset>
       )}
+      </section>
       {notice && <p role="status">{notice}</p>}
       {Boolean(action.error) && <Failure error={action.error} />}
     </section>

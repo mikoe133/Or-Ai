@@ -11,6 +11,8 @@ import {
 } from "./content-api.js";
 import { workflowApi, type Package } from "./workflow-api.js";
 import { domains, stringField } from "./content-model.js";
+import { SkillSetSource } from './content-skills.js';
+import { ProductionOrigin } from "./content-parts.js";
 export function savePackageFile(value: Package) {
   const url = URL.createObjectURL(
       new Blob([JSON.stringify(value, null, 2) + "\n"], {
@@ -57,6 +59,7 @@ export function AdoptionPanel({
     [saved, setSaved] = useState<Package | null>(null),
     [page, setPage] = useState(1),
     [notice, setNotice] = useState("");
+  const [skillSetId, setSkillSetId] = useState('');
   const history = useQuery({
       queryKey: [
         "private",
@@ -105,6 +108,7 @@ export function AdoptionPanel({
     assetRevisionIds: Object.values(choices).filter(Boolean).sort(),
     reportMode: "compatible_standard",
     label,
+    ...(skillSetId ? { skillSetId } : {}),
   };
   const serialized = JSON.stringify(selection),
     validPreview = !!preview && checkedSelection === serialized;
@@ -118,17 +122,23 @@ export function AdoptionPanel({
     });
   }
   return (
-    <section className="content-editor" aria-label="成套采用工作台">
+    <section className="content-editor content-adoption-editor" aria-label="成套采用工作台">
       <h3>固定采用组合</h3>
       <p>
         选择已审核题库和就绪宣传稿，核对整套语气、意象、情绪目标与传播承诺后，保存一份不可变的采用包。采用不会自动发布商品。
       </p>
+      <ol className="content-process-steps" aria-label="采用流程">
+        <li><span>01</span> 选择固定内容</li>
+        <li><span>02</span> 校验一致性</li>
+        <li><span>03</span> 保存采用包</li>
+      </ol>
+      {profile && <div className="content-form-section"><SkillSetSource profileId={profile.id} value={skillSetId} onChange={setSkillSetId} label="采用 skill 组合" /></div>}
       {blockedByDraft && (
         <p className="content-note">
           工作台有未保存修改，请先保存或放弃，再核对采用组合。
         </p>
       )}
-      <fieldset disabled={blockedByDraft || action.busy}>
+      <fieldset className="content-adoption-selection" disabled={blockedByDraft || action.busy}>
         {!profile || !assessment ? (
           <p>请先选择创作设定和题库版本。</p>
         ) : (
@@ -381,13 +391,16 @@ export function AdoptionPanel({
             设定 r{saved.manifest.creativeProfile.revision} · 题库修订{" "}
             {saved.manifest.assessment.sourceRevision} · 兼容标准图文报告
           </p>
+          <p>{saved.manifest.schemaVersion === 2 ? `固定 skill 组合 r${saved.manifest.skillSet.revision} · 五个专业用途` : '历史包：未关联 skill 组合'}</p>
           <p>{saved.note}</p>
+          <ProductionOrigin source={saved.manifest.assessmentProduction} />
           <ul>
             {saved.manifest.assets.map((value) => (
               <li key={value.revision.id}>
                 {domains[value.revision.domain]} ·{" "}
                 {stringField(value.revision.snapshot.variant)} · 固定输入{" "}
                 {value.inputs.length} 项 · 文件 {value.files.length} 份
+                <ProductionOrigin source={value.production} />
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { IdSchema, KeySchema, PageSchema, QuestionSchema, ReportContentSchema, TimestampSchema } from './shared.js';
+import { ExperienceSessionSchema, ExperienceCheckpointSchema, ReportPresentationSchema } from './experience.js';
 
 export const RedemptionRequestSchema = z.object({ code: z.string().trim().regex(/^[A-Za-z0-9_-]{32,96}$/), requestId: IdSchema }).strict();
 export const StartAttemptRequestSchema = z.object({ entitlementId: IdSchema, requestId: IdSchema }).strict();
@@ -13,6 +14,7 @@ export const QuestionsResponseSchema = z.object({
   attemptId: IdSchema, versionId: IdSchema, versionNumber: z.number().int().min(1),
   revision: z.number().int().min(0), status: z.enum(['started', 'submitted', 'completed', 'invalid']),
   questions: z.array(QuestionSchema).min(1).max(100), answers: z.array(SavedAnswerSchema), isDemo: z.boolean(),
+  experience: ExperienceSessionSchema.optional(),
 }).strict();
 export const DistributionSchema = z.object({
   state: z.enum(['empty', 'insufficient', 'ready']), sampleSize: z.number().int().min(0),
@@ -38,11 +40,12 @@ export const FeedbackSchema = z.object({
 });
 export const SaveAnswerResponseSchema = z.object({
   answer: SavedAnswerSchema, attemptRevision: z.number().int().min(1),
+  checkpoint: ExperienceCheckpointSchema.optional(),
   feedback: FeedbackSchema.nullable(), feedbackStatus: z.enum(['ready', 'unavailable']),
 }).strict();
 export const ReportResponseSchema = z.object({
   id: IdSchema, attemptId: IdSchema, versionId: IdSchema, content: ReportContentSchema,
-  createdAt: TimestampSchema, expiresAt: TimestampSchema,
+  createdAt: TimestampSchema, expiresAt: TimestampSchema, presentation: ReportPresentationSchema.optional(),
 }).strict();
 export const EntitlementSchema = z.object({
   id: IdSchema, productId: IdSchema, productSlug: KeySchema, productName: z.string().min(1).max(160),

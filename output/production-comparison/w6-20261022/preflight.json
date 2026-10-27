@@ -1,0 +1,107 @@
+{
+  "task": "T14.W6",
+  "status": "approved_preflight_blocked",
+  "recordedAt": "2026-10-22 06:39:01 UTC",
+  "authorization": {
+    "status": "conditional_approval_received",
+    "source": "relayed_user_transcript",
+    "humanMessage": {
+      "id": "Sentinel_e386d6e0f3248191b006502afc9f939f",
+      "text": "允许",
+      "at": "2026-10-22T06:34:23Z"
+    },
+    "proposalMessageId": "Sentinel_d09ba762506c8191b9c9448fe20f713d",
+    "relayThreads": [
+      "01a15899-7384-71d0-9669-fb47c474e0e4",
+      "01a15d49-f07b-77f4-aefd-c07074fc9015"
+    ],
+    "relayRecordRead": true,
+    "directHumanTranscriptRetrieved": false,
+    "scope": {
+      "model": "gpt-6.1-sol",
+      "efforts": [
+        "low",
+        "high"
+      ],
+      "maxInvocations": 4,
+      "maxConcurrency": 1,
+      "maxRetries": 0,
+      "perInvocationSeconds": 180,
+      "batchSeconds": 720,
+      "textOnly": true,
+      "subscriptionOnly": true,
+      "noExtraDebitRequired": true,
+      "stopOnUnknownTimeoutIdentityMismatchOrTools": true
+    },
+    "doesNotAuthorize": [
+      "paid_api",
+      "additional_credits",
+      "new_credentials",
+      "global_config_changes",
+      "subagents",
+      "media_tools",
+      "production_writes",
+      "publication"
+    ]
+  },
+  "known": {
+    "cliVersion": "0.133.0",
+    "cliAuthMode": "chatgpt",
+    "cliMatchesUsageAccount": true,
+    "savedApiKeyPresent": false,
+    "apiKeyEnvPresent": false,
+    "customBaseUrlEnvPresent": false,
+    "planType": "pro",
+    "ordinaryUsageAllowed": true,
+    "usageWindowUsedPercent": 91,
+    "remainingPercent": 9,
+    "paidCredits": {
+      "hasCredits": false,
+      "balance": "0",
+      "unlimited": false
+    },
+    "globalConfig": {
+      "modelProvider": "openai-http",
+      "hasMcpServers": true,
+      "hasPlugins": true,
+      "hasNotify": true,
+      "hasMarketplaces": true
+    },
+    "projectOrSystemConfigFound": false
+  },
+  "unresolved": {
+    "includedAllowanceOnlyEnforcement": "not_verified",
+    "noExtraDebitAccountControl": "not_observed",
+    "completeZeroToolSurface": "not_verified"
+  },
+  "blockers": [
+    {
+      "code": "BILLING_GUARD_UNVERIFIED",
+      "detail": "ChatGPT authentication and zero purchased-credit balance do not prove an account control preventing all extra debit; no billing-control value or executable included-allowance-only guard was observed."
+    },
+    {
+      "code": "TOOL_ISOLATION_UNVERIFIED",
+      "detail": "The global config contains integrations. Read-only sandbox and ignore-user-config do not themselves prove every built-in, MCP, app, plugin, hook and subagent tool is absent. No complete effective zero-tool inventory was obtained without starting a session."
+    }
+  ],
+  "inferenceInvocations": 0,
+  "observations": [],
+  "reportedCost": null,
+  "configurationChangesPerformed": false,
+  "newCredentials": false,
+  "purchases": false,
+  "resetsRedeemed": 0,
+  "sourcePages": [
+    "https://learn.chatgpt.com/docs/auth",
+    "https://learn.chatgpt.com/docs/pricing",
+    "https://learn.chatgpt.com/docs/config-file/config-reference"
+  ],
+  "actualReadOnlyCommands": [
+    "codex login status",
+    "codex --help",
+    "codex debug --help",
+    "codex debug prompt-input --help",
+    "codex debug models --help"
+  ],
+  "nextAction": "Resolve the two existing preconditions before any approved comparison session; do not ask for the same approval or substitute paid API or weaker isolation."
+}

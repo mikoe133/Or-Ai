@@ -1,0 +1,21 @@
+{
+  "kind": "g4_visual_approval",
+  "approvedAt": "2026-10-22T14:08:07+08:00",
+  "scope": "本批桌面暗色项目工作台、手机 Skill 详情、审核留存状态",
+  "userReply": "可以",
+  "humanMessageId": "Sentinel_64ef7c353d1081918b65a6fe0e061de0",
+  "evidence": "协调窗口转达的具体问答及截图摘要；当前文件 SHA-256 与转交文件一致",
+  "forwardedByThread": "01a15d49-f07b-77f4-aefd-c07074fc9015",
+  "images": {
+    "desktop-final-project.png": "ea37e587a4fd1f46482775109e28b3b611f75aabb479b856e04a25efc6099092",
+    "mobile-final-detail.png": "e85fd47fb337d03c3fee93ea5a9dda388e1e9f2efc4d20b47a596e6f6466b196",
+    "desktop-retained-review.png": "68a0110c5751b2c83fe111ac87745a24d00711c487249b10438f76ebb3e0c21b"
+  },
+  "physicalDeviceAccepted": false,
+  "inAppBrowserAccepted": false,
+  "futureUiApproved": false,
+  "cloudApproved": false,
+  "productionCredentialApproved": false,
+  "paidExecutionApproved": false,
+  "publicationApproved": false
+}

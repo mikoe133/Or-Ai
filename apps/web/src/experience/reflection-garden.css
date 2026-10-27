@@ -1,0 +1,46 @@
+.reflection-garden{--garden-ink:#41334d;--garden-muted:#796c82;--garden-purple:#76518d;--garden-line:#d7ccdc;--garden-paper:#f8f4ed;color:var(--garden-ink);background:var(--garden-paper);padding:32px;border:1px solid var(--garden-line);border-radius:3px;font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.garden-heading{border-bottom:1px solid var(--garden-line);padding-bottom:22px}
+.garden-kicker{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--garden-purple);font:10px/1.8 ui-monospace,monospace;letter-spacing:.15em}
+.garden-kicker span{font-family:"PingFang SC",sans-serif;font-size:11px;letter-spacing:.08em;color:var(--garden-muted)}
+.reflection-garden .garden-chapter{font-size:11px;letter-spacing:.12em;color:var(--garden-purple);margin:22px 0 8px}
+.garden-chapter span{color:var(--garden-muted)}
+.reflection-garden .garden-heading h2{font:500 clamp(23px,2.3vw,30px)/1.65 "Songti SC","STSong",serif;margin:0;max-width:780px}
+.garden-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.9fr);gap:30px;align-items:center;margin-top:24px}
+.garden-figure{margin:0;min-width:0}
+.garden-stage{position:relative;isolation:isolate;aspect-ratio:1.18;background:radial-gradient(ellipse at 48% 45%,#fffdf7 0%,#f0e9f0 68%,#e8e0eb 100%);border:1px solid #e0d7e2;border-radius:40% 40% 4px 4px;overflow:hidden}
+.garden-canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
+.garden-canvas:active{cursor:grabbing}
+.garden-markers{position:absolute;inset:0;pointer-events:none}
+.reflection-garden .garden-markers button{position:absolute;visibility:hidden;pointer-events:auto;transform:translate(-50%,-50%);width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border-radius:50%;border:1px solid #9883a6;background:#faf7f0;color:#674b79;box-shadow:0 4px 0 #9a89a8;font:12px ui-monospace,monospace}
+.reflection-garden .garden-markers button.is-selected{color:#fff;background:var(--garden-purple);border-color:var(--garden-purple);box-shadow:0 4px 0 #4d365c,0 0 0 5px #76518d19}
+.garden-markers button:focus-visible{outline:3px solid #5b3f6d;outline-offset:5px}
+.garden-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;font-size:13px;background:#f6f1ebee;color:var(--garden-purple)}
+.garden-loading progress{width:130px;height:3px;accent-color:var(--garden-purple)}
+.garden-loading small{font-size:11px;color:var(--garden-muted)}
+.garden-figure figcaption{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0;font-family:"Songti SC","STSong",serif;font-size:15px;color:var(--garden-purple)}
+.garden-camera-controls{display:flex;gap:6px}
+.reflection-garden .garden-camera-controls button{width:44px;height:44px;min-height:44px;padding:0;border:1px solid var(--garden-line);border-radius:2px;background:transparent;color:var(--garden-purple)}
+.reflection-garden .garden-stage-hint{font-size:10px;line-height:1.8;color:var(--garden-muted);margin:8px 0}
+.garden-reference{width:84px;height:64px;object-fit:contain;border:1px solid var(--garden-line);margin:10px 8px 0 0}
+.reflection-garden .garden-answers{display:block;border:0;padding:0;margin:0;min-width:0}
+.reflection-garden .garden-answer-intro{font-size:14px;font-weight:600;margin:0 0 8px}
+.reflection-garden .garden-answer-hint{font-size:11px;line-height:1.9;color:var(--garden-muted);margin:0 0 18px}
+.garden-answers .garden-answer{position:relative;display:flex;align-items:center;gap:13px;min-height:58px;padding:12px 14px;margin:10px 0;border:1px solid var(--garden-line);background:#fcfaf5;cursor:pointer;border-radius:2px;font-size:13px;line-height:1.65;text-align:left}
+.garden-answer input{position:absolute;width:1px;height:1px;opacity:0}
+.garden-answers .garden-answer.is-selected{border-color:var(--garden-purple);background:#eee7f1;box-shadow:inset 3px 0 var(--garden-purple)}
+.garden-answer:has(input:focus-visible){outline:3px solid var(--garden-purple);outline-offset:3px}
+.garden-answer-number{flex:none;color:var(--garden-purple);font:11px ui-monospace,monospace}
+.garden-answer-check{margin-left:auto;color:var(--garden-purple);flex:none}
+.garden-confirmation{border-top:1px solid var(--garden-line);margin-top:24px;padding-top:17px}
+.reflection-garden .garden-confirmation p{font-size:11px;color:var(--garden-muted);line-height:1.9;margin:0 0 10px}
+.reflection-garden .garden-confirmation button{display:flex;justify-content:space-between;width:100%;min-height:48px;border:1px solid var(--garden-purple);background:var(--garden-purple);color:#fff;border-radius:2px;padding:13px 16px;font-size:13px}
+.reflection-garden button:disabled{opacity:.55;cursor:default}
+.garden-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.garden-notes .notes-illustration svg{width:100%;height:auto}
+.garden-preview-heading{max-width:1120px;margin:auto}
+.garden-preview-host [data-experience-release]>button{border:1px solid #bdb0c6;background:#f9f6ee;padding:10px 14px;border-radius:2px;font-size:12px;color:#5e486e;min-height:44px;margin-bottom:14px}
+.garden-preview-host [data-experience-release]>p{font-size:12px;margin-bottom:12px;color:#705584}
+.garden-practice-progress{font-size:11px;color:#71647a;line-height:1.9}
+.garden-practice-progress progress{width:100%;height:4px;accent-color:#76518d;display:block;margin-bottom:10px}
+.garden-practice-progress progress::-webkit-progress-bar{background:#d9d0df;border-radius:0}.garden-practice-progress progress::-webkit-progress-value{background:#76518d}.garden-practice-progress progress::-moz-progress-bar{background:#76518d}
+@media(max-width:760px){.reflection-garden{padding:22px 17px}.garden-kicker{font-size:9px;letter-spacing:.1em;flex-wrap:wrap;gap:2px}.garden-kicker span{font-size:10px}.garden-layout{grid-template-columns:1fr;gap:20px;margin-top:18px}.garden-stage{aspect-ratio:1.05;max-width:500px;margin:0 auto}.reflection-garden .garden-heading h2{font-size:23px}.garden-figure figcaption{font-size:14px}.garden-answers .garden-answer{min-height:56px}.garden-answers .garden-confirmation{margin-top:18px}}

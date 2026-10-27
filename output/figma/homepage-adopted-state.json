@@ -1,0 +1,519 @@
+{
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "pageId": "0:1",
+  "adoptedFrameId": "40:371",
+  "name": "Homepage · 当前采用（原版布局＋重绘插图）",
+  "size": [
+    1440,
+    1024
+  ],
+  "replacedFeaturedRowId": "40:483",
+  "newFeaturedRowId": "104:462",
+  "sourceFeaturedRowId": "6:235",
+  "featuredRowSize": [
+    995,
+    300
+  ],
+  "change": "Replaced featured row with four native editable cards and redrawn image fills from refinement. Preserved original overall layout.",
+  "preview": "homepage-adopted-preview.png",
+  "leftGlowRefinement": {
+    "reference": "design/mian.jpg",
+    "edgeGroupId": "40:536",
+    "edgeBounds": {
+      "x": -2,
+      "y": 555,
+      "width": 160,
+      "height": 370
+    },
+    "originalEdgeBounds": {
+      "x": -2,
+      "y": 452,
+      "width": 160,
+      "height": 590
+    },
+    "washGroupId": "40:539",
+    "washBounds": {
+      "x": -170,
+      "y": 550,
+      "width": 486,
+      "height": 360
+    },
+    "originalWashBounds": {
+      "x": -170,
+      "y": 435,
+      "width": 486,
+      "height": 544
+    },
+    "proof": "homepage-left-glow-focused-proof.png"
+  },
+  "leftGlowBrightness": {
+    "name": "01-left-edge-light · Bright exterior only",
+    "bounds": {
+      "x": -2,
+      "y": 555,
+      "width": 74,
+      "height": 370
+    },
+    "clipContent": true,
+    "rightBoundary": 72,
+    "centerOpacity": 0.72,
+    "rimPeakOpacity": 0.9,
+    "hiddenInteriorWashId": "40:539",
+    "asset": "left-edge-bright-exterior.svg",
+    "proof": "homepage-left-glow-bright-proof.png"
+  },
+  "brandReplacement": {
+    "brand": "meetmyworld",
+    "referencePageId": "127:441",
+    "referenceAsset": "output/brand/meetmyworld/logo-editable-text.svg",
+    "originalBrandId": "40:397",
+    "newBrandId": "179:568",
+    "name": "Brand · MeetMyWorld symbol",
+    "size": [
+      40,
+      40
+    ],
+    "copyrightNodeId": "40:528",
+    "copyright": "meetmyworld © 2026",
+    "headerAsset": "homepage-meetmyworld-symbol.svg",
+    "proof": "homepage-gradient-contour-proof.png",
+    "preview": "homepage-adopted-preview.png",
+    "previousBrandId": "167:528",
+    "wordmarkRemoved": true
+  },
+  "annotationRefinements": {
+    "date": "2026-10-13",
+    "reference": "/var/folders/dz/wts3ggms3ndcfgb1yy58zy4h0000gn/T/codex-clipboard-95f27b5c-6515-4538-bff9-641307029732.png",
+    "removed": "Header wordmark; retained original MeetMyWorld symbol.",
+    "sidebar": {
+      "nodeId": "261:844",
+      "parentId": "40:442",
+      "name": "Sidebar · Smooth transition into lower rim",
+      "bounds": {
+        "x": 1.2,
+        "y": 1.2,
+        "width": 266,
+        "height": 800
+      },
+      "absolute": true,
+      "stacking": "Sent to back of Main glass panel, behind sidebar labels and CTA.",
+      "asset": "sidebar-transition-soft-base.svg",
+      "previousNodeId": "196:751",
+      "clipPath": "M0 0H244V762.8Q244 784.8 266 784.8V798.8H0Z"
+    },
+    "contours": {
+      "nodeId": "258:801",
+      "name": "Contours · Single left edge, blended base",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1024
+      },
+      "innerRightX": 1354,
+      "outerRightX": 1366,
+      "outerFadeStartY": 570,
+      "outerTransparentThroughY": 635.6,
+      "innerTopJoin": [
+        1354,
+        202
+      ],
+      "bottomPalette": [
+        "#ABCBD2",
+        "#94B6CF",
+        "#ADBDDB",
+        "#C6BBD7",
+        "#D4C5E4"
+      ],
+      "asset": "adopted-left-strip-seamless.svg",
+      "previousNodeId": "198:772",
+      "workspaceLowerLeftCornerPath": "M317.7 181.2V944Q317.7 966 339.7 966"
+    },
+    "topContour": {
+      "nodeId": "178:562",
+      "name": "02 · Open branching top contour · Inner connected",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 210
+      },
+      "rightJoin": [
+        1354,
+        202
+      ],
+      "asset": "adopted-inner-connected-top.svg"
+    },
+    "proof": "homepage-left-strip-seamless-proof.png",
+    "preview": "homepage-left-strip-seamless-preview.png",
+    "validation": "Native 1440x1024 PNG exported from adopted artboard and visually checked; symbol ratio, CTA contrast, separate right contours, and tinted lower rim confirmed.",
+    "surface": {
+      "nodeId": "198:760",
+      "previousNodeId": "183:633",
+      "parentId": "40:442",
+      "name": "Panel surface · Soft upper-left fade, transparent right gap",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1296,
+        "height": 800
+      },
+      "absolute": true,
+      "asset": "panel-surface-soft-upper-left.svg",
+      "homepageClipRightX": 1354,
+      "upperLeftFadeWidth": 32,
+      "upperLeftFadeHeight": 210,
+      "maskType": "Alpha; horizontal softness composited with vertical reveal"
+    }
+  },
+  "rightCornerRefinement": {
+    "date": "2026-10-13",
+    "reference": "/var/folders/dz/wts3ggms3ndcfgb1yy58zy4h0000gn/T/codex-clipboard-ce1be319-620a-4f22-926e-a26276abef68.png",
+    "nodeId": "182:574",
+    "change": "Whiter lower-right vertical rim and corner band; shortened outer right contour with faint transition from mid-panel to a bright lower base. Inner border remains connected to top.",
+    "outerRight": {
+      "x": 1368,
+      "pathStartY": 570,
+      "transparentThroughY": 635.6,
+      "opacityAtY726": 0.035,
+      "opacityAtY808": 0.12,
+      "opacityAtY882": 0.42,
+      "opacityAtY939": 0.9,
+      "baseOpacity": 0.98,
+      "width": 1.6
+    },
+    "rightBandBaseOpacity": 0.74,
+    "whiteDiffusionRestrictedToExterior": true,
+    "asset": "adopted-brighter-right-corner.svg",
+    "proof": "homepage-right-corner-bright-proof.png",
+    "preview": "homepage-right-corner-bright-preview.png",
+    "validation": "Native 1440x1024 artboard PNG exported and checked; whiter corner and lower vertical band, short outer base, smooth fade, and intact page content confirmed."
+  },
+  "rightTransparencyRefinement": {
+    "date": "2026-10-13",
+    "change": "Removed the opaque right-hand strip between inner x=1354 and outer x=1368 contours, revealing the ambient background. Increased the lower white band while retaining the shortened outer line and fade toward the middle.",
+    "panelId": "40:442",
+    "originalPanelFillVisible": false,
+    "originalContainerShadowStyleRemoved": true,
+    "surface": {
+      "nodeId": "183:633",
+      "parentId": "40:442",
+      "name": "Panel surface · Transparent right gap",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1296,
+        "height": 800
+      },
+      "absolute": true,
+      "clipRightX": 1282,
+      "homepageClipRightX": 1354,
+      "stacking": "Sent to back, behind sidebar transition, grid and native content.",
+      "asset": "panel-surface-transparent-right.svg"
+    },
+    "grid": {
+      "nodeId": "183:598",
+      "previousNodeId": "40:443",
+      "name": "Glass tint and orbital grid · Transparent right gap",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1296,
+        "height": 800
+      },
+      "clipRightX": 1282,
+      "geometry": "Original exported paths; no scaling.",
+      "strokeOpacity": 0.12,
+      "asset": "glass-tint-transparent-right.svg"
+    },
+    "contours": {
+      "nodeId": "183:640",
+      "previousNodeId": "182:574",
+      "asset": "adopted-transparent-right-bright-band.svg",
+      "rightBandOpacityAtY832": 0.35,
+      "rightBandOpacityAtY888": 0.75,
+      "rightBandOpacityAtY944": 0.95,
+      "haloPeakOpacity": 0.36,
+      "innerTopJoin": [
+        1354,
+        202
+      ],
+      "outerRightFadeStartY": 570
+    },
+    "proof": "homepage-transparent-right-proof.png",
+    "detailProof": "homepage-transparent-right-detail-proof.png",
+    "preview": "homepage-transparent-right-preview.png",
+    "validation": "Native 1440x1024 Figma PNG exported and inspected. Confirmed ambient background visible in right gap, brighter lower white vertical band, preserved top connection, unchanged card positions and images, readable sidebar and CTA."
+  },
+  "narrowRimRoundedSidebarRefinement": {
+    "date": "2026-10-13",
+    "reference": "/var/folders/dz/wts3ggms3ndcfgb1yy58zy4h0000gn/T/codex-clipboard-c8b810fd-29b5-4aaf-94cb-f422646e392f.png",
+    "contourNodeId": "185:664",
+    "sidebarGradientNodeId": "187:690",
+    "rightRim": {
+      "innerRightX": 1354,
+      "outerRightX": 1366,
+      "previousOuterRightX": 1368,
+      "whiteBandWidth": 12,
+      "previousWhiteBandWidth": 14,
+      "haloHorizontalRadius": 37,
+      "previousHaloHorizontalRadius": 43,
+      "haloPeakOpacity": 0.36,
+      "outerDiffusionStrokeWidth": 5.8,
+      "outerLowerCurveEndpointX": 1338,
+      "transparentGapPreserved": true,
+      "innerTopJoin": [
+        1354,
+        202
+      ]
+    },
+    "sidebarDivider": {
+      "originalNodeId": "40:470",
+      "originalFillVisible": false,
+      "originalNodeRetainedForLayout": true,
+      "groupName": "Sidebar-divider-rounded-base",
+      "pathName": "Sidebar-divider-turns-left-at-base",
+      "homepagePath": "M317.7 181.2V944Q317.7 966 295.7 966",
+      "cornerRadius": 22,
+      "bottomBaselineY": 966,
+      "strokeWidth": 1,
+      "gradientStartY": 181.2,
+      "gradientStops": [
+        {
+          "offset": 0,
+          "color": "#CCD4E5",
+          "opacity": 0
+        },
+        {
+          "offset": 0.18,
+          "color": "#CCD4E5",
+          "opacity": 0.45
+        },
+        {
+          "offset": 0.86,
+          "color": "#CCD4E5",
+          "opacity": 0.45
+        },
+        {
+          "offset": 1,
+          "color": "#DCEFEB",
+          "opacity": 0.58
+        }
+      ],
+      "originalExportAsset": "sidebar-divider-original.svg"
+    },
+    "sidebarGradientClipPath": "M0 0H244V762.8Q244 784.8 222 784.8H0Z",
+    "contourAsset": "adopted-narrow-rim-rounded-sidebar.svg",
+    "sidebarGradientAsset": "sidebar-color-transition-rounded-foot.svg",
+    "preview": "homepage-narrow-rim-rounded-sidebar-preview.png",
+    "proof": "homepage-narrow-rim-rounded-sidebar-proof.png",
+    "before": "homepage-before-narrow-rim-rounded-sidebar.png",
+    "nativeExport": "/Users/mac/Downloads/Homepage · 当前采用（原版布局＋重绘插图） (10).png",
+    "validation": "Native 1440x1024 PNG exported from adopted artboard and visually inspected after both refinements. Confirmed narrower bright right band, sidebar divider turning left into inner bottom line, gradient following the rounded foot, preserved transparent gap and unchanged native cards, illustrations, text, CTA and brand symbol."
+  },
+  "workspaceCornerOwnershipCorrection": {
+    "date": "2026-10-13",
+    "reference": "/var/folders/dz/wts3ggms3ndcfgb1yy58zy4h0000gn/T/codex-clipboard-13c89c36-c491-441c-9a50-599b7933dd67.png",
+    "change": "Corrected the divider beside the redeem-code CTA to turn right into the content workspace bottom edge, forming the workspace lower-left corner. Extended the sidebar blue/cyan gradient into the exterior of this corner.",
+    "contourNodeId": "196:725",
+    "previousContourNodeId": "185:664",
+    "gradientNodeId": "196:751",
+    "previousGradientNodeId": "187:690",
+    "dividerOriginalNodeId": "40:470",
+    "dividerOriginalFillVisible": false,
+    "cornerOwner": "Right content workspace",
+    "cornerDirection": "Right",
+    "cornerRadius": 22,
+    "cornerStart": [
+      317.7,
+      944
+    ],
+    "cornerEnd": [
+      339.7,
+      966
+    ],
+    "homepagePath": "M317.7 181.2V944Q317.7 966 339.7 966",
+    "joinsInnerBottomLineY": 966,
+    "gradientBounds": {
+      "x": 1.2,
+      "y": 1.2,
+      "width": 266,
+      "height": 800
+    },
+    "gradientClipPath": "M0 0H244V762.8Q244 784.8 266 784.8H0Z",
+    "contourAsset": "adopted-workspace-left-corner.svg",
+    "gradientAsset": "sidebar-transition-workspace-corner.svg",
+    "before": "homepage-before-workspace-left-corner.png",
+    "preview": "homepage-workspace-left-corner-preview.png",
+    "proof": "homepage-workspace-left-corner-proof.png",
+    "detailProof": "homepage-workspace-left-corner-detail-proof.png",
+    "nativeExport": "/Users/mac/Downloads/Homepage · 当前采用（原版布局＋重绘插图） (11).png",
+    "adoptedFrameLocked": true,
+    "validation": "Native 1440x1024 Figma PNG exported and visually checked. Corner turns right into the content bottom edge, sidebar gradient follows the exterior wedge, CTA and all native content positions are unchanged. Saved full Figma canvas proof and focused corner proof; restored editor UI and original homepage lock."
+  },
+  "upperLeftFadeRefinement": {
+    "date": "2026-10-13",
+    "reference": "/var/folders/dz/wts3ggms3ndcfgb1yy58zy4h0000gn/T/codex-clipboard-ae41a721-7181-4a8f-a381-9c9a62e7d010.png",
+    "change": "Feathered the opaque upper-left panel edge into the ambient background with a narrow two-dimensional alpha fade and softly diffused the two open contour tips.",
+    "surface": {
+      "nodeId": "198:760",
+      "previousNodeId": "183:633",
+      "parentId": "40:442",
+      "name": "Panel surface · Soft upper-left fade, transparent right gap",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1296,
+        "height": 800
+      },
+      "absolute": true,
+      "asset": "panel-surface-soft-upper-left.svg",
+      "homepageClipRightX": 1354,
+      "upperLeftFadeWidth": 32,
+      "upperLeftFadeHeight": 210,
+      "maskType": "Alpha; horizontal softness composited with vertical reveal"
+    },
+    "verticalRevealStops": [
+      [
+        0,
+        0
+      ],
+      [
+        0.2,
+        0.03
+      ],
+      [
+        0.55,
+        0.4
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "horizontalSoftnessStops": [
+      [
+        0,
+        0
+      ],
+      [
+        0.2,
+        0.01
+      ],
+      [
+        0.5,
+        0.25
+      ],
+      [
+        0.8,
+        0.75
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "contourNodeId": "198:772",
+    "previousContourNodeId": "196:725",
+    "contourAsset": "adopted-soft-upper-left.svg",
+    "outerTipDiffusion": {
+      "cx": 72,
+      "cy": 365,
+      "rx": 6,
+      "ry": 155,
+      "peakOpacity": 0.075
+    },
+    "innerTipDiffusion": {
+      "cx": 86,
+      "cy": 338,
+      "rx": 4,
+      "ry": 120,
+      "peakOpacity": 0.05
+    },
+    "before": "homepage-before-upper-left-fade.png",
+    "preview": "homepage-upper-left-fade-preview.png",
+    "proof": "homepage-upper-left-fade-proof.png",
+    "detailProof": "homepage-upper-left-fade-detail-proof.png",
+    "nativeExport": "/Users/mac/Downloads/Homepage · 当前采用（原版布局＋重绘插图） (12).png",
+    "validation": "Inspected native 1440x1024 Figma export and saved Figma canvas/detail screenshots. Upper-left solid rounded edge now dissolves into transparency, contour tips fade smoothly, content layout and lower/right contour geometry remain intact. Restored homepage lock and editor UI."
+  },
+  "leftStripSeamlessRefinement": {
+    "date": "2026-10-13",
+    "change": "Removed inner left contour and tip diffusion. Left glass strip lightens gradually around its upper third. Feathered sidebar tint into bottom rim with both vertical and corner-tail alpha fades, eliminating hard color seams.",
+    "contourNodeId": "258:801",
+    "sidebarNodeId": "261:844",
+    "contourAsset": "adopted-left-strip-seamless.svg",
+    "sidebarAsset": "sidebar-transition-soft-base.svg",
+    "leftStripBounds": {
+      "x": 72,
+      "y": 208,
+      "width": 14,
+      "height": 736
+    },
+    "innerLeftStrokeRemoved": true,
+    "innerBottomPath": "M339.7 966H1332",
+    "workspaceCornerPath": "M317.7 181.2V944Q317.7 966 339.7 966",
+    "sidebarFootFadeLocalY": [
+      728.8,
+      798.8
+    ],
+    "sidebarCornerTailFadeLocalX": [
+      244,
+      266
+    ],
+    "before": "homepage-before-left-strip-blend.png",
+    "preview": "homepage-left-strip-seamless-preview.png",
+    "proof": "homepage-left-strip-seamless-proof.png",
+    "nativeExport": "/Users/mac/Downloads/Homepage · 当前采用（原版布局＋重绘插图） (14).png",
+    "adoptedFrameLocked": true,
+    "validation": "Native 1440×1024 Figma export visually inspected. Removed hard vertical seam under workspace corner in a second targeted pass. Single left edge, smooth dark-to-light strip, softened lower-left color blend, and correct workspace lower-left corner verified. Original editor UI and homepage lock restored."
+  },
+  "spacingRefinement": {
+    "date": "2026-10-14",
+    "redeemEntry": {
+      "nodeId": "40:465",
+      "leftPaddingBefore": 0,
+      "leftPaddingAfter": 8,
+      "width": 204,
+      "contentWidths": 196,
+      "buttonNodeId": "40:468",
+      "rightEdgePreserved": true
+    },
+    "storeContent": {
+      "nodeId": "40:471",
+      "width": 1051,
+      "rightPaddingBefore": 20,
+      "rightPaddingAfter": 36,
+      "contentWidthBefore": 1011,
+      "contentWidthAfter": 995,
+      "cardToInnerRimBeforeApprox": 5,
+      "cardToInnerRimAfterApprox": 21
+    },
+    "rows": {
+      "categories": "40:472",
+      "featured": "104:462",
+      "scenariosSection": "40:488",
+      "scenariosHeading": "40:489",
+      "scenarios": "40:495",
+      "latestSection": "40:501",
+      "latestRow": "40:508",
+      "contentNote": "40:513"
+    },
+    "featuredCardWidth": 240.935,
+    "featuredCardHeight": 300,
+    "scenarioCardWidth": 189.4,
+    "scenarioGap": 12,
+    "latestCardWidth": 236.75,
+    "latestGap": 16,
+    "frameSize": [
+      1440,
+      1024
+    ],
+    "before": "homepage-before-spacing-refinement.png",
+    "preview": "homepage-spacing-refinement-preview.png",
+    "proof": "homepage-spacing-refinement-proof.png",
+    "nativeExport": "/Users/mac/Downloads/Homepage · 当前采用（原版布局＋重绘插图） (15).png",
+    "adoptedFrameLocked": true,
+    "validation": "Native export visually checked for consistent right alignment across all three card rows, complete redeem CTA and copy, no clipping, and unchanged border and lighting positions. Saved browser proof; restored editor UI and homepage lock."
+  }
+}

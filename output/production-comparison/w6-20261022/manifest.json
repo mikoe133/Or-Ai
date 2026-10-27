@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "orai.w6-effort-preparation.v1",
+  "status": "approved_preflight_blocked",
+  "preparedAt": "2026-10-22T06:29:45.884Z",
+  "approval": {
+    "source": "preflight.json",
+    "humanMessageId": "Sentinel_e386d6e0f3248191b006502afc9f939f",
+    "conditional": true
+  },
+  "inferenceInvocations": 0,
+  "files": [
+    {
+      "path": "examples/production-effort-comparison/base-method.md",
+      "sha256": "2b46d0af50d29347886d1e699a993b7364130b1e2ba4de3fb24683a67668996b",
+      "bytes": 1537
+    },
+    {
+      "path": "examples/production-effort-comparison/cases.json",
+      "sha256": "571c0c2be93557cad80908ad35329ec7122b9f4e3bc33cc042d024fc69fe02d4",
+      "bytes": 2950
+    },
+    {
+      "path": "examples/production-effort-comparison/output.schema.json",
+      "sha256": "ca5e71feb5e7e7d755db178cd22c25d07d0ea89569aec8928c0ed543818fc270",
+      "bytes": 2589
+    },
+    {
+      "path": "examples/production-effort-comparison/rubric.md",
+      "sha256": "329937d11f0482118da7fca2a454778ecc443a06a7f402ce942a30f75468e79d",
+      "bytes": 2806
+    },
+    {
+      "path": "examples/production-effort-comparison/metrics-template.json",
+      "sha256": "2e29ba243dffb284afd6ca88806ec13f225f6d143938edb9a978d5bcef3e8904",
+      "bytes": 1099
+    }
+  ],
+  "prompts": [
+    {
+      "caseId": "alone-after-busy-day",
+      "briefRevision": "synthetic-brief-a-v1",
+      "path": "output/production-comparison/w6-20261022/alone-after-busy-day.prompt.txt",
+      "sha256": "9d26cf95031f76c576482a35fc1fccdc711db087226dacbf263736dbc84aeedb",
+      "bytes": 3079,
+      "characters": 1493
+    },
+    {
+      "caseId": "two-people-different-pace",
+      "briefRevision": "synthetic-brief-b-v1",
+      "path": "output/production-comparison/w6-20261022/two-people-different-pace.prompt.txt",
+      "sha256": "a198e992224343f8c8609a11a3efbacb6bba1e0fbd15bc36b26bc12534bd94b0",
+      "bytes": 3517,
+      "characters": 1735
+    }
+  ],
+  "requestedModel": "gpt-6.1-sol",
+  "order": [
+    {
+      "caseId": "alone-after-busy-day",
+      "effort": "low"
+    },
+    {
+      "caseId": "two-people-different-pace",
+      "effort": "high"
+    },
+    {
+      "caseId": "alone-after-busy-day",
+      "effort": "high"
+    },
+    {
+      "caseId": "two-people-different-pace",
+      "effort": "low"
+    }
+  ],
+  "observations": [],
+  "billingRoute": "unconfirmed",
+  "cost": null,
+  "latestPreflight": "output/production-comparison/w6-20261022/preflight.json"
+}

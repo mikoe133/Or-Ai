@@ -1,0 +1,122 @@
+{
+  "head": "40c39deca7f288a8b8448962b06160cb6dc1bcbc",
+  "existingChangedFiles": 11,
+  "newSourceFiles": 7,
+  "files": [
+    {
+      "path": "apps/api/test/production-plans.test.ts",
+      "baselineSha256": "cf9211937f6998c79fb69540c9f4075b206d44d0feb4f240df426cbffff098f0",
+      "currentSha256": "630ee1280c30cdfa8b042f78f3c7ff6a50623b51fdbc6004b045281e46ad8a72",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "apps/api/test/machine-projects.test.ts",
+      "baselineSha256": "0d4345f897e0ac20c732d60f33ab63a62621e9cdce5386a5eb50a5bd36368698",
+      "currentSha256": "ec1084bbce5b3814cee8864d616598d7471a33174d2d8e92383614682936af92",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "apps/api/src/operations/production-plan-inspection.ts",
+      "baselineSha256": "f94f0485450b0e12fcd67d86703053b1c4e047377826795ebea512bdba4c03d1",
+      "currentSha256": "46614c01168eb7b2fd76dcc2ea42a331a3351b6d0fef33192441d201cc93d3cb",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "apps/api/src/operations/production-plans.service.ts",
+      "baselineSha256": "4e6cd2d312a9d491362aadd5c2c43ecf0078a2e57e38134147cad17ba747285f",
+      "currentSha256": "9c6d09059d9e49c765a130887d467409e9e9ecc8ee1a32cf68e02c7af53e26f9",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "apps/web/src/admin/project-planning.tsx",
+      "baselineSha256": "59d81de889a1ae24ea35a3d29d2336a342c6bd6e40cad827279e74d752cf1e2e",
+      "currentSha256": "fb2e17f100be0c101702a5c027cd4262b36a2ef635cd59f42c6df3084a987f3d",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "apps/web/src/admin/project-planning-model.ts",
+      "baselineSha256": "187bb6af7fb19d033c3b3982beabdd02d7e59943e83a5d15eaa7db7382a1578b",
+      "currentSha256": "4ae9f029582ef986fb5c535a4e9d494186f304fa7955027b343d0a782bc19d32",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "apps/web/src/admin/project-workspace.tsx",
+      "baselineSha256": "5827864702f1bd6331f4a343d3b82cc620feb4715718178450b2e77ffc50f907",
+      "currentSha256": "ac80feabe519d40c2e400b46826d89911d47fa86565517c5f01fee93fa5397df",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "packages/mcp/src/project-tools.ts",
+      "baselineSha256": "80a7865938ebe4d34376c66b88c71b30ba76bdbdabb42af9582df86755612a75",
+      "currentSha256": "fe6791f2b7bd0e7891dddf09daa02b3a6e30e12aede1464ece04c7f719f68ca4",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "packages/contracts/src/admin.ts",
+      "baselineSha256": "beb8f6587b8446e7b3b80c8357f83306c2da4111be4aab8ca1647b86d154893b",
+      "currentSha256": "97797536d60f129a0730cc8e68bb907a390a9fbb78f8b3b14f7c676085df911d",
+      "presentInHead": true,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "packages/contracts/src/production-plans.ts",
+      "baselineSha256": "3722b65f426194a83fade2e35ea5a146c6cb3f3e6870d6e1f90df76ac3294d11",
+      "currentSha256": "c6125e0c4e3769789f6055b08e6f334b20600ecc36423cd8990a596f34e0547d",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "packages/contracts/src/machine-projects.ts",
+      "baselineSha256": "bd922d3a8e91409d5fc9c02ecfbf43f4221cce2ca99f42000d881e3ecee52a9a",
+      "currentSha256": "25b88e29a64fa91757a78927333d6b0eb50e4cdbc54eb8f1ac3c55e483a0f190",
+      "presentInHead": false,
+      "baselineReconstructedExactly": true
+    },
+    {
+      "path": "packages/contracts/src/product-plan.ts",
+      "newInTask01": true,
+      "currentSha256": "f53fcf2bbf95a5dfa826d8f3402c2a28652e19beab3a74f0774be54c707872db"
+    },
+    {
+      "path": "apps/api/src/operations/product-plan-references.ts",
+      "newInTask01": true,
+      "currentSha256": "31f6bb8c7d3cd848a34c254bdfd6d11e9471d7772a87a3b60afa98b9ec88cc88"
+    },
+    {
+      "path": "apps/api/prisma/migrations/20261027010000_product_plan_contract/migration.sql",
+      "newInTask01": true,
+      "currentSha256": "774d15732057bb67078d84410131453ee253a6ea5f74a714528185b6427377cd"
+    },
+    {
+      "path": "apps/web/src/admin/product-plan-panel.tsx",
+      "newInTask01": true,
+      "currentSha256": "6e84261759932a751c3ca03c82b982af994e222c3b2d0a8400e1f0341ccb7e90"
+    },
+    {
+      "path": "apps/web/src/admin/product-plan-panel.css",
+      "newInTask01": true,
+      "currentSha256": "1563de87277424a5a6759d41fa8c6f90804eb5a4c6b335a7b5b76f24c8ad0494"
+    },
+    {
+      "path": "apps/web/test/product-plan.test.ts",
+      "newInTask01": true,
+      "currentSha256": "33b053420fb151f1fff871a680e02937ce20e36f8dd9be90c47df2dab8c28d06"
+    },
+    {
+      "path": "apps/web/test/product-plan-fixture.ts",
+      "newInTask01": true,
+      "currentSha256": "17138def878940a2cbfbf17806cd649c6821d6b7386b5f93ad31a4d5cf76e059"
+    }
+  ],
+  "indexModified": false,
+  "standaloneOnHead": false,
+  "reason": "Ten changed baseline source files and their project/MCP/schema dependencies are absent from HEAD. The patch is relative to the verified task-start workspace baseline, not HEAD. No previous-batch files are staged."
+}

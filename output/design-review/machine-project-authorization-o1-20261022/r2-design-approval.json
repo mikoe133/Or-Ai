@@ -1,0 +1,32 @@
+{
+  "kind": "o1_r2_design_approval",
+  "approvedAt": "2026-10-22T18:13:46+08:00",
+  "userReply": "可以",
+  "recordedAt": "2026-10-22T18:18:30.662430+08:00",
+  "evidenceType": "forwarded_explicit_human_response",
+  "evidence": "主会话于2026-10-22 09:50:09 UTC交付R2桌面连接我的Codex及手机确认页，说明仅原型且确认后才实现正式接口；用户于10:13:46 UTC回复可以。当前两图和R2源码/验证摘要一致。",
+  "forwardedByThread": "01a15d49-f07b-77f4-aefd-c07074fc9015",
+  "images": {
+    "r2-desktop-ready.png": "35bf8a02bd512a082d496f29b3d0025f703360dc3e027ad3065521ecdc8ea05c",
+    "r2-mobile-confirm.png": "788f29f29b8605824692aaa5b525b054195d0e59b012967c7f0210eb836069fd"
+  },
+  "prototypeSha256": {
+    "index.html": "da076ade87e80117655176ad926bab7507c870dc1ec764ec9fd3867ab6758162",
+    "check.mjs": "1b46a22fdf7c7e039aab00693f2a43dbc0d9d8e6d2f9c8cb2347728d542a0ff7",
+    "README.md": "b09b7ce0e158e1f118b227493b0a682ad78036f0954e50f76d42859f9f499b68",
+    "verification.json": "218ff411c194381f0e95fbc03a041aa7e45aa98666cb8b8d419455e934d5e31e"
+  },
+  "scope": "R2指定桌面/手机设计及O1正式页面和业务接口实现",
+  "oldR1Approved": false,
+  "formalUiApproved": false,
+  "realCredentialsApproved": false,
+  "persistentAccessApproved": false,
+  "realClientConfigurationApproved": false,
+  "realAccountConnectionValidated": false,
+  "cloudApproved": false,
+  "paidExecutionApproved": false,
+  "publicationApproved": false,
+  "schedulesApproved": false,
+  "o2Approved": false,
+  "validationScope": "isolated examples and test substitutes only"
+}

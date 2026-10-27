@@ -20,10 +20,11 @@ import {
   statuses,
   stringField,
 } from "./content-model.js";
-import { StructuredEditor } from "./content-parts.js";
+import { StructuredEditor, ProductionOrigin } from "./content-parts.js";
 import { ArchiveEditor, FileSlot } from "./content-media.js";
 import { ReferencePicker } from "./content-references.js";
 import { ImpactBadge } from "./content-history.js";
+import { SkillSetSource, SavedSkillSource } from './content-skills.js';
 type Kind = AssetAuthoring["content"]["kind"];
 type Props = {
   productId: string;
@@ -51,7 +52,7 @@ export function AssetDesk({
   const [dirtyCallback] = useState(() => dirtyChanged);
   const rows = props.rows.filter((value) => value.domain === domain);
   return (
-    <section aria-label={domains[domain] + "工作台"}>
+    <section className="content-asset-desk" aria-label={domains[domain] + "工作台"}>
       <div className="content-section-heading">
         <div>
           <h3>{domains[domain]}</h3>
@@ -68,6 +69,8 @@ export function AssetDesk({
         </button>
       </div>
       {rows.length > 0 && (
+        <details className="content-asset-index" open={!selected}>
+          <summary>已保存稿件 <span>{rows.length} 份 · 选择平台与变体继续制作</span></summary>
         <div className="biz-table-wrap">
           <table>
             <thead>
@@ -82,7 +85,7 @@ export function AssetDesk({
             </thead>
             <tbody>
               {rows.map((row) => (
-                <tr key={row.id}>
+                <tr key={row.id} className={selected?.assetId === row.assetId ? "is-selected" : undefined}>
                   <td>
                     {stringField(row.snapshot.variant)}
                     <small>
@@ -148,6 +151,7 @@ export function AssetDesk({
             </tbody>
           </table>
         </div>
+        </details>
       )}
       {Boolean(action.error) && <Failure error={action.error} />}
       <AssetEditor
@@ -214,6 +218,7 @@ function AssetEditor({
     ),
     [variant, setVariant] = useState(stringField(selected?.snapshot.variant)),
     [source, setSource] = useState(original?.production.source ?? "manual"),
+    [skillSetId, setSkillSetId] = useState(original?.production.skillSetId ?? ''),
     [batch, setBatch] = useState(original?.production.batchKey ?? ""),
     [external, setExternal] = useState(
       original?.production.externalLabel ?? "",
@@ -239,6 +244,7 @@ function AssetEditor({
     platform: stringField(selected?.snapshot.platform) || "manual",
     variant: stringField(selected?.snapshot.variant),
     source: original?.production.source ?? "manual",
+    skillSetId: original?.production.skillSetId ?? '',
     batch: original?.production.batchKey ?? "",
     external: original?.production.externalLabel ?? "",
     inputs: JSON.stringify(original?.inputs ?? [], null, 2),
@@ -256,6 +262,7 @@ function AssetEditor({
         platform,
         variant,
         source,
+        skillSetId,
         batch,
         external,
         inputs,
@@ -269,8 +276,9 @@ function AssetEditor({
   }, [dirty, onDirty]);
   const media = kind === "cover" || kind === "video";
   return (
-    <div className="content-editor">
+    <div className="content-editor content-asset-editor">
       <h3>{selected ? "编辑稿件" : "新稿件"}</h3>
+      {selected?.production && <ProductionOrigin source={selected.production} />}
       <p className="content-note">
         保存到创作设定 r{profile.revision}。
         {selected && selected.creativeProfileRevisionId !== profile.id
@@ -306,6 +314,7 @@ function AssetEditor({
                         batchKey: batch || null,
                         externalLabel: external || null,
                         skillVersionId: null,
+                        ...(skillSetId ? { skillSetId } : {}),
                       },
                     },
                   }),
@@ -322,6 +331,8 @@ function AssetEditor({
         }}
       >
         <fieldset disabled={action.busy || uploadBusy}>
+          <section className="content-form-section">
+          <header className="content-form-section-heading"><h4>01 / 稿件资料</h4></header>
           <div className="content-fields">
             <label>
               稿件名称 / A/B 变体
@@ -365,6 +376,9 @@ function AssetEditor({
               </label>
             )}
           </div>
+          </section>
+          <section className="content-form-section">
+          <header className="content-form-section-heading"><h4>02 / {kind === "cover" ? "封面表达" : kind === "copy" ? "文案内容" : "分镜内容"}</h4><p>引用已保存题目或文案，让同一主题的表达保持一致。</p></header>
           <StructuredEditor content={content} onChange={setContent} />
           <ReferencePicker
             productId={productId}
@@ -375,8 +389,12 @@ function AssetEditor({
             inputs={inputs}
             onChange={setInputs}
             onContent={setContent}
+            skillSetId={skillSetId || undefined}
           />
-          <h4>制作来源</h4>
+          </section>
+          <section className="content-form-section">
+          <header className="content-form-section-heading"><h4>03 / 制作来源</h4></header>
+          <SkillSetSource profileId={profile.id} value={skillSetId} onChange={setSkillSetId} />
           <div className="content-fields">
             <label>
               来源
@@ -411,7 +429,7 @@ function AssetEditor({
             </label>
           </div>
           <p className="content-note">
-            Skill 版本：未关联。来源为操作者申报；当前后台不会运行模型或 MCP。
+            来源为操作者申报；保存记录不会执行 skill、模型或 MCP。
           </p>
           <details>
             <summary>固定输入清单 · {original?.inputs.length ?? 0} 项</summary>
@@ -443,10 +461,23 @@ function AssetEditor({
               <details>
                 <summary>已保存制作记录与输入快照</summary>
                 <pre>{JSON.stringify(selected.production, null, 2)}</pre>
+                <SavedSkillSource setId={selected.production.skillSetId} />
               </details>
             )}
           </details>
-          <div className="biz-row">
+          </section>
+          {media && (
+            <section className="content-form-section">
+              <header className="content-form-section-heading"><h4>04 / 原件与交付文件</h4><p>本地登记原件；按需上传预览与正式交付文件。</p></header>
+              <fieldset className="content-media-grid" key={mediaGeneration}>
+                <ArchiveEditor onBusy={setUploadBusy} kind={kind} value={archive} onChange={setArchive} />
+                <FileSlot versionId={productVersionId} kind={kind} purpose="预览" value={preview} onChange={setPreview} onBusy={setUploadBusy} onPending={setPendingPreview} />
+                <FileSlot versionId={productVersionId} kind={kind} purpose="正式" value={delivery} onChange={setDelivery} onBusy={setUploadBusy} onPending={setPendingDelivery} />
+              </fieldset>
+            </section>
+          )}
+          <div className="biz-row content-action-bar">
+            <span>{selected ? `稿件 r${selected.sourceRevision}` : "新稿件"}{dirty ? " · 未保存" : ""}</span>
             <button type="submit" disabled={pendingPreview || pendingDelivery}>
               保存内容草稿
             </button>
@@ -462,6 +493,7 @@ function AssetEditor({
                 );
                 setVariant(stringField(selected?.snapshot.variant));
                 setSource(original?.production.source ?? "manual");
+                setSkillSetId(original?.production.skillSetId ?? '');
                 setBatch(original?.production.batchKey ?? "");
                 setExternal(original?.production.externalLabel ?? "");
                 setInputs(JSON.stringify(original?.inputs ?? [], null, 2));
@@ -478,40 +510,8 @@ function AssetEditor({
           </div>
         </fieldset>
       </form>
-      {media && (
-        <fieldset
-          disabled={action.busy || uploadBusy}
-          className="content-media-grid"
-          key={mediaGeneration}
-        >
-          <ArchiveEditor
-            onBusy={setUploadBusy}
-            kind={kind}
-            value={archive}
-            onChange={setArchive}
-          />
-          <FileSlot
-            versionId={productVersionId}
-            kind={kind}
-            purpose="预览"
-            value={preview}
-            onChange={setPreview}
-            onBusy={setUploadBusy}
-            onPending={setPendingPreview}
-          />
-          <FileSlot
-            versionId={productVersionId}
-            kind={kind}
-            purpose="正式"
-            value={delivery}
-            onChange={setDelivery}
-            onBusy={setUploadBusy}
-            onPending={setPendingDelivery}
-          />
-        </fieldset>
-      )}
       {selected && (
-        <div className="biz-row">
+        <div className="biz-row content-review-actions">
           <span>
             已保存状态：{statuses[stringField(selected.snapshot.status)]} · r
             {selected.sourceRevision}

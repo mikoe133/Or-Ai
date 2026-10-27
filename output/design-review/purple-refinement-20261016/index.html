@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>深色与紫色 · 界面设计审阅</title>
+  <style>
+    :root { --bg:#15151b; --surface:#202029; --surface-hover:#272631; --ink:#f0eef5; --muted:#aaa7b6; --line:#383641; --accent:#c6b6ef; --accent-ink:#221932; --selected:#30293f; --focus:#e2d8ff; --radius:14px; }
+    * { box-sizing:border-box; }
+    [hidden] { display:none !important; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif; font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+    button,input { font:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { cursor:pointer; }
+    button:disabled { cursor:default; }
+    a { color:var(--accent); text-underline-offset:4px; }
+    a:hover { color:var(--focus); }
+    :focus-visible { outline:3px solid var(--focus); outline-offset:5px; }
+    .skip-link { position:fixed; left:20px; top:-80px; z-index:10; padding:10px 16px; background:var(--accent); color:var(--accent-ink); border-radius:8px; }
+    .skip-link:focus { top:12px; }
+    .wrap { width:min(1184px,calc(100% - 80px)); margin-inline:auto; }
+    .topbar { border-bottom:1px solid var(--line); }
+    .topbar-inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .identity { font-size:14px; font-weight:650; letter-spacing:.03em; }
+    .review-status { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:12px; }
+    .status-dot { width:6px; height:6px; background:var(--accent); border-radius:50%; }
+    .intro { padding:48px 0 32px; max-width:810px; }
+    .eyebrow { margin:0 0 10px; color:var(--accent); font-size:12px; font-weight:650; letter-spacing:.12em; }
+    h1 { margin:0; font-size:clamp(27px,3.3vw,40px); font-weight:650; letter-spacing:-.035em; line-height:1.25; }
+    .intro p:last-child { max-width:650px; margin:16px 0 0; color:var(--muted); }
+    .section-heading { margin:0; font-size:20px; line-height:1.4; font-weight:650; letter-spacing:-.015em; }
+    .gallery-controls { display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--line); }
+    .tabs { display:flex; gap:28px; }
+    .tab { position:relative; padding:14px 0 16px; border:0; background:none; color:var(--muted); white-space:nowrap; }
+    .tab[aria-selected="true"] { color:var(--ink); font-weight:650; }
+    .tab[aria-selected="true"]::after { content:""; position:absolute; right:0; bottom:-1px; left:0; height:2px; background:var(--accent); }
+    .tab-number { padding-right:7px; color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+    .gallery-note { color:var(--muted); font-size:12px; }
+    .panel-meta { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 0; }
+    .panel-meta p { margin:0; color:var(--muted); font-size:13px; }
+    .original-link { flex-shrink:0; font-size:13px; text-decoration:none; }
+    .original-link:hover { text-decoration:underline; }
+    .concept-figure { margin:0; overflow:hidden; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); }
+    .concept-image { display:block; width:100%; height:auto; }
+    .concept-figure figcaption { padding:12px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    .references { margin-top:56px; padding-top:30px; border-top:1px solid var(--line); }
+    .section-intro { margin:8px 0 22px; color:var(--muted); font-size:14px; }
+    .reference-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    .reference { margin:0; }
+    .reference-image { display:block; width:100%; aspect-ratio:16 / 10; object-fit:cover; object-position:top; border:1px solid var(--line); border-radius:10px; background:var(--surface); }
+    .reference figcaption { padding-top:11px; }
+    .reference a { font-size:14px; font-weight:600; text-decoration:none; }
+    .reference a:hover { text-decoration:underline; }
+    .reference p { margin:4px 0 0; color:var(--muted); font-size:12px; }
+    .interaction { display:grid; grid-template-columns:minmax(220px,.75fr) minmax(0,1.45fr); gap:64px; align-items:start; margin:56px 0; padding-top:30px; border-top:1px solid var(--line); }
+    .interaction-description p { color:var(--muted); font-size:14px; }
+    .motion-spec { margin:25px 0 0; padding:0; }
+    .motion-spec div { padding:13px 0; border-top:1px solid var(--line); }
+    .motion-spec dt { color:var(--ink); font-size:13px; }
+    .motion-spec dd { margin:5px 0 0; color:var(--muted); font-size:12px; }
+    .demo { overflow:hidden; padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); }
+    .demo-context { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px; color:var(--muted); font-size:12px; }
+    .demo-context span:first-child { color:var(--accent); }
+    fieldset { min-width:0; margin:0; padding:0; border:0; }
+    legend { width:100%; margin:0 0 22px; padding:0; font-size:22px; line-height:1.5; font-weight:600; letter-spacing:-.02em; }
+    .choices { display:grid; gap:10px; }
+    .choice { display:block; position:relative; }
+    .choice-input { position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+    .choice-body { display:flex; align-items:center; gap:14px; min-height:62px; padding:14px 17px; border:1px solid #494653; border-radius:9px; background:transparent; transition:background-color 160ms ease,border-color 160ms ease; cursor:pointer; }
+    .choice-body:hover { background:var(--surface-hover); }
+    .choice-mark { display:grid; place-items:center; flex:0 0 21px; width:21px; height:21px; border:1px solid #797483; border-radius:50%; color:transparent; }
+    .choice-mark svg { display:block; width:13px; height:13px; }
+    .choice-input:checked + .choice-body { border-color:var(--accent); background:var(--selected); }
+    .choice-input:checked + .choice-body .choice-mark { border-color:var(--accent); background:var(--accent); color:var(--accent-ink); }
+    .choice-input:focus-visible + .choice-body { outline:3px solid var(--focus); outline-offset:3px; }
+    .demo-actions { display:flex; justify-content:space-between; align-items:center; gap:20px; margin-top:24px; }
+    .hint { margin:0; color:var(--muted); font-size:12px; }
+    .primary-button { flex-shrink:0; min-height:44px; padding:10px 24px; border:1px solid transparent; border-radius:8px; background:var(--accent); color:var(--accent-ink); font-size:14px; font-weight:650; }
+    .primary-button:hover:not(:disabled) { background:#dacbf9; }
+    .primary-button:disabled { background:#37333f; color:#8e8799; }
+    .result-state { padding:20px 0 10px; animation:arrive 220ms ease-out both; }
+    .result-mark { display:grid; place-items:center; width:44px; height:44px; margin-bottom:24px; border-radius:50%; background:var(--selected); color:var(--accent); }
+    .result-mark svg { width:24px; height:24px; }
+    .result-state h3 { margin:0; font-size:25px; line-height:1.4; font-weight:600; }
+    .result-state p { margin:14px 0 0; color:var(--muted); font-size:14px; }
+    .selected-answer { margin:24px 0 0; padding:17px 0; border-block:1px solid var(--line); color:var(--ink); font-size:15px; }
+    .reset-button { margin-top:28px; }
+    .demo-footnote { margin:22px 0 0; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; }
+    footer { padding:24px 0 32px; border-top:1px solid var(--line); color:var(--muted); font-size:12px; }
+    footer p { margin:0; }
+    @keyframes arrive { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+    @media (max-width:760px) {
+      .wrap { width:calc(100% - 36px); }
+      .topbar-inner { min-height:64px; gap:12px; }
+      .review-status { font-size:11px; }
+      .intro { padding:34px 0 24px; }
+      .gallery-controls { gap:14px; }
+      .tabs { gap:22px; }
+      .gallery-note { display:none; }
+      .tab { font-size:14px; }
+      .panel-meta { align-items:flex-start; gap:16px; }
+      .panel-meta p { font-size:12px; }
+      .concept-figure { border-radius:8px; }
+      .concept-figure figcaption { padding:10px 12px; font-size:11px; }
+      .reference-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 14px; }
+      .references { margin-top:36px; padding-top:24px; }
+      .interaction { grid-template-columns:1fr; gap:24px; margin:36px 0; padding-top:24px; }
+      .motion-spec { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px; }
+      .demo { padding:22px 18px; }
+      legend { font-size:20px; }
+      .choice-body { padding:13px; gap:12px; font-size:14px; }
+      .demo-actions { gap:12px; }
+      .primary-button { padding-inline:20px; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { animation:none !important; transition:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到设计内容</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="identity">界面设计审阅 <span style="color:var(--muted);font-weight:400">/ 2026.10.16</span></div>
+      <div class="review-status"><span class="status-dot" aria-hidden="true"></span>设计提案 · 待确认</div>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    <div class="intro">
+      <p class="eyebrow">深色界面 · 紫色品牌</p>
+      <h1>保留熟悉的色彩，重新梳理内容与留白。</h1>
+      <p>保留目前的顶部搜索、左侧导航、灰黑背景和浅紫按钮，调整商品卡片、内容层级与报告阅读。以下是三张改进概念图和一个可操作的答题片段。</p>
+    </div>
+    <section aria-label="页面设计概念">
+      <div class="gallery-controls">
+        <div class="tabs" role="tablist" aria-label="选择设计页面">
+          <button class="tab" type="button" id="tab-home" role="tab" aria-selected="true" aria-controls="panel-home" tabindex="0"><span class="tab-number">01</span>首页</button>
+          <button class="tab" type="button" id="tab-product" role="tab" aria-selected="false" aria-controls="panel-product" tabindex="-1"><span class="tab-number">02</span>商品详情</button>
+          <button class="tab" type="button" id="tab-report" role="tab" aria-selected="false" aria-controls="panel-report" tabindex="-1"><span class="tab-number">03</span>报告</button>
+        </div>
+        <span class="gallery-note">完整图预览 · 可打开原图</span>
+      </div>
+      <div id="panel-home" role="tabpanel" aria-labelledby="tab-home" tabindex="0">
+        <div class="panel-meta"><p>浏览体验与主题内容，查看首页的主次关系。</p><a class="original-link" href="01-home.png" target="_blank" rel="noopener">打开原图 ↗</a></div>
+        <figure class="concept-figure"><img class="concept-image" src="01-home.png" alt="首页改进概念图，沿用深色背景与紫色品牌色，展示体验内容的浏览层级"><figcaption>首页概念 · 图中内容仅用于视觉审阅，尚未接入正式应用。</figcaption></figure>
+      </div>
+      <div id="panel-product" role="tabpanel" aria-labelledby="tab-product" tabindex="0" hidden>
+        <div class="panel-meta"><p>让主题、参与方式与可以获得的内容更容易理解。</p><a class="original-link" href="02-product.png" target="_blank" rel="noopener">打开原图 ↗</a></div>
+        <figure class="concept-figure"><img class="concept-image" src="02-product.png" alt="商品详情改进概念图，沿用深色与紫色，呈现主题、参与方式与报告内容" loading="lazy"><figcaption>商品详情概念 · 图中文字与内容示例仍需经过产品审校。</figcaption></figure>
+      </div>
+      <div id="panel-report" role="tabpanel" aria-labelledby="tab-report" tabindex="0" hidden>
+        <div class="panel-meta"><p>查看报告的阅读节奏、理解提示与行动建议。</p><a class="original-link" href="03-report.png" target="_blank" rel="noopener">打开原图 ↗</a></div>
+        <figure class="concept-figure"><img class="concept-image" src="03-report.png" alt="报告改进概念图，使用深色阅读界面和紫色强调，展示观察、解释与建议" loading="lazy"><figcaption>报告概念 · 文案与结果为示例，未代表真实评估或用户数据。</figcaption></figure>
+      </div>
+    </section>
+    <section id="references" class="references" aria-labelledby="references-title">
+      <h2 id="references-title" class="section-heading">参考来源与采用的细节</h2>
+      <p class="section-intro">采用紫色网站的色彩控制与暗色界面的排版方法。截图用于对照研究，点击名称可查看来源。</p>
+      <div class="reference-grid" id="reference-grid">
+        <figure class="reference">
+          <a href="references/reflect-home.jpg" target="_blank" rel="noopener" aria-label="打开 Reflect 参考截图"><img class="reference-image" src="references/reflect-home.jpg" alt="Reflect 官网参考截图，展示黑紫色背景、紫色操作和局部光感" loading="lazy"></a>
+          <figcaption><a href="https://reflect.app/" target="_blank" rel="noopener">Reflect ↗</a><p>黑紫背景与紫色按钮形成层次。借鉴局部强调与颜色占比，装饰光球不纳入本次方案。</p></figcaption>
+        </figure>
+        <figure class="reference">
+          <a href="references/screen-studio-home.jpg" target="_blank" rel="noopener" aria-label="打开 Screen Studio 参考截图"><img class="reference-image" src="references/screen-studio-home.jpg" alt="Screen Studio 官网参考截图，展示黑底、高对比标题与紫色主按钮" loading="lazy"></a>
+          <figcaption><a href="https://screen.studio/" target="_blank" rel="noopener">Screen Studio ↗</a><p>高对比标题与紫色主按钮让操作一眼可见。借鉴明确的字号层级与主次关系。</p></figcaption>
+        </figure>
+        <figure class="reference">
+          <a href="references/linear-home.jpg" target="_blank" rel="noopener" aria-label="打开 Linear 参考截图"><img class="reference-image" src="references/linear-home.jpg" alt="Linear 当前官网参考截图，展示近黑白的暗色层级、细边框与排版" loading="lazy"></a>
+          <figcaption><a href="https://linear.app/" target="_blank" rel="noopener">Linear ↗</a><p>当前官网接近黑白，作为辅助参考：借鉴暗色表面层级、细边框与紧凑排版。</p></figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="interaction" aria-labelledby="interaction-title">
+      <div class="interaction-description">
+        <h2 id="interaction-title" class="section-heading">答题状态与动效</h2>
+        <p>选中一项，再点「下一步」，体验明确的选择反馈和克制的页面过渡。使用 Tab 可以移动焦点，方向键可以切换选项。</p>
+        <dl class="motion-spec">
+          <div><dt>选择反馈 · 160 ms</dt><dd>边框与底色过渡，选中时出现勾选标记。</dd></div>
+          <div><dt>下一步 · 220 ms</dt><dd>新内容淡入，向上移动 8 px 后停稳。</dd></div>
+        </dl>
+        <p style="font-size:12px">这些时长是本项目的动效提议。系统开启「减少动态效果」时，反馈与切换立即完成。</p>
+      </div>
+      <div class="demo" aria-label="答题交互演示">
+        <div class="demo-context"><span>交互演示</span><span>不保存答案</span></div>
+        <form id="question-form" autocomplete="off">
+          <fieldset>
+            <legend>当家里有事情需要处理时，你们通常会怎么分工？</legend>
+            <div class="choices">
+              <label class="choice"><input class="choice-input" type="radio" name="answer" value="我先发现，也常常是我来安排"><span class="choice-body"><span class="choice-mark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>我先发现，也常常是我来安排</span></span></label>
+              <label class="choice"><input class="choice-input" type="radio" name="answer" value="说好分工后，各自完成"><span class="choice-body"><span class="choice-mark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>说好分工后，各自完成</span></span></label>
+              <label class="choice"><input class="choice-input" type="radio" name="answer" value="谁看见谁处理，彼此补位"><span class="choice-body"><span class="choice-mark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>谁看见谁处理，彼此补位</span></span></label>
+              <label class="choice"><input class="choice-input" type="radio" name="answer" value="很少讨论，临时再说"><span class="choice-body"><span class="choice-mark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="m3 8 3.2 3.2L13 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>很少讨论，临时再说</span></span></label>
+            </div>
+          </fieldset>
+          <div class="demo-actions"><p class="hint" id="choice-hint" aria-live="polite">选择一项后继续</p><button class="primary-button" type="submit" id="next-button" disabled>下一步 <span aria-hidden="true">→</span></button></div>
+        </form>
+        <div class="result-state" id="result-state" hidden>
+          <div class="result-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4.5 4.5L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 id="result-title" tabindex="-1">已记录这次选择</h3>
+          <p>这是模拟反馈，你的选择仅显示在本次演示中。</p>
+          <blockquote class="selected-answer" id="selected-answer"></blockquote>
+          <button class="primary-button reset-button" id="reset-button" type="button">重新体验</button>
+        </div>
+        <p class="demo-footnote">独立 HTML / CSS 交互样例 · 题目与选项取自现有预览内容 · 刷新页面即清空</p>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><p>当前为独立设计审阅稿。概念图片、参考资料和交互演示均未修改正式应用。</p></div></footer>
+  <script>
+    (() => {
+      'use strict';
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      function activateTab(target, moveFocus) {
+        tabs.forEach(tab => {
+          const selected = tab === target;
+          tab.setAttribute('aria-selected', String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          document.getElementById(tab.getAttribute('aria-controls')).hidden = !selected;
+        });
+        if (moveFocus) target.focus();
+      }
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateTab(tab, false));
+        tab.addEventListener('keydown', event => {
+          let nextIndex;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          else if (event.key === 'Home') nextIndex = 0;
+          else if (event.key === 'End') nextIndex = tabs.length - 1;
+          else return;
+          event.preventDefault();
+          activateTab(tabs[nextIndex], true);
+        });
+      });
+      const form = document.getElementById('question-form');
+      const next = document.getElementById('next-button');
+      const result = document.getElementById('result-state');
+      const hint = document.getElementById('choice-hint');
+      form.reset();
+      next.disabled = true;
+      form.addEventListener('change', () => {
+        const choice = form.querySelector('input[name="answer"]:checked');
+        next.disabled = !choice;
+        hint.textContent = choice ? '已选择，可以继续' : '选择一项后继续';
+      });
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        const choice = form.querySelector('input[name="answer"]:checked');
+        if (!choice) return;
+        document.getElementById('selected-answer').textContent = choice.value;
+        form.hidden = true;
+        result.hidden = false;
+        document.getElementById('result-title').focus({ preventScroll:true });
+      });
+      document.getElementById('reset-button').addEventListener('click', () => {
+        form.reset();
+        next.disabled = true;
+        hint.textContent = '选择一项后继续';
+        result.hidden = true;
+        form.hidden = false;
+        document.getElementById('selected-answer').textContent = '';
+        form.querySelector('input[name="answer"]').focus({ preventScroll:true });
+      });
+    })();
+  </script>
+</body>
+</html>

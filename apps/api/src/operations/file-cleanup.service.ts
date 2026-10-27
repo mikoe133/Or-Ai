@@ -54,6 +54,9 @@ const eligible = (
   assets: { none: {} },
   contentDeliveries: { none: {} },
   contentPreviews: { none: {} },
+  experienceResources: { none: {} },
+  experienceDraftResources: { none: {} },
+  projectOutputs: { none: {} },
 });
 @Injectable()
 export class FileCleanupService {

@@ -206,6 +206,7 @@ export async function productPublication({
     (await page.request.get(base + "/api/products/" + metadata.slug)).status(),
     404,
   );
+  await admin.getByRole("tab", { name: "配置版本", exact: true }).click();
   await admin
     .getByLabel("从 JSON 文件读取配置", { exact: true })
     .setInputFiles({
@@ -263,9 +264,13 @@ export async function productPublication({
     version.configuration.questions[0].text,
     revised.questions[0].text,
   );
+  await admin.getByRole("tab", { name: "商品资料", exact: true }).click();
   await admin
     .getByRole("button", { name: "刷新商品与修订", exact: true })
     .click();
+  await expect(admin.getByText(/^商品状态：published · 修订 /)).toBeVisible();
+  await expect(admin.getByRole("button", { name: "刷新商品与修订", exact: true })).toBeEnabled();
+  await admin.getByRole("tab", { name: "配置版本", exact: true }).click();
   await expect(
     admin.getByRole("button", { name: "下架商品", exact: true }),
   ).toBeEnabled();
@@ -283,6 +288,7 @@ export async function productPublication({
 
 export async function textAssets({ admin, versionId, fixture }) {
   await admin.goto("/admin/assets");
+  await admin.getByRole("button", { name: "新建素材", exact: true }).click();
   for (const kind of ["copy", "script"]) {
     if (kind === "script")
       await admin

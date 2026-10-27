@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import {
   BindEntitlementRequestSchema,
   RedemptionRequestSchema,
@@ -11,6 +11,8 @@ import { ClientError } from "../api/client.js";
 import { identityChanged } from "../api/privacy.js";
 import { accountApi } from "../auth/browser.js";
 import { Page, Loading, Failure, Demo, Pager, useAction } from "./shared.js";
+import { RedemptionArt } from "../store/redemption-art";
+import { Icon } from "../store/icons";
 
 export function RedemptionPage() {
   const [code, setCode] = useState(""),
@@ -18,11 +20,11 @@ export function RedemptionPage() {
     client = useQueryClient(),
     navigate = useNavigate();
   return (
-    <Page title="领取或恢复商品" section="apps">
+    <Page title="领取或恢复商品" section="apps" view="redeem">
       <p>
         粘贴购买平台交付的完整兑换码。未绑定商品可换设备恢复，恢复不会增加报告次数。
       </p>
-      <p>这里使用真实测试接口；设计示例码不能兑换。</p>
+      <div className="consumer-redeem-layout"><section className="biz-card" aria-label="输入兑换码">
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -70,6 +72,8 @@ export function RedemptionPage() {
         </button>
       </form>
       {Boolean(action.error) && <Failure error={action.error} />}
+      <p className="biz-note">兑换码只用于本次领取或恢复，请妥善保管，不要公开分享。</p>
+      </section><aside className="biz-card" aria-label="兑换步骤"><h2>从这里开始探索</h2><RedemptionArt kind="ticket" /><ol className="consumer-redeem-steps"><li>在原购买平台取得完整兑换码。</li><li>输入兑换码，领取或恢复已有权益。</li><li>前往我的应用作答，完成后查看报告。</li></ol><p className="consumer-redeem-note">无需先注册。恢复已有商品不会增加报告机会；演示预览中的示例码不能在这里兑换。</p><Link to="/help">兑换与恢复帮助</Link></aside></div>
       <p>已绑定商品请登录原账户查看，不会被恢复为匿名商品。</p>
       <Link to="/auth/login">邮箱登录</Link>
       <Link to="/apps">查看我的应用</Link>
@@ -85,6 +89,10 @@ const reportText = {
   deleted: "已删除",
 };
 export function LibraryPage({ reports = false }: { reports?: boolean }) {
+  const location = useLocation();
+  const [receiptId, setReceiptId] = useState<string | null>(() =>
+    location.state && typeof location.state.redeemedId === "string" ? location.state.redeemedId : null,
+  );
   const [params, setParams] = useSearchParams(),
     client = useQueryClient(),
     navigate = useNavigate(),
@@ -134,13 +142,20 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
   }
   const result =
     reports && source === "account" ? accountReports : entitlements;
+  useEffect(() => {
+    if (location.state && typeof location.state.redeemedId === "string")
+      navigate(location.pathname + location.search, {replace: true, state: null});
+  }, [location, navigate]);
+  const receipt = !reports && source === "anonymous" && allowed && !result.isError
+    ? entitlements.data?.items.find(value => value.id === receiptId && value.status === "active") : undefined;
   return (
     <Page
       title={reports ? "我的报告" : "我的应用"}
       embedded
       section={reports ? "reports" : "apps"}
     >
-      <div className="biz-row">
+      {receipt && <section className="consumer-redemption-receipt" aria-label="领取或恢复结果"><RedemptionArt kind="medal"/><div><span className="consumer-eyebrow">应用已可使用</span><h2>已领取或恢复</h2><p>{receipt.productName}</p><small>从下方开始或继续探索，已保存的进度与报告会保留。</small></div><button type="button" onClick={() => setReceiptId(null)}>收起提示</button></section>}
+      <div className="biz-row consumer-source-tabs" role="group" aria-label="商品来源">
         <button
           aria-pressed={source === "anonymous"}
           onClick={() => change({ source: "anonymous", page: "1" })}
@@ -171,7 +186,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
           {(source === "anonymous" ? session.isPending : account.isPending) ? (
             <Loading />
           ) : (
-            <p role="status">
+            <div className="consumer-library-empty"><Icon name={reports ? "report" : "game"} size={32} /><p role="status">
               {source === "anonymous"
                 ? "当前没有本机商品，请使用兑换码领取或恢复。"
                 : account.data?.account
@@ -179,7 +194,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
                   : account.data?.configured
                     ? "请先登录账户。"
                     : "邮箱账户尚未配置，可继续本机兑换。"}
-            </p>
+            </p><Link className="biz-button" to={source === "account" ? "/auth/login" : "/redeem"}>{source === "account" ? "前往邮箱登录" : "领取或恢复商品"}</Link></div>
           )}
         </>
       ) : result.isPending ? (
@@ -191,7 +206,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
           <div className="biz-grid">
             {reports && source === "account"
               ? accountReports.data?.items.map((value) => (
-                  <article className="biz-card" key={value.id}>
+                  <article className="biz-card consumer-library-card" key={value.id} data-access-state={value.entitlementStatus}>
                     <h2>{value.productName}</h2>
                     <Demo show={value.isDemo} />
                     <p>
@@ -201,7 +216,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
                     </p>
                     {value.reportState === "available" &&
                       value.entitlementStatus === "active" && (
-                        <Link to={"/reports/" + value.id + "?source=account"}>
+                        <Link className="biz-button" to={"/reports/" + value.id + "?source=account"}>
                           查看报告
                         </Link>
                       )}
@@ -210,7 +225,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
               : entitlements.data?.items
                   .filter((value) => !reports || value.reportId !== null)
                   .map((value) => (
-                    <article className="biz-card" key={value.id}>
+                    <article className="biz-card consumer-library-card" key={value.id} data-access-state={value.status}>
                       <h2>{value.productName}</h2>
                       <Demo show={value.isDemo} />
                       <p>
@@ -229,6 +244,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
                       value.reportState === "available" &&
                       value.status === "active" ? (
                         <Link
+                          className="biz-button"
                           to={
                             "/reports/" + value.reportId + "?source=" + source
                           }
@@ -255,7 +271,7 @@ export function LibraryPage({ reports = false }: { reports?: boolean }) {
           {(reports && source === "anonymous"
             ? !entitlements.data?.items.some((value) => value.reportId !== null)
             : result.data?.items.length === 0) && (
-            <p role="status">这里暂时没有内容。</p>
+            <div className="consumer-library-empty"><Icon name={reports ? "report" : "game"} size={32} /><p role="status">这里暂时没有内容。</p><Link className="biz-button" to={reports ? "/apps" : "/"}>{reports ? "查看我的应用" : "探索商城"}</Link></div>
           )}
           {reports && source === "anonymous" && (
             <p className="biz-note">
@@ -308,12 +324,12 @@ export function AccountLibrary() {
     navigate = useNavigate();
   if (!context.data?.account)
     return (
-      <div className="biz-view">
+      <div className="consumer-account-library">
         <Link to="/apps">查看本机未绑定商品</Link>
       </div>
     );
   return (
-    <section className="biz-view">
+    <section className="consumer-account-library">
       <h2>我的商品与报告</h2>
       <nav className="biz-row">
         <Link to="/apps?source=account">账户已绑定商品</Link>

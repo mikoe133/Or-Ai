@@ -1,0 +1,19 @@
+{
+  "renderer": "reflection-garden@1",
+  "entryStaticImportsExcludeThree": true,
+  "rendererIsDynamic": true,
+  "gzipBytes": 163912,
+  "maxGzipBytes": 245760,
+  "files": [
+    {
+      "fileName": "assets/garden-renderer-CJSWEE-M.js",
+      "rawBytes": 543020,
+      "gzipBytes": 135527
+    },
+    {
+      "fileName": "assets/experience-GhaSvfI2.js",
+      "rawBytes": 98314,
+      "gzipBytes": 28385
+    }
+  ]
+}

@@ -46,6 +46,19 @@ export class CatalogAdminService {
       return { response: row, entityKind: kind, entityId: row.id };
     });
   }
+  async createIn(tx: Prisma.TransactionClient, access: CatalogAdminAccess, input: unknown) {
+    const body = parseInput(AdminProductCreateSchema, input);
+    if (access.machineCredentialId) {
+      const target = await this.mutations.administrators.requireProjectOperation(access, 'projects:create', tx);
+      if (!target.bootstrap) throw new ApiException('FORBIDDEN', '项目创建必须通过受限初始化', 403);
+    }
+      await this.metadata(tx, access, body);
+      const { requestId: _requestId, tagIds, experienceType, scope: _scope, ...data } = body;
+      const row = await tx.product.create({ data: { ...data, scope: access.scope,
+        experienceType: experienceType.toUpperCase() as Product['experienceType'], publicSample: body.publicSample as Prisma.InputJsonValue,
+        tags: { create: tagIds.map(tagId => ({ tagId })) } }, include: productInclude });
+      return { response: dto(row), entityKind: 'product', entityId: row.id };
+  }
   async patchTaxonomy(access: CatalogAdminAccess, kind: 'categories' | 'tags', inputId: unknown, input: unknown) {
     const id = parseInput(IdSchema, inputId).toLowerCase();
     const body = parseInput(kind === 'categories' ? AdminCategoryPatchSchema : AdminTagPatchSchema, input);
@@ -95,12 +108,7 @@ export class CatalogAdminService {
   async create(access: CatalogAdminAccess, input: unknown) {
     const body = parseInput(AdminProductCreateSchema, input);
     return this.mutations.run(access, 'products.create', body.requestId, body, async tx => {
-      await this.metadata(tx, access, body);
-      const { requestId: _requestId, tagIds, experienceType, scope: _scope, ...data } = body;
-      const row = await tx.product.create({ data: { ...data, scope: access.scope,
-        experienceType: experienceType.toUpperCase() as Product['experienceType'], publicSample: body.publicSample as Prisma.InputJsonValue,
-        tags: { create: tagIds.map(tagId => ({ tagId })) } }, include: productInclude });
-      return { response: dto(row), entityKind: 'product', entityId: row.id };
+      return this.createIn(tx, access, body);
     });
   }
   async patch(access: CatalogAdminAccess, inputId: unknown, input: unknown) {

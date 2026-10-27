@@ -1,0 +1,37 @@
+{
+  "kind": "o2_design_approval",
+  "approvedAt": "2026-10-22T22:21:51+08:00",
+  "userReply": "可以",
+  "presentedAt": "2026-10-22T13:08:31Z",
+  "recordedAt": "2026-10-22T14:26:29.863099+00:00",
+  "evidenceType": "forwarded_explicit_human_response",
+  "forwardedByThread": "01a15d49-f07b-77f4-aefd-c07074fc9015",
+  "originThread": "01a15899-7384-71d0-9669-fb47c474e0e4",
+  "evidence": "转达的明确问答交付基础Skill选择、商品定制与固定确认、手机交接三图，说明是21项检查通过的原型、未接业务或生成内容；用户14:21:51 UTC回复可以。已只读核对转达内容，三图与O2最终原型及私有交付摘要一致，不声称直接读到云端用户原对话。",
+  "images": {
+    "desktop-method-picker.png": "97f707d6c60f132190a219b8ca3c9d8c676ffc58084835e7f4c53ce477d6ce7d",
+    "desktop-confirm.png": "1af679dbedf073d1c52ffa9ddef5e9015618a1eb9f17b45744b602b74ef1d1de",
+    "mobile-handoff.png": "ba4411fffc437355d20a20a9c94545f1250dfb9b7704c6edcaea0ad9fa930a10"
+  },
+  "prototypeSha256": {
+    "index.html": "676484b2201cbac1a5cfe54abf49adff12dbace35c5bde6c1d37a9b8005feeb0",
+    "design.js": "5ec94a466fba5a3de5d9797a3eaa156f221c75d3e3f5a64285df40ede12d66b4",
+    "design.css": "909b0093ec65c3e93b96fcd376ef852fce33af6ee320d804c341fe39d441b7af",
+    "check.mjs": "4ec28f552345cc9e9c2740fa0a461d99b817a945323c6b1c60ca0ce56bde4ca9",
+    "README.md": "7266ff90c20bcd6607bb000cd774c03102f8d6ef1b0e6cfa46cfeb88e8d14a04",
+    "verification.json": "b9cbee713e9af34997c43d6be2ed188d258d0988655ed5d7a6a612d24f078c57"
+  },
+  "formalImplementationApproved": true,
+  "formalUiApproved": false,
+  "realPermissionsValidated": false,
+  "realAccountAccessApproved": false,
+  "realClientApproved": false,
+  "physicalDeviceApproved": false,
+  "futureUiApproved": false,
+  "cloudApproved": false,
+  "paidExecutionApproved": false,
+  "schedulesApproved": false,
+  "publicationApproved": false,
+  "o3Approved": false,
+  "validationScope": "isolated API/database, examples and identity/clipboard substitutes only"
+}

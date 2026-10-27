@@ -15,6 +15,11 @@
       "import": "./dist/private.js",
       "default": "./dist/private.js"
     },
+    "./experience": {
+      "types": "./dist/experience.d.ts",
+      "import": "./dist/experience.js",
+      "default": "./dist/experience.js"
+    },
     "./admin": {
       "types": "./dist/admin.d.ts",
       "import": "./dist/admin.js",

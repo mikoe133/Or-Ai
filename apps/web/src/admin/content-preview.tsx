@@ -17,6 +17,8 @@ import {
   stringField,
 } from "./content-model.js";
 import { MediaPreview } from "./content-media.js";
+import { ProductionOrigin } from "./content-parts.js";
+import { purposeLabels } from "./skills-model.js";
 export function SuitePreview({
   product,
   profile,
@@ -39,10 +41,10 @@ export function SuitePreview({
       row.snapshot.status !== "archived",
   );
   return (
-    <section className="content-editor" aria-label="整套内容预览">
+    <section className="content-editor content-suite-preview" aria-label="整套内容预览">
       <h3>整套试读</h3>
       <p>
-        预览当前题库版本和所选创作设定下的各平台稿件。采用组合与导出在下一批完成。
+        预览当前题库版本和所选创作设定下的各平台稿件。核对后可到「成套采用」页签固定采用组合并导出。
       </p>
       <div className="content-preview-intro">
         <span className="content-eyebrow">{product.name}</span>
@@ -51,10 +53,16 @@ export function SuitePreview({
         <p>{profile?.profile.understandingGoal}</p>
         <small>{capability(profile?.profile)}</small>
       </div>
+      <div className="content-preview-summary" aria-label="当前预览范围">
+        <span><strong>{config.success ? config.data.questions.length : 0}</strong> 道题目</span>
+        <span><strong>{config.success ? config.data.report.templates.length : 0}</strong> 份兼容报告模板</span>
+        <span><strong>{applicable.length}</strong> 份宣传稿件</span>
+      </div>
       <h4>题目与作答过程</h4>
       {config.success ? (
         <>
           <p>单人逐题作答 → 按维度计算 → 生成兼容报告</p>
+          <div className="content-preview-questions">
           {config.data.questions.map((question, index) => (
             <article className="content-block" key={question.id}>
               <h4>
@@ -67,8 +75,10 @@ export function SuitePreview({
               </ul>
             </article>
           ))}
+          </div>
           <h4>兼容报告试读</h4>
           <p>{config.data.report.disclaimer}</p>
+          <div className="content-preview-reports">
           {config.data.report.templates.map((template) => (
             <article className="content-block" key={template.resultTypeId}>
               <h4>
@@ -82,6 +92,7 @@ export function SuitePreview({
               <p>{template.suggestion}</p>
             </article>
           ))}
+          </div>
         </>
       ) : (
         <p>尚未保存可运行题库。</p>
@@ -127,7 +138,11 @@ export function SuitePreview({
       {loaded && assets.length === 0 && <p>当前设定没有已保存的宣传稿件。</p>}
       {assets.map((asset) => {
         const authoring = authoringOf(asset),
-          content = authoring?.content;
+          content = authoring?.content,
+          production = asset.production,
+          skillVersions = production?.skillVersions?.filter(
+            (binding) => binding.domain === asset.domain,
+          ) ?? [];
         return (
           <article className="content-block" key={asset.id}>
             <h4>
@@ -173,8 +188,30 @@ export function SuitePreview({
               {asset.storage.localArchiveRegistered
                 ? "已登记，文件留在本地"
                 : "未登记"}{" "}
-              · 固定输入 {asset.inputs.length} 项 · Skill 未关联
+              · 固定输入 {asset.inputs.length} 项
             </small>
+            <div className="content-note content-production-summary" aria-label="固定制作依据">
+              {production?.skillSetId ? (
+                <>
+                  <p>固定 skill 组合：<code>{production.skillSetId}</code></p>
+                  {skillVersions.length > 0 && (
+                    <ul>
+                      {skillVersions.map((binding) => (
+                        <li key={binding.purpose}>
+                          {purposeLabels[binding.purpose]}：{binding.version.manifest.name}
+                          {" · "}v{binding.version.number}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : production?.skillVersionId ? (
+                <p>固定 skill 版本：<code>{production.skillVersionId}</code></p>
+              ) : (
+                <p>Skill 未关联</p>
+              )}
+              <ProductionOrigin source={production} />
+            </div>
           </article>
         );
       })}
@@ -219,7 +256,7 @@ export function PublicSampleEditor({
     onDirty(JSON.stringify(value) !== JSON.stringify(product.publicSample));
   }
   return (
-    <section className="content-editor">
+    <section className="content-editor content-form-section content-public-sample">
       <h3>公开报告样例</h3>
       <p>与私人报告模板分开保存；此样例用于商品页和分享卡试读。</p>
       <form
@@ -326,7 +363,7 @@ export function PublicSampleEditor({
               }
             />
           </label>
-          <div className="biz-row">
+          <div className="biz-row content-action-bar">
             <button disabled={!dirty}>保存公开样例</button>
             <button
               type="button"

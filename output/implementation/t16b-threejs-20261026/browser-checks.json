@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-26",
+  "browser": "Codex IAB",
+  "url": "http://127.0.0.1:5173/preview/experience/reflection-garden",
+  "responsiveViewport": {
+    "width": 390,
+    "height": 844,
+    "realPhone": false
+  },
+  "final": {
+    "canvas": {
+      "drawCalls": "22",
+      "engine": "three.js r186",
+      "pixelHeight": "778",
+      "pixelWidth": "918",
+      "triangles": "6600"
+    },
+    "graphics": "ready",
+    "practiceProgress": "0",
+    "viewport": {
+      "height": 720,
+      "width": 1280
+    }
+  },
+  "verified": [
+    "actual WebGL2 scene",
+    "numbered marker and radio selections agree; explicit confirmation",
+    "keyboard radio selection",
+    "camera buttons and mouse drag change view without changing answer/progress",
+    "context loss -> styled same-question fallback; unconfirmed choice and progress preserved; save and retry succeed",
+    "WebGL2 getContext unavailable -> styled fallback; save and retry succeed after prototype restoration",
+    "Network blocked garden-renderer with cache disabled -> styled fallback; confirmation succeeds; clearing block and retry restores graphics",
+    "garden-notes report and return preserve current draft choice and confirmed progress",
+    "390px viewport without horizontal overflow; 44px numbered targets",
+    "admin capability v2 and garden -> garden-notes pairing; resource budget updates; selection restored without save"
+  ],
+  "pending": [
+    "physical touchscreen",
+    "real iOS/Android and embedded browser loading/stability",
+    "new 3D campaign cover/video/copy",
+    "real device full business journey"
+  ],
+  "cleanup": {
+    "prototypeRestored": true,
+    "mediaOverrideCleared": true,
+    "viewportReset": true,
+    "networkBlockCleared": true,
+    "cacheOverrideCleared": true,
+    "temporaryFaultAndAdminTabsClosed": true,
+    "originalUserTabsUnchanged": true
+  }
+}

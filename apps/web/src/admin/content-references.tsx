@@ -35,11 +35,13 @@ export function ReferencePicker({
   inputs,
   onChange,
   onContent,
+  skillSetId,
 }: {
   versionId: string;
   productId: string;
   profileId: string;
   assetId?: string | null;
+  skillSetId?: string;
   content: AssetAuthoring["content"];
   inputs: string;
   onChange: (text: string) => void;
@@ -230,6 +232,7 @@ export function ReferencePicker({
                     () =>
                       workflowApi.context({
                         creativeProfileRevisionId: profileId,
+                        ...(skillSetId ? { skillSetId } : {}),
                         domain:
                           content.kind === "script" ? "video" : content.kind,
                         inputs: [

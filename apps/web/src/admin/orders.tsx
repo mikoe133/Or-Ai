@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { AdminCreateOrderSchema } from "@orai/contracts/admin";
@@ -12,12 +12,17 @@ import {
   useAction,
 } from "../business/shared.js";
 import { downloadBlob } from "../business/download.js";
+import "./management.css";
+const orderStatuses: Record<string, string> = { pending: "待交付", fulfilled: "已交付", refunded: "已退款", cancelled: "已取消" };
+const orderPlatforms: Record<string, string> = { manual: "人工", douyin: "抖音", xiaohongshu: "小红书" };
 type Delivery = Awaited<ReturnType<typeof adminApi.issue>>;
 export function Orders({ scope }: { scope: "demo" | "live" }) {
+  const headingRef = useRef<HTMLElement>(null);
   const [params, setParams] = useSearchParams(),
     client = useQueryClient(),
     action = useAction(),
     [version, setVersion] = useState(""),
+    [view, setView] = useState<"list" | "manual" | "csv">("list"),
     [csv, setCsv] = useState(""),
     [csvResult, setCsvResult] = useState<Awaited<
       ReturnType<typeof adminApi.csv>
@@ -49,9 +54,10 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
     enabled: Boolean(orderId),
   });
   useEffect(() => {
+    headingRef.current?.scrollIntoView({ block: "start" });
     setSecret(null);
     setConfirmed(false);
-  }, [orderId]);
+  }, [orderId, view]);
   function changed() {
     void client.invalidateQueries({ queryKey: ["private", "admin", "orders"] });
     void client.invalidateQueries({
@@ -62,6 +68,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
     });
   }
   function selected(id: string) {
+    setView("list");
     setParams({ ...Object.fromEntries(params), order: id });
   }
   async function deliver(replaceId?: string) {
@@ -80,15 +87,29 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
       },
     );
   }
+  function showView(next: "list" | "manual" | "csv") {
+    setView(next);
+    setSecret(null);
+    setConfirmed(false);
+    const nextParams = new URLSearchParams(params);
+    nextParams.delete("order");
+    setParams(nextParams);
+  }
   return (
-    <>
-      <h2>订单管理</h2>
+    <div className="admin-management admin-orders">
+      <header ref={headingRef} className="admin-management-heading">
+        <div><span className="admin-eyebrow">COMMERCE / ORDERS</span><h2>{view === "manual" ? "人工录入订单" : view === "csv" ? "CSV 订单导入" : orderId ? "订单详情" : "订单与售后"}</h2>
+          <p>人工登记用于交付与售后，不代表平台核单或资金到账。</p>
+        </div>
+        <div className="biz-row">{view !== "list" || orderId ? <button type="button" disabled={action.busy} onClick={() => showView("list")}>返回订单列表</button> : <>
+          <button type="button" disabled={action.busy} onClick={() => showView("csv")}>CSV 导入</button>
+          <button type="button" className="admin-primary" disabled={action.busy} onClick={() => showView("manual")}>人工录入 <span aria-hidden="true">↗</span></button>
+        </>}</div>
+      </header>
       <Demo show={scope === "demo"} />
-      <p>
-        人工记录不代表平台核单或资金到账。完整兑换码只在首次交付响应中出现，请及时保存交付文件。
-      </p>
-      <section className="biz-card">
-        <h3>人工录入</h3>
+      {view === "manual" &&
+      <section className="admin-form-panel">
+        <div className="admin-section-heading"><h3>订单资料</h3><span>人工登记</span></div>
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -158,13 +179,13 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
               />
             </label>
           </div>
-          <button type="submit" disabled={action.busy || !version}>
+          <button type="submit" className="admin-primary" disabled={action.busy || !version}>
             记录订单
           </button>
         </form>
-      </section>
-      <section className="biz-card">
-        <h3>CSV 订单</h3>
+      </section>}
+      {view === "csv" && <section className="admin-form-panel">
+        <div className="admin-section-heading"><h3>批量导入</h3><span>先预演，再导入</span></div>
         <p>
           表头：platform,reference,productVersionId,quantity,amountFen。最多 500
           行；先预演核对，再执行导入。
@@ -207,6 +228,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
         <div className="biz-row">
           {[true, false].map((dryRun) => (
             <button
+              className={dryRun ? undefined : "admin-primary"}
               key={String(dryRun)}
               disabled={
                 action.busy ||
@@ -270,9 +292,10 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
             </div>
           </>
         )}
-      </section>
+      </section>}
+      {view === "list" && !orderId && <>
       <form
-        className="biz-row"
+        className="biz-row admin-filterbar"
         onSubmit={(event) => {
           event.preventDefault();
           const data = new FormData(event.currentTarget);
@@ -302,7 +325,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           >
             <option value="">全部</option>
             {["pending", "fulfilled", "refunded", "cancelled"].map((value) => (
-              <option key={value}>{value}</option>
+              <option key={value} value={value}>{orderStatuses[value] ?? orderPlatforms[value] ?? value}</option>
             ))}
           </select>
         </label>
@@ -315,7 +338,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           >
             <option value="">全部</option>
             {["manual", "douyin", "xiaohongshu"].map((value) => (
-              <option key={value}>{value}</option>
+              <option key={value} value={value}>{orderStatuses[value] ?? orderPlatforms[value] ?? value}</option>
             ))}
           </select>
         </label>
@@ -327,11 +350,12 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
         <Failure error={list.error} retry={() => void list.refetch()} />
       ) : (
         <>
-          <div className="biz-table-wrap">
+          <div className="admin-section-heading"><h3>订单记录</h3><span>{list.data.total} 笔人工登记订单</span></div>
+          <div className="biz-table-wrap admin-data-table">
             <table>
               <thead>
                 <tr>
-                  <th>引用</th>
+                  <th>引用</th><th>平台</th><th>数量</th>
                   <th>状态</th>
                   <th>金额</th>
                   <th>操作</th>
@@ -340,8 +364,9 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
               <tbody>
                 {list.data.items.map((value) => (
                   <tr key={value.id}>
-                    <td>{value.reference}</td>
-                    <td>{value.status}</td>
+                    <td><strong>{value.reference}</strong></td>
+                    <td>{orderPlatforms[value.platform] ?? value.platform}</td><td>{value.quantity} 份</td>
+                    <td><span className="admin-status" data-status={value.status}>{orderStatuses[value.status] ?? value.status}</span></td>
                     <td>¥ {(value.amountFen / 100).toFixed(2)}</td>
                     <td>
                       <button onClick={() => selected(value.id)}>
@@ -362,22 +387,23 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           />
         </>
       )}
-      {orderId && (
-        <section className="biz-card">
-          <h2>订单详情</h2>
+      </>}
+      {view === "list" && orderId && (
+        <section className="admin-form-panel admin-order-detail">
+          <div className="admin-section-heading"><h3>交付与售后</h3><span>完整兑换码仅首次显示</span></div>
           {detail.isPending ? (
             <Loading />
           ) : detail.isError ? (
             <Failure error={detail.error} retry={() => void detail.refetch()} />
           ) : (
             <>
-              <p>{detail.data.reference}</p>
-              <p>订单状态：{detail.data.status}</p>
-              <p>
-                共 {detail.data.quantity} 份，¥{" "}
-                {(detail.data.amountFen / 100).toFixed(2)}
-              </p>
+              <div className="admin-facts-row">
+                <div><span>订单引用</span><strong>{detail.data.reference}</strong></div>
+                <div><span>订单状态</span><strong>{orderStatuses[detail.data.status] ?? detail.data.status}</strong></div>
+                <div><span>数量 / 金额</span><strong>{detail.data.quantity} 份 / ¥ {(detail.data.amountFen / 100).toFixed(2)}</strong></div>
+              </div>
               <button
+                className="admin-primary"
                 disabled={action.busy || detail.data.status !== "pending"}
                 onClick={() => void deliver()}
               >
@@ -438,6 +464,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
                   )}
                 </section>
               )}
+              <div className="admin-danger-zone"><h3>退款与撤权</h3>
               <label className="biz-option">
                 <input
                   type="checkbox"
@@ -447,6 +474,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
                 已核对订单并在原平台处理退款
               </label>
               <button
+                className="admin-danger"
                 disabled={
                   action.busy ||
                   !confirmed ||
@@ -472,7 +500,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
               </button>
               <p>
                 此操作撤销本站访问，不处理平台资金。绑定归属、历史报告快照和已消耗次数保留。
-              </p>
+              </p></div>
             </>
           )}
         </section>
@@ -480,6 +508,6 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
       {Boolean(action.error) && (
         <Failure error={action.error} retry={changed} />
       )}
-    </>
+    </div>
   );
 }

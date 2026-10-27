@@ -29,6 +29,7 @@ import {
 } from "./content-projections";
 import { ApiException } from "../common/http-errors";
 import { parseInput } from "../common/parse-input";
+import { SkillBindingsService, productionDto } from './skill-bindings.service';
 type Selection = z.infer<typeof ContentPackageSelectionSchema>;
 @Injectable()
 export class ContentPackagesService {
@@ -37,6 +38,7 @@ export class ContentPackagesService {
     private readonly mutations: AdminMutationService,
     private readonly workflow: ContentWorkflowService,
     private readonly storage: AssetStorage,
+    private readonly skills: SkillBindingsService,
   ) {}
   private packageDto(row: Prisma.ContentPackageGetPayload<object>) {
     return ContentPackageSchema.parse({
@@ -137,6 +139,15 @@ export class ContentPackagesService {
     for (const domain of ["cover", "video", "copy"])
       if (!assets.some((row) => row.domain === domain))
         issues.push("采用组合缺少 " + domain + " 内容");
+    const skillSet = selection.skillSetId ? await this.skills.readIn(tx, access, selection.skillSetId, profile.id) : null;
+    if (skillSet) {
+      for (const row of [assessment, ...assets])
+        if (row.production?.skillSetId !== skillSet.id) issues.push('题库、报告与宣传稿必须使用所选固定 skill 组合；请制作匹配的新修订');
+      try { await this.skills.verifyFiles(skillSet, tx); }
+      catch { issues.push('skill 固定参考文件缺失或完整性校验失败'); }
+    } else if ([assessment, ...assets].some(row => row.production?.skillSetId)) {
+      issues.push('含有 skill 来源的内容必须明确选择同一个固定组合');
+    }
     const fixed = new Map<string, WorkflowRevision>();
     for (const root of [assessment, ...assets])
       for (const [id, row] of await this.workflow.graph(tx, access, root))
@@ -228,6 +239,7 @@ export class ContentPackagesService {
       impacts,
       fileData: [...fileData.values()],
       latestPackageNumber,
+      ...(skillSet ? { skillSetDigest: skillSet.digest, skillSetId: skillSet.id } : {}),
     });
     const preview = ContentPackagePreviewSchema.parse({
       fingerprint,
@@ -237,7 +249,7 @@ export class ContentPackagesService {
       revisions: [assessment, ...assets].map(revisionDto),
       latestPackageNumber,
     });
-    return { preview, product, setting, assessment, assets, fixed, fileData };
+    return { preview, product, setting, assessment, assets, fixed, fileData, skillSet };
   }
   async preview(access: CatalogAdminAccess, input: unknown) {
     await this.mutations.administrators.require(access);
@@ -274,23 +286,13 @@ export class ContentPackagesService {
           throw new ApiException("CONFLICT", checked.preview.issues[0]!, 409);
         const production = (row: WorkflowRevision) => {
           const value = row.production;
-          return value
-            ? {
-                id: value.id,
-                productId: value.productId,
-                outputRevisionId: value.outputRevisionId,
-                creativeProfileRevisionId: value.creativeProfileRevisionId,
-                source: value.source,
-                batchKey: value.batchKey,
-                externalLabel: value.externalLabel,
-                skillVersionId: value.skillVersionId,
-                inputManifest: value.inputManifest,
-                createdAt: value.createdAt.toISOString(),
-              }
-            : null;
+          if (!value) return null;
+          const { actorUserId, scope, ...exported } = productionDto(value);
+          return exported;
         };
         const manifest = ContentPackageManifestSchema.parse({
-          schemaVersion: 1,
+          schemaVersion: checked.skillSet ? 2 : 1,
+          ...(checked.skillSet ? { skillSet: checked.skillSet } : {}),
           product: {
             id: checked.product.id,
             name: checked.product.name,

@@ -12,6 +12,7 @@ import { FeedbackService } from './feedback.service';
 import { scoreAnswers } from './scoring';
 import { reportResponse } from './reports.service';
 import { runtimeRequest, previousRequest, rememberRequest } from './runtime-idempotency';
+import { experienceCheckpoint } from './experience-checkpoint';
 
 const savedAnswer = (answer: AttemptAnswer) => SavedAnswerSchema.parse({ questionId: answer.questionId, optionId: answer.optionId, revision: answer.revision, savedAt: answer.savedAt.toISOString() });
 const conflict = () => new ApiException('REVISION_CONFLICT', '答卷已更新，请重新读取进度后重试', 409);
@@ -23,12 +24,14 @@ export class AttemptsService {
   private async project(tx: Prisma.TransactionClient, attempt: Attempt, actor: ConsumerActor) {
     const version = await this.owned.version(tx, attempt.productVersionId, actor.scope);
     const answers = await tx.attemptAnswer.findMany({ where: { attemptId: attempt.id } });
+    if (attempt.experienceReleaseId !== version.experience.id) throw new ApiException('INVALID_CONFIGURATION', '答卷体验版本不一致', 400);
     const order = new Map(version.configuration.questions.map((value, index) => [value.id, index]));
     if (answers.some(answer => !version.configuration.questions.some(question => question.id === answer.questionId && question.options.some(option => option.id === answer.optionId)))) {
       throw new ApiException('INVALID_CONFIGURATION', '回答与锁定版本不一致', 400);
     }
     return QuestionsResponseSchema.parse({ attemptId: attempt.id, versionId: version.id, versionNumber: version.number,
       revision: attempt.revision, status: attempt.status.toLowerCase(), isDemo: actor.scope === 'DEMO',
+      experience: { release: version.experience, checkpoint: experienceCheckpoint(version.configuration.questions, answers, attempt.revision, attempt.runtimeCheckpoint, attempt.status === 'COMPLETED') },
       questions: version.configuration.questions.map(question => ({ id: question.id, text: question.text, dimensionId: question.dimensionId,
         required: question.required, options: question.options.map(option => ({ id: option.id, label: option.label, notApplicable: option.notApplicable })) })),
       answers: answers.sort((a,b) => order.get(a.questionId)! - order.get(b.questionId)!).map(savedAnswer) });
@@ -72,7 +75,8 @@ export class AttemptsService {
       if (previous) {
         const reference = previous.response as { attemptRevision?: number };
         if (reference.attemptRevision !== attempt.revision || !answer || answer.optionId !== request.optionId) throw conflict();
-        return { answer: savedAnswer(answer), attemptRevision: attempt.revision };
+        return { answer: savedAnswer(answer), attemptRevision: attempt.revision,
+          checkpoint: experienceCheckpoint(version.configuration.questions, await tx.attemptAnswer.findMany({ where: { attemptId: id } }), attempt.revision, attempt.runtimeCheckpoint) };
       }
       if (request.expectedRevision !== attempt.revision) throw conflict();
       const now = new Date();
@@ -80,9 +84,11 @@ export class AttemptsService {
       const changed = await tx.attemptAnswer.upsert({ where: { attemptId_questionId: { attemptId: id, questionId } },
         create: { attemptId: id, questionId, optionId: request.optionId, revision: 1, savedAt: now },
         update: { optionId: request.optionId, revision: { increment: 1 }, savedAt: now } });
-      const updated = await tx.attempt.update({ where: { id }, data: { revision: { increment: 1 }, status: 'STARTED' } });
+      const checkpoint = { schemaVersion: 1, revision: attempt.revision + 1, lastConfirmedQuestionId: questionId };
+      const updated = await tx.attempt.update({ where: { id }, data: { revision: { increment: 1 }, status: 'STARTED', runtimeCheckpoint: checkpoint } });
       await rememberRequest(tx, key, { questionId, attemptRevision: updated.revision });
-      return { answer: savedAnswer(changed), attemptRevision: updated.revision };
+      return { answer: savedAnswer(changed), attemptRevision: updated.revision,
+        checkpoint: experienceCheckpoint(version.configuration.questions, await tx.attemptAnswer.findMany({ where: { attemptId: id } }), updated.revision, checkpoint) };
     }, { maxWait: 5000, timeout: 10000 });
     try { return SaveAnswerResponseSchema.parse({ ...saved, feedback: await this.feedback.read(actor, id, questionId), feedbackStatus: 'ready' }); }
     catch (error) {

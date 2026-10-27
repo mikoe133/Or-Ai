@@ -1,0 +1,15 @@
+{
+  "brand": "meetmyworld",
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "pageId": "127:441",
+  "pageName": "03 · MeetMyWorld 品牌",
+  "pageUrl": "https://www.figma.com/design/TluUhd92v2Z2HztvQeGqxe?node-id=127-441",
+  "nodes": [
+    {"id": "132:442", "name": "MeetMyWorld · 品牌视觉与应用", "x": 0, "y": 0, "width": 1600, "height": 1160},
+    {"id": "133:640", "name": "MeetMyWorld · Logo 源素材", "x": 0, "y": 1240, "width": 1600, "height": 620},
+    {"id": "133:675", "name": "Editable-meetmyworld", "type": "TEXT", "fontFamily": "Manrope", "fontStyle": "Bold", "fontSize": 44, "letterSpacingPercent": -1.35}
+  ],
+  "importMethod": "Figma editor SVG paste for brand board; SVG file placement for asset sheet",
+  "verification": "Editor accessibility tree confirmed vector groups and native Manrope Bold text; final editor screenshot visually reviewed.",
+  "verifiedDate": "2026-10-13"
+}

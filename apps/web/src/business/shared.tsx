@@ -5,17 +5,22 @@ import { MutationIntent } from "../api/intent.js";
 import { AuthFlowError } from "../auth/core.js";
 import { FlowShell, type FlowSection } from "../store/flow-shell";
 import "./business.css";
+import "./consumer.css";
 
 export function Page({
   title,
   children,
   section = "store",
   embedded = false,
+  view = "default",
+  hideTitle = false,
 }: {
   title: string;
   children: ReactNode;
   section?: FlowSection;
   embedded?: boolean;
+  view?: "default" | "product" | "redeem" | "assessment" | "report";
+  hideTitle?: boolean;
 }) {
   const content = useRef<HTMLElement>(null);
   const { pathname } = useLocation();
@@ -25,20 +30,20 @@ export function Page({
     else if (embedded) content.current?.closest("main")?.scrollTo(0, 0);
     else window.scrollTo(0, 0);
   }, [title, pathname, section, embedded]);
-  const view = (
+  const pageContent = (
     <section
       ref={content}
-      className={`biz-view${embedded ? " biz-workspace-view" : ""}`}
+      className={`biz-view${embedded ? " biz-workspace-view" : ""}${section !== "admin" ? ` consumer-view consumer-${view}` : ""}`}
       aria-label={section === "admin" ? title : undefined}
       tabIndex={section === "admin" ? 0 : undefined}
     >
-      <h1 tabIndex={-1}>{title}</h1>
+      {!hideTitle && <h1 tabIndex={-1}>{title}</h1>}
       {children}
     </section>
   );
-  return embedded ? view : (
-    <FlowShell long={section !== "admin"} live section={section}>
-      {view}
+  return embedded ? pageContent : (
+    <FlowShell long={section !== "admin"} live section={section} variant={view === "assessment" ? "assessment" : "default"}>
+      {pageContent}
     </FlowShell>
   );
 }
@@ -155,13 +160,14 @@ export function Pager({
 }) {
   return (
     <nav className="biz-row" aria-label="分页">
-      <button disabled={page <= 1} onClick={() => onChange(page - 1)}>
+      <button type="button" disabled={page <= 1} onClick={() => onChange(page - 1)}>
         上一页
       </button>
       <span>
         第 {page} 页 · 共 {total} 条
       </span>
       <button
+        type="button"
         disabled={page * pageSize >= total}
         onClick={() => onChange(page + 1)}
       >

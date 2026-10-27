@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 2,
+  "title": "合成商品规划",
+  "selection": {
+    "basis": "manual",
+    "rationale": "验证不同商品拥有独立规划",
+    "evidenceKeys": []
+  },
+  "freshnessWindowHours": 72,
+  "evidence": [],
+  "modules": [
+    {
+      "moduleKey": "experience",
+      "title": "商品体验",
+      "domain": "experience",
+      "required": true,
+      "purpose": "按明确选择保存答案",
+      "dependsOn": [],
+      "target": {
+        "form": "3d",
+        "runtime": {
+          "renderer": {
+            "key": "synthetic-gallery",
+            "version": 1
+          },
+          "reportRenderer": {
+            "key": "synthetic-notes",
+            "version": 1
+          },
+          "inputSchema": "single_choice_v1",
+          "engine": "dimensions_v1",
+          "reportSchema": "report_content_v1"
+        }
+      },
+      "methodPurposes": [
+        "scene_design",
+        "report_presentation"
+      ],
+      "methodRetention": "manifest_instructions_and_references",
+      "outputs": [
+        {
+          "outputKey": "scene",
+          "label": "场景原件",
+          "required": true,
+          "kind": "scene_bundle",
+          "original": {
+            "storage": "platform",
+            "representation": "file"
+          },
+          "files": [
+            {
+              "fileKey": "source",
+              "purpose": "original",
+              "label": "原件",
+              "required": true,
+              "mimeTypes": [
+                "application/zip"
+              ],
+              "sourceUrl": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "retention": "platform_originals_and_exact_methods",
+  "productPlan": {
+    "schemaVersion": 1,
+    "implementation": "threejs",
+    "basedOnPlanRevisionId": null,
+    "visualDimension": "3d",
+    "experienceModuleKey": "experience",
+    "assessmentModuleKey": null,
+    "decisions": {
+      "scene": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "可探索的星图空间",
+        "evidence": []
+      },
+      "animation": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "选择后播放可跳过的星点连线；减少动态时直接显示结果",
+        "evidence": []
+      },
+      "camera": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "限制范围的轨道镜头",
+        "evidence": []
+      },
+      "interaction": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "触摸或键盘明确选择对象",
+        "evidence": []
+      },
+      "feedback": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "显示选中轮廓和文字反馈",
+        "evidence": []
+      },
+      "confirmation": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "点击确认后保存；镜头运动不参与评估",
+        "evidence": []
+      },
+      "recovery": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "恢复服务端已确认答案",
+        "evidence": []
+      },
+      "report": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "固定文本报告，承接商品意象",
+        "evidence": []
+      },
+      "accessibility": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "键盘、文字说明和减少动态",
+        "evidence": []
+      },
+      "fallback": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "图形失效时使用同题文字回退并允许重试",
+        "evidence": []
+      },
+      "resources": {
+        "requirement": "required",
+        "status": "planned",
+        "details": "内置几何体，不加载外部模型",
+        "evidence": []
+      }
+    },
+    "budgets": {
+      "devices": [
+        "desktop",
+        "ios_safari",
+        "android_chrome"
+      ],
+      "maxRendererGzipBytes": 245760,
+      "maxTotalResourceBytes": 1048576,
+      "maxFirstFrameMs": 5000,
+      "maxPixelRatio": 1.5,
+      "maxCanvasPixels": 1500000,
+      "maxTriangles": 14000,
+      "maxDrawCalls": 48,
+      "minFps": 30
+    },
+    "sources": []
+  },
+  "creativeProfileRevisionId": "11111111-1111-4111-8111-111111111111"
+}

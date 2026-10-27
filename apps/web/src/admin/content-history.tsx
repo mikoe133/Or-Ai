@@ -150,7 +150,7 @@ export function ContentHistory({
     );
   if (!selected) return <p>当前商品尚无内容修订。</p>;
   return (
-    <section className="content-editor" aria-label="引用与历史工作台">
+    <section className="content-editor content-history-editor" aria-label="引用与历史工作台">
       <h3>引用、影响与修订历史</h3>
       <p>
         选择固定修订查看原稿。上游更新只产生待复查提示，历史内容与采用包不会跟着变化。
@@ -169,7 +169,7 @@ export function ContentHistory({
           ))}
         </select>
       </label>
-      <div className="content-block">
+      <div className="content-block content-history-fingerprint">
         <strong>{label(selected)}</strong>
         <p>固定 ID：{selected.id}</p>
         <small>SHA-256：{selected.digest}</small>
@@ -247,7 +247,7 @@ export function ContentHistory({
       ) : links.isError ? (
         <Failure error={links.error} />
       ) : (
-        <div className="content-fields">
+        <div className="content-fields content-reference-columns">
           <section>
             <h4>此稿使用的固定输入</h4>
             {links.data.inputs.length === 0 && <p>没有引用输入。</p>}

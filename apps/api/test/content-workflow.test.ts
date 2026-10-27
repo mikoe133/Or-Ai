@@ -2,7 +2,7 @@ import "reflect-metadata";
 import assert from "node:assert/strict";
 import { before, after, test } from "node:test";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { Test } from "@nestjs/testing";
@@ -247,7 +247,7 @@ async function copy(profileId: string) {
   return response.body;
 }
 
-async function fresh() {
+async function fresh(skillEnabled = false) {
   const original = (await admin.request("/admin/products/" + productId)).body;
   const metadata = AdminProductInputSchema.strip().parse(original);
   const product = (
@@ -270,6 +270,7 @@ async function fresh() {
     })
   ).body;
   const brief = await profile(product.id);
+  const skillSet = skillEnabled ? await createSkillSet(brief) : undefined;
   assert.equal(
     (
       await admin.request(
@@ -295,13 +296,14 @@ async function fresh() {
     production: {
       source: "manual",
       batchKey: "garden-sample",
+      ...(skillSet ? { skillSetId: skillSet.id } : {}),
       externalLabel: null,
       skillVersionId: null,
     },
     requestId: randomUUID(),
   });
   assert.equal(record.status, 200);
-  return { product, version, brief, assessment, configuration };
+  return { product, version, brief, assessment, configuration, skillSet };
 }
 async function save(
   context: Awaited<ReturnType<typeof fresh>>,
@@ -318,7 +320,14 @@ async function save(
     fileId,
     expectedRevision: previous?.sourceRevision ?? 0,
     ...(previous ? { assetId: previous.assetId } : {}),
-    authoring: { ...authoring(context.brief.id, content), inputs },
+    authoring: {
+      ...authoring(context.brief.id, content),
+      inputs,
+      production: {
+        ...authoring(context.brief.id).production,
+        ...(context.skillSet ? { skillSetId: context.skillSet.id } : {}),
+      },
+    },
     requestId: randomUUID(),
   });
   assert.equal(result.status, 200, JSON.stringify(result.body));
@@ -393,8 +402,8 @@ async function uploaded(
   assert.equal(result.status, 200);
   return result.body;
 }
-async function bundle() {
-  const context = await fresh(),
+async function bundle(skillEnabled = false) {
+  const context = await fresh(skillEnabled),
     hook = "你的需要值得被认真听见",
     cta = "来花园里认识自己";
   const copyDraft = await save(context, {
@@ -478,6 +487,7 @@ async function bundle() {
     assetRevisionIds: [copyReady.id, coverReady.id, videoReady.id],
     reportMode: "compatible_standard",
     label: "关系花园 · 固定采用",
+    ...(context.skillSet ? { skillSetId: context.skillSet.id } : {}),
   };
   return {
     ...context,
@@ -580,6 +590,8 @@ test("a four-domain package fixes question/hook/CTA references and exports only 
   const saved = await adopt(context.selection, preview.body);
   assert.equal(saved.status, 200, JSON.stringify(saved.body));
   assert.equal(ContentPackageSchema.safeParse(saved.body).success, true);
+  assert.equal(saved.body.manifest.schemaVersion, 1);
+  assert.equal(sha(JSON.stringify(saved.body.manifest)), saved.body.digest);
   assert.equal(
     saved.body.manifest.assets.find(
       (value: any) => value.revision.domain === "video",
@@ -1356,5 +1368,793 @@ test("expired cleanup plans and later plan tampering cannot authorize deletion",
       })
     ).status,
     "AVAILABLE",
+  );
+});
+
+const purposesByDomain = {
+  assessment: ["assessment_design", "report_writing"],
+  cover: ["cover_design"],
+  video: ["video_production"],
+  copy: ["copywriting"],
+} as const;
+async function activeSkill(
+  domain: keyof typeof purposesByDomain,
+  forms = ["web"],
+  purposes: readonly string[] = purposesByDomain[domain],
+  withReference = false,
+) {
+  const manifest = {
+    schemaVersion: 1,
+    domain,
+    name: "固定方法 " + domain,
+    description: "提供具体观察与表达线索",
+    purposes,
+    styles: ["温柔"],
+    supportedForms: forms,
+    inputs: [
+      { key: "creative-profile", description: "固定共同设定", required: true },
+    ],
+    outputs: [{ key: "deliverable", description: "专业用途内容" }],
+    instructions: "阅读共同设定，避免诊断和关系结论。",
+    examples: [],
+    references: [],
+  };
+  const created = await admin.request("/admin/skills/" + domain, "POST", {
+    slug: "method-" + randomUUID(),
+    manifest,
+    requestId: randomUUID(),
+  });
+  assert.equal(created.status, 200, JSON.stringify(created.body));
+  let draft = created.body;
+  if (withReference) {
+    const bytes = Buffer.from(
+        "# 固定写作参考\n观察一个具体场景，表达自己的需要。\n",
+      ),
+      prefix = "/admin/skills/" + domain + "/" + draft.skillId;
+    const prepared = await admin.request(prefix + "/files", "POST", {
+      fileName: "guide.md",
+      mimeType: "text/markdown",
+      byteSize: bytes.length,
+      checksum: createHash("sha256").update(bytes).digest("hex"),
+      requestId: randomUUID(),
+    });
+    assert.equal(prepared.status, 200);
+    const upload = await fetch(base + prepared.body.uploadPath, {
+      method: "PUT",
+      headers: {
+        cookie: [...admin.cookies]
+          .map(([key, value]) => key + "=" + value)
+          .join(";"),
+        origin: fixture.configuration.security.origins[0]!,
+        "content-type": "application/octet-stream",
+        "x-csrf-token": admin.csrf,
+      },
+      body: bytes,
+    });
+    assert.equal(upload.status, 200);
+    await upload.arrayBuffer();
+    assert.equal(
+      (
+        await admin.request(
+          prefix + "/files/" + prepared.body.id + "/complete",
+          "POST",
+          { requestId: randomUUID() },
+        )
+      ).status,
+      200,
+    );
+    const saved = await admin.request(skillPath(draft), "PUT", {
+      manifest: {
+        ...manifest,
+        references: [{ path: "references/guide.md", fileId: prepared.body.id }],
+        instructions: "阅读 [参考](references/guide.md)，给出具体表达。",
+      },
+      expectedRevision: draft.revision,
+      requestId: randomUUID(),
+    });
+    assert.equal(saved.status, 200);
+    draft = saved.body;
+  }
+  return skillAction(await skillAction(draft, "review"), "activate");
+}
+const skillPath = (row: any) =>
+  "/admin/skills/" +
+  row.manifest.domain +
+  "/" +
+  row.skillId +
+  "/versions/" +
+  row.id;
+async function skillAction(row: any, action: string) {
+  const result = await admin.request(skillPath(row) + "/" + action, "POST", {
+    expectedRevision: row.revision,
+    requestId: randomUUID(),
+  });
+  assert.equal(result.status, 200, JSON.stringify(result.body));
+  return result.body;
+}
+async function createSkillSet(brief: any) {
+  const rows = [];
+  for (const domain of ["assessment", "cover", "video", "copy"] as const)
+    rows.push(
+      await activeSkill(
+        domain,
+        ["web"],
+        purposesByDomain[domain],
+        domain === "assessment",
+      ),
+    );
+  const input = {
+    expectedRevision: 0,
+    requestId: randomUUID(),
+    note: "温柔花园五用途组合",
+    bindings: rows.flatMap((row) =>
+      row.manifest.purposes.map((purpose: string) => ({
+        purpose,
+        skillVersionId: row.id,
+      })),
+    ),
+  };
+  const result = await admin.request(
+    "/admin/creative-profiles/" + brief.id + "/skill-sets",
+    "POST",
+    input,
+  );
+  assert.equal(result.status, 200, JSON.stringify(result.body));
+  return result.body;
+}
+const setChoices = (set: any) =>
+  set.bindings.map((row: any) => ({
+    purpose: row.purpose,
+    skillVersionId: row.version.id,
+  }));
+async function reviseSet(
+  context: Awaited<ReturnType<typeof fresh>>,
+  bindings: any[],
+  expectedRevision = context.skillSet.revision,
+  requestId = randomUUID(),
+) {
+  return admin.request(
+    "/admin/creative-profiles/" + context.brief.id + "/skill-sets",
+    "POST",
+    {
+      bindings,
+      note: "新组合保留共同意象",
+      expectedRevision,
+      requestId,
+    },
+  );
+}
+async function upgradeSkill(row: any) {
+  const skill = (
+    await admin.request(
+      "/admin/skills/" + row.manifest.domain + "/" + row.skillId,
+    )
+  ).body;
+  const cloned = await admin.request(
+    "/admin/skills/" + row.manifest.domain + "/" + row.skillId + "/versions",
+    "POST",
+    {
+      sourceVersionId: row.id,
+      expectedSkillRevision: skill.revision,
+      requestId: randomUUID(),
+    },
+  );
+  assert.equal(cloned.status, 200, JSON.stringify(cloned.body));
+  return skillAction(await skillAction(cloned.body, "review"), "activate");
+}
+
+test("five-purpose skill combinations reject domain, purpose, form, draft, missing and foreign bindings without altering the fixed set", async () => {
+  const context = await fresh(true),
+    choices = setChoices(context.skillSet),
+    cover = context.skillSet.bindings.find(
+      (row: any) => row.domain === "cover",
+    ).version,
+    wrongForm = await activeSkill("copy", ["3d"]),
+    reportOnly = await activeSkill("assessment", ["web"], ["report_writing"]);
+  for (const [purpose, versionId] of [
+    ["assessment_design", cover.id],
+    ["assessment_design", reportOnly.id],
+    ["copywriting", wrongForm.id],
+  ]) {
+    const result = await reviseSet(
+      context,
+      choices.map((row: any) =>
+        row.purpose === purpose ? { ...row, skillVersionId: versionId } : row,
+      ),
+    );
+    assert.equal(result.status, 409, JSON.stringify(result.body));
+  }
+  assert.equal((await reviseSet(context, choices.slice(1))).status, 400);
+  assert.equal(
+    (
+      await reviseSet(
+        context,
+        choices.map((row: any) => ({ ...row, purpose: "copywriting" })),
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await reviseSet(
+        context,
+        choices.map((row: any) => ({ ...row, skillVersionId: randomUUID() })),
+      )
+    ).status,
+    404,
+  );
+  const draft = await admin.request("/admin/skills/copy", "POST", {
+    slug: "draft-" + randomUUID(),
+    manifest: { ...wrongForm.manifest, supportedForms: ["web"] },
+    requestId: randomUUID(),
+  });
+  assert.equal(
+    (
+      await reviseSet(
+        context,
+        choices.map((row: any) =>
+          row.purpose === "copywriting"
+            ? { ...row, skillVersionId: draft.body.id }
+            : row,
+        ),
+      )
+    ).status,
+    409,
+  );
+  const listed = await admin.request(
+    "/admin/creative-profiles/" + context.brief.id + "/skill-sets?pageSize=1",
+  );
+  assert.equal(listed.body.total, 1);
+  assert.equal(listed.body.items[0].digest, context.skillSet.digest);
+});
+
+test("skill set writes retain idempotency, stale revision checks and concurrent conflict protection", async () => {
+  const context = await fresh(true),
+    choices = setChoices(context.skillSet),
+    requestId = randomUUID();
+  const one = await reviseSet(context, choices, 1, requestId),
+    retry = await reviseSet(context, choices, 1, requestId);
+  assert.equal(one.status, 200);
+  assert.deepEqual(retry.body, one.body);
+  assert.equal(
+    (await reviseSet(context, choices, 0, requestId)).body.error.code,
+    "IDEMPOTENCY_CONFLICT",
+  );
+  assert.equal(
+    (await reviseSet(context, choices, 1)).body.error.code,
+    "REVISION_CONFLICT",
+  );
+  const concurrent = await Promise.all([
+    reviseSet(context, choices, 2),
+    reviseSet(context, choices, 2),
+  ]);
+  assert.deepEqual(concurrent.map((row) => row.status).sort(), [200, 409]);
+});
+
+test("assessment design and report writing can retain different versions; upgrades do not drift old combinations, productions or contexts", async () => {
+  const context = await fresh(true),
+    before = JSON.stringify(context.skillSet),
+    fixed = context.skillSet.bindings.find(
+      (row: any) => row.purpose === "assessment_design",
+    ).version,
+    v2 = await upgradeSkill({ ...fixed, revision: 2 });
+  const replacement = await reviseSet(
+    context,
+    setChoices(context.skillSet).map((row: any) =>
+      row.purpose === "assessment_design"
+        ? { ...row, skillVersionId: v2.id }
+        : row,
+    ),
+  );
+  assert.equal(replacement.status, 200, JSON.stringify(replacement.body));
+  assert.equal(
+    replacement.body.bindings.find(
+      (row: any) => row.purpose === "assessment_design",
+    ).version.id,
+    v2.id,
+  );
+  assert.equal(
+    replacement.body.bindings.find(
+      (row: any) => row.purpose === "report_writing",
+    ).version.id,
+    fixed.id,
+  );
+  assert.equal(
+    JSON.stringify(
+      (await admin.request("/admin/creative-skill-sets/" + context.skillSet.id))
+        .body,
+    ),
+    before,
+  );
+  const production = (
+    await admin.request("/admin/content-revisions/" + context.assessment.id)
+  ).body.production;
+  assert.equal(production.skillSetId, context.skillSet.id);
+  assert.equal(production.skillVersions.length, 2);
+  assert.ok(
+    production.skillVersions.every((row: any) => row.version.id === fixed.id),
+  );
+  const resolved = await admin.request(
+    "/admin/content-contexts/resolve",
+    "POST",
+    {
+      creativeProfileRevisionId: context.brief.id,
+      domain: "assessment",
+      skillSetId: replacement.body.id,
+      inputs: [],
+    },
+  );
+  assert.equal(resolved.status, 200);
+  assert.equal(resolved.body.skillVersions.length, 2);
+  assert.deepEqual(
+    resolved.body.skillVersions.map((row: any) => row.version.id).sort(),
+    [v2.id, fixed.id].sort(),
+  );
+  const freshProfile = await profile(context.product.id);
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/creative-profiles/" + freshProfile.id + "/skill-sets",
+        "POST",
+        {
+          bindings: setChoices(context.skillSet),
+          expectedRevision: 0,
+          note: "不允许归档版作为新绑定",
+          requestId: randomUUID(),
+        },
+      )
+    ).status,
+    409,
+  );
+});
+
+test("candidate pagination uses the ACTIVE version manifest even when the newest draft changes form and purpose", async () => {
+  const context = await fresh(true),
+    original = context.skillSet.bindings.find(
+      (row: any) => row.domain === "assessment",
+    ).version,
+    skill = (
+      await admin.request("/admin/skills/assessment/" + original.skillId)
+    ).body;
+  const clone = (
+    await admin.request(
+      "/admin/skills/assessment/" + original.skillId + "/versions",
+      "POST",
+      {
+        sourceVersionId: original.id,
+        expectedSkillRevision: skill.revision,
+        requestId: randomUUID(),
+      },
+    )
+  ).body;
+  assert.equal(
+    (
+      await admin.request(skillPath(clone), "PUT", {
+        manifest: {
+          ...clone.manifest,
+          purposes: ["report_writing"],
+          supportedForms: ["3d"],
+        },
+        expectedRevision: clone.revision,
+        requestId: randomUUID(),
+      })
+    ).status,
+    200,
+  );
+  const query =
+    "/admin/skills/assessment/candidates?purpose=assessment_design&form=web&pageSize=50";
+  const candidates = await admin.request(query);
+  assert.equal(candidates.status, 200);
+  assert.ok(candidates.body.items.some((row: any) => row.id === original.id));
+  assert.ok(!candidates.body.items.some((row: any) => row.id === clone.id));
+  const page = await admin.request(query.replace("pageSize=50", "pageSize=1"));
+  assert.equal(page.body.items.length, 1);
+  assert.ok(page.body.total >= 1);
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/skills/cover/candidates?purpose=report_writing&form=web",
+      )
+    ).status,
+    400,
+  );
+});
+
+test("fixed skill contexts expose only the requested domain and explicitly selected public fragments, with scoped reference downloads", async () => {
+  const context = await fresh(true),
+    copyBinding = context.skillSet.bindings.find(
+      (row: any) => row.domain === "copy",
+    ),
+    question = context.configuration.questions[0];
+  const resolved = await admin.request(
+    "/admin/content-contexts/resolve",
+    "POST",
+    {
+      creativeProfileRevisionId: context.brief.id,
+      domain: "video",
+      skillSetId: context.skillSet.id,
+      inputs: [
+        {
+          revisionId: context.assessment.id,
+          digest: context.assessment.digest,
+          locator: { kind: "question", questionId: question.id },
+        },
+      ],
+    },
+  );
+  assert.equal(resolved.status, 200, JSON.stringify(resolved.body));
+  assert.equal(resolved.body.skillVersions.length, 1);
+  assert.equal(resolved.body.skillVersions[0].purpose, "video_production");
+  assert.equal(resolved.body.inputs[0].content.text, question.text);
+  assert.doesNotMatch(
+    JSON.stringify(resolved.body),
+    /"(scores|thresholds|reportTemplate|answers|actorUserId|storageKey)"/,
+  );
+  assert.equal(
+    (
+      await admin.request("/admin/content-contexts/resolve", "POST", {
+        creativeProfileRevisionId: context.brief.id,
+        domain: "video",
+        skillSetId: context.skillSet.id,
+        inputs: [
+          {
+            revisionId: context.assessment.id,
+            digest: context.assessment.digest,
+            locator: { kind: "whole" },
+          },
+        ],
+      })
+    ).status,
+    400,
+  );
+  const domain = await admin.request(
+    "/admin/creative-skill-sets/" +
+      context.skillSet.id +
+      "/domains/copy?purpose=copywriting",
+  );
+  assert.equal(domain.body.skillVersions[0].version.id, copyBinding.version.id);
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/creative-skill-sets/" +
+          context.skillSet.id +
+          "/domains/copy?purpose=report_writing",
+      )
+    ).status,
+    400,
+  );
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/creative-skill-sets/" +
+          context.skillSet.id +
+          "/domains/copy/copywriting/references/" +
+          randomUUID() +
+          "/content",
+      )
+    ).status,
+    404,
+  );
+  const foreign = await fresh();
+  assert.equal(
+    (
+      await admin.request("/admin/content-contexts/resolve", "POST", {
+        creativeProfileRevisionId: foreign.brief.id,
+        domain: "copy",
+        skillSetId: context.skillSet.id,
+        inputs: [],
+      })
+    ).status,
+    404,
+  );
+});
+
+test("skill-bound packages preserve all five fixed uses, input fragments and provenance through status transitions and later upgrades", async () => {
+  const context = await bundle(true),
+    preview = await admin.request(
+      "/admin/content-packages/preview",
+      "POST",
+      context.selection,
+    );
+  assert.equal(preview.body.canAdopt, true, JSON.stringify(preview.body));
+  const result = await adopt(context.selection, preview.body);
+  assert.equal(result.status, 200, JSON.stringify(result.body));
+  const saved = ContentPackageSchema.parse(result.body),
+    serialized = JSON.stringify(saved);
+  assert.equal(saved.manifest.schemaVersion, 2);
+  if (saved.manifest.schemaVersion !== 2)
+    throw new Error("expected fixed skill package");
+  assert.deepEqual(saved.manifest.skillSet, context.skillSet);
+  assert.equal(saved.manifest.assessmentProduction?.skillVersions?.length, 2);
+  for (const asset of saved.manifest.assets) {
+    assert.equal(asset.production?.skillSetId, context.skillSet.id);
+    assert.equal(asset.production?.skillVersions?.length, 1);
+    assert.equal(
+      asset.production?.skillVersions?.[0]?.domain,
+      asset.revision.domain,
+    );
+  }
+  assert.doesNotMatch(
+    serialized,
+    /"(actorUserId|storageKey|ownerUserId|answers|supabaseUserId)"/,
+  );
+  const video = saved.manifest.assets.find(
+    (row) => row.revision.domain === "video",
+  )!;
+  assert.equal(video.inputs.filter((row) => row.role === "question").length, 2);
+  const original = context.skillSet.bindings.find(
+    (row: any) => row.domain === "copy",
+  ).version;
+  await upgradeSkill(original);
+  assert.equal(
+    JSON.stringify(
+      (await admin.request("/admin/content-packages/" + saved.id)).body,
+    ),
+    serialized,
+  );
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/content-packages/preview",
+        "POST",
+        context.selection,
+      )
+    ).body.canAdopt,
+    true,
+  );
+  const published = await admin.request(
+    "/admin/products/" +
+      context.product.id +
+      "/versions/" +
+      context.version.id +
+      "/publish",
+    "POST",
+    {
+      expectedRevision: context.assessment.sourceRevision,
+      requestId: randomUUID(),
+    },
+  );
+  assert.equal(published.status, 200);
+  const current = (
+    await admin.request(
+      "/admin/content-revisions?productId=" +
+        context.product.id +
+        "&domain=assessment&current=true",
+    )
+  ).body.items[0];
+  const source = (await admin.request("/admin/content-revisions/" + current.id))
+    .body.production;
+  assert.equal(source.skillSetId, context.skillSet.id);
+  assert.equal(source.skillVersions.length, 2);
+  const another = await reviseSet(context, setChoices(context.skillSet));
+  assert.equal(another.status, 200);
+  const mismatch = await admin.request(
+    "/admin/content-packages/preview",
+    "POST",
+    { ...context.selection, skillSetId: another.body.id },
+  );
+  assert.equal(mismatch.body.canAdopt, false);
+  const { skillSetId, ...unspecified } = context.selection;
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/content-packages/preview",
+        "POST",
+        unspecified,
+      )
+    ).body.canAdopt,
+    false,
+  );
+});
+
+test("skill combinations and their sources enforce administrator, scope, CSRF, immutable database and complete-set boundaries", async () => {
+  const context = await fresh(true),
+    ordinary = await new Browser().login(false),
+    path = "/admin/creative-skill-sets/" + context.skillSet.id;
+  for (const route of [
+    path,
+    path + "/domains/copy",
+    "/admin/creative-profiles/" + context.brief.id + "/skill-sets",
+    "/admin/skills/copy/candidates?purpose=copywriting&form=web",
+  ]) {
+    assert.equal((await ordinary.request(route)).status, 403);
+    assert.equal((await new Browser().request(route)).status, 401);
+    assert.equal(
+      (
+        await admin.request(
+          route + (route.includes("?") ? "&" : "?") + "scope=live",
+        )
+      ).status,
+      400,
+    );
+  }
+  assert.equal(
+    (
+      await admin.request(
+        "/admin/creative-profiles/" + context.brief.id + "/skill-sets",
+        "POST",
+        {
+          bindings: setChoices(context.skillSet),
+          note: "test",
+          expectedRevision: 1,
+          requestId: randomUUID(),
+        },
+        { "x-csrf-token": "wrong" },
+      )
+    ).status,
+    403,
+  );
+  await assert.rejects(
+    fixture.owner.pool.query(
+      "UPDATE orai.creative_skill_sets SET note=$1 WHERE id=$2",
+      ["tamper", context.skillSet.id],
+    ),
+  );
+  await assert.rejects(
+    fixture.owner.pool.query(
+      "DELETE FROM orai.creative_skill_bindings WHERE skill_set_id=$1",
+      [context.skillSet.id],
+    ),
+  );
+  await assert.rejects(
+    fixture.owner.pool.query(
+      `INSERT INTO orai.creative_skill_sets(id,product_id,scope,creative_profile_revision_id,number,digest,note)
+    VALUES($1,$2,'DEMO',$3,2,$4,'incomplete')`,
+      [randomUUID(), context.product.id, context.brief.id, "0".repeat(64)],
+    ),
+    (error: { code?: string }) => error.code === "23514",
+  );
+  const counts = await fixture.runtime.client.creativeSkillSet.count({
+    where: { creativeProfileRevisionId: context.brief.id },
+  });
+  assert.equal(counts, 1);
+});
+
+test("fixed reference downloads enforce purpose membership after archival and corrupted bytes block new adoption", async () => {
+  const context = await bundle(true),
+    assessment = context.skillSet.bindings.find(
+      (row: any) => row.purpose === "report_writing",
+    ).version,
+    ref = assessment.files[0],
+    route =
+      "/admin/creative-skill-sets/" +
+      context.skillSet.id +
+      "/domains/assessment/report_writing/references/" +
+      ref.file.id +
+      "/content";
+  const preview = (
+      await admin.request(
+        "/admin/content-packages/preview",
+        "POST",
+        context.selection,
+      )
+    ).body,
+    adopted = await adopt(context.selection, preview);
+  assert.equal(adopted.status, 200);
+  await upgradeSkill(assessment);
+  const downloaded = await fetch(base + "/api" + route, {
+    headers: {
+      cookie: [...admin.cookies]
+        .map(([key, value]) => key + "=" + value)
+        .join(";"),
+    },
+  });
+  assert.equal(downloaded.status, 200);
+  assert.match(
+    downloaded.headers.get("content-disposition") ?? "",
+    /attachment/,
+  );
+  const bytes = Buffer.from(await downloaded.arrayBuffer());
+  assert.equal(
+    createHash("sha256").update(bytes).digest("hex"),
+    ref.file.checksum,
+  );
+  assert.equal(
+    (
+      await admin.request(
+        route.replace(
+          "/assessment/report_writing/",
+          "/video/video_production/",
+        ),
+      )
+    ).status,
+    404,
+  );
+  assert.equal((await new Browser().request(route)).status, 401);
+  const file =
+    await fixture.runtime.client.skillReferenceFile.findUniqueOrThrow({
+      where: { id: ref.file.id },
+    });
+  await writeFile(
+    join(directory, file.storageKey),
+    Buffer.alloc(bytes.length, 65),
+  );
+  try {
+    const failed = await admin.request(
+      "/admin/content-packages/preview",
+      "POST",
+      context.selection,
+    );
+    assert.equal(failed.body.canAdopt, false);
+    assert.ok(
+      failed.body.issues.some((message: string) =>
+        message.includes("参考文件"),
+      ),
+    );
+    assert.deepEqual(
+      (await admin.request("/admin/content-packages/" + adopted.body.id)).body,
+      adopted.body,
+    );
+    assert.notEqual((await admin.request(route)).status, 200);
+  } finally {
+    await writeFile(join(directory, file.storageKey), bytes);
+  }
+});
+
+test("production refuses a mismatched primary skill, foreign profile or incomplete skill declaration atomically", async () => {
+  const context = await fresh(true),
+    copy = authoring(context.brief.id),
+    cover = context.skillSet.bindings.find(
+      (row: any) => row.domain === "cover",
+    ).version;
+  const body = {
+    productVersionId: context.version.id,
+    platform: "manual",
+    variant: "invalid",
+    expectedRevision: 0,
+    authoring: {
+      ...copy,
+      production: {
+        ...copy.production,
+        skillSetId: context.skillSet.id,
+        skillVersionId: cover.id,
+      },
+    },
+    requestId: randomUUID(),
+  };
+  const before = await fixture.runtime.client.campaignAsset.count({
+    where: { productVersionId: context.version.id },
+  });
+  assert.equal(
+    (await admin.request("/admin/content-assets", "POST", body)).status,
+    409,
+  );
+  assert.equal(
+    (
+      await admin.request("/admin/content-assets", "POST", {
+        ...body,
+        requestId: randomUUID(),
+        authoring: {
+          ...body.authoring,
+          production: { ...body.authoring.production, skillSetId: null },
+        },
+      })
+    ).status,
+    409,
+  );
+  assert.equal(
+    await fixture.runtime.client.campaignAsset.count({
+      where: { productVersionId: context.version.id },
+    }),
+    before,
+  );
+  const record =
+    await fixture.runtime.client.productionRecord.findUniqueOrThrow({
+      where: { outputRevisionId: context.assessment.id },
+    });
+  await assert.rejects(
+    fixture.owner.pool.query(
+      `INSERT INTO orai.production_records(id,product_id,scope,output_revision_id,creative_profile_revision_id,source,skill_version_id,skill_set_id,skill_versions,input_manifest)
+    VALUES($1,$2,'DEMO',$3,$4,'manual',$5,$6,'[]','[]')`,
+      [
+        randomUUID(),
+        context.product.id,
+        context.assessment.id,
+        context.brief.id,
+        cover.id,
+        record.skillSetId,
+      ],
+    ),
+    (error: { code?: string }) => error.code === "23514",
   );
 });

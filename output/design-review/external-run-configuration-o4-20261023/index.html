@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>运行配置草稿 · O4 设计评审</title><link rel="stylesheet" href="design.css"></head>
+<body>
+<aside class="sidebar" id="sidebar" aria-label="运营后台导航">
+ <a class="brand" href="#"><span class="brand-mark">◎</span><span>meetmyworld<small>运营后台</small></span></a>
+ <button id="nav-close" class="nav-close" aria-label="关闭运营导航">×</button><p class="nav-caption">工作空间 <span>01</span></p>
+ <nav aria-label="运营导航"><button>▦ <span>概览与审计</span></button><button>▱ <span>商品与版本</span></button><button>▤ <span>内容工作台</span></button><button>▧ <span>素材与文件</span></button><button>▥ <span>skill 库</span></button><button class="current" aria-current="page">♧ <span>Codex 连接</span></button><button>▤ <span>订单与售后</span></button></nav>
+ <footer><span class="avatar">M</span><span>管理员<small>隔离设计样例</small></span><p>← 返回商城</p><small>MEETMYWORLD / OPERATIONS</small></footer>
+</aside>
+<div class="workspace" id="workspace">
+ <header class="topbar"><button id="nav-toggle" aria-label="打开运营导航">☰</button><span>运营后台 <i>/</i> <b>Codex 连接</b></span><span class="identity"><span class="dot"></span>设计预览<span class="avatar">M</span></span></header>
+ <main class="operating-scroll" id="operating-scroll">
+  <nav class="surface-tabs" aria-label="连接与配置"><span>连接与权限</span><span class="active">运行配置草稿</span></nav>
+  <div class="prototype-note"><span>O4 / 设计评审</span>本页仅内存演示，刷新清空；尚未接入正式保存、客户端或日程。</div>
+  <div id="view"></div>
+  <details class="scenarios"><summary>设计评审情境 · 合成样例</summary><label for="scenario">切换演示情境</label><select id="scenario"><option value="draft">未补齐的配置草稿</option><option value="complete">字段齐备，外部环境仍未验证</option><option value="empty">没有保存的配置</option><option value="foreign">连接属于其他工作区</option><option value="revoked">连接已经撤销</option><option value="stale">固定计划出现新修订</option><option value="file-missing">固定方法附件缺失</option><option value="cost-unknown">工具费用未知</option><option value="tool-unapproved">工具尚未获准</option><option value="save-failure">保存失败，草稿保留</option><option value="save-conflict">保存前出现其他修订</option><option value="save-unknown">保存成功响应丢失</option><option value="export-conflict">导出前依据变化</option></select><p>保存、复制、导出均只写入内存替身。所有连接、方法、来源和费用都是样例，不是实际授权。</p></details>
+ </main>
+</div>
+<dialog id="leave-dialog" aria-labelledby="leave-title"><div class="dialog-body"><p class="eyebrow">UNSAVED CONFIGURATION</p><h2 id="leave-title">保留这次未保存的修改？</h2><p>返回可继续编辑；放弃只影响本页修改，已保存的演示修订保留。</p></div><footer class="dialog-actions"><button id="leave-keep">返回继续编辑</button><button id="leave-discard">放弃修改并离开</button></footer></dialog>
+<dialog id="export-dialog" aria-labelledby="export-title"><header class="dialog-heading"><div><p class="eyebrow">DISABLED CONFIGURATION / HANDOFF</p><h2 id="export-title">核对未启用的交接清单</h2></div><button id="export-close" aria-label="关闭交接清单">×</button></header><div class="dialog-body" id="export-body"></div><footer class="dialog-actions"><button id="export-back">返回核对</button><button id="copy-manifest" disabled>复制清单（演示）</button><button id="download-manifest" class="primary" disabled>导出 JSON（演示）</button></footer></dialog>
+<div class="toast hidden" id="toast" role="status"></div>
+<script src="design.js"></script></body></html>

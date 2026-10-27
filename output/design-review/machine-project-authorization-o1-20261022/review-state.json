@@ -1,0 +1,29 @@
+{
+  "revision": 2,
+  "verifiedAt": "2026-10-22T17:43:15.858997+08:00",
+  "scope": "independent O1 prototype and review documentation only",
+  "branch": "mikoe33/t06-local-operations",
+  "directionApproved": true,
+  "newUiApproved": false,
+  "oldUiApproved": false,
+  "gate": "O1 design review pending",
+  "prototypeChecks": 21,
+  "screens": 20,
+  "formalSourcesPreserved": 467,
+  "codeAndDocsPreservedByPrototypeCheck": 520,
+  "historicalFilesPreserved": 18,
+  "developerHealth": {
+    "api": 200,
+    "web": 200
+  },
+  "realCredentialsIssuedOrConfigured": false,
+  "productionFrontendBackendOrDependenciesChanged": false,
+  "otherThreadsMessaged": false,
+  "o2Started": false,
+  "sourceSha256": {
+    "index.html": "da076ade87e80117655176ad926bab7507c870dc1ec764ec9fd3867ab6758162",
+    "check.mjs": "1b46a22fdf7c7e039aab00693f2a43dbc0d9d8e6d2f9c8cb2347728d542a0ff7",
+    "README.md": "b09b7ce0e158e1f118b227493b0a682ad78036f0954e50f76d42859f9f499b68",
+    "verification.json": "218ff411c194381f0e95fbc03a041aa7e45aa98666cb8b8d419455e934d5e31e"
+  }
+}

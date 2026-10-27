@@ -9,12 +9,15 @@ import {
 import { consumer } from "../api/consumer.js";
 import { Page, Loading, Failure, Demo, useAction } from "./shared.js";
 import { downloadSummary } from "./download.js";
+import { ExperienceHost, ChoiceScene } from "../experience/host.js";
+import { ReportHost } from "../experience/report-host.js";
+import { confirmedCheckpoint } from "../experience/model.js";
 type Questions = Awaited<ReturnType<typeof consumer.questions>>;
 type Feedback = Awaited<ReturnType<typeof consumer.feedback>>;
 
 function Statistics({ value }: { value: Feedback }) {
   return (
-    <section className="biz-card">
+    <section className="biz-card consumer-statistics">
       <h3>其他参与者的反馈</h3>
       {[value.answers, value.results].map((distribution) => (
         <div key={distribution.denominator}>
@@ -32,9 +35,9 @@ function Statistics({ value }: { value: Feedback }) {
             </p>
           ) : (
             distribution.items.map((item) => (
-              <p key={item.id}>
+              <div key={item.id} className="consumer-statistic-row"><p>
                 {item.label}：{item.percentage.toFixed(1)}%（{item.count} 份）
-              </p>
+              </p><div className="consumer-statistic-track" aria-hidden="true"><span style={{width: `${item.percentage}%`}} /></div></div>
             ))
           )}
         </div>
@@ -91,20 +94,19 @@ function QuestionsBody({ value, id }: { value: Questions; id: string }) {
           ["private", "feedback", id, question.id, response.attemptRevision],
           response.feedback,
         );
-        client.setQueryData<Questions>(["private", "attempt", id], (old) =>
-          old
-            ? {
+        client.setQueryData<Questions>(["private", "attempt", id], (old) => {
+          if (!old) return old;
+          const answers = [
+            ...old.answers.filter(answer => answer.questionId !== question.id), response.answer,
+          ];
+          return {
                 ...old,
                 revision: response.attemptRevision,
-                answers: [
-                  ...old.answers.filter(
-                    (answer) => answer.questionId !== question.id,
-                  ),
-                  response.answer,
-                ],
-              }
-            : old,
-        );
+                experience: old.experience ? { ...old.experience, checkpoint: response.checkpoint ??
+                  confirmedCheckpoint(old.questions, answers, response.attemptRevision, question.id) } : undefined,
+                answers,
+              };
+        });
       },
     );
   }
@@ -121,34 +123,9 @@ function QuestionsBody({ value, id }: { value: Questions; id: string }) {
         value={value.answers.length}
       />
       {complete && <p role="status">测试已完成，请从我的报告查看结果。</p>}
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          void save();
-        }}
-      >
-        <fieldset disabled={action.busy || complete}>
-          <legend>
-            第 {current + 1}/{value.questions.length} 题：{question.text}
-          </legend>
-          {question.options.map((option) => (
-            <label className="biz-option" key={option.id}>
-              <input
-                type="radio"
-                name="answer"
-                value={option.id}
-                checked={choice === option.id}
-                onChange={() => setChoice(option.id)}
-              />
-              {option.label}
-              {option.notApplicable ? "（不适用）" : ""}
-            </label>
-          ))}
-          <button type="submit" disabled={!choice || !dirty}>
-            {action.busy ? "保存中…" : "保存答案"}
-          </button>
-        </fieldset>
-      </form>
+      <div className="consumer-assessment-grid"><section className="consumer-question-panel" aria-label="当前题目">
+      <ChoiceScene question={question} current={current} total={value.questions.length} choice={choice}
+        disabled={action.busy || complete} dirty={dirty} busy={action.busy} onSelect={setChoice} onConfirm={() => void save()} />
       <p role="status">
         {dirty
           ? "当前选择尚未保存，未计入进度。"
@@ -166,6 +143,7 @@ function QuestionsBody({ value, id }: { value: Questions; id: string }) {
           }
         />
       )}
+      </section><aside className="consumer-feedback-panel" aria-label="群体反馈">
       {saved &&
         (feedback.isPending ? (
           <p role="status">正在读取反馈，答案已保存。</p>
@@ -182,6 +160,8 @@ function QuestionsBody({ value, id }: { value: Questions; id: string }) {
         ) : (
           feedback.data && <Statistics value={feedback.data} />
         ))}
+      {!saved && <section className="biz-card consumer-feedback-empty"><h2>其他人怎么想</h2><p>先按自己的感受作答。保存当前题后，再看看其他参与者的回答。</p><small>统计会排除本次答卷。</small></section>}
+      </aside></div>
       <div className="biz-row">
         <button
           disabled={action.busy || current === 0}
@@ -248,12 +228,13 @@ export function AssessmentPage() {
     queryFn: ({ signal }) => consumer.questions(id, signal),
   });
   return (
-    <Page title="探索自己" section="apps">
+    <Page title="探索自己" section="apps" view="assessment">
       {result.isPending ? (
         <Loading />
       ) : result.isError ? (
         <Failure error={result.error} retry={() => void result.refetch()} />
       ) : (
+        <ExperienceHost key={id + ':' + (result.data.experience?.release.id ?? 'legacy')} attemptId={id} release={result.data.experience?.release}>
         <QuestionsBody
           key={
             id +
@@ -265,6 +246,7 @@ export function AssessmentPage() {
           id={id}
           value={result.data}
         />
+        </ExperienceHost>
       )}
     </Page>
   );
@@ -282,7 +264,7 @@ export function ReportPage() {
     }),
     content = result.data?.content;
   return (
-    <Page title={content?.productName ?? "我的报告"} section="reports">
+    <Page title={content?.productName ?? "我的报告"} section="reports" view="report">
       {result.isPending ? (
         <Loading />
       ) : result.isError ? (
@@ -295,33 +277,7 @@ export function ReportPage() {
               版本 {content.versionNumber} · 访问截至{" "}
               {new Date(result.data!.expiresAt).toLocaleString("zh-CN")}
             </p>
-            <section className="biz-card">
-              <h2>{content.resultLabel}</h2>
-              <p>
-                {content.totalScore === null
-                  ? "信息不足，暂不提供总分"
-                  : `${content.totalScore} / 100`}
-              </p>
-              <p>{content.explanation}</p>
-            </section>
-            <div className="biz-grid">
-              {content.dimensions.map((value) => (
-                <section key={value.id} className="biz-card">
-                  <h3>{value.label}</h3>
-                  <p>{value.score === null ? "信息不足" : value.score}</p>
-                  {value.missingReason && <p>{value.missingReason}</p>}
-                  <small>
-                    适用回答 {value.applicableAnswers}，最少需要{" "}
-                    {value.requiredAnswers}
-                  </small>
-                </section>
-              ))}
-            </div>
-            <section className="biz-card">
-              <h2>给自己的下一步</h2>
-              <p>{content.suggestion}</p>
-            </section>
-            <p>{content.disclaimer}</p>
+            <ReportHost content={content} presentation={result.data?.presentation} enhanced />
             <button
               disabled={action.busy}
               onClick={() => void action.run(() => downloadSummary(content))}

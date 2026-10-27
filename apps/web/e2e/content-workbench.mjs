@@ -1,3 +1,4 @@
+import { expandSavedAssets } from "./admin-workbench.mjs";
 import assert from "node:assert/strict";
 import { join } from "node:path";
 import { mkdir } from "node:fs/promises";
@@ -20,10 +21,11 @@ export async function contentWorkbench({
   const enter = async (name) =>
     admin
       .getByRole("navigation", { name: "内容工作台页签" })
-      .getByRole("button", { name, exact: true })
+      .getByRole("button", { name: new RegExp("^" + name + "(?: ·)?$") })
       .click();
   await admin.goto("/admin/content");
   await admin.getByRole("link", { name: /伴侣协作测试/ }).click();
+  await enter('创作设定');
   await expect(
     admin.getByRole("heading", { name: "共同创作设定", exact: true }),
   ).toBeVisible();
@@ -67,23 +69,24 @@ export async function contentWorkbench({
   checks.push(
     "creative profiles append fixed revisions and retain the old setting",
   );
-  await enter("题库与报告");
+  await enter("商品内容");
   await expect(admin.getByLabel("题目 1 题干", { exact: true })).toBeVisible();
   await admin
     .getByLabel("题目 1 题干", { exact: true })
     .fill("一天结束后，你最希望对方如何陪伴你？");
+  await enter("结果交付");
   await admin
     .getByLabel("报告 1 解释", { exact: true })
     .fill("这是一次温柔的关系观察，帮助你更具体地表达自己的需要。");
   await expect(
-    admin.getByRole("button", { name: "保存题库草稿", exact: true }),
+    admin.getByRole("button", { name: "保存内容与结果草稿", exact: true }),
   ).toBeDisabled();
   await admin.getByRole("button", { name: "派生新版本", exact: true }).click();
   await expect(
-    admin.getByLabel("工作台题库版本", { exact: true }),
+    admin.getByLabel("工作台内容版本", { exact: true }),
   ).not.toHaveValue(published.id);
   const versionId = await admin
-    .getByLabel("工作台题库版本", { exact: true })
+    .getByLabel("工作台内容版本", { exact: true })
     .inputValue();
   assert.deepEqual(
     (await db.productVersion.findUniqueOrThrow({ where: { id: published.id } }))
@@ -97,23 +100,25 @@ export async function contentWorkbench({
     .getByLabel("报告 1 建议", { exact: true })
     .fill("试着说：今天我希望你先听我说一会儿。");
   await admin
-    .getByRole("button", { name: "保存题库草稿", exact: true })
+    .getByRole("button", { name: "保存内容与结果草稿", exact: true })
     .click();
   await expect(
-    admin.getByRole("button", { name: "保存题库草稿", exact: true }),
+    admin.getByRole("button", { name: "保存内容与结果草稿", exact: true }),
   ).toBeDisabled();
+  await enter("商品内容");
   await admin.getByLabel("题库制作批次", { exact: true }).fill("workbench-day");
   await admin
     .getByRole("button", { name: "登记本修订制作来源", exact: true })
     .click();
   await expect(
-    admin.getByText("manual · 批次 workbench-day · Skill 未关联", {
+    admin.getByText("manual · 批次 workbench-day · 未关联 skill", {
       exact: true,
     }),
   ).toBeVisible();
   checks.push(
     "published assessment derives a draft and preserves the published questions, with editable reports and a fixed production record",
   );
+  await enter("结果交付");
   await admin
     .getByLabel("样例标题", { exact: true })
     .fill("关系花园 · 公开样例");
@@ -140,9 +145,10 @@ export async function contentWorkbench({
     .selectOption("external_ai");
   await copy.getByLabel("制作批次", { exact: true }).fill("workbench-day");
   await expect(
-    admin.getByLabel("工作台题库版本", { exact: true }),
+    admin.getByLabel("工作台内容版本", { exact: true }),
   ).toBeDisabled();
   await copy.getByRole("button", { name: "保存内容草稿", exact: true }).click();
+  await expandSavedAssets(copy);
   await expect(
     copy.getByRole("button", { name: "编辑workbench-copy", exact: true }),
   ).toBeVisible();
@@ -166,7 +172,7 @@ export async function contentWorkbench({
     )
     .toBe(1);
   await admin.reload();
-  await expect(admin.getByLabel("工作台题库版本", { exact: true })).toHaveValue(
+  await expect(admin.getByLabel("工作台内容版本", { exact: true })).toHaveValue(
     versionId,
   );
   await copy
@@ -280,6 +286,7 @@ export async function contentWorkbench({
   await video
     .getByRole("button", { name: "保存内容草稿", exact: true })
     .click();
+  await expandSavedAssets(video);
   await expect(
     video.getByRole("button", { name: "编辑workbench-video", exact: true }),
   ).toBeVisible();

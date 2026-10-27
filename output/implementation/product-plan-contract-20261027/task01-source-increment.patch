@@ -1,0 +1,982 @@
+diff --git a/apps/api/test/production-plans.test.ts b/apps/api/test/production-plans.test.ts
+--- a/apps/api/test/production-plans.test.ts
++++ b/apps/api/test/production-plans.test.ts
+@@ -4,7 +4,7 @@
+ import {randomUUID} from 'node:crypto';
+ import {Test} from '@nestjs/testing';
+ import type {INestApplication} from '@nestjs/common';
+-import {ProductionPlanDocumentSchema,CreativeProfileSchema} from '@orai/contracts/admin';
++import {ProductionPlanDocumentSchema,CreativeProfileSchema,emptyProductImplementationPlan} from '@orai/contracts/admin';
+ import {AppModule} from '../src/app.module';
+ import {APP_CONFIG} from '../src/config/configuration';
+ import {configureApp} from '../src/common/configure-app';
+@@ -14,6 +14,9 @@
+ import {inspectProductionPlan} from '../src/operations/production-plan-inspection';
+ import {CatalogAdminService} from '../src/operations/catalog-admin.service';
+ import {ContentService} from '../src/operations/content.service';
++import {SkillsService} from '../src/operations/skills.service';
++import {ProjectProductionService} from '../src/operations/project-production.service';
++import {VersionsService} from '../src/catalog/versions.service';
+ import {MachineCredentialsService} from '../src/operations/machine-credentials.service';
+ import {contentDigest} from '../src/operations/content-projections';
+ import {demoId,DemoIdentityScenarios} from '../scripts/demo-fixtures';
+@@ -54,6 +57,80 @@
+   return {product,profile,plan};
+ }
+ const save=(value:Awaited<ReturnType<typeof fresh>>,revision=0)=>service.save(access,value.product.id,{plan:value.plan,expectedRevision:revision,requestId:randomUUID()});
++
++test('v2 keeps pending Three.js decisions explicit and appends without rewriting legacy history',async()=>{
++  const value=await fresh(),legacy=await save(value),productPlan=emptyProductImplementationPlan(legacy.id),
++    plan={...value.plan,schemaVersion:2,productPlan},body={plan,expectedRevision:1,requestId:randomUUID()},
++    result=await service.save(access,value.product.id,body);
++  assert.equal(result.plan.schemaVersion,2);assert.deepEqual(result.plan,plan);
++  assert.deepEqual(await service.save(access,value.product.id,body),result);
++  assert.deepEqual(await service.read(access,legacy.id),legacy);
++  assert.equal(result.modules[0]!.moduleId,legacy.modules[0]!.moduleId);
++  const inspection=await service.inspection(access,result.id);
++  assert.ok(inspection.issues.some(issue=>issue.code==='PRODUCT_PLAN_PENDING'));
++  assert.equal(inspection.runtimeValidation,'not_performed');assert.equal(inspection.archiveReady,false);
++});
++
++test('v2 fixed origins and source IDs must belong to the same product and scope with the exact digest',async()=>{
++  const value=await fresh(),other=await fresh(),otherPlan=await save(other);
++  const plan={...value.plan,schemaVersion:2,productPlan:emptyProductImplementationPlan(otherPlan.id)};
++  await assert.rejects(service.save(access,value.product.id,{plan,expectedRevision:0,requestId:randomUUID()}));
++  plan.productPlan.basedOnPlanRevisionId=null;
++  plan.productPlan.sources=[{sourceKey:'missing',moduleKey:'experience',kind:'experience_release',id:randomUUID(),digest:'a'.repeat(64)}];
++  await assert.rejects(service.save(access,value.product.id,{plan,expectedRevision:0,requestId:randomUUID()}));
++  await assert.rejects(service.validate(access,value.product.id,plan));
++  assert.equal(await fixture.runtime.client.productionPlanRevision.count({where:{productId:value.product.id}}),0);
++});
++
++test('v2 pins actual content and retained methods, rejects stale or foreign sources, and never treats sources as new captured output',async()=>{
++  const value=await fresh(),legacy=await save(value),configuration=(await fixture.runtime.client.productVersion.findFirstOrThrow({where:{productId:demoId('demo-partner')}})).configuration,
++    version=await app.get(VersionsService).importConfiguration(access,value.product.id,{configuration,requestId:randomUUID()}),
++    content=await app.get(ContentService).saveAsset(access,{productVersionId:version.id,platform:'manual',variant:'contract',expectedRevision:0,requestId:randomUUID(),fileId:null,
++      authoring:{schemaVersion:1,creativeProfileRevisionId:value.profile.id,content:{kind:'copy',blocks:[{blockId:'hook',role:'hook',text:'合成固定来源'}]},
++        media:{localArchive:null,previewFileId:null},inputs:[],production:{source:'manual',batchKey:null,externalLabel:'合同验收',skillVersionId:null}}}),
++    skill=await app.get(SkillsService).create(access,'copy',{slug:'contract-'+randomUUID(),requestId:randomUUID(),manifest:{schemaVersion:1,domain:'copy',name:'合成方法',description:'合同验收',
++      purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],inputs:[{key:'creative-profile',description:'设定',required:true}],outputs:[{key:'copy',description:'文案'}],instructions:'人工静态合同夹具。',examples:[],references:[]}}),
++    module=legacy.modules.find(item=>item.moduleKey==='copy')!,method=await app.get(ProjectProductionService).capture(access,module.id,{
++      expectedModuleDigest:module.digest,purpose:'copywriting',sourceVersionId:skill.id,expectedSourceRevision:skill.revision,expectedSourceDigest:skill.digest,requestId:randomUUID()}),
++    productPlan=emptyProductImplementationPlan(legacy.id);
++  productPlan.sources=[{sourceKey:'copy',moduleKey:'video',kind:'content_revision',id:content.id,digest:content.digest},
++    {sourceKey:'method',moduleKey:'copy',kind:'method_snapshot',id:method.id,digest:method.digest}];
++  const plan={...value.plan,schemaVersion:2,productPlan},saved=await service.save(access,value.product.id,{plan,expectedRevision:1,requestId:randomUUID()});
++  assert.deepEqual(saved.plan,plan);
++  assert.ok((await service.inspection(access,saved.id)).modules.every(item=>item.methods==='required_not_captured'));
++  for(const source of [{...productPlan.sources[0]!,digest:'f'.repeat(64)},{...productPlan.sources[1]!,moduleKey:'video'}]){
++    const candidate={...plan,productPlan:{...productPlan,sources:[source]}};
++    await assert.rejects(service.save(access,value.product.id,{plan:candidate,expectedRevision:2,requestId:randomUUID()}));
++  }
++  const other=await fresh();
++  await assert.rejects(service.save(access,other.product.id,{plan:{...plan,creativeProfileRevisionId:other.profile.id,productPlan:{...productPlan,basedOnPlanRevisionId:null}},expectedRevision:0,requestId:randomUUID()}));
++  const profile2=await app.get(ContentService).saveProfile(access,value.product.id,{profile:{...value.profile.profile,world:'新的世界观'},expectedRevision:1,requestId:randomUUID()});
++  await assert.rejects(service.save(access,value.product.id,{plan:{...plan,creativeProfileRevisionId:profile2.id},expectedRevision:2,requestId:randomUUID()}));
++  assert.deepEqual(await service.read(access,saved.id),saved);assert.deepEqual(await service.read(access,legacy.id),legacy);
++});
++
++test('v2 can pin a retained release with its exact resource manifest without copying files',async()=>{
++  const value=await fresh(),productId=demoId('demo-partner'),release=await fixture.runtime.client.experienceRelease.findFirstOrThrow({where:{productId}}),
++    before=await fixture.runtime.client.experienceRelease.count({where:{productId}}),
++    profile=await app.get(ContentService).saveProfile(access,productId,{profile:value.profile.profile,expectedRevision:0,requestId:randomUUID()}),productPlan=emptyProductImplementationPlan();
++  productPlan.sources=[{sourceKey:'release',moduleKey:'video',kind:'experience_release',id:release.id,digest:release.digest}];
++  const saved=await service.save(access,productId,{plan:{...value.plan,schemaVersion:2,creativeProfileRevisionId:profile.id,productPlan},expectedRevision:0,requestId:randomUUID()});
++  assert.equal(saved.plan.schemaVersion,2);
++  assert.equal(await fixture.runtime.client.experienceRelease.count({where:{productId}}),before);
++});
++
++test('database guards accept v2 only with Three.js and reject forged version/source data while preserving append-only runtime grants',async()=>{
++  const value=await fresh(),legacy=await save(value),base={...value.plan,schemaVersion:2,productPlan:emptyProductImplementationPlan(legacy.id)};
++  const bad=structuredClone(base);bad.productPlan.sources=[{sourceKey:'fake',moduleKey:'copy',kind:'content_revision',id:randomUUID(),digest:'f'.repeat(64)}];
++  const {productPlan:_,...missing}=base;
++  for(const document of [missing,{...base,schemaVersion:3},{...base,productPlan:{...base.productPlan,implementation:'html'}},bad])
++    await assert.rejects(fixture.owner.client.productionPlanRevision.create({data:{productId:value.product.id,scope:'DEMO',number:2,
++      creativeProfileRevisionId:value.profile.id,creativeProfileDigest:value.profile.digest,actorUserId:access.actorUserId,document,digest:contentDigest(document)}}));
++  const saved=await service.save(access,value.product.id,{plan:base,expectedRevision:1,requestId:randomUUID()});
++  await assert.rejects(fixture.runtime.client.productionPlanRevision.update({where:{id:saved.id},data:{digest:'b'.repeat(64)}}));
++  await assert.rejects(fixture.owner.client.productionPlanRevision.delete({where:{id:saved.id}}));
++  assert.deepEqual(await service.read(access,legacy.id),legacy);
++});
+ 
+ test('plans retain domestic/international evidence, fixed profile, multiple image slots and optional modules without publishing or claiming imported originals',async()=>{
+   const value=await fresh(),before=await fixture.runtime.client.product.findUniqueOrThrow({where:{id:value.product.id}}),first=await save(value);
+diff --git a/apps/api/test/machine-projects.test.ts b/apps/api/test/machine-projects.test.ts
+--- a/apps/api/test/machine-projects.test.ts
++++ b/apps/api/test/machine-projects.test.ts
+@@ -13,7 +13,7 @@
+ import type { INestApplication } from '@nestjs/common';
+ import { CreativeProfileSchema, ProductionPlanRevisionSchema, MachineProjectResultSchema,
+   MachineProjectMethodSnapshotSchema, MachineProjectDraftResultSchema, MachineProjectProductionRecordSchema,
+-  skillPurposes, StyleSkillManifestSchema, MachineProjectContextSchema } from '@orai/contracts/admin';
++  skillPurposes, StyleSkillManifestSchema, MachineProjectContextSchema, emptyProductImplementationPlan } from '@orai/contracts/admin';
+ import { AppModule } from '../src/app.module';
+ import { APP_CONFIG } from '../src/config/configuration';
+ import { configureApp } from '../src/common/configure-app';
+@@ -280,8 +280,10 @@
+   const fixed = await ok(g,'project_method_get',{snapshotId:captured.id}); assert.equal(fixed.version.files.length,1); assert.equal(fixed.version.files[0].file.downloadPath,undefined);
+   assert.equal((await call(g,'project_method_reference_get',{snapshotId:captured.id,fileId:randomUUID()})).status,400);
+ });
+-test('all five official SDK clients discover and read the same fixed project through real stdio transport', async () => {
++test('all five official SDK clients discover and read exact v1 and v2 plans through real stdio transport after an admin save', async () => {
+   const c = await bootstrap(await setup());
++  const legacy=c.plan;
++  c.plan=await app.get(ProductionPlansService).save(access,c.project.productId,{plan:{...legacy.plan,schemaVersion:2,productPlan:emptyProductImplementationPlan(legacy.id)},expectedRevision:1,requestId:randomUUID()});
+   for (const domain of ['assessment','cover','video','copy','experience'] as const) {
+     const g = domain==='assessment'?c.machine:await grant(domain,c.workspace.id);
+     const methodInput = {productId:c.project.productId,methodKey:'sdk-'+domain,manifest:manifest(domain),requestId:randomUUID()};
+@@ -289,11 +291,25 @@
+       ORAI_MCP_API_URL:base,ORAI_MCP_TOKEN:g.token,ORAI_MCP_DOMAIN:domain,ORAI_MCP_ALLOWED_ROOT:directory,
+       ORAI_MCP_PROJECT_SCENARIO_JSON:JSON.stringify({calls:[{name:'project_get',input:{productId:c.project.productId}},
+         {name:'project_plan_get',input:{planRevisionId:c.plan.id}},{name:'project_context_get',input:{planRevisionId:c.plan.id,inputs:[]}},
+-        {name:'project_method_create',input:methodInput}]})},maxBuffer:1_000_000});
++        {name:'project_method_create',input:methodInput},{name:'project_plan_get',input:{planRevisionId:legacy.id}}]})},maxBuffer:1_000_000});
+     assert.equal(stderr,''); const result = JSON.parse(stdout); assert.equal(result.ok,true); assert.equal(result.domain,domain);
+     assert.equal(result.results[0].data.productId,c.project.productId); assert.equal(result.results[2].data.creativeProfile.id,c.project.creativeProfileRevisionId);
+     assert.ok(result.results[3].data.skillId);
++    assert.deepEqual(result.results[1].data,c.plan);assert.deepEqual(result.results[4].data,legacy);
+   }
++});
++test('MCP v2 writes use the same revision, recovery and permission rules as admin writes',async()=>{
++  const c=await bootstrap(await setup()),plans=app.get(ProductionPlansService),productPlan=emptyProductImplementationPlan(c.plan.id),
++    plan={...c.plan.plan,schemaVersion:2,productPlan},body={productId:c.project.productId,plan,expectedRevision:1,requestId:randomUUID()},
++    saved=await ok(c.machine,'project_plan_save',body);
++  assert.deepEqual(await ok(c.machine,'project_plan_save',body),saved);assert.deepEqual(await plans.read(access,saved.id),saved);
++  assert.equal((await call(c.machine,'project_plan_save',{...body,plan:{...plan,title:'变更同一请求'}})).status,409);
++  const writers=await Promise.all(['甲','乙'].map(title=>call(c.machine,'project_plan_save',{...body,expectedRevision:2,requestId:randomUUID(),plan:{...plan,title}})));
++  assert.deepEqual(writers.map(response=>response.status).sort(),[200,409]);
++  const copy=await grant('copy',c.workspace.id);assert.equal((await call(copy,'project_plan_save',{...body,expectedRevision:3,requestId:randomUUID()})).status,403);
++  await app.get(MachineCredentialsService).revoke(access,c.machine.id,{requestId:randomUUID()});
++  assert.equal((await call(c.machine,'project_plan_get',{planRevisionId:saved.id})).status,401);
++  assert.deepEqual(await plans.read(access,c.plan.id),c.plan);
+ });
+ test('expired credentials, foreign owners, out-of-range categories and changed profile revisions do not expand the approved workspace', async () => {
+   const c = await bootstrap(await setup()), oldToken = 'orai_mcp_' + Buffer.alloc(32,7).toString('base64url');
+diff --git a/apps/api/src/operations/production-plan-inspection.ts b/apps/api/src/operations/production-plan-inspection.ts
+--- a/apps/api/src/operations/production-plan-inspection.ts
++++ b/apps/api/src/operations/production-plan-inspection.ts
+@@ -1,8 +1,19 @@
+ import { experienceTemplate } from '@orai/contracts/experience';
+-import { ProductionPlanInspectionSchema, type ProductionPlanDocument } from '@orai/contracts/admin';
++import { ProductionPlanInspectionSchema, productPlanPendingFields, type ProductionPlanDocument } from '@orai/contracts/admin';
+ 
+ export function inspectProductionPlan(plan: ProductionPlanDocument, now = new Date()) {
+   const issues: { code: string; severity: 'warning'; message: string; moduleKey: string | null; evidenceKey: string | null }[] = [];
++  if (plan.schemaVersion === 2) {
++    const pending = productPlanPendingFields(plan.productPlan);
++    if (pending.length) issues.push({ code: 'PRODUCT_PLAN_PENDING', severity: 'warning',
++      message: `有${pending.length}项商品规划或预算待确定；草稿可以保存，不能据此认定已交付。`, moduleKey: null, evidenceKey: null });
++    const module = plan.modules.find(item => item.moduleKey === plan.productPlan.experienceModuleKey), runtime = module?.target.runtime;
++    const capability = runtime ? experienceTemplate({ renderer: runtime.renderer, report: { renderer: runtime.reportRenderer } }) : undefined;
++    if (module && capability?.presentation !== 'webgl_3d') issues.push({ code: 'THREEJS_IMPLEMENTATION_PENDING', severity: 'warning',
++      message: '所选运行配对尚不能证明使用 Three.js；规划声明不等于实际场景已经实现。', moduleKey: module.moduleKey, evidenceKey: null });
++    if (Object.values(plan.productPlan.decisions).some(item => ['implemented', 'verified'].includes(item.status)))
++      issues.push({ code: 'DECLARED_EVIDENCE_NOT_REVALIDATED', severity: 'warning', message: '实现/验证阶段及依据由作者申报；本次检查未执行场景、设备或证据。', moduleKey: null, evidenceKey: null });
++  }
+   const window = plan.freshnessWindowHours * 3600000;
+   const timing = (value: string) => {
+     const age = now.getTime() - Date.parse(value);
+diff --git a/apps/api/src/operations/production-plans.service.ts b/apps/api/src/operations/production-plans.service.ts
+--- a/apps/api/src/operations/production-plans.service.ts
++++ b/apps/api/src/operations/production-plans.service.ts
+@@ -11,6 +11,7 @@
+ import { contentDigest } from './content-projections';
+ import { inspectProductionPlan } from './production-plan-inspection';
+ import { ProjectCanvasService } from './project-canvas.service';
++import { validateProductPlanReferences } from './product-plan-references';
+ 
+ const id = (value: unknown) => parseInput(IdSchema, value).toLowerCase();
+ const relations = { modules: { include: { identity: true }, orderBy: { position: 'asc' as const } } } as const;
+@@ -59,6 +60,7 @@
+       const latest = await tx.productionPlanRevision.aggregate({ where: { productId, scope: access.scope }, _max: { number: true } });
+       if ((latest._max.number ?? 0) !== body.expectedRevision) throw new ApiException('REVISION_CONFLICT', '商品计划已更新，请读取固定修订后重试', 409);
+       const profile = await this.profile(tx, access, productId, body.plan.creativeProfileRevisionId);
++      await validateProductPlanReferences(tx, access, productId, body.plan);
+       const identities = [];
+       for (const module of body.plan.modules) {
+         let identity = await tx.productionModuleIdentity.findUnique({ where: { productId_moduleKey: { productId, moduleKey: module.moduleKey } } });
+@@ -131,6 +133,7 @@
+         runtimeValidation: 'not_performed', archiveReady: false, evidence: [], modules: [],
+         issues: parsed.error.issues.slice(0,20).map(issue => ({ code: 'INVALID_PLAN', severity: 'error', message: issue.message.slice(0,500), moduleKey: null, evidenceKey: null })) });
+       await this.profile(tx, access, productId, parsed.data.creativeProfileRevisionId);
++      await validateProductPlanReferences(tx, access, productId, parsed.data);
+       const inspection = inspectProductionPlan(parsed.data);
+       const identities = await tx.productionModuleIdentity.findMany({ where: { productId, scope: access.scope,
+         moduleKey: { in: parsed.data.modules.map(module => module.moduleKey) } } });
+diff --git a/apps/web/src/admin/project-planning.tsx b/apps/web/src/admin/project-planning.tsx
+--- a/apps/web/src/admin/project-planning.tsx
++++ b/apps/web/src/admin/project-planning.tsx
+@@ -1,10 +1,10 @@
+ import {useEffect,useMemo,useRef,useState} from 'react';
+ import {useQuery,useQueryClient} from '@tanstack/react-query';
+-import type {ProductionPlanDocument} from '@orai/contracts/admin';
++import {ProductionPlanDocumentSchema,emptyProductImplementationPlan, type ProductionPlanDocument,type ProductImplementationPlan} from '@orai/contracts/admin';
+ import {projectApi,type ProjectWorkspaceData} from './project-api.js';
+ import {useAction} from '../business/shared.js';
+ import {ClientError} from '../api/client.js';
+-import {addPlanningModule,editPlanningDependency,emptyProjectPlan,layoutForPlan,planningWorkspace,positionsFromLayout,
++import {addPlanningModule,editPlanningDependency,emptyProjectPlan,layoutForPlan,planningWorkspace,positionsFromLayout,isPlanningSaveUncertain,
+   type CanvasPositions,type PlanningDomain} from './project-planning-model.js';
+ import {projectDomains} from './project-model.js';
+ 
+@@ -14,24 +14,26 @@
+ type Options={productId:string;data?:ProjectWorkspaceData;productName:string;profile:ProjectWorkspaceData['profile'];onDirty?:(dirty:boolean)=>void;
+   onSaved:(planId:string)=>void;onReload:()=>void;onAdded?:(moduleKey:string)=>void};
+ export function useProjectPlanning({productId,data,productName,profile,onDirty,onSaved,onReload,onAdded}:Options){
+-  const client=useQueryClient(),action=useAction(),[session,setSession]=useState<Session|null>(null),[dialog,setDialog]=useState<Dialog|null>(null),[notice,setNotice]=useState(''),[savedPlanId,setSavedPlanId]=useState<string|null>(null);
++  const client=useQueryClient(),action=useAction(),[session,setSession]=useState<Session|null>(null),[dialog,setDialog]=useState<Dialog|null>(null),[notice,setNotice]=useState(''),[savedPlanId,setSavedPlanId]=useState<string|null>(null),
++    [jsonDrafts,setJsonDrafts]=useState<Record<string,string>>({});
+   const canvas=useQuery({queryKey:['private','admin','project-canvas',data?.plan?.id],enabled:!!data?.plan&&data.source==='live',
+     queryFn:({signal})=>projectApi.canvas(data!.plan!.id,signal),refetchOnWindowFocus:false});
+   const current=session&&productId===session.base.productId?session:null,
+     stale=!!current&&(current.base.plan?.id!==data?.plan?.id||current.base.source!==data?.source||current.base.run?.id!==data?.run?.id||current.base.review?.id!==data?.review?.id),
+     planDirty=!!current&&JSON.stringify(current.document)!==JSON.stringify(current.base.plan?.plan),
+     layoutDirty=!!current&&JSON.stringify(current.positions)!==JSON.stringify(current.initialPositions),
+-    dirty=!!current&&(planDirty&&current.document.modules.length>0||layoutDirty),
++    pendingJson=Object.keys(jsonDrafts).length>0,
++    dirty=!!current&&(planDirty&&current.document.modules.length>0||layoutDirty||pendingJson),
+     permissionLost=[action.error,canvas.error].some(error=>error instanceof ClientError&&(error.status===401||error.status===403)),
+     pendingPlanRead=!!savedPlanId&&data?.plan?.id!==savedPlanId,
+     canEdit=!pendingPlanRead&&!permissionLost&&!canvas.isError&&!!data&&data.source==='live'&&(data.plan?canvas.data?.planRevisionId===data.plan.id&&canvas.data.editable:!!profile&&data.plans.total===0),
+-    uncertain=action.error instanceof ClientError&&action.error.status===0,
++    uncertain=isPlanningSaveUncertain(action.error),
+     conflict=stale||action.error instanceof ClientError&&action.error.code==='REVISION_CONFLICT',
+     active=!!current?.active,
+     positions=current?.positions??positionsFromLayout(canvas.data?.layout?.layout);
+   const viewData=useMemo(()=>current?planningWorkspace(current.base,current.document,profile):data,[current,data,profile]);
+   useEffect(()=>{onDirty?.(dirty||active);return()=>onDirty?.(false);},[dirty,active,onDirty]);
+-  useEffect(()=>{setSession(null);setDialog(null);setNotice('');setSavedPlanId(null);},[productId]);
++  useEffect(()=>{setSession(null);setDialog(null);setNotice('');setSavedPlanId(null);setJsonDrafts({});},[productId]);
+   useEffect(()=>{if(savedPlanId&&data?.plan?.id===savedPlanId&&canvas.data?.planRevisionId===savedPlanId)setSavedPlanId(null);},[savedPlanId,data?.plan?.id,canvas.data?.planRevisionId]);
+   useEffect(()=>{if(stale&&!dirty){setSession(null);setDialog(null);}},[stale,dirty]);
+   function ensure():Session|null{
+@@ -40,6 +42,14 @@
+       positions:positionsFromLayout(canvas.data?.layout?.layout),initialPositions:positionsFromLayout(canvas.data?.layout?.layout),layoutRevision:canvas.data?.layout?.revision??0,active:false};
+   }
+   function begin(){const value=ensure();if(value){setSession({...value,active:true});setNotice('模块依赖可以编辑；固定方法与产物来源保持只读。');}}
++  function upgrade(){const value=ensure();if(!value||value.document.schemaVersion!==1)return;
++    setSession({...value,active:true,document:{...value.document,schemaVersion:2,productPlan:emptyProductImplementationPlan(value.base.plan?.id??null)}});
++    setNotice('已在未保存草稿中建立 v2 商品规划。旧计划保留，具体场景、动画和预算仍待决定。');}
++  function updateProductPlan(productPlan:ProductImplementationPlan){const value=ensure();if(!value||value.document.schemaVersion!==2)return;
++    setSession({...value,active:true,document:{...value.document,productPlan}});}
++  function updateRuntime(moduleKey:string,target:ProductionPlanDocument['modules'][number]['target']){const value=ensure();if(!value)return;
++    setSession({...value,active:true,document:{...value.document,modules:value.document.modules.map(module=>module.moduleKey===moduleKey?{...module,target}:module)}});}
++  function jsonDraft(key:string,value:string|null){setJsonDrafts(previous=>{const next={...previous};if(value===null)delete next[key];else next[key]=value;return next;});}
+   function openAdd(upstream?:string,position?:{x:number;y:number}){const value=ensure();if(!value)return;setSession({...value,active:true});setDialog({kind:'add',upstream,position});}
+   function openConnect(source?:string,target?:string,previous?:Dependency){const value=ensure();if(!value)return;setSession({...value,active:true});setDialog({kind:'connect',source,target,previous});}
+   function connect(source:string,target:string,previous?:Dependency){
+@@ -67,7 +77,7 @@
+   function move(nodeKey:string,position:{x:number;y:number}){const value=ensure();if(value)setSession({...value,positions:{...value.positions,[nodeKey]:position}});}
+   function arrange(){const value=ensure();if(value){setSession({...value,positions:{}});setNotice('已整理布局，保存后可在刷新时恢复。');}}
+   async function save(){
+-    if(!current||!dirty||conflict||stale||permissionLost||action.busy)return;
++    if(!current||!dirty||conflict||stale||permissionLost||action.busy||pendingJson)return;
+     await action.run(async()=>{
+       const layout=layoutForPlan(current.positions,current.document);
+       if(planDirty){const result=await projectApi.savePlan(current.base.productId,action.intent('planning:'+current.base.productId,{
+@@ -78,13 +88,15 @@
+         setSession(null);setDialog(null);onDirty?.(false);await client.invalidateQueries({queryKey:['private','admin','project-canvas',current.base.plan.id]});setNotice('布局已保存，业务计划修订保持不变。');}
+     });
+   }
+-  function discard(reload=false){if(action.busy)return;setSession(null);setDialog(null);setSavedPlanId(null);action.resetError();onDirty?.(false);setNotice('已放弃未保存修改。');if(reload)onReload();}
++  function discard(reload=false){if(action.busy)return;setSession(null);setDialog(null);setSavedPlanId(null);setJsonDrafts({});action.resetError();onDirty?.(false);setNotice('已放弃未保存修改。');if(reload)onReload();}
+   function exportDraft(){if(!current)return;const blob=new Blob([JSON.stringify({kind:'project_planning_draft',schemaVersion:1,
+     basePlanRevisionId:current.base.plan?.id??null,expectedRevision:current.base.plan?.revision??0,plan:current.document,
+-    layout:layoutForPlan(current.positions,current.document),persisted:false},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');
++    layout:layoutForPlan(current.positions,current.document),unappliedJson:jsonDrafts,persisted:false},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');
+     link.href=url;link.download='project-planning-draft.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+   }
++  const validation=planDirty&&current?ProductionPlanDocumentSchema.safeParse(current.document):null;
+   return {data:viewData,active,dirty,planDirty,layoutDirty,canEdit,conflict,uncertain,permissionLost,pendingPlanRead,positions,dialog,setDialog,notice,setNotice,action,canvas,
++    validation,upgrade,updateProductPlan,updateRuntime,jsonDrafts,jsonDraft,pendingJson,basePlan:current?.base.plan?.plan??data?.plan?.plan,
+     begin,openAdd,openConnect,connect,valid,add,remove,move,arrange,save,discard,exportDraft,
+     reference:(title:string)=>setDialog({kind:'reference',title})};
+ }
+@@ -99,7 +111,7 @@
+     <span className="pw-planning-state">{editor.pendingPlanRead?'正在读取已保存的新计划…':editor.dirty?'有未保存修改':editor.canEdit?'模块依赖可编辑 · 方法与来源只读':'固定版本 · 只读'}{editor.active?` · ${count} / 40`:''}</span>
+     {(editor.active||editor.layoutDirty)&&<><button onClick={editor.exportDraft} disabled={!editor.dirty||editor.action.busy}>导出草稿</button>
+       <button onClick={()=>editor.discard(editor.conflict)} disabled={editor.action.busy}>{editor.conflict?'放弃并读取最新':'放弃修改'}</button>
+-      <button className="pw-primary" onClick={()=>void editor.save()} disabled={!editor.dirty||editor.action.busy||editor.conflict||editor.permissionLost}>
++      <button className="pw-primary" onClick={()=>void editor.save()} disabled={!editor.dirty||editor.action.busy||editor.conflict||editor.permissionLost||editor.pendingJson||editor.validation?.success===false}>
+         {editor.action.busy?'保存中…':editor.uncertain?'再次确认保存':editor.planDirty?'保存新计划':'保存布局'}</button></>}
+   </div>;
+ }
+diff --git a/apps/web/src/admin/project-planning-model.ts b/apps/web/src/admin/project-planning-model.ts
+--- a/apps/web/src/admin/project-planning-model.ts
++++ b/apps/web/src/admin/project-planning-model.ts
+@@ -1,27 +1,35 @@
+-import { ProductionPlanDocumentSchema,ProductionPlanModuleSchema,ProjectCanvasLayoutDocumentSchema,
++import { ProductionPlanDocumentSchema,ProductionPlanModuleSchema,ProjectCanvasLayoutDocumentSchema,emptyProductImplementationPlan,
+   type ProductionPlanDocument,type ProjectCanvasLayoutDocument } from '@orai/contracts/admin';
+ import type { ProjectWorkspaceData } from './project-api.js';
++import { ClientError } from '../api/client.js';
+ 
+ export type PlanningDomain=ProductionPlanDocument['modules'][number]['domain'];
+ export type CanvasPositions=Record<string,{x:number;y:number}>;
+ const purposes={assessment:['assessment_design','report_writing'],copy:['copywriting'],cover:['cover_design'],video:['video_production'],experience:['scene_design','report_presentation']} as const;
++export function isPlanningSaveUncertain(error:unknown){
++  return error instanceof ClientError && (error.status===0 || error.status>=500 || error.status===408);
++}
++export function planningRuntimeKey(runtime:ProductionPlanDocument['modules'][number]['target']['runtime']){
++  return runtime?JSON.stringify([runtime.renderer.key,runtime.renderer.version,runtime.reportRenderer.key,runtime.reportRenderer.version,
++    runtime.inputSchema,runtime.engine,runtime.reportSchema]):'';
++}
+ export function emptyProjectPlan(profileId:string,title:string):ProductionPlanDocument{
+-  return {schemaVersion:1,title,creativeProfileRevisionId:profileId,selection:{basis:'manual',rationale:'管理员手动规划：'+title,evidenceKeys:[]},
+-    freshnessWindowHours:72,evidence:[],modules:[],retention:'platform_originals_and_exact_methods'};
++  return {schemaVersion:2,title,creativeProfileRevisionId:profileId,selection:{basis:'manual',rationale:'管理员手动规划：'+title,evidenceKeys:[]},
++    freshnessWindowHours:72,evidence:[],modules:[],retention:'platform_originals_and_exact_methods',productPlan:emptyProductImplementationPlan()};
+ }
+ export function addPlanningModule(plan:ProductionPlanDocument,input:{title:string;domain:PlanningDomain;required:boolean;upstream?:string;moduleKey:string}){
+   if(plan.modules.length>=40)throw new Error('每份计划最多 40 个模块。');
+   if(input.upstream&&!plan.modules.some(m=>m.moduleKey===input.upstream))throw new Error('上游模块不在当前计划中。');
+-  const native=['assessment','copy'].includes(input.domain),kind=input.domain==='cover'?'image':input.domain==='video'?'video':input.domain==='experience'?'web_bundle':input.domain,
++  const native=['assessment','copy'].includes(input.domain),kind=input.domain==='cover'?'image':input.domain==='video'?'video':input.domain==='experience'?'scene_bundle':input.domain,
+     template=plan.modules.find(m=>m.domain===input.domain),module=ProductionPlanModuleSchema.parse({
+       moduleKey:input.moduleKey,title:input.title,domain:input.domain,required:input.required,purpose:'制作'+input.title,
+-      dependsOn:input.upstream?[input.upstream]:[],target:template?structuredClone(template.target):{form:'web',runtime:null},
++      dependsOn:input.upstream?[input.upstream]:[],target:template?structuredClone(template.target):{form:input.domain==='experience'?'3d':'web',runtime:null},
+       methodPurposes:[...purposes[input.domain]],methodRetention:'manifest_instructions_and_references',
+       outputs:template?template.outputs.map(output=>({...structuredClone(output),files:output.files.map(file=>({...file,sourceUrl:null}))})):input.domain==='assessment'?
+         ['assessment','report'].map(outputKind=>({outputKey:outputKind,label:outputKind==='report'?'报告':'题目',required:true,kind:outputKind,
+           original:{storage:'platform',representation:'structured'},files:[]})):[{outputKey:'main',label:input.title,required:true,kind,
+         original:{storage:'platform',representation:native?'structured':'file'},files:native?[]:[{fileKey:'source',purpose:'original',label:'交付原件',required:true,
+-          mimeTypes:input.domain==='cover'?['image/png','image/jpeg','image/webp']:input.domain==='video'?['video/mp4','video/webm']:['application/zip','text/html'],sourceUrl:null}]}],
++          mimeTypes:input.domain==='cover'?['image/png','image/jpeg','image/webp']:input.domain==='video'?['video/mp4','video/webm']:['application/zip','model/gltf-binary'],sourceUrl:null}]}],
+     });
+   return ProductionPlanDocumentSchema.parse({...plan,modules:[...plan.modules,module]});
+ }
+diff --git a/apps/web/src/admin/project-workspace.tsx b/apps/web/src/admin/project-workspace.tsx
+--- a/apps/web/src/admin/project-workspace.tsx
++++ b/apps/web/src/admin/project-workspace.tsx
+@@ -12,6 +12,7 @@
+ import {useProjectPlanning,PlanningToolbar,PlanningDialog} from './project-planning.js';
+ import {ProjectMethods} from './project-methods.js';
+ import {ProductionRunOperations} from './production-run-operations.js';
++import {ProductPlanPanel} from './product-plan-panel.js';
+ import './project-workspace.css';
+ 
+ const when=(value:string)=>new Date(value).toLocaleString('zh-CN',{hour12:false});
+@@ -92,6 +93,7 @@
+         <button disabled={list.page*list.pageSize>=list.total} onClick={()=>change({[key]:String(list.page+1)})}>下一页{label}</button></div>)}</details>}
+     <div className="pw-toolbar"><span className="pw-summary">查看已有成果、原作业与当前接续条件</span><button disabled={editor.active||editor.dirty||methodsDirty.current} onClick={()=>change({runOperations:'1',review:null,methodModule:null})}>外部制作与接续 →</button></div>
+     <PlanningToolbar editor={editor}/>
++    <ProductPlanPanel editor={editor}/>
+     {editor.notice&&<p className="pw-planning-feedback" role="status">{editor.notice}</p>}
+     {editor.conflict&&<p className="pw-planning-feedback" role="alert">计划版本已变化或保存冲突。当前规划保留，可先导出草稿，再放弃并读取最新；不会覆盖其他版本。</p>}
+     {editor.permissionLost&&<p className="pw-planning-feedback" role="alert">权限已变化，修改未保存。重新确认管理员身份后，再读取最新计划。</p>}
+diff --git a/packages/mcp/src/project-tools.ts b/packages/mcp/src/project-tools.ts
+--- a/packages/mcp/src/project-tools.ts
++++ b/packages/mcp/src/project-tools.ts
+@@ -29,8 +29,8 @@
+     project_list: [MachineProjectListSchema, MachineProjectPageSchema, false, 'List up to 100 projects in the shared authorization workspace. Does not expand the credential grant.'],
+     project_get: [MachineProjectGetSchema, MachineProjectResultSchema, false, 'Read project IDs and the latest fixed plan reference. productVersionId stays null until a real assessment draft has been saved.'],
+     project_profile_save: [MachineProjectProfileSaveSchema, CreativeProfileRevisionSchema, true, 'Append a shared creative-profile revision using expectedRevision. Existing plans keep their original profile.'],
+-    project_plan_get: [MachineProjectPlanGetSchema, ProductionPlanRevisionSchema, false, 'Read an exact immutable plan: topic evidence, common profile, stable module IDs, dependencies, method purposes and expected originals.'],
+-    project_plan_save: [MachineProjectPlanSaveSchema, ProductionPlanRevisionSchema, true, 'Append a fixed plan revision against expectedRevision. Dependencies must stay within the plan and be acyclic. This does not claim runnable delivery.'],
++    project_plan_get: [MachineProjectPlanGetSchema, ProductionPlanRevisionSchema, false, 'Read an exact immutable plan. V1 stays unchanged; V2 includes the mandatory Three.js baseline, per-product visual/motion/camera/interaction decisions, declared implementation evidence, budgets and pinned input references. All production tasks must read the same planRevisionId; undecided never means implemented or verified.'],
++    project_plan_save: [MachineProjectPlanSaveSchema, ProductionPlanRevisionSchema, true, 'Append a strict V1 or V2 fixed plan revision against expectedRevision. Use V2 productPlan for new Three.js planning; keep undecided fields explicit, pin same-product source IDs/digests and reuse requestId with identical input after uncertain results. Dependencies stay within the plan and acyclic. This does not execute or certify runnable delivery.'],
+     project_plan_validate: [MachineProjectPlanValidateSchema, ProductionPlanInspectionSchema, false, 'Validate a proposed fixed plan without saving. Unsupported forms and missing original files remain explicit; runtime is not executed.'],
+     project_method_create: [MachineProjectMethodCreateSchema, z.object({ skillId: IdSchema, versionId: IdSchema }).strict(), true,
+       'Create one project-owned DRAFT skill library in this domain, within the approved method quota. Stable methodKey supports retries. The server assigns the library identity. Upload references after creation, then save and capture the exact version. Never globally activates or executes it.'],
+diff --git a/packages/contracts/src/admin.ts b/packages/contracts/src/admin.ts
+--- a/packages/contracts/src/admin.ts
++++ b/packages/contracts/src/admin.ts
+@@ -151,3 +151,4 @@
+ export * from './production-run-operations.js';
+ 
+ export * from './external-run-configurations.js';
++export * from './product-plan.js';
+diff --git a/packages/contracts/src/production-plans.ts b/packages/contracts/src/production-plans.ts
+--- a/packages/contracts/src/production-plans.ts
++++ b/packages/contracts/src/production-plans.ts
+@@ -4,6 +4,7 @@
+ import { SkillPurposeSchema, skillPurposes } from './skills.js';
+ import { RendererReferenceSchema } from './experience.js';
+ import { ProjectCanvasLayoutDocumentSchema } from './project-canvas.js';
++import { ProductImplementationPlanSchema } from './product-plan.js';
+ 
+ const text = (max: number) => z.string().trim().min(1).max(max);
+ const digest = z.string().regex(/^[0-9a-f]{64}$/);
+@@ -64,13 +65,14 @@
+     video: ['video'], experience: ['image', 'web_bundle', 'scene_bundle'] };
+   if (module.outputs.some(output => !kinds[module.domain]!.includes(output.kind))) problem('交付种类与模块领域不匹配');
+ });
+-export const ProductionPlanDocumentSchema = z.object({
+-  schemaVersion: z.literal(1), title: text(160), creativeProfileRevisionId: IdSchema.toLowerCase(),
++const planFields = {
++  title: text(160),
+   selection: z.object({ basis: z.enum(['evidence', 'manual']), rationale: text(4000), evidenceKeys: z.array(KeySchema).max(50) }).strict(),
+   freshnessWindowHours: z.number().int().min(1).max(720),
+   evidence: z.array(TopicEvidenceSchema).max(50), modules: z.array(ProductionPlanModuleSchema).min(1).max(40),
+   retention: z.literal('platform_originals_and_exact_methods'),
+-}).strict().superRefine((plan, context) => {
++};
++function validatePlanGraph(plan: z.infer<z.ZodObject<typeof planFields>>, context: z.RefinementCtx) {
+   const problem = (message: string) => context.addIssue({ code: 'custom', message });
+   const keys = new Set(plan.modules.map(module => module.moduleKey));
+   if (keys.size !== plan.modules.length) problem('模块标识重复');
+@@ -90,7 +92,29 @@
+   }
+   if ([...keys].some(cycle)) problem('模块依赖不能形成循环');
+   if (JSON.stringify(plan).length > 300000) problem('商品计划超出大小限制');
+-});
++}
++const { title: planTitle, ...remainingPlanFields } = planFields;
++// Preserve V1 normalization order: existing digests and retry payloads use JSON.stringify.
++export const ProductionPlanDocumentV1Schema = z.object({ schemaVersion: z.literal(1), title: planTitle,
++  creativeProfileRevisionId: IdSchema.toLowerCase(), ...remainingPlanFields }).strict().superRefine(validatePlanGraph);
++const v2Fields = { schemaVersion: z.literal(2), ...planFields, productPlan: ProductImplementationPlanSchema };
++function validateProductPlanBindings(plan: z.infer<z.ZodObject<typeof v2Fields>>, context: z.RefinementCtx) {
++  const productPlan = plan.productPlan;
++  for (const [key, domain] of [['experienceModuleKey', 'experience'], ['assessmentModuleKey', 'assessment']] as const) {
++    if (productPlan[key] && !plan.modules.some(module => module.moduleKey === productPlan[key] && module.domain === domain))
++      context.addIssue({ code: 'custom', path: ['productPlan', key], message: '规划目标必须属于当前计划的对应领域模块' });
++  }
++  for (const [index, source] of productPlan.sources.entries()) if (!plan.modules.some(module => module.moduleKey === source.moduleKey))
++    context.addIssue({ code: 'custom', path: ['productPlan', 'sources', index, 'moduleKey'], message: '来源的目标模块不在当前计划中' });
++}
++export const ProductionPlanDocumentV2Schema = z.object({ ...v2Fields, creativeProfileRevisionId: IdSchema.toLowerCase() })
++  .strict().superRefine(validatePlanGraph).superRefine(validateProductPlanBindings);
++export const ProductionPlanDocumentSchema = z.discriminatedUnion('schemaVersion', [ProductionPlanDocumentV1Schema, ProductionPlanDocumentV2Schema]);
++// Bootstrap binds the profile on the server; graph and policy validation still use the same contracts.
++export const ProductionPlanBootstrapDocumentSchema = z.discriminatedUnion('schemaVersion', [
++  z.object({ schemaVersion: z.literal(1), ...planFields }).strict().superRefine(validatePlanGraph),
++  z.object(v2Fields).strict().superRefine(validatePlanGraph).superRefine(validateProductPlanBindings),
++]);
+ export type ProductionPlanDocument = z.infer<typeof ProductionPlanDocumentSchema>;
+ export const ProductionPlanSaveSchema = z.object({ plan: ProductionPlanDocumentSchema,
+   expectedRevision: z.number().int().min(0), requestId: IdSchema, layout: ProjectCanvasLayoutDocumentSchema.optional() }).strict();
+diff --git a/packages/contracts/src/machine-projects.ts b/packages/contracts/src/machine-projects.ts
+--- a/packages/contracts/src/machine-projects.ts
++++ b/packages/contracts/src/machine-projects.ts
+@@ -3,7 +3,7 @@
+ import { PublicReportSampleSchema } from './public.js';
+ import { CreativeProfileSchema, CreativeProfileRevisionSchema, ContentLocatorSchema, ContentAssetSaveSchema, AssetAuthoringSchema } from './content.js';
+ import { ProductConfigurationSchema } from './product-configuration.js';
+-import { ProductionPlanDocumentSchema, ProductionPlanSaveSchema } from './production-plans.js';
++import { ProductionPlanDocumentSchema, ProductionPlanSaveSchema, ProductionPlanBootstrapDocumentSchema } from './production-plans.js';
+ import { ProjectMethodCaptureSchema, ProjectMethodSnapshotSchema, ProjectProductionSaveSchema, ProjectProductionRecordSchema, ProjectProductionOutputSchema } from './project-production.js';
+ import { MachineBoundSkillSchema } from './machine-content.js';
+ import { ProductionDomainSchema } from './content-domain.js';
+@@ -24,7 +24,6 @@
+   'project_plan_get','project_plan_save','project_plan_validate','project_method_create','project_method_capture',
+   'project_method_get','project_method_reference_get','project_context_get','project_production_save','project_production_list','project_production_get','project_draft_save']);
+ export type MachineProjectOperation = z.infer<typeof MachineProjectOperationSchema>;
+-const { creativeProfileRevisionId: _boundProfile, ...bootstrapPlanFields } = ProductionPlanDocumentSchema.shape;
+ const { requestId: _draftRequest, ...assetDraftFields } = ContentAssetSaveSchema.shape;
+ export const MachineProjectBootstrapSchema = z.object({ requestId: id, projectKey: KeySchema,
+   product: z.object({ slug: KeySchema, name: z.string().trim().min(1).max(160), hook: z.string().trim().min(1).max(100),
+@@ -35,7 +34,7 @@
+   }).strict(),
+   profile: CreativeProfileSchema,
+   // Cross-field plan validation runs again after the server binds the real profile ID.
+-  plan: z.object(bootstrapPlanFields).strict(),
++  plan: ProductionPlanBootstrapDocumentSchema,
+ }).strict();
+ export const MachineProjectGetSchema = z.object({ productId: id }).strict();
+ export const MachineProjectListSchema = z.object({}).strict();
+diff --git a/packages/contracts/src/product-plan.ts b/packages/contracts/src/product-plan.ts
+new file mode 100644
+--- /dev/null
++++ b/packages/contracts/src/product-plan.ts
+@@ -0,0 +1,76 @@
++import { z } from 'zod';
++import { IdSchema, KeySchema } from './shared.js';
++
++const note = z.string().trim().max(4000);
++export const productPlanDecisionKeys = ['scene', 'animation', 'camera', 'interaction', 'feedback',
++  'confirmation', 'recovery', 'report', 'accessibility', 'fallback', 'resources'] as const;
++export const ProductPlanDecisionSchema = z.object({
++  requirement: z.enum(['undecided', 'required', 'not_required']),
++  status: z.enum(['unplanned', 'planned', 'implemented', 'verified']), details: note,
++  // Evidence is a declaration by the author. Parsing never executes or certifies it.
++  evidence: z.array(z.object({ kind: z.enum(['implementation', 'verification']),
++    reference: z.string().trim().min(1).max(500), summary: z.string().trim().min(1).max(1000) }).strict()).max(12),
++}).strict().superRefine((decision, context) => {
++  const problem = (message: string) => context.addIssue({ code: 'custom', message });
++  if (decision.requirement === 'undecided') {
++    if (decision.status !== 'unplanned' || decision.evidence.length) problem('待规划项不能声明已制作、已验证或提交交付证据');
++    return;
++  }
++  if (decision.status === 'unplanned' || !decision.details) problem('已作出的决定必须填写说明和实际阶段');
++  if (decision.requirement === 'not_required' && decision.status === 'implemented') problem('明确不需要的功能不能标为已实现');
++  if (decision.requirement === 'required' && ['implemented', 'verified'].includes(decision.status) &&
++    !decision.evidence.some(item => item.kind === 'implementation')) problem('已实现的声明需要明确实现依据');
++  if (decision.status === 'verified' && !decision.evidence.some(item => item.kind === 'verification')) problem('已验证的声明需要明确验证依据');
++});
++const bytes = z.number().int().min(0).max(200 * 1024 * 1024).nullable();
++export const ProductPlanBudgetsSchema = z.object({
++  devices: z.array(z.enum(['desktop', 'ios_safari', 'android_chrome', 'wechat', 'platform_webview'])).max(5)
++    .refine(values => new Set(values).size === values.length, '设备要求不能重复'),
++  maxRendererGzipBytes: bytes, maxTotalResourceBytes: bytes,
++  maxFirstFrameMs: z.number().int().positive().max(120000).nullable(),
++  maxPixelRatio: z.number().positive().max(4).nullable(), maxCanvasPixels: z.number().int().positive().max(16000000).nullable(),
++  maxTriangles: z.number().int().min(0).max(2000000).nullable(), maxDrawCalls: z.number().int().positive().max(2000).nullable(),
++  minFps: z.number().int().positive().max(120).nullable(),
++}).strict();
++export const ProductPlanSourceSchema = z.object({
++  sourceKey: KeySchema, moduleKey: KeySchema,
++  // These rows already retain exact content, resources, or Skill manifests and attachments.
++  // A source is planning input, never an assertion that a new module captured or used it.
++  kind: z.enum(['content_revision', 'experience_release', 'method_snapshot']),
++  id: IdSchema.toLowerCase(), digest: z.string().regex(/^[0-9a-f]{64}$/),
++}).strict();
++export const ProductImplementationPlanSchema = z.object({
++  schemaVersion: z.literal(1), implementation: z.literal('threejs'), basedOnPlanRevisionId: IdSchema.toLowerCase().nullable(),
++  visualDimension: z.enum(['undecided', '2d', '2.5d', '3d']),
++  // Runtime/assessment schemas and renderer pairs belong to these modules, not a duplicate configuration.
++  experienceModuleKey: KeySchema.nullable(), assessmentModuleKey: KeySchema.nullable(),
++  decisions: z.object(Object.fromEntries(productPlanDecisionKeys.map(key => [key, ProductPlanDecisionSchema])) as
++    Record<typeof productPlanDecisionKeys[number], typeof ProductPlanDecisionSchema>).strict(),
++  budgets: ProductPlanBudgetsSchema, sources: z.array(ProductPlanSourceSchema).max(100),
++}).strict().refine(plan => new Set(plan.sources.map(item => item.sourceKey)).size === plan.sources.length, '规划来源标识不能重复');
++export type ProductImplementationPlan = z.infer<typeof ProductImplementationPlanSchema>;
++export type ProductPlanDecision = z.infer<typeof ProductPlanDecisionSchema>;
++
++export function emptyProductImplementationPlan(basedOnPlanRevisionId: string | null = null): ProductImplementationPlan {
++  return ProductImplementationPlanSchema.parse({ schemaVersion: 1, implementation: 'threejs', basedOnPlanRevisionId,
++    visualDimension: 'undecided', experienceModuleKey: null, assessmentModuleKey: null,
++    decisions: Object.fromEntries(productPlanDecisionKeys.map(key => [key, { requirement: 'undecided', status: 'unplanned', details: '', evidence: [] }])),
++    budgets: { devices: [], maxRendererGzipBytes: null, maxTotalResourceBytes: null, maxFirstFrameMs: null,
++      maxPixelRatio: null, maxCanvasPixels: null, maxTriangles: null, maxDrawCalls: null, minFps: null }, sources: [] });
++}
++
++export function productPlanPendingFields(plan: ProductImplementationPlan): string[] {
++  return [ ...(plan.visualDimension === 'undecided' ? ['visualDimension'] : []),
++    ...(!plan.experienceModuleKey ? ['experienceModuleKey'] : []),
++    ...productPlanDecisionKeys.filter(key => plan.decisions[key].requirement === 'undecided').map(key => 'decisions.' + key),
++    ...Object.entries(plan.budgets).filter(([, value]) => value === null || Array.isArray(value) && value.length === 0).map(([key]) => 'budgets.' + key) ];
++}
++
++export function productPlanDifference(before: ProductImplementationPlan | null, after: ProductImplementationPlan) {
++  const fields = ['visualDimension', 'experienceModuleKey', 'assessmentModuleKey', 'basedOnPlanRevisionId',
++    ...productPlanDecisionKeys.map(key => 'decisions.' + key), ...Object.keys(after.budgets).map(key => 'budgets.' + key), 'sources'];
++  const read = (value: unknown, path: string) => path.split('.').reduce<unknown>((current, key) =>
++    current && typeof current === 'object' ? (current as Record<string, unknown>)[key] : undefined, value);
++  return fields.filter(path => JSON.stringify(read(before, path)) !== JSON.stringify(read(after, path)))
++    .map(path => ({ path, before: read(before, path) ?? null, after: read(after, path) }));
++}
+diff --git a/apps/api/src/operations/product-plan-references.ts b/apps/api/src/operations/product-plan-references.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/api/src/operations/product-plan-references.ts
+@@ -0,0 +1,33 @@
++import type { ProductionPlanDocument } from '@orai/contracts/admin';
++import type { CatalogAdminAccess } from '../catalog/admin-access.service';
++import type { Prisma } from '../generated/prisma/client';
++import { ApiException } from '../common/http-errors';
++
++export async function validateProductPlanReferences(tx: Prisma.TransactionClient, access: CatalogAdminAccess,
++  productId: string, plan: ProductionPlanDocument) {
++  if (plan.schemaVersion !== 2) return;
++  const fixed = plan.productPlan, where = { productId, scope: access.scope };
++  if (fixed.basedOnPlanRevisionId && !await tx.productionPlanRevision.findFirst({
++    where: { ...where, id: fixed.basedOnPlanRevisionId }, select: { id: true },
++  })) throw new ApiException('NOT_FOUND', '规划来源修订不属于该商品或当前范围', 404);
++  for (const source of fixed.sources) {
++    const target = { ...where, id: source.id };
++    let row: { digest: string; creativeProfileRevisionId: string | null } | null = null;
++    if (source.kind === 'content_revision') row = await tx.contentRevision.findFirst({ where: target,
++      select: { digest: true, creativeProfileRevisionId: true } });
++    else if (source.kind === 'experience_release') row = await tx.experienceRelease.findFirst({ where: target,
++      select: { digest: true, creativeProfileRevisionId: true } });
++    else {
++      const method = await tx.projectMethodSnapshot.findFirst({ where: target,
++        include: { module: { include: { identity: true, plan: { select: { creativeProfileRevisionId: true } } } } } });
++      const module = plan.modules.find(item => item.moduleKey === source.moduleKey)!;
++      if (method && method.module.identity.domain !== module.domain)
++        throw new ApiException('CONFLICT', '方法来源与目标模块的专业领域不一致', 409);
++      row = method ? { digest: method.digest, creativeProfileRevisionId: method.module.plan.creativeProfileRevisionId } : null;
++    }
++    if (!row) throw new ApiException('NOT_FOUND', '固定来源不属于该商品或当前范围', 404);
++    if (row.digest !== source.digest) throw new ApiException('REVISION_CONFLICT', '固定来源摘要已不一致，请重新读取精确版本', 409);
++    if (row.creativeProfileRevisionId && row.creativeProfileRevisionId !== plan.creativeProfileRevisionId)
++      throw new ApiException('CONFLICT', '固定来源与商品规划的共同创作设定不一致', 409);
++  }
++}
+diff --git a/apps/api/prisma/migrations/20261027010000_product_plan_contract/migration.sql b/apps/api/prisma/migrations/20261027010000_product_plan_contract/migration.sql
+new file mode 100644
+--- /dev/null
++++ b/apps/api/prisma/migrations/20261027010000_product_plan_contract/migration.sql
+@@ -0,0 +1,62 @@
++BEGIN;
++SET LOCAL search_path TO orai,pg_temp;
++
++-- Forward-only schema discrimination. No existing document, digest or default is rewritten.
++ALTER TABLE production_plan_revisions DROP CONSTRAINT production_plan_shape;
++ALTER TABLE production_plan_revisions ADD CONSTRAINT production_plan_shape CHECK (
++  number>0 AND digest ~ '^[0-9a-f]{64}$' AND creative_profile_digest ~ '^[0-9a-f]{64}$' AND
++  jsonb_typeof(document)='object' AND document ?& ARRAY['schemaVersion','creativeProfileRevisionId','modules','retention'] AND
++  document->>'retention'='platform_originals_and_exact_methods' AND
++  jsonb_typeof(document->'modules')='array' AND jsonb_array_length(document->'modules') BETWEEN 1 AND 40 AND
++  ((document->'schemaVersion'='1'::jsonb AND NOT document ? 'productPlan') OR
++   (document->'schemaVersion'='2'::jsonb AND document ? 'productPlan' AND jsonb_typeof(document->'productPlan')='object' AND
++    document->'productPlan' ?& ARRAY['schemaVersion','implementation','basedOnPlanRevisionId','visualDimension',
++      'experienceModuleKey','assessmentModuleKey','decisions','budgets','sources'] AND
++    document->'productPlan'->'schemaVersion'='1'::jsonb AND document->'productPlan'->>'implementation'='threejs' AND
++    jsonb_typeof(document->'productPlan'->'decisions')='object' AND jsonb_typeof(document->'productPlan'->'budgets')='object' AND
++    jsonb_typeof(document->'productPlan'->'sources')='array' AND jsonb_array_length(document->'productPlan'->'sources')<=100))
++);
++
++CREATE FUNCTION guard_product_implementation_plan() RETURNS trigger LANGUAGE plpgsql SET search_path=orai,pg_temp AS $$
++DECLARE p jsonb; source jsonb; source_digest text; source_profile uuid; source_domain text; target_domain text; origin uuid;
++BEGIN
++  IF NEW.document->>'schemaVersion'<>'2' THEN RETURN NEW; END IF;
++  p:=NEW.document->'productPlan';
++  origin:=(p->>'basedOnPlanRevisionId')::uuid;
++  IF origin IS NOT NULL AND NOT EXISTS(SELECT 1 FROM production_plan_revisions WHERE id=origin AND product_id=NEW.product_id AND scope=NEW.scope) THEN
++    RAISE EXCEPTION 'Product plan origin must belong to the same product and scope' USING ERRCODE='23514';
++  END IF;
++  IF (p->>'experienceModuleKey' IS NOT NULL AND NOT EXISTS(SELECT 1 FROM jsonb_array_elements(NEW.document->'modules') m
++      WHERE m->>'moduleKey'=p->>'experienceModuleKey' AND m->>'domain'='experience')) OR
++     (p->>'assessmentModuleKey' IS NOT NULL AND NOT EXISTS(SELECT 1 FROM jsonb_array_elements(NEW.document->'modules') m
++      WHERE m->>'moduleKey'=p->>'assessmentModuleKey' AND m->>'domain'='assessment')) THEN
++    RAISE EXCEPTION 'Product plan targets must refer to its own typed modules' USING ERRCODE='23514';
++  END IF;
++  FOR source IN SELECT value FROM jsonb_array_elements(p->'sources') LOOP
++    source_digest:=NULL; source_profile:=NULL; source_domain:=NULL;
++    SELECT m->>'domain' INTO target_domain FROM jsonb_array_elements(NEW.document->'modules') m WHERE m->>'moduleKey'=source->>'moduleKey';
++    IF target_domain IS NULL THEN RAISE EXCEPTION 'Unknown source target module' USING ERRCODE='23514'; END IF;
++    IF source->>'kind'='content_revision' THEN
++      SELECT digest,creative_profile_revision_id INTO source_digest,source_profile FROM content_revisions
++        WHERE id=(source->>'id')::uuid AND product_id=NEW.product_id AND scope=NEW.scope;
++    ELSIF source->>'kind'='experience_release' THEN
++      SELECT digest,creative_profile_revision_id INTO source_digest,source_profile FROM experience_releases
++        WHERE id=(source->>'id')::uuid AND product_id=NEW.product_id AND scope=NEW.scope;
++    ELSIF source->>'kind'='method_snapshot' THEN
++      SELECT s.digest,r.creative_profile_revision_id,i.domain INTO source_digest,source_profile,source_domain
++        FROM project_method_snapshots s JOIN production_plan_modules m ON m.id=s.plan_module_id
++        JOIN production_plan_revisions r ON r.id=m.plan_revision_id JOIN production_module_identities i ON i.id=m.module_id
++        WHERE s.id=(source->>'id')::uuid AND s.product_id=NEW.product_id AND s.scope=NEW.scope;
++    END IF;
++    IF source_digest IS NULL OR source_digest IS DISTINCT FROM source->>'digest' OR
++      (source_profile IS NOT NULL AND source_profile<>NEW.creative_profile_revision_id) OR
++      (source_domain IS NOT NULL AND source_domain<>target_domain) THEN
++      RAISE EXCEPTION 'Fixed product plan source must match its product, scope, profile, domain and digest' USING ERRCODE='23514';
++    END IF;
++  END LOOP;
++  RETURN NEW;
++END $$;
++CREATE TRIGGER product_implementation_plan_guard BEFORE INSERT ON production_plan_revisions
++  FOR EACH ROW EXECUTE FUNCTION guard_product_implementation_plan();
++-- Reuse existing append-only tables and restricted role grants. No new writable tables or columns.
++COMMIT;
+diff --git a/apps/web/src/admin/product-plan-panel.tsx b/apps/web/src/admin/product-plan-panel.tsx
+new file mode 100644
+--- /dev/null
++++ b/apps/web/src/admin/product-plan-panel.tsx
+@@ -0,0 +1,123 @@
++import { useState } from 'react';
++import { ProductImplementationPlanSchema, ProductPlanDecisionSchema, ProductionPlanModuleSchema,
++  productPlanDecisionKeys, productPlanDifference, productPlanPendingFields,
++  type ProductImplementationPlan, type ProductPlanDecision } from '@orai/contracts/admin';
++import { registeredExperiences } from '@orai/contracts/experience';
++import type { ProjectPlanning } from './project-planning.js';
++import { planningRuntimeKey } from './project-planning-model.js';
++import './product-plan-panel.css';
++
++const labels = { scene: '场景与构图', animation: '动画', camera: '镜头', interaction: '交互与玩法', feedback: '操作反馈',
++  confirmation: '明确确认', recovery: '保存与恢复', report: '报告承接', accessibility: '无障碍与减少动态', fallback: '设备故障回退', resources: '资源制作' };
++const requirementLabels = { undecided: '待规划', required: '需要', not_required: '明确不需要' };
++const statusLabels = { unplanned: '尚未规划', planned: '已规划', implemented: '已实现（附依据）', verified: '已验证（附依据）' };
++const budgetLabels: Record<Exclude<keyof ProductImplementationPlan['budgets'], 'devices'>, string> = {
++  maxRendererGzipBytes: '渲染模块 gzip 上限（字节）', maxTotalResourceBytes: '资源总量上限（字节）', maxFirstFrameMs: '首帧上限（毫秒）',
++  maxPixelRatio: '像素比上限', maxCanvasPixels: '画布像素上限', maxTriangles: '三角面上限', maxDrawCalls: '绘制调用上限', minFps: '最低帧率',
++};
++const devices = { desktop: '桌面', ios_safari: 'iOS Safari', android_chrome: 'Android Chrome', wechat: '微信', platform_webview: '销售平台内置浏览器' } as const;
++const runtimeOptions = registeredExperiences.filter(item => 'graphics' in item).map(item => {
++  const runtime = { renderer: { key: item.key, version: item.version }, reportRenderer: { key: item.reportKey, version: item.reportVersion },
++    inputSchema: item.inputSchema, engine: item.engine, reportSchema: item.contentSchema };
++  return { value: planningRuntimeKey(runtime), label: item.label + ' → ' + item.reportLabel, runtime };
++});
++
++function JsonInput({ label, value, editable, onApply, editor }: { label: string; value: unknown; editable: boolean;
++  onApply: (value: unknown) => void; editor: ProjectPlanning }) {
++  const serialized = JSON.stringify(value, null, 2), text = editor.jsonDrafts[label] ?? serialized, [error, setError] = useState('');
++  if (!editable) return <pre>{serialized}</pre>;
++  return <div className="pp-json"><textarea aria-label={label + ' JSON'} value={text} rows={5} maxLength={100000}
++    onChange={event => { editor.jsonDraft(label, event.target.value === serialized ? null : event.target.value); setError(''); }} />
++    <button type="button" disabled={text === serialized} onClick={() => {
++      try { onApply(JSON.parse(text)); editor.jsonDraft(label, null); setError(''); }
++      catch (issue) { setError(issue instanceof Error ? issue.message.slice(0, 300) : '请核对 JSON'); }
++    }}>应用{label}</button>{text !== serialized && <small>此段编辑尚未应用到规划草稿</small>}{error && <p role="alert">{error}</p>}</div>;
++}
++
++function Decision({ name, value, editable, change, editor }: { name: typeof productPlanDecisionKeys[number]; value: ProductPlanDecision;
++  editable: boolean; change: (value: ProductPlanDecision) => void; editor: ProjectPlanning }) {
++  return <details className="pp-decision"><summary><strong>{labels[name]}</strong><span>{requirementLabels[value.requirement]} · {statusLabels[value.status]}</span></summary>
++    <div className="pp-decision-content"><div className="pp-grid">
++      <label>是否需要<select aria-label={labels[name] + '需求'} disabled={!editable} value={value.requirement} onChange={event => {
++        const requirement = event.target.value as ProductPlanDecision['requirement'];
++        change({ ...value, requirement, status: requirement === 'undecided' ? 'unplanned' : 'planned', evidence: [] });
++      }}>{Object.entries(requirementLabels).map(([key, label]) => <option value={key} key={key}>{label}</option>)}</select></label>
++      <label>实际阶段<select aria-label={labels[name] + '阶段'} disabled={!editable || value.requirement === 'undecided'} value={value.status}
++        onChange={event => change({ ...value, status: event.target.value as ProductPlanDecision['status'] })}>
++        {Object.entries(statusLabels).filter(([key]) => value.requirement === 'undecided' ? key === 'unplanned' :
++          key !== 'unplanned' && !(value.requirement === 'not_required' && key === 'implemented')).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
++      </select></label>
++    </div><label>具体决定与触发条件<textarea aria-label={labels[name] + '说明'} rows={3} maxLength={4000} value={value.details} disabled={!editable}
++      placeholder="说明该商品如何呈现、触发、退出或减少动态；待定可以留空" onChange={event => change({ ...value, details: event.target.value })} /></label>
++      <details><summary>实现与验证依据 · {value.evidence.length} 项</summary><p>此处保存作者申报的文件或验收记录引用。检查规划不会执行或认证这些依据。</p>
++        <JsonInput label={labels[name] + '依据'} editable={editable} value={value.evidence} editor={editor}
++          onApply={input => change({ ...value, evidence: ProductPlanDecisionSchema.shape.evidence.parse(input) })} /></details>
++    </div></details>;
++}
++
++export function ProductPlanPanel({ editor }: { editor: ProjectPlanning }) {
++  const document = editor.data?.plan?.plan;
++  if (!document) return null;
++  const editable = editor.active && editor.canEdit && !editor.action.busy && !editor.uncertain && !editor.conflict && !editor.permissionLost;
++  if (document.schemaVersion === 1) return <details className="pp-panel"><summary><strong>商品体验规划</strong><span>旧版 v1 · 尚无独立规划合同</span></summary>
++    <div className="pp-body"><p>旧版形式字段保留历史含义。建立 v2 后再明确视觉、动画、镜头和交互；保存会追加新修订。</p>
++      <button type="button" onClick={editor.upgrade} disabled={!editor.canEdit || editor.action.busy || editor.uncertain || editor.conflict}>建立 Three.js 商品规划</button>
++      {!editor.canEdit && <p>当前为固定历史版本；请回到最新计划编辑。</p>}</div></details>;
++  const plan = document.productPlan, pending = productPlanPendingFields(plan),
++    before = editor.basePlan?.schemaVersion === 2 ? editor.basePlan.productPlan : null,
++    changes = editor.planDirty ? productPlanDifference(before, plan) : [],
++    experience = document.modules.find(module => module.moduleKey === plan.experienceModuleKey), runtime = experience?.target.runtime;
++  const change = (next: Partial<ProductImplementationPlan>) => editor.updateProductPlan({ ...plan, ...next });
++  return <details className="pp-panel"><summary><strong>商品体验规划</strong><span>Three.js · v2 · {pending.length ? `${pending.length} 项待确定` : '决定已填写 · 运行另验'}</span></summary>
++    <div className="pp-body"><div className="pp-heading"><div><h4>按这款商品决定如何体验</h4><p>用户价值、世界观和视觉风格沿用固定创作设定。这里保存制作决定与预算。</p></div>
++      {!editor.active && editor.canEdit && <button type="button" onClick={editor.begin}>编辑商品规划</button>}</div>
++      <div className="pp-policy"><strong>Three.js</strong><span>正常商品体验必须实际使用；动画、镜头、玩法分别规划。</span></div>
++      <div className="pp-grid">
++        <label>视觉维度<select aria-label="商品视觉维度" disabled={!editable} value={plan.visualDimension}
++          onChange={event => change({ visualDimension: event.target.value as ProductImplementationPlan['visualDimension'] })}>
++          <option value="undecided">待规划</option><option value="2d">2D</option><option value="2.5d">2.5D</option><option value="3d">3D</option></select></label>
++        <label>体验模块<select aria-label="商品体验模块" disabled={!editable} value={plan.experienceModuleKey ?? ''}
++          onChange={event => change({ experienceModuleKey: event.target.value || null })}><option value="">待规划</option>
++          {document.modules.filter(module => module.domain === 'experience').map(module => <option key={module.moduleKey} value={module.moduleKey}>{module.title}</option>)}</select></label>
++        <label>内容与评估模块<select aria-label="商品评估模块" disabled={!editable} value={plan.assessmentModuleKey ?? ''}
++          onChange={event => change({ assessmentModuleKey: event.target.value || null })}><option value="">尚未选择</option>
++          {document.modules.filter(module => module.domain === 'assessment').map(module => <option key={module.moduleKey} value={module.moduleKey}>{module.title}</option>)}</select></label>
++      </div>
++      {experience && <details className="pp-section"><summary>运行与报告配对 · {runtime ? runtime.renderer.key + ' / ' + runtime.reportRenderer.key : '待规划'}</summary>
++        <p>此处编辑体验模块的唯一运行目标。选择模板只固定制作要求，实际场景与资源另行验收。</p>
++        <label>已注册 Three.js 配对<select aria-label="商品运行配对" disabled={!editable}
++          value={planningRuntimeKey(runtime ?? null)} onChange={event => {
++            const selected = runtimeOptions.find(item => item.value === event.target.value);
++            editor.updateRuntime(experience.moduleKey, { form: '3d', runtime: selected ? structuredClone(selected.runtime) : null });
++          }}><option value="">待规划</option>{runtime && !runtimeOptions.some(item => item.value === planningRuntimeKey(runtime)) &&
++            <option value={planningRuntimeKey(runtime)}>现有 / 自定义：{runtime.renderer.key}@{runtime.renderer.version} → {runtime.reportRenderer.key}@{runtime.reportRenderer.version}</option>}
++          {runtimeOptions.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}</select></label>
++        <details><summary>自定义运行目标</summary><JsonInput label="运行目标" value={experience.target} editable={editable} editor={editor}
++          onApply={value => editor.updateRuntime(experience.moduleKey, ProductionPlanModuleSchema.shape.target.parse(value))} /></details>
++      </details>}
++      <h4>制作决定</h4><p>静态构图可以明确选择。待规划、明确不需要、已实现和已验证分别保存。</p>
++      <div className="pp-decisions">{productPlanDecisionKeys.map(key => <Decision key={key} name={key} value={plan.decisions[key]} editable={editable} editor={editor}
++        change={value => change({ decisions: { ...plan.decisions, [key]: value } })} />)}</div>
++      <details className="pp-section"><summary>设备与制作预算</summary><p>空白表示待规划。填写上限不代表实际资源或设备已达标。</p>
++        <div className="pp-devices">{Object.entries(devices).map(([key, label]) => <label key={key}><input type="checkbox" disabled={!editable}
++          checked={plan.budgets.devices.includes(key as keyof typeof devices)} onChange={event => change({ budgets: { ...plan.budgets,
++            devices: event.target.checked ? [...plan.budgets.devices, key as keyof typeof devices] : plan.budgets.devices.filter(device => device !== key) } })} />{label}</label>)}</div>
++        <div className="pp-grid">{Object.entries(budgetLabels).map(([key, label]) => <label key={key}>{label}<input type="number" min={key === 'maxPixelRatio' ? 0.1 : 0}
++          step={key === 'maxPixelRatio' ? 0.1 : 1} aria-label={label} disabled={!editable} value={plan.budgets[key as keyof typeof budgetLabels] ?? ''}
++          placeholder="待规划" onChange={event => change({ budgets: { ...plan.budgets, [key]: event.target.value === '' ? null : Number(event.target.value) } })} /></label>)}</div>
++      </details>
++      <details className="pp-section"><summary>固定内容、资源与方法来源 · {plan.sources.length} 项</summary>
++        <p>填写 sourceKey、目标 moduleKey、kind、id、digest。支持 content_revision、experience_release、method_snapshot；方法快照包含精确 Skill 和附件，体验版本包含实际资源清单。保存时校验同商品、范围和摘要。选题与宣传来源 URL 沿用本计划的证据清单。</p>
++        <JsonInput label="固定来源" value={plan.sources} editable={editable} editor={editor} onApply={value => change({ sources: ProductImplementationPlanSchema.shape.sources.parse(value) })} />
++        {plan.basedOnPlanRevisionId && <p>规划来源修订：<code>{plan.basedOnPlanRevisionId}</code></p>}
++      </details>
++      {editor.pendingJson && <p role="status">有高级 JSON 编辑尚未应用，请先应用或放弃这部分输入，再保存计划。导出草稿会保留原始输入。</p>}
++      {editor.validation?.success === false && <div className="pp-validation" role="alert"><strong>请补充或修正规划</strong><ul>{editor.validation.error.issues.slice(0, 8)
++        .map((issue, index) => <li key={index}>{issue.path.join('.')}：{issue.message}</li>)}</ul></div>}
++      {changes.length > 0 && <details className="pp-section"><summary>本次变更与影响 · {changes.length} 项</summary>
++        <p>保存后生成新的计划与模块快照。旧方法、产物和审核仍固定在原修订，新制作需重新选择依据。</p><ul>{changes.map(item =>
++          <li key={item.path}><strong>{labels[item.path.replace('decisions.', '') as keyof typeof labels] ?? budgetLabels[item.path.replace('budgets.', '') as keyof typeof budgetLabels] ?? item.path}</strong>
++            <span>{JSON.stringify(item.before)?.slice(0, 160)} → {JSON.stringify(item.after)?.slice(0, 160)}</span></li>)}</ul></details>}
++      <p className="pp-foot">{editor.planDirty ? '当前修改尚未保存，请使用上方「保存新计划」。' : '此处读取固定计划修订。'}规划检查不执行场景，正式发布完整性由后续发布校验负责。</p>
++    </div></details>;
++}
+diff --git a/apps/web/src/admin/product-plan-panel.css b/apps/web/src/admin/product-plan-panel.css
+new file mode 100644
+--- /dev/null
++++ b/apps/web/src/admin/product-plan-panel.css
+@@ -0,0 +1,25 @@
++.project-workspace .pp-panel{border-bottom:1px solid var(--pw-line);background:#1c1c27;font-size:11px;line-height:1.8}
++.project-workspace .pp-panel>summary{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 20px;cursor:pointer;list-style:none}
++.project-workspace .pp-panel>summary::before{content:'▸';color:#b79ad7}.project-workspace .pp-panel[open]>summary::before{content:'▾'}
++.project-workspace .pp-panel>summary>strong{font-size:12px;font-weight:500;margin-right:auto}.project-workspace .pp-panel>summary>span{color:#aa98bc;font-size:10px}
++.project-workspace .pp-body{border-top:1px solid var(--pw-line);padding:18px 22px 22px;max-height:680px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#51435e transparent}
++.project-workspace .pp-body h4{font-size:13px;font-weight:500;margin:14px 0 7px}.project-workspace .pp-body p{color:#a79ab3;font-size:11px;margin:8px 0 12px}
++.project-workspace .pp-heading{display:flex;justify-content:space-between;gap:18px;align-items:center}.project-workspace .pp-heading h4{margin-top:0}
++.project-workspace .pp-policy{display:flex;align-items:center;gap:14px;border-left:2px solid #bca0e0;background:#262131;padding:10px 13px;margin:10px 0 17px;color:#b9aac9}
++.project-workspace .pp-policy strong{color:#d8c3f0;font-size:12px;font-weight:500;white-space:nowrap}
++.project-workspace .pp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:12px 0}
++.project-workspace .pp-body label{display:flex;flex-direction:column;gap:5px;min-width:0;color:#b3a4c2;font-size:10px}
++.project-workspace .pp-decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}
++.project-workspace .pp-decision{border-bottom:1px solid #393142;min-width:0;align-self:start}
++.project-workspace .pp-decision>summary{display:flex;justify-content:space-between;gap:12px;cursor:pointer;padding:12px 2px;list-style:none}
++.project-workspace .pp-decision>summary>strong{font-weight:500;color:#ddd0ea}.project-workspace .pp-decision>summary>span{color:#a994ba;font-size:10px}
++.project-workspace .pp-decision[open]{grid-column:1/-1}.project-workspace .pp-decision-content{padding:0 0 16px}
++.project-workspace .pp-decision-content>.pp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
++.project-workspace .pp-section{border-top:1px solid #393142;margin-top:15px;padding-top:12px}.project-workspace .pp-section>summary,.project-workspace .pp-decision-content details>summary{cursor:pointer;color:#c4afd8;padding:4px 0}
++.project-workspace .pp-devices{display:flex;gap:12px 18px;flex-wrap:wrap;margin:15px 0}.project-workspace .pp-devices label{flex-direction:row;align-items:center;font-size:11px}
++.project-workspace .pp-json{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}.project-workspace .pp-json textarea{flex-basis:100%;font-family:ui-monospace,monospace;resize:vertical;line-height:1.7}
++.project-workspace .pp-json small{color:#d5b988}.project-workspace .pp-json p{flex-basis:100%;color:#e1a9ac}
++.project-workspace .pp-validation{border-left:2px solid #d6ab84;background:#30262b;padding:10px 13px;margin:15px 0;color:#e2bc9a;overflow-wrap:anywhere}
++.project-workspace .pp-body ul{padding-left:18px}.project-workspace .pp-section li{margin:10px 0;overflow-wrap:anywhere}.project-workspace .pp-section li>span{display:block;color:#ab98bc;font-size:10px;white-space:pre-wrap}
++.project-workspace .pp-foot{border-top:1px solid #393142;padding-top:13px;margin-bottom:0!important}
++@media(max-width:820px){.project-workspace .pp-panel>summary{padding:12px 14px;flex-wrap:wrap;gap:5px 8px}.project-workspace .pp-panel>summary>span{flex-basis:100%;padding-left:18px}.project-workspace .pp-body{padding:15px;max-height:65dvh}.project-workspace .pp-grid,.project-workspace .pp-decisions{grid-template-columns:1fr}.project-workspace .pp-decision-content>.pp-grid{grid-template-columns:1fr}.project-workspace .pp-heading{align-items:flex-start;flex-direction:column;gap:5px}.project-workspace .pp-policy{align-items:flex-start;flex-direction:column;gap:3px}}
+diff --git a/apps/web/test/product-plan.test.ts b/apps/web/test/product-plan.test.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/web/test/product-plan.test.ts
+@@ -0,0 +1,110 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { ProductionPlanDocumentSchema, MachineProjectBootstrapSchema,emptyProductImplementationPlan,
++  productPlanDifference,productPlanPendingFields,ProductPlanDecisionSchema } from '@orai/contracts/admin';
++import { productPlanFixture } from './product-plan-fixture.js';
++import { emptyProjectPlan, isPlanningSaveUncertain, planningRuntimeKey } from '../src/admin/project-planning-model.js';
++import { ClientError } from '../src/api/client.js';
++
++test('v2 accepts independent static and animated Three.js plans without imposing one scene or gameplay', () => {
++  const staticPlan = ProductionPlanDocumentSchema.parse(productPlanFixture('static'));
++  const animatedPlan = ProductionPlanDocumentSchema.parse(productPlanFixture('animated'));
++  assert.equal(staticPlan.schemaVersion, 2);
++  assert.notDeepEqual(staticPlan, animatedPlan);
++  assert.deepEqual(staticPlan, productPlanFixture('static'));
++});
++
++test('legacy v1 stays exact and rejects v2 fields; unknown future versions fail closed', () => {
++  const { productPlan: _, ...base } = productPlanFixture();
++  const legacy = { ...base, schemaVersion: 1 };
++  assert.deepEqual(ProductionPlanDocumentSchema.parse(legacy), legacy);
++  const oldNormalized={schemaVersion:1,title:legacy.title,creativeProfileRevisionId:legacy.creativeProfileRevisionId,selection:legacy.selection,
++    freshnessWindowHours:legacy.freshnessWindowHours,evidence:legacy.evidence,modules:legacy.modules,retention:legacy.retention};
++  assert.equal(JSON.stringify(ProductionPlanDocumentSchema.parse(legacy)),JSON.stringify(oldNormalized),'legacy normalization order is part of existing digest and retry compatibility');
++  assert.equal(ProductionPlanDocumentSchema.safeParse({ ...legacy, productPlan: productPlanFixture().productPlan }).success, false);
++  assert.equal(ProductionPlanDocumentSchema.safeParse({ ...productPlanFixture(), schemaVersion: 3 }).success, false);
++});
++
++test('new admin plans declare Three.js while leaving product-specific decisions genuinely undecided', () => {
++  const plan = emptyProjectPlan(productPlanFixture().creativeProfileRevisionId, '新商品规划') as Record<string, any>;
++  assert.equal(plan.schemaVersion, 2);
++  assert.equal(plan.productPlan.implementation, 'threejs');
++  assert.equal(plan.productPlan.visualDimension, 'undecided');
++  assert.ok(Object.values(plan.productPlan.decisions).every((item: any) => item.requirement === 'undecided' && item.status === 'unplanned'));
++  assert.equal(plan.modules.length, 0);
++});
++
++test('lost or invalid save responses and proxy failures require original-request recovery before more edits', () => {
++  for (const [code, status] of [['NETWORK_ERROR', 0], ['INVALID_RESPONSE', 0], ['SERVICE_UNAVAILABLE', 502], ['SERVICE_UNAVAILABLE', 504]] as const)
++    assert.equal(isPlanningSaveUncertain(new ClientError(code, 'synthetic', status)), true);
++  assert.equal(isPlanningSaveUncertain(new ClientError('REVISION_CONFLICT', 'conflict', 409)), false);
++  assert.equal(isPlanningSaveUncertain(new ClientError('FORBIDDEN', 'revoked', 403)), false);
++  assert.equal(isPlanningSaveUncertain(new ClientError('VALIDATION_ERROR', 'bad input', 400)), false);
++});
++
++test('runtime choices distinguish exact renderer versions, report pairs and evaluation schemas instead of matching a renderer name', () => {
++  const runtime=ProductionPlanDocumentSchema.parse(productPlanFixture()).modules[0]!.target.runtime!;
++  assert.notEqual(planningRuntimeKey(runtime),planningRuntimeKey({...runtime,reportRenderer:{key:'other-report',version:1}}));
++  assert.notEqual(planningRuntimeKey(runtime),planningRuntimeKey({...runtime,renderer:{...runtime.renderer,version:2}}));
++  assert.notEqual(planningRuntimeKey(runtime),planningRuntimeKey({...runtime,engine:'other-engine'}));
++  assert.equal(planningRuntimeKey(null),'');assert.equal(planningRuntimeKey(runtime),planningRuntimeKey(structuredClone(runtime)));
++});
++
++test('change previews preserve the base and distinguish resolved decisions from remaining unknown requirements', () => {
++  const before=emptyProductImplementationPlan(),snapshot=structuredClone(before),after=structuredClone(before);
++  after.visualDimension='2.5d';after.decisions.animation={requirement:'not_required',status:'planned',details:'固定构图',evidence:[]};after.budgets.minFps=30;
++  assert.deepEqual(productPlanDifference(before,after).map(item=>item.path),['visualDimension','decisions.animation','budgets.minFps']);
++  assert.deepEqual(before,snapshot);assert.deepEqual(productPlanDifference(after,structuredClone(after)),[]);
++  assert.equal(productPlanPendingFields(after).includes('decisions.animation'),false);
++  assert.equal(productPlanPendingFields(after).includes('decisions.camera'),true);
++  assert.equal(productPlanPendingFields(after).includes('budgets.minFps'),false);
++  assert.ok(productPlanDifference(null,after).length>10);
++  const required={requirement:'required',status:'implemented',details:'已编写功能',evidence:[{kind:'implementation',reference:'synthetic://code',summary:'合同样本'}]};
++  assert.equal(ProductPlanDecisionSchema.safeParse(required).success,true);
++  assert.equal(ProductPlanDecisionSchema.safeParse({...required,status:'planned',details:''}).success,false);
++  assert.equal(ProductPlanDecisionSchema.safeParse({...required,status:'unplanned'}).success,false);
++});
++
++test('undecided, explicitly unnecessary, implemented and verified are distinct and require corresponding evidence', () => {
++  const plan = productPlanFixture() as Record<string, any>;
++  plan.productPlan.decisions.animation = { requirement: 'undecided', status: 'unplanned', details: '', evidence: [] };
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, true);
++  plan.productPlan.decisions.animation.status = 'verified';
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, false);
++  plan.productPlan.decisions.animation = { requirement: 'required', status: 'verified', details: '明确动画', evidence: [] };
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, false);
++  plan.productPlan.decisions.animation.evidence = [
++    { kind: 'implementation', reference: 'synthetic://implementation', summary: '合成引用，不是真实交付成绩' },
++    { kind: 'verification', reference: 'synthetic://verification', summary: '仅用于合同测试' },
++  ];
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, true);
++  plan.productPlan.decisions.animation.requirement = 'not_required';
++  plan.productPlan.decisions.animation.status = 'implemented';
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, false);
++});
++
++test('draft budgets and targets may remain undecided while invalid technology, cross-module targets and forged fields fail', () => {
++  const plan = productPlanFixture() as Record<string, any>;
++  plan.productPlan.experienceModuleKey = null;
++  plan.productPlan.visualDimension = 'undecided';
++  plan.productPlan.budgets = Object.fromEntries(Object.keys(plan.productPlan.budgets).map(key => [key, key === 'devices' ? [] : null]));
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, true);
++  for (const change of [
++    { implementation: 'html' }, { experienceModuleKey: 'foreign-module' }, { assessmentModuleKey: 'experience' },
++    { published: true }, { budgets: { ...plan.productPlan.budgets, maxTriangles: -1 } },
++  ]) assert.equal(ProductionPlanDocumentSchema.safeParse({ ...plan, productPlan: { ...plan.productPlan, ...change } }).success, false);
++});
++
++test('source references are fixed, bounded, unique and point to declared target modules', () => {
++  const plan = productPlanFixture() as Record<string, any>;
++  const source = { sourceKey: 'reference', moduleKey: 'experience', kind: 'experience_release', id: '22222222-2222-4222-8222-222222222222', digest: 'a'.repeat(64) };
++  plan.productPlan.sources = [source];
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, true);
++  plan.productPlan.sources.push(source);
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, false);
++  plan.productPlan.sources = [{ ...source, moduleKey: 'foreign' }];
++  assert.equal(ProductionPlanDocumentSchema.safeParse(plan).success, false);
++  // Bootstrap binds a real profile later, but must expose both strict schema versions.
++  const { creativeProfileRevisionId: _, ...bootstrapPlan } = productPlanFixture();
++  assert.equal(MachineProjectBootstrapSchema.shape.plan.safeParse(bootstrapPlan).success, true);
++});
+diff --git a/apps/web/test/product-plan-fixture.ts b/apps/web/test/product-plan-fixture.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/web/test/product-plan-fixture.ts
+@@ -0,0 +1,40 @@
++export const productPlanProfileId = '11111111-1111-4111-8111-111111111111';
++
++// Synthetic planning decisions, not generated product content or runtime evidence.
++export function productPlanFixture(variant: 'static' | 'animated' = 'static') {
++  const decision = (details: string) => ({ requirement: 'required', status: 'planned', details, evidence: [] });
++  return {
++    schemaVersion: 2,
++    title: '合成商品规划', creativeProfileRevisionId: productPlanProfileId,
++    selection: { basis: 'manual', rationale: '验证不同商品拥有独立规划', evidenceKeys: [] },
++    freshnessWindowHours: 72, evidence: [], retention: 'platform_originals_and_exact_methods',
++    modules: [{ moduleKey: 'experience', title: '商品体验', domain: 'experience', required: true,
++      purpose: '按明确选择保存答案', dependsOn: [], target: { form: '3d', runtime: {
++        renderer: { key: 'synthetic-gallery', version: 1 }, reportRenderer: { key: 'synthetic-notes', version: 1 },
++        inputSchema: 'single_choice_v1', engine: 'dimensions_v1', reportSchema: 'report_content_v1',
++      } }, methodPurposes: ['scene_design', 'report_presentation'], methodRetention: 'manifest_instructions_and_references',
++      outputs: [{ outputKey: 'scene', label: '场景原件', required: true, kind: 'scene_bundle',
++        original: { storage: 'platform', representation: 'file' },
++        files: [{ fileKey: 'source', purpose: 'original', label: '原件', required: true, mimeTypes: ['application/zip'], sourceUrl: null }] }],
++    }],
++    productPlan: {
++      schemaVersion: 1, implementation: 'threejs', basedOnPlanRevisionId: null,
++      visualDimension: variant === 'static' ? '2.5d' : '3d',
++      experienceModuleKey: 'experience', assessmentModuleKey: null,
++      decisions: {
++        scene: decision(variant === 'static' ? '纸片展厅的固定构图' : '可探索的星图空间'),
++        animation: variant === 'static' ? { requirement: 'not_required', status: 'planned', details: '使用静态构图', evidence: [] }
++          : decision('选择后播放可跳过的星点连线；减少动态时直接显示结果'),
++        camera: decision(variant === 'static' ? '固定正交镜头' : '限制范围的轨道镜头'),
++        interaction: decision('触摸或键盘明确选择对象'), feedback: decision('显示选中轮廓和文字反馈'),
++        confirmation: decision('点击确认后保存；镜头运动不参与评估'), recovery: decision('恢复服务端已确认答案'),
++        report: decision('固定文本报告，承接商品意象'), accessibility: decision('键盘、文字说明和减少动态'),
++        fallback: decision('图形失效时使用同题文字回退并允许重试'), resources: decision('内置几何体，不加载外部模型'),
++      },
++      budgets: { devices: ['desktop', 'ios_safari', 'android_chrome'], maxRendererGzipBytes: 245760,
++        maxTotalResourceBytes: 1048576, maxFirstFrameMs: 5000, maxPixelRatio: 1.5, maxCanvasPixels: 1500000,
++        maxTriangles: 14000, maxDrawCalls: 48, minFps: 30 },
++      sources: [],
++    },
++  };
++}

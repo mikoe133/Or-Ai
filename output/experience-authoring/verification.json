@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-21",
+  "task": "T15-B",
+  "status": "technical verification passed; awaiting user UI approval",
+  "tests": {
+    "api": 265,
+    "web": 49,
+    "mcpSdk": 19,
+    "uniqueTotal": 333
+  },
+  "browser": {
+    "fullRunner": 53,
+    "finalFocusedRecheck": 3,
+    "uniqueChecks": 53,
+    "finalRecheck": "Two purpose-specific methods and reversed MCP method order; not added to full-run count"
+  },
+  "database": {
+    "models": 50,
+    "preservedTables": 42,
+    "originalRows": 1156,
+    "migrations": 17,
+    "releases": 5,
+    "available_versions": 5,
+    "missing_attempts": 0,
+    "missing_presentations": 0,
+    "temporary_databases": 0,
+    "profile_mismatches": 0
+  },
+  "typecheck": "passed",
+  "build": "passed",
+  "prismaValidate": "passed",
+  "isolatedSchemaDiff": "no difference",
+  "liveSchemaDiff": "no difference",
+  "screenshots": "isolated synthetic business data; not cloud Auth or formal product acceptance",
+  "next": "Await UI approval before T16-A. Await separate cloud-service approval before T09."
+}

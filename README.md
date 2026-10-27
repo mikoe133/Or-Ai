@@ -1,26 +1,13 @@
 # Or-Ai
 
-平台定位为提供情绪价值的自我与关系探索平台。不同商品的题目/交互、报告、视频、文案和封面，按同一份[商品创作设定](prd/v1/PRODUCT-CREATIVE-SYSTEM.md) 配套制作，帮助用户获得具体理解、表达与沟通线索；新风格/报告/双人能力仍按各任务范围验收。
+2026-10-27：所有正常商品体验使用Three.js，视觉、动画、镜头与交互按每款商品规划确定。01商品规划合同技术范围已完成，API/MCP/后台共享严格v2，旧v1与历史数据保留。
 
-主平台正在按 [v1 任务](prd/v1/README.md) 开发；商品先使用测试占位内容，用户已完成 Figma 手机/网页设计，采用[本地开发优先](prd/v1/LOCAL-FIRST.md)、云端接入后置。
+- [按序任务](prd/v1/tasks/README.md)：01已归档，下一项02 Skill服务端政策；其余15批仍按依赖与暂停边界执行。
+- [路线与条件](prd/v1/ROADMAP.md)、[当前进度](prd/v1/PROGRESS.md)：555项、类型/构建及19项CUA自主检查通过；完整Git存档与后续功能完成分别记录。
+- [已完成归档](prd/v1/tasks/archive/README.md)：保留9份原完整任务及当前01技术完成范围，云端/真机/正式商品/商业验收仍有独立任务持有。
+- [商品实现规范](prd/v1/PRODUCT-IMPLEMENTATION-POLICY.md)、[v1文档入口](prd/v1/README.md)：固定产品规则与工程/制作合同。
 
-2026-10-14 已接入 Figma 商城主页的本地视觉与搜索、分类、收藏等预览交互，现保留在独立的[设计预览](http://127.0.0.1:5173/preview)。双端截图与验证见[主页实现记录](output/implementation/homepage/README.md)。
-
-2026-10-15 的 Figma 流程预览现位于[商品详情](http://127.0.0.1:5173/preview/products/partner) → [兑换](http://127.0.0.1:5173/preview/redeem) → [成功](http://127.0.0.1:5173/preview/redeem/success) → [答题与反馈](http://127.0.0.1:5173/preview/assessment/partner) → [完整报告](http://127.0.0.1:5173/preview/reports/partner)。示例码 `DEMO-XXXX-XXXX` 和 16 道公开示例题只用于设计预览；真实业务入口使用后端发布的商品、题量与权益。预览实现依据见[实现记录](output/implementation/store-flow/README.md)。
-
-T01–T05、T06-L、T07 和 T08 本地功能已验收。[业务商城](http://127.0.0.1:5173/)已接入真实目录、兑换、答题、报告和简单运营页面。后端 158 项、前端 40 项测试及 22 项浏览器流程通过。真实 Supabase/Resend 收信、云端账户和对象存储持久化仍待 T09；正式双端视觉在 T10。证据见[执行记录](prd/v1/PROGRESS.md)。
-
-2026-10-19 [T12-A 内容底座](prd/v1/CONTENT-FOUNDATION.md) 已完成：创作设定与内容历史、稳定引用、来源记录及混合存储元数据接口。`pnpm test:content` 的 20 项新增检查和完整后端 178＋前端 40 项回归、类型/构建通过；本机实际迁移保留既有业务数据，该批次为 33 模型/9 迁移。T12-B/C 工作台和成套采用现已完成，[T13 skill 库](prd/v1/tasks/T13-style-skills.md)、[T14 MCP](prd/v1/tasks/T14-mcp-ingestion.md) 待执行。具体约定见[内容规划](prd/v1/CONTENT-BACKOFFICE.md)。
-
-2026-10-19 [T12-B 四类内容工作台](http://127.0.0.1:5173/admin/content) 已完成：创作设定、题库/报告、封面、视频分镜、文案块、三类媒体状态、制作来源与整套试读。后端 182＋前端 42 项测试、31 项隔离浏览器流程及类型/构建通过；该批次为 33 模型/10 迁移，六类原业务表内容不变。11 项完整真实 Auth 流程沿用此前证据。
-
-2026-10-20 [T12-C 引用与成套采用](prd/v1/CONTENT-ADOPTION.md) 已完成，整项 T12 本地验收通过：固定引用与上下游反查、差异/更新复查、不可变采用包/JSON 导出、清理预演/恢复和完整演示视频可用。后端 195＋前端 43，共 238 项测试、35 项浏览器流程及类型/构建通过；当前 37 模型/11 迁移。迁移保留旧业务，另新增未发布的[关系花园演示商品](http://127.0.0.1:5173/admin/content/01a157f3-3f92-77db-8967-0d27328e3eb6?version=01a157f3-3fcf-704d-8cca-1706f9d52a2a&profile=01a157f3-3fed-768f-9f0b-f373cf84150d&tab=adoption)和采用包；媒体另行授权下载，采用不会发布。
-
-后续[多形态商品规划](prd/v1/EXPERIENCE-PLATFORM.md) 拆为 T15 体验模板/协议、T16 网页/2.5D/Three.js 试点、T17 小游戏新输入/评估。明确选择型沉浸呈现可复用现有计分，排序/分支/动作需另实现后端能力；这些是规划，当前没有 3D 或游戏运行器。
-
-T08、T06-O 和 T12-A/B/C 已完成，后续顺序见[任务路线](prd/v1/ROADMAP.md)：下一批次 T13-A skill 库底座 → T13-B 绑定/来源 → T14-L 本地 MCP → T15 体验/报告模板 → T16-A 网页/2.5D → T10-L 正式视觉 → T09 云端 → T14-C 远程 MCP → T10-V 平台验收 → T11 首款试运营。Three.js 与新玩法留扩展队列。当前四类内容工作台可用，见 [工作台交接](prd/v1/CONTENT-WORKBENCH.md)；四个每日制作任务、skill、MCP 与云资源尚未实施。
-
-本机账户环境使用独立 Supabase Auth 与 Mailpit。执行 `pnpm auth:setup`、`pnpm auth:up` 后重启本项目 `pnpm dev`，即可[登录](http://127.0.0.1:5173/auth/login)并访问[后台](http://127.0.0.1:5173/admin)，邮件在[本地收件箱](http://127.0.0.1:54324/)。本轮私有管理员凭据在 Git 忽略的 `.local/auth/operator-account.json`，操作和恢复步骤见 [AUTH-SETUP.md](prd/v1/AUTH-SETUP.md)。25 项新增配置/运行栈检查、11 项真实 Auth 浏览器流程及停用/恢复通过，原 198 项测试与 22 项业务浏览器回归亦通过；云端/外部邮件仍待 T09。
+当前按用户授权对已有全部安全项目改动做完整提交与正常推送存档，结果以Git回执为准；核实后直接接续任务。真实云部署、商业发布和交易未完成；内容/模型比较暂停，日更配置未启用。
 
 ## 本地工具链
 
@@ -114,7 +101,7 @@ ASSET_STORAGE_DRIVER 默认在开发/测试为 local，ASSET_DIRECTORY 相对 AP
 node --env-file=../../.env --test --experimental-test-coverage --test-coverage-include='.test-build/src/operations/**' --test-coverage-include='.test-build/scripts/admin-command.js' --test-coverage-lines=80 --test-coverage-functions=80 --test-coverage-branches=80 .test-build/test/operations.test.js .test-build/test/asset-storage.test.js
 ```
 
-T08 已接入受保护的简单管理页面；T12 已完成四类内容工作台、素材历史/固定引用与成套采用。风格 skill、MCP 和 3D/小游戏仍按 T13–T17 后续实现。
+T08 已接入受保护的简单管理页面；T12 已完成四类内容工作台、素材历史/固定引用与成套采用。T13-A/B 已完成 skill 库、五用途组合和制作来源；四领域本地 MCP 已实现；远程 MCP 与 3D/小游戏继续按 T14-C、T15–T17 推进。
 
 ## 本地功能页面（T08 已验收）
 
@@ -197,4 +184,4 @@ pnpm runtime:stop
 
 ## 进度与执行方式
 
-每次按 ROADMAP 处理一个明确批次并验证。用户后续授权已完成 T06-O 和整项 T12；下一批次为 T13-A skill 库底座。本轮未创建 Goal 或自动化。云端待验收项见 [LOCAL-FIRST.md](prd/v1/LOCAL-FIRST.md)，证据见 [PROGRESS.md](prd/v1/PROGRESS.md)。
+每次按 ROADMAP 处理一个明确批次并验证。O3指定正式UI已获批准，O4先核查/设计，到新的O4-A设计审核停下；不提前实现配置表/API或正式页面。W6 模型比较与 W3 内容制作继续暂停，历史批准和调用前停止记录保持；真实权限/客户端/真机、未来 UI 与云服务独立审核。未创建 Goal、自动化或云资源；证据见 [PROGRESS.md](prd/v1/PROGRESS.md)。

@@ -1,0 +1,262 @@
+{
+  "date": "2026-10-26",
+  "completedFullTasks": 9,
+  "historicalMixedTasks": 8,
+  "entries": [
+    {
+      "id": "T01",
+      "source": "prd/v1/tasks/T01-foundation.md",
+      "archive": "prd/v1/tasks/archive/completed/T01-foundation.md",
+      "sourceSha256": "2dfb0ac0e78c5a31ad1eca8e3977a3e179e56954ffde6abbf30cbc29d8793eb6",
+      "archiveSha256": "c54f2222aaa6d1099ae729c2c83cdc448332274dba21c68c2b38bf5296a378b5",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T02",
+      "source": "prd/v1/tasks/T02-models-and-fixtures.md",
+      "archive": "prd/v1/tasks/archive/completed/T02-models-and-fixtures.md",
+      "sourceSha256": "b679fe76c1563f56fc5919a9479b9b1448e05625cfabe54289de948cba7650d8",
+      "archiveSha256": "cf29459641f7048eb5fd814ed2d76b90cae720549b5da2f565c347147ec0bc9c",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T03",
+      "source": "prd/v1/tasks/T03-catalog.md",
+      "archive": "prd/v1/tasks/archive/completed/T03-catalog.md",
+      "sourceSha256": "f8899a63f0435a931f4d8bb5d339c93563fe51fd24dd7c5d0de8db551555ef29",
+      "archiveSha256": "4f62fbda4ba47ab8efa22743ada4b49cf12f0d2253a3565952cc9b1fc9d1232f",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T04",
+      "source": "prd/v1/tasks/T04-redemption.md",
+      "archive": "prd/v1/tasks/archive/completed/T04-redemption.md",
+      "sourceSha256": "f2adce4d704be51d915d32254a2f5eb93c82954093ae42813cdfd1ac9dfe5dd7",
+      "archiveSha256": "c4197e11a6d4d0aa40605147519583c1aa911e3bed17d68e5ca95873ba6eb3bf",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T05",
+      "source": "prd/v1/tasks/T05-test-runtime.md",
+      "archive": "prd/v1/tasks/archive/completed/T05-test-runtime.md",
+      "sourceSha256": "ef0a9c4ff33dd1874017d638ae8d38a0bbb551615e436d241643242331a0626c",
+      "archiveSha256": "ef0a9c4ff33dd1874017d638ae8d38a0bbb551615e436d241643242331a0626c",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T06",
+      "source": "prd/v1/tasks/T06-accounts.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T06-accounts.md",
+      "sourceSha256": "73e0789671aa42bcb84020dbc7cd7f4f467812189ac8d04c11bd8edb4e8ff2d1",
+      "archiveSha256": "d22543de49c400dc354dc3c500b737a75d7dcc55e1433f3c30db10817677efaf",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T06.C1",
+        "T06.C2",
+        "T06.C3"
+      ]
+    },
+    {
+      "id": "T07",
+      "source": "prd/v1/tasks/T07-operations.md",
+      "archive": "prd/v1/tasks/archive/completed/T07-operations.md",
+      "sourceSha256": "872021e54ba1ce357287741661dd40c5140daa985d48596830dc6bf312cc860c",
+      "archiveSha256": "3d9adf7e362be0ea54796953f4efc084ee83cad583f0ef8c2f59a4b20c6349c3",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T08",
+      "source": "prd/v1/tasks/T08-functional-web.md",
+      "archive": "prd/v1/tasks/archive/completed/T08-functional-web.md",
+      "sourceSha256": "50281f6855f8b6ca2c65c58e79c9a2cad1fef388488506ee87c77cf558b6f170",
+      "archiveSha256": "6fafaae959740ce3d7900e56e86014ddb149cf51ddc5bf96ea399bd7c1304021",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T09",
+      "source": "prd/v1/tasks/T09-cloud-validation.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "sourceSha256": "2599d51bacfec3aaa0887310f4971f2e71bdd20ca8cf8b3112014bde35b90467",
+      "archiveSha256": "c2e56dabe8d5c8726791e5f45937853d8532500c57e04eb393ce36d54d32c8c5",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T09.1",
+        "T09.2",
+        "T09.3",
+        "T09.4",
+        "T09.5",
+        "T09.6",
+        "T09.7",
+        "T09.8"
+      ]
+    },
+    {
+      "id": "T10",
+      "source": "prd/v1/tasks/T10-final-ui.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T10-final-ui.md",
+      "sourceSha256": "d7a18487a018288634ff5c9851d3a647cd0acd0146f33168f0366abe6cc6d84e",
+      "archiveSha256": "d7e513ab2ebb1c18058f941ead8f3e29058ff5079437a2e82446a84f15473aac",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T10.6",
+        "T10.7"
+      ]
+    },
+    {
+      "id": "T11",
+      "source": "prd/v1/tasks/T11-commercial-launch.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "sourceSha256": "a81a574ae9c3efd86e5f005ab122f475de7082160f5738820b633d74df83c682",
+      "archiveSha256": "e141673ec8cc1375126f38cc25c4ae4734b32f77113469d9beefd324d1bada06",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T11.1",
+        "T11.2",
+        "T11.3",
+        "T11.4",
+        "T11.5",
+        "T11.6",
+        "T11.7"
+      ]
+    },
+    {
+      "id": "T12",
+      "source": "prd/v1/tasks/T12-content-backoffice.md",
+      "archive": "prd/v1/tasks/archive/completed/T12-content-backoffice.md",
+      "sourceSha256": "97a0d69e9724ca3d9a4b74ecc6e4041c391bd2e27b99021588fca88c895a33b7",
+      "archiveSha256": "368d1d30d4e51cc011e3e67aeb40fb910f9fb328b1a2fd33346182244bf0ba47",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T13",
+      "source": "prd/v1/tasks/T13-style-skills.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T13-style-skills.md",
+      "sourceSha256": "cebb1eba345449182534ecac6315b45730519dff8c69945fabf4740ac0b6fba7",
+      "archiveSha256": "86e05b50d19134375bb1e014205eb91f2fde254ec4b38a28dee41dc2ee8d8d89",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T13.C2",
+        "T13.C3"
+      ]
+    },
+    {
+      "id": "T14",
+      "source": "prd/v1/tasks/T14-mcp-ingestion.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "sourceSha256": "49f8ccce0b92f454dd345cb2b12678180d7df413701c217d7242b341a3cf1fbc",
+      "archiveSha256": "51ac1869b17d922248701f53906594729154dcd734f5e61eb82693d1a92441a7",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T14.C1",
+        "T14.C2",
+        "T14.C3",
+        "T14.W3",
+        "T14.W4",
+        "T14.W6"
+      ]
+    },
+    {
+      "id": "T15",
+      "source": "prd/v1/tasks/T15-experience-runtime.md",
+      "archive": "prd/v1/tasks/archive/completed/T15-experience-runtime.md",
+      "sourceSha256": "c88e9ce6b5d60d92e2954fb03cae76a2293c0373efd1cefd263af43a961ed94e",
+      "archiveSha256": "d1134f7b273fe55a03101792eaf1fec8f1e62fba099e0b4c2942bc111e1af76c",
+      "disposition": "completed",
+      "uncheckedIds": []
+    },
+    {
+      "id": "T16",
+      "source": "prd/v1/tasks/T16-immersive-products.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "sourceSha256": "c721e4f07e1ae968e197189091e09aae4afa2e38d34434f14dfa5a487be70fcb",
+      "archiveSha256": "95b4a06240a5710581be3e1ee0c7404811138bb5261a08aa904845d1017c1fdf",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T16.1",
+        "T16.2",
+        "T16.3",
+        "T16.5",
+        "T16.6",
+        "T16.7",
+        "T16.8",
+        "T16.C2",
+        "T16.C3",
+        "T16.C4"
+      ]
+    },
+    {
+      "id": "T17",
+      "source": "prd/v1/tasks/T17-interactive-evaluation.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "sourceSha256": "f80c072eef8d53ae88f5198c5a4f54fc580617218b79d6ecc23f373a609ad041",
+      "archiveSha256": "59eae68ce28275089901391a8ec7d015d8191b2976318f1926c89b71bc8e6281",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": [
+        "T17.1",
+        "T17.2",
+        "T17.3",
+        "T17.4",
+        "T17.5",
+        "T17.6",
+        "T17.7",
+        "T17.8"
+      ]
+    },
+    {
+      "id": "history-index",
+      "source": "prd/v1/ROADMAP.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/ROADMAP-before-replan.md",
+      "sourceSha256": "64febebbebe06a6c63f6cb4833cfc860d1b9abb4a3e8d418f061f9a76b52cfe0",
+      "archiveSha256": "a73bd735776ba2ff806e20c0fd2e5bd2a652db7aa0e93fb8380f69b1decbc94a",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": []
+    },
+    {
+      "id": "history-index",
+      "source": "prd/v1/PROGRESS.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/PROGRESS-through-20261026.md",
+      "sourceSha256": "2044939cc9391fe9cdb4a3deda63057ac29952b15afe84ba2b9c4f3db67f83bf",
+      "archiveSha256": "9c0e78ce7b47d3f38c62e285e7e1bc86e7a2a2e06240c62bee5c993de423f0dc",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": []
+    },
+    {
+      "id": "history-index",
+      "source": "prd/v1/README.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/README-before-replan.md",
+      "sourceSha256": "8e2ec7c9ae4389603889c3d2b2801266ad4b10c71cefc4adf40a32d53711b1b8",
+      "archiveSha256": "6c9a4255cf600c3959445fb85b3cf39fe39668d31db5e9b22c4055c879d7c242",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": []
+    },
+    {
+      "id": "history-index",
+      "source": "README.md",
+      "archive": "prd/v1/tasks/archive/history/2026-10-26/ROOT-README-before-replan.md",
+      "sourceSha256": "ab191993cf181d7641f97c89246b7473373f2bea06d737e1f77a7a879ba5ccee",
+      "archiveSha256": "ff65ee8bdce470fae63355901d0155660f3544350dcc155cfcc40000dfa43b97",
+      "disposition": "historical_snapshot",
+      "uncheckedIds": []
+    }
+  ],
+  "updated": "2026-10-27",
+  "executionCompletions": [
+    {
+      "id": "T16.C2-A",
+      "date": "2026-10-27",
+      "archive": "prd/v1/tasks/archive/completed/01-product-plan-contract.md",
+      "archiveSha256": "9de0ce4dacf6285967a9d0647f5abcc007a054fbe9ca0626e739b3f57539a983",
+      "scope": "verified_technical_task",
+      "evidence": "output/implementation/product-plan-contract-20261027/verification.md",
+      "parentT16Complete": false
+    }
+  ]
+}

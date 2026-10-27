@@ -1,95 +1,38 @@
-# Or-Ai v1：主平台实施入口
+# Or-Ai v1：实施入口
 
-日期：2026-10-20。状态：T01–T05、T06-L、T07、T08、T06-O 和 T12-A/B/C 本地已验收；当前后端 195＋前端 43，共 238 项测试、35 项隔离浏览器流程、类型/构建和内容迁移通过，37 模型/11 迁移。11 项真实 Auth 完整浏览器流程沿用此前证据。T13–T17 仍待验收，T06-C 与云存储/公网留 T09；具体见 PROGRESS.md。
+更新：2026-10-27。平台为情绪价值、自我与关系探索提供商品体验。所有商品正常体验使用 Three.js，世界观、视觉、动画、镜头和交互由每款商品规划决定；题目/报告/封面/视频/文案使用同一固定设定和合规Skill。
 
-后续执行顺序见 [ROADMAP.md](ROADMAP.md)：下一批次为 T13-A 库底座 → T13-B 绑定/来源 → T14-L → T15 → T16-A → T10-L → T09 → T14-C → T10-V → T11。T06-O、T12-A/B/C 已完成；Three.js 与新玩法留扩展队列。T 编号保持稳定，本表按实际执行位置展示。
+**执行从[当前任务索引](tasks/README.md)开始，01技术范围已完成，下一项为[02 Skill服务端政策](tasks/active/02-skill-policy-validation.md)。** 主线和条件/暂停分支已重写；已完成任务与旧排期不再混入当前队列。
 
-本版按用户最新要求调整：先搭建聚合主平台，商品暂用大致内容占位；手机和网页 Figma 设计已完成，页面覆盖接入前核对。占位内容用于验证平台能力，正式商品题库、营销素材和真实销售不作为平台开发的前置条件。
+## 任务与状态
 
-平台宗旨：提供情绪价值，加深对自己、对方与关系的理解。每款商品的题目/交互、最终报告、封面、视频与文案按同一创作设定配套制作，具体约定见 PRODUCT-CREATIVE-SYSTEM.md；不同形式与风格服务于具体情绪/理解目标。
+- [ROADMAP](ROADMAP.md)：阶段、优先级、可独立推进和真实外部条件。
+- [tasks/README](tasks/README.md)：16个按序待办，每项有背景/工程入口/步骤/验证/完成和回退要求。
+- [PROGRESS](PROGRESS.md)：当前实施事实、未完成范围及下一任务，不再累计旧排期。
+- [归档](tasks/archive/README.md)：9份完整完成任务、混合任务已完成批次与历史快照。
+- [新旧编号映射](tasks/TASK-MAP.md)：原46个未勾项逐项去向；[registry](tasks/registry.json)保存机器可读依赖与状态。
 
-## 文档分工
+## 产品与制作合同
 
-- [PRD.md](PRD.md)：v1 功能范围、业务规则、数据/API 边界及平台验收。
-- [PLACEHOLDERS.md](PLACEHOLDERS.md)：占位商品与测试数据的制作约定。
-- [UI-HANDOFF.md](UI-HANDOFF.md)：需要设计的页面、状态与 UI 接入边界。
-- [LOCAL-FIRST.md](LOCAL-FIRST.md)：本地优先的开发顺序、T06-L/T06-C 验收边界与后续云端清单。
-- [PROGRESS.md](PROGRESS.md)：T01–T08 的实现、测试与执行记录；本地必需验收通过后可推进下一步，原执行范围到 T08 后停止。
-- [ROADMAP.md](ROADMAP.md)：T08 后推荐执行顺序、技术硬依赖、批次交付/退出条件与待定事项的唯一入口。
-- [AUTH-SETUP.md](AUTH-SETUP.md)：T06 的 Supabase Auth/Resend 配置步骤与真实认证/收信验收要求。
-- [DATA-MODEL.md](DATA-MODEL.md)：已实现的 37 个业务模型/十一份迁移、账号权限、seed、版本/保留期、账户会话、文件/上传与交付事务约定。
-- [API-CONTRACTS.md](API-CONTRACTS.md)：契约、接口示例和 UI 区域字段映射；目录、兑换、答题/报告/反馈、账户/绑定与 T07 运营 HTTP 已实现。
-- [CONTENT-WORKBENCH.md](CONTENT-WORKBENCH.md)：四类内容工作台、本地归档/预览/正式文件与制作记录的已实现范围。
-- [CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)：引用/反查、差异/复查、固定采用/JSON 导出、受控清理及本机演示包。
-- [CONTENT-BACKOFFICE.md](CONTENT-BACKOFFICE.md)：内容后台、题库/宣传素材、风格 skill 与 MCP 的统一业务约定、数据/接口边界及扩展验收。
-- [PRODUCT-CREATIVE-SYSTEM.md](PRODUCT-CREATIVE-SYSTEM.md)：平台宗旨、商品情绪/理解目标、整体创作设定、报告方案、各领域配套制作与成套验收。
-- [EXPERIENCE-PLATFORM.md](EXPERIENCE-PLATFORM.md)：网页/2.5D/Three.js/小游戏商品的内容、评估、交互模板与主题分层，运行协议、兼容性和试点顺序。
-- [tasks/](tasks/)：按实施顺序拆分的任务；每份包含依赖、子任务、交付物与验收条件。
-- [PRODUCT.md](../../PRODUCT.md)：长期商业方向、内容策略、云服务架构与调研来源；v1 执行顺序以本目录为准。
+- [商品统一实现规范](PRODUCT-IMPLEMENTATION-POLICY.md)：Three.js固定基线、按商品决定动画/交互、七用途Skill及前向升级边界。
+- [商品创作设定](PRODUCT-CREATIVE-SYSTEM.md)：情绪/理解目标、参与视角、世界观和报告/传播承接。
+- [PRD](PRD.md)、[长期产品方向](../../PRODUCT.md)：功能/商业范围与产品决策；当前任务顺序以本目录索引为准。
+- [内容后台](CONTENT-BACKOFFICE.md)、[工作台](CONTENT-WORKBENCH.md)、[引用与采用](CONTENT-ADOPTION.md)：四类内容、固定输入/输出、原件与人工审核。
+- [Skill库](STYLE-SKILLS.md)、[固定组合](SKILL-BINDINGS.md)、[七用途模板](../../examples/threejs-products/README.md)：可复用全局方法与实际商品规划绑定分层。
+- [体验平台](EXPERIENCE-PLATFORM.md)、[运行/制作](EXPERIENCE-RUNTIME.md)：真实注册能力、答案/评估、场景/报告配对与恢复；旧DOM样例仅保留历史兼容。
 
-## 任务总表
+## 工程与运营入口
 
-所有复选框仅在实际完成并验收后勾选。编号用于引用，不表示已经实现。
+- [AUTH-SETUP](AUTH-SETUP.md)：本机账户/管理员与云认证的独立范围；Mailpit不是外部邮箱验收。
+- [云接入准备](CLOUD-READINESS.md)、[本地独立验证](LOCAL-VALIDATION-FOLLOWUP.md)、[本地优先边界](LOCAL-FIRST.md)：已购香港 VPS 与已有 Supabase/R2/Resend 的基础检查；应用适配/部署及真实业务验收由任务07/08/10继续持有。
+- [数据模型](DATA-MODEL.md)、[API合同](API-CONTRACTS.md)、[占位隔离](PLACEHOLDERS.md)：现有数据库/接口/演示数据约束。
+- [本地MCP](MCP-CONTENT-TOOLS.md)、[传输](MCP-LOCAL-TRANSPORT.md)、[SDK](MCP-SDK-NOTES.md)：已实现领域工具；远程接入单独验收。
+- [项目制作](PRODUCTION-PLANS.md)、[工作区](PROJECT-WORKSPACE.md)、[原件审核留存](PROJECT-RETENTION.md)：计划/模块/方法/产物的固定来源。
+- [外部运行](EXTERNAL-PRODUCTION-RUNS.md)、[Codex交接](CODEX-PRODUCTION-HANDOFF.md)、[制作闭环审查](CONTENT-PRODUCTION-REVIEW.md)、[业务验收](PLATFORM-BUSINESS-ACCEPTANCE.md)：回执/恢复/未启用配置及暂停分支。
+- [UI交接](UI-HANDOFF.md)、[本地正式UI结果](T10-LOCAL-UI.md)：现有设计与本地已验证范围；未来页面自主验证不等于用户已批准具体新图。
 
-| 状态 | 步骤 | 任务 | 前置依赖 | 执行位置/验收边界 |
-| --- | --- | --- | --- | --- |
-| [x] | T01 | [仓库与开发环境](tasks/T01-foundation.md) | 无 | 已完成 |
-| [x] | T02 | [模型、契约与占位数据](tasks/T02-models-and-fixtures.md) | T01 | 已完成 |
-| [x] | T03 | [商品目录与版本接口](tasks/T03-catalog.md) | T02 | 已完成 |
-| [x] | T04 | [兑换码与匿名权益](tasks/T04-redemption.md) | T02、T03 | 已完成 |
-| [x] | T05 | [动态测试、报告与统计](tasks/T05-test-runtime.md) | T03、T04 | 已完成 |
-| [ ] | T06 | [邮箱账户与权益绑定](tasks/T06-accounts.md) | T02、T04；云验收需 Supabase Auth/Resend | T06-L 已通过；T06-C 留在 T09 |
-| [x] | T07 | [运营接口与素材管理](tasks/T07-operations.md) | T03–T05、T06-L | 本地已验收；真实 Auth/对象存储在 T09 |
-| [x] | T08 | [前端路由与功能联调](tasks/T08-functional-web.md) | T03–T05、T06-L、T07 | 本地已验收；云 Auth/邮件仍在 T09 |
-| [x] | T06-O | [本地后台登录准备](tasks/T06-accounts.md#local-operator-setup) | T06-L、已有本机服务 | 顺序 0 已完成；实际 Auth/收件/管理员操作通过，不算 T06-C |
-| [x] | T12-A/B/C | [四类内容与引用关系后台](tasks/T12-content-backoffice.md#执行批次) | T07、T08；手动验收需 T06-O | 全部本地已验收；引用/复查、固定采用/导出与清理通过 |
-| [ ] | T13 | [四类 skill 库与版本绑定](tasks/T13-style-skills.md#执行批次) | T12 修订/文件/工作台 | 顺序 4；库与版本 → 商品绑定/来源 |
-| [ ] | T14-L | [本地四领域 MCP](tasks/T14-mcp-ingestion.md#执行批次) | T12、T13；实际操作凭据需 T06-O | 顺序 5；先权限/上传，再四域客户端联调 |
-| [ ] | T15 | [体验模板与运行协议](tasks/T15-experience-runtime.md#执行批次) | 基础：T05/T08；authoring：T12–T14-L | 顺序 6；兼容 DOM/报告宿主 → 成套制作入口 |
-| [ ] | T16-A | [网页/2.5D 试点](tasks/T16-immersive-products.md#执行批次) | T15 基础；机器制作另需 authoring | 顺序 7；先一款轻量样例与配套报告 |
-| [ ] | T10-L | [正式 UI 本地接入](tasks/T10-final-ui.md#执行批次) | T08、已核对正式稿 | 顺序 8；真实业务路由/双端组件，不关闭整体 T10 |
-| [ ] | T09 | [云端部署与技术验收](tasks/T09-cloud-validation.md#执行位置与外部条件) | T01–T08、真实云账户/域名/预算授权 | 顺序 9；含 T06-C 与公网业务 E2E |
-| [ ] | T14-C | [远程 MCP](tasks/T14-mcp-ingestion.md#执行批次) | T14-L＋T09 对应云条件 | 顺序 10；远程授权/发现/真实客户端，未启用不阻塞 M5 |
-| [ ] | T10-V | [主平台最终验收](tasks/T10-final-ui.md#执行批次) | T10-L＋T09 | 顺序 11；完成 M5，关闭必要设计/行为缺口 |
-| [ ] | T11 | [正式商品与商业上线](tasks/T11-commercial-launch.md#执行批次) | M5、正式内容/政策与真实渠道条件 | 顺序 12；先一款商品试运营，独立 M6 |
-| [ ] | T16-B | [Three.js 小型场景](tasks/T16-immersive-products.md#执行批次) | T15 基础、T16-A 设备/交互经验 | 后续 A；按需验证手机/加载/回退 |
-| [ ] | T17 | [小游戏输入与评估扩展](tasks/T17-interactive-evaluation.md#执行位置与选型门槛) | T15、明确玩法/评估；不要求 3D | 后续 B；首期只选一种，新增后端评估 |
+## 保持的执行边界
 
-T12–T14 是 2026-10-16 新增的经营者后台扩展，编号不表示必须等 T11 后执行。建议在 T07/T08 本地验收后依次做 T12 → T13 → T14-L，可先于云部署；原 M5 平台、M6 商业验收范围保持独立，原执行到 T08 的自动执行范围也不随规划扩大。
+01规划合同已实现并本地验收，原业务数据保持；当前做用户授权的完整安全源码存档，实际提交/推送另据Git回执。后续继续按队列推进，不创建Goal/自动化。继续 NestJS/Prisma/PostgreSQL、React/Vite和既有权限/固定版本；不reset或重播开发seed。内容生成/实际模型比较暂停，日程未启用。云收费资源、真实持续权限、客户端、公开发布与真实交易按具体目标/范围和既有授权处理。
 
-T15–T17 为后续体验扩展：T15 基础运行在 T08 后可做，T16 按网页/2.5D → 3D 分阶段验证；完整后台制作复用 T12，experience skill/MCP 在 T13/T14 后接入。T17 仅在新答案/评估玩法明确后实施；不把新增引擎计入原 T05 已完成能力，不增加原平台/商业验收前置。
-
-## 云端接入前可以执行到哪一步
-
-**T01–T08、T06-O 和 T12 全部本地验收，下一批次为 T13-A。** 最新内容链范围见 [CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)。后续按 ROADMAP 完成 T12–T14-L、选定的体验与 T10-L，云端统一留 T09；扩展不增加原平台必需前置。
-
-当前本机已配置真实 Auth/Mailpit，可按 AUTH-SETUP 登录基础后台；停用配置时账户页如实显示未配置，匿名兑换仍可用。T06-O 的 25 项配置/运行栈检查、11 项真实 Auth 浏览器流程及停用/恢复通过；没有测试身份登录入口。云端 Auth/Resend 仍待 T06-C/T09。
-
-**T10 视觉实现不依赖公网。** 手机/桌面稿实现为同一套响应式前端，正式设计可按页面接入。只有首页有稿不代表答题、报告、账户和运营后台全部定稿，缺失页面单独保留待设计项。
-
-**T09 后置统一验收云数据库、Supabase Auth＋Resend、对象存储、公网托管及完整业务 E2E。** 主平台整体完成仍要求 T09、T10 都通过；T11 的正式商品、销售权限和交付政策另行验收。详细顺序见 LOCAL-FIRST.md。
-
-## 里程碑
-
-| 里程碑 | 范围 | 完成后可以做什么 |
-| --- | --- | --- |
-| M1：本地服务基础 | T01–T03 | 用占位商品浏览和筛选真实数据库目录 |
-| M2：本地业务接口完成 | T04–T05、T06-L、T07 | 通过真实业务库和隔离身份验证兑换、报告、账户绑定及运营售后 |
-| M3：本地功能联调平台 | T08 本地验收 | 用页面完成发码、匿名答题、报告、恢复和撤权；账户/管理员保留权限测试 |
-| M4：云端链路通过 | T09，含 T06-C | 通过公网测试地址验证容器、数据库、真实认证、邮件及完整业务流程 |
-| M5：主平台 v1 完成 | T10，并完成 T01–T09 验收 | 使用正式 UI 管理和试用平台，占位商品仍是测试内容 |
-| M6：可以正式销售 | T11 | 用经过审核的真实商品完成平台允许的销售交付 |
-| M7：内容后台本地可用 | T12、T13、T14-L | 四类库及各自 skill/MCP 可用，视频引用题目和文案，后台反查、复查与采用 |
-
-M5 与 M6 分别验收；不把平台开发完成称为已经可以销售占位商品。商品新增与替换通过配置/版本完成，不能为每款商品重建应用。
-
-M7 是新增后台能力的独立里程碑，可在 M4/M6 前本地完成；公网文件、真实身份与远程 MCP 还需 T09/T14-C。本期先保存、版本管理和读取 skill，后台执行模型/生成任务另行排期。
-
-## 当前外部依赖
-
-- UI：用户已完成 Figma 手机/网页设计，现有交接入口见 UI-HANDOFF.md；接入前核对页面、状态及最新版本。
-- 云服务：当前架构为 React/Vite＋NestJS＋Prisma/Supabase PostgreSQL＋Supabase Auth/Resend＋Cloudflare；Cloudflare Containers 不是免费服务。创建或升级云资源须有明确预算和账户授权；本次只写任务，不开通资源。
-- 商品规则：正式价格、首次兑换期限、报告保存期、售后承诺在 T11 前确定；开发值只适用于测试环境。
-- 平台渠道：抖音/小红书类目、链接与发码权限在商业上线前核验，不阻塞本地平台开发。
-
-T01–T05、T06-L、T07、T08、T06-O 和 T12-A/B/C 已有本地验收证据。四类编辑与引用/采用链可用，详情见 [CONTENT-ADOPTION.md](CONTENT-ADOPTION.md)；云资源与自动化仍未开通。下一执行入口为 T13-A，详细范围以 ROADMAP.md 为准。
+历史执行入口与旧任务总表见[重排前README](tasks/archive/history/2026-10-26/README-before-replan.md)，不是当前执行顺序。

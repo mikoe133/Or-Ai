@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-26",
+  "browser": "Codex IAB",
+  "verified": {
+    "assessmentNewSkill": {
+      "threejs": true,
+      "productPlanRequired": true,
+      "form": "3d"
+    },
+    "otherLibraries": [
+      {
+        "domain": "cover",
+        "checked": [
+          "封面制作",
+          "3d"
+        ],
+        "plan": true,
+        "threejs": true
+      },
+      {
+        "domain": "video",
+        "checked": [
+          "视频与分镜",
+          "3d"
+        ],
+        "plan": true,
+        "threejs": true
+      },
+      {
+        "domain": "copy",
+        "checked": [
+          "传播文案",
+          "3d"
+        ],
+        "plan": true,
+        "threejs": true
+      },
+      {
+        "domain": "experience",
+        "checked": [
+          "场景与交互设计",
+          "3d"
+        ],
+        "plan": true,
+        "threejs": true
+      }
+    ],
+    "appendPolicy": {
+      "preservesDedicatedInstructions": true,
+      "retainsPlanInput": true,
+      "canRestoreOriginalUnsavedDraft": true
+    },
+    "historicalSkill": {
+      "originalBodyRetained": true,
+      "readOnly": true,
+      "globalPolicyVisible": true
+    }
+  },
+  "writes": {
+    "savedSkills": 0,
+    "activatedSkills": 0,
+    "productUpdates": 0
+  },
+  "templatesCount": 7
+}

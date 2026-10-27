@@ -1,0 +1,16 @@
+{
+  "profile": "social-battery-room",
+  "source": "manual_local_screen_recording",
+  "files": [
+    {
+      "fileName": "quiet-room-cover.png",
+      "byteSize": 85904,
+      "checksum": "de873524c16c2500782bd6a5f306443772e61dbb3924c07b2080e1587933cc2f"
+    },
+    {
+      "fileName": "quiet-room-demo.webm",
+      "byteSize": 1695498,
+      "checksum": "50a032f21cd939bafe0ae178baff6912d9eeec38fa19dfd3f54d695e60038641"
+    }
+  ]
+}

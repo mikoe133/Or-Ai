@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="244" height="800" viewBox="0 0 244 800">
+  <defs>
+    <linearGradient id="sidebar-depth" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="800">
+      <stop stop-color="#5A789D" stop-opacity="0"/>
+      <stop offset=".38" stop-color="#5A789D" stop-opacity="0"/>
+      <stop offset=".62" stop-color="#648DB3" stop-opacity=".06"/>
+      <stop offset=".82" stop-color="#79A6C4" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#9CC5D1" stop-opacity=".32"/>
+    </linearGradient>
+    <radialGradient id="cool-wash">
+      <stop stop-color="#93BDE5" stop-opacity=".19"/>
+      <stop offset=".4" stop-color="#739DBF" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#597AAB" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="mint-foot">
+      <stop stop-color="#C0DAD5" stop-opacity=".15"/>
+      <stop offset=".45" stop-color="#A1CED1" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#86AFAF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="rounded-sidebar-foot"><path d="M0 0H244V762.8Q244 784.8 222 784.8H0Z"/></clipPath>
+  </defs>
+  <rect width="244" height="800" fill="#FFFFFF" fill-opacity="0"/>
+  <g id="Sidebar-depth-with-rounded-foot" clip-path="url(#rounded-sidebar-foot)">
+  <path id="Sidebar-blue-to-cyan-depth" d="M0 0H244V800H26Q0 800 0 774Z" fill="url(#sidebar-depth)"/>
+  <ellipse id="Sidebar-blue-diffusion" cx="30" cy="735" rx="230" ry="330" fill="url(#cool-wash)"/>
+  <ellipse id="Sidebar-mint-base" cx="120" cy="840" rx="240" ry="245" fill="url(#mint-foot)"/>
+  </g>
+</svg>

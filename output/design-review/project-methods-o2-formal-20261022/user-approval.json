@@ -1,0 +1,40 @@
+{
+  "kind": "o2_formal_ui_approval",
+  "approvedAt": "2026-10-23T00:50:40+08:00",
+  "userReply": "继续",
+  "presentedAt": "2026-10-22T15:44:01Z",
+  "recordedAt": "2026-10-22T16:53:49.868256+00:00",
+  "evidenceType": "forwarded_explicit_human_response",
+  "forwardedByThread": "01a15d49-f07b-77f4-aefd-c07074fc9015",
+  "originThread": "01a15899-7384-71d0-9669-fb47c474e0e4",
+  "evidence": "已只读核对协调窗口转达的明确审核问答、三份Library交付标识及复制时SHA验证记录；本地三图与O2最终工程交付摘要一致。用户在该正式三图审核后回复继续，不声称直接读取云端用户原对话。",
+  "images": {
+    "desktop-method-picker.png": "8380b191eb9f3d4df0f4040b277df23c7a96d4926fbda7be927588755efb345c",
+    "desktop-confirm.png": "cf6159e44c5567192cd913454a731de35b40937ae28763acdca33f0b9c06fbfc",
+    "mobile-handoff.png": "dbfea02a6b91d792628d1f49887d92d1aa5910271ade51f2e4205147fea69dce"
+  },
+  "libraryFiles": {
+    "desktop-method-picker.png": "libfile_2c9ef53f42608191a4357c961cdc3a11",
+    "desktop-confirm.png": "libfile_34f469404a288191ba12f45a5ace0bbc",
+    "mobile-handoff.png": "libfile_ce5ea4978e008191b6f1de26f47d9a32"
+  },
+  "scope": "O2正式方法选择、商品定制与固定确认、手机制作交接三张指定界面；同既有隔离技术证据闭合O2本地范围，允许按顺序核查O3并先交新设计审核。",
+  "o2LocalScopePassed": true,
+  "wholePlatformApproved": false,
+  "realAccountConnectionValidated": false,
+  "realClientConnectionValidated": false,
+  "physicalDeviceValidated": false,
+  "futureUiApproved": false,
+  "realCredentialsApproved": false,
+  "persistentAccessApproved": false,
+  "realClientConfigurationApproved": false,
+  "cloudApproved": false,
+  "paidExecutionApproved": false,
+  "schedulesApproved": false,
+  "publicationApproved": false,
+  "o3DesignApproved": false,
+  "o3FormalImplementationApproved": false,
+  "contentGenerationResumed": false,
+  "modelComparisonResumed": false,
+  "originalTechnicalVerificationRewritten": false
+}

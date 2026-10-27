@@ -32,6 +32,8 @@
 .store-flow .store-footer { min-height: 44.6px; align-items: center; }
 .store-flow .store-footer small { font-size: 10px; color: var(--store-secondary); }
 .store-flow .store-mobile-nav a { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; font-size: 10px; }
+.store-flow .store-mobile-nav.has-admin-access { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.store-flow .store-mobile-nav.has-admin-access > a:last-child > * { transform: none; }
 
 .flow-with-greeting .store-panel { min-height: max(799.4px, calc(100dvh - 224.6px)); }
 .flow-with-greeting .store-glass-slice svg { position: absolute; width: 1440px; height: 1024px; max-width: none; }

@@ -1,0 +1,269 @@
+{
+  "date": "2026-10-26",
+  "files": [
+    {
+      "path": "PRODUCT.md",
+      "sha256": "6e10779f5d45302faada0aea7d29ddaafba79613e16646cc496c6c62e41fcc26"
+    },
+    {
+      "path": "README.md",
+      "sha256": "cb184733c6d6d4588bdf204baa4becbca3fde0b8a7231f89fe1916480f51cd57"
+    },
+    {
+      "path": "prd/v1/PRODUCT-IMPLEMENTATION-POLICY.md",
+      "sha256": "af9bee20b21c99694242389132671380e96323850735b686828713430d6287e3"
+    },
+    {
+      "path": "prd/v1/PROGRESS.md",
+      "sha256": "83b4e67d2226f8308b0d0cd20badc06dfc3b58127ca289963e20665679e88edc"
+    },
+    {
+      "path": "prd/v1/README.md",
+      "sha256": "80697d6bde30417fd3f0a8752c872d34aa6304ddfbe0a50b013ae3b92a9bc03c"
+    },
+    {
+      "path": "prd/v1/ROADMAP.md",
+      "sha256": "2ee4d5ef7f40118b468313704f5349eaac0d5f02708565ff95eadf13e9f73346"
+    },
+    {
+      "path": "prd/v1/tasks/README.md",
+      "sha256": "864b724e8c24e22c33cfc2c1b58f19ae5f87b78a8e6ad4951a228cc11f63a985"
+    },
+    {
+      "path": "prd/v1/tasks/T01-foundation.md",
+      "sha256": "19372040bd2b75b6fb884dfd99961c5d7d084170ea9d42d45becef94452618be"
+    },
+    {
+      "path": "prd/v1/tasks/T02-models-and-fixtures.md",
+      "sha256": "f1c63292fe8a49752c079ab6d0f9f3f20ea4501cbfbe67ca1e7d02b232439878"
+    },
+    {
+      "path": "prd/v1/tasks/T03-catalog.md",
+      "sha256": "15bb2ff1c465dd61f4e1c63d1abde599dda90cfccc596e89c2f96bb9b0c4b358"
+    },
+    {
+      "path": "prd/v1/tasks/T04-redemption.md",
+      "sha256": "3ac5d6ad63fa2ba71d1e374e220407030bbef03e8ff2214574b6e81a9bcc1dbb"
+    },
+    {
+      "path": "prd/v1/tasks/T05-test-runtime.md",
+      "sha256": "5bf930792f4e2b72431c005a0d6b5c96be769d8e35acc6470379aeec4f622094"
+    },
+    {
+      "path": "prd/v1/tasks/T06-accounts.md",
+      "sha256": "6e8dfff83efd03713ef426c64f8ebc435561d6c7d5158dbd21cd5ce5d09bd0ce"
+    },
+    {
+      "path": "prd/v1/tasks/T07-operations.md",
+      "sha256": "fc8d648f3f11aa739cf5ee790223dab3e64c4afdf997269c6390c07aa718a7c8"
+    },
+    {
+      "path": "prd/v1/tasks/T08-functional-web.md",
+      "sha256": "3b957513c5f3d578c93dba1cd875231ca539148d9062cb8e28e575802ce97fd8"
+    },
+    {
+      "path": "prd/v1/tasks/T09-cloud-validation.md",
+      "sha256": "f35e7fea060a27a1543c3a2fc5e30f36ae1e765a68775a9d158c9ccba43c76fb"
+    },
+    {
+      "path": "prd/v1/tasks/T10-final-ui.md",
+      "sha256": "fc9a28c7fd4b30ebb636b60e42645ac84b38561ba39949cd707942bc0812cd8a"
+    },
+    {
+      "path": "prd/v1/tasks/T11-commercial-launch.md",
+      "sha256": "30430f6bbfa018924b8e6a8ad1949c8c1be92d5164c6a32594c032da68e6db1b"
+    },
+    {
+      "path": "prd/v1/tasks/T12-content-backoffice.md",
+      "sha256": "d11192b08c6b7406117289d7b82ac1f08a720a2daf34e005ef5d7c3bd7763a3c"
+    },
+    {
+      "path": "prd/v1/tasks/T13-style-skills.md",
+      "sha256": "bb2e2b5b15d90ab93c9e7747c37a78e7197432ecdae1a95419f3e8531b3f8a75"
+    },
+    {
+      "path": "prd/v1/tasks/T14-mcp-ingestion.md",
+      "sha256": "c602e29fa539d3928e025eb6af63dc5f2f2e28263a6d4d518eb10e581874bc99"
+    },
+    {
+      "path": "prd/v1/tasks/T15-experience-runtime.md",
+      "sha256": "be614c6787bd6f7942f798c91e3b7b78e5eea319652d0e46a2cb2a16ffe4f449"
+    },
+    {
+      "path": "prd/v1/tasks/T16-immersive-products.md",
+      "sha256": "d3bdd04b924439d18c37d9d18eec8f3a1015697541f1268ba5b693b5b5478151"
+    },
+    {
+      "path": "prd/v1/tasks/T17-interactive-evaluation.md",
+      "sha256": "8bd0379461c49dd4e4251fc9493e8c513bf18789e4249ae2c44ef01dec5d0698"
+    },
+    {
+      "path": "prd/v1/tasks/TASK-MAP.md",
+      "sha256": "7c5e7fd9264a7207195292d16c74e38f3090df9b50193f7e9e500344b0f602e7"
+    },
+    {
+      "path": "prd/v1/tasks/active/01-product-plan-contract.md",
+      "sha256": "e7c43cc23627378eaf38d0d20d275902354903617a3db992bf7a8ea51a9d15b0"
+    },
+    {
+      "path": "prd/v1/tasks/active/02-skill-policy-validation.md",
+      "sha256": "0eb2b73c2a4e0422a6b2e81c3014cd949d73624fd0c2c9c2070b9dc6ac118675"
+    },
+    {
+      "path": "prd/v1/tasks/active/03-threejs-publication-gates.md",
+      "sha256": "129f8247fb64c80f8b714979442b66d1af397c207fe404f855c8cc8c4cbdbfcb"
+    },
+    {
+      "path": "prd/v1/tasks/active/04-skill-library-upgrade.md",
+      "sha256": "ccc7d4c24dd5d9fe1333d93703d408acf7c58747e14c619d6f5b0b6db70caeda"
+    },
+    {
+      "path": "prd/v1/tasks/active/05-product-template-migration.md",
+      "sha256": "9accf5161ff4ba8fb1e9cfa6f78c4c6262001cd8328e217fc63a066596112ba4"
+    },
+    {
+      "path": "prd/v1/tasks/active/06-local-experience-acceptance.md",
+      "sha256": "6d2ab2c7eb297a3f0ee303ae3a3b75ac2aa5665e1ae1cef2b62d9969d2d412e5"
+    },
+    {
+      "path": "prd/v1/tasks/active/07-cloud-adapters.md",
+      "sha256": "6f9958d8de8d061c19c0fb8e4dc3deeaa6ece8bbf03a837acf8b172d220f3c4a"
+    },
+    {
+      "path": "prd/v1/tasks/active/08-cloud-auth-validation.md",
+      "sha256": "95bb8583bcaf9363f94ec921b77aff3d5931cd4daaffdad772c138b739326be3"
+    },
+    {
+      "path": "prd/v1/tasks/active/09-remote-mcp.md",
+      "sha256": "9a5ea335f7c368d45812fec760852946dfa791eedf00aa28f15381f6b49f0c1b"
+    },
+    {
+      "path": "prd/v1/tasks/active/10-public-device-acceptance.md",
+      "sha256": "0440859755f642be6757e7d88883628d0b6835c074fd87b4ec8cb64b7f483ac2"
+    },
+    {
+      "path": "prd/v1/tasks/active/11-formal-product-package.md",
+      "sha256": "b20b1da9fbcdb40d10e64e1a79f2acd2a345945b59b55af81abf7074e182165c"
+    },
+    {
+      "path": "prd/v1/tasks/active/12-commercial-pilot.md",
+      "sha256": "3346648341ede488b98b0e04b1296ac087418af228cc56c02fdb6ad961afddc0"
+    },
+    {
+      "path": "prd/v1/tasks/active/13-production-cost-evaluation.md",
+      "sha256": "de2deb8efbcc2eb818735a83c5d7bbb9700458df90e823a1e9c0d17ca66b8e68"
+    },
+    {
+      "path": "prd/v1/tasks/active/14-manual-production-rehearsal.md",
+      "sha256": "b357a6e4c9bb180504eebae3eb6a305137d1adde9d304c4ad8ebd095b64a2495"
+    },
+    {
+      "path": "prd/v1/tasks/active/15-external-schedule-handoff.md",
+      "sha256": "411fe69d3674d61f3073c2e1c452f4f4cc4b73fe79f01ab98a74cd16b65f1085"
+    },
+    {
+      "path": "prd/v1/tasks/active/16-new-interaction-engine.md",
+      "sha256": "f0e9c42a378ac1eeddd9b42889c56f65a8e24ce4ba01a0da667cc6bce2dd309a"
+    },
+    {
+      "path": "prd/v1/tasks/archive/README.md",
+      "sha256": "d4596963303c430cba0d058f9ceb03d38dd7d875aad534533d1a17dabe15ab8c"
+    },
+    {
+      "path": "prd/v1/tasks/archive/archive-manifest.json",
+      "sha256": "3bd05a92e549d1a71b42fcba988bb06e00e34b78c526f8d61368073838b00e45"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/BATCHES-20261026.md",
+      "sha256": "5be10dffa7859fcc640212f0afce6dbc5692f8f538f6c7d5a2b57752e572ed53"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T01-foundation.md",
+      "sha256": "c54f2222aaa6d1099ae729c2c83cdc448332274dba21c68c2b38bf5296a378b5"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T02-models-and-fixtures.md",
+      "sha256": "cf29459641f7048eb5fd814ed2d76b90cae720549b5da2f565c347147ec0bc9c"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T03-catalog.md",
+      "sha256": "4f62fbda4ba47ab8efa22743ada4b49cf12f0d2253a3565952cc9b1fc9d1232f"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T04-redemption.md",
+      "sha256": "c4197e11a6d4d0aa40605147519583c1aa911e3bed17d68e5ca95873ba6eb3bf"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T05-test-runtime.md",
+      "sha256": "ef0a9c4ff33dd1874017d638ae8d38a0bbb551615e436d241643242331a0626c"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T07-operations.md",
+      "sha256": "3d9adf7e362be0ea54796953f4efc084ee83cad583f0ef8c2f59a4b20c6349c3"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T08-functional-web.md",
+      "sha256": "6fafaae959740ce3d7900e56e86014ddb149cf51ddc5bf96ea399bd7c1304021"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T12-content-backoffice.md",
+      "sha256": "368d1d30d4e51cc011e3e67aeb40fb910f9fb328b1a2fd33346182244bf0ba47"
+    },
+    {
+      "path": "prd/v1/tasks/archive/completed/T15-experience-runtime.md",
+      "sha256": "d1134f7b273fe55a03101792eaf1fec8f1e62fba099e0b4c2942bc111e1af76c"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/PROGRESS-through-20261026.md",
+      "sha256": "9c0e78ce7b47d3f38c62e285e7e1bc86e7a2a2e06240c62bee5c993de423f0dc"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/README-before-replan.md",
+      "sha256": "6c9a4255cf600c3959445fb85b3cf39fe39668d31db5e9b22c4055c879d7c242"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/ROADMAP-before-replan.md",
+      "sha256": "a73bd735776ba2ff806e20c0fd2e5bd2a652db7aa0e93fb8380f69b1decbc94a"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/ROOT-README-before-replan.md",
+      "sha256": "ff65ee8bdce470fae63355901d0155660f3544350dcc155cfcc40000dfa43b97"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T06-accounts.md",
+      "sha256": "d22543de49c400dc354dc3c500b737a75d7dcc55e1433f3c30db10817677efaf"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "sha256": "c2e56dabe8d5c8726791e5f45937853d8532500c57e04eb393ce36d54d32c8c5"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T10-final-ui.md",
+      "sha256": "d7e513ab2ebb1c18058f941ead8f3e29058ff5079437a2e82446a84f15473aac"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "sha256": "e141673ec8cc1375126f38cc25c4ae4734b32f77113469d9beefd324d1bada06"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T13-style-skills.md",
+      "sha256": "86e05b50d19134375bb1e014205eb91f2fde254ec4b38a28dee41dc2ee8d8d89"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "sha256": "51ac1869b17d922248701f53906594729154dcd734f5e61eb82693d1a92441a7"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "sha256": "95b4a06240a5710581be3e1ee0c7404811138bb5261a08aa904845d1017c1fdf"
+    },
+    {
+      "path": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "sha256": "59eae68ce28275089901391a8ec7d015d8191b2976318f1926c89b71bc8e6281"
+    },
+    {
+      "path": "prd/v1/tasks/registry.json",
+      "sha256": "7aada168ce1aa982a224b594ad5c0471934ce5b6ac3fd9a6d3e56d118f51402b"
+    }
+  ]
+}

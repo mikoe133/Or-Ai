@@ -11,6 +11,8 @@ const RedemptionPage = lazy(() => import('./store/redemption'));
 const AccountPage = lazy(() => import('./auth/pages.js').then(module => ({ default: module.AccountPage })));
 const AuthCallbackPage = lazy(() => import('./auth/pages.js').then(module => ({ default: module.AuthCallbackPage })));
 const AuthForm = lazy(() => import('./auth/pages.js').then(module => ({ default: module.AuthForm })));
+const AuthLayout = lazy(() => import('./auth/layout.js'));
+const NotFound = lazy(() => import('./business/help.js').then(module => ({ default: module.NotFoundPage })));
 const Upcoming = lazy(() => import('./business/upcoming'));
 const Developer = lazy(() => import('./business/developer'));
 const Catalog = lazy(()=>import('./business/catalog.js').then(module=>({default:module.CatalogPage})));
@@ -20,23 +22,18 @@ const Library = lazy(()=>import('./business/library.js').then(module=>({default:
 const Attempt = lazy(()=>import('./business/assessment.js').then(module=>({default:module.AssessmentPage})));
 const Report = lazy(()=>import('./business/assessment.js').then(module=>({default:module.ReportPage})));
 const Admin = lazy(()=>import('./admin/pages.js').then(module=>({default:module.AdminApp})));
+const QuietRoomPreview = lazy(()=>import('./experience/preview.js'));
+const GardenPreview = lazy(()=>import('./experience/garden-preview.js'));
 
 function SupportingPages() {
-  return <div className="mx-auto min-h-screen max-w-5xl px-5 py-6">
-    <header className="mb-8 flex items-center justify-between border-b pb-4">
-      <Link className="font-semibold" to="/">Or-Ai</Link>
-      <nav className="flex gap-5" aria-label="主导航"><Link to="/">商城</Link><Link to="/account">账户</Link><Link to="/help">帮助</Link></nav>
-    </header>
-    <main><Suspense fallback={<p role="status">正在加载页面…</p>}><Routes>
+  return <Routes><Route element={<AuthLayout />}>
       <Route path="/auth/login" element={<AuthForm key="login" mode="login" />} />
       <Route path="/auth/register" element={<AuthForm key="register" mode="register" />} />
       <Route path="/auth/forgot" element={<AuthForm key="forgot" mode="forgot" />} />
       <Route path="/auth/callback" element={<AuthCallbackPage />} />
       <Route path="/auth/reset" element={<AuthCallbackPage recovery />} />
       <Route path="/account" element={<AccountPage />} />
-      <Route path="*" element={<section><h1>页面不存在</h1><Link to="/">返回商城</Link></section>} />
-    </Routes></Suspense></main>
-  </div>;
+    </Route><Route path="*" element={<NotFound />} /></Routes>;
 }
 
 export function App() {
@@ -58,6 +55,8 @@ export function App() {
     <Route path="/attempts/:id" element={<Attempt />} />
     <Route path="/admin/*" element={<Admin />} />
     <Route path="/preview" element={<HomePage />} />
+    <Route path="/preview/experience/quiet-room" element={<QuietRoomPreview />} />
+    <Route path="/preview/experience/reflection-garden" element={<GardenPreview />} />
     <Route path="/preview/products/partner" element={<ProductDetailPage />} />
     <Route path="/preview/assessment/partner" element={<AssessmentPage />} />
     <Route path="/preview/reports/partner" element={<ReportPage />} />

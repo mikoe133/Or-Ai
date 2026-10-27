@@ -1,0 +1,16 @@
+.flow-admin-page .experience-desk{scroll-margin-top:90px}
+.flow-admin-page .experience-intent{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;border-block:1px solid var(--admin-border,#e4e0eb);margin:20px 0;padding:12px 0}
+.flow-admin-page .experience-intent p{margin:8px 0;font-size:14px;overflow-wrap:anywhere}
+.flow-admin-page .experience-intent span{display:block;font-size:11px;color:var(--admin-muted,#70677d);margin-bottom:5px}
+.flow-admin-page .experience-toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:20px 0}
+.flow-admin-page .experience-toolbar label{min-width:220px;flex:1}
+.flow-admin-page .experience-scene summary{line-height:1.7}
+.flow-admin-page .experience-choice-map{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,1fr);align-items:center;gap:20px;border-top:1px solid var(--admin-border,#e4e0eb);padding:10px 0}
+.flow-admin-page .experience-choice-map code{display:block;font-size:11px;color:var(--admin-muted,#70677d)}
+.flow-admin-page .experience-resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.flow-admin-page .experience-resource-image{display:block;width:100%;max-height:220px;object-fit:contain;background:var(--admin-bg);border:1px solid var(--admin-border,#e4e0eb);margin-bottom:14px}
+.flow-admin-page .experience-upload{border:1px dashed var(--admin-border);padding:18px;margin-top:16px;background:var(--admin-soft)}
+.flow-admin-page .experience-actions{position:sticky;bottom:0;z-index:2;padding:14px 0;background:var(--admin-panel);border-block:1px solid var(--admin-border,#e4e0eb);margin:20px 0}
+.flow-admin-page .experience-preview-result{border-top:1px solid var(--admin-border,#e4e0eb);margin-top:22px;padding-top:22px}
+.flow-admin-page .experience-preview-result .biz-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:760px){.flow-admin-page .experience-intent,.flow-admin-page .experience-resource-grid,.flow-admin-page .experience-preview-result .biz-grid{grid-template-columns:1fr}.flow-admin-page .experience-choice-map{grid-template-columns:1fr;gap:8px}.flow-admin-page .experience-actions{position:static}.flow-admin-page .experience-toolbar label{min-width:0;width:100%}}

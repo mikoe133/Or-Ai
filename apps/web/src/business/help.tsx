@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Page } from './shared';
 
+export function NotFoundPage() {
+  return <Page title="页面不存在"><p>这条地址暂时找不到内容。你可以回到商城继续探索，或查看已经领取的应用。</p><nav className="biz-row" aria-label="返回可用页面"><Link className="biz-button consumer-primary" to="/">返回商城</Link><Link to="/apps">我的应用</Link><Link to="/help">使用帮助</Link></nav></Page>;
+}
+
 export default function HelpPage() {
   return <Page title="使用帮助" section="help" embedded>
     <p>从一个问题开始，在这里找到探索、兑换和查看报告的方法。</p>

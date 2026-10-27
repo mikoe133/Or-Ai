@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { DataScopeSchema, IdSchema, TimestampSchema } from "./shared.js";
+import { BoundSkillSchema, CreativeSkillSetSchema } from './skill-bindings.js';
 import {
   ContentDomainSchema,
   ContentLocatorSchema,
@@ -71,7 +72,8 @@ export const ContentContextSchema = z
     creativeProfileRevisionId: IdSchema,
     domain: ContentDomainSchema,
     creativeProfile: CreativeProfileRevisionSchema,
-    skillVersions: z.array(z.never()),
+    skillSetId: IdSchema.optional(),
+    skillVersions: z.array(BoundSkillSchema),
     inputs: z.array(ContentFragmentSchema),
   })
   .strict();
@@ -83,6 +85,7 @@ export const ContentPackageSelectionSchema = z
     assetRevisionIds: z.array(IdSchema).min(3).max(40),
     reportMode: z.literal("compatible_standard"),
     label: text(160),
+    skillSetId: IdSchema.optional(),
   })
   .strict()
   .refine(
@@ -115,7 +118,7 @@ const exportedProduction = ProductionRecordSchema.omit({
   actorUserId: true,
   scope: true,
 });
-export const ContentPackageManifestSchema = z
+const LegacyContentPackageManifestSchema = z
   .object({
     schemaVersion: z.literal(1),
     product: z
@@ -184,6 +187,10 @@ export const ContentPackageManifestSchema = z
     ),
   })
   .strict();
+export const ContentPackageManifestSchema = z.discriminatedUnion('schemaVersion', [
+  LegacyContentPackageManifestSchema,
+  LegacyContentPackageManifestSchema.extend({ schemaVersion: z.literal(2), skillSet: CreativeSkillSetSchema }).strict(),
+]);
 export const ContentPackageSchema = z
   .object({
     id: IdSchema,

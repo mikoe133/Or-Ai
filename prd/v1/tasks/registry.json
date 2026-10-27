@@ -1,0 +1,900 @@
+{
+  "updated": "2026-10-27",
+  "currentTask": "T13.C2",
+  "scope": "implementation",
+  "rules": {
+    "allNormalProductsRequireThreejs": true,
+    "motionAndInteraction": "per_product_plan",
+    "contentGeneration": "paused",
+    "modelComparison": "paused",
+    "externalSchedule": "not_enabled",
+    "archiveOnVerifiedCompletionOnly": true
+  },
+  "tasks": [
+    {
+      "order": 1,
+      "id": "T16.C2-A",
+      "file": "archive/completed/01-product-plan-contract.md",
+      "title": "固定每款商品的 Three.js 制作规划",
+      "lane": "主线",
+      "status": "已完成（技术范围）",
+      "dependsOn": [],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T16.C2"
+      ],
+      "complete": true,
+      "completedAt": "2026-10-27",
+      "evidence": "output/implementation/product-plan-contract-20261027/verification.md"
+    },
+    {
+      "order": 2,
+      "id": "T13.C2",
+      "file": "active/02-skill-policy-validation.md",
+      "title": "让全部商品 Skill 的 Three.js 要求在服务端生效",
+      "lane": "主线",
+      "status": "可执行",
+      "dependsOn": [
+        1
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T13.C2"
+      ],
+      "complete": false
+    },
+    {
+      "order": 3,
+      "id": "T16.C2-B",
+      "file": "active/03-threejs-publication-gates.md",
+      "title": "接通项目制作链与 Three.js 发布校验",
+      "lane": "主线",
+      "status": "等待前置",
+      "dependsOn": [
+        1,
+        2
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T16.C2"
+      ],
+      "complete": false
+    },
+    {
+      "order": 4,
+      "id": "T13.C3",
+      "file": "active/04-skill-library-upgrade.md",
+      "title": "盘点并前向升级旧 Skill 和项目方法",
+      "lane": "主线",
+      "status": "等待前置",
+      "dependsOn": [
+        2,
+        3
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T13.C3"
+      ],
+      "complete": false
+    },
+    {
+      "order": 5,
+      "id": "T16.C3",
+      "file": "active/05-product-template-migration.md",
+      "title": "按各商品规划制作模板并转制存量商品",
+      "lane": "主线",
+      "status": "等待前置",
+      "dependsOn": [
+        1,
+        3,
+        4
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T16.C3"
+      ],
+      "complete": false
+    },
+    {
+      "order": 6,
+      "id": "T16.C4-L",
+      "file": "active/06-local-experience-acceptance.md",
+      "title": "完成 Three.js 商品本地业务与性能验收",
+      "lane": "主线",
+      "status": "等待前置",
+      "dependsOn": [
+        5
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T16.C4",
+        "T16.5",
+        "T16.6",
+        "T16.8"
+      ],
+      "complete": false
+    },
+    {
+      "order": 7,
+      "id": "T09-I",
+      "file": "active/07-cloud-adapters.md",
+      "title": "实现云端路由、持久存储与初始化适配",
+      "lane": "主线",
+      "status": "方案已定，可独立实施",
+      "dependsOn": [],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [
+        6
+      ],
+      "legacyIds": [
+        "T09.1",
+        "T09.2",
+        "T09.3",
+        "T09.5",
+        "T09.6",
+        "T09.7",
+        "T09.8"
+      ],
+      "complete": false
+    },
+    {
+      "order": 8,
+      "id": "T09-V / T06-C",
+      "file": "active/08-cloud-auth-validation.md",
+      "title": "预发布部署与真实账户、邮件、存储验收",
+      "lane": "主线",
+      "status": "等待07与真实部署验收",
+      "dependsOn": [
+        7
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [
+        6
+      ],
+      "legacyIds": [
+        "T09.1",
+        "T09.2",
+        "T09.3",
+        "T09.4",
+        "T09.5",
+        "T09.6",
+        "T09.7",
+        "T09.8",
+        "T06.C1",
+        "T06.C2",
+        "T06.C3"
+      ],
+      "complete": false
+    },
+    {
+      "order": 9,
+      "id": "T14-C",
+      "file": "active/09-remote-mcp.md",
+      "title": "实现并验收远程 MCP 连接",
+      "lane": "条件分支",
+      "status": "等待云条件",
+      "dependsOn": [
+        8
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T14.C1",
+        "T14.C2",
+        "T14.C3"
+      ],
+      "complete": false
+    },
+    {
+      "order": 10,
+      "id": "T10-V / T16.C4-D",
+      "file": "active/10-public-device-acceptance.md",
+      "title": "公网真机、内置浏览器与平台最终验收",
+      "lane": "主线",
+      "status": "等待前置与设备",
+      "dependsOn": [
+        6,
+        8
+      ],
+      "conditionalDependsOn": [
+        9
+      ],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T10.6",
+        "T10.7",
+        "T16.C4",
+        "T16.5",
+        "T16.6",
+        "T16.8",
+        "T09.8"
+      ],
+      "complete": false
+    },
+    {
+      "order": 11,
+      "id": "T11-A",
+      "file": "active/11-formal-product-package.md",
+      "title": "首款正式 Three.js 商品、报告与宣传内容",
+      "lane": "主线",
+      "status": "可准备政策，正式内容待恢复",
+      "dependsOn": [
+        5,
+        6
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [
+        10
+      ],
+      "legacyIds": [
+        "T11.1",
+        "T11.2",
+        "T11.3",
+        "T11.4",
+        "T11.7",
+        "T16.7",
+        "T16.1",
+        "T16.2",
+        "T16.3"
+      ],
+      "complete": false
+    },
+    {
+      "order": 12,
+      "id": "T11-B",
+      "file": "active/12-commercial-pilot.md",
+      "title": "受控首发与真实订单、售后验收",
+      "lane": "主线",
+      "status": "等待正式商品与发布条件",
+      "dependsOn": [
+        10,
+        11
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T11.5",
+        "T11.6",
+        "T11.7"
+      ],
+      "complete": false
+    },
+    {
+      "order": 13,
+      "id": "T14.W6",
+      "file": "active/13-production-cost-evaluation.md",
+      "title": "补齐制作质量、档位与费用验证",
+      "lane": "暂停分支",
+      "status": "暂停：模型比较未恢复",
+      "dependsOn": [
+        1,
+        2,
+        3
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T14.W6"
+      ],
+      "complete": false
+    },
+    {
+      "order": 14,
+      "id": "T14.W3",
+      "file": "active/14-manual-production-rehearsal.md",
+      "title": "真实 Codex/MCP 手动制作与退回重做演练",
+      "lane": "暂停分支",
+      "status": "暂停：实际内容生成未恢复",
+      "dependsOn": [
+        4,
+        5,
+        6
+      ],
+      "conditionalDependsOn": [
+        8,
+        9
+      ],
+      "recommendedAfter": [
+        13
+      ],
+      "legacyIds": [
+        "T14.W3"
+      ],
+      "complete": false
+    },
+    {
+      "order": 15,
+      "id": "T14.W4",
+      "file": "active/15-external-schedule-handoff.md",
+      "title": "交付日更生产配置与恢复说明",
+      "lane": "条件分支",
+      "status": "等待手动全链与运行参数",
+      "dependsOn": [
+        14
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T14.W4"
+      ],
+      "complete": false
+    },
+    {
+      "order": 16,
+      "id": "T17",
+      "file": "active/16-new-interaction-engine.md",
+      "title": "按商品需要选择并实现首个新玩法",
+      "lane": "按需插入",
+      "status": "待玩法选型",
+      "dependsOn": [
+        1,
+        2,
+        3
+      ],
+      "conditionalDependsOn": [],
+      "recommendedAfter": [],
+      "legacyIds": [
+        "T17.1",
+        "T17.2",
+        "T17.3",
+        "T17.4",
+        "T17.5",
+        "T17.6",
+        "T17.7",
+        "T17.8"
+      ],
+      "complete": false
+    }
+  ],
+  "completedFullTasks": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T07",
+    "T08",
+    "T12",
+    "T15"
+  ],
+  "legacyCoverage": [
+    {
+      "legacyId": "T06.C1",
+      "parent": "T06",
+      "disposition": "pending",
+      "owners": [
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T06-accounts.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T06.C2",
+      "parent": "T06",
+      "disposition": "pending",
+      "owners": [
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T06-accounts.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T06.C3",
+      "parent": "T06",
+      "disposition": "pending",
+      "owners": [
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T06-accounts.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T09.1",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T09.2",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T09.3",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T09.4",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T09.5",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T09.6",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T09.7",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T09.8",
+      "parent": "T09",
+      "disposition": "pending",
+      "owners": [
+        7,
+        8,
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
+      "note": "07准备恢复工具，08实测云备份/回滚，10补真实国内三网/设备；三段都不可用本地证据替代。"
+    },
+    {
+      "legacyId": "T10.6",
+      "parent": "T10",
+      "disposition": "pending",
+      "owners": [
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T10-final-ui.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T10.7",
+      "parent": "T10",
+      "disposition": "pending",
+      "owners": [
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T10-final-ui.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.1",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        11
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.2",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        11
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.3",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        11
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.4",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        11
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.5",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        12
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.6",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        12
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T11.7",
+      "parent": "T11",
+      "disposition": "pending",
+      "owners": [
+        11,
+        12
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T11-commercial-launch.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T13.C2",
+      "parent": "T13",
+      "disposition": "pending",
+      "owners": [
+        2
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T13-style-skills.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T13.C3",
+      "parent": "T13",
+      "disposition": "pending",
+      "owners": [
+        4
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T13-style-skills.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T14.C1",
+      "parent": "T14",
+      "disposition": "pending",
+      "owners": [
+        9
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T14.C2",
+      "parent": "T14",
+      "disposition": "pending",
+      "owners": [
+        9
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T14.C3",
+      "parent": "T14",
+      "disposition": "pending",
+      "owners": [
+        9
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T14.W3",
+      "parent": "T14",
+      "disposition": "pending",
+      "owners": [
+        14
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "note": "实际内容制作暂停，完整真实演练未做；不是新的后台托管执行队列。"
+    },
+    {
+      "legacyId": "T14.W4",
+      "parent": "T14",
+      "disposition": "pending",
+      "owners": [
+        15
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "note": "O4配置底座已通过，实际完整交接仍待；此项不创建/启用日程。"
+    },
+    {
+      "legacyId": "T14.W6",
+      "parent": "T14",
+      "disposition": "pending",
+      "owners": [
+        13
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T14-mcp-ingestion.md",
+      "note": "技术策略已通过，真实比较调用0；比较暂停，不能整体归档完成。"
+    },
+    {
+      "legacyId": "T16.1",
+      "parent": "T16",
+      "disposition": "superseded_with_carryover",
+      "owners": [
+        11
+      ],
+      "carryover": [
+        6,
+        10,
+        11
+      ],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "原 DOM 小屋剩余 UI/打磨方向被全商品 Three.js 取代，不继续制作、不补勾旧记录；正式内容价值在11、新商品本地/真机在06/10验收。"
+    },
+    {
+      "legacyId": "T16.2",
+      "parent": "T16",
+      "disposition": "superseded_with_carryover",
+      "owners": [
+        11
+      ],
+      "carryover": [
+        6,
+        10,
+        11
+      ],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "原 DOM 小屋剩余 UI/打磨方向被全商品 Three.js 取代，不继续制作、不补勾旧记录；正式内容价值在11、新商品本地/真机在06/10验收。"
+    },
+    {
+      "legacyId": "T16.3",
+      "parent": "T16",
+      "disposition": "superseded_with_carryover",
+      "owners": [
+        11
+      ],
+      "carryover": [
+        6,
+        10,
+        11
+      ],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "原 DOM 小屋剩余 UI/打磨方向被全商品 Three.js 取代，不继续制作、不补勾旧记录；正式内容价值在11、新商品本地/真机在06/10验收。"
+    },
+    {
+      "legacyId": "T16.5",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        6,
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T16.6",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        6,
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T16.7",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        11
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T16.8",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        6,
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "各分段全部满足才可关闭原项；本次未实施。"
+    },
+    {
+      "legacyId": "T16.C2",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        1,
+        3
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "01商品规划合同技术范围已通过并归档；03项目制作链与发布门禁仍待实施，原T16.C2未整体完成。"
+    },
+    {
+      "legacyId": "T16.C3",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        5
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T16.C4",
+      "parent": "T16",
+      "disposition": "pending",
+      "owners": [
+        6,
+        10
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T16-immersive-products.md",
+      "note": "06持有本地范围，10持有公网真机；正式包变化在11/12触发对应复验，不用样例代替每款商品。"
+    },
+    {
+      "legacyId": "T17.1",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.2",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.3",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.4",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.5",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.6",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.7",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    },
+    {
+      "legacyId": "T17.8",
+      "parent": "T17",
+      "disposition": "pending",
+      "owners": [
+        16
+      ],
+      "carryover": [],
+      "history": "prd/v1/tasks/archive/history/2026-10-26/T17-interactive-evaluation.md",
+      "note": "仍未完成，按新任务执行。"
+    }
+  ]
+}

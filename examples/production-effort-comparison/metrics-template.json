@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "orai.w6-effort-observations.v1",
+  "status": "not_run",
+  "approval": null,
+  "modelProposed": "gpt-6.1-sol",
+  "comparison": [
+    { "label": "lower", "requestedEffort": "low" },
+    { "label": "baseline", "requestedEffort": "high" }
+  ],
+  "limitsProposed": {
+    "maxInvocations": 4,
+    "maxConcurrency": 1,
+    "maxRetries": 0,
+    "maxWallSecondsPerInvocation": 180,
+    "maxWallSecondsBatch": 720,
+    "currency": null,
+    "monetaryCap": null,
+    "billingDecision": "pending_user_choice",
+    "enforcedProviderTokenCap": null
+  },
+  "observations": [],
+  "observationFields": [
+    "caseId", "label", "promptSha256", "schemaSha256", "cliVersion",
+    "requestedModel", "requestedEffort", "observedModel", "observedEffort", "settingsEvidence",
+    "startedAt", "endedAt", "elapsedMs", "exitCode", "resultState", "stopReason",
+    "inputTokens", "cachedInputTokens", "outputTokens", "reasoningOutputTokens",
+    "usageSource", "reportedCost", "currency", "costSource", "billingRoute",
+    "toolCalls", "outputSha256", "hardGates", "rubricScores", "reviewEvidence"
+  ]
+}

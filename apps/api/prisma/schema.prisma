@@ -102,6 +102,7 @@ enum AssetKind {
   VIDEO
   SCRIPT
   COPY
+  EXPERIENCE
 
   @@schema("orai")
 }
@@ -198,6 +199,9 @@ model Product {
   currentVersion      ProductVersion?  @relation("CurrentVersion", fields: [currentVersionId, id, scope], references: [id, productId, scope], onDelete: Restrict)
   versions            ProductVersion[] @relation("ProductVersions")
   creativeProfiles    CreativeProfileRevision[]
+  machineProjects     MachineProject[]
+  productionPlans     ProductionPlanRevision[]
+  productionModules   ProductionModuleIdentity[]
   publishedAt         DateTime?        @map("published_at") @db.Timestamptz(3)
   createdAt           DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
   updatedAt           DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
@@ -209,6 +213,8 @@ model Product {
   @@map("products")
   @@schema("orai")
   fileCleanups FileCleanupPlan[]
+  projectReviews ProjectReviewRevision[]
+  externalRuns ExternalProductionRun[]
 }
 
 model ProductTag {
@@ -233,6 +239,8 @@ model ProductVersion {
   revision      Int              @default(0)
   status        ProductStatus    @default(DRAFT)
   configuration Json
+  creativeProfileRevisionId String? @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision? @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "version_creative_profile_scope_fkey")
   publishedAt   DateTime?        @map("published_at") @db.Timestamptz(3)
   createdAt     DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
   orders        Order[]
@@ -247,6 +255,8 @@ model ProductVersion {
   events        Event[]
   files         AssetFile[]
   contentRevisions ContentRevision[]
+  experienceRelease ExperienceRelease?
+  experienceAuthoring ExperienceAuthoringRevision[]
 
   @@unique([productId, number])
   @@unique([id, scope])
@@ -330,6 +340,8 @@ model User {
   id             String               @id @default(uuid(7)) @db.Uuid
   supabaseUserId String               @unique @map("supabase_user_id") @db.Uuid
   assetFiles     AssetFile[]
+  skillVersions StyleSkillVersion[]
+  skillReferenceFiles SkillReferenceFile[]
   productionRecords ProductionRecord[]
   scope          DataScope
   role           UserRole             @default(USER)
@@ -340,6 +352,8 @@ model User {
   bindings       EntitlementBinding[]
   auditLogs      AdminAuditLog[]
   accountSessions AccountSession[]
+  machineCredentials MachineCredential[]
+  machineWorkspaces MachineProjectWorkspace[]
 
   @@unique([id, scope])
   @@map("users")
@@ -347,6 +361,17 @@ model User {
   contentReviews ContentReviewRecord[]
   contentPackages ContentPackage[]
   fileCleanups FileCleanupPlan[]
+  experienceAuthoring ExperienceAuthoringRevision[]
+  productionPlans ProductionPlanRevision[]
+  projectMethods ProjectMethodSnapshot[]
+  projectProductions ProjectProductionRecord[]
+  projectOriginals ProjectOriginalFile[]
+  projectReviews ProjectReviewRevision[]
+  cancelledProductionRuns ExternalProductionRun[]
+  canvasLayouts ProjectCanvasLayoutRevision[]
+  codexConnections CodexConnection[]
+  externalConfigurations ExternalRunConfiguration[]
+  externalConfigurationRevisions ExternalRunConfigurationRevision[]
 }
 
 model AccountSession {
@@ -448,6 +473,103 @@ model EntitlementBinding {
   @@schema("orai")
 }
 
+model ExperienceAuthoringRevision {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  productVersionId String @map("product_version_id") @db.Uuid
+  scope DataScope
+  productVersion ProductVersion @relation(fields: [productVersionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "experience_authoring_version_scope_fkey")
+  creativeProfileRevisionId String @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "experience_authoring_profile_scope_fkey")
+  number Int
+  status String
+  versionRevision Int @map("version_revision")
+  configurationDigest String @map("configuration_digest")
+  manifest Json
+  reportPlan Json @map("report_plan")
+  methods Json
+  note String
+  source String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict)
+  projectPlanModuleId String? @map("project_plan_module_id") @db.Uuid
+  projectModule ProductionPlanModule? @relation(fields:[projectPlanModuleId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  machineCredentialId String? @map("machine_credential_id") @db.Uuid
+  machineCredential MachineCredential? @relation(fields: [machineCredentialId, scope], references: [id, scope], onDelete: Restrict)
+  machineRequestId String? @map("machine_request_id") @db.Uuid
+  digest String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  resources ExperienceAuthoringResource[]
+  releases ExperienceRelease[]
+  projectOutputs ProjectProductionOutput[]
+
+  @@unique([id, productId, scope])
+
+  @@unique([productVersionId, number])
+  @@unique([id, productVersionId, scope])
+  @@map("experience_authoring_revisions")
+  @@schema("orai")
+  candidateDrafts ProjectCandidateDraft[]
+}
+
+model ExperienceAuthoringResource {
+  id String @id @default(uuid(7)) @db.Uuid
+  revisionId String @map("revision_id") @db.Uuid
+  productVersionId String @map("product_version_id") @db.Uuid
+  scope DataScope
+  revision ExperienceAuthoringRevision @relation(fields: [revisionId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict, map: "experience_authoring_resources_revision_scope_fkey")
+  resourceId String @map("resource_id")
+  fileId String @map("file_id") @db.Uuid
+  file AssetFile @relation(fields: [fileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict, map: "experience_authoring_resources_file_scope_fkey")
+
+  @@unique([revisionId, resourceId])
+  @@index([fileId])
+  @@map("experience_authoring_resources")
+  @@schema("orai")
+}
+
+model ExperienceRelease {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  productVersionId String @unique @map("product_version_id") @db.Uuid
+  scope DataScope
+  productVersion ProductVersion @relation(fields: [productVersionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "experience_releases_version_scope_fkey")
+  creativeProfileRevisionId String? @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision? @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "experience_releases_profile_scope_fkey")
+  manifest Json
+  digest String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  attempts Attempt[]
+  resources ExperienceResource[]
+  authoringRevisionId String? @map("authoring_revision_id") @db.Uuid
+  authoringRevision ExperienceAuthoringRevision? @relation(fields: [authoringRevisionId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict, map: "experience_release_authoring_scope_fkey")
+
+  @@unique([id, productVersionId, scope])
+  @@unique([productVersionId, productId, scope])
+  @@map("experience_releases")
+  @@schema("orai")
+}
+
+model ExperienceResource {
+  id String @id @default(uuid(7)) @db.Uuid
+  releaseId String @map("release_id") @db.Uuid
+  productVersionId String @map("product_version_id") @db.Uuid
+  scope DataScope
+  release ExperienceRelease @relation(fields: [releaseId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict, map: "experience_resources_release_scope_fkey")
+  resourceId String @map("resource_id")
+  fileId String @map("file_id") @db.Uuid
+  file AssetFile @relation(fields: [fileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict, map: "experience_resources_file_scope_fkey")
+  purpose String
+  checksum String
+  byteSize Int @map("byte_size")
+  mimeType String @map("mime_type")
+
+  @@unique([releaseId, resourceId])
+  @@index([fileId])
+  @@map("experience_resources")
+  @@schema("orai")
+}
+
 model Attempt {
   id               String          @id @default(uuid(7)) @db.Uuid
   entitlementId    String          @map("entitlement_id") @db.Uuid
@@ -455,6 +577,9 @@ model Attempt {
   scope            DataScope
   entitlement      Entitlement     @relation(fields: [entitlementId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
   productVersion   ProductVersion  @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
+  experienceReleaseId String? @map("experience_release_id") @db.Uuid
+  experienceRelease ExperienceRelease? @relation(fields: [experienceReleaseId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict, map: "attempt_experience_scope_fkey")
+  runtimeCheckpoint Json? @map("runtime_checkpoint")
   ordinal          Int             @default(1)
   status           AttemptStatus   @default(STARTED)
   revision         Int             @default(0)
@@ -497,6 +622,7 @@ model Report {
   productVersion   ProductVersion @relation(fields: [productVersionId, scope], references: [id, scope], onDelete: Restrict)
   resultTypeId     String         @map("result_type_id")
   snapshot         Json?
+  presentation     Json?
   createdAt        DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
   expiresAt        DateTime       @map("expires_at") @db.Timestamptz(3)
   deletedAt        DateTime?      @map("deleted_at") @db.Timestamptz(3)
@@ -624,6 +750,10 @@ model AssetFile {
   assets           CampaignAsset[]
   contentDeliveries ContentRevision[] @relation("ContentDeliveryFile")
   contentPreviews   ContentRevision[] @relation("ContentPreviewFile")
+  machineUploads MachineUpload[]
+  experienceResources ExperienceResource[]
+  experienceDraftResources ExperienceAuthoringResource[]
+  projectOutputs ProjectProductionOutput[]
 
   @@unique([id, productVersionId, scope])
   @@index([scope, ownerUserId, status, expiresAt])
@@ -726,11 +856,218 @@ model CreativeProfileRevision {
   contentRevisions ContentRevision[]
   productionRecords ProductionRecord[]
   packages ContentPackage[]
+  skillSets CreativeSkillSet[]
+  productVersions ProductVersion[]
+  experienceReleases ExperienceRelease[]
+  experienceAuthoring ExperienceAuthoringRevision[]
+  productionPlans ProductionPlanRevision[]
 
   @@unique([productId, number])
   @@unique([id, productId, scope])
   @@index([scope, productId, createdAt])
   @@map("creative_profile_revisions")
+  @@schema("orai")
+  initialMachineProjects MachineProject[]
+}
+
+model ProductionPlanRevision {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  product Product @relation(fields: [productId, scope], references: [id, scope], onDelete: Restrict)
+  number Int
+  creativeProfileRevisionId String @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  creativeProfileDigest String @map("creative_profile_digest")
+  document Json
+  digest String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  modules ProductionPlanModule[]
+
+  @@unique([productId, number])
+  @@unique([id, productId, scope])
+  @@index([scope, productId, createdAt])
+  @@map("production_plan_revisions")
+  @@schema("orai")
+  initialMachineProjects MachineProject[]
+  projectReviews ProjectReviewRevision[]
+  externalRuns ExternalProductionRun[]
+  canvasLayouts ProjectCanvasLayoutRevision[]
+}
+
+model ProjectCanvasLayoutRevision {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  planRevisionId String @map("plan_revision_id") @db.Uuid
+  plan ProductionPlanRevision @relation(fields: [planRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict, map: "project_canvas_layout_plan_fkey")
+  number Int
+  document Json
+  digest String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict, map: "project_canvas_layout_actor_fkey")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@unique([planRevisionId, number])
+  @@index([scope, productId, planRevisionId, createdAt], map: "project_canvas_layout_scope_product_plan_created_idx")
+  @@map("project_canvas_layout_revisions")
+  @@schema("orai")
+}
+
+model ProductionModuleIdentity {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  product Product @relation(fields: [productId, scope], references: [id, scope], onDelete: Restrict)
+  moduleKey String @map("module_key")
+  domain String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  revisions ProductionPlanModule[]
+
+  @@unique([productId, moduleKey])
+  @@unique([id, productId, scope])
+  @@map("production_module_identities")
+  @@schema("orai")
+}
+
+model ProductionPlanModule {
+  id String @id @default(uuid(7)) @db.Uuid
+  planRevisionId String @map("plan_revision_id") @db.Uuid
+  moduleId String @map("module_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  plan ProductionPlanRevision @relation(fields: [planRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  identity ProductionModuleIdentity @relation(fields: [moduleId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  position Int
+  definition Json
+  digest String
+  methods ProjectMethodSnapshot[]
+  productions ProjectProductionRecord[]
+
+  candidateExperiences ExperienceAuthoringRevision[]
+  @@unique([planRevisionId, moduleId])
+  @@unique([planRevisionId, position])
+  @@unique([id, productId, scope])
+  @@map("production_plan_modules")
+  @@schema("orai")
+  candidateDrafts ProjectCandidateDraft[]
+  originalFiles ProjectOriginalFile[]
+  externalAttempts ExternalProductionAttempt[]
+  externalLeases ExternalModuleLease[]
+}
+
+model ProjectMethodSnapshot {
+  id String @id @default(uuid(7)) @db.Uuid
+  planModuleId String @map("plan_module_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  module ProductionPlanModule @relation(fields: [planModuleId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  skillId String @map("skill_id") @db.Uuid
+  sourceVersionId String @map("source_version_id") @db.Uuid
+  sourceVersion StyleSkillVersion @relation(fields: [sourceVersionId, skillId, scope], references: [id, skillId, scope], onDelete: Restrict)
+  sourceRevision Int @map("source_revision")
+  purpose String
+  snapshot Json
+  digest String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict)
+  machineCredentialId String? @map("machine_credential_id") @db.Uuid
+  machineCredential MachineCredential? @relation(fields:[machineCredentialId,scope],references:[id,scope],onDelete:Restrict)
+  machineRequestId String? @map("machine_request_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  references ProjectMethodReference[]
+  productions ProjectProductionMethod[]
+
+  @@unique([planModuleId, purpose, digest])
+  @@unique([id, planModuleId, productId, scope])
+  @@unique([id, skillId, scope])
+  @@index([scope, productId, createdAt])
+  @@map("project_method_snapshots")
+  @@schema("orai")
+}
+
+model ProjectMethodReference {
+  id String @id @default(uuid(7)) @db.Uuid
+  snapshotId String @map("snapshot_id") @db.Uuid
+  skillId String @map("skill_id") @db.Uuid
+  scope DataScope
+  snapshot ProjectMethodSnapshot @relation(fields: [snapshotId, skillId, scope], references: [id, skillId, scope], onDelete: Restrict)
+  fileId String @map("file_id") @db.Uuid
+  file SkillReferenceFile @relation(fields: [fileId, skillId, scope], references: [id, skillId, scope], onDelete: Restrict)
+  path String
+
+  @@unique([snapshotId, path])
+  @@map("project_method_references")
+  @@schema("orai")
+}
+
+model ProjectProductionRecord {
+  id String @id @default(uuid(7)) @db.Uuid
+  planModuleId String @map("plan_module_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  module ProductionPlanModule @relation(fields: [planModuleId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  number Int
+  document Json
+  digest String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields: [actorUserId, scope], references: [id, scope], onDelete: Restrict)
+  machineCredentialId String? @map("machine_credential_id") @db.Uuid
+  machineCredential MachineCredential? @relation(fields:[machineCredentialId,scope],references:[id,scope],onDelete:Restrict)
+  machineRequestId String? @map("machine_request_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  methods ProjectProductionMethod[]
+  outputs ProjectProductionOutput[]
+
+  @@unique([planModuleId, number])
+  @@unique([id, planModuleId, productId, scope])
+  @@unique([id, productId, scope])
+  @@index([scope, productId, createdAt])
+  @@map("project_production_records")
+  @@schema("orai")
+  reviewSelections ProjectReviewRecord[]
+  completedAttempts ExternalProductionAttempt[]
+}
+
+model ProjectProductionMethod {
+  id String @id @default(uuid(7)) @db.Uuid
+  recordId String @map("record_id") @db.Uuid
+  snapshotId String @map("snapshot_id") @db.Uuid
+  planModuleId String @map("plan_module_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  record ProjectProductionRecord @relation(fields: [recordId, planModuleId, productId, scope], references: [id, planModuleId, productId, scope], onDelete: Restrict)
+  snapshot ProjectMethodSnapshot @relation(fields: [snapshotId, planModuleId, productId, scope], references: [id, planModuleId, productId, scope], onDelete: Restrict)
+
+  @@unique([recordId, snapshotId])
+  @@map("project_production_methods")
+  @@schema("orai")
+}
+
+model ProjectProductionOutput {
+  id String @id @default(uuid(7)) @db.Uuid
+  recordId String @map("record_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  record ProjectProductionRecord @relation(fields: [recordId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  outputKey String @map("output_key")
+  fileKey String @map("file_key")
+  contentRevisionId String? @map("content_revision_id") @db.Uuid
+  content ContentRevision? @relation(fields: [contentRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  experienceRevisionId String? @map("experience_revision_id") @db.Uuid
+  experience ExperienceAuthoringRevision? @relation(fields: [experienceRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  fileId String? @map("file_id") @db.Uuid
+  productVersionId String? @map("product_version_id") @db.Uuid
+  file AssetFile? @relation(fields: [fileId, productVersionId, scope], references: [id, productVersionId, scope], onDelete: Restrict)
+  originalFileId String? @map("original_file_id") @db.Uuid
+  originalFile ProjectOriginalFile? @relation(fields:[originalFileId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  snapshot Json
+  digest String
+
+  @@unique([recordId, outputKey, fileKey])
+  @@map("project_production_outputs")
   @@schema("orai")
 }
 
@@ -758,6 +1095,7 @@ model ContentRevision {
   production ProductionRecord?
   reviews ContentReviewRecord[]
   packageItems ContentPackageItem[]
+  projectOutputs ProjectProductionOutput[]
 
   @@unique([id, productId, scope])
   @@unique([assetId, sourceRevision])
@@ -765,6 +1103,7 @@ model ContentRevision {
   @@index([scope, productId, createdAt])
   @@map("content_revisions")
   @@schema("orai")
+  candidateDrafts ProjectCandidateDraft[]
 }
 
 model ContentReference {
@@ -806,7 +1145,14 @@ model ProductionRecord {
   batchKey String? @map("batch_key")
   externalLabel String? @map("external_label")
   skillVersionId String? @map("skill_version_id") @db.Uuid
+  skillVersion StyleSkillVersion? @relation(fields: [skillVersionId, scope], references: [id, scope], onDelete: Restrict)
+  skillSetId String? @map("skill_set_id") @db.Uuid
+  skillSet CreativeSkillSet? @relation(fields: [skillSetId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  skillVersions Json @default("[]") @map("skill_versions")
   inputManifest Json @map("input_manifest")
+  machineCredentialId String? @map("machine_credential_id") @db.Uuid
+  machineCredential MachineCredential? @relation(fields: [machineCredentialId, scope], references: [id, scope], onDelete: Restrict)
+  machineRequestId String? @map("machine_request_id") @db.Uuid
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 
   @@unique([outputRevisionId, productId, scope])
@@ -878,5 +1224,524 @@ model FileCleanupPlan {
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
   @@index([scope,productId,createdAt])
   @@map("file_cleanup_plans")
+  @@schema("orai")
+}
+
+
+enum SkillVersionStatus {
+  DRAFT
+  REVIEWED
+  ACTIVE
+  ARCHIVED
+  @@schema("orai")
+}
+model StyleSkill {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  domain String
+  slug String
+  name String
+  description String
+  styles String[]
+  purposes String[]
+  supportedForms String[] @map("supported_forms")
+  revision Int @default(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  versions StyleSkillVersion[]
+  files SkillReferenceFile[]
+  projectMemberships MachineProjectSkill[]
+  @@unique([scope,domain,slug])
+  @@unique([id,scope])
+  @@index([scope,domain,name])
+  @@map("style_skills")
+  @@schema("orai")
+}
+model StyleSkillVersion {
+  id String @id @default(uuid(7)) @db.Uuid
+  skillId String @map("skill_id") @db.Uuid
+  scope DataScope
+  skill StyleSkill @relation(fields:[skillId,scope],references:[id,scope],onDelete:Restrict)
+  number Int
+  revision Int @default(0)
+  status SkillVersionStatus @default(DRAFT)
+  manifest Json
+  digest String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields:[actorUserId,scope],references:[id,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  attachments StyleSkillAttachment[]
+  bindings CreativeSkillBinding[]
+  productions ProductionRecord[]
+  projectSnapshots ProjectMethodSnapshot[]
+  @@unique([skillId,number])
+  @@unique([id,skillId,scope])
+  @@unique([id,scope])
+  @@index([scope,status,skillId])
+  @@map("style_skill_versions")
+  @@schema("orai")
+}
+model CreativeSkillSet {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  creativeProfileRevisionId String @map("creative_profile_revision_id") @db.Uuid
+  creativeProfile CreativeProfileRevision @relation(fields: [creativeProfileRevisionId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  number Int
+  digest String
+  note String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  bindings CreativeSkillBinding[]
+  productions ProductionRecord[]
+  @@unique([creativeProfileRevisionId, number])
+  @@unique([id, productId, scope])
+  @@index([scope, productId, createdAt])
+  @@map("creative_skill_sets")
+  @@schema("orai")
+}
+model CreativeSkillBinding {
+  id String @id @default(uuid(7)) @db.Uuid
+  skillSetId String @map("skill_set_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  skillSet CreativeSkillSet @relation(fields: [skillSetId, productId, scope], references: [id, productId, scope], onDelete: Restrict)
+  purpose String
+  domain String
+  skillId String @map("skill_id") @db.Uuid
+  skillVersionId String @map("skill_version_id") @db.Uuid
+  version StyleSkillVersion @relation(fields: [skillVersionId, skillId, scope], references: [id, skillId, scope], onDelete: Restrict)
+  snapshot Json
+  @@unique([skillSetId, purpose])
+  @@map("creative_skill_bindings")
+  @@schema("orai")
+}
+model SkillReferenceFile {
+  id String @id @default(uuid(7)) @db.Uuid
+  skillId String @map("skill_id") @db.Uuid
+  scope DataScope
+  skill StyleSkill @relation(fields:[skillId,scope],references:[id,scope],onDelete:Restrict)
+  ownerUserId String @map("owner_user_id") @db.Uuid
+  owner User @relation(fields:[ownerUserId,scope],references:[id,scope],onDelete:Restrict)
+  originalName String @map("original_name")
+  mimeType String @map("mime_type")
+  byteSize Int @map("byte_size")
+  checksum String
+  storageKey String @unique @map("storage_key")
+  status AssetFileStatus @default(PENDING)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  verifiedAt DateTime? @map("verified_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  attachments StyleSkillAttachment[]
+  projectReferences ProjectMethodReference[]
+  @@unique([id,skillId,scope])
+  @@index([scope,ownerUserId,status,expiresAt])
+  @@map("skill_reference_files")
+  @@schema("orai")
+  machineUploads MachineUpload[]
+}
+model StyleSkillAttachment {
+  id String @id @default(uuid(7)) @db.Uuid
+  versionId String @map("version_id") @db.Uuid
+  skillId String @map("skill_id") @db.Uuid
+  scope DataScope
+  version StyleSkillVersion @relation(fields:[versionId,skillId,scope],references:[id,skillId,scope],onDelete:Restrict)
+  fileId String @map("file_id") @db.Uuid
+  file SkillReferenceFile @relation(fields:[fileId,skillId,scope],references:[id,skillId,scope],onDelete:Restrict)
+  path String
+  @@unique([versionId,path])
+  @@map("style_skill_attachments")
+  @@schema("orai")
+}
+
+
+model MachineCredential {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  ownerUserId String @map("owner_user_id") @db.Uuid
+  owner User @relation(fields: [ownerUserId, scope], references: [id, scope], onDelete: Restrict)
+  name String
+  domain String
+  permissions String[]
+  productIds String[] @map("product_ids") @db.Uuid
+  skillIds String[] @map("skill_ids") @db.Uuid
+  tokenDigest String @unique @map("token_digest")
+  codexConnectionId String? @map("codex_connection_id") @db.Uuid
+  codexConnection CodexConnection? @relation(fields:[codexConnectionId,ownerUserId,workspaceId,scope],references:[id,ownerUserId,workspaceId,scope],onDelete:Restrict)
+  @@unique([codexConnectionId,domain])
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  workspaceId String? @map("workspace_id") @db.Uuid
+  workspace MachineProjectWorkspace? @relation(fields:[workspaceId,scope],references:[id,scope],onDelete:Restrict)
+  projects MachineProject[]
+  projectSkills MachineProjectSkill[]
+  projectMethods ProjectMethodSnapshot[]
+  projectProductions ProjectProductionRecord[]
+  uploads MachineUpload[]
+  calls MachineCall[]
+  productions ProductionRecord[]
+  experienceAuthoring ExperienceAuthoringRevision[]
+
+  @@unique([id, scope])
+  @@index([scope, createdAt])
+  @@map("machine_credentials")
+  @@schema("orai")
+  candidateDrafts ProjectCandidateDraft[]
+  externalRuns ExternalProductionRun[]
+  externalAttempts ExternalProductionAttempt[]
+}
+
+model MachineUpload {
+  id String @id @db.Uuid
+  scope DataScope
+  credentialId String @map("credential_id") @db.Uuid
+  credential MachineCredential @relation(fields: [credentialId, scope], references: [id, scope], onDelete: Restrict)
+  target Json
+  assetFileId String? @map("asset_file_id") @db.Uuid
+  assetFile AssetFile? @relation(fields: [assetFileId], references: [id], onDelete: Restrict)
+  skillFileId String? @map("skill_file_id") @db.Uuid
+  skillFile SkillReferenceFile? @relation(fields: [skillFileId], references: [id], onDelete: Restrict)
+  originalFileId String? @map("original_file_id") @db.Uuid
+  originalFile ProjectOriginalFile? @relation(fields:[originalFileId,scope],references:[id,scope],onDelete:Restrict)
+  ticketDigest String @map("ticket_digest")
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([credentialId, createdAt])
+  @@map("machine_uploads")
+  @@schema("orai")
+}
+
+model MachineCall {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  credentialId String @map("credential_id") @db.Uuid
+  credential MachineCredential @relation(fields: [credentialId, scope], references: [id, scope], onDelete: Restrict)
+  domain String
+  operation String
+  outcome String
+  errorCode String? @map("error_code")
+  entityId String? @map("entity_id") @db.Uuid
+  requestId String? @map("request_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([credentialId, createdAt])
+  @@map("machine_calls")
+  @@schema("orai")
+}
+
+
+model MachineProjectWorkspace {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  ownerUserId String @map("owner_user_id") @db.Uuid
+  owner User @relation(fields:[ownerUserId,scope],references:[id,scope],onDelete:Restrict)
+  name String
+  categoryIds String[] @map("category_ids") @db.Uuid
+  maxProjects Int @map("max_projects")
+  maxMethodsPerProject Int @map("max_methods_per_project")
+  maxRunsPerProject Int @default(20) @map("max_runs_per_project")
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  credentials MachineCredential[]
+  projects MachineProject[]
+  @@unique([id,scope])
+  @@map("machine_project_workspaces")
+  @@schema("orai")
+  externalRuns ExternalProductionRun[]
+  codexConnections CodexConnection[]
+  externalConfigurations ExternalRunConfiguration[]
+}
+
+model CodexConnection {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  ownerUserId String @map("owner_user_id") @db.Uuid
+  owner User @relation(fields:[ownerUserId,scope],references:[id,scope],onDelete:Restrict)
+  workspaceId String @map("workspace_id") @db.Uuid
+  workspace MachineProjectWorkspace @relation(fields:[workspaceId,scope],references:[id,scope],onDelete:Restrict)
+  clientKey String @map("client_key") @db.Uuid
+  inputDigest String @map("input_digest")
+  digest String
+  document Json
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  credentials MachineCredential[]
+  @@unique([id,ownerUserId,workspaceId,scope])
+  @@unique([ownerUserId,scope,clientKey])
+  @@index([scope,ownerUserId,createdAt])
+  @@map("codex_connections")
+  @@schema("orai")
+}
+model MachineProject {
+  id String @id @default(uuid(7)) @db.Uuid
+  workspaceId String @map("workspace_id") @db.Uuid
+  scope DataScope
+  workspace MachineProjectWorkspace @relation(fields:[workspaceId,scope],references:[id,scope],onDelete:Restrict)
+  productId String @unique @map("product_id") @db.Uuid
+  product Product @relation(fields:[productId,scope],references:[id,scope],onDelete:Restrict)
+  creatorCredentialId String @map("creator_credential_id") @db.Uuid
+  creator MachineCredential @relation(fields:[creatorCredentialId,scope],references:[id,scope],onDelete:Restrict)
+  projectKey String @map("project_key")
+  bootstrapDigest String @map("bootstrap_digest")
+  initialProfileId String @map("initial_profile_id") @db.Uuid
+  initialPlanId String @map("initial_plan_id") @db.Uuid
+  initialProfile CreativeProfileRevision @relation(fields:[initialProfileId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  initialPlan ProductionPlanRevision @relation(fields:[initialPlanId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  skills MachineProjectSkill[]
+  @@unique([workspaceId,projectKey])
+  @@unique([productId,scope])
+  @@map("machine_projects")
+  @@schema("orai")
+}
+model MachineProjectSkill {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  project MachineProject @relation(fields:[productId,scope],references:[productId,scope],onDelete:Restrict)
+  skillId String @unique @map("skill_id") @db.Uuid
+  skill StyleSkill @relation(fields:[skillId,scope],references:[id,scope],onDelete:Restrict)
+  creatorCredentialId String @map("creator_credential_id") @db.Uuid
+  creator MachineCredential @relation(fields:[creatorCredentialId,scope],references:[id,scope],onDelete:Restrict)
+  methodKey String @map("method_key")
+  domain String
+  inputDigest String @map("input_digest")
+  initialVersionId String @map("initial_version_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@unique([productId,domain,methodKey])
+  @@map("machine_project_skills")
+  @@schema("orai")
+}
+
+model ProjectCandidateDraft {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  productId String @map("product_id") @db.Uuid
+  planModuleId String @map("plan_module_id") @db.Uuid
+  module ProductionPlanModule @relation(fields:[planModuleId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  contentRevisionId String? @map("content_revision_id") @db.Uuid
+  content ContentRevision? @relation(fields:[contentRevisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  experienceRevisionId String? @map("experience_revision_id") @db.Uuid
+  experience ExperienceAuthoringRevision? @relation(fields:[experienceRevisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  methods Json
+  digest String
+  machineCredentialId String @map("machine_credential_id") @db.Uuid
+  credential MachineCredential @relation(fields:[machineCredentialId,scope],references:[id,scope],onDelete:Restrict)
+  machineRequestId String @map("machine_request_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@unique([machineCredentialId,machineRequestId])
+  @@map("project_candidate_drafts")
+  @@schema("orai")
+}
+
+model ProjectOriginalFile {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  planModuleId String @map("plan_module_id") @db.Uuid
+  module ProductionPlanModule @relation(fields:[planModuleId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  outputKey String @map("output_key")
+  fileKey String @map("file_key")
+  ownerUserId String @map("owner_user_id") @db.Uuid
+  owner User @relation(fields:[ownerUserId,scope],references:[id,scope],onDelete:Restrict)
+  originalName String @map("original_name")
+  mimeType String @map("mime_type")
+  byteSize Int @map("byte_size")
+  checksum String
+  storageKey String @unique @map("storage_key")
+  status AssetFileStatus @default(PENDING)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  verifiedAt DateTime? @map("verified_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  outputs ProjectProductionOutput[]
+  uploads MachineUpload[]
+  @@unique([id,productId,scope])
+  @@unique([id,scope])
+  @@index([scope,ownerUserId,status,expiresAt])
+  @@map("project_original_files")
+  @@schema("orai")
+}
+model ProjectReviewRevision {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  product Product @relation(fields:[productId,scope],references:[id,scope],onDelete:Restrict)
+  planRevisionId String @map("plan_revision_id") @db.Uuid
+  plan ProductionPlanRevision @relation(fields:[planRevisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  number Int
+  previousRevisionId String? @map("previous_revision_id") @db.Uuid
+  previous ProjectReviewRevision? @relation("ReviewHistory",fields:[previousRevisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  next ProjectReviewRevision[] @relation("ReviewHistory")
+  status String
+  selection Json
+  fingerprint String
+  frontierFingerprint String @map("frontier_fingerprint")
+  manifest Json
+  issues Json
+  returns Json
+  note String
+  actorUserId String @map("actor_user_id") @db.Uuid
+  actor User @relation(fields:[actorUserId,scope],references:[id,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  records ProjectReviewRecord[]
+  @@unique([productId,number])
+  @@unique([id,productId,scope])
+  @@map("project_review_revisions")
+  @@schema("orai")
+}
+model ProjectReviewRecord {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  reviewId String @map("review_id") @db.Uuid
+  review ProjectReviewRevision @relation(fields:[reviewId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  recordId String @map("record_id") @db.Uuid
+  record ProjectProductionRecord @relation(fields:[recordId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  @@unique([reviewId,recordId])
+  @@map("project_review_records")
+  @@schema("orai")
+}
+
+model ExternalProductionRun {
+  id String @id @default(uuid(7)) @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  product Product @relation(fields:[productId,scope],references:[id,scope],onDelete:Restrict)
+  planRevisionId String @map("plan_revision_id") @db.Uuid
+  plan ProductionPlanRevision @relation(fields:[planRevisionId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  workspaceId String @map("workspace_id") @db.Uuid
+  workspace MachineProjectWorkspace @relation(fields:[workspaceId,scope],references:[id,scope],onDelete:Restrict)
+  creatorCredentialId String @map("creator_credential_id") @db.Uuid
+  creator MachineCredential @relation(fields:[creatorCredentialId,scope],references:[id,scope],onDelete:Restrict)
+  runKey String @map("run_key")
+  limits Json
+  digest String
+  cancelledAt DateTime? @map("cancelled_at") @db.Timestamptz(3)
+  cancelReason String? @map("cancel_reason")
+  cancelActorUserId String? @map("cancel_actor_user_id") @db.Uuid
+  cancelActor User? @relation(fields:[cancelActorUserId,scope],references:[id,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  attempts ExternalProductionAttempt[]
+  leases ExternalModuleLease[]
+  @@unique([productId,runKey])
+  @@unique([id,productId,scope])
+  @@index([scope,productId,createdAt])
+  @@map("external_production_runs")
+  @@schema("orai")
+}
+model ExternalProductionAttempt {
+  id String @id @default(uuid(7)) @db.Uuid
+  runId String @map("run_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  run ExternalProductionRun @relation(fields:[runId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  planModuleId String @map("plan_module_id") @db.Uuid
+  module ProductionPlanModule @relation(fields:[planModuleId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  credentialId String @map("credential_id") @db.Uuid
+  credential MachineCredential @relation(fields:[credentialId,scope],references:[id,scope],onDelete:Restrict)
+  domain String
+  clientKey String @map("client_key")
+  inputFingerprint String @map("input_fingerprint")
+  sourceFrontierFingerprint String @map("source_frontier_fingerprint")
+  inputs Json
+  methods Json
+  missingInputs Json @map("missing_inputs")
+  generation Int
+  tokenDigest String @map("token_digest")
+  leaseExpiresAt DateTime @map("lease_expires_at") @db.Timestamptz(3)
+  state String
+  revision Int @default(0)
+  outputRecordId String? @map("output_record_id") @db.Uuid
+  outputRecord ProjectProductionRecord? @relation(fields:[outputRecordId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  outputDigest String? @map("output_digest")
+  job Json?
+  reportedCostFen Int? @map("reported_cost_fen")
+  reportedTokens Int? @map("reported_tokens")
+  verifiedAt DateTime? @map("verified_at") @db.Timestamptz(3)
+  endedAt DateTime? @map("ended_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  events ExternalAttemptEvent[]
+  lease ExternalModuleLease?
+  @@unique([runId,planModuleId,generation])
+  @@unique([id,runId,planModuleId,productId,scope])
+  @@unique([id,productId,scope])
+  @@index([runId,planModuleId,inputFingerprint])
+  @@map("external_production_attempts")
+  @@schema("orai")
+}
+model ExternalModuleLease {
+  runId String @map("run_id") @db.Uuid
+  planModuleId String @map("plan_module_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  run ExternalProductionRun @relation(fields:[runId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  module ProductionPlanModule @relation(fields:[planModuleId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  activeAttemptId String @unique @map("active_attempt_id") @db.Uuid
+  activeAttempt ExternalProductionAttempt @relation(fields:[activeAttemptId,runId,planModuleId,productId,scope],references:[id,runId,planModuleId,productId,scope],onDelete:Restrict)
+  generation Int
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  @@id([runId,planModuleId])
+  @@unique([activeAttemptId,runId,planModuleId,productId,scope])
+  @@map("external_module_leases")
+  @@schema("orai")
+}
+model ExternalAttemptEvent {
+  id String @id @default(uuid(7)) @db.Uuid
+  attemptId String @map("attempt_id") @db.Uuid
+  productId String @map("product_id") @db.Uuid
+  scope DataScope
+  attempt ExternalProductionAttempt @relation(fields:[attemptId,productId,scope],references:[id,productId,scope],onDelete:Restrict)
+  number Int
+  state String
+  step String
+  reasonCode String? @map("reason_code")
+  reason String
+  job Json?
+  reportedCostFen Int? @map("reported_cost_fen")
+  reportedTokens Int? @map("reported_tokens")
+  details Json
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@unique([attemptId,number])
+  @@map("external_attempt_events")
+  @@schema("orai")
+}
+
+model ExternalRunConfiguration {
+  id String @id @default(uuid(7)) @db.Uuid
+  scope DataScope
+  ownerUserId String @map("owner_user_id") @db.Uuid
+  owner User @relation(fields:[ownerUserId,scope],references:[id,scope],onDelete:Restrict)
+  workspaceId String @map("workspace_id") @db.Uuid
+  workspace MachineProjectWorkspace @relation(fields:[workspaceId,scope],references:[id,scope],onDelete:Restrict)
+  clientKey String @map("client_key") @db.Uuid
+  inputDigest String @map("input_digest")
+  currentRevision Int @map("current_revision")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  revisions ExternalRunConfigurationRevision[]
+  @@unique([id,scope])
+  @@unique([ownerUserId,scope,clientKey])
+  @@index([scope,ownerUserId,createdAt])
+  @@map("external_run_configurations")
+  @@schema("orai")
+}
+model ExternalRunConfigurationRevision {
+  id String @id @default(uuid(7)) @db.Uuid
+  configurationId String @map("configuration_id") @db.Uuid
+  scope DataScope
+  configuration ExternalRunConfiguration @relation(fields:[configurationId,scope],references:[id,scope],onDelete:Restrict)
+  revision Int
+  digest String
+  document Json
+  createdById String @map("created_by_id") @db.Uuid
+  createdBy User @relation(fields:[createdById,scope],references:[id,scope],onDelete:Restrict)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  @@unique([configurationId,revision])
+  @@unique([id,configurationId,scope])
+  @@map("external_run_configuration_revisions")
   @@schema("orai")
 }

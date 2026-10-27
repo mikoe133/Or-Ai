@@ -1,10 +1,12 @@
 import { z } from 'zod';
 import { DataScopeSchema, IdSchema, KeySchema, PlatformSchema, TimestampSchema } from './shared.js';
+import { ContentDomainSchema } from './content-domain.js';
+import { BoundSkillSchema } from './skill-bindings.js';
+export { ContentDomainSchema } from './content-domain.js';
 
 const text = (max: number) => z.string().trim().min(1).max(max);
 const digest = z.string().regex(/^[0-9a-f]{64}$/);
 const unique = (ids: string[]) => new Set(ids).size === ids.length;
-export const ContentDomainSchema = z.enum(['assessment', 'cover', 'video', 'copy']);
 
 // Authoring proposals are separate from the strict dimensions_v1 runtime schema.
 export const ReportPlanDraftSchema = z.object({
@@ -65,7 +67,7 @@ export const ContentInputSchema = z.object({
 }).strict();
 export const ProductionSourceSchema = z.object({ source: z.enum(['manual', 'external_ai', 'mcp']),
   batchKey: KeySchema.nullable().default(null), externalLabel: text(160).nullable().default(null),
-  skillVersionId: z.null().default(null),
+  skillVersionId: IdSchema.nullable().default(null), skillSetId: IdSchema.nullable().optional(),
 }).strict();
 export const AssetAuthoringSchema = z.object({
   schemaVersion: z.literal(1), creativeProfileRevisionId: IdSchema, content: StructuredAssetSchema,
@@ -106,5 +108,7 @@ export const ProductionRecordSchema = z.object({
   id: IdSchema, productId: IdSchema, scope: DataScopeSchema, outputRevisionId: IdSchema,
   creativeProfileRevisionId: IdSchema.nullable(), actorUserId: IdSchema.nullable(),
   source: ProductionSourceSchema.shape.source, batchKey: KeySchema.nullable(), externalLabel: text(160).nullable(),
-  skillVersionId: z.null(), inputManifest: z.array(z.record(z.string(), z.unknown())), createdAt: TimestampSchema,
+  skillVersionId: IdSchema.nullable(), skillSetId: IdSchema.optional(), skillVersions: z.array(BoundSkillSchema).optional(),
+  machineCredentialId: IdSchema.optional(), machineRequestId: IdSchema.optional(),
+  inputManifest: z.array(z.record(z.string(), z.unknown())), createdAt: TimestampSchema,
 }).strict();

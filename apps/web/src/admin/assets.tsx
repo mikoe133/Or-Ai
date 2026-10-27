@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import {
@@ -14,11 +14,17 @@ import {
 } from "./api.js";
 import { ProductVersionSelect } from "./shared.js";
 import { Failure, Loading, Pager, useAction } from "../business/shared.js";
+import "./management.css";
+const assetKinds: Record<string, string> = { cover: "封面", video: "视频", script: "脚本", copy: "文案" };
+const assetStatuses: Record<string, string> = { draft: "草稿", reviewed: "已审核", ready: "已就绪", archived: "已归档" };
+const assetPlatforms: Record<string, string> = { manual: "人工", douyin: "抖音", xiaohongshu: "小红书" };
 export function Assets() {
+  const headingRef = useRef<HTMLElement>(null);
   const [params, setParams] = useSearchParams(),
     client = useQueryClient(),
     action = useAction(),
     [version, setVersion] = useState(""),
+    [editorOpen, setEditorOpen] = useState(false),
     [kind, setKind] = useState<Asset["kind"]>("cover"),
     [platform, setPlatform] = useState<Asset["platform"]>("manual"),
     [variant, setVariant] = useState(""),
@@ -27,6 +33,7 @@ export function Assets() {
     [file, setFile] = useState<File | null>(null),
     [upload, setUpload] = useState<Upload | null>(null),
     [notice, setNotice] = useState("");
+  useEffect(() => { headingRef.current?.scrollIntoView({ block: "start" }); }, [editorOpen, selected?.id]);
   const list = useQuery({
     queryKey: ["private", "admin", "assets", params.toString()],
     queryFn: ({ signal }) => adminApi.assets(params.toString(), signal),
@@ -86,6 +93,7 @@ export function Assets() {
     });
   }
   function choose(value: Asset) {
+    setEditorOpen(true);
     setSelected(value);
     setVersion(value.productVersionId);
     setKind(value.kind);
@@ -96,13 +104,117 @@ export function Assets() {
     setUpload(null);
     setNotice("");
   }
+  function newAsset() {
+    setEditorOpen(true);
+    setSelected(null);
+    setFile(null);
+    setUpload(null);
+    setVariant("");
+    setText("");
+    setNotice("");
+  }
   return (
-    <>
-      <h2>素材管理</h2>
-      <p>
-        封面、视频与文字分别保存。文件校验成功后仍需保存草稿、审核并标记就绪。只有明确采用的商品封面公开。
-      </p>
-      <section className="biz-card">
+    <div className="admin-management admin-assets">
+      <header ref={headingRef} className="admin-management-heading">
+        <div><span className="admin-eyebrow">LIBRARY / MEDIA</span><h2>{editorOpen ? (selected ? selected.variant : "新建素材") : "素材与文件"}</h2>
+          <p>{editorOpen ? "保存草稿、审核，再标记就绪。采用后的商品封面才会公开。" : "按版本、平台与状态管理封面、视频、脚本和文案。"}</p>
+        </div>
+        <div className="biz-row">{editorOpen ? <button type="button" disabled={action.busy} onClick={() => setEditorOpen(false)}>返回素材列表</button> :
+          <button type="button" className="admin-primary" disabled={action.busy} onClick={newAsset}>新建素材 <span aria-hidden="true">↗</span></button>}
+        </div>
+      </header>
+      {!editorOpen && <>
+      <form
+        className="biz-row admin-filterbar"
+        onSubmit={(event) => {
+          event.preventDefault();
+          const fields = new FormData(event.currentTarget);
+          setParams(
+            Object.fromEntries(
+              [...fields]
+                .map(([key, value]) => [key, String(value)])
+                .filter(([, value]) => value),
+            ),
+          );
+        }}
+      >
+        <label>
+          筛选类别
+          <select
+            aria-label="筛选类别"
+            name="kind"
+            defaultValue={params.get("kind") ?? ""}
+          >
+            <option value="">全部</option>
+            {["cover", "video", "script", "copy"].map((value) => (
+              <option key={value} value={value}>{assetKinds[value] ?? assetPlatforms[value] ?? assetStatuses[value] ?? value}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          筛选平台
+          <select
+            aria-label="筛选平台"
+            name="platform"
+            defaultValue={params.get("platform") ?? ""}
+          >
+            <option value="">全部</option>
+            {["manual", "douyin", "xiaohongshu"].map((value) => (
+              <option key={value} value={value}>{assetKinds[value] ?? assetPlatforms[value] ?? assetStatuses[value] ?? value}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          筛选状态
+          <select
+            aria-label="筛选状态"
+            name="status"
+            defaultValue={params.get("status") ?? ""}
+          >
+            <option value="">全部</option>
+            {["draft", "reviewed", "ready", "archived"].map((value) => (
+              <option key={value} value={value}>{assetKinds[value] ?? assetPlatforms[value] ?? assetStatuses[value] ?? value}</option>
+            ))}
+          </select>
+        </label>
+        <button>筛选素材</button>
+      </form>
+      {list.isPending ? (
+        <Loading />
+      ) : list.isError ? (
+        <Failure error={list.error} retry={() => void list.refetch()} />
+      ) : (
+        <>
+          <div className="admin-section-heading"><h3>全部素材</h3><span>{list.data.total} 份素材</span></div>
+          <div className="admin-media-grid">
+            {list.data.items.map((value) => (
+              <article className="admin-media-tile" key={value.id}>
+                <div className="admin-media-thumbnail">
+                  {value.kind === "cover" && value.downloadPath ? <img src={value.downloadPath} alt={value.variant + "封面"} loading="lazy" /> : value.kind === "video" && value.downloadPath ?
+                    <video src={value.downloadPath} preload="none" controls aria-label={value.variant + "视频预览"} /> :
+                    <div className="admin-media-text-preview"><span>{assetKinds[value.kind]}</span><p>{value.text || "暂无预览文件"}</p></div>}
+                </div>
+                <div className="admin-media-caption">
+                  <h3>{value.variant}</h3>
+                  <p>{assetKinds[value.kind]} · {assetPlatforms[value.platform] ?? value.platform} · r{value.revision}</p>
+                  <div className="biz-row"><span className="admin-status" data-status={value.status}>{assetStatuses[value.status] ?? value.status}</span>
+                    <button className="admin-table-action" disabled={action.busy} onClick={() => choose(value)}>编辑素材 <span aria-hidden="true">↗</span></button></div>
+                </div>
+              </article>
+            ))}
+          </div>
+          {!list.data.total && <p>没有匹配素材。</p>}
+          <Pager
+            {...list.data}
+            onChange={(page) =>
+              setParams({ ...Object.fromEntries(params), page: String(page) })
+            }
+          />
+        </>
+      )}
+      </>}
+      {editorOpen && <>
+      <section className="admin-form-panel admin-media-editor">
         <h3>{selected ? "编辑素材" : "新建素材"}</h3>
         <form
           onSubmit={(event) => {
@@ -198,7 +310,7 @@ export function Assets() {
                 }
               >
                 {["manual", "douyin", "xiaohongshu"].map((value) => (
-                  <option key={value}>{value}</option>
+                  <option key={value} value={value}>{assetKinds[value] ?? assetPlatforms[value] ?? assetStatuses[value] ?? value}</option>
                 ))}
               </select>
             </label>
@@ -319,6 +431,7 @@ export function Assets() {
               </>
             )}
             <button
+              className="admin-primary"
               type="submit"
               disabled={
                 action.busy ||
@@ -331,19 +444,7 @@ export function Assets() {
             </button>
           </fieldset>
         </form>
-        <button
-          disabled={action.busy}
-          onClick={() => {
-            setSelected(null);
-            setFile(null);
-            setUpload(null);
-            setVariant("");
-            setText("");
-            setNotice("");
-          }}
-        >
-          新建另一份素材
-        </button>
+        <button type="button" disabled={action.busy} onClick={newAsset}>新建另一份素材</button>
         {selected && (
           <>
             <p>素材状态：{selected.status}</p>
@@ -369,6 +470,7 @@ export function Assets() {
             <div className="biz-row">
               {(["review", "ready", "archive"] as const).map((value) => (
                 <button
+                  className={value === "archive" ? "admin-danger" : undefined}
                   key={value}
                   disabled={
                     action.busy ||
@@ -407,6 +509,7 @@ export function Assets() {
               ))}
               {selected.kind === "cover" && (
                 <button
+                  className="admin-primary"
                   disabled={action.busy || dirty || selected.status !== "ready"}
                   onClick={() =>
                     void action.run(
@@ -443,95 +546,10 @@ export function Assets() {
         )}
         {notice && <p role="status">{notice}</p>}
       </section>
-      <form
-        className="biz-grid"
-        onSubmit={(event) => {
-          event.preventDefault();
-          const fields = new FormData(event.currentTarget);
-          setParams(
-            Object.fromEntries(
-              [...fields]
-                .map(([key, value]) => [key, String(value)])
-                .filter(([, value]) => value),
-            ),
-          );
-        }}
-      >
-        <label>
-          筛选类别
-          <select
-            aria-label="筛选类别"
-            name="kind"
-            defaultValue={params.get("kind") ?? ""}
-          >
-            <option value="">全部</option>
-            {["cover", "video", "script", "copy"].map((value) => (
-              <option key={value}>{value}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          筛选平台
-          <select
-            aria-label="筛选平台"
-            name="platform"
-            defaultValue={params.get("platform") ?? ""}
-          >
-            <option value="">全部</option>
-            {["manual", "douyin", "xiaohongshu"].map((value) => (
-              <option key={value}>{value}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          筛选状态
-          <select
-            aria-label="筛选状态"
-            name="status"
-            defaultValue={params.get("status") ?? ""}
-          >
-            <option value="">全部</option>
-            {["draft", "reviewed", "ready", "archived"].map((value) => (
-              <option key={value}>{value}</option>
-            ))}
-          </select>
-        </label>
-        <button>筛选素材</button>
-      </form>
-      {list.isPending ? (
-        <Loading />
-      ) : list.isError ? (
-        <Failure error={list.error} retry={() => void list.refetch()} />
-      ) : (
-        <>
-          <div className="biz-grid">
-            {list.data.items.map((value) => (
-              <article className="biz-card" key={value.id}>
-                <h3>
-                  {value.kind} · {value.variant}
-                </h3>
-                <p>
-                  {value.platform} · {value.status} · 修订 {value.revision}
-                </p>
-                {value.text && <p>{value.text}</p>}
-                <button disabled={action.busy} onClick={() => choose(value)}>
-                  编辑素材
-                </button>
-              </article>
-            ))}
-          </div>
-          {!list.data.total && <p>没有匹配素材。</p>}
-          <Pager
-            {...list.data}
-            onChange={(page) =>
-              setParams({ ...Object.fromEntries(params), page: String(page) })
-            }
-          />
-        </>
-      )}
+      </>}
       {Boolean(action.error) && (
         <Failure error={action.error} retry={changed} />
       )}
-    </>
+    </div>
   );
 }

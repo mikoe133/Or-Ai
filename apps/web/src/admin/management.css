@@ -1,0 +1,87 @@
+.admin-shell .admin-management { min-width: 0; }
+.admin-shell .admin-management .admin-management-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+.admin-shell .admin-management .admin-management-heading > div:first-child { min-width: 0; }
+.admin-shell .admin-management .admin-management-heading h2 { margin: 8px 0 10px; color: var(--admin-text); font-size: clamp(23px, 2vw, 29px); line-height: 1.25; font-weight: 650; letter-spacing: -.045em; overflow-wrap: anywhere; }
+.admin-shell .admin-management .admin-management-heading p { margin: 0; color: var(--admin-muted); line-height: 1.7; font-size: 12px; }
+.admin-shell .admin-management .admin-management-heading > .biz-row { flex: 0 0 auto; margin-top: 20px; }
+.admin-shell .admin-management .admin-eyebrow { color: var(--admin-accent); font-size: 9px; letter-spacing: .19em; font-weight: 600; }
+.admin-shell .admin-management .admin-filterbar { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; padding: 0; }
+.admin-shell .admin-management .admin-filterbar label { flex: 0 1 160px; margin: 0; }
+.admin-shell .admin-management .admin-filterbar label:first-child { flex-basis: 270px; }
+.admin-shell .admin-management .admin-section-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 0 0 14px; }
+.admin-shell .admin-management .admin-section-heading h3 { margin: 0; color: var(--admin-text); font-size: 14px; font-weight: 650; }
+.admin-shell .admin-management .admin-section-heading > span { color: var(--admin-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.admin-shell .admin-management .admin-data-table { width: 100%; margin: 0; border-top: 1px solid var(--admin-border); }
+.admin-shell .admin-management .admin-data-table table { width: 100%; min-width: 650px; border-collapse: collapse; }
+.admin-shell .admin-management .admin-data-table th { padding: 12px 14px; background: var(--admin-soft); color: var(--admin-muted); font-size: 11px; text-align: left; font-weight: 500; white-space: nowrap; }
+.admin-shell .admin-management .admin-data-table td { padding: 15px 14px; border-bottom: 1px solid var(--admin-border); color: var(--admin-text); font-size: 12px; font-variant-numeric: tabular-nums; vertical-align: middle; }
+.admin-shell .admin-management .admin-data-table tbody tr:hover { background: var(--admin-panel); }
+.admin-shell .admin-management .admin-data-table td:first-child { width: 35%; }
+.admin-shell .admin-management .admin-data-table td:last-child { text-align: right; white-space: nowrap; }
+.admin-shell .admin-management .admin-data-table strong { font-weight: 600; }
+.admin-shell .admin-management .admin-table-subtitle { display: block; max-width: 340px; margin-top: 5px; color: var(--admin-muted); overflow-wrap: anywhere; font-size: 10px; }
+.admin-shell .admin-management button.admin-table-action { min-height: 30px; padding: 5px 8px; border-color: transparent; background: transparent; color: var(--admin-muted); font-size: 11px; }
+.admin-shell .admin-management button.admin-table-action:hover { border-color: var(--admin-border); color: var(--admin-accent); background: var(--admin-soft); }
+.admin-shell .admin-management .admin-status { display: inline-flex; align-items: center; width: fit-content; gap: 6px; padding: 4px 7px; border: 1px solid var(--admin-border); border-radius: 3px; color: var(--admin-muted); font-size: 10px; line-height: 1.4; white-space: nowrap; }
+.admin-shell .admin-management .admin-status[data-status="published"], .admin-shell .admin-management .admin-status[data-status="ready"], .admin-shell .admin-management .admin-status[data-status="active"], .admin-shell .admin-management .admin-status[data-status="fulfilled"] { border-color: #465d58; color: #b7d7c9; }
+.admin-shell .admin-management .admin-status[data-status="draft"], .admin-shell .admin-management .admin-status[data-status="pending"], .admin-shell .admin-management .admin-status[data-status="reviewed"] { border-color: #584b72; color: var(--admin-accent); }
+.admin-shell .admin-management .admin-empty-state { padding: 56px 24px; border-bottom: 1px solid var(--admin-border); text-align: center; }
+.admin-shell .admin-management .admin-empty-state h3 { color: var(--admin-text); font-size: 15px; }
+.admin-shell .admin-management .admin-empty-state p { color: var(--admin-muted); }
+.admin-shell .admin-management .admin-reference-details { margin-top: 28px; padding: 14px 16px; border: 1px solid var(--admin-border); background: var(--admin-panel); color: var(--admin-muted); }
+.admin-shell .admin-management .admin-reference-details summary { cursor: pointer; color: var(--admin-text); font-size: 12px; }
+.admin-shell .admin-management .admin-reference-details p { font-size: 11px; overflow-wrap: anywhere; }
+.admin-shell .admin-management .admin-editor-panel { min-width: 0; }
+.admin-shell .admin-management .admin-editor-tabs { display: flex; gap: 6px; margin: 0 0 20px; border-bottom: 1px solid var(--admin-border); }
+.admin-shell .admin-management .admin-editor-tabs button { min-height: 43px; padding: 10px 20px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--admin-muted); }
+.admin-shell .admin-management .admin-editor-tabs button[aria-selected="true"] { border-bottom-color: var(--admin-accent); color: var(--admin-accent); }
+.admin-shell .admin-management .admin-form-panel { min-width: 0; padding: 22px; border: 1px solid var(--admin-border); border-radius: 4px; background: var(--admin-panel); }
+.admin-shell .admin-management .admin-form-panel > .admin-section-heading { margin-bottom: 20px; }
+.admin-shell .admin-management .admin-form-panel > h3 { margin-top: 0; font-size: 15px; }
+.admin-shell .admin-management .admin-form-panel form { display: grid; gap: 15px; }
+.admin-shell .admin-management .admin-form-panel form > button { justify-self: start; }
+.admin-shell .admin-management .admin-form-panel small { color: var(--admin-muted); line-height: 1.7; }
+.admin-shell .admin-management .admin-form-panel > p { color: var(--admin-muted); line-height: 1.8; font-size: 12px; }
+.admin-shell .admin-management textarea.admin-code-editor { min-height: 420px; padding: 17px 18px; background: var(--admin-bg); color: #d8cde9; font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; line-height: 1.8; tab-size: 2; }
+.admin-shell .admin-management .admin-media-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.admin-shell .admin-management .admin-media-tile { min-width: 0; overflow: hidden; border: 1px solid var(--admin-border); border-radius: 4px; background: var(--admin-panel); }
+.admin-shell .admin-management .admin-media-thumbnail { aspect-ratio: 4 / 3; min-width: 0; overflow: hidden; border-bottom: 1px solid var(--admin-border); background: var(--admin-soft); }
+.admin-shell .admin-management .admin-media-thumbnail img, .admin-shell .admin-management .admin-media-thumbnail video { display: block; width: 100%; height: 100%; margin: 0; object-fit: contain; }
+.admin-shell .admin-management .admin-media-text-preview { height: 100%; padding: 18px; overflow: hidden; }
+.admin-shell .admin-management .admin-media-text-preview > span { color: var(--admin-accent); font-size: 10px; letter-spacing: .12em; }
+.admin-shell .admin-management .admin-media-text-preview p { display: -webkit-box; margin-top: 16px; overflow: hidden; -webkit-line-clamp: 5; -webkit-box-orient: vertical; color: var(--admin-text); font-size: 13px; line-height: 1.8; }
+.admin-shell .admin-management .admin-media-caption { padding: 15px; }
+.admin-shell .admin-management .admin-media-caption h3 { margin: 0 0 8px; color: var(--admin-text); font-size: 13px; overflow-wrap: anywhere; }
+.admin-shell .admin-management .admin-media-caption > p { margin: 0 0 15px; color: var(--admin-muted); font-size: 10px; }
+.admin-shell .admin-management .admin-media-caption > .biz-row { justify-content: space-between; gap: 6px; }
+.admin-shell .admin-management .admin-media-editor { max-width: 1100px; }
+.admin-shell .admin-management .admin-media-editor form > fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; padding: 0; border: 0; }
+.admin-shell .admin-management .admin-media-editor form > fieldset > :not(label) { grid-column: 1 / -1; }
+.admin-shell .admin-management .admin-media-editor form > fieldset > label:has(textarea), .admin-shell .admin-management .admin-media-editor form > fieldset > label:has(input[type="file"]) { grid-column: 1 / -1; }
+.admin-shell .admin-management .admin-media-editor form > fieldset > button { justify-self: start; }
+.admin-shell .admin-management .admin-media-editor form { margin-bottom: 20px; }
+.admin-shell .admin-management .admin-media-editor img.biz-cover, .admin-shell .admin-management .admin-media-editor video { width: auto; max-width: 100%; max-height: 420px; object-fit: contain; }
+.admin-shell .admin-management .admin-facts-row { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 24px; margin-bottom: 24px; padding: 18px 0 24px; border-bottom: 1px solid var(--admin-border); }
+.admin-shell .admin-management .admin-facts-row > div { display: grid; align-content: start; gap: 10px; min-width: 0; }
+.admin-shell .admin-management .admin-facts-row span { color: var(--admin-muted); font-size: 11px; }
+.admin-shell .admin-management .admin-facts-row strong { color: var(--admin-text); font-size: 15px; overflow-wrap: anywhere; }
+.admin-shell .admin-management .admin-danger-zone { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--admin-border); }
+.admin-shell .admin-management .admin-danger-zone h3 { font-size: 14px; }
+.admin-shell .admin-management .admin-danger-zone p { color: var(--admin-muted); font-size: 12px; }
+.admin-shell .admin-management .admin-context-note { margin-top: 26px; padding: 14px 16px; border-left: 2px solid var(--admin-accent); background: var(--admin-soft); color: var(--admin-muted); font-size: 11px; line-height: 1.8; }
+.admin-shell .admin-management .admin-sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+
+@media (max-width: 1200px) {
+  .admin-shell .admin-management .admin-media-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .admin-shell .admin-management .admin-management-heading { flex-direction: column; gap: 12px; }
+  .admin-shell .admin-management .admin-management-heading > .biz-row { margin-top: 0; }
+  .admin-shell .admin-management .admin-media-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .admin-shell .admin-management .admin-form-panel { padding: 16px; }
+  .admin-shell .admin-management .admin-filterbar label, .admin-shell .admin-management .admin-filterbar label:first-child { flex-basis: 100%; }
+  .admin-shell .admin-management .admin-media-grid, .admin-shell .admin-management .admin-media-editor form > fieldset, .admin-shell .admin-management .admin-facts-row { grid-template-columns: minmax(0, 1fr); }
+  .admin-shell .admin-management .admin-data-table th, .admin-shell .admin-management .admin-data-table td { padding: 12px 10px; }
+}

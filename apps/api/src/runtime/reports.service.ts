@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { IdSchema } from '@orai/contracts';
 import { DeleteReportRequestSchema, ReportResponseSchema } from '@orai/contracts/private';
+import { legacyReportPresentation } from '@orai/contracts/experience';
 import { DatabaseService } from '../database/database.service';
 import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
@@ -12,7 +13,8 @@ export function reportResponse(report: Report) {
   if (report.deletedAt || report.snapshot === null) throw new ApiException('REPORT_DELETED', '报告已删除，无法恢复内容', 410);
   if (report.expiresAt <= new Date()) throw new ApiException('REPORT_EXPIRED', '报告保存期已结束', 410);
   return ReportResponseSchema.parse({ id: report.id, attemptId: report.attemptId, versionId: report.productVersionId,
-    content: report.snapshot, createdAt: report.createdAt.toISOString(), expiresAt: report.expiresAt.toISOString() });
+    content: report.snapshot, presentation: report.presentation ?? legacyReportPresentation,
+    createdAt: report.createdAt.toISOString(), expiresAt: report.expiresAt.toISOString() });
 }
 
 @Injectable()

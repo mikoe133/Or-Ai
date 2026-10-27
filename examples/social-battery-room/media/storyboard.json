@@ -1,0 +1,33 @@
+{
+  "scenes": [
+    {
+      "sceneId": "opening",
+      "startMs": 2138,
+      "endMs": 3947,
+      "text": "需要独处，不等于不在意。",
+      "source": "hook"
+    },
+    {
+      "sceneId": "question-1",
+      "startMs": 3947,
+      "endMs": 8576,
+      "text": "和别人相处之后，我会给自己留一段安静的时间。",
+      "source": "quiet-time"
+    },
+    {
+      "sceneId": "question-2",
+      "startMs": 10770,
+      "endMs": 15189,
+      "text": "没有余力时，我能把「今天想早点休息」说出口。",
+      "source": "say-rest"
+    },
+    {
+      "sceneId": "closing",
+      "startMs": 15189,
+      "endMs": 21237,
+      "text": "给自己几分钟，把相处的节奏还给自己。",
+      "source": "cta"
+    }
+  ],
+  "note": "本地设计样例录屏；报告为固定排版样本，不是当前练习的计算结果"
+}

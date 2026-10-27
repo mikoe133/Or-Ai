@@ -1,0 +1,94 @@
+{
+  "fileKey": "TluUhd92v2Z2HztvQeGqxe",
+  "pageId": "184:441",
+  "wrapperId": "184:452",
+  "source": "output/imagegen/product-detail-20261013/02-wide-hero.png",
+  "variant": "02 · 横幅主视觉",
+  "contentSize": [
+    1011,
+    1990
+  ],
+  "wrapperPlannedSize": [
+    1440,
+    2148.4
+  ],
+  "sectionHeights": [
+    {
+      "name": "01 · 返回与面包屑",
+      "height": 64
+    },
+    {
+      "name": "02 · 横幅主视觉",
+      "height": 380
+    },
+    {
+      "name": "03 · 兑换与商品信息",
+      "height": 128
+    },
+    {
+      "name": "04 · 测评介绍与五维内容",
+      "height": 270
+    },
+    {
+      "name": "05 · 公开报告样例",
+      "height": 394
+    },
+    {
+      "name": "06 · 购买与兑换四步",
+      "height": 264
+    },
+    {
+      "name": "07 · 相关测评推荐",
+      "height": 266
+    },
+    {
+      "name": "08 · 趣味自测说明",
+      "height": 56
+    }
+  ],
+  "nativeTextCount": 91,
+  "discreteImages": 4,
+  "fonts": [
+    "Noto Sans SC",
+    "Manrope"
+  ],
+  "sampleScores": [
+    84,
+    76,
+    82,
+    72,
+    80
+  ],
+  "sampleScoreRange": [
+    0,
+    100
+  ],
+  "designSystemDiscovery": {
+    "codeConnect": "No matching Code Connect files in this repository; checked in prior turn.",
+    "existingScreens": "Native inspection of adopted homepage 40:371 and local source composition; clone preserves original header, navigation instances, color and spacing variable bindings, text/effect styles.",
+    "librarySearch": "Figma MCP Starter monthly quota blocks API discovery and writes. Existing local foundation IDs and native editor inspector supply style evidence.",
+    "content": "New editable SVG text, vectors, named hierarchy and discrete artwork. Full-page AI screenshot used only as a reference."
+  },
+  "status": "Complete: native editable Figma page implemented, exported and independently reopened",
+  "wrapperSize": [
+    1440,
+    2149
+  ],
+  "contentFrameId": "197:1412",
+  "productTitleId": "197:1430",
+  "atmosphereGroupId": "202:1709",
+  "preview": "product-detail-wide-hero-preview.png",
+  "editableBackup": "product-detail-wide-hero-backup.fig",
+  "validation": {
+    "nativeText": "Product title inspector confirms TEXT, Noto Sans SC, 48 px; imported text and native navigation are independently editable",
+    "autoLayout": "Original header/sidebar components and variables retained; content frame uses vertical auto layout, 24 px gap and eight named sections",
+    "images": "Only four discrete art images used; original image aspect ratios preserved; full-page AI screenshot not included",
+    "sampleScores": "84, 76, 82, 72, 80; sample data labeled, scale 0–100",
+    "visual": "Native 1440x2149 PNG exported and inspected: no clipping or overlap; hero sphere circular; footer and double contours present",
+    "sync": "Opened the frame URL in a fresh Chrome tab: page 184:441 and frame 184:452 present, full layout rendered, width 1440 and height 2149 confirmed in native inspector, no pending reconnect warning. Final fresh-tab check again confirms page and frame present without warning.",
+    "backup": "Native .fig download and 1440x2149 PNG preserved in output/figma."
+  },
+  "fileUrl": "https://www.figma.com/design/TluUhd92v2Z2HztvQeGqxe?node-id=184-452",
+  "pageName": "04 · 商品详情页",
+  "frameName": "商品详情 · 伴侣协作体检 · 横幅主视觉"
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CreativeProfileSchema } from "@orai/contracts/admin";
+import { CreativeProfileSchema, productImplementationPolicy } from "@orai/contracts/admin";
 import { parseEditor, type AdminProduct } from "./api.js";
 import { contentApi, type Profile } from "./content-api.js";
 import {
@@ -52,7 +52,7 @@ export function ProfileEditor({
     ["sound", "声音要求"],
   ] as const;
   return (
-    <section className="content-editor" aria-label="创作设定编辑器">
+    <section className="content-editor content-profile-editor" aria-label="创作设定编辑器">
       <div className="content-section-heading">
         <div>
           <h3>共同创作设定</h3>
@@ -62,6 +62,7 @@ export function ProfileEditor({
           {selected ? `修订 ${selected.revision}` : "尚未保存"}
         </span>
       </div>
+      <p className="content-note">{productImplementationPolicy.summary} 请在体验节奏与视觉风格中写清决定和待定项；具体运行模板仍须通过兼容检查。</p>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -85,8 +86,14 @@ export function ProfileEditor({
         }}
       >
         <fieldset disabled={action.busy}>
-          <div className="content-fields">
-            {fields.map(([key, label]) => (
+          {[
+            { title: "01 / 创作目标", description: "先确定为谁而做，以及这次体验想带来的感受。", fields: fields.slice(0, 6) },
+            { title: "02 / 表达与风格", description: "让题目、报告与传播素材使用一致的表达。", fields: fields.slice(6) },
+          ].map((group) => (
+          <section className="content-form-section" key={group.title}>
+            <header className="content-form-section-heading"><h4>{group.title}</h4><p>{group.description}</p></header>
+            <div className="content-fields content-profile-fields">
+            {group.fields.map(([key, label]) => (
               <label key={key}>
                 {label}
                 <textarea
@@ -105,7 +112,11 @@ export function ProfileEditor({
                 />
               </label>
             ))}
-          </div>
+            </div>
+          </section>
+          ))}
+          <section className="content-form-section">
+          <header className="content-form-section-heading"><h4>03 / 形式与交付</h4><p>固定参与方式、传播渠道与交付范围。</p></header>
           <div className="content-fields">
             <label>
               参与视角
@@ -127,7 +138,7 @@ export function ProfileEditor({
               </select>
             </label>
             <label>
-              体验形式
+              创作形式意向
               <select
                 aria-label="体验形式"
                 value={draft.experienceForm}
@@ -138,15 +149,16 @@ export function ProfileEditor({
                   )
                 }
               >
-                {["web", "cards", "2.5d", "3d", "game"].map((value) => (
-                  <option key={value}>{value}</option>
+                {Object.entries({web:'网页 · 历史兼容',cards:'卡片风格 · 待适配 Three.js', '2.5d':'2.5D 风格 · 待适配 Three.js', '3d':'Three.js · 当前商品基线',game:'小游戏 · 待定义玩法与 Three.js 模板'}).map(([value,label]) => (
+                  <option key={value} value={value}>{label}</option>
                 ))}
               </select>
             </label>
           </div>
           <p className="content-note">
             {capability(draft)}
-            。新形式与报告叙事先保存方案，运行端由后续任务支持。
+            。当前 Three.js 已注册静心花园单选；其他商品可规划不同场景、动画与玩法，需分别实现和注册。
+            旧网页/小屋形式保留历史兼容，不能据此认定已完成 Three.js 改造。
           </p>
           <div className="content-checks">
             <span>传播渠道</span>
@@ -190,9 +202,12 @@ export function ProfileEditor({
               </label>
             ))}
           </div>
-          <h3>报告叙事方案</h3>
+          </section>
+          <section className="content-form-section">
+          <header className="content-form-section-heading"><h4>04 / 结果叙事方案</h4></header>
           <p className="content-note">
-            独立方案草稿。用户当前看到的报告仍由题库中的兼容模板生成。
+            此方案约束结果的表达。当前单选协议仍需要标准图文报告；书信、地图、日志等先保存方案。
+            已注册的小屋手记属于呈现模板，在结果交付中选择并核对。
           </p>
           <div className="content-fields">
             <label>
@@ -316,8 +331,8 @@ export function ProfileEditor({
               </button>
             </div>
           ))}
-          <div className="biz-row">
             <button
+              className="content-add-action"
               type="button"
               disabled={draft.reportPlan.sections.length >= 24}
               onClick={() =>
@@ -336,7 +351,9 @@ export function ProfileEditor({
             >
               添加章节
             </button>
-            <button type="submit">保存设定新修订</button>
+          </section>
+          <div className="biz-row content-action-bar">
+            <span>{dirty ? "有未保存修改" : selected ? `当前设定 r${selected.revision}` : "新创作设定"}</span>
             <button
               type="button"
               disabled={!dirty}
@@ -344,6 +361,7 @@ export function ProfileEditor({
             >
               放弃设定修改
             </button>
+            <button type="submit">保存设定新修订</button>
           </div>
         </fieldset>
       </form>

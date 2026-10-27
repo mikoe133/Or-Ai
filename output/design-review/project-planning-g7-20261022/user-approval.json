@@ -1,0 +1,25 @@
+{
+  "kind": "g8_visual_approval",
+  "approvedAt": "2026-10-22T16:47:12+08:00",
+  "userReply": "可以",
+  "recordedAt": "2026-10-22T16:52:12.654867+08:00",
+  "scope": "本轮桌面正式画布编辑、手机添加模块、手机保存后目录三张指定画面",
+  "evidenceType": "forwarded_explicit_human_response",
+  "evidence": "主会话转达：2026-10-22 08:09:36 UTC交付三图并说明技术验证与边界，用户于08:47:12 UTC回复可以。当前三图SHA-256与G7收口记录一致。",
+  "forwardedByThread": "01a15d49-f07b-77f4-aefd-c07074fc9015",
+  "images": {
+    "desktop-final-editing.png": "c4784c9f6a382f1727f24357e3dcb6ca7111dbabd44e18fc131d5952298fa73b",
+    "mobile-add-module.png": "ca2a78e91c52de35f7b92c30fabedceaa0fdd86c3d5a710223000f08465c8c39",
+    "mobile-saved-directory.png": "99a1e0e8f7a660ef6b03ab95cc4babbb06524929e94b5a50d0b6121953caf042"
+  },
+  "physicalDeviceAccepted": false,
+  "futureUiApproved": false,
+  "wholePlatformAccepted": false,
+  "contentGenerationApproved": false,
+  "modelComparisonResumed": false,
+  "productionCredentialConfigurationApproved": false,
+  "schedulesApproved": false,
+  "cloudApproved": false,
+  "paidExecutionApproved": false,
+  "publicationApproved": false
+}

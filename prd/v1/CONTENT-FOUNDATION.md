@@ -2,12 +2,14 @@
 
 2026-10-19。实现范围为后端契约、创作设定修订、题库/素材历史、稳定引用、制作来源和混合存储元数据。后台编辑界面已由 [T12-B](CONTENT-WORKBENCH.md) 完成，成套采用与影响分析已由 [T12-C](CONTENT-ADOPTION.md) 完成；skill 库、MCP 和自动任务尚未实现。
 
+后续状态（2026-10-20）：T13-A/B 的 [skill 库](STYLE-SKILLS.md) 与 [五用途绑定/来源](SKILL-BINDINGS.md) 已完成，下一批次 T14-L。
+
 ## 数据与版本
 
 - `CreativeProfileRevision`：一个 Product 的不可变创作设定。`creativeProfileRevisionId` 是唯一共同依据，不另维护 brief 版本。保存使用最新序号的 expectedRevision，每次追加新记录。
 - `ContentRevision`：复用 ProductVersion/CampaignAsset，数据库触发器捕获修订；旧维护 CLI 和 T07 API 同样保留历史。题目用修订 ID＋questionId，文案/分镜用修订 ID＋blockId/sceneId 定位。状态变化也保留快照。
 - `ContentReference`：保存目标/来源修订、稳定位置、摘要、服务端提取的原文快照及实际使用文本，区分原文/改写。位置或摘要失效、商品/scope 不同、明确设定不一致、循环引用均拒绝。
-- `ProductionRecord`：关联输出、设定、固定输入、实际管理员、申报来源和可选 batchKey。来源由操作者申报，审计记录实际写入者，不表示后台运行了模型。skillVersionId 当前必须为空；batchKey 仅作来源分组，不是任务认领或执行队列。
+- `ProductionRecord`：关联输出、设定、固定输入、实际管理员、申报来源和可选 batchKey。来源由操作者申报，审计记录实际写入者，不表示后台运行了模型。T12 原记录的 skillVersionId 为空；T13-B 新来源可关联固定组合及具体版本；batchKey 仅作来源分组，不是任务认领或执行队列。
 
 独立 `ReportPlanDraftSchema` 随设定修订固定，包含稳定章节 ID、叙事和呈现要求，标记 runtimeSupport=authoring_only。旧 dimensions_v1 配置不接收这些新字段；新 renderer/双方作答仍待后续任务，原评分和个人报告快照不变。
 
@@ -19,7 +21,7 @@
 - `storage.localArchiveRegistered / previewUploaded / deliveryUploaded` 分别返回，后两项依据服务端文件记录。本机上传仍由 local 驱动保存，不宣称上云；旧 storageKey 占位不会被计为已上传。实际取文件仍处理缺失和读取错误。
 - T07 媒体 review/ready 仍要求正式文件；本地原件/预览可先保存草稿。T12-B 已接入预览/正式文件编辑，采用稿流程与受控清理已由 T12-C 完成。
 
-已确认的后续策略：本地/NAS 备份原件、母版和未采用大文件，云端按需保存轻量预览及站内采用稿。T12-C 已经向前迁移接入清理预演和受控执行，保留历史元数据，并保护任何当前/历史修订引用文件，不绕过 verified file 的不可变约束。
+历史存储策略为本地/NAS 原件归档、平台按需保存预览/采用稿；这描述当时能力，不代表已满足最新原件留存要求。用户 2026-10-21 已确认后续由平台保存图片、视频、网页/3D 包等商品原文件及对应 skill 精确版本，外部地址仅作来源、不得唯一存储，待 T14-P 实现，见 [审查决策](CONTENT-PRODUCTION-REVIEW.md#5-产品决策与交接)。T12-C 已实现的清理预演/受控执行和历史元数据继续保留，任何当前/历史修订引用文件仍受保护，不绕过 verified file 的不可变约束；本轮不导入原件或执行迁移。
 
 ## HTTP 入口
 

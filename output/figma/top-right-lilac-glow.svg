@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="360" viewBox="0 0 1440 360">
+  <defs>
+    <radialGradient id="upperLilacMist">
+      <stop stop-color="#9178B8" stop-opacity=".23"/>
+      <stop offset=".36" stop-color="#80699F" stop-opacity=".15"/>
+      <stop offset=".72" stop-color="#62507D" stop-opacity=".055"/>
+      <stop offset="1" stop-color="#554466" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="upperLavenderVeil">
+      <stop stop-color="#CCB4E0" stop-opacity=".045"/>
+      <stop offset=".45" stop-color="#B298CE" stop-opacity=".025"/>
+      <stop offset="1" stop-color="#957BAD" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="360" fill="#FFFFFF" fill-opacity="0"/>
+  <g id="08-top-right-lilac-atmosphere">
+    <ellipse id="Upper-right-lilac-diffusion" cx="1376" cy="12" rx="580" ry="320" fill="url(#upperLilacMist)"/>
+    <ellipse id="Soft-lavender-header-veil" cx="1270" cy="-25" rx="320" ry="180" fill="url(#upperLavenderVeil)"/>
+  </g>
+</svg>
