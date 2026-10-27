@@ -488,6 +488,7 @@ model ExperienceAuthoringRevision {
   manifest Json
   reportPlan Json @map("report_plan")
   methods Json
+  productPlanInput Json? @map("product_plan_input")
   note String
   source String
   actorUserId String @map("actor_user_id") @db.Uuid

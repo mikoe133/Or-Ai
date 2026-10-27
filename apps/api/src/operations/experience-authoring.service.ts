@@ -23,8 +23,9 @@ import { requireExperienceProductPolicy } from '../catalog/experience-product-po
 
 const id = (value: unknown) => parseInput(IdSchema, value).toLowerCase();
 export const experienceRevisionDto = (row: ExperienceAuthoringRevision) => {
-  const { number, actorUserId: _actor, creativeProfileRevisionId: _profile, projectPlanModuleId, ...rest } = row;
-  return ExperienceAuthoringRevisionSchema.parse({ ...rest, revision: number, scope: row.scope.toLowerCase(), createdAt: row.createdAt.toISOString() });
+  const { number, actorUserId: _actor, creativeProfileRevisionId: _profile, projectPlanModuleId, productPlanInput, ...rest } = row;
+  return ExperienceAuthoringRevisionSchema.parse({ ...rest, ...(productPlanInput ? { productPlanInput } : {}),
+    revision: number, scope: row.scope.toLowerCase(), createdAt: row.createdAt.toISOString() });
 };
 type DraftInput = z.infer<typeof ExperienceDraftInputSchema>;
 @Injectable()
@@ -172,13 +173,17 @@ export class ExperienceAuthoringService {
         throw new ApiException('CONFLICT', '体验必须使用此题库版本及其固定设定', 409);
       const methods = await this.methods(tx, access, body.methods, latest?.creativeProfileRevisionId === profile.id ? latest.methods : [], CreativeProfileSchema.parse(profile.profile).experienceForm,
         { productId, profileId: profile.id, productPlan: body.productPlan });
+      const productPlanInput = body.productPlan ? await bindSkillProductPlan(tx, access, { productId, profileId: profile.id,
+        reference: body.productPlan, moduleId: methods[0]?.productPlanInput?.planModuleId,
+        purpose: 'scene_design', domain: 'experience', form: CreativeProfileSchema.parse(profile.profile).experienceForm }) : undefined;
       if (!version.creativeProfileRevisionId) {
         const changed = await tx.productVersion.update({ where: { id: versionId }, data: { creativeProfileRevisionId: profile.id, status: 'DRAFT', revision: { increment: 1 } } });
         version = { ...version, ...changed };
       }
       const row = await this.append(tx, { productId, productVersionId: versionId, scope: access.scope, creativeProfileRevisionId: profile.id,
         number: (latest?.number ?? 0) + 1, status: 'draft', versionRevision: version.revision, configurationDigest: configurationDigest(version.configuration),
-        manifest: body.manifest, reportPlan: body.reportPlan, methods, note: body.note, source: fromMachine ? 'mcp' : body.source,
+        manifest: body.manifest, reportPlan: body.reportPlan, methods, ...(productPlanInput ? { productPlanInput } : {}),
+        note: body.note, source: fromMachine ? 'mcp' : body.source,
         actorUserId: access.actorUserId, machineCredentialId: access.machineCredentialId ?? null, machineRequestId: fromMachine ? body.requestId : null });
       return { response: { id: row.id }, entityKind: 'experience_revision', entityId: row.id };
     });
@@ -202,12 +207,13 @@ export class ExperienceAuthoringService {
       if (issues.length) throw new ApiException('INVALID_CONFIGURATION', issues.join('；'), 400);
       await requireExperienceProductPolicy(tx, version, previous);
       const fixedProfile = await this.profile(tx, access, previous.productId, previous.creativeProfileRevisionId);
-      const input = value.methods[0]?.productPlanInput;
+      const input = value.productPlanInput;
       await this.methods(tx, access, value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id,
         planModuleId: m.productPlanInput?.planModuleId })), previous.methods, CreativeProfileSchema.parse(fixedProfile.profile).experienceForm,
         { productId: previous.productId, profileId: fixedProfile.id, productPlan: input ? { revisionId: input.planRevisionId, digest: input.planDigest } : undefined });
       const { id: _id, digest: _digest, createdAt: _created, ...data } = previous;
-      const row = await this.append(tx, { ...data, manifest: value.manifest, reportPlan: value.reportPlan, methods: value.methods,
+      const row = await this.append(tx, { ...data, productPlanInput: previous.productPlanInput ?? Prisma.DbNull,
+        manifest: value.manifest, reportPlan: value.reportPlan, methods: value.methods,
         number: previous.number + 1, status: 'reviewed' });
       return { response: { id: row.id }, entityKind: 'experience_revision', entityId: row.id };
     });
@@ -215,7 +221,7 @@ export class ExperienceAuthoringService {
   }
   async saveCandidateIn(tx: Prisma.TransactionClient, access: CatalogAdminAccess, moduleId: string,
     productId: string, versionId: string, input: unknown, methods: z.infer<typeof BoundSkillSchema>[]) {
-    const module = await tx.productionPlanModule.findUniqueOrThrow({ where: { id: moduleId } });
+    const module = await tx.productionPlanModule.findUniqueOrThrow({ where: { id: moduleId }, include: { plan: true } });
     await this.mutations.administrators.requireProjectRow(access, ['content:write'],
       { productId, planRevisionId: module.planRevisionId, planModuleId: moduleId }, tx);
     const body = parseInput(ExperienceSaveSchema, input);
@@ -226,11 +232,16 @@ export class ExperienceAuthoringService {
       throw new ApiException('REVISION_CONFLICT', '体验或题库已更新', 409);
     const { profile, issues } = await this.inspect(tx, access, productId, versionId, body);
     if (issues.length) throw new ApiException('INVALID_CONFIGURATION', issues.join('；'), 400);
+    if (body.productPlan && (body.productPlan.revisionId !== module.planRevisionId || body.productPlan.digest !== module.plan.digest))
+      throw new ApiException('CONFLICT', '体验制作稿的规划输入与授权模块不一致', 409);
+    const productPlanInput = await bindSkillProductPlan(tx, access, { productId, profileId: profile.id,
+      reference: { revisionId: module.planRevisionId, digest: module.plan.digest }, moduleId: module.id,
+      purpose: 'scene_design', domain: 'experience', form: CreativeProfileSchema.parse(profile.profile).experienceForm });
     const row = await this.append(tx, { productId, productVersionId: versionId, scope: access.scope,
       creativeProfileRevisionId: profile.id, projectPlanModuleId: moduleId,
       number: (latest?.number ?? 0) + 1, status: 'draft', versionRevision: version.revision,
       configurationDigest: configurationDigest(version.configuration), manifest: body.manifest, reportPlan: body.reportPlan,
-      methods, note: body.note, source: 'mcp', actorUserId: access.actorUserId,
+      methods, productPlanInput, note: body.note, source: 'mcp', actorUserId: access.actorUserId,
       machineCredentialId: access.machineCredentialId!, machineRequestId: body.requestId });
     return experienceRevisionDto(row);
   }

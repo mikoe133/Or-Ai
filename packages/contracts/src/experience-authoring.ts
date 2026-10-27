@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { IdSchema, PageSchema, DataScopeSchema, TimestampSchema, QuestionSchema, ReportContentSchema } from './shared.js';
 import { ExperienceManifestSchema, ExperienceReleaseSchema, ReportPresentationSchema } from './experience.js';
 import { ReportPlanDraftSchema, CreativeProfileRevisionSchema } from './content.js';
-import { BoundSkillSchema, SkillProductPlanReferenceSchema } from './skill-bindings.js';
+import { BoundSkillSchema, SkillProductPlanReferenceSchema, SkillProductPlanInputSchema } from './skill-bindings.js';
 import { ExperienceSkillPurposeSchema } from './skills.js';
 import { CapabilityVersionSchema, ProductCapabilitiesSchema } from './product-capabilities.js';
 
@@ -29,6 +29,7 @@ export const ExperienceAuthoringRevisionSchema = z.object({
   versionRevision: z.number().int().min(0), configurationDigest: z.string().regex(/^[0-9a-f]{64}$/),
   manifest: ExperienceManifestSchema, reportPlan: ReportPlanDraftSchema,
   methods: z.array(BoundSkillSchema).max(2), note: z.string(),
+  productPlanInput: SkillProductPlanInputSchema.optional(),
   source: z.enum(['manual','external_ai','mcp']), machineCredentialId: IdSchema.nullable(), machineRequestId: IdSchema.nullable(),
   digest: z.string().regex(/^[0-9a-f]{64}$/), createdAt: TimestampSchema,
 }).strict();

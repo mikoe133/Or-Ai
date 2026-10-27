@@ -3,9 +3,10 @@ import { z } from 'zod';
 import { IdSchema, CatalogMetadataQuerySchema } from '@orai/contracts';
 import { AdminPageQuerySchema, ProjectMethodCaptureSchema, ProjectMethodSnapshotSchema, ProjectMethodPageSchema,
   ProjectProductionSaveSchema, ProjectProductionRecordSchema, ProjectProductionPageSchema, ProjectProductionOutputSchema,
-  ProductionPlanModuleSchema, FixedSkillVersionSchema, StyleSkillManifestSchema, SkillPurposeSchema, ProjectEffectiveMethodSchema } from '@orai/contracts/admin';
-import { verifyExperienceFiles } from '../catalog/experience-authoring';
-import { ExperienceManifestSchema } from '@orai/contracts/experience';
+  ProductionPlanModuleSchema, FixedSkillVersionSchema, StyleSkillManifestSchema, SkillPurposeSchema, ProjectEffectiveMethodSchema,
+  registeredPlanRuntime, SkillProductPlanInputSchema } from '@orai/contracts/admin';
+import { configurationDigest, experienceDraftIssues, verifyExperienceFiles } from '../catalog/experience-authoring';
+import { ExperienceManifestSchema, experienceTemplate, supportsExperience } from '@orai/contracts/experience';
 import { allowedMachineSkills } from '../catalog/machine-authorization';
 import type { CatalogAdminAccess } from '../catalog/admin-access.service';
 import { DatabaseService } from '../database/database.service';
@@ -272,11 +273,18 @@ export class ProjectProductionService {
         throw new ApiException('VALIDATION_ERROR', '体验制作稿不属于该交付槽位', 400);
       if (row.digest !== input.digest || row.creativeProfileRevisionId !== module.plan.creativeProfileRevisionId)
         throw new ApiException('REVISION_CONFLICT', '体验制作稿摘要或创作设定不符', 409);
-      const manifest = ExperienceManifestSchema.parse(row.manifest), runtime = definition.target.runtime;
-      if (!runtime || definition.target.form !== 'web' || contentDigest(runtime.renderer) !== contentDigest(manifest.renderer) ||
-        contentDigest(runtime.reportRenderer) !== contentDigest(manifest.report.renderer) || runtime.inputSchema !== manifest.content.inputSchema ||
-        runtime.engine !== manifest.content.engine || runtime.reportSchema !== manifest.report.contentSchema)
+      const manifest = ExperienceManifestSchema.parse(row.manifest), capability = registeredPlanRuntime(definition);
+      if (!capability || capability !== experienceTemplate(manifest) || !supportsExperience(manifest))
         throw new ApiException('VALIDATION_ERROR', '体验制作稿与固定运行配对不符', 400);
+      const version = await tx.productVersion.findUniqueOrThrow({ where: { id: row.productVersionId } });
+      const profile = await tx.creativeProfileRevision.findUniqueOrThrow({ where: { id: row.creativeProfileRevisionId } });
+      if (row.configurationDigest !== configurationDigest(version.configuration) || experienceDraftIssues(manifest, row.reportPlan, version, profile).length)
+        throw new ApiException('CONFLICT', '体验制作稿与固定内容版本或创作设定已不匹配', 409);
+      if (row.productPlanInput && contentDigest(SkillProductPlanInputSchema.parse(row.productPlanInput)) !== contentDigest({ schemaVersion: 1,
+        planRevisionId: module.planRevisionId, planDigest: module.plan.digest, planModuleId: module.id,
+        moduleDigest: module.digest, form: definition.target.form }))
+        throw new ApiException('CONFLICT', '体验制作稿使用了不同的固定商品规划', 409);
+      await verifyExperienceFiles(tx, manifest, access.scope, this.storage);
       // A native authoring manifest is retained, but never substituted for an original web/3D package.
       snapshot.experienceRevisionId = row.id; snapshot.purpose = 'authoring'; productVersionId = row.productVersionId;
     }

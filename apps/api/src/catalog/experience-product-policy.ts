@@ -8,7 +8,7 @@ import { contentDigest } from '../operations/content-projections';
 type Authored = { manifest: unknown; methods: unknown; productPlanInput?: unknown; projectPlanModuleId?: string | null };
 export async function requireExperienceProductPolicy(tx: Prisma.TransactionClient, version: ProductVersion, authored: Authored) {
   const methods = BoundSkillSchema.array().parse(authored.methods);
-  const parsed = SkillProductPlanInputSchema.safeParse(authored.productPlanInput ?? methods[0]?.productPlanInput);
+  const parsed = SkillProductPlanInputSchema.safeParse(authored.productPlanInput);
   if (!parsed.success) throw new ApiException('INVALID_CONFIGURATION', '体验审核与新发布必须固定实际商品规划及模块，请先保存新的制作稿', 400);
   const input = parsed.data;
   const plan = await tx.productionPlanRevision.findFirst({ where: { id: input.planRevisionId, productId: version.productId, scope: version.scope }, include: { modules: true } });
@@ -28,7 +28,7 @@ export async function requireExperienceProductPolicy(tx: Prisma.TransactionClien
   for (const method of methods) {
     if (threejsSkillPolicyIssues(method.version.manifest).length || method.domain !== 'experience' ||
       !method.version.manifest.supportedForms.includes(input.form) ||
-      !method.version.manifest.purposes.includes(method.purpose) || contentDigest(method.productPlanInput) !== contentDigest(input))
+      !method.version.manifest.purposes.includes(method.purpose) || contentDigest(method.productPlanInput ?? null) !== contentDigest(input))
       issues.push('体验方法缺少 Three.js 政策或未使用同一固定商品规划');
   }
   if (issues.length) throw new ApiException('INVALID_CONFIGURATION', [...new Set(issues)].join('；').slice(0, 240), 400);
