@@ -159,3 +159,28 @@ test('project MCP candidates preserve customized fixed methods through human rev
   assert.equal(reviewed.methods.length, 2);
   for (const binding of reviewed.methods) assert.equal((await fixture.runtime.client.styleSkillVersion.findUniqueOrThrow({ where: { id: binding.version.id } })).status, 'DRAFT');
 });
+
+test('compatibility checks separately report review eligibility and never certify device acceptance', async () => {
+  const value = await fresh(), current = await fixture.runtime.client.productionPlanRevision.aggregate({ where: { productId }, _max: { number: true } });
+  const plan = await app.get(ProductionPlansService).save(access, productId, { plan: readyPublicationPlan(value.profile.id),
+    expectedRevision: current._max.number ?? 0, requestId: randomUUID() });
+  const result = await experiences.check(access, productId, value.version.id, { manifest: value.workspace.defaultManifest,
+    reportPlan: value.profile.profile.reportPlan, methods: [], productPlan: { revisionId: plan.id, digest: plan.digest }, note: '只校验注册与固定输入' });
+  assert.equal(result.valid, true);
+  const publication = (result as unknown as { publication: { eligibleForReview: boolean; deviceAcceptance: string } }).publication;
+  assert.equal(publication.eligibleForReview, true);
+  assert.equal(publication.deviceAcceptance, 'not_performed');
+});
+
+test('manual authoring selects the exact experience module when a plan contains multiple experience outputs', async () => {
+  const value = await fresh(), document = readyPublicationPlan(value.profile.id);
+  const extra = structuredClone(document.modules.find(module => module.domain === 'experience')!);
+  extra.moduleKey = 'experience-alternative'; document.modules.push(extra);
+  const current = await fixture.runtime.client.productionPlanRevision.aggregate({ where: { productId }, _max: { number: true } });
+  const plan = await app.get(ProductionPlansService).save(access, productId, { plan: document, expectedRevision: current._max.number ?? 0, requestId: randomUUID() });
+  const module = plan.modules.find(item => item.moduleKey === 'experience')!;
+  const draft = await experiences.save(access, productId, value.version.id, { manifest: value.workspace.defaultManifest,
+    reportPlan: value.profile.profile.reportPlan, methods: [], productPlan: { revisionId: plan.id, digest: plan.digest }, planModuleId: module.id,
+    note: '人工制作也固定精确模块', source: 'manual', expectedRevision: 0, expectedVersionRevision: value.version.revision, requestId: randomUUID() });
+  assert.equal(draft.productPlanInput?.planModuleId, module.id);
+});
