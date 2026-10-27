@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import { reviewThreejsFixture } from './publication-fixture';
+import { VersionsService } from '../src/catalog/versions.service';
 import assert from 'node:assert/strict';
 import { before, after, test } from 'node:test';
 import { randomUUID } from 'node:crypto';
@@ -18,7 +20,7 @@ import { ProjectProductionService } from '../src/operations/project-production.s
 import { ExperienceAuthoringService } from '../src/operations/experience-authoring.service';
 import { ApiException } from '../src/common/http-errors';
 import { contentDigest } from '../src/operations/content-projections';
-import { demoId, DemoIdentityScenarios } from '../scripts/demo-fixtures';
+import { demoId, DemoIdentityScenarios, DemoProducts } from '../scripts/demo-fixtures';
 import { createLocalFixture } from './local-fixture';
 
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>, app: INestApplication, access: CatalogAdminAccess;
@@ -164,5 +166,19 @@ test('historical Skill sets and manifests remain readable but cannot authorize n
       expectedSourceRevision:version.revision,expectedSourceDigest:version.digest,requestId:randomUUID()}),rejected);
     assert.deepEqual((await app.get(SkillsService).readVersion(access,manifest.domain,version.skillId,version.id)).manifest,manifest);
   }
+  assert.deepEqual(await service.read(access,stored.id),before);
+  // A historical content source is readable, but attaching a new compliant
+  // experience must not make its old policy-free assessment methods publishable.
+  const versions = app.get(VersionsService), version = await versions.importConfiguration(access,c.product.id,{
+    configuration:DemoProducts[0]!.configurations[1],requestId:randomUUID()});
+  await reviewThreejsFixture(app,fixture,access,version.id,{profileId:c.profile.id});
+  const content = await fixture.runtime.client.contentRevision.findFirstOrThrow({where:{productVersionId:version.id,assetId:null},orderBy:{sourceRevision:'desc'}});
+  const assessmentMethods = bindings.filter(binding=>binding.domain==='assessment');
+  await fixture.owner.client.productionRecord.create({data:{productId:c.product.id,scope:'DEMO',outputRevisionId:content.id,
+    creativeProfileRevisionId:c.profile.id,actorUserId:access.actorUserId,source:'manual',skillSetId:stored.id,
+    skillVersionId:assessmentMethods[0]!.version.id,skillVersions:assessmentMethods,inputManifest:[]}});
+  await versions.review(access,c.product.id,version.id,{requestId:randomUUID()});
+  await assert.rejects(versions.publish(access,c.product.id,version.id,{requestId:randomUUID()}),
+    (error:unknown)=>error instanceof ApiException&&error.code==='INVALID_CONFIGURATION');
   assert.deepEqual(await service.read(access,stored.id),before);
 });
