@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 import {Readable} from 'node:stream';
 import type {AppConfiguration,AssetConfiguration} from '../config/configuration';
 import {ApiException} from '../common/http-errors';
-import {AssetStorage,inspectStoredMedia,writeInspectedFile,type InspectedFile,type StoredAssetFile} from './asset-storage';
+import {AssetStorage,inspectStoredMedia,writeInspectedFile,assertAssetUploadBudget,type InspectedFile,type StoredAssetFile} from './asset-storage';
 
 const unavailable=()=>new ApiException('SERVICE_UNAVAILABLE','文件存储暂不可用，请稍后重试',503);
 type Temporary={file:FileHandle;close():Promise<void>};
@@ -19,7 +19,7 @@ export class R2AssetStorage extends AssetStorage {
   private bytes=0;private files=0;
   private readonly controllers=new Set<AbortController>();
 
-  constructor(configuration:AppConfiguration,client?:S3Client) {
+  constructor(private readonly configuration:AppConfiguration,client?:S3Client) {
     super();
     if(configuration.assets?.driver!=='r2'||!configuration.assets.r2)throw unavailable();
     this.settings=configuration.assets.r2;
@@ -65,6 +65,7 @@ export class R2AssetStorage extends AssetStorage {
   async receiveOriginal(key:string,source:AsyncIterable<Uint8Array>,expected:InspectedFile){return this.receive(key,source,expected,true);}
   async receive(key:string,source:AsyncIterable<Uint8Array>,expected:InspectedFile,original=false){
     this.key(key);
+    assertAssetUploadBudget(this.configuration,expected.byteSize);
     if(!Number.isSafeInteger(expected.byteSize)||expected.byteSize<1||expected.byteSize>this.maxObjectBytes||!/^[a-f0-9]{64}$/.test(expected.checksum))
       throw new ApiException('VALIDATION_ERROR','文件大小或摘要不正确',400);
     return this.request(async signal=>{

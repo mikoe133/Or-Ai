@@ -11,13 +11,18 @@ export async function currentUploadProfiles(env={}) {
  const {loadConfiguration}=await import('../apps/api/dist/config/configuration.js');
  const {MAX_FILE_BYTES}=await import('../packages/mcp/dist/config.js');
  const {AdminUploadPrepareSchema,ProjectOriginalPrepareSchema,SkillFilePrepareSchema}=apiRequire('@orai/contracts/admin');
- const settings=loadConfiguration({APP_ENV:'test',NODE_ENV:'test',ASSET_STORAGE_DRIVER:'disabled',
+ const runtimeInput={APP_ENV:'test',NODE_ENV:'test',ASSET_STORAGE_DRIVER:'disabled',
   DATABASE_URL:'postgresql://unconfigured@127.0.0.1/upload_budget',CSRF_SIGNING_KEY:'c'.repeat(43),
   ...(env.ASSET_MAX_IMAGE_BYTES===undefined?{}:{ASSET_MAX_IMAGE_BYTES:env.ASSET_MAX_IMAGE_BYTES}),
-  ...(env.ASSET_MAX_VIDEO_BYTES===undefined?{}:{ASSET_MAX_VIDEO_BYTES:env.ASSET_MAX_VIDEO_BYTES})}).assets;
+  ...(env.ASSET_MAX_VIDEO_BYTES===undefined?{}:{ASSET_MAX_VIDEO_BYTES:env.ASSET_MAX_VIDEO_BYTES})};
+ const settings=loadConfiguration(runtimeInput).assets;
+ let configuredCeiling=Infinity;
+ try {configuredCeiling=loadConfiguration({...runtimeInput,UPLOAD_INGRESS_BODY_BYTES:env.UPLOAD_INGRESS_BODY_BYTES,
+  UPLOAD_REQUEST_ENVELOPE_BYTES:env.UPLOAD_REQUEST_ENVELOPE_BYTES}).assets.uploadBudget?.maxFileBytes??Infinity;}
+ catch {/* Invalid or unknown budgets are reported below; they never become an accepted runtime ceiling. */}
  const max=schema=>{const value=schema.shape.byteSize.maxValue;if(!Number.isSafeInteger(value)||value<1)throw new Error('Schema ceiling unavailable');return value;};
- const caps={image:Math.min(settings.maxImageBytes,max(AdminUploadPrepareSchema)),video:Math.min(settings.maxVideoBytes,max(AdminUploadPrepareSchema)),
-  project_original:max(ProjectOriginalPrepareSchema),skill_reference:max(SkillFilePrepareSchema)};
+ const caps={image:Math.min(configuredCeiling,settings.maxImageBytes,max(AdminUploadPrepareSchema)),video:Math.min(configuredCeiling,settings.maxVideoBytes,max(AdminUploadPrepareSchema)),
+  project_original:Math.min(configuredCeiling,max(ProjectOriginalPrepareSchema)),skill_reference:Math.min(configuredCeiling,max(SkillFilePrepareSchema))};
  const profiles=Object.entries(caps).flatMap(([name,bytes])=>[{name:'web.'+name,applicationMaxBytes:bytes},{name:'mcp.'+name,applicationMaxBytes:Math.min(bytes,MAX_FILE_BYTES)}]);
  return {profiles,sdkFileCeilingBytes:MAX_FILE_BYTES,scope:'upper bounds across existing upload purposes; smaller per-purpose limits still apply'};
 }

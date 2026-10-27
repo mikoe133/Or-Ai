@@ -15,7 +15,7 @@ import { type CatalogAdminAccess } from "../catalog/admin-access.service";
 import { parseInput } from "../common/parse-input";
 import { ApiException } from "../common/http-errors";
 import { AdminMutationService } from "./admin-mutation.service";
-import { AssetStorage, persistentAssetStorageConfigured } from "./asset-storage";
+import { AssetStorage, persistentAssetStorageConfigured, assertAssetUploadBudget } from "./asset-storage";
 import { FilesService } from "./files.service";
 import { checkReferenceName } from "./reference-content";
 export function skillFileDto(row: SkillReferenceFile, domain: string) {
@@ -101,6 +101,7 @@ export class SkillFilesService {
         "持久化文件存储尚未配置",
         503,
       );
+    assertAssetUploadBudget(this.config, body.byteSize);
     if (!checkReferenceName(body.fileName, body.mimeType))
       throw new ApiException("VALIDATION_ERROR", "扩展名与参考类型不符", 400);
     const result = await this.mutations.run(
@@ -190,7 +191,7 @@ export class SkillFilesService {
     });
     const timer = setTimeout(
       () => request.destroy(new Error("Upload deadline exceeded")),
-      120000,
+      this.config.assets?.uploadTimeoutMs ?? 120000,
     );
     try {
       await this.storage.receive(row.storageKey, request, {

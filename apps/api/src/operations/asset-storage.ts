@@ -23,6 +23,10 @@ export function persistentAssetStorageConfigured(configuration: AppConfiguration
   return configuration.assets?.driver === 'r2' && !!configuration.assets.r2 ||
     configuration.assets?.driver === 'local' && configuration.environment !== 'production';
 }
+export function assertAssetUploadBudget(configuration: AppConfiguration, bytes: number) {
+  const budget = configuration.assets?.uploadBudget;
+  if (budget && bytes > budget.maxFileBytes) throw new ApiException('VALIDATION_ERROR', '文件超出当前上传入口的字节限制', 400);
+}
 export abstract class AssetStorage {
   abstract receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile): Promise<void>;
   abstract inspect(key: string, maxBytes: number): Promise<VerifiedMedia>;
@@ -153,6 +157,7 @@ export class LocalAssetStorage extends AssetStorage {
     return this.receive(key,source,expected,true);
   }
   async receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile, original = false) {
+    assertAssetUploadBudget(this.configuration, expected.byteSize);
     const path = await this.location(key);
     let file: FileHandle | undefined;
     try {

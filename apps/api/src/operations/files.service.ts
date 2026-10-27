@@ -10,7 +10,7 @@ import { Prisma, type AssetFile } from '../generated/prisma/client';
 import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
 import { AdminMutationService } from './admin-mutation.service';
-import { AssetStorage, persistentAssetStorageConfigured } from './asset-storage';
+import { AssetStorage, persistentAssetStorageConfigured, assertAssetUploadBudget } from './asset-storage';
 import { publicCoverPath } from './media-paths';
 
 export function fileDto(row: AssetFile) {
@@ -28,6 +28,7 @@ export class FilesService {
   async prepare(access: CatalogAdminAccess, input: unknown) {
     const body = parseInput(AdminUploadPrepareSchema, input), settings = this.configuration.assets;
     if (!settings || !persistentAssetStorageConfigured(this.configuration)) throw new ApiException('SERVICE_UNAVAILABLE', '持久化文件存储尚未配置', 503);
+    assertAssetUploadBudget(this.configuration, body.byteSize);
     const image = body.kind !== 'video';
     const extensions: Record<string, string[]> = { 'image/png': ['png'], 'image/jpeg': ['jpg','jpeg'], 'image/webp': ['webp'], 'video/mp4': ['mp4'], 'video/webm': ['webm'] };
     if (body.byteSize > (body.kind === 'experience' ? Math.min(settings.maxImageBytes,4194304) : image ? settings.maxImageBytes : settings.maxVideoBytes) || body.mimeType.startsWith('image/') !== image ||
@@ -71,7 +72,7 @@ export class FilesService {
       if (fresh.status !== 'PENDING') throw new ApiException('CONFLICT', '此上传已开始，请查询状态或完成校验', 409);
       return tx.assetFile.update({ where: { id: fresh.id }, data: { status: 'VERIFYING' } });
     });
-    const abort = setTimeout(() => request.destroy(new Error('Upload deadline exceeded')), 120_000);
+    const abort = setTimeout(() => request.destroy(new Error('Upload deadline exceeded')), this.configuration.assets?.uploadTimeoutMs ?? 120_000);
     try {
       await this.storage.receive(row.storageKey, request, { byteSize: row.byteSize, mimeType: row.mimeType, checksum: row.checksum });
       await this.database.client.$transaction(async tx => {

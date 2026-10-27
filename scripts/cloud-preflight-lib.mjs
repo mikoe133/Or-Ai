@@ -68,7 +68,9 @@ export function inspectCloudConfiguration(env, loadConfiguration) {
   if ((env.TRUST_PROXY_CIDRS ?? '').split(',').some(value => broadProxy.has(value.trim()))) issue('UNBOUNDED_PROXY_TRUST_FORBIDDEN', ['TRUST_PROXY_CIDRS']);
   if (env.DEMO_SEED_DATABASE || Object.keys(env).some(key => key.startsWith('LOCAL_AUTH_') && env[key])) issue('LOCAL_DEVELOPMENT_SETTINGS_FORBIDDEN', ['LOCAL_AUTH_*', 'DEMO_SEED_DATABASE']);
   try {
-    const config = loadConfiguration(env);
+    // The inventory intentionally includes the separate migration identity. The running API must never receive it.
+    const {MIGRATION_DATABASE_URL:_migration,...runtimeEnvironment}=env;
+    const config = loadConfiguration(runtimeEnvironment);
     if (config.environment !== 'production' || !config.auth || !config.databaseSsl) issue('API_PRODUCTION_CONFIGURATION_REJECTED', []);
   } catch {
     // loadConfiguration currently emits safe field errors. Do not depend on that
@@ -76,8 +78,8 @@ export function inspectCloudConfiguration(env, loadConfiguration) {
     issue('API_PRODUCTION_CONFIGURATION_REJECTED', []);
   }
   const configurationValid = !issues.length;
-  issue('PERSISTENT_ASSET_ADAPTER_NOT_IMPLEMENTED', ['ASSET_STORAGE_DRIVER'], 'code_gap');
-  issue('WORKER_CONTAINER_ROUTING_NOT_IMPLEMENTED', [], 'code_gap');
+  if(env.ASSET_STORAGE_DRIVER!=='r2')issue('PERSISTENT_ASSET_STORAGE_NOT_CONFIGURED', ['ASSET_STORAGE_DRIVER'], 'configuration');
+  issue('VPS_ROUTE_TLS_AND_RUNTIME_NOT_VERIFIED', [], 'external_validation');
   issue('CLOUD_SCHEMA_ROLE_BOOTSTRAP_NOT_VERIFIED', ['DATABASE_URL', 'MIGRATION_DATABASE_URL'], 'external_validation');
   issue('CLOUD_AUTH_MAIL_DNS_AND_PROXY_NOT_VERIFIED', [], 'external_validation');
   issue('STORAGE_RESTART_BACKUP_AND_DEVICE_FLOWS_NOT_VERIFIED', [], 'external_validation');

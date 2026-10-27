@@ -31,8 +31,21 @@ export interface AppConfiguration {
 
 export interface AssetConfiguration {
   driver: 'local' | 'r2' | 'disabled'; directory: string; maxImageBytes: number; maxVideoBytes: number;
+  uploadBudget?: { ingressBodyBytes: number; requestEnvelopeBytes: number; maxFileBytes: number };
+  uploadTimeoutMs?: number;
   r2?: { accountId: string; endpoint: string; bucket: string; accessKeyId: string; secretAccessKey: string;
     spoolDirectory: string; spoolMaxBytes: number; spoolMaxFiles: number; requestTimeoutMs: number };
+}
+
+function runtimeUploadBudget(env: NodeJS.ProcessEnv, required: boolean): AssetConfiguration['uploadBudget'] {
+  const ingress=env.UPLOAD_INGRESS_BODY_BYTES,envelope=env.UPLOAD_REQUEST_ENVELOPE_BYTES;
+  if (!ingress&&!envelope&&!required) return undefined;
+  if (!/^\d+$/.test(ingress??'')||!/^\d+$/.test(envelope??'')) throw new Error('Missing or invalid configuration: upload byte budget');
+  const ingressBodyBytes=Number(ingress),requestEnvelopeBytes=Number(envelope);
+  if (!Number.isSafeInteger(ingressBodyBytes)||ingressBodyBytes<1||ingressBodyBytes>1024*1024*1024||
+    !Number.isSafeInteger(requestEnvelopeBytes)||requestEnvelopeBytes<0||requestEnvelopeBytes>=ingressBodyBytes)
+    throw new Error('Invalid configuration: upload byte budget');
+  return {ingressBodyBytes,requestEnvelopeBytes,maxFileBytes:ingressBodyBytes-requestEnvelopeBytes};
 }
 
 function r2Configuration(env: NodeJS.ProcessEnv): NonNullable<AssetConfiguration['r2']> {
@@ -45,7 +58,7 @@ function r2Configuration(env: NodeJS.ProcessEnv): NonNullable<AssetConfiguration
     spoolDirectory: resolve(env.ASSET_SPOOL_DIRECTORY ?? '/tmp/orai-objects'),
     spoolMaxBytes: integer(env.ASSET_SPOOL_MAX_BYTES, 256 * 1024 * 1024, 1024 * 1024 * 1024, 'ASSET_SPOOL_MAX_BYTES'),
     spoolMaxFiles: integer(env.ASSET_SPOOL_MAX_FILES, 2, 10, 'ASSET_SPOOL_MAX_FILES'),
-    requestTimeoutMs: integer(env.R2_REQUEST_TIMEOUT_MS, 120000, 600000, 'R2_REQUEST_TIMEOUT_MS') };
+    requestTimeoutMs: integer(env.R2_REQUEST_TIMEOUT_MS, 360000, 600000, 'R2_REQUEST_TIMEOUT_MS') };
 }
 
 export interface AuthConfiguration {
@@ -128,6 +141,8 @@ export function loadConfiguration(env: NodeJS.ProcessEnv = process.env): AppConf
   if (!['development', 'test', 'production'].includes(environment)) {
     throw new Error('Invalid configuration: APP_ENV');
   }
+  if (environment === 'production' && env.MIGRATION_DATABASE_URL)
+    throw new Error('Invalid runtime configuration: migration credentials must remain in the separate maintenance runner');
   const host = env.API_HOST ?? (environment === 'production' ? '0.0.0.0' : '127.0.0.1');
   if (!['127.0.0.1', '0.0.0.0'].includes(host)) throw new Error('Invalid configuration: API_HOST');
   if (!env.DATABASE_URL) throw new Error('Missing configuration: DATABASE_URL');
@@ -165,6 +180,8 @@ export function loadConfiguration(env: NodeJS.ProcessEnv = process.env): AppConf
     assets: { driver: driver as AssetConfiguration['driver'], directory: resolve(env.ASSET_DIRECTORY ?? '.local/assets'),
       maxImageBytes: integer(env.ASSET_MAX_IMAGE_BYTES, 10 * 1024 * 1024, 50 * 1024 * 1024, 'ASSET_MAX_IMAGE_BYTES'),
       maxVideoBytes: integer(env.ASSET_MAX_VIDEO_BYTES, 100 * 1024 * 1024, 512 * 1024 * 1024, 'ASSET_MAX_VIDEO_BYTES'),
+      uploadBudget: runtimeUploadBudget(env, environment === 'production' && driver === 'r2'),
+      uploadTimeoutMs: integer(env.ASSET_UPLOAD_TIMEOUT_MS, driver === 'r2' ? 360000 : 120000, 600000, 'ASSET_UPLOAD_TIMEOUT_MS'),
       ...(driver === 'r2' ? { r2: r2Configuration(env) } : {}) },
   };
 }

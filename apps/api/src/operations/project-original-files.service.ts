@@ -10,7 +10,7 @@ import { APP_CONFIG, type AppConfiguration } from '../config/configuration';
 import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
 import { AdminMutationService } from './admin-mutation.service';
-import { AssetStorage, persistentAssetStorageConfigured } from './asset-storage';
+import { AssetStorage, persistentAssetStorageConfigured, assertAssetUploadBudget } from './asset-storage';
 import { storedFileContent } from './files.service';
 
 export function originalFileDto(row: ProjectOriginalFile) {
@@ -26,6 +26,7 @@ export class ProjectOriginalFilesService {
   async prepare(access:CatalogAdminAccess,input:unknown) {
     const body=parseInput(ProjectOriginalPrepareSchema,input), {target}=body;
     if(!persistentAssetStorageConfigured(this.config))throw new ApiException('SERVICE_UNAVAILABLE','原件持久化存储尚未配置',503);
+    assertAssetUploadBudget(this.config,body.byteSize);
     const extensions:Record<string,string[]>={'application/zip':['zip'],'text/html':['html','htm'],'model/gltf-binary':['glb']};
     if(!extensions[body.mimeType]!.includes(body.fileName.split('.').at(-1)!.toLowerCase())||body.mimeType==='text/html'&&body.byteSize>2*1024*1024)
       throw new ApiException('VALIDATION_ERROR','原件的扩展名、类型或大小不符合要求',400);
@@ -73,7 +74,7 @@ export class ProjectOriginalFilesService {
       if(fresh.status!=='PENDING')throw new ApiException('CONFLICT','原件上传已开始，请查询状态',409);
       return tx.projectOriginalFile.update({where:{id:row.id},data:{status:'VERIFYING'}});
     });
-    const deadline=setTimeout(()=>request.destroy(new Error('Upload deadline exceeded')),120_000);
+    const deadline=setTimeout(()=>request.destroy(new Error('Upload deadline exceeded')),this.config.assets?.uploadTimeoutMs??120_000);
     try{
       await this.storage.receiveOriginal(row.storageKey,request,{byteSize:row.byteSize,mimeType:row.mimeType,checksum:row.checksum});
       await this.db.client.$transaction(async tx=>{
