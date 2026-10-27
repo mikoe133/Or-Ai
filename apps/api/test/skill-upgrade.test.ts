@@ -8,6 +8,7 @@ import { tmpdir } from 'node:os';
 import { Readable } from 'node:stream';
 import { Test } from '@nestjs/testing';
 import type { INestApplication } from '@nestjs/common';
+import type { Request } from 'express';
 import { StyleSkillManifestSchema, skillPurposes, threejsSkillPolicyIssues, type StyleSkillManifest } from '@orai/contracts/admin';
 import { AppModule } from '../src/app.module';
 import { APP_CONFIG } from '../src/config/configuration';
@@ -47,7 +48,8 @@ async function legacy(domain: keyof typeof skillPurposes = 'copy', reference = f
   if (reference) {
     const files = app.get(SkillFilesService), prepared = await files.prepare(access, domain, skill.id, { fileName: 'guide.md', mimeType: 'text/markdown',
       byteSize: bytes.length, checksum: createHash('sha256').update(bytes).digest('hex'), requestId: randomUUID() });
-    await files.upload(access, domain, skill.id, prepared.id, Readable.from([bytes])); await files.complete(access, domain, skill.id, prepared.id, { requestId: randomUUID() });
+    const stream = Readable.from([bytes]) as unknown as Request; stream.headers = { 'content-type': 'application/octet-stream', 'content-length': String(bytes.length) };
+    await files.upload(access, domain, skill.id, prepared.id, stream); await files.complete(access, domain, skill.id, prepared.id, { requestId: randomUUID() });
     fileId = prepared.id; manifest.references = [{ path: 'references/guide.md', fileId }];
   }
   const version = await fixture.owner.client.styleSkillVersion.create({ data: { skillId: skill.id, scope: 'DEMO', number: 1, manifest,
