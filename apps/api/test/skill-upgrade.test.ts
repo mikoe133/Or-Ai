@@ -64,6 +64,21 @@ const saved = (result: Awaited<ReturnType<SkillUpgradeService['apply']>>) => {
   const entry = result.items[0]!; assert.equal(entry.state, 'saved', JSON.stringify(entry)); if (entry.state !== 'saved') throw Error('Missing result'); return entry.result;
 };
 
+async function legacyProject() {
+  const project = await methodProject(app, fixture, access), module = project.module('copy'), c = await legacy('copy', true);
+  const row = await fixture.runtime.client.styleSkillVersion.findUniqueOrThrow({ where: { id: c.version.id }, include: { skill: true, attachments: { include: { file: true } } } });
+  const fixed = fixedVersion(row), customization = { parameters: { 'sentence-limit': 2, tone: '温柔' }, instructions: '保留商品专属结束语。' };
+  const snapshot = { ...fixed, customization: { ...customization, effectiveInstructions: expandInstructions(c.manifest.instructions, customization) } };
+  const old = await fixture.owner.client.$transaction(async tx => { const value = await tx.projectMethodSnapshot.create({ data: { planModuleId: module.id, productId: project.boot.productId, scope: 'DEMO',
+    skillId: c.skill.id, sourceVersionId: c.version.id, sourceRevision: c.version.revision, purpose: 'copywriting', snapshot,
+    digest: contentDigest({ source: snapshot, planModuleId: module.id }), actorUserId: access.actorUserId } });
+    await tx.projectMethodReference.create({ data: { snapshotId: value.id, skillId: c.skill.id, scope: 'DEMO', fileId: c.fileId!, path: 'references/guide.md' } }); return value; });
+  await fixture.owner.client.styleSkillVersion.update({ where: { id: c.version.id }, data: { status: 'ARCHIVED', revision: { increment: 1 } } });
+  const body = { source: { kind: 'project_method', id: old.id, digest: old.digest, skillRevision: c.skill.revision }, notes, requestId: randomUUID(),
+    target: { planModuleId: module.id, digest: module.digest } };
+  return { project, module, c, customization, snapshot, old, body };
+}
+
 test('upgrade inventory is scoped, read-only and exposes all seven purposes plus exact fixed references', async () => {
   const c = await legacy('assessment', true), audits = await fixture.runtime.client.adminAuditLog.count(), count = await fixture.runtime.client.styleSkillVersion.count();
   const value = await service.inventory(access, {}), row = value.versions.find(item => item.id === c.version.id)!;
@@ -113,17 +128,7 @@ test('one broken attachment fails only its selected item, and an unchanged retry
 });
 
 test('project upgrades retain frozen custom parameters and archived base instructions in a new exact plan snapshot without global activation', async () => {
-  const project = await methodProject(app, fixture, access), module = project.module('copy'), c = await legacy('copy', true);
-  const row = await fixture.runtime.client.styleSkillVersion.findUniqueOrThrow({ where: { id: c.version.id }, include: { skill: true, attachments: { include: { file: true } } } });
-  const fixed = fixedVersion(row), customization = { parameters: { 'sentence-limit': 2, tone: '温柔' }, instructions: '保留商品专属结束语。' };
-  const snapshot = { ...fixed, customization: { ...customization, effectiveInstructions: expandInstructions(c.manifest.instructions, customization) } };
-  const old = await fixture.owner.client.$transaction(async tx => { const value = await tx.projectMethodSnapshot.create({ data: { planModuleId: module.id, productId: project.boot.productId, scope: 'DEMO',
-    skillId: c.skill.id, sourceVersionId: c.version.id, sourceRevision: c.version.revision, purpose: 'copywriting', snapshot,
-    digest: contentDigest({ source: snapshot, planModuleId: module.id }), actorUserId: access.actorUserId } });
-    await tx.projectMethodReference.create({ data: { snapshotId: value.id, skillId: c.skill.id, scope: 'DEMO', fileId: c.fileId!, path: 'references/guide.md' } }); return value; });
-  await fixture.owner.client.styleSkillVersion.update({ where: { id: c.version.id }, data: { status: 'ARCHIVED', revision: { increment: 1 } } });
-  const body = { source: { kind: 'project_method', id: old.id, digest: old.digest, skillRevision: c.skill.revision }, notes, requestId: randomUUID(),
-    target: { planModuleId: module.id, digest: module.digest } };
+  const { c, customization, snapshot, old, body } = await legacyProject();
   const preview = await service.preview(access, { items: [body] }), result = saved(await service.apply(access, preview));
   assert.ok(result.projectMethod); assert.notEqual(result.projectMethod.id, old.id); assert.notEqual(result.projectMethod.digest, old.digest);
   assert.equal(result.version.status, 'draft'); assert.deepEqual(result.projectMethod.customization?.parameters, customization.parameters);
@@ -145,4 +150,32 @@ test('a corrupt historical source digest cannot be accepted as the basis of an u
   const choice = selection(c); choice.source.digest = '0'.repeat(64); choice.source.revision++;
   await assert.rejects(service.preview(access, { items: [choice] }));
   assert.equal(await fixture.runtime.client.styleSkillVersion.count({ where: { skillId: c.skill.id } }), 1);
+});
+
+test('an actual project capture INSERT failure rolls back the new library draft, parent revision and audit before an exact retry', async () => {
+  const c = await legacyProject(), preview = await service.preview(access, { items: [c.body] });
+  const audits = await fixture.runtime.client.adminAuditLog.count();
+  await fixture.owner.client.$executeRawUnsafe("CREATE FUNCTION orai.fail_upgrade_capture() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'Injected upgrade capture failure'; END $$");
+  await fixture.owner.client.$executeRawUnsafe('CREATE TRIGGER upgrade_capture_failure BEFORE INSERT ON orai.project_method_snapshots FOR EACH ROW EXECUTE FUNCTION orai.fail_upgrade_capture()');
+  try { assert.equal((await service.apply(access, preview)).items[0]!.state, 'failed'); }
+  finally {
+    await fixture.owner.client.$executeRawUnsafe('DROP TRIGGER upgrade_capture_failure ON orai.project_method_snapshots');
+    await fixture.owner.client.$executeRawUnsafe('DROP FUNCTION orai.fail_upgrade_capture()');
+  }
+  assert.equal(await fixture.runtime.client.styleSkillVersion.count({ where: { skillId: c.c.skill.id } }), 1);
+  assert.equal((await fixture.runtime.client.styleSkill.findUniqueOrThrow({ where: { id: c.c.skill.id } })).revision, 0);
+  assert.equal(await fixture.runtime.client.adminAuditLog.count(), audits);
+  assert.equal(await fixture.runtime.client.idempotentRequest.count({ where: { requestId: c.body.requestId } }), 0);
+  const first = saved(await service.apply(access, preview)), retry = saved(await service.apply(access, preview));
+  assert.deepEqual(first, retry); assert.equal(await fixture.runtime.client.projectMethodSnapshot.count({ where: { planModuleId: c.module.id } }), 2);
+});
+
+test('inventory retains customized historical sources and refuses machine access or a different product target', async () => {
+  const c = await legacyProject(), inventory = await service.inventory(access, {});
+  const found = inventory.projectMethods.find(item => item.id === c.old.id)!;
+  assert.equal(found.hasCustomization, true); assert.equal(found.digest, c.old.digest); assert.ok(found.policyIssues.length);
+  await assert.rejects(service.inventory(c.project.machine.get('copy')!, {}));
+  await assert.rejects(service.preview(c.project.machine.get('copy')!, { items: [c.body] }));
+  const other = await methodProject(app, fixture, access);
+  await assert.rejects(service.preview(access, { items: [{ ...c.body, target: { planModuleId: other.module('copy').id, digest: other.module('copy').digest } }] }));
 });
