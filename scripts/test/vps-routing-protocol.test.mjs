@@ -1,11 +1,9 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {mkdtemp,writeFile,rm,mkdir,chmod} from 'node:fs/promises';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import http from 'node:http';
-import https from 'node:https';
 import {renderVpsNginx} from '../vps-routing.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const docker=args=>execFileSync(process.execPath,[join(root,'scripts/docker.mjs'),...args],{cwd:root,encoding:'utf8',timeout:60000,maxBuffer:2*1024*1024,stdio:['ignore','pipe','pipe']}).trim();
@@ -24,33 +22,41 @@ http.createServer((request,response)=>{
   });
 }).listen(4100,'0.0.0.0');
 `;
-function request(port,path,options={}){
-  const secure=options.secure!==false,transport=secure?https:http;
-  return new Promise((resolve,reject)=>{
-    const req=transport.request({hostname:'127.0.0.1',port,path,method:options.method??'GET',servername:options.servername??'store.unit.test',
-      rejectUnauthorized:false,headers:{host:options.host??'store.unit.test',...options.headers},timeout:5000},res=>{
-      const chunks=[];res.on('data',chunk=>chunks.push(chunk));res.once('end',()=>resolve({status:res.statusCode,headers:res.headers,body:Buffer.concat(chunks).toString()}));
-    });req.once('error',reject);req.once('timeout',()=>req.destroy(Error('Local proxy timeout')));req.end(options.body);
-  });
+let clientContainer;
+const requester=String.raw`
+const {port,path,options}=JSON.parse(process.argv[1]),transport=require(options.secure===false?'node:http':'node:https');
+const request=transport.request({hostname:'web',port,path,method:options.method??'GET',servername:options.servername??'store.unit.test',rejectUnauthorized:false,
+  headers:{host:options.host??'store.unit.test',...options.headers},timeout:5000},response=>{
+  const chunks=[];response.on('data',chunk=>chunks.push(chunk));response.once('end',()=>console.log(JSON.stringify({status:response.statusCode,headers:response.headers,body:Buffer.concat(chunks).toString()})));
+});request.once('error',error=>{console.error(error.code);process.exitCode=1;});request.once('timeout',()=>request.destroy(Error('Local proxy timeout')));
+request.end(options.bodyBase64?Buffer.from(options.bodyBase64,'base64'):undefined);
+`;
+async function request(port,path,options={}){
+  const {body,...safe}=options;
+  return JSON.parse(docker(['exec',clientContainer,'node','-e',requester,JSON.stringify({port,path,options:{...safe,...(body?{bodyBase64:Buffer.from(body).toString('base64')}:{})}})]));
 }
 test('real unprivileged Nginx forwards private API transport and Range while serving SPA routes on the same HTTPS origin',async()=>{
-  const directory=await mkdtemp(join(root,'.local/vps-routing-')),suffix=process.pid+'-'+Date.now(),network='orai-route-'+suffix,api='orai-route-api-'+suffix,web='orai-route-web-'+suffix;
-  const made=[];
+  await mkdir(join(root,'.local'),{recursive:true,mode:0o700});
+  const directory=await mkdtemp(join(root,'.local/vps-routing-')),suffix=process.pid+'-'+Date.now(),network='orai-route-'+suffix,api='orai-route-api-'+suffix,web='orai-route-web-'+suffix,image='orai-route-fixture:'+suffix;
   try{
     await chmod(directory,0o755);await mkdir(join(directory,'www'),{mode:0o755});await mkdir(join(directory,'tls'),{mode:0o755});
     await writeFile(join(directory,'www/index.html'),'<!doctype html><title>SPA fixture</title>');
     await writeFile(join(directory,'nginx.conf'),renderVpsNginx({APP_PUBLIC_ORIGIN:'https://store.unit.test',UPLOAD_INGRESS_BODY_BYTES:'1024',ASSET_UPLOAD_TIMEOUT_MS:'360000'}));
     execFileSync('openssl',['req','-x509','-newkey','rsa:2048','-nodes','-keyout',join(directory,'tls/privkey.pem'),'-out',join(directory,'tls/fullchain.pem'),'-days','1','-subj','/CN=store.unit.test','-addext','subjectAltName=DNS:store.unit.test,DNS:www.store.unit.test'],{stdio:'ignore'});
     await chmod(join(directory,'tls/privkey.pem'),0o644);
-    docker(['network','create','--internal',network]);made.push('network');
+    await writeFile(join(directory,'Dockerfile'),'FROM '+nginx+'\nCOPY nginx.conf /etc/nginx/nginx.conf\nCOPY www/ /usr/share/nginx/html/\nCOPY tls/ /run/tls/\n');
+    docker(['build','-t',image,directory]);
+    docker(['network','create','--internal',network]);
     docker(['run','-d','--name',api,'--network',network,'--network-alias','api','--read-only','--cap-drop','ALL','--security-opt','no-new-privileges:true',
-      '--memory','128m','--cpus','.5','--pids-limit','32','--user','node','node:24.21.0-bookworm-slim','node','-e',stub]);made.push(api);
-    docker(['run','-d','--name',web,'--network',network,'--read-only','--tmpfs','/tmp:rw,noexec,nosuid,size=16m,mode=1777','--cap-drop','ALL','--security-opt','no-new-privileges:true',
-      '--memory','128m','--cpus','.5','--pids-limit','32','--user','101:101','-p','127.0.0.1::8443','-p','127.0.0.1::8080',
-      '--mount','type=bind,source='+join(directory,'nginx.conf')+',target=/etc/nginx/nginx.conf,readonly',
-      '--mount','type=bind,source='+join(directory,'www')+',target=/usr/share/nginx/html,readonly',
-      '--mount','type=bind,source='+join(directory,'tls')+',target=/run/tls,readonly','--entrypoint','nginx',nginx,'-g','daemon off;']);made.push(web);
-    const ports=JSON.parse(docker(['inspect',web,'--format','{{json .NetworkSettings.Ports}}'])),tls=Number(ports['8443/tcp'][0].HostPort),plain=Number(ports['8080/tcp'][0].HostPort);
+      '--memory','128m','--cpus','.5','--pids-limit','32','--user','node','node:24.21.0-bookworm-slim','node','-e',stub]);
+    docker(['run','-d','--name',web,'--network',network,'--network-alias','web','--read-only','--tmpfs','/tmp:rw,noexec,nosuid,size=16m,mode=1777','--cap-drop','ALL','--security-opt','no-new-privileges:true',
+      '--memory','128m','--cpus','.5','--pids-limit','32','--user','101:101',
+      '--entrypoint','nginx',image,'-g','daemon off;']);
+    if(docker(['inspect',web,'--format','{{.State.Running}}'])!=='true'){
+      const logs=spawnSync(process.execPath,[join(root,'scripts/docker.mjs'),'logs',web],{cwd:root,encoding:'utf8',timeout:5000});
+      throw Error('Local Nginx startup: '+docker(['inspect',web,'--format','{{json .State}}'])+' '+logs.stdout+logs.stderr);
+    }
+    clientContainer=api;const tls=8443,plain=8080;
     let ready=false;for(let count=0;count<30;count++){try{if((await request(tls,'/')).status===200){ready=true;break;}}catch{}await new Promise(resolve=>setTimeout(resolve,100));}
     assert.ok(ready,'local proxy did not become ready');
     const spa=await request(tls,'/admin/content/synthetic?tab=skills');assert.equal(spa.status,200);assert.match(spa.body,/SPA fixture/);assert.match(spa.headers['cache-control'],/no-cache/);
@@ -69,7 +75,10 @@ test('real unprivileged Nginx forwards private API transport and Range while ser
     const user=docker(['inspect',web,'--format','{{.Config.User}}']);assert.equal(user,'101:101');
     console.log(JSON.stringify({checks:11,network:'internal_isolated',https:'synthetic_local_certificate',proxyUser:user,realCloudConnections:0}));
   }finally{
-    for(const name of made.reverse()){try{if(name==='network')docker(['network','rm',network]);else docker(['rm','-f',name]);}catch{}}
+    clientContainer=undefined;
+    for(const name of [web,api]){try{docker(['rm','-f',name]);}catch{}}
+    try{docker(['network','rm',network]);}catch{}
+    try{docker(['image','rm',image]);}catch{}
     await rm(directory,{recursive:true,force:true});
   }
 });
