@@ -86,6 +86,7 @@ export class SkillUpgradeService {
         !withThreejsSkillPolicy(source.manifest).supportedForms.some(form => form === definition.target.form))
         throw new ApiException('VALIDATION_ERROR', '目标模块与固定方法的专业用途或形式不符', 400);
     }
+    if (contentDigest(source.manifest) !== source.digest) throw new ApiException('CONFLICT', '源方法正文与历史摘要不一致，请先核对原件', 409);
     const skill = await tx.styleSkill.findFirst({ where: { id: source.skillId, scope: access.scope } });
     if (!skill || skill.revision !== selection.source.skillRevision) throw new ApiException('REVISION_CONFLICT', '方法库已有变化，请重新预演', 409);
     const proposal = StyleSkillManifestSchema.parse({ ...withThreejsSkillPolicy(source.manifest),
