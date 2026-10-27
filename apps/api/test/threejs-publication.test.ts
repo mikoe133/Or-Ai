@@ -23,6 +23,8 @@ import { ProjectProductionService } from '../src/operations/project-production.s
 import { SkillsService } from '../src/operations/skills.service';
 import { currentSkillManifest } from './skill-policy-fixture';
 import { RuntimeVersionService } from '../src/catalog/runtime-version.service';
+import { methodProject, methodManifest } from './project-methods-fixture';
+import { MachineProjectsService } from '../src/operations/machine-projects.service';
 
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>, app: INestApplication, directory: string, access: CatalogAdminAccess;
 let versions: VersionsService, experiences: ExperienceAuthoringService;
@@ -118,4 +120,42 @@ test('project production accepts registered 3d authoring and retains it separate
     external: { client: 'isolated-test-fixture', runKey: 'fixture-' + randomUUID(), note: '原件尚未登记', startedAt: new Date().toISOString(), finishedAt: new Date().toISOString() } });
   assert.equal(record.outputs[0]!.purpose, 'authoring'); assert.equal(record.outputs[0]!.fileId, null);
   assert.equal(record.archiveReady, false);
+});
+
+test('runtime SQL cannot bypass new-publication policy by switching status without a reviewed Three.js release', async () => {
+  const value = await fresh();
+  await versions.review(access, productId, value.version.id, { requestId: randomUUID() });
+  await assert.rejects(fixture.runtime.client.productVersion.update({ where: { id: value.version.id },
+    data: { status: 'PUBLISHED', publishedAt: new Date(), revision: { increment: 1 } } }));
+  assert.equal(await fixture.runtime.client.experienceRelease.count({ where: { productVersionId: value.version.id } }), 0);
+});
+
+test('project MCP candidates preserve customized fixed methods through human review without requiring global Skill activation', async () => {
+  const context = await methodProject(app, fixture, access), plans = app.get(ProductionPlansService), productions = app.get(ProjectProductionService);
+  const plan = await plans.save(access, context.boot.productId, { plan: readyPublicationPlan(context.boot.creativeProfileRevisionId, 'web'),
+    expectedRevision: context.plan.revision, requestId: randomUUID() });
+  async function capture(domain: 'assessment' | 'experience') {
+    const module = plan.modules.find(item => item.definition.domain === domain)!, methods = [];
+    const source = await app.get(SkillsService).create(access, domain, { slug: 'project-fixed-' + randomUUID(), manifest: methodManifest(domain), requestId: randomUUID() });
+    for (const purpose of module.definition.methodPurposes) methods.push(await productions.capture(access, module.id, {
+      expectedModuleDigest: module.digest, purpose, sourceVersionId: source.id, expectedSourceRevision: source.revision,
+      expectedSourceDigest: source.digest, customization: { parameters: { audience: '隔离样例' }, instructions: '保留具体观察与开放建议。' }, requestId: randomUUID() }));
+    return { module, methods: methods.map(method => ({ snapshotId: method.id, digest: method.digest })) };
+  }
+  const assessment = await capture('assessment'), machine = app.get(MachineProjectsService);
+  const content = await machine.execute(context.machine.get('assessment')!, 'project_draft_save', { planModuleId: assessment.module.id,
+    expectedModuleDigest: assessment.module.digest, methods: assessment.methods, requestId: randomUUID(),
+    payload: { kind: 'assessment', expectedRevision: 0, configuration: DemoProducts[0]!.configurations[1] } }) as { productVersionId: string };
+  const experience = await capture('experience'), workspace = await experiences.workspace(access, context.boot.productId, content.productVersionId, {});
+  const profile = await fixture.runtime.client.creativeProfileRevision.findUniqueOrThrow({ where: { id: context.boot.creativeProfileRevisionId } });
+  const candidate = await machine.execute(context.machine.get('experience')!, 'project_draft_save', { planModuleId: experience.module.id,
+    expectedModuleDigest: experience.module.digest, methods: experience.methods, requestId: randomUUID(), payload: { kind: 'experience',
+      productVersionId: content.productVersionId, draft: { manifest: { ...workspace.defaultManifest, renderer: { key: 'reflection-garden', version: 1 },
+        report: { contentSchema: 'report_content_v1', renderer: { key: 'garden-notes', version: 1 } } },
+        reportPlan: CreativeProfileSchema.parse(profile.profile).reportPlan, productPlan: { revisionId: plan.id, digest: plan.digest },
+        note: '项目方法无需启用到全局库', expectedRevision: 0, expectedVersionRevision: workspace.versionRevision } } }) as { revisionId: string; revision: number };
+  const reviewed = await experiences.review(access, candidate.revisionId, { expectedRevision: candidate.revision, requestId: randomUUID() });
+  assert.equal(reviewed.status, 'reviewed');
+  assert.equal(reviewed.methods.length, 2);
+  for (const binding of reviewed.methods) assert.equal((await fixture.runtime.client.styleSkillVersion.findUniqueOrThrow({ where: { id: binding.version.id } })).status, 'DRAFT');
 });
