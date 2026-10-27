@@ -9,6 +9,8 @@ import {Readable} from 'node:stream';
 import {R2AssetStorage} from '../src/operations/r2-asset-storage';
 import {loadConfiguration,type AppConfiguration} from '../src/config/configuration';
 import {storedFileContent} from '../src/operations/files.service';
+import {createServer} from 'node:http';
+import {S3Client} from '@aws-sdk/client-s3';
 
 const sha=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('hex');
 const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aOZkAAAAASUVORK5CYII=','base64');
@@ -16,7 +18,7 @@ type Entry={bytes:Buffer;etag:string;checksum:string};
 type Command={input:Record<string,unknown>;constructor:{name:string}};
 class Objects {
   readonly data=new Map<string,Entry>();readonly calls:string[]=[];
-  corrupt=false;partial=false;changed=false;fail=false;
+  corrupt=false;partial=false;changed=false;fail=false;badMetadata=false;lastBody:Readable|undefined;
   async send(command:Command) {
     const input=command.input,key=String(input.Key);this.calls.push(command.constructor.name);
     if(this.fail)throw Error('PRIVATE_PROVIDER_SECRET');
@@ -37,7 +39,8 @@ class Objects {
         assert.ok(stored);assert.equal(input.IfMatch,stored.etag);
         if(this.changed)throw Object.assign(Error('PRIVATE_PROVIDER_SECRET'),{$metadata:{httpStatusCode:412}});
         const bytes=this.corrupt?Buffer.alloc(stored.bytes.length):this.partial?stored.bytes.subarray(1):stored.bytes;
-        return {Body:Readable.from([bytes]),ContentLength:stored.bytes.length,ETag:stored.etag,Metadata:{sha256:stored.checksum}};
+        this.lastBody=Readable.from([bytes]);
+        return {Body:this.lastBody,ContentLength:stored.bytes.length,ETag:stored.etag,Metadata:{sha256:this.badMetadata?'0'.repeat(64):stored.checksum}};
       }
       case 'DeleteObjectCommand':this.data.delete(key);return {};
       default:throw Error('Unexpected storage operation');
@@ -129,4 +132,43 @@ test('production R2 configuration requires exact account, bucket and credentials
     const bad:Record<string,string|undefined>={...env};delete bad[name];assert.throws(()=>loadConfiguration(bad));
   }
   assert.throws(()=>loadConfiguration({...env,R2_ACCOUNT_ID:'127.0.0.1/PRIVATE_PROVIDER_SECRET'}));
+});
+
+test('R2 destroys a provider response body when its metadata fails before the checksum pass',async()=>{
+  const f=await setup();try{const id=key();await f.storage.receive(id,Readable.from([png]),file(png));f.objects.badMetadata=true;
+    await assert.rejects(f.storage.read(id));assert.equal(f.objects.lastBody?.destroyed,true);assert.deepEqual(await readdir(f.directory),[]);
+  }finally{await f.close();}
+});
+
+test('the pinned AWS SDK performs signed conditional PUT, HEAD, GET and DELETE against a real loopback S3 protocol server',async()=>{
+  const f=await setup(),entries=new Map<string,Entry>(),requests:string[]=[];
+  const server=createServer((request,response)=>{void(async()=>{
+    const path=new URL(request.url!,'http://127.0.0.1').pathname;assert.ok(path.startsWith('/orai-test/'));
+    assert.match(String(request.headers.authorization),/^AWS4-HMAC-SHA256 Credential=b{32}\//);
+    assert.ok(request.headers['x-amz-date']);assert.ok(request.headers['x-amz-content-sha256']);requests.push(request.method!);
+    const saved=entries.get(path);
+    if(request.method==='PUT'){
+      assert.equal(request.headers['if-none-match'],'*');if(saved){response.writeHead(412).end();return;}
+      const bytes=await collect(request);assert.equal(bytes.length,Number(request.headers['content-length']));assert.equal(sha(bytes),request.headers['x-amz-meta-sha256']);
+      const entry={bytes,etag:'"'+sha(bytes)+'"',checksum:sha(bytes)};entries.set(path,entry);response.writeHead(200,{etag:entry.etag}).end();return;
+    }
+    if(request.method==='DELETE'){entries.delete(path);response.writeHead(204).end();return;}
+    if(!saved){response.writeHead(404).end();return;}
+    if(request.method==='GET')assert.equal(request.headers['if-match'],saved.etag);
+    response.writeHead(200,{'content-length':saved.bytes.length,etag:saved.etag,'x-amz-meta-sha256':saved.checksum});
+    response.end(request.method==='HEAD'?undefined:saved.bytes);
+  })().catch(()=>{response.writeHead(500).end();});});
+  await new Promise<void>(resolve=>server.listen(0,'127.0.0.1',resolve));
+  const address=server.address();assert.ok(address&&typeof address==='object');
+  const client=new S3Client({region:'auto',endpoint:'http://127.0.0.1:'+address.port,forcePathStyle:true,maxAttempts:1,
+    credentials:{accessKeyId:'b'.repeat(32),secretAccessKey:'c'.repeat(64)},requestChecksumCalculation:'WHEN_REQUIRED',responseChecksumValidation:'WHEN_REQUIRED'});
+  const storage=new R2AssetStorage(f.configuration,client);
+  try{const id=key();await storage.receive(id,Readable.from([png]),file(png));
+    assert.equal((await storage.inspect(id,png.length)).checksum,sha(png));
+    const response=await storedFileContent(storage,{storageKey:id,byteSize:png.length,mimeType:'image/png',originalName:'cover.png'},'bytes=-12');
+    assert.deepEqual(await collect(response.stream),png.subarray(-12));
+    await assert.rejects(storage.receive(id,Readable.from([png]),file(png)),{code:'CONFLICT'});
+    await storage.remove(id);assert.equal(entries.size,0);assert.deepEqual(new Set(requests),new Set(['PUT','HEAD','GET','DELETE']));
+    assert.deepEqual(await readdir(f.directory),[]);
+  }finally{storage.onModuleDestroy();server.closeAllConnections();await new Promise<void>(resolve=>server.close(()=>resolve()));await f.close();}
 });
