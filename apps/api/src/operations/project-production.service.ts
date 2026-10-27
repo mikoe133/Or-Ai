@@ -21,6 +21,7 @@ import { ProjectOriginalFilesService } from './project-original-files.service';
 import { FilesService } from './files.service';
 import { createHash } from 'node:crypto';
 import { bindSkillProductPlan, requireSkillProductPolicy } from './skill-product-policy';
+import { expandInstructions } from './project-method-instructions';
 
 const id = (value: unknown) => parseInput(IdSchema, value).toLowerCase();
 const moduleInclude = { plan: true, identity: true } as const;
@@ -43,11 +44,6 @@ const documentSchema = ProjectProductionRecordSchema.pick({ external: true, inpu
 const moduleFields = (row: ModuleRow) => ({ productId: row.productId, scope: row.scope.toLowerCase(), planRevisionId: row.planRevisionId,
   planModuleId: row.id, moduleId: row.moduleId, moduleDigest: row.digest,
   creativeProfileRevisionId: row.plan.creativeProfileRevisionId, creativeProfileDigest: row.plan.creativeProfileDigest });
-function expandInstructions(base: string, customization: { parameters: Record<string, string | number | boolean>; instructions: string }) {
-  const parameters = Object.fromEntries(Object.entries(customization.parameters).sort(([a], [b]) => a.localeCompare(b)));
-  return [base, Object.keys(parameters).length ? '\n商品参数（JSON 数据）\n' + JSON.stringify(parameters, null, 2) : '',
-    customization.instructions ? '\n本商品补充方法\n' + customization.instructions : ''].filter(Boolean).join('\n');
-}
 export function methodDto(row: MethodRow) {
   const { customization, ...version } = methodSnapshotSchema.parse(row.snapshot);
   // A draft's current attachments are deliberately irrelevant to this snapshot.

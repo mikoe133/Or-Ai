@@ -13,7 +13,7 @@ import type { CatalogAdminAccess } from '../catalog/admin-access.service';
 import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
 import { Prisma, type ExperienceAuthoringRevision } from '../generated/prisma/client';
-import { configurationDigest, defaultExperience, experienceDigest, experienceDraftIssues, verifyExperienceFiles } from '../catalog/experience-authoring';
+import { configurationDigest, defaultExperience, experienceDigest, experienceDraftIssues, verifyExperienceFiles, verifyExperienceMethodFiles } from '../catalog/experience-authoring';
 import { scoreAnswers } from '../runtime/scoring';
 import { AdminMutationService } from './admin-mutation.service';
 import { AssetStorage } from './asset-storage';
@@ -206,11 +206,7 @@ export class ExperienceAuthoringService {
         methods: value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id })) });
       if (issues.length) throw new ApiException('INVALID_CONFIGURATION', issues.join('；'), 400);
       await requireExperienceProductPolicy(tx, version, previous);
-      const fixedProfile = await this.profile(tx, access, previous.productId, previous.creativeProfileRevisionId);
-      const input = value.productPlanInput;
-      await this.methods(tx, access, value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id,
-        planModuleId: m.productPlanInput?.planModuleId })), previous.methods, CreativeProfileSchema.parse(fixedProfile.profile).experienceForm,
-        { productId: previous.productId, profileId: fixedProfile.id, productPlan: input ? { revisionId: input.planRevisionId, digest: input.planDigest } : undefined });
+      await verifyExperienceMethodFiles(tx, previous.methods, access.scope, this.storage);
       const { id: _id, digest: _digest, createdAt: _created, ...data } = previous;
       const row = await this.append(tx, { ...data, productPlanInput: previous.productPlanInput ?? Prisma.DbNull,
         manifest: value.manifest, reportPlan: value.reportPlan, methods: value.methods,

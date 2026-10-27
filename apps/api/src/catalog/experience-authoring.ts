@@ -65,16 +65,19 @@ export async function verifyReviewedExperience(tx: Prisma.TransactionClient, ver
     throw new ApiException('INVALID_CONFIGURATION', '体验草稿未审核或内容/设定已变化，请重新校验审核', 400);
   const policy = await requireExperienceProductPolicy(tx, version, draft);
   await verifyExperienceFiles(tx, manifest, version.scope, storage);
-  const methods = BoundSkillSchema.array().parse(draft.methods);
+  await verifyExperienceMethodFiles(tx, draft.methods, version.scope, storage);
+  return { draft, manifest, profile, policy };
+}
+export async function verifyExperienceMethodFiles(tx: Prisma.TransactionClient, input: unknown, scope: ProductVersion['scope'], storage: AssetStorage) {
+  const methods = BoundSkillSchema.array().parse(input);
   for (const binding of methods) for (const ref of binding.version.files) {
-    const file = await tx.skillReferenceFile.findFirst({ where: { id: ref.file.id, skillId: binding.version.skillId, scope: version.scope, status: 'AVAILABLE' } });
+    const file = await tx.skillReferenceFile.findFirst({ where: { id: ref.file.id, skillId: binding.version.skillId, scope, status: 'AVAILABLE' } });
     if (!file || file.checksum !== ref.file.checksum || file.byteSize !== ref.file.byteSize || file.mimeType !== ref.file.mimeType)
       throw new ApiException('INVALID_CONFIGURATION', '体验方法参考文件已不可用', 400);
     const actual = await storage.inspectReference(file.storageKey, file.byteSize, file.mimeType);
     if (actual.checksum !== ref.file.checksum || actual.byteSize !== ref.file.byteSize || actual.mimeType !== ref.file.mimeType)
       throw new ApiException('INVALID_CONFIGURATION', '体验方法参考文件完整性检查失败', 400);
   }
-  return { draft, manifest, profile, policy };
 }
 export async function prepareAuthoredExperience(tx: Prisma.TransactionClient, version: ProductVersion, storage: AssetStorage) {
   const { draft, manifest, profile } = await verifyReviewedExperience(tx, version, storage);

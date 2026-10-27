@@ -274,6 +274,7 @@ export class MachineProjectsService {
         output = await this.experience.saveCandidateIn(tx, scoped, module.id, module.productId, version.id,
           { ...body.draft, methods: [], requestId: body.requestId, source: 'external_ai' },
           methods.map(method => ({ purpose: method.purpose, domain: 'experience' as const, version: method.version,
+            projectMethod: { snapshotId: method.id, digest: method.digest },
             productPlanInput: { schemaVersion: 1 as const, planRevisionId: module.planRevisionId, planDigest: module.plan.digest,
               planModuleId: module.id, moduleDigest: module.digest, form: definition.target.form as 'web'|'cards'|'2.5d'|'3d'|'game' } })));
       }

@@ -54,6 +54,7 @@ export const BoundSkillSchema = z
     domain: ProductionDomainSchema,
     version: FixedSkillVersionSchema,
     productPlanInput: SkillProductPlanInputSchema.optional(),
+    projectMethod: z.object({ snapshotId: IdSchema.toLowerCase(), digest: z.string().regex(/^[0-9a-f]{64}$/) }).strict().optional(),
   })
   .strict()
   .refine(
