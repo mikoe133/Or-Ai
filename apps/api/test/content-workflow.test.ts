@@ -1,5 +1,7 @@
 import "reflect-metadata";
 import { currentSkillManifest, policyPlanDocument } from './skill-policy-fixture';
+import { reviewThreejsFixture } from './publication-fixture';
+import { CatalogAdminAccessService } from '../src/catalog/admin-access.service';
 import assert from "node:assert/strict";
 import { before, after, test } from "node:test";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -187,7 +189,7 @@ after(async () => {
   if (directory) await rm(directory, { recursive: true, force: true });
 });
 
-async function profile(target = productId) {
+async function profile(target = productId, overrides: Record<string, unknown> = {}) {
   const current = await admin.request(
     "/admin/products/" + target + "/creative-profiles",
   );
@@ -196,7 +198,7 @@ async function profile(target = productId) {
     "/admin/products/" + target + "/creative-profiles",
     "POST",
     {
-      profile: profileData(),
+      profile: { ...profileData(), ...overrides },
       expectedRevision: current.body.items[0]?.revision ?? 0,
       requestId: randomUUID(),
     },
@@ -270,14 +272,16 @@ async function fresh(skillEnabled = false) {
       requestId: randomUUID(),
     })
   ).body;
-  const brief = await profile(product.id);
-  const skillSet = skillEnabled ? await createSkillSet(brief) : undefined;
+  const brief = await profile(product.id, { reportPlan: { ...profileData().reportPlan, presentation: 'standard' } });
+  const access = await app.get(CatalogAdminAccessService).authorizeLocalOwner(fixture.owner.client, DemoIdentityScenarios.admin.id);
+  const publication = await reviewThreejsFixture(app, fixture, access, version.id, brief.id);
+  const skillSet = skillEnabled ? await createSkillSet(brief, publication.plan) : undefined;
   assert.equal(
     (
       await admin.request(
         "/admin/products/" + product.id + "/versions/" + version.id + "/review",
         "POST",
-        { expectedRevision: 0, requestId: randomUUID() },
+        { expectedRevision: (await fixture.runtime.client.productVersion.findUniqueOrThrow({ where: { id: version.id } })).revision, requestId: randomUUID() },
       )
     ).status,
     200,
@@ -572,6 +576,18 @@ test("diffs align stable IDs while separately retaining order changes and bounde
   );
   assert.equal(many.changes.length, 500);
   assert.equal(many.truncated, true);
+});
+
+test('Three.js adoption pins the reviewed experience and its complete product plan instead of declaring a web runtime', async () => {
+  const context = await bundle(), preview = await admin.request('/admin/content-packages/preview', 'POST', context.selection);
+  assert.equal(preview.body.canAdopt, true, JSON.stringify(preview.body));
+  const result = await adopt(context.selection, preview.body);
+  assert.equal(result.status, 200, JSON.stringify(result.body));
+  assert.equal(result.body.manifest.schemaVersion, 3);
+  assert.equal(result.body.manifest.runtime.experience, 'threejs');
+  assert.equal(result.body.manifest.experience.manifest.renderer.key, 'reflection-garden');
+  assert.equal(result.body.manifest.productPlan.id, result.body.manifest.experience.productPlanInput.planRevisionId);
+  assert.equal(result.body.manifest.runtime.deviceAcceptance, 'not_recorded');
 });
 
 test("a four-domain package fixes question/hook/CTA references and exports only authoring facts without rewriting consumers", async () => {
@@ -1473,10 +1489,10 @@ async function skillAction(row: any, action: string) {
   assert.equal(result.status, 200, JSON.stringify(result.body));
   return result.body;
 }
-async function createSkillSet(brief: any) {
+async function createSkillSet(brief: any, fixedPlan?: any) {
   const previous = await admin.request('/admin/products/' + brief.productId + '/production-plans?pageSize=1');
   assert.equal(previous.status, 200);
-  const savedPlan = await admin.request('/admin/products/' + brief.productId + '/production-plans', 'POST', {
+  const savedPlan = fixedPlan ? { status: 200, body: fixedPlan } : await admin.request('/admin/products/' + brief.productId + '/production-plans', 'POST', {
     plan: policyPlanDocument(brief.id, brief.profile.experienceForm), expectedRevision: previous.body.items[0]?.revision ?? 0, requestId: randomUUID(),
   });
   assert.equal(savedPlan.status, 200, JSON.stringify(savedPlan.body));

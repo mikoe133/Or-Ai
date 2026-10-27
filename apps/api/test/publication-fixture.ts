@@ -31,10 +31,10 @@ export function readyPublicationPlan(profileId: string, form = '3d') {
 }
 
 export async function reviewThreejsFixture(app: INestApplication, fixture: Awaited<ReturnType<typeof createLocalFixture>>,
-  access: CatalogAdminAccess, versionId: string) {
+  access: CatalogAdminAccess, versionId: string, profileId?: string) {
   const version = await fixture.runtime.client.productVersion.findUniqueOrThrow({ where: { id: versionId } });
-  let profile = version.creativeProfileRevisionId
-    ? await fixture.runtime.client.creativeProfileRevision.findUniqueOrThrow({ where: { id: version.creativeProfileRevisionId } }) : null;
+  const fixedProfileId = version.creativeProfileRevisionId ?? profileId;
+  let profile = fixedProfileId ? await fixture.runtime.client.creativeProfileRevision.findUniqueOrThrow({ where: { id: fixedProfileId } }) : null;
   if (!profile) {
     const latest = await fixture.runtime.client.creativeProfileRevision.aggregate({ where: { productId: version.productId }, _max: { number: true } });
     const created = await app.get(ContentService).saveProfile(access, version.productId, { expectedRevision: latest._max.number ?? 0, requestId: randomUUID(),
