@@ -19,6 +19,7 @@ import { AdminMutationService } from './admin-mutation.service';
 import { AssetStorage } from './asset-storage';
 import { fixedVersion } from './skill-bindings.service';
 import { bindSkillProductPlan, requireSkillProductPolicy } from './skill-product-policy';
+import { requireExperienceProductPolicy } from '../catalog/experience-product-policy';
 
 const id = (value: unknown) => parseInput(IdSchema, value).toLowerCase();
 export const experienceRevisionDto = (row: ExperienceAuthoringRevision) => {
@@ -199,6 +200,7 @@ export class ExperienceAuthoringService {
       const { issues } = await this.inspect(tx, access, previous.productId, version.id, { ...value,
         methods: value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id })) });
       if (issues.length) throw new ApiException('INVALID_CONFIGURATION', issues.join('；'), 400);
+      await requireExperienceProductPolicy(tx, version, previous);
       const fixedProfile = await this.profile(tx, access, previous.productId, previous.creativeProfileRevisionId);
       const input = value.methods[0]?.productPlanInput;
       await this.methods(tx, access, value.methods.map(m => ({ purpose: m.purpose as 'scene_design'|'report_presentation', skillVersionId: m.version.id,

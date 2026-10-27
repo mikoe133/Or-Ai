@@ -4,6 +4,7 @@ import { BoundSkillSchema, CreativeProfileSchema, ProductConfigurationSchema, Re
 import { Prisma, type ProductVersion, type CreativeProfileRevision } from '../generated/prisma/client';
 import { ApiException } from '../common/http-errors';
 import type { AssetStorage } from '../operations/asset-storage';
+import { requireExperienceProductPolicy } from './experience-product-policy';
 
 export const experienceDigest = (value: unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 export const configurationDigest = (value: unknown) => experienceDigest(ProductConfigurationSchema.parse(value));
@@ -55,21 +56,14 @@ export async function verifyExperienceFiles(tx: Prisma.TransactionClient, manife
 export async function prepareAuthoredExperience(tx: Prisma.TransactionClient, version: ProductVersion, storage: AssetStorage) {
   const draft = await tx.experienceAuthoringRevision.findFirst({ where: { productVersionId: version.id }, orderBy: { number: 'desc' } });
   if (!draft) {
-    if (version.creativeProfileRevisionId) {
-      const profile = await tx.creativeProfileRevision.findUniqueOrThrow({ where: { id: version.creativeProfileRevisionId } });
-      const issues = creativeContentCapabilityIssues(CreativeProfileSchema.parse(profile.profile), {
-        renderer: { key: 'dom-choice', version: 1 }, report: { renderer: { key: 'legacy-text', version: 1 } },
-      });
-      if (issues.length) throw new ApiException('INVALID_CONFIGURATION', issues.join('；'), 400);
-    }
-    // Older narrative proposals were never adopted as runtime templates; keep the fixed v1 result.
-    return;
+    throw new ApiException('INVALID_CONFIGURATION', '新发布必须先保存并审核使用固定商品规划的 Three.js 体验；旧发布版本继续按原清单读取', 400);
   }
   const manifest = ExperienceManifestSchema.parse(draft.manifest);
   const profile = await tx.creativeProfileRevision.findUniqueOrThrow({ where: { id: draft.creativeProfileRevisionId } });
   if (draft.status !== 'reviewed' || draft.configurationDigest !== configurationDigest(version.configuration) ||
     version.creativeProfileRevisionId !== profile.id || experienceDraftIssues(manifest, draft.reportPlan, version, profile).length)
     throw new ApiException('INVALID_CONFIGURATION', '体验草稿未审核或内容/设定已变化，请重新校验审核', 400);
+  await requireExperienceProductPolicy(tx, version, draft);
   await verifyExperienceFiles(tx, manifest, version.scope, storage);
   const methods = BoundSkillSchema.array().parse(draft.methods);
   for (const binding of methods) for (const ref of binding.version.files) {

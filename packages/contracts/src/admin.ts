@@ -152,3 +152,4 @@ export * from './production-run-operations.js';
 
 export * from './external-run-configurations.js';
 export * from './product-plan.js';
+export * from './product-publication.js';
