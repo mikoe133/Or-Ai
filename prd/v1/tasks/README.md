@@ -16,7 +16,7 @@
 
 | 顺序 | Task | 稳定标识 | 当前状态 | 硬前置（顺序号） |
 | --- | --- | --- | --- | --- |
-| 04 | [盘点并前向升级旧 Skill 和项目方法](active/04-skill-library-upgrade.md) | T13.C3 | 可执行 | 02、03（均已完成） |
+| 04 | [盘点并前向升级旧 Skill 和项目方法](active/04-skill-library-upgrade.md) | T13.C3 | 进行中：只读盘点已完成 | 02、03（均已完成） |
 | 05 | [按各商品规划制作模板并转制存量商品](active/05-product-template-migration.md) | T16.C3 | 等待前置 | 01、03、04 |
 | 06 | [完成 Three.js 商品本地业务与性能验收](active/06-local-experience-acceptance.md) | T16.C4-L | 等待前置 | 05 |
 | 07 | [实现云端路由、持久存储与初始化适配](active/07-cloud-adapters.md) | T09-I | 方案已定，可独立实施 | 已验收底座 |

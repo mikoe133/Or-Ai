@@ -73,7 +73,7 @@
       "file": "active/04-skill-library-upgrade.md",
       "title": "盘点并前向升级旧 Skill 和项目方法",
       "lane": "主线",
-      "status": "可执行",
+      "status": "进行中（只读盘点已完成）",
       "dependsOn": [
         2,
         3

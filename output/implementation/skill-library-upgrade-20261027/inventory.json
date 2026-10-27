@@ -1,0 +1,875 @@
+{
+  "checkedAt": "2026-10-27T14:44:59.005Z",
+  "scope": "DEMO",
+  "localDevelopmentOnly": true,
+  "readOnlyTransaction": true,
+  "domains": [
+    "assessment",
+    "cover",
+    "video",
+    "copy",
+    "experience"
+  ],
+  "purposes": [
+    "assessment_design",
+    "report_writing",
+    "cover_design",
+    "video_production",
+    "copywriting",
+    "scene_design",
+    "report_presentation"
+  ],
+  "summary": {
+    "skills": 4,
+    "versions": 6,
+    "policyCompliantVersions": 0,
+    "legacyVersions": 6,
+    "fixedSets": 4,
+    "fixedProjectMethods": 0,
+    "currentPlans": 0,
+    "currentV2Plans": 0,
+    "grouped": {
+      "assessment:assessment_design": {
+        "archived": 2,
+        "active": 1
+      },
+      "assessment:report_writing": {
+        "archived": 2,
+        "active": 1
+      },
+      "copy:copywriting": {
+        "active": 1
+      },
+      "cover:cover_design": {
+        "active": 1
+      },
+      "video:video_production": {
+        "active": 1
+      }
+    }
+  },
+  "versions": [
+    {
+      "versionId": "01a1581d-8db5-729d-966f-00c44e3aa550",
+      "skillId": "01a1581d-8daf-70d0-b60d-03da40bb0df9",
+      "domain": "assessment",
+      "slug": "demo-t13-assessment-gentle",
+      "version": 1,
+      "expectedSourceRevision": 4,
+      "sourceDigest": "06ef1822554a6b0aeb81a1f84b7878e481a47243634947433e667bc85422ee67",
+      "expectedSkillRevision": 11,
+      "status": "archived",
+      "origin": "shared",
+      "projectProductId": null,
+      "purposes": [
+        "assessment_design",
+        "report_writing"
+      ],
+      "policyIssues": [
+        {
+          "path": "productPolicy",
+          "message": "需要 manifest v2 和完整的 Three.js 商品政策 v1"
+        },
+        {
+          "path": "supportedForms",
+          "message": "需要声明 Three.js 商品形式 3d"
+        },
+        {
+          "path": "inputs",
+          "message": "必须声明 product-plan 为必填输入"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少共同 Three.js 商品条款"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：assessment_design"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：report_writing"
+        }
+      ],
+      "attachmentCount": 1,
+      "attachmentMetadataPreserved": true,
+      "attachmentBytesVerified": false,
+      "impact": {
+        "bindings": [],
+        "projectMethods": [],
+        "packages": [],
+        "productions": [],
+        "experiences": []
+      },
+      "disposition": "preserve_history_select_only_if_reused",
+      "preview": {
+        "readyForAutomaticExecution": false,
+        "structurallyValid": true,
+        "proposedDigest": "045e60dae3677b12c90e9efe83f6285bfa8219b27546a7754ca24dbc5a33f5a4",
+        "changedFields": [
+          "schemaVersion",
+          "productPolicy",
+          "supportedForms",
+          "inputs",
+          "instructions"
+        ],
+        "originalInstructionsPreserved": true,
+        "examplesPreserved": true,
+        "referencesPreserved": true,
+        "requiresSpecializedMethodReview": true,
+        "requiresAttachmentByteVerification": true,
+        "selectionConfirmed": false
+      }
+    },
+    {
+      "versionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+      "skillId": "01a1581d-8daf-70d0-b60d-03da40bb0df9",
+      "domain": "assessment",
+      "slug": "demo-t13-assessment-gentle",
+      "version": 2,
+      "expectedSourceRevision": 4,
+      "sourceDigest": "316c86dd716388ac6a5926248c1e3d51b21bf77bab9aa674b5575224ee09ac10",
+      "expectedSkillRevision": 11,
+      "status": "archived",
+      "origin": "shared",
+      "projectProductId": null,
+      "purposes": [
+        "assessment_design",
+        "report_writing"
+      ],
+      "policyIssues": [
+        {
+          "path": "productPolicy",
+          "message": "需要 manifest v2 和完整的 Three.js 商品政策 v1"
+        },
+        {
+          "path": "supportedForms",
+          "message": "需要声明 Three.js 商品形式 3d"
+        },
+        {
+          "path": "inputs",
+          "message": "必须声明 product-plan 为必填输入"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少共同 Three.js 商品条款"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：assessment_design"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：report_writing"
+        }
+      ],
+      "attachmentCount": 1,
+      "attachmentMetadataPreserved": true,
+      "attachmentBytesVerified": false,
+      "impact": {
+        "bindings": [
+          {
+            "id": "01a15846-9231-738c-905b-7ca4a46e4b7b",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-922c-763d-a1f9-b2b570212dd4",
+            "setDigest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+            "purpose": "assessment_design"
+          },
+          {
+            "id": "01a15846-9231-738c-905b-8af2d6c26341",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-922c-763d-a1f9-b2b570212dd4",
+            "setDigest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+            "purpose": "report_writing"
+          },
+          {
+            "id": "01a15846-9652-7244-bbd6-affb9b4fd27f",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-964e-7259-832f-182454a1a65b",
+            "setDigest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+            "purpose": "report_writing"
+          }
+        ],
+        "projectMethods": [],
+        "packages": [
+          {
+            "id": "01a15846-9571-77f8-8a92-456395e3d1a0",
+            "digest": "c832ef1f88e120dfd81384bd922ccffc04f94cf272deaf6cb1db70c48ac28cb3"
+          },
+          {
+            "id": "01a15846-98c3-70fc-b970-ad271a7b5527",
+            "digest": "afdcd2ef99222ead56c95f970fcf11bf846ebb5efab815e2ad7243277d050f98"
+          }
+        ],
+        "productions": [
+          "01a15846-9289-7188-9870-2c960f79c21f",
+          "01a15846-9684-75db-81bd-afc0d7c3f44f",
+          "01a158a6-7507-7427-b9c8-62fafd1b8625",
+          "06be910e-5a41-4a31-8c0a-43af28a3e54f",
+          "e16986c3-1125-426a-9d89-1c8f4f379402"
+        ],
+        "experiences": []
+      },
+      "disposition": "preserve_history_select_only_if_reused",
+      "preview": {
+        "readyForAutomaticExecution": false,
+        "structurallyValid": true,
+        "proposedDigest": "da85d97ba0f9c6dce7dbcd74e4de8540028969e69f688b47702dde485634cd53",
+        "changedFields": [
+          "schemaVersion",
+          "productPolicy",
+          "supportedForms",
+          "inputs",
+          "instructions"
+        ],
+        "originalInstructionsPreserved": true,
+        "examplesPreserved": true,
+        "referencesPreserved": true,
+        "requiresSpecializedMethodReview": true,
+        "requiresAttachmentByteVerification": true,
+        "selectionConfirmed": false
+      }
+    },
+    {
+      "versionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+      "skillId": "01a1581d-8daf-70d0-b60d-03da40bb0df9",
+      "domain": "assessment",
+      "slug": "demo-t13-assessment-gentle",
+      "version": 3,
+      "expectedSourceRevision": 3,
+      "sourceDigest": "8cb841a39a73b25b47509feb519873a4292923f670afb35c2122ff872d62bc6e",
+      "expectedSkillRevision": 11,
+      "status": "active",
+      "origin": "shared",
+      "projectProductId": null,
+      "purposes": [
+        "assessment_design",
+        "report_writing"
+      ],
+      "policyIssues": [
+        {
+          "path": "productPolicy",
+          "message": "需要 manifest v2 和完整的 Three.js 商品政策 v1"
+        },
+        {
+          "path": "supportedForms",
+          "message": "需要声明 Three.js 商品形式 3d"
+        },
+        {
+          "path": "inputs",
+          "message": "必须声明 product-plan 为必填输入"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少共同 Three.js 商品条款"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：assessment_design"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：report_writing"
+        }
+      ],
+      "attachmentCount": 1,
+      "attachmentMetadataPreserved": true,
+      "attachmentBytesVerified": false,
+      "impact": {
+        "bindings": [
+          {
+            "id": "01a15846-9652-7244-bbd6-a0a22fb650fb",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-964e-7259-832f-182454a1a65b",
+            "setDigest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+            "purpose": "assessment_design"
+          },
+          {
+            "id": "01a16806-e7dd-736c-a06f-a28ffc51e2fd",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-e7d5-711f-860a-4524e8e915e6",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "assessment_design"
+          },
+          {
+            "id": "01a16806-e7dd-736c-a06f-aeff6667a553",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-e7d5-711f-860a-4524e8e915e6",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "report_writing"
+          },
+          {
+            "id": "01a16806-ffbd-7054-934a-fc1d46a25453",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-ffb8-7071-9e3f-01683586701d",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "assessment_design"
+          },
+          {
+            "id": "01a16806-ffbd-7054-934b-082dbe8caea5",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-ffb8-7071-9e3f-01683586701d",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "report_writing"
+          }
+        ],
+        "projectMethods": [],
+        "packages": [
+          {
+            "id": "01a15846-98c3-70fc-b970-ad271a7b5527",
+            "digest": "afdcd2ef99222ead56c95f970fcf11bf846ebb5efab815e2ad7243277d050f98"
+          }
+        ],
+        "productions": [
+          "01a15846-9684-75db-81bd-afc0d7c3f44f",
+          "01a158a6-7507-7427-b9c8-62fafd1b8625",
+          "e16986c3-1125-426a-9d89-1c8f4f379402"
+        ],
+        "experiences": []
+      },
+      "disposition": "needs_specialized_review_before_new_draft",
+      "preview": {
+        "readyForAutomaticExecution": false,
+        "structurallyValid": true,
+        "proposedDigest": "d6aa5b82eb8c6dd639d9955319eb54fe26b3f9977b14f987d6ddf8dd4deaa6e3",
+        "changedFields": [
+          "schemaVersion",
+          "productPolicy",
+          "supportedForms",
+          "inputs",
+          "instructions"
+        ],
+        "originalInstructionsPreserved": true,
+        "examplesPreserved": true,
+        "referencesPreserved": true,
+        "requiresSpecializedMethodReview": true,
+        "requiresAttachmentByteVerification": true,
+        "selectionConfirmed": false
+      }
+    },
+    {
+      "versionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+      "skillId": "01a1581d-91cd-740f-ad4c-51d20eae3f5e",
+      "domain": "copy",
+      "slug": "demo-t13-copy-gentle",
+      "version": 1,
+      "expectedSourceRevision": 2,
+      "sourceDigest": "a865769f39d52e47597c11d8d0317ec8e9bfefccd051c32030af9e80e43c5c18",
+      "expectedSkillRevision": 2,
+      "status": "active",
+      "origin": "shared",
+      "projectProductId": null,
+      "purposes": [
+        "copywriting"
+      ],
+      "policyIssues": [
+        {
+          "path": "productPolicy",
+          "message": "需要 manifest v2 和完整的 Three.js 商品政策 v1"
+        },
+        {
+          "path": "supportedForms",
+          "message": "需要声明 Three.js 商品形式 3d"
+        },
+        {
+          "path": "inputs",
+          "message": "必须声明 product-plan 为必填输入"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少共同 Three.js 商品条款"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：copywriting"
+        }
+      ],
+      "attachmentCount": 0,
+      "attachmentMetadataPreserved": true,
+      "attachmentBytesVerified": false,
+      "impact": {
+        "bindings": [
+          {
+            "id": "01a15846-9231-738c-905b-81115a991c4d",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-922c-763d-a1f9-b2b570212dd4",
+            "setDigest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+            "purpose": "copywriting"
+          },
+          {
+            "id": "01a15846-9652-7244-bbd6-a49b819943b8",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-964e-7259-832f-182454a1a65b",
+            "setDigest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+            "purpose": "copywriting"
+          },
+          {
+            "id": "01a16806-e7dd-736c-a06f-a77385a22090",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-e7d5-711f-860a-4524e8e915e6",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "copywriting"
+          },
+          {
+            "id": "01a16806-ffbd-7054-934b-02c7c270611a",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-ffb8-7071-9e3f-01683586701d",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "copywriting"
+          }
+        ],
+        "projectMethods": [],
+        "packages": [
+          {
+            "id": "01a15846-9571-77f8-8a92-456395e3d1a0",
+            "digest": "c832ef1f88e120dfd81384bd922ccffc04f94cf272deaf6cb1db70c48ac28cb3"
+          },
+          {
+            "id": "01a15846-98c3-70fc-b970-ad271a7b5527",
+            "digest": "afdcd2ef99222ead56c95f970fcf11bf846ebb5efab815e2ad7243277d050f98"
+          }
+        ],
+        "productions": [
+          "01a15846-92ce-734e-ab71-0a5eee7a6b20",
+          "01a15846-96b2-7524-9a69-4bc3429de68a",
+          "01a158a6-7827-71ce-9e14-561be27b3f66",
+          "0b515f7b-2f5f-4656-83ef-01580fcd55fb",
+          "49739bde-8ac6-4911-ae61-445db1b2dea1",
+          "716e580d-412b-43a5-ae9a-489e08d5624b",
+          "9a9ad097-69c8-4e42-b896-dff9bd3326b9"
+        ],
+        "experiences": []
+      },
+      "disposition": "needs_specialized_review_before_new_draft",
+      "preview": {
+        "readyForAutomaticExecution": false,
+        "structurallyValid": true,
+        "proposedDigest": "1bafeddcd01c18f678d1ae1670cbb5e5b80321555257ba71299fa58b398ce571",
+        "changedFields": [
+          "schemaVersion",
+          "productPolicy",
+          "supportedForms",
+          "inputs",
+          "instructions"
+        ],
+        "originalInstructionsPreserved": true,
+        "examplesPreserved": true,
+        "referencesPreserved": true,
+        "requiresSpecializedMethodReview": true,
+        "requiresAttachmentByteVerification": false,
+        "selectionConfirmed": false
+      }
+    },
+    {
+      "versionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+      "skillId": "01a1581d-9024-75cd-85ee-6769a8033192",
+      "domain": "cover",
+      "slug": "demo-t13-cover-gentle",
+      "version": 1,
+      "expectedSourceRevision": 2,
+      "sourceDigest": "010c622a0e7012464fa93341e4fab75fe3d374813ff0c45f4e95f6cc8c7e5760",
+      "expectedSkillRevision": 2,
+      "status": "active",
+      "origin": "shared",
+      "projectProductId": null,
+      "purposes": [
+        "cover_design"
+      ],
+      "policyIssues": [
+        {
+          "path": "productPolicy",
+          "message": "需要 manifest v2 和完整的 Three.js 商品政策 v1"
+        },
+        {
+          "path": "supportedForms",
+          "message": "需要声明 Three.js 商品形式 3d"
+        },
+        {
+          "path": "inputs",
+          "message": "必须声明 product-plan 为必填输入"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少共同 Three.js 商品条款"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：cover_design"
+        }
+      ],
+      "attachmentCount": 0,
+      "attachmentMetadataPreserved": true,
+      "attachmentBytesVerified": false,
+      "impact": {
+        "bindings": [
+          {
+            "id": "01a15846-9231-738c-905b-8542752d3b7b",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-922c-763d-a1f9-b2b570212dd4",
+            "setDigest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+            "purpose": "cover_design"
+          },
+          {
+            "id": "01a15846-9652-7244-bbd6-a9594411a9ac",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-964e-7259-832f-182454a1a65b",
+            "setDigest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+            "purpose": "cover_design"
+          },
+          {
+            "id": "01a16806-e7dd-736c-a06f-aa77f8019175",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-e7d5-711f-860a-4524e8e915e6",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "cover_design"
+          },
+          {
+            "id": "01a16806-ffbd-7054-934b-06201b173cb1",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-ffb8-7071-9e3f-01683586701d",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "cover_design"
+          }
+        ],
+        "projectMethods": [],
+        "packages": [
+          {
+            "id": "01a15846-9571-77f8-8a92-456395e3d1a0",
+            "digest": "c832ef1f88e120dfd81384bd922ccffc04f94cf272deaf6cb1db70c48ac28cb3"
+          },
+          {
+            "id": "01a15846-98c3-70fc-b970-ad271a7b5527",
+            "digest": "afdcd2ef99222ead56c95f970fcf11bf846ebb5efab815e2ad7243277d050f98"
+          }
+        ],
+        "productions": [
+          "01a15846-93a6-758d-93a2-f9141ac4489e",
+          "01a15846-972d-727f-94b2-031d4992565d",
+          "01a158a6-7ba8-7229-a51a-49c8e247f962",
+          "0fb1eef0-e4f5-41f3-ba1e-4fd6f6b2ed6c",
+          "31504506-30a6-4aeb-99fc-2ccf835ff528",
+          "ceeb65f7-b6ed-404f-8b30-9823822a0328",
+          "f52957ff-e755-46bd-a602-dcbf121db1b3"
+        ],
+        "experiences": []
+      },
+      "disposition": "needs_specialized_review_before_new_draft",
+      "preview": {
+        "readyForAutomaticExecution": false,
+        "structurallyValid": true,
+        "proposedDigest": "43f865c289333d56fafd95447e1fea6b0da6e067fac89d035ae972437bc0cb9a",
+        "changedFields": [
+          "schemaVersion",
+          "productPolicy",
+          "supportedForms",
+          "inputs",
+          "instructions"
+        ],
+        "originalInstructionsPreserved": true,
+        "examplesPreserved": true,
+        "referencesPreserved": true,
+        "requiresSpecializedMethodReview": true,
+        "requiresAttachmentByteVerification": false,
+        "selectionConfirmed": false
+      }
+    },
+    {
+      "versionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+      "skillId": "01a1581d-90de-75dd-8a0a-3eb851f11484",
+      "domain": "video",
+      "slug": "demo-t13-video-gentle",
+      "version": 1,
+      "expectedSourceRevision": 2,
+      "sourceDigest": "124aa0fe239fe8c70a045d6a6aed2c57a24e6953000e56a942ee009b1774a18b",
+      "expectedSkillRevision": 2,
+      "status": "active",
+      "origin": "shared",
+      "projectProductId": null,
+      "purposes": [
+        "video_production"
+      ],
+      "policyIssues": [
+        {
+          "path": "productPolicy",
+          "message": "需要 manifest v2 和完整的 Three.js 商品政策 v1"
+        },
+        {
+          "path": "supportedForms",
+          "message": "需要声明 Three.js 商品形式 3d"
+        },
+        {
+          "path": "inputs",
+          "message": "必须声明 product-plan 为必填输入"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少共同 Three.js 商品条款"
+        },
+        {
+          "path": "instructions",
+          "message": "正文缺少专业用途条款：video_production"
+        }
+      ],
+      "attachmentCount": 0,
+      "attachmentMetadataPreserved": true,
+      "attachmentBytesVerified": false,
+      "impact": {
+        "bindings": [
+          {
+            "id": "01a15846-9231-738c-905b-8dca76451085",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-922c-763d-a1f9-b2b570212dd4",
+            "setDigest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+            "purpose": "video_production"
+          },
+          {
+            "id": "01a15846-9652-7244-bbd6-b271470ff85d",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a15846-964e-7259-832f-182454a1a65b",
+            "setDigest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+            "purpose": "video_production"
+          },
+          {
+            "id": "01a16806-e7dd-736c-a06f-b1e90e6fb6d3",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-e7d5-711f-860a-4524e8e915e6",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "video_production"
+          },
+          {
+            "id": "01a16806-ffbd-7054-934b-0e1aa05db92e",
+            "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+            "setId": "01a16806-ffb8-7071-9e3f-01683586701d",
+            "setDigest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+            "purpose": "video_production"
+          }
+        ],
+        "projectMethods": [],
+        "packages": [
+          {
+            "id": "01a15846-9571-77f8-8a92-456395e3d1a0",
+            "digest": "c832ef1f88e120dfd81384bd922ccffc04f94cf272deaf6cb1db70c48ac28cb3"
+          },
+          {
+            "id": "01a15846-98c3-70fc-b970-ad271a7b5527",
+            "digest": "afdcd2ef99222ead56c95f970fcf11bf846ebb5efab815e2ad7243277d050f98"
+          }
+        ],
+        "productions": [
+          "01a15846-946f-7791-8994-5c9747f76f88",
+          "01a15846-97c0-72d9-bf6c-1b3eda943c5d",
+          "01a158a6-7ee8-70db-9bd9-a0e1758db36d",
+          "1dd9dd02-0cb6-463d-bcf4-ce2a425a92cb",
+          "6188e620-05a1-40ee-9b3c-b704c76757aa",
+          "8fdaf1aa-fb76-41bf-bcae-c70eab738d01",
+          "d612bd4f-80f6-4a39-8277-4f2885169eab"
+        ],
+        "experiences": []
+      },
+      "disposition": "needs_specialized_review_before_new_draft",
+      "preview": {
+        "readyForAutomaticExecution": false,
+        "structurallyValid": true,
+        "proposedDigest": "865478441d266e155920ffac0c9f882f586281f8640db5564765fb6ab2cd2826",
+        "changedFields": [
+          "schemaVersion",
+          "productPolicy",
+          "supportedForms",
+          "inputs",
+          "instructions"
+        ],
+        "originalInstructionsPreserved": true,
+        "examplesPreserved": true,
+        "referencesPreserved": true,
+        "requiresSpecializedMethodReview": true,
+        "requiresAttachmentByteVerification": false,
+        "selectionConfirmed": false
+      }
+    }
+  ],
+  "fixedSets": [
+    {
+      "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+      "bindings": [
+        {
+          "id": "01a15846-9231-738c-905b-7ca4a46e4b7b",
+          "purpose": "assessment_design",
+          "versionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9231-738c-905b-81115a991c4d",
+          "purpose": "copywriting",
+          "versionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9231-738c-905b-8542752d3b7b",
+          "purpose": "cover_design",
+          "versionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9231-738c-905b-8af2d6c26341",
+          "purpose": "report_writing",
+          "versionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9231-738c-905b-8dca76451085",
+          "purpose": "video_production",
+          "versionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        }
+      ],
+      "disposition": "preserve_fixed_set_append_new_binding_only_after_plan_and_method_review"
+    },
+    {
+      "id": "01a15846-964e-7259-832f-182454a1a65b",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+      "bindings": [
+        {
+          "id": "01a15846-9652-7244-bbd6-a0a22fb650fb",
+          "purpose": "assessment_design",
+          "versionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9652-7244-bbd6-a49b819943b8",
+          "purpose": "copywriting",
+          "versionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9652-7244-bbd6-a9594411a9ac",
+          "purpose": "cover_design",
+          "versionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9652-7244-bbd6-affb9b4fd27f",
+          "purpose": "report_writing",
+          "versionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a15846-9652-7244-bbd6-b271470ff85d",
+          "purpose": "video_production",
+          "versionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        }
+      ],
+      "disposition": "preserve_fixed_set_append_new_binding_only_after_plan_and_method_review"
+    },
+    {
+      "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+      "bindings": [
+        {
+          "id": "01a16806-e7dd-736c-a06f-a28ffc51e2fd",
+          "purpose": "assessment_design",
+          "versionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-e7dd-736c-a06f-a77385a22090",
+          "purpose": "copywriting",
+          "versionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-e7dd-736c-a06f-aa77f8019175",
+          "purpose": "cover_design",
+          "versionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-e7dd-736c-a06f-aeff6667a553",
+          "purpose": "report_writing",
+          "versionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-e7dd-736c-a06f-b1e90e6fb6d3",
+          "purpose": "video_production",
+          "versionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        }
+      ],
+      "disposition": "preserve_fixed_set_append_new_binding_only_after_plan_and_method_review"
+    },
+    {
+      "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+      "bindings": [
+        {
+          "id": "01a16806-ffbd-7054-934a-fc1d46a25453",
+          "purpose": "assessment_design",
+          "versionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-ffbd-7054-934b-02c7c270611a",
+          "purpose": "copywriting",
+          "versionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-ffbd-7054-934b-06201b173cb1",
+          "purpose": "cover_design",
+          "versionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-ffbd-7054-934b-082dbe8caea5",
+          "purpose": "report_writing",
+          "versionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        },
+        {
+          "id": "01a16806-ffbd-7054-934b-0e1aa05db92e",
+          "purpose": "video_production",
+          "versionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "policyCompliant": false,
+          "hasFixedPlan": false
+        }
+      ],
+      "disposition": "preserve_fixed_set_append_new_binding_only_after_plan_and_method_review"
+    }
+  ],
+  "fixedProjectMethods": [],
+  "currentPlans": [],
+  "operations": {
+    "createdDrafts": 0,
+    "activatedVersions": 0,
+    "reboundSets": 0,
+    "recapturedMethods": 0,
+    "consumerDataRead": false,
+    "attachmentByteVerificationPerformed": false,
+    "taskComplete": false
+  }
+}
