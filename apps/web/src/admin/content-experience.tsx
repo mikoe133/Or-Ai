@@ -52,10 +52,12 @@ export function ExperienceDesk({productId,versionId,profile,active,view='experie
   </section>;
 }
 function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,onDirty,onSaved}:{productId:string;workspace:ExperienceWorkspace;row:Revision|null;historical:boolean;view:'experience'|'result';contentDirty:boolean;onDirty:(v:boolean)=>void;onSaved:(v:string)=>Promise<void>}) {
+  const fixedPlan=row?.productPlanInput??row?.methods[0]?.productPlanInput;
   const initial:Proposal={manifest:row?.manifest??workspace.release?.manifest??workspace.defaultManifest,
     reportPlan:row?.reportPlan??workspace.reportPlan??{schemaVersion:1,title:'旧版兼容报告',narrative:'按原版本展示',presentation:'standard',sections:[{sectionId:'report',title:'观察与建议',purpose:'保留已有结果'}]},
     methods:row?.methods.map(m=>({purpose:m.purpose as 'scene_design'|'report_presentation',skillVersionId:m.version.id,planModuleId:m.productPlanInput?.planModuleId}))??[],
-    productPlan:row?.methods[0]?.productPlanInput?{revisionId:row.methods[0].productPlanInput.planRevisionId,digest:row.methods[0].productPlanInput.planDigest}:undefined,
+    productPlan:fixedPlan?{revisionId:fixedPlan.planRevisionId,digest:fixedPlan.planDigest}:undefined,
+    planModuleId:fixedPlan?.planModuleId,
     note:row?.note??'按共同创作设定制作体验与报告'};
   const [form,setForm]=useState<Proposal>(initial),[original]=useState(JSON.stringify(initial)),[raw,setRaw]=useState(JSON.stringify(initial,null,2)),
     [check,setCheck]=useState<Awaited<ReturnType<typeof experienceApi.check>>|null>(null),[preview,setPreview]=useState<Awaited<ReturnType<typeof experienceApi.preview>>|null>(null),
@@ -119,11 +121,13 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
           {resourceId:'picture-'+crypto.randomUUID().slice(0,8),fileId:file.id,purpose:'illustration',label:file.fileName,checksum:file.checksum,byteSize:file.byteSize,mimeType:file.mimeType as 'image/jpeg'}]}})}/>}
       </section>
       <section className="content-form-section"><header className="content-form-section-heading"><h4>04 / 制作方法与说明</h4><p>方法版本与当前体验修订一起保留。</p></header>
+        <p className="content-note">正常商品体验须使用 Three.js，并固定这次制作的商品规划。注册兼容检查、内容审核和设备验收分别记录。</p>
         <label className="content-checkbox"><input type="checkbox" checked={form.methods.length===0} onChange={e=>update({...form,methods:e.target.checked?[]:[{purpose:'scene_design',skillVersionId:''},{purpose:'report_presentation',skillVersionId:''}]})}/>人工制作（不绑定方法）</label>
-        {!!form.methods.length && <SkillPlanInput productId={productId} profileId={form.manifest.creativeProfileRevisionId ?? ''} form={methodForm}
-          purposes={form.methods.map(method=>method.purpose)} value={{reference:form.productPlan,modules:Object.fromEntries(form.methods.map(method=>[method.purpose,method.planModuleId??'']))}}
+        <SkillPlanInput productId={productId} profileId={form.manifest.creativeProfileRevisionId ?? ''} form={methodForm}
+          purposes={form.methods.length?form.methods.map(method=>method.purpose):['scene_design']}
+          value={{reference:form.productPlan,modules:form.methods.length?Object.fromEntries(form.methods.map(method=>[method.purpose,method.planModuleId??form.planModuleId??''])):{scene_design:form.planModuleId??''}}}
           disabled={readonly||action.busy||jsonPending} onChange={choice=>update({...form,productPlan:choice.reference,
-            methods:form.methods.map(method=>({...method,planModuleId:choice.modules[method.purpose]}))})} />}
+            planModuleId:choice.modules.scene_design,methods:form.methods.map(method=>({...method,planModuleId:choice.modules[method.purpose]}))})} />
         {form.methods.map((m,i)=>{const options=candidates.data?.[m.purpose==='scene_design'?0:1]??[],fixed=row?.methods.find(v=>v.purpose===m.purpose)?.version;return <label key={m.purpose}>{methodNames[m.purpose]}<select aria-label={methodNames[m.purpose]+'方法'} value={m.skillVersionId} onChange={e=>update({...form,methods:form.methods.map((v,j)=>j===i?{...v,skillVersionId:e.target.value}:v)})}>
           <option value="">选择已启用版本</option>{fixed&&!options.some(v=>v.id===fixed.id)&&<option value={fixed.id}>{fixed.manifest.name} · v{fixed.number}（固定历史）</option>}
           {options.map(v=><option key={v.id} value={v.id}>{v.manifest.name} · v{v.number}</option>)}</select></label>;})}
@@ -137,7 +141,10 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
       <button type="button" disabled={readonly||action.busy||uploading||pending||anyMethodMissing||jsonPending||!form.manifest.creativeProfileRevisionId} onClick={()=>void action.run(()=>experienceApi.save(productId,workspace.productVersionId,action.intent('experience-save',{
         ...proposal(),expectedRevision:workspace.latest?.revision??0,expectedVersionRevision:workspace.versionRevision})),saved=>onSaved(`体验与结果草稿 r${saved.revision} 已保存。`))}>保存体验与结果草稿</button>
       <button type="button" disabled={readonly||dirty||contentDirty||action.busy||!row||row.status!=='draft'} onClick={()=>void action.run(()=>experienceApi.review(row!.id,action.intent('experience-review',{expectedRevision:row!.revision})),saved=>onSaved(`体验 r${saved.revision} 已审核，可随题库版本发布。`))}>审核体验</button></div>
-    {check&&<div className="content-note" role="status">{check.valid?'兼容性检查通过。':<><strong>仍有待修正项</strong><ul>{check.issues.map((issue,i)=><li key={i}>{issue}</li>)}</ul></>}</div>}
+    {check&&<div className="content-note" role="status">{check.valid?'注册兼容性检查通过。':<><strong>仍有待修正项</strong><ul>{check.issues.map((issue,i)=><li key={i}>{issue}</li>)}</ul></>}
+      {check.publication&&<><p>{check.publication.eligibleForReview?'固定规划与方法检查通过，保存后可提交审核。':'审核前仍需补齐：'}</p>
+        {!!check.publication.issues.length&&<ul>{check.publication.issues.map((issue,i)=><li key={i}>{issue}</li>)}</ul>}
+        <p>此检查未执行设备验收。</p></>}</div>}
     {Boolean(action.error)&&<Failure error={action.error}/>}
     <section className="content-form-section experience-preview" hidden={view!=='result'} aria-label="体验与报告演示预览"><header className="content-form-section-heading"><h4>03 / 演示结果预览</h4><p>选择只用于样例计算，不会创建用户答卷或消耗报告次数。</p></header>
       {dirty&&<p className="content-note">先保存当前草稿，再预览这一修订。</p>}

@@ -14,6 +14,7 @@ const methods = z.array(ExperienceMethodChoiceSchema).max(2).refine(values =>
 export const ExperienceDraftInputSchema = z.object({
   manifest: ExperienceManifestSchema, reportPlan: ReportPlanDraftSchema, methods,
   productPlan: SkillProductPlanReferenceSchema.optional(),
+  planModuleId: IdSchema.toLowerCase().optional(),
   note: z.string().trim().min(1).max(2000),
 }).strict();
 export const ExperienceSaveSchema = ExperienceDraftInputSchema.extend({
@@ -49,7 +50,10 @@ export const ExperienceWorkspaceSchema = z.object({
   latest: ExperienceAuthoringRevisionSchema.nullable(), release: ExperienceReleaseSchema.nullable(),
   capabilities: ProductCapabilitiesSchema.optional(),
 }).strict();
-export const ExperienceCheckSchema = z.object({ valid: z.boolean(), issues: z.array(z.string().max(300)).max(20) }).strict();
+export const ExperienceCheckSchema = z.object({ valid: z.boolean(), issues: z.array(z.string().max(300)).max(20),
+  publication: z.object({ eligibleForReview: z.boolean(), issues: z.array(z.string().max(300)).max(20),
+    deviceAcceptance: z.literal('not_performed'), productPlanInput: SkillProductPlanInputSchema.optional() }).strict().optional(),
+}).strict();
 export const ExperiencePreviewInputSchema = z.object({ answers: z.array(z.object({ questionId: z.string().min(1).max(100), optionId: z.string().min(1).max(100) }).strict()).max(100) }).strict();
 export const ExperiencePreviewSchema = z.object({
   isPreview: z.literal(true), revisionId: IdSchema, manifest: ExperienceManifestSchema,
