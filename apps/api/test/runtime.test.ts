@@ -341,6 +341,10 @@ test('100-question, 12-dimension configurations finish through real HTTP with th
   const bounded=module.createNestApplication({logger:false});configureApp(bounded);await bounded.listen(0,'127.0.0.1');
   try {
     const browser=new Browser(await bounded.getUrl());browser.cookies=new Map(session.browser.cookies);browser.csrf=session.browser.csrf;
+    const foreignCsrf=await browser.start(session.entitlementId);
+    assert.equal(foreignCsrf.response.status,403);assert.equal(foreignCsrf.body.error.code,'CSRF_INVALID');
+    assert.equal(await fixture.runtime.client.attempt.count({where:{entitlementId:session.entitlementId}}),0);
+    await browser.bootstrap();
     const first=await browser.start(session.entitlementId);assert.equal(first.response.status,200,'Starting the bounded attempt failed: '+JSON.stringify(first.body.error));assert.equal(first.body.questions.length,100);
     let revision=0;for(const question of first.body.questions){const saved=await browser.save(first.body.attemptId,question.id,'often',revision);assert.equal(saved.response.status,200);revision=saved.body.attemptRevision;}
     const submitted=await browser.submit(first.body.attemptId,revision);assert.equal(submitted.response.status,200);assert.equal(submitted.body.content.totalScore,100);assert.equal(submitted.body.content.dimensions.length,12);
