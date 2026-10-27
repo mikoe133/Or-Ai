@@ -138,3 +138,11 @@ test('source and preview operations require real human administrator scope', asy
   await assert.rejects(service.preview(access, { items: [{ ...selection(c), source: { ...selection(c).source, id: randomUUID() } }] }));
   await assert.rejects(service.preview(access, { items: [{ ...selection(c), target: { planModuleId: randomUUID(), digest: '0'.repeat(64) } }] }));
 });
+
+test('a corrupt historical source digest cannot be accepted as the basis of an upgrade', async () => {
+  const c = await legacy();
+  await fixture.owner.client.styleSkillVersion.update({ where: { id: c.version.id }, data: { digest: '0'.repeat(64), revision: { increment: 1 } } });
+  const choice = selection(c); choice.source.digest = '0'.repeat(64); choice.source.revision++;
+  await assert.rejects(service.preview(access, { items: [choice] }));
+  assert.equal(await fixture.runtime.client.styleSkillVersion.count({ where: { skillId: c.skill.id } }), 1);
+});
