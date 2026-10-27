@@ -17,7 +17,7 @@ import {
 import { ApiException } from "../src/common/http-errors";
 import { DemoIdentityScenarios } from "../scripts/demo-fixtures";
 import { createLocalFixture } from "./local-fixture";
-import { StyleSkillVersionSchema } from "@orai/contracts/admin";
+import { StyleSkillVersionSchema, StyleSkillManifestSchema, withThreejsSkillPolicy } from "@orai/contracts/admin";
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>,
   app: INestApplication,
   base: string,
@@ -158,7 +158,7 @@ after(async () => {
   await fixture?.close();
   if (directory) await rm(directory, { recursive: true, force: true });
 });
-function manifest(domain = "assessment") {
+function legacyManifest(domain = "assessment") {
   return {
     schemaVersion: 1,
     domain,
@@ -194,18 +194,52 @@ function manifest(domain = "assessment") {
     references: [] as { path: string; fileId: string }[],
   };
 }
+function manifest(domain = 'assessment') { return withThreejsSkillPolicy(StyleSkillManifestSchema.parse(legacyManifest(domain))); }
 
 test('all five Skill libraries reject new unversioned-policy manifests over the administrator HTTP API', async () => {
   for (const [domain, purposes] of Object.entries({ assessment: ['assessment_design','report_writing'], cover: ['cover_design'],
     video: ['video_production'], copy: ['copywriting'], experience: ['scene_design','report_presentation'] })) {
     for (const purpose of purposes) {
       const result = await admin.request('/admin/skills/' + domain, 'POST', {
-        slug: 'missing-policy-' + randomUUID(), manifest: { ...manifest(domain), purposes: [purpose] }, requestId: randomUUID(),
+        slug: 'missing-policy-' + randomUUID(), manifest: { ...legacyManifest(domain), purposes: [purpose] }, requestId: randomUUID(),
       });
       assert.equal(result.status, 400, domain + '/' + purpose + ' must require the current structured Skill policy');
       assert.equal(result.body.error.code, 'VALIDATION_ERROR');
     }
   }
+});
+
+test('legacy manifests remain readable and exportable while new saves, clones and lifecycle actions require explicit policy upgrades', async () => {
+  const legacy = legacyManifest(), skill = await fixture.owner.client.styleSkill.create({ data: { scope: 'DEMO', domain: legacy.domain,
+    slug: 'historical-' + randomUUID(), name: legacy.name, description: legacy.description, styles: legacy.styles,
+    purposes: legacy.purposes, supportedForms: legacy.supportedForms } });
+  // Simulate a version persisted before the policy rollout; never use the new
+  // write API to manufacture historical data or rewrite a fixed snapshot.
+  const digest = sha(JSON.stringify(StyleSkillManifestSchema.parse(legacy)));
+  const row = await fixture.owner.client.styleSkillVersion.create({ data: { skillId: skill.id, scope: 'DEMO', number: 1,
+    manifest: legacy, digest, actorUserId: DemoIdentityScenarios.admin.id } });
+  const prefix = '/admin/skills/assessment/' + skill.id, versionPath = prefix + '/versions/' + row.id;
+  const read = await admin.request(versionPath); assert.equal(read.status,200); assert.equal(read.body.manifest.schemaVersion,1);
+  const exported = await admin.request(versionPath + '/export'); assert.equal(exported.status,200); assert.equal(exported.body.version.digest,digest);
+  const before = structuredClone(exported.body.version);
+  assert.equal((await admin.request(versionPath,'PUT',{manifest:legacy,expectedRevision:0,requestId:randomUUID()})).status,400);
+  assert.equal((await admin.request(versionPath+'/review','POST',{expectedRevision:0,requestId:randomUUID()})).status,400);
+  assert.equal((await admin.request(prefix+'/versions','POST',{sourceVersionId:row.id,expectedSkillRevision:0,requestId:randomUUID()})).status,400);
+  const upgraded = await admin.request(prefix+'/versions','POST',{sourceVersionId:row.id,expectedSkillRevision:0,
+    manifest:withThreejsSkillPolicy(StyleSkillManifestSchema.parse(legacy)),requestId:randomUUID()});
+  assert.equal(upgraded.status,200,JSON.stringify(upgraded.body)); assert.notEqual(upgraded.body.id,row.id); assert.equal(upgraded.body.manifest.schemaVersion,2);
+  assert.deepEqual((await admin.request(versionPath+'/export')).body.version,before);
+  await fixture.owner.client.styleSkillVersion.update({where:{id:row.id},data:{status:'REVIEWED'}});
+  assert.equal((await admin.request(versionPath+'/activate','POST',{expectedRevision:0,requestId:randomUUID()})).status,400);
+  assert.equal((await fixture.owner.client.styleSkillVersion.findUniqueOrThrow({where:{id:row.id}})).digest,digest);
+});
+
+test('an explicit clone upgrade cannot replace the Skill library domain', async () => {
+  const source = await create(), result = await admin.request('/admin/skills/assessment/'+source.skillId+'/versions','POST',{
+    sourceVersionId:source.id,expectedSkillRevision:0,manifest:manifest('cover'),requestId:randomUUID(),
+  });
+  assert.equal(result.status,400,JSON.stringify(result.body));
+  assert.equal(await fixture.runtime.client.styleSkillVersion.count({where:{skillId:source.skillId}}),1);
 });
 const path = (row: any) =>
   "/admin/skills/" +
@@ -386,7 +420,7 @@ test("reference uploads verify actual UTF-8 bytes and checksums; fixed files dow
   const ref = await reference(row);
   row = await save(row, {
     ...row.manifest,
-    instructions: "请阅读 [表达示例](references/guide.md)。",
+    instructions: row.manifest.instructions + "\n请阅读 [表达示例](references/guide.md)。",
     references: [{ path: "references/guide.md", fileId: ref.file.id }],
   });
   assert.equal(row.files[0].file.checksum, sha(ref.bytes));
