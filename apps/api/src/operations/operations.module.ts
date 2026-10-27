@@ -23,6 +23,7 @@ import { ContentWorkflowService } from './content-workflow.service';
 import { ContentPackagesService } from './content-packages.service';
 import { FileCleanupService } from './file-cleanup.service';
 import {SkillsService} from './skills.service';
+import { SkillUpgradeService } from './skill-upgrade.service';
 import {SkillFilesService} from './skill-files.service';
 import {SkillsController} from './skills.controller';
 import { SkillBindingsService } from './skill-bindings.service';
@@ -60,6 +61,6 @@ import {ExternalRunConfigurationsService,externalConfigurationClock} from './ext
 @Module({ imports: [DatabaseModule, AccountCoreModule, CatalogModule, RedemptionModule],
   controllers: [ExternalRunConfigurationsController, CodexConnectionsController, CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController, ContentController, SkillsController, SkillBindingsController, MachineCredentialsController, MachineController, ExperienceAuthoringController, ProductionPlansController, ProjectProductionController, MachineWorkspacesController, ProjectOriginalFilesController, ProjectReviewController, ProductionRunsController, ProjectWorkspaceController],
   providers: [ProductionRunOperationsService,AdminRequestGuard, AdminMutationService, CatalogAdminService, OrdersAdminService, AssetsService, FilesService,
-    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService, SkillsService, SkillFilesService, SkillBindingsService,
+    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService, SkillsService, SkillUpgradeService, SkillFilesService, SkillBindingsService,
     ExternalRunConfigurationsService, externalConfigurationClock, CodexConnectionsService, MachineCredentialsService, MachineRequestGuard, MachineUploadService, MachineContentService, ExperienceAuthoringService, MachineExperienceService, ProductionPlansService, ProjectProductionService, ProjectMethodOperationsService, MachineProjectsService, ProjectOriginalFilesService, ProjectReviewService, ProductionRunsService, productionRunClock, ProjectWorkspaceService, ProjectCanvasService] })
 export class OperationsModule {}

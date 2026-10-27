@@ -417,67 +417,59 @@ export class SkillsService {
     );
     return result.version ?? this.readVersion(access, domain, skillId, result.id);
   }
-  async clone(
-    access: CatalogAdminAccess,
-    domain: unknown,
-    skillId: unknown,
-    input: unknown,
-  ) {
+  async clone(access: CatalogAdminAccess, domain: unknown, skillId: unknown, input: unknown) {
     const body = parseInput(SkillCloneSchema, input);
-    const result = await this.mutations.run(
-      access,
-      "skills.clone:" + String(skillId),
-      body.requestId,
-      body,
-      async (tx) => {
-        const skill = await this.files.skill(access, domain, skillId, tx);
-        await this.lock(tx, skill.id);
-        const fresh = await this.files.skill(access, domain, skillId, tx);
-        if (fresh.revision !== body.expectedSkillRevision)
-          throw new ApiException(
-            "REVISION_CONFLICT",
-            "skill 已有新变化，请刷新后复制",
-            409,
-          );
-        const source = await this.version(
-            access,
-            domain,
-            skillId,
-            body.sourceVersionId,
-            tx,
-          ),
-          manifest = manifestInput(body.manifest ?? source.manifest);
-        if (manifest.domain !== skill.domain) throw new ApiException('VALIDATION_ERROR', '复制升级不能改变 Skill 所属领域', 400);
-        await this.validateFiles(tx, skill.id, access, manifest);
-        const latest = await tx.styleSkillVersion.findFirstOrThrow({
-          where: { skillId: skill.id },
-          orderBy: { number: "desc" },
-        });
-        const row = await tx.styleSkillVersion.create({
-          data: {
-            skillId: skill.id,
-            scope: access.scope,
-            number: latest.number + 1,
-            manifest: manifest as Prisma.InputJsonValue,
-            digest: contentDigest(manifest),
-            actorUserId: access.actorUserId,
-          },
-        });
-        await this.attachments(tx, row, manifest);
-        await tx.styleSkill.update({
-          where: { id: skill.id },
-          data: { ...projection(manifest), revision: { increment: 1 } },
-        });
-        return {
-          response: { id: row.id, ...(access.machineCredentialId ? {
-            version: skillVersionDto(await this.version(access, domain, skillId, row.id, tx)),
-          } : {}) },
-          entityKind: "style_skill_version",
-          entityId: row.id,
-        };
-      },
-    );
+    const result = await this.mutations.run(access, "skills.clone:" + String(skillId), body.requestId, body,
+      tx => this.cloneIn(tx, access, domain, skillId, body));
     return result.version ?? this.readVersion(access, domain, skillId, result.id);
+  }
+  async cloneIn(tx: Prisma.TransactionClient, access: CatalogAdminAccess, domain: unknown, skillId: unknown, input: unknown) {
+    const body = parseInput(SkillCloneSchema, input);
+    const skill = await this.files.skill(access, domain, skillId, tx);
+    await this.lock(tx, skill.id);
+    const fresh = await this.files.skill(access, domain, skillId, tx);
+    if (fresh.revision !== body.expectedSkillRevision)
+      throw new ApiException(
+        "REVISION_CONFLICT",
+        "skill 已有新变化，请刷新后复制",
+        409,
+      );
+    const source = await this.version(
+        access,
+        domain,
+        skillId,
+        body.sourceVersionId,
+        tx,
+      ),
+      manifest = manifestInput(body.manifest ?? source.manifest);
+    if (manifest.domain !== skill.domain) throw new ApiException('VALIDATION_ERROR', '复制升级不能改变 Skill 所属领域', 400);
+    await this.validateFiles(tx, skill.id, access, manifest);
+    const latest = await tx.styleSkillVersion.findFirstOrThrow({
+      where: { skillId: skill.id },
+      orderBy: { number: "desc" },
+    });
+    const row = await tx.styleSkillVersion.create({
+      data: {
+        skillId: skill.id,
+        scope: access.scope,
+        number: latest.number + 1,
+        manifest: manifest as Prisma.InputJsonValue,
+        digest: contentDigest(manifest),
+        actorUserId: access.actorUserId,
+      },
+    });
+    await this.attachments(tx, row, manifest);
+    await tx.styleSkill.update({
+      where: { id: skill.id },
+      data: { ...projection(manifest), revision: { increment: 1 } },
+    });
+    return {
+      response: { id: row.id, ...(access.machineCredentialId ? {
+        version: skillVersionDto(await this.version(access, domain, skillId, row.id, tx)),
+      } : {}) },
+      entityKind: "style_skill_version",
+      entityId: row.id,
+    };
   }
   async transition(
     access: CatalogAdminAccess,
