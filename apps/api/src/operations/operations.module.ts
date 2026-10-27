@@ -13,6 +13,8 @@ import { OrdersAdminController } from './orders-admin.controller';
 import { AssetsService } from './assets.service';
 import { FilesService } from './files.service';
 import { AssetStorage, LocalAssetStorage } from './asset-storage';
+import { R2AssetStorage } from './r2-asset-storage';
+import { APP_CONFIG, type AppConfiguration } from '../config/configuration';
 import { MediaAdminController } from './media-admin.controller';
 import { OverviewService } from './overview.service';
 import { EventsController, OverviewController } from './overview.controller';
@@ -61,6 +63,8 @@ import {ExternalRunConfigurationsService,externalConfigurationClock} from './ext
 @Module({ imports: [DatabaseModule, AccountCoreModule, CatalogModule, RedemptionModule],
   controllers: [ExternalRunConfigurationsController, CodexConnectionsController, CatalogAdminController, OrdersAdminController, MediaAdminController, OverviewController, EventsController, PublicAssetsController, ContentController, SkillsController, SkillBindingsController, MachineCredentialsController, MachineController, ExperienceAuthoringController, ProductionPlansController, ProjectProductionController, MachineWorkspacesController, ProjectOriginalFilesController, ProjectReviewController, ProductionRunsController, ProjectWorkspaceController],
   providers: [ProductionRunOperationsService,AdminRequestGuard, AdminMutationService, CatalogAdminService, OrdersAdminService, AssetsService, FilesService,
-    { provide: AssetStorage, useClass: LocalAssetStorage }, OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService, SkillsService, SkillUpgradeService, SkillFilesService, SkillBindingsService,
+    { provide: AssetStorage, inject: [APP_CONFIG], useFactory: (configuration: AppConfiguration) =>
+      configuration.assets?.driver === 'r2' ? new R2AssetStorage(configuration) : new LocalAssetStorage(configuration) },
+    OverviewService, ContentService, ContentWorkflowService, ContentPackagesService, FileCleanupService, SkillsService, SkillUpgradeService, SkillFilesService, SkillBindingsService,
     ExternalRunConfigurationsService, externalConfigurationClock, CodexConnectionsService, MachineCredentialsService, MachineRequestGuard, MachineUploadService, MachineContentService, ExperienceAuthoringService, MachineExperienceService, ProductionPlansService, ProjectProductionService, ProjectMethodOperationsService, MachineProjectsService, ProjectOriginalFilesService, ProjectReviewService, ProductionRunsService, productionRunClock, ProjectWorkspaceService, ProjectCanvasService] })
 export class OperationsModule {}

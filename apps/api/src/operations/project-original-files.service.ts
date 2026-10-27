@@ -10,7 +10,7 @@ import { APP_CONFIG, type AppConfiguration } from '../config/configuration';
 import { ApiException } from '../common/http-errors';
 import { parseInput } from '../common/parse-input';
 import { AdminMutationService } from './admin-mutation.service';
-import { AssetStorage } from './asset-storage';
+import { AssetStorage, persistentAssetStorageConfigured } from './asset-storage';
 import { storedFileContent } from './files.service';
 
 export function originalFileDto(row: ProjectOriginalFile) {
@@ -25,7 +25,7 @@ export class ProjectOriginalFilesService {
     private readonly storage:AssetStorage,@Inject(APP_CONFIG) private readonly config:AppConfiguration) {}
   async prepare(access:CatalogAdminAccess,input:unknown) {
     const body=parseInput(ProjectOriginalPrepareSchema,input), {target}=body;
-    if(this.config.environment==='production'||this.config.assets?.driver!=='local')throw new ApiException('SERVICE_UNAVAILABLE','原件持久化存储尚未配置',503);
+    if(!persistentAssetStorageConfigured(this.config))throw new ApiException('SERVICE_UNAVAILABLE','原件持久化存储尚未配置',503);
     const extensions:Record<string,string[]>={'application/zip':['zip'],'text/html':['html','htm'],'model/gltf-binary':['glb']};
     if(!extensions[body.mimeType]!.includes(body.fileName.split('.').at(-1)!.toLowerCase())||body.mimeType==='text/html'&&body.byteSize>2*1024*1024)
       throw new ApiException('VALIDATION_ERROR','原件的扩展名、类型或大小不符合要求',400);

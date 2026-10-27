@@ -15,7 +15,7 @@ import { type CatalogAdminAccess } from "../catalog/admin-access.service";
 import { parseInput } from "../common/parse-input";
 import { ApiException } from "../common/http-errors";
 import { AdminMutationService } from "./admin-mutation.service";
-import { AssetStorage } from "./asset-storage";
+import { AssetStorage, persistentAssetStorageConfigured } from "./asset-storage";
 import { FilesService } from "./files.service";
 import { checkReferenceName } from "./reference-content";
 export function skillFileDto(row: SkillReferenceFile, domain: string) {
@@ -94,8 +94,7 @@ export class SkillFilesService {
   ) {
     const body = parseInput(SkillFilePrepareSchema, input);
     if (
-      this.config.assets?.driver !== "local" ||
-      this.config.environment === "production"
+      !persistentAssetStorageConfigured(this.config)
     )
       throw new ApiException(
         "SERVICE_UNAVAILABLE",

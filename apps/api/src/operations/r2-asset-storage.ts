@@ -88,8 +88,9 @@ export class R2AssetStorage extends AssetStorage {
       let body:Readable|undefined;
       try {
         const object=await this.client.send(new GetObjectCommand({Bucket:this.settings.bucket,Key:key,IfMatch:head.ETag}),{abortSignal:signal});
-        if(object.ContentLength!==size||object.ETag!==head.ETag||object.Metadata?.sha256!==checksum||!(object.Body instanceof Readable))throw unavailable();
-        body=object.Body;let bytes=0;const hash=createHash('sha256');
+        body=object.Body instanceof Readable?object.Body:undefined;
+        if(object.ContentLength!==size||object.ETag!==head.ETag||object.Metadata?.sha256!==checksum||!body)throw unavailable();
+        let bytes=0;const hash=createHash('sha256');
         for await(const chunk of body){
           const data=Buffer.from(chunk);bytes+=data.length;if(bytes>size)throw unavailable();hash.update(data);
           let offset=0;while(offset<data.length){const result=await temporary.file.write(data,offset,data.length-offset);if(!result.bytesWritten)throw unavailable();offset+=result.bytesWritten;}
