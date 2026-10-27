@@ -194,6 +194,19 @@ function manifest(domain = "assessment") {
     references: [] as { path: string; fileId: string }[],
   };
 }
+
+test('all five Skill libraries reject new unversioned-policy manifests over the administrator HTTP API', async () => {
+  for (const [domain, purposes] of Object.entries({ assessment: ['assessment_design','report_writing'], cover: ['cover_design'],
+    video: ['video_production'], copy: ['copywriting'], experience: ['scene_design','report_presentation'] })) {
+    for (const purpose of purposes) {
+      const result = await admin.request('/admin/skills/' + domain, 'POST', {
+        slug: 'missing-policy-' + randomUUID(), manifest: { ...manifest(domain), purposes: [purpose] }, requestId: randomUUID(),
+      });
+      assert.equal(result.status, 400, domain + '/' + purpose + ' must require the current structured Skill policy');
+      assert.equal(result.body.error.code, 'VALIDATION_ERROR');
+    }
+  }
+});
 const path = (row: any) =>
   "/admin/skills/" +
   row.manifest.domain +

@@ -4,6 +4,10 @@ import {
   StyleSkillManifestSchema,
   SkillReferencePathSchema,
   missingSkillReferences,
+  withThreejsSkillPolicy,
+  hasThreejsSkillPolicy,
+  threejsPurposeInstructions,
+  skillPurposes,
 } from "@orai/contracts/admin";
 const manifest = () => ({
   schemaVersion: 1,
@@ -24,6 +28,34 @@ const manifest = () => ({
   instructions: "尊重作答者，避免确定性诊断。",
   examples: [],
   references: [],
+});
+
+test('current Skill manifests declare a versioned Three.js policy for every professional purpose without binding a product', () => {
+  for (const [domain, purposes] of Object.entries(skillPurposes)) for (const purpose of purposes) {
+    const legacy = StyleSkillManifestSchema.parse({ ...manifest(), domain, purposes: [purpose] });
+    const before = JSON.stringify(legacy), current = withThreejsSkillPolicy(legacy);
+    assert.equal(current.schemaVersion, 2);
+    assert.deepEqual((current as unknown as { productPolicy: unknown }).productPolicy, {
+      schemaVersion: 1, implementation: 'threejs', applicability: 'all_declared_purposes',
+      planInput: { key: 'product-plan', schemaVersion: 2, required: true }, decisions: 'fixed_product_plan',
+    });
+    assert.equal(StyleSkillManifestSchema.safeParse(current).success, true);
+    assert.ok(current.instructions.includes(threejsPurposeInstructions[purpose]));
+    assert.equal(hasThreejsSkillPolicy(current), true);
+    assert.equal(hasThreejsSkillPolicy(legacy), false);
+    assert.equal(JSON.stringify(legacy), before);
+    assert.deepEqual(withThreejsSkillPolicy(current), current);
+    const candidate = current as unknown as Record<string, unknown>;
+    for (const change of [
+      { productPolicy: undefined },
+      { productPolicy: { ...(candidate.productPolicy as object), implementation: 'web' } },
+      { productPolicy: { ...(candidate.productPolicy as object), productId: 'product-specific' } },
+      { inputs: current.inputs.filter(input => input.key !== 'product-plan') },
+      { inputs: current.inputs.map(input => input.key === 'product-plan' ? { ...input, required: false } : input) },
+      { instructions: 'Three.js' },
+      { instructions: current.instructions.replace(threejsPurposeInstructions[purpose], '') },
+    ]) assert.equal(StyleSkillManifestSchema.safeParse({ ...current, ...change }).success, false, domain + '/' + purpose);
+  }
 });
 test("skills keep professional purpose and shared creative-profile requirements separate from style labels", () => {
   assert.equal(StyleSkillManifestSchema.safeParse(manifest()).success, true);
