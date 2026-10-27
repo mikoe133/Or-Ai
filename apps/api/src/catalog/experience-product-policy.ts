@@ -11,7 +11,8 @@ export async function requireExperienceProductPolicy(tx: Prisma.TransactionClien
   const parsed = SkillProductPlanInputSchema.safeParse(authored.productPlanInput);
   if (!parsed.success) throw new ApiException('INVALID_CONFIGURATION', '体验审核与新发布必须固定实际商品规划及模块，请先保存新的制作稿', 400);
   const input = parsed.data;
-  const plan = await tx.productionPlanRevision.findFirst({ where: { id: input.planRevisionId, productId: version.productId, scope: version.scope }, include: { modules: true } });
+  const plan = await tx.productionPlanRevision.findFirst({ where: { id: input.planRevisionId, productId: version.productId, scope: version.scope },
+    include: { modules: { include: { identity: true }, orderBy: { position: 'asc' } } } });
   const latest = await tx.productionPlanRevision.findFirst({ where: { productId: version.productId, scope: version.scope }, orderBy: { number: 'desc' }, select: { id: true } });
   if (!plan || plan.id !== latest?.id || plan.digest !== input.planDigest || plan.creativeProfileRevisionId !== version.creativeProfileRevisionId)
     throw new ApiException('INVALID_CONFIGURATION', '固定商品规划已变化或不属于此版本，请重新制作并审核', 400);

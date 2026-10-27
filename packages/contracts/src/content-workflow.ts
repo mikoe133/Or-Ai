@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { DataScopeSchema, IdSchema, TimestampSchema } from "./shared.js";
 import { BoundSkillSchema, CreativeSkillSetSchema } from './skill-bindings.js';
+import { ExperienceAuthoringRevisionSchema } from './experience-authoring.js';
+import { ProductionPlanRevisionSchema } from './production-plans.js';
+import { RendererReferenceSchema } from './experience.js';
 import {
   ContentDomainSchema,
   ContentLocatorSchema,
@@ -190,6 +193,14 @@ const LegacyContentPackageManifestSchema = z
 export const ContentPackageManifestSchema = z.discriminatedUnion('schemaVersion', [
   LegacyContentPackageManifestSchema,
   LegacyContentPackageManifestSchema.extend({ schemaVersion: z.literal(2), skillSet: CreativeSkillSetSchema }).strict(),
+  LegacyContentPackageManifestSchema.extend({ schemaVersion: z.literal(3), skillSet: CreativeSkillSetSchema.optional(),
+    productPlan: ProductionPlanRevisionSchema,
+    experience: ExperienceAuthoringRevisionSchema.refine(value => value.status === 'reviewed' && !!value.productPlanInput, '采用包须保留已审核且固定规划的体验'),
+    runtime: LegacyContentPackageManifestSchema.shape.runtime.extend({ experience: z.literal('threejs'),
+      renderer: RendererReferenceSchema, reportRenderer: RendererReferenceSchema,
+      compatibility: z.literal('registered_pair'), deviceAcceptance: z.literal('not_recorded'),
+    }).strict(),
+  }).strict(),
 ]);
 export const ContentPackageSchema = z
   .object({

@@ -53,7 +53,7 @@ export async function verifyExperienceFiles(tx: Prisma.TransactionClient, manife
       throw new ApiException('CONFLICT', '体验资源的实际文件与固定摘要不一致', 409);
   }
 }
-export async function prepareAuthoredExperience(tx: Prisma.TransactionClient, version: ProductVersion, storage: AssetStorage) {
+export async function verifyReviewedExperience(tx: Prisma.TransactionClient, version: ProductVersion, storage: AssetStorage) {
   const draft = await tx.experienceAuthoringRevision.findFirst({ where: { productVersionId: version.id }, orderBy: { number: 'desc' } });
   if (!draft) {
     throw new ApiException('INVALID_CONFIGURATION', '新发布必须先保存并审核使用固定商品规划的 Three.js 体验；旧发布版本继续按原清单读取', 400);
@@ -63,7 +63,7 @@ export async function prepareAuthoredExperience(tx: Prisma.TransactionClient, ve
   if (draft.status !== 'reviewed' || draft.configurationDigest !== configurationDigest(version.configuration) ||
     version.creativeProfileRevisionId !== profile.id || experienceDraftIssues(manifest, draft.reportPlan, version, profile).length)
     throw new ApiException('INVALID_CONFIGURATION', '体验草稿未审核或内容/设定已变化，请重新校验审核', 400);
-  await requireExperienceProductPolicy(tx, version, draft);
+  const policy = await requireExperienceProductPolicy(tx, version, draft);
   await verifyExperienceFiles(tx, manifest, version.scope, storage);
   const methods = BoundSkillSchema.array().parse(draft.methods);
   for (const binding of methods) for (const ref of binding.version.files) {
@@ -74,6 +74,10 @@ export async function prepareAuthoredExperience(tx: Prisma.TransactionClient, ve
     if (actual.checksum !== ref.file.checksum || actual.byteSize !== ref.file.byteSize || actual.mimeType !== ref.file.mimeType)
       throw new ApiException('INVALID_CONFIGURATION', '体验方法参考文件完整性检查失败', 400);
   }
+  return { draft, manifest, profile, policy };
+}
+export async function prepareAuthoredExperience(tx: Prisma.TransactionClient, version: ProductVersion, storage: AssetStorage) {
+  const { draft, manifest, profile } = await verifyReviewedExperience(tx, version, storage);
   const id = randomUUID(), payload = JSON.stringify(manifest);
   await tx.$executeRaw(Prisma.sql`INSERT INTO orai.experience_releases(id,product_id,product_version_id,scope,creative_profile_revision_id,authoring_revision_id,manifest,digest)
     VALUES(${id}::uuid,${version.productId}::uuid,${version.id}::uuid,${version.scope}::orai."DataScope",${profile.id}::uuid,${draft.id}::uuid,${payload}::jsonb,

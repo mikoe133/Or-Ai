@@ -30,6 +30,9 @@ import {
 import { ApiException } from "../common/http-errors";
 import { parseInput } from "../common/parse-input";
 import { SkillBindingsService, productionDto } from './skill-bindings.service';
+import { verifyReviewedExperience } from '../catalog/experience-authoring';
+import { experienceRevisionDto } from './experience-authoring.service';
+import { projection as planProjection } from './production-plans.service';
 type Selection = z.infer<typeof ContentPackageSelectionSchema>;
 @Injectable()
 export class ContentPackagesService {
@@ -84,13 +87,17 @@ export class ContentPackagesService {
         productId,
       ),
       assets: WorkflowRevision[] = [];
-    if (
-      setting.profile.experienceForm !== "web" ||
-      setting.profile.perspective === "planned_two_person"
-    )
-      issues.push(
-        "当前只可采用单人网页形式；双方、卡片、2.5D/3D 和小游戏仍为创作方案",
-      );
+    let experience: Awaited<ReturnType<typeof verifyReviewedExperience>> | null = null;
+    const version = await tx.productVersion.findFirst({ where: { id: assessment.productVersionId, productId, scope: access.scope } });
+    const latestExperience = await tx.experienceAuthoringRevision.findFirst({ where: { productVersionId: assessment.productVersionId }, orderBy: { number: 'desc' } });
+    try {
+      if (!version || version.creativeProfileRevisionId !== profile.id)
+        throw new ApiException('INVALID_CONFIGURATION', '采用内容与体验必须固定同一共同创作设定', 400);
+      experience = await verifyReviewedExperience(tx, version, this.storage);
+    } catch (error) {
+      if (!(error instanceof ApiException)) throw error;
+      issues.push(error.publicMessage);
+    }
     if (
       assessment.domain !== "assessment" ||
       !ProductConfigurationSchema.safeParse(
@@ -143,8 +150,14 @@ export class ContentPackagesService {
     if (skillSet) {
       for (const row of [assessment, ...assets])
         if (row.production?.skillSetId !== skillSet.id) issues.push('题库、报告与宣传稿必须使用所选固定 skill 组合；请制作匹配的新修订');
-      try { await this.skills.verifyFiles(skillSet, tx); }
-      catch { issues.push('skill 固定参考文件缺失或完整性校验失败'); }
+      try {
+        await this.skills.validateForUse(tx, access, skillSet);
+        await this.skills.verifyFiles(skillSet, tx);
+        if (experience && skillSet.bindings.some(binding => binding.productPlanInput?.planRevisionId !== experience.policy.plan.id ||
+          binding.productPlanInput?.planDigest !== experience.policy.plan.digest))
+          issues.push('宣传内容与体验必须使用同一固定商品规划');
+      }
+      catch (error) { issues.push(error instanceof ApiException ? error.publicMessage : 'skill 固定参考文件缺失或完整性校验失败'); }
     } else if ([assessment, ...assets].some(row => row.production?.skillSetId)) {
       issues.push('含有 skill 来源的内容必须明确选择同一个固定组合');
     }
@@ -240,6 +253,8 @@ export class ContentPackagesService {
       fileData: [...fileData.values()],
       latestPackageNumber,
       ...(skillSet ? { skillSetDigest: skillSet.digest, skillSetId: skillSet.id } : {}),
+      experience: latestExperience ? { id: latestExperience.id, digest: latestExperience.digest } : null,
+      productPlan: experience ? { id: experience.policy.plan.id, digest: experience.policy.plan.digest } : null,
     });
     const preview = ContentPackagePreviewSchema.parse({
       fingerprint,
@@ -249,7 +264,7 @@ export class ContentPackagesService {
       revisions: [assessment, ...assets].map(revisionDto),
       latestPackageNumber,
     });
-    return { preview, product, setting, assessment, assets, fixed, fileData, skillSet };
+    return { preview, product, setting, assessment, assets, fixed, fileData, skillSet, experience };
   }
   async preview(access: CatalogAdminAccess, input: unknown) {
     await this.mutations.administrators.require(access);
@@ -284,6 +299,7 @@ export class ContentPackagesService {
           );
         if (!checked.preview.canAdopt)
           throw new ApiException("CONFLICT", checked.preview.issues[0]!, 409);
+        if (!checked.experience) throw new ApiException('CONFLICT', '缺少已审核的 Three.js 体验', 409);
         const production = (row: WorkflowRevision) => {
           const value = row.production;
           if (!value) return null;
@@ -291,8 +307,10 @@ export class ContentPackagesService {
           return exported;
         };
         const manifest = ContentPackageManifestSchema.parse({
-          schemaVersion: checked.skillSet ? 2 : 1,
+          schemaVersion: 3,
           ...(checked.skillSet ? { skillSet: checked.skillSet } : {}),
+          productPlan: planProjection(checked.experience.policy.plan),
+          experience: experienceRevisionDto(checked.experience.draft),
           product: {
             id: checked.product.id,
             name: checked.product.name,
@@ -303,10 +321,13 @@ export class ContentPackagesService {
           creativeProfile: checked.setting,
           assessment: revisionDto(checked.assessment),
           runtime: {
-            experience: "web",
+            experience: 'threejs',
             engine: "dimensions_v1",
             report: "compatible_standard",
             themeKey: checked.product.themeKey,
+            renderer: checked.experience.manifest.renderer,
+            reportRenderer: checked.experience.manifest.report.renderer,
+            compatibility: 'registered_pair', deviceAcceptance: 'not_recorded',
           },
           dependencies: [...checked.fixed.values()]
             .filter(
