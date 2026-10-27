@@ -9,9 +9,20 @@ import { imageSize } from 'image-size';
 import { Input, CustomSource, MP4, WEBM } from 'mediabunny';
 import { referenceContent } from './reference-content';
 import { inspectOriginal } from './original-content';
+import type { Readable } from 'node:stream';
 
 export interface InspectedFile { byteSize: number; checksum: string; mimeType: string }
 export interface VerifiedMedia extends InspectedFile { width: number; height: number; durationMs: number | null }
+export interface StoredAssetFile {
+  stat(): Promise<{size: number; isFile(): boolean}>;
+  read(buffer: Buffer, offset: number, length: number, position: number): Promise<{bytesRead: number; buffer: Buffer}>;
+  createReadStream(options?: {start?: number; end?: number; autoClose?: boolean}): Readable;
+  close(): Promise<void>;
+}
+export function persistentAssetStorageConfigured(configuration: AppConfiguration) {
+  return configuration.assets?.driver === 'r2' && !!configuration.assets.r2 ||
+    configuration.assets?.driver === 'local' && configuration.environment !== 'production';
+}
 export abstract class AssetStorage {
   abstract receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile): Promise<void>;
   abstract inspect(key: string, maxBytes: number): Promise<VerifiedMedia>;
@@ -26,7 +37,7 @@ export abstract class AssetStorage {
     const file=await this.read(key),inspection=new Inspection(mimeType);
     try {for await(const chunk of file.createReadStream({autoClose:false}))inspection.add(chunk as Buffer,maxBytes);return inspection.result();}finally{await file.close();}
   }
-  abstract read(key: string): Promise<FileHandle>;
+  abstract read(key: string): Promise<StoredAssetFile>;
   abstract remove(key: string): Promise<void>;
 }
 
@@ -65,62 +76,26 @@ class Inspection {
   }
 }
 
-@Injectable()
-export class LocalAssetStorage extends AssetStorage {
-  constructor(@Inject(APP_CONFIG) private readonly configuration: AppConfiguration) { super(); }
-  private async location(key: string) {
-    const settings = this.configuration.assets;
-    if (!settings || settings.driver !== 'local' || this.configuration.environment === 'production') throw new ApiException('SERVICE_UNAVAILABLE', '持久化文件存储尚未配置', 503);
-    if (!/^[0-9a-f-]{36}\.blob$/.test(key)) throw new ApiException('VALIDATION_ERROR', '文件引用不正确', 400);
-    await mkdir(settings.directory, { recursive: true, mode: 0o700 });
-    const stat = await lstat(settings.directory);
-    if (!stat.isDirectory() || stat.isSymbolicLink()) throw new ApiException('SERVICE_UNAVAILABLE', '文件存储目录不可用', 503);
-    return join(await realpath(settings.directory), key);
-  }
-  async receiveOriginal(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile) {
-    return this.receive(key,source,expected,true);
-  }
-  async receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile, original = false) {
-    const path = await this.location(key);
-    let file: FileHandle | undefined;
-    try {
-      file = await open(path, constants.O_CREAT | constants.O_EXCL | constants.O_WRONLY | constants.O_NOFOLLOW, 0o600);
-      const inspection = new Inspection(expected.mimeType);
-      const rawHash = createHash('sha256'); let rawBytes = 0;
-      for await (const chunk of source) {
-        if (original) { rawBytes += chunk.byteLength; if(rawBytes>expected.byteSize)throw new ApiException('VALIDATION_ERROR','原件超过声明大小',400); rawHash.update(chunk); }
-        else inspection.add(chunk, expected.byteSize);
-        let offset = 0;
-        while (offset < chunk.byteLength) {
-          const result = await file.write(chunk, offset, chunk.byteLength - offset);
-          if (!result.bytesWritten) throw new Error('File write failed');
-          offset += result.bytesWritten;
-        }
-      }
-      const actual = original ? {byteSize:rawBytes,checksum:rawHash.digest('hex'),mimeType:expected.mimeType} : inspection.result();
-      if (actual.byteSize !== expected.byteSize || actual.mimeType !== expected.mimeType || actual.checksum !== expected.checksum) throw new ApiException('VALIDATION_ERROR', '文件大小、类型或摘要与上传声明不一致', 400);
-      await file.sync();
-    } catch (error) {
-      if (file) { await file.close(); file = undefined; await unlink(path).catch(() => undefined); }
-      if (error instanceof ApiException) throw error;
-      throw new ApiException('SERVICE_UNAVAILABLE', '文件上传未完成，请重新申请上传', 503);
-    } finally { await file?.close(); }
-  }
-  async read(key: string) {
-    let file: FileHandle | undefined;
-    try {
-      file = await open(await this.location(key), constants.O_RDONLY | constants.O_NOFOLLOW);
-      if (!(await file.stat()).isFile()) throw new Error('Not a file');
-      return file;
-    } catch (error) {
-      await file?.close();
-      if (error instanceof ApiException) throw error;
-      throw new ApiException('SERVICE_UNAVAILABLE', '文件暂不可读取', 503);
+export async function writeInspectedFile(file: FileHandle, source: AsyncIterable<Uint8Array>, expected: InspectedFile, original = false) {
+  const inspection = new Inspection(expected.mimeType);
+  const rawHash = createHash('sha256'); let rawBytes = 0;
+  for await (const chunk of source) {
+    if (original) { rawBytes += chunk.byteLength; if(rawBytes>expected.byteSize)throw new ApiException('VALIDATION_ERROR','原件超过声明大小',400); rawHash.update(chunk); }
+    else inspection.add(chunk, expected.byteSize);
+    let offset = 0;
+    while (offset < chunk.byteLength) {
+      const result = await file.write(chunk, offset, chunk.byteLength - offset);
+      if (!result.bytesWritten) throw new Error('File write failed');
+      offset += result.bytesWritten;
     }
   }
-  async inspect(key: string, maxBytes: number) {
-    const file = await this.read(key), inspection = new Inspection();
-    try {
+  const actual = original ? {byteSize:rawBytes,checksum:rawHash.digest('hex'),mimeType:expected.mimeType} : inspection.result();
+  if (actual.byteSize !== expected.byteSize || actual.mimeType !== expected.mimeType || actual.checksum !== expected.checksum) throw new ApiException('VALIDATION_ERROR', '文件大小、类型或摘要与上传声明不一致', 400);
+  await file.sync();
+}
+
+export async function inspectStoredMedia(file: StoredAssetFile, maxBytes: number): Promise<VerifiedMedia> {
+  const inspection = new Inspection();
       for await (const chunk of file.createReadStream({ autoClose: false })) inspection.add(chunk as Buffer, maxBytes);
       const result = inspection.result();
       const deadline = Date.now() + 15000;
@@ -160,7 +135,50 @@ export class LocalAssetStorage extends AssetStorage {
           durationMs !== null && (!Number.isSafeInteger(durationMs) || durationMs < 1 || durationMs > 86400000)) throw new Error('Invalid media geometry');
         return { ...result, width, height, durationMs };
       } catch { throw new ApiException('VALIDATION_ERROR', '无法读取媒体尺寸或时长，请使用完整且支持的文件', 400); }
-    } finally { await file.close(); }
+}
+
+@Injectable()
+export class LocalAssetStorage extends AssetStorage {
+  constructor(@Inject(APP_CONFIG) private readonly configuration: AppConfiguration) { super(); }
+  private async location(key: string) {
+    const settings = this.configuration.assets;
+    if (!settings || settings.driver !== 'local' || this.configuration.environment === 'production') throw new ApiException('SERVICE_UNAVAILABLE', '持久化文件存储尚未配置', 503);
+    if (!/^[0-9a-f-]{36}\.blob$/.test(key)) throw new ApiException('VALIDATION_ERROR', '文件引用不正确', 400);
+    await mkdir(settings.directory, { recursive: true, mode: 0o700 });
+    const stat = await lstat(settings.directory);
+    if (!stat.isDirectory() || stat.isSymbolicLink()) throw new ApiException('SERVICE_UNAVAILABLE', '文件存储目录不可用', 503);
+    return join(await realpath(settings.directory), key);
+  }
+  async receiveOriginal(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile) {
+    return this.receive(key,source,expected,true);
+  }
+  async receive(key: string, source: AsyncIterable<Uint8Array>, expected: InspectedFile, original = false) {
+    const path = await this.location(key);
+    let file: FileHandle | undefined;
+    try {
+      file = await open(path, constants.O_CREAT | constants.O_EXCL | constants.O_WRONLY | constants.O_NOFOLLOW, 0o600);
+      await writeInspectedFile(file, source, expected, original);
+    } catch (error) {
+      if (file) { await file.close(); file = undefined; await unlink(path).catch(() => undefined); }
+      if (error instanceof ApiException) throw error;
+      throw new ApiException('SERVICE_UNAVAILABLE', '文件上传未完成，请重新申请上传', 503);
+    } finally { await file?.close(); }
+  }
+  async read(key: string) {
+    let file: FileHandle | undefined;
+    try {
+      file = await open(await this.location(key), constants.O_RDONLY | constants.O_NOFOLLOW);
+      if (!(await file.stat()).isFile()) throw new Error('Not a file');
+      return file;
+    } catch (error) {
+      await file?.close();
+      if (error instanceof ApiException) throw error;
+      throw new ApiException('SERVICE_UNAVAILABLE', '文件暂不可读取', 503);
+    }
+  }
+  async inspect(key: string, maxBytes: number) {
+    const file = await this.read(key);
+    try { return await inspectStoredMedia(file, maxBytes); } finally { await file.close(); }
   }
   async remove(key: string) {
     try { await unlink(await this.location(key)); } catch (error) {

@@ -28,6 +28,7 @@
     "test:machine": "pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/machine.test.js .test-build/test/machine-content.test.js"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.1157.0",
     "@nestjs/common": "12.1.2",
     "@nestjs/core": "12.1.2",
     "@nestjs/platform-express": "12.1.2",

@@ -1,10 +1,9 @@
-import type { FileHandle } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { ApiException } from '../common/http-errors';
-import type { InspectedFile } from './asset-storage';
+import type { InspectedFile, StoredAssetFile } from './asset-storage';
 
 const invalid = () => new ApiException('VALIDATION_ERROR', '原件的容器结构、类型或大小不符合要求', 400);
-async function range(file: FileHandle, start: number, size: number) {
+async function range(file: StoredAssetFile, start: number, size: number) {
   const bytes = Buffer.alloc(size); let offset = 0;
   while (offset < size) { const next = await file.read(bytes,offset,size-offset,start+offset); if (!next.bytesRead) throw invalid(); offset += next.bytesRead; }
   return bytes;
@@ -13,7 +12,7 @@ function utf8(bytes: Buffer) { try { return new TextDecoder('utf-8',{fatal:true}
 
 // These originals are retained as downloads. They are never extracted, imported,
 // served inline, evaluated, or described as a validated runtime implementation.
-export async function inspectOriginal(file: FileHandle, maxBytes: number, mimeType: string): Promise<InspectedFile> {
+export async function inspectOriginal(file: StoredAssetFile, maxBytes: number, mimeType: string): Promise<InspectedFile> {
   const stat = await file.stat(), size = stat.size;
   if (!stat.isFile() || size<1 || size>maxBytes || size>100*1024*1024) throw invalid();
   const hash = createHash('sha256'); let count = 0;

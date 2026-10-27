@@ -30,7 +30,22 @@ export interface AppConfiguration {
 }
 
 export interface AssetConfiguration {
-  driver: 'local' | 'disabled'; directory: string; maxImageBytes: number; maxVideoBytes: number;
+  driver: 'local' | 'r2' | 'disabled'; directory: string; maxImageBytes: number; maxVideoBytes: number;
+  r2?: { accountId: string; endpoint: string; bucket: string; accessKeyId: string; secretAccessKey: string;
+    spoolDirectory: string; spoolMaxBytes: number; spoolMaxFiles: number; requestTimeoutMs: number };
+}
+
+function r2Configuration(env: NodeJS.ProcessEnv): NonNullable<AssetConfiguration['r2']> {
+  for (const [name, pattern] of Object.entries({ R2_ACCOUNT_ID: /^[a-f0-9]{32}$/, R2_BUCKET: /^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/,
+    R2_ACCESS_KEY_ID: /^[a-fA-F0-9]{32}$/, R2_SECRET_ACCESS_KEY: /^[a-fA-F0-9]{64}$/ })) {
+    if (!pattern.test(env[name] ?? '')) throw new Error('Missing or invalid configuration: ' + name);
+  }
+  return { accountId: env.R2_ACCOUNT_ID!, endpoint: 'https://' + env.R2_ACCOUNT_ID! + '.r2.cloudflarestorage.com',
+    bucket: env.R2_BUCKET!, accessKeyId: env.R2_ACCESS_KEY_ID!, secretAccessKey: env.R2_SECRET_ACCESS_KEY!,
+    spoolDirectory: resolve(env.ASSET_SPOOL_DIRECTORY ?? '/tmp/orai-objects'),
+    spoolMaxBytes: integer(env.ASSET_SPOOL_MAX_BYTES, 256 * 1024 * 1024, 1024 * 1024 * 1024, 'ASSET_SPOOL_MAX_BYTES'),
+    spoolMaxFiles: integer(env.ASSET_SPOOL_MAX_FILES, 2, 10, 'ASSET_SPOOL_MAX_FILES'),
+    requestTimeoutMs: integer(env.R2_REQUEST_TIMEOUT_MS, 120000, 600000, 'R2_REQUEST_TIMEOUT_MS') };
 }
 
 export interface AuthConfiguration {
@@ -137,7 +152,7 @@ export function loadConfiguration(env: NodeJS.ProcessEnv = process.env): AppConf
 
   const port = integer(env.API_PORT, 4100, 65535, 'API_PORT');
   const driver = env.ASSET_STORAGE_DRIVER ?? (environment === 'production' ? 'disabled' : 'local');
-  if (!['local', 'disabled'].includes(driver) || environment === 'production' && driver === 'local') throw new Error('Invalid configuration: ASSET_STORAGE_DRIVER');
+  if (!['local', 'r2', 'disabled'].includes(driver) || environment === 'production' && driver === 'local') throw new Error('Invalid configuration: ASSET_STORAGE_DRIVER');
   return {
     environment: environment as AppConfiguration['environment'],
     port,
@@ -149,6 +164,7 @@ export function loadConfiguration(env: NodeJS.ProcessEnv = process.env): AppConf
     auth: authConfiguration(env, environment),
     assets: { driver: driver as AssetConfiguration['driver'], directory: resolve(env.ASSET_DIRECTORY ?? '.local/assets'),
       maxImageBytes: integer(env.ASSET_MAX_IMAGE_BYTES, 10 * 1024 * 1024, 50 * 1024 * 1024, 'ASSET_MAX_IMAGE_BYTES'),
-      maxVideoBytes: integer(env.ASSET_MAX_VIDEO_BYTES, 100 * 1024 * 1024, 512 * 1024 * 1024, 'ASSET_MAX_VIDEO_BYTES') },
+      maxVideoBytes: integer(env.ASSET_MAX_VIDEO_BYTES, 100 * 1024 * 1024, 512 * 1024 * 1024, 'ASSET_MAX_VIDEO_BYTES'),
+      ...(driver === 'r2' ? { r2: r2Configuration(env) } : {}) },
   };
 }
