@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import { currentSkillManifest, policyPlanDocument } from './skill-policy-fixture';
 import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
@@ -248,7 +249,7 @@ const profileData = () => ({
 });
 
 function manifest(domain: Domain) {
-  return {
+  return currentSkillManifest({
     schemaVersion: 1, domain, name: "固定方法 " + domain,
     description: "提供温柔而具体的观察与表达建议",
     purposes: [...purposes[domain]], styles: ["温柔"], supportedForms: ["web"],
@@ -256,7 +257,7 @@ function manifest(domain: Domain) {
     outputs: [{ key: "deliverable", description: "本领域交付物" }],
     instructions: "使用共同设定中的意象和语气，以尊重的方式描述具体需要。",
     examples: [], references: [],
-  };
+  });
 }
 
 const skillPath = (row: any) =>
@@ -299,10 +300,16 @@ async function fresh() {
   assert.equal(profile.status, 200, JSON.stringify(profile.body));
   const methods = {} as Record<Domain, any>;
   for (const domain of domains) methods[domain] = await createSkill(domain, true);
+  const plan = await admin.request('/admin/products/' + product.body.id + '/production-plans', 'POST', {
+    plan: policyPlanDocument(profile.body.id, profile.body.profile.experienceForm), expectedRevision: 0, requestId: randomUUID(),
+  });
+  assert.equal(plan.status, 200, JSON.stringify(plan.body));
   const skillSet = await admin.request("/admin/creative-profiles/" + profile.body.id + "/skill-sets", "POST", {
     expectedRevision: 0, requestId: randomUUID(), note: "四领域五用途固定组合",
+    productPlan: { revisionId: plan.body.id, digest: plan.body.digest },
     bindings: domains.flatMap(domain => purposes[domain].map(purpose => ({
       purpose, skillVersionId: methods[domain].id,
+      planModuleId: plan.body.modules.find((module: any) => module.definition.domain === domain).id,
     }))),
   });
   assert.equal(skillSet.status, 200, JSON.stringify(skillSet.body));
@@ -720,9 +727,12 @@ test("skill draft attachments require this connection's upload until attached, a
   const input = {
     skillId: draft.skillId, versionId: draft.id, expectedRevision: draft.revision,
     manifest: { ...draft.manifest, references: [{ path: "references/guide.md", fileId: file.fileId }],
-      instructions: "阅读 [固定参考](references/guide.md)，保持共同设定。" },
+      instructions: draft.manifest.instructions + "\n阅读 [固定参考](references/guide.md)，保持共同设定。" },
     requestId: randomUUID(),
   };
+  const foreignClone = await second.call('skill_draft_clone', { skillId:draft.skillId,sourceVersionId:draft.id,
+    expectedSkillRevision:library.revision,manifest:input.manifest,requestId:randomUUID() });
+  assert.equal(foreignClone.status,403,'A clone upgrade must not adopt another connection\'s unattached upload');
   assert.equal((await second.call("skill_draft_save", input)).status, 403);
   const stored = await first.call("skill_draft_save", input);
   assert.equal(stored.status, 200, JSON.stringify(stored.body));
@@ -743,8 +753,10 @@ test("skill draft attachments require this connection's upload until attached, a
   }
   const set = await admin.request("/admin/creative-profiles/" + context.profile.id + "/skill-sets", "POST", {
     expectedRevision: context.skillSet.revision, requestId: randomUUID(), note: "封面固定参考",
+    productPlan: { revisionId: context.skillSet.bindings[0].productPlanInput.planRevisionId, digest: context.skillSet.bindings[0].productPlanInput.planDigest },
     bindings: context.skillSet.bindings.map((row: any) => ({
       purpose: row.purpose, skillVersionId: row.domain === "cover" ? active.id : row.version.id,
+      planModuleId: row.productPlanInput.planModuleId,
     })),
   });
   assert.equal(set.status, 200, JSON.stringify(set.body));
