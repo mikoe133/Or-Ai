@@ -1,6 +1,6 @@
 # 旧任务与新执行顺序映射
 
-更新：2026-10-27。原 T01–T17 是业务范围编号，新 01–16 是执行批次。保留旧ID，不把后续范围重用成已完成编号。任务状态以[当前索引](README.md)与[registry.json](registry.json)为准。
+更新：2026-10-28。原 T01–T17 是业务范围编号，新 01–16 是执行批次。保留旧ID，不把后续范围重用成已完成编号。任务状态以[当前索引](README.md)与[registry.json](registry.json)为准。
 
 ## 归档分类
 
@@ -18,7 +18,7 @@
 | [T10 原文](archive/history/2026-10-26/T10-final-ui.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [10](active/10-public-device-acceptance.md) |
 | [T11 原文](archive/history/2026-10-26/T11-commercial-launch.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [11](active/11-formal-product-package.md)、[12](active/12-commercial-pilot.md) |
 | [T12 原文](archive/completed/T12-content-backoffice.md) | 原任务范围完整完成，归档 completed | 无原必需待办；新需求不追溯改写完成记录。 |
-| [T13 原文](archive/history/2026-10-26/T13-style-skills.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [02](active/02-skill-policy-validation.md)、[04](active/04-skill-library-upgrade.md) |
+| [T13 原文](archive/history/2026-10-26/T13-style-skills.md) | 完整旧文保留history；02政策与04旧方法前向处置均已完成 | [02](archive/completed/02-skill-policy-validation.md)、[04](archive/completed/04-skill-library-upgrade.md)；实际商品采用与专业方法补齐由05/11持有 |
 | [T14 原文](archive/history/2026-10-26/T14-mcp-ingestion.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [09](active/09-remote-mcp.md)、[13](active/13-production-cost-evaluation.md)、[14](active/14-manual-production-rehearsal.md)、[15](active/15-external-schedule-handoff.md) |
 | [T15 原文](archive/completed/T15-experience-runtime.md) | 原任务范围完整完成，归档 completed | 无原必需待办；新需求不追溯改写完成记录。 |
 | [T16 原文](archive/history/2026-10-26/T16-immersive-products.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [01](active/01-product-plan-contract.md)、[03](archive/completed/03-threejs-publication-gates.md)、[05](active/05-product-template-migration.md)、[06](active/06-local-experience-acceptance.md)、[10](active/10-public-device-acceptance.md)、[11](active/11-formal-product-package.md) |
@@ -51,7 +51,7 @@
 | T11.6 | [12 T11-B](active/12-commercial-pilot.md) | 仍未完成，按新任务执行。 |
 | T11.7 | [11 T11-A](active/11-formal-product-package.md)、[12 T11-B](active/12-commercial-pilot.md) | 各分段全部满足才可关闭原项；本次未实施。 |
 | T13.C2 | [02 T13.C2（已完成）](archive/completed/02-skill-policy-validation.md) | 技术范围完成；564项、13项自主CUA和类型/构建通过。旧方法前向升级由04持有。 |
-| T13.C3 | [04 T13.C3](active/04-skill-library-upgrade.md) | 仍未完成，按新任务执行。 |
+| T13.C3 | [04 T13.C3（已完成）](archive/completed/04-skill-library-upgrade.md) | 升级工具/隔离全链/选定四份新DRAFT和六个旧版本处置均完成；594项、最终专项13项、16项自主CUA及保全通过。审核启用/实际商品规划绑定另由05/11显式执行。 |
 | T14.C1 | [09 T14-C](active/09-remote-mcp.md) | 仍未完成，按新任务执行。 |
 | T14.C2 | [09 T14-C](active/09-remote-mcp.md) | 仍未完成，按新任务执行。 |
 | T14.C3 | [09 T14-C](active/09-remote-mcp.md) | 仍未完成，按新任务执行。 |

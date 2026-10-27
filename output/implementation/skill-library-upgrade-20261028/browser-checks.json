@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-27T16:30:03.406Z",
+  "checkedBy": "agent_autonomous_CUA",
+  "realLocalAuth": true,
+  "businessDatabase": "isolated_TEST",
+  "viewportReset": true,
+  "mobile": {
+    "viewport": 390,
+    "width": 390
+  },
+  "checks": [
+    {
+      "name": "existing_local_auth_and_admin_entry",
+      "passed": true
+    },
+    {
+      "name": "legacy_body_and_reference_remain_read_only",
+      "passed": true
+    },
+    {
+      "name": "five_field_upgrade_diff_preserves_original_instructions",
+      "passed": true
+    },
+    {
+      "name": "new_draft_retains_professional_body_examples_and_same_reference",
+      "passed": true
+    },
+    {
+      "name": "policy_upgrade_does_not_automatically_activate",
+      "passed": true
+    },
+    {
+      "name": "review_is_a_separate_explicit_action",
+      "passed": true
+    },
+    {
+      "name": "activation_archives_old_version_without_overwriting_it",
+      "passed": true
+    },
+    {
+      "name": "new_five_purpose_binding_requires_explicit_current_plan",
+      "passed": true
+    },
+    {
+      "name": "new_binding_retains_exact_upgraded_versions",
+      "passed": true
+    },
+    {
+      "name": "old_fixed_set_still_references_all_original_v1_methods",
+      "passed": true
+    },
+    {
+      "name": "390px_history_has_no_document_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "archived_original_method_keeps_body_examples_and_reference",
+      "passed": true
+    },
+    {
+      "name": "archived_reference_download_keeps_exact_original_bytes",
+      "passed": true
+    },
+    {
+      "name": "backend_readback_matches_four_upgrades_and_five_fixed_bindings",
+      "passed": true
+    },
+    {
+      "name": "method_upgrade_and_binding_do_not_publish_product",
+      "passed": true
+    },
+    {
+      "name": "temporary_login_is_explicitly_logged_out",
+      "passed": true
+    }
+  ],
+  "passed": 16,
+  "failed": 0,
+  "cloudAcceptance": false,
+  "userApprovalClaimed": false
+}

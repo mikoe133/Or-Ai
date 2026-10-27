@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-27T16:57:56.599Z",
+  "businessTables": 73,
+  "beforeRows": 1508,
+  "afterRows": 1521,
+  "untouchedBusinessTables": 68,
+  "originalNonSkillBusinessDataUnchanged": true,
+  "allSixOriginalSkillVersionsFullyUnchanged": true,
+  "oldActiveVersionsStillActive": 4,
+  "oldArchivedVersionsFullyUnchanged": 2,
+  "addedDraftVersions": 4,
+  "newVersionsRequireSeparateReview": true,
+  "automaticallyActivated": 0,
+  "rebound": 0,
+  "published": 0,
+  "addedReferenceLinks": 1,
+  "actualReferenceFilesUnchanged": 3,
+  "oldSets": 4,
+  "oldAdoptionPackages": 3,
+  "projectSnapshots": 0,
+  "oldSetsPackagesAndMethodsUnchanged": true,
+  "newAudits": 4,
+  "newIdempotentRequests": 4,
+  "migrationsUnchanged": 29,
+  "resetOrSeed": false,
+  "sourceIds": [
+    "01a15846-95a8-772d-b566-5d86b1daea8c",
+    "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+    "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+    "01a1581d-90e1-7429-af4e-3f6fc69202c6"
+  ],
+  "newDraftIds": [
+    "01a17e4b-6d91-7428-858b-b09c3f1b83a4",
+    "01a17e4b-6db5-748a-b007-2b9243f62407",
+    "01a17e4b-6dc7-763f-8bd0-18fb940824d9",
+    "01a17e4b-6dd9-7771-a34f-2f383a650b00"
+  ]
+}

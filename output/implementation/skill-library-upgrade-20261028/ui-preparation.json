@@ -1,0 +1,37 @@
+{
+  "scope": "isolated_TEST",
+  "oldSetId": "01a17e29-1517-7265-b899-d09237cc90e6",
+  "oldSetDigest": "f31e3e1015541fa1648d99c1c84b0d83ddcfa8176e19a8d5d37bbc43116fc670",
+  "sources": {
+    "assessment": {
+      "skillId": "01a17e29-14cc-76ab-91ef-bb78400a8f19",
+      "oldVersionId": "01a17e29-14cd-72ee-b717-4548a2705596",
+      "oldDigest": "ca0729f06b0ea34ee04f0a1428875c58d6e329acfe4b2daf1ca0172dee39b97f",
+      "newVersionId": "01a17e29-155f-74cd-8f48-35454d1104cb",
+      "newDigest": "8f9ebe9c8a7c25269815d628bd3610c1bd22e13f90a60126163af5059c994c36"
+    },
+    "copy": {
+      "skillId": "01a17e29-14e0-719a-8dd0-86e354cb293e",
+      "oldVersionId": "01a17e29-1508-7075-80cc-6a2f1730acc3",
+      "oldDigest": "6075dc7699f81f9090fac217f8922dfbb2346be613980268db957434c09d8d02",
+      "newVersionId": "01a17e29-1577-704c-a373-41eb3b4f7298",
+      "newDigest": "35f1bbed476200e4067cd34fd028e0a6787e99d4b5bce945864b80f04b689eb4"
+    },
+    "cover": {
+      "skillId": "01a17e29-150f-7269-a851-234ee733cae4",
+      "oldVersionId": "01a17e29-1510-7739-bae5-6ed9fd12486a",
+      "oldDigest": "e99900da443662274a594581ce378a1994f35ff0e7413d36e9dd6a33f61c5e38",
+      "newVersionId": "01a17e29-158a-7579-a9a6-755b005062a1",
+      "newDigest": "452af1ac19cc9b30c47b6dc2a3ee4c4e805628982c87ec0452cd43936727bc87"
+    },
+    "video": {
+      "skillId": "01a17e29-1513-7009-9a3b-d0623f204f75",
+      "oldVersionId": "01a17e29-1513-7009-9a3b-d7ca5e3237d7",
+      "oldDigest": "edb7f37a7c57fda3d9415b1d1b2be5dc143204bef443a23357e35ec5884bc9ca",
+      "newVersionId": "01a17e29-159d-7257-a3be-7cd148814575",
+      "newDigest": "e0b2644685c321a2268b3079f4bf9155f4341116e2aec622575bc5e485a62259"
+    }
+  },
+  "upgradedDrafts": 4,
+  "published": false
+}

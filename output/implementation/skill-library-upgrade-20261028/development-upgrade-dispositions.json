@@ -1,0 +1,407 @@
+{
+  "checkedAt": "2026-10-27T16:59:23.123Z",
+  "scope": "demo",
+  "localDevelopmentOnly": true,
+  "previewDigest": "f92c8028f0349290589fd2856fd312c6a59d33a2f12a109e2527c0ea85ed84bd",
+  "selectedSources": 4,
+  "appendedDrafts": 4,
+  "archivedHistoricalSourcesPreserved": 2,
+  "projectMethodSnapshotsPresent": 0,
+  "sourceCount": 6,
+  "dispositions": [
+    {
+      "source": {
+        "id": "01a1581d-8db5-729d-966f-00c44e3aa550",
+        "skillId": "01a1581d-8daf-70d0-b60d-03da40bb0df9",
+        "domain": "assessment",
+        "number": 1,
+        "status": "archived",
+        "digest": "06ef1822554a6b0aeb81a1f84b7878e481a47243634947433e667bc85422ee67",
+        "revision": 4,
+        "skillRevision": 11
+      },
+      "disposition": "preserve_archived_history_no_upgrade_selected",
+      "result": null,
+      "originalBodyExamplesReferencesAndLifecyclePreserved": true,
+      "fixedSetReferences": [],
+      "nextAction": "保留历史，只有明确再利用时才另行选择前向升级"
+    },
+    {
+      "source": {
+        "id": "01a1581d-8f6f-7795-bb98-56249118e17f",
+        "skillId": "01a1581d-8daf-70d0-b60d-03da40bb0df9",
+        "domain": "assessment",
+        "number": 2,
+        "status": "archived",
+        "digest": "316c86dd716388ac6a5926248c1e3d51b21bf77bab9aa674b5575224ee09ac10",
+        "revision": 4,
+        "skillRevision": 11
+      },
+      "disposition": "preserve_archived_history_no_upgrade_selected",
+      "result": null,
+      "originalBodyExamplesReferencesAndLifecyclePreserved": true,
+      "fixedSetReferences": [
+        {
+          "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+          "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a15846-964e-7259-832f-182454a1a65b",
+          "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        }
+      ],
+      "nextAction": "保留历史，只有明确再利用时才另行选择前向升级"
+    },
+    {
+      "source": {
+        "id": "01a15846-95a8-772d-b566-5d86b1daea8c",
+        "skillId": "01a1581d-8daf-70d0-b60d-03da40bb0df9",
+        "domain": "assessment",
+        "number": 3,
+        "status": "active",
+        "digest": "8cb841a39a73b25b47509feb519873a4292923f670afb35c2122ff872d62bc6e",
+        "revision": 3,
+        "skillRevision": 11
+      },
+      "disposition": "new_policy_DRAFT_appended_pending_separate_review",
+      "result": {
+        "id": "01a17e4b-6d91-7428-858b-b09c3f1b83a4",
+        "number": 4,
+        "status": "draft",
+        "digest": "bc256ab7839739b89b5b53cda0ddf2f6ff6a2a09929a22045c04ab8bdc7bd92d",
+        "schemaVersion": 2,
+        "requiresReview": true,
+        "activationEffect": "none",
+        "bindingEffect": "none",
+        "publicationEffect": "none",
+        "professionalAdaptation": "保留本方法的温柔观察、具体生活情境、可选择的小行动及原参考资料。新题目应按必填 product-plan 将情境映射到实际 Three.js 场景与已实现的明确答案协议；只在规划已确定且服务端支持时使用相应交互。报告根据该商品真实作答及已固定评估规则形成理解线索，并按同一规划的风格与结果呈现制作。原文“报告写作可保留已固定旧版”仅用于历史读取与恢复，不能免除新商品报告和实际规划的适配；动画、镜头、多人玩法未定时标记待规划，不在本次升级中代定。"
+      },
+      "originalBodyExamplesReferencesAndLifecyclePreserved": true,
+      "fixedSetReferences": [
+        {
+          "id": "01a15846-964e-7259-832f-182454a1a65b",
+          "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        }
+      ],
+      "nextAction": "按具体商品实际规划另行复核方法，再显式审核/启用或固定项目草稿；本次不执行"
+    },
+    {
+      "source": {
+        "id": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+        "skillId": "01a1581d-91cd-740f-ad4c-51d20eae3f5e",
+        "domain": "copy",
+        "number": 1,
+        "status": "active",
+        "digest": "a865769f39d52e47597c11d8d0317ec8e9bfefccd051c32030af9e80e43c5c18",
+        "revision": 2,
+        "skillRevision": 2
+      },
+      "disposition": "new_policy_DRAFT_appended_pending_separate_review",
+      "result": {
+        "id": "01a17e4b-6db5-748a-b007-2b9243f62407",
+        "number": 2,
+        "status": "draft",
+        "digest": "28e9342a1a23a0e57a8e9db6a0111a5912ae6d3cf2c0ae5c90939c4023c0b6e1",
+        "schemaVersion": 2,
+        "requiresReview": true,
+        "activationEffect": "none",
+        "bindingEffect": "none",
+        "publicationEffect": "none",
+        "professionalAdaptation": "保留具体生活情境、尊重表达、情绪价值与加深自我/关系理解的邀请。以必填 product-plan、真实 Three.js 体验和实际报告交付为依据说明参与方式、可获得的观察与行动线索；与同商品封面和视频使用相同的固定事实及授权引用。不得预设尚未实现的动画、多人交互或小游戏；未确定能力明确留待规划，不以确定性关系结论或焦虑恐吓代替真实交付。"
+      },
+      "originalBodyExamplesReferencesAndLifecyclePreserved": true,
+      "fixedSetReferences": [
+        {
+          "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+          "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a15846-964e-7259-832f-182454a1a65b",
+          "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        }
+      ],
+      "nextAction": "按具体商品实际规划另行复核方法，再显式审核/启用或固定项目草稿；本次不执行"
+    },
+    {
+      "source": {
+        "id": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+        "skillId": "01a1581d-9024-75cd-85ee-6769a8033192",
+        "domain": "cover",
+        "number": 1,
+        "status": "active",
+        "digest": "010c622a0e7012464fa93341e4fab75fe3d374813ff0c45f4e95f6cc8c7e5760",
+        "revision": 2,
+        "skillRevision": 2
+      },
+      "disposition": "new_policy_DRAFT_appended_pending_separate_review",
+      "result": {
+        "id": "01a17e4b-6dc7-763f-8bd0-18fb940824d9",
+        "number": 2,
+        "status": "draft",
+        "digest": "33c58a8f9aeac5515581aa6b9897f8d8710fc8c3ad57285ac3bfcddf9702c653",
+        "schemaVersion": 2,
+        "requiresReview": true,
+        "activationEffect": "none",
+        "bindingEffect": "none",
+        "publicationEffect": "none",
+        "professionalAdaptation": "保留柔和层次、可读标题与被理解的情绪目标。花园只表示此方法原有风格示例，具体意象、取景、色彩和构图应依据必填 product-plan 对应的真实 Three.js 商品场景，不强制所有商品使用花园。明确实景截帧与概念示意的区别；概念封面不能声称商品已有未实现的模型、动画或玩法。授权标题与文案继续固定来源。"
+      },
+      "originalBodyExamplesReferencesAndLifecyclePreserved": true,
+      "fixedSetReferences": [
+        {
+          "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+          "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a15846-964e-7259-832f-182454a1a65b",
+          "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        }
+      ],
+      "nextAction": "按具体商品实际规划另行复核方法，再显式审核/启用或固定项目草稿；本次不执行"
+    },
+    {
+      "source": {
+        "id": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+        "skillId": "01a1581d-90de-75dd-8a0a-3eb851f11484",
+        "domain": "video",
+        "number": 1,
+        "status": "active",
+        "digest": "124aa0fe239fe8c70a045d6a6aed2c57a24e6953000e56a942ee009b1774a18b",
+        "revision": 2,
+        "skillRevision": 2
+      },
+      "disposition": "new_policy_DRAFT_appended_pending_separate_review",
+      "result": {
+        "id": "01a17e4b-6dd9-7771-a34f-2f383a650b00",
+        "number": 2,
+        "status": "draft",
+        "digest": "67bf269508b50dee3d892f243722a63ea2b9808ef1185a17254578617f707aa5",
+        "schemaVersion": 2,
+        "requiresReview": true,
+        "activationEffect": "none",
+        "bindingEffect": "none",
+        "publicationEffect": "none",
+        "professionalAdaptation": "保留授权题目节选、hook、CTA、封面及原文或改写的来源标记。原文“两道题目展示”作为既有编排示例，实际题目数量、场景、镜头、节奏、动效与交互展示由必填 product-plan 及真实实现决定，不能把示例数量变成全部商品的固定要求。脚本或分镜不能替代实际成片；录制与概念演示须标明，未实现的 Three.js 动画或玩法不能当作真实功能展示。"
+      },
+      "originalBodyExamplesReferencesAndLifecyclePreserved": true,
+      "fixedSetReferences": [
+        {
+          "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+          "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a15846-964e-7259-832f-182454a1a65b",
+          "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        },
+        {
+          "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+          "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a"
+        }
+      ],
+      "nextAction": "按具体商品实际规划另行复核方法，再显式审核/启用或固定项目草稿；本次不执行"
+    }
+  ],
+  "fixedSets": [
+    {
+      "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f",
+      "disposition": "preserve_exact_history_no_rebind_actual_product_plan_required",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "skillVersionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "copywriting",
+          "skillVersionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "cover_design",
+          "skillVersionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "report_writing",
+          "skillVersionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "video_production",
+          "skillVersionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "hasFixedPlan": false
+        }
+      ],
+      "ownerTask": "05"
+    },
+    {
+      "id": "01a15846-964e-7259-832f-182454a1a65b",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c",
+      "disposition": "preserve_exact_history_no_rebind_actual_product_plan_required",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "skillVersionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "copywriting",
+          "skillVersionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "cover_design",
+          "skillVersionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "report_writing",
+          "skillVersionId": "01a1581d-8f6f-7795-bb98-56249118e17f",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "video_production",
+          "skillVersionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "hasFixedPlan": false
+        }
+      ],
+      "ownerTask": "05"
+    },
+    {
+      "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+      "disposition": "preserve_exact_history_no_rebind_actual_product_plan_required",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "skillVersionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "copywriting",
+          "skillVersionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "cover_design",
+          "skillVersionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "report_writing",
+          "skillVersionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "video_production",
+          "skillVersionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "hasFixedPlan": false
+        }
+      ],
+      "ownerTask": "05"
+    },
+    {
+      "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+      "productId": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc",
+      "disposition": "preserve_exact_history_no_rebind_actual_product_plan_required",
+      "bindings": [
+        {
+          "purpose": "assessment_design",
+          "skillVersionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "copywriting",
+          "skillVersionId": "01a1581d-91cf-70d8-8bec-29b82e23e9b6",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "cover_design",
+          "skillVersionId": "01a1581d-9025-713d-8aa6-c9f70e21edd8",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "report_writing",
+          "skillVersionId": "01a15846-95a8-772d-b566-5d86b1daea8c",
+          "hasFixedPlan": false
+        },
+        {
+          "purpose": "video_production",
+          "skillVersionId": "01a1581d-90e1-7429-af4e-3f6fc69202c6",
+          "hasFixedPlan": false
+        }
+      ],
+      "ownerTask": "05"
+    }
+  ],
+  "emptyLibraries": [
+    {
+      "domain": "experience",
+      "purpose": "scene_design",
+      "status": "no_legacy_objects_to_upgrade",
+      "nextTask": "05/11",
+      "requiresProfessionalMethodBeforeUse": true
+    },
+    {
+      "domain": "experience",
+      "purpose": "report_presentation",
+      "status": "no_legacy_objects_to_upgrade",
+      "nextTask": "05/11",
+      "requiresProfessionalMethodBeforeUse": true
+    }
+  ],
+  "preservationEvidence": "development-preservation.json",
+  "automaticallyActivated": 0,
+  "rebound": 0,
+  "published": 0
+}

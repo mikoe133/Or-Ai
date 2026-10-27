@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-27T16:59:23.124Z",
+  "failedCommand": "skills:upgrade inventory",
+  "failure": "CONFLICT",
+  "cause": "relative_path_parent_missing_in_apps_api_working_directory",
+  "previousOutputExisted": false,
+  "oldReceiptOverwritten": false,
+  "databaseConnectedBeforeFailure": false,
+  "businessTablesComparedBeforeRetry": 73,
+  "rowsComparedBeforeRetry": 1508,
+  "allOriginalDataUnchangedBeforeRetry": true,
+  "recovery": "absolute_paths_new_private_output_files_then_exact_preview_and_apply",
+  "applicationResult": "four_new_DRAFT_versions_only",
+  "receiptPermissions": "0600",
+  "resetOrSeed": false
+}
