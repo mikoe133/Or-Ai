@@ -1,6 +1,6 @@
 # 当前任务：执行顺序与归档
 
-更新：2026-10-27。01商品规划合同与02 Skill服务端政策均已完成技术范围并归档；**下一任务为[03 项目制作链与 Three.js 发布校验](active/03-threejs-publication-gates.md)**。完整项目存档17b2ffc已推送并核实远端，独立CI修复f39a4cb已通过托管CI；本地技术完成不等于云端或商业上线。
+更新：2026-10-27。01商品规划合同、02 Skill服务端政策和03项目/发布校验均已完成技术范围并归档；**下一任务为[04 旧 Skill 和项目方法前向升级](active/04-skill-library-upgrade.md)**。完整项目存档17b2ffc已推送并核实远端，独立CI修复f39a4cb已通过托管CI；本地技术完成不等于云端或商业上线。
 
 实际待办集中在 `active/`。原完整完成任务在 `archive/completed/`；包含未完成项的旧文件与旧总表在 `archive/history/2026-10-26/`，不认定为完成。根目录的 `Txx-*.md` 仅兼容旧链接，不是另一套待办。新旧编号逐项见 [TASK-MAP.md](TASK-MAP.md)，状态数据见 [registry.json](registry.json)；其中 legacyCoverage 的 disposition/carryover 明确记录被替代方向及剩余验收承接。
 
@@ -16,8 +16,7 @@
 
 | 顺序 | Task | 稳定标识 | 当前状态 | 硬前置（顺序号） |
 | --- | --- | --- | --- | --- |
-| 03 | [接通项目制作链与 Three.js 发布校验](active/03-threejs-publication-gates.md) | T16.C2-B | 可执行 | 01、02（均已完成） |
-| 04 | [盘点并前向升级旧 Skill 和项目方法](active/04-skill-library-upgrade.md) | T13.C3 | 等待前置 | 02、03 |
+| 04 | [盘点并前向升级旧 Skill 和项目方法](active/04-skill-library-upgrade.md) | T13.C3 | 可执行 | 02、03（均已完成） |
 | 05 | [按各商品规划制作模板并转制存量商品](active/05-product-template-migration.md) | T16.C3 | 等待前置 | 01、03、04 |
 | 06 | [完成 Three.js 商品本地业务与性能验收](active/06-local-experience-acceptance.md) | T16.C4-L | 等待前置 | 05 |
 | 07 | [实现云端路由、持久存储与初始化适配](active/07-cloud-adapters.md) | T09-I | 方案已定，可独立实施 | 已验收底座 |
@@ -31,7 +30,7 @@
 | 15 | [交付日更生产配置与恢复说明](active/15-external-schedule-handoff.md) | T14.W4 | 等待手动全链与运行参数 | 14 |
 | 16 | [按商品需要选择并实现首个新玩法](active/16-new-interaction-engine.md) | T17 | 待玩法选型 | 01、02、03 |
 
-01/02已归档；03–06 是后续项目发布与商品本地实现主线；07–08 补真实云端；10 完成公网平台/启用模板的真机验收；11–12 完成正式商品与首发。**顺序号是推荐排期，硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
+01/02/03已归档；04–06 是后续旧方法升级与商品本地实现主线；07–08 补真实云端；10 完成公网平台/启用模板的真机验收；11–12 完成正式商品与首发。**顺序号是推荐排期，硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
 
 09 只在启用远程 MCP 时执行，依赖08，不是普通商城 M5/M6 的硬前置。13–15 是外部日更制作分支：13/14 暂停，15 等真实手动全链后交接配置，仍不启用日程。16 按具体商品需要插入05之前；首款可以使用已有明确单选协议，不强制开发小游戏。
 
@@ -80,7 +79,7 @@ flowchart TD
 
 ## 已完成范围
 
-新增执行批次：[01 商品规划合同](archive/completed/01-product-plan-contract.md)（555项、19项CUA）与[02 Skill服务端政策](archive/completed/02-skill-policy-validation.md)（564项、13项CUA、类型/构建和24项离线检查）已完成技术范围。发布门禁、旧库升级和商品转制仍待03/04/05。
+新增执行批次：[01 商品规划合同](archive/completed/01-product-plan-contract.md)（555项、19项CUA）与[02 Skill服务端政策](archive/completed/02-skill-policy-validation.md)（564项、13项CUA、类型/构建和24项离线检查）已完成技术范围。另[03 项目/发布校验](archive/completed/03-threejs-publication-gates.md)已通过581项、17项自主CUA、类型/构建和本地恢复，旧库升级和商品转制仍待04/05。
 
 完整归档9项：T01、T02、T03、T04、T05、T07、T08、T12、T15。混合任务已闭合的本地子批次另见[完成批次](archive/completed/BATCHES-20261026.md)。T06/T09/T10/T11/T13/T14/T16/T17 的原完整文件只作历史快照，仍有未完成范围，全部已映射到本队列。
 

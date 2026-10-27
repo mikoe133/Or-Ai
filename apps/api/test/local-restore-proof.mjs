@@ -8,6 +8,7 @@ const {Test}=api('@nestjs/testing'),{AppModule}=api('./.test-build/src/app.modul
 const{configureApp}=api('./.test-build/src/common/configure-app.js'),{createLocalFixture}=api('./.test-build/test/local-fixture.js');
 const{createDatabaseClient}=api('./.test-build/src/database/client.js'),{provisionLocalDatabase}=api('./.test-build/scripts/local-database.js');
 const{demoId,DemoIdentityScenarios}=api('./.test-build/scripts/demo-fixtures.js');
+const{currentSkillManifest,policyPlanDocument}=api('./.test-build/test/skill-policy-fixture.js');
 const classes=Object.fromEntries(['FilesService','SkillFilesService','SkillsService','ContentService','ProductionPlansService','ProjectOriginalFilesService','CatalogAdminAccessService'].map(name=>{
  const files={FilesService:'operations/files.service',SkillFilesService:'operations/skill-files.service',SkillsService:'operations/skills.service',ContentService:'operations/content.service',ProductionPlansService:'operations/production-plans.service',ProjectOriginalFilesService:'operations/project-original-files.service',CatalogAdminAccessService:'catalog/admin-access.service'};
  return[name,api('./.test-build/src/'+files[name]+'.js')[name]];
@@ -53,8 +54,8 @@ try{
  const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aG1kAAAAASUVORK5CYII=','base64');
  const media=await files.prepare(access,{productVersionId:demoId('demo-partner-v2'),kind:'cover',fileName:'restore.png',mimeType:'image/png',byteSize:png.length,checksum:sha(png),requestId:randomUUID()});
  await files.upload(access,media.id,stream(png));await files.complete(access,media.id,{requestId:randomUUID()});
- const skillManifest={schemaVersion:1,domain:'copy',name:'隔离恢复方法',description:'仅验证数据库和对象的恢复',purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],
-  inputs:[{key:'creative-profile',description:'固定设定',required:true}],outputs:[{key:'copy',description:'固定样例'}],instructions:'保留具体观察。',examples:[],references:[]};
+ const skillManifest=currentSkillManifest({schemaVersion:1,domain:'copy',name:'隔离恢复方法',description:'仅验证数据库和对象的恢复',purposes:['copywriting'],styles:['紫色'],supportedForms:['web'],
+  inputs:[{key:'creative-profile',description:'固定设定',required:true}],outputs:[{key:'copy',description:'固定样例'}],instructions:'保留具体观察。',examples:[],references:[]});
  phase="create fixture skill";const skill=await skills.create(access,'copy',{slug:'restore-'+randomUUID(),manifest:skillManifest,requestId:randomUUID()});
  const md=Buffer.from('隔离恢复参考：固定测试文件，不是实际商品内容。');
  phase="upload fixture reference";const reference=await skillFiles.prepare(access,'copy',skill.skillId,{fileName:'restore.md',mimeType:'text/markdown',byteSize:md.length,checksum:sha(md),requestId:randomUUID()});
@@ -62,15 +63,16 @@ try{
  phase="attach fixture reference";await skills.save(access,'copy',skill.skillId,skill.id,{expectedRevision:skill.revision,requestId:randomUUID(),manifest:{...skillManifest,references:[{path:'references/restore.md',fileId:reference.id}]}});
  const profile={schemaVersion:1,title:'隔离恢复样例',audience:'测试环境',situation:'恢复核对',emotionalGoal:'可核对',understandingGoal:'引用完整',takeaway:'测试不代表商品',perspective:'self',experienceForm:'web',pace:'从容',world:'测试空间',language:'明确',visual:'紫色',sound:'安静',channels:['manual'],deliverables:['assessment','copy','cover','video'],reportPlan:{schemaVersion:1,title:'固定报告',narrative:'隔离样例',presentation:'standard',sections:[{sectionId:'next',title:'下一步',purpose:'核对恢复'}]}};
  phase="create fixture profile";const fixed=await app.get(classes.ContentService).saveProfile(access,demoId('demo-partner'),{expectedRevision:0,profile,requestId:randomUUID()});
- phase="save fixture plan";const plan=await app.get(classes.ProductionPlansService).save(access,demoId('demo-partner'),{expectedRevision:0,requestId:randomUUID(),plan:{schemaVersion:1,title:'隔离恢复计划',creativeProfileRevisionId:fixed.id,selection:{basis:'manual',rationale:'固定测试样例',evidenceKeys:[]},freshnessWindowHours:24,evidence:[],retention:'platform_originals_and_exact_methods',modules:[{moduleKey:'web',title:'网页原件',domain:'experience',required:true,purpose:'恢复核对',dependsOn:[],target:{form:'web',runtime:null},methodPurposes:['scene_design','report_presentation'],methodRetention:'manifest_instructions_and_references',outputs:[{outputKey:'web',label:'固定网页',kind:'web_bundle',required:true,original:{storage:'platform',representation:'file'},files:[{fileKey:'source',label:'原件',purpose:'original',required:true,mimeTypes:['text/html'],sourceUrl:null}]}]}]}});
+ phase="save fixture plan";const plan=await app.get(classes.ProductionPlansService).save(access,demoId('demo-partner'),{expectedRevision:0,requestId:randomUUID(),plan:{...policyPlanDocument(fixed.id,'web'),title:'隔离恢复计划',modules:[{moduleKey:'web',title:'网页原件',domain:'experience',required:true,purpose:'恢复核对',dependsOn:[],target:{form:'web',runtime:null},methodPurposes:['scene_design','report_presentation'],methodRetention:'manifest_instructions_and_references',outputs:[{outputKey:'web',label:'固定网页',kind:'web_bundle',required:true,original:{storage:'platform',representation:'file'},files:[{fileKey:'source',label:'原件',purpose:'original',required:true,mimeTypes:['text/html'],sourceUrl:null}]}]}]}});
  const html=Buffer.from('<!doctype html><html><head><title>隔离恢复</title></head><body>固定测试原件</body></html>');
  phase="upload fixture original";const original=await originals.prepare(access,{target:{type:'project_original',planModuleId:plan.modules[0].id,outputKey:'web',fileKey:'source'},fileName:'restore.html',mimeType:'text/html',byteSize:html.length,checksum:sha(html),requestId:randomUUID()});
  await originals.upload(access,original.id,stream(html));await originals.complete(access,original.id,{requestId:randomUUID()});
  pass(phase);await app.close();app=null;
  phase='consistent database snapshot and object manifest';
- const client=await fixture.owner.pool.connect();let dump,sourceTables,objects;
+ let dump,sourceTables,objects;
  const ownerUrl=new URL(fixture.env.MIGRATION_DATABASE_URL),dbId=docker(['compose','ps','-q','db'],{encoding:'utf8'}).trim();assert.match(dbId,/^[0-9a-f]+$/);
  const pgEnv={...process.env,PGPASSWORD:decodeURIComponent(ownerUrl.password)};
+ const client=await fixture.owner.pool.connect();
  try{
   await client.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY');const snapshotId=(await client.query('SELECT pg_export_snapshot() AS id')).rows[0].id;
   sourceTables=await snapshot(client);objects=await objectManifest(client);assert.equal(objects.length,3);await verifyObjects(sourceDir,objects);

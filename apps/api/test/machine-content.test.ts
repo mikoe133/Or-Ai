@@ -1,4 +1,6 @@
 import "reflect-metadata";
+import { readyPublicationPlan, reviewThreejsFixture } from './publication-fixture';
+import { CatalogAdminAccessService } from '../src/catalog/admin-access.service';
 import { currentSkillManifest, policyPlanDocument } from './skill-policy-fixture';
 import assert from "node:assert/strict";
 import { after, before, test } from "node:test";
@@ -241,7 +243,7 @@ const profileData = () => ({
   sound: "安静",
   reportPlan: {
     schemaVersion: 1, title: "花园观察札记", narrative: "用具体建议解释作答",
-    presentation: "journal",
+    presentation: "standard",
     sections: [{ sectionId: "summary", title: "我的观察", purpose: "理解需要与下一步表达" }],
   },
   channels: ["manual"],
@@ -301,7 +303,7 @@ async function fresh() {
   const methods = {} as Record<Domain, any>;
   for (const domain of domains) methods[domain] = await createSkill(domain, true);
   const plan = await admin.request('/admin/products/' + product.body.id + '/production-plans', 'POST', {
-    plan: policyPlanDocument(profile.body.id, profile.body.profile.experienceForm), expectedRevision: 0, requestId: randomUUID(),
+    plan: readyPublicationPlan(profile.body.id, profile.body.profile.experienceForm), expectedRevision: 0, requestId: randomUUID(),
   });
   assert.equal(plan.status, 200, JSON.stringify(plan.body));
   const skillSet = await admin.request("/admin/creative-profiles/" + profile.body.id + "/skill-sets", "POST", {
@@ -324,7 +326,7 @@ async function fresh() {
   assert.equal(source.status, 200, JSON.stringify(source.body));
   return {
     product: product.body, version: version.body, profile: profile.body,
-    configuration, assessment, methods, skillSet: skillSet.body,
+    configuration, assessment, methods, skillSet: skillSet.body, plan: plan.body,
   };
 }
 
@@ -600,9 +602,14 @@ test("assessment validation is read-only and draft saves atomically persist conf
   assert.equal((await machine.call("draft_save", assessmentInput(context, {
     productVersionId: sameContent.productVersionId, expectedRevision: reviewedRevision.sourceRevision,
   }))).status, 409);
+  const authority = await app.get(CatalogAdminAccessService).authorizeLocalOwner(fixture.owner.client, DemoIdentityScenarios.admin.id);
+  await reviewThreejsFixture(app,fixture,authority,sameContent.productVersionId,{planId:context.plan.id});
+  const rereviewed = await admin.request('/admin/products/' + context.product.id + '/versions/' + sameContent.productVersionId + '/review', 'POST', {
+    expectedRevision: (await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:sameContent.productVersionId}})).revision, requestId: randomUUID() });
+  assert.equal(rereviewed.status,200,JSON.stringify(rereviewed.body));
   const published = await admin.request(
     "/admin/products/" + context.product.id + "/versions/" + sameContent.productVersionId + "/publish",
-    "POST", { expectedRevision: reviewed.body.revision, requestId: randomUUID() },
+    "POST", { expectedRevision: rereviewed.body.revision, requestId: randomUUID() },
   );
   assert.equal(published.status, 200, JSON.stringify(published.body));
   const publishedRevision = await fixture.runtime.client.contentRevision.findFirstOrThrow({

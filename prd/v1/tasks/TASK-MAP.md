@@ -21,7 +21,7 @@
 | [T13 原文](archive/history/2026-10-26/T13-style-skills.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [02](active/02-skill-policy-validation.md)、[04](active/04-skill-library-upgrade.md) |
 | [T14 原文](archive/history/2026-10-26/T14-mcp-ingestion.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [09](active/09-remote-mcp.md)、[13](active/13-production-cost-evaluation.md)、[14](active/14-manual-production-rehearsal.md)、[15](active/15-external-schedule-handoff.md) |
 | [T15 原文](archive/completed/T15-experience-runtime.md) | 原任务范围完整完成，归档 completed | 无原必需待办；新需求不追溯改写完成记录。 |
-| [T16 原文](archive/history/2026-10-26/T16-immersive-products.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [01](active/01-product-plan-contract.md)、[03](active/03-threejs-publication-gates.md)、[05](active/05-product-template-migration.md)、[06](active/06-local-experience-acceptance.md)、[10](active/10-public-device-acceptance.md)、[11](active/11-formal-product-package.md) |
+| [T16 原文](archive/history/2026-10-26/T16-immersive-products.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [01](active/01-product-plan-contract.md)、[03](archive/completed/03-threejs-publication-gates.md)、[05](active/05-product-template-migration.md)、[06](active/06-local-experience-acceptance.md)、[10](active/10-public-device-acceptance.md)、[11](active/11-formal-product-package.md) |
 | [T17 原文](archive/history/2026-10-26/T17-interactive-evaluation.md) | 完整旧文归档 history，不能认定整项完成；已完成子批次另归档 | [16](active/16-new-interaction-engine.md) |
 
 ## 原46个未勾条目的逐项去向
@@ -65,7 +65,7 @@
 | T16.6 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 各分段全部满足才可关闭原项；本次未实施。 |
 | T16.7 | [11 T11-A](active/11-formal-product-package.md) | 仍未完成，按新任务执行。 |
 | T16.8 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T16.C2 | [01 T16.C2-A（已完成）](archive/completed/01-product-plan-contract.md)、[03 T16.C2-B](active/03-threejs-publication-gates.md) | 01合同技术范围已通过，03仍待实施；原项未整体关闭。 |
+| T16.C2 | [01 T16.C2-A（已完成）](archive/completed/01-product-plan-contract.md)、[03 T16.C2-B（已完成）](archive/completed/03-threejs-publication-gates.md) | 01规划合同和03发布门禁均完成本地技术范围；商品转制与设备验收仍由05/06/10持有。 |
 | T16.C3 | [05 T16.C3](active/05-product-template-migration.md) | 仍未完成，按新任务执行。 |
 | T16.C4 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 06持有本地范围，10持有公网真机；正式包变化在11/12触发对应复验，不用样例代替每款商品。 |
 | T17.1 | [16 T17](active/16-new-interaction-engine.md) | 仍未完成，按新任务执行。 |

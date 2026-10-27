@@ -1,0 +1,74 @@
+{
+  "checkedBy": "agent_autonomous_CUA",
+  "realLocalAuth": true,
+  "cloudAcceptance": false,
+  "cases": {
+    "ready": {
+      "productId": "01a17d69-c051-77ac-9715-0064724fdedf",
+      "versionId": "01a17d69-c067-7299-81fb-075f496575fd",
+      "versionStatus": "PUBLISHED",
+      "latest": {
+        "id": "01a17d81-129b-7427-ae81-aa1857220f7c",
+        "revision": 2,
+        "status": "reviewed",
+        "productPlanInput": {
+          "form": "3d",
+          "planDigest": "77604242bebd15e88da1845023f609142af1fa2983c489d744e5a903e0893ab2",
+          "moduleDigest": "9b881fbb30752476f325e8f4407978f39abc42b637318d11bb24ca7dad3f4724",
+          "planModuleId": "01a17d69-c07f-77ff-83a7-dd77d9884310",
+          "schemaVersion": 1,
+          "planRevisionId": "01a17d69-c07b-7675-b018-349795fcd436"
+        }
+      },
+      "release": {
+        "id": "908328be-22ff-4a2b-a47d-b48c31e54bce",
+        "authoringRevisionId": "01a17d81-129b-7427-ae81-aa1857220f7c"
+      },
+      "packages": [
+        {
+          "id": "01a17da9-9bc3-72bb-b9c8-95bf82253f70",
+          "digest": "8730c9c9ac0b3704b468ee933418808741694cdd032ab320b4b71553fc686164",
+          "schemaVersion": 3,
+          "runtime": {
+            "experience": "threejs",
+            "engine": "dimensions_v1",
+            "report": "compatible_standard",
+            "themeKey": "demo-partner",
+            "renderer": {
+              "key": "reflection-garden",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "garden-notes",
+              "version": 1
+            },
+            "compatibility": "registered_pair",
+            "deviceAcceptance": "not_recorded"
+          },
+          "experienceId": "01a17d81-129b-7427-ae81-aa1857220f7c",
+          "planId": "01a17d69-c07b-7675-b018-349795fcd436"
+        }
+      ]
+    },
+    "pending": {
+      "productId": "01a17d69-c08b-735a-a283-754c49cf1dfa",
+      "versionId": "01a17d69-c09a-751a-a04a-5a46e0f67bd8",
+      "versionStatus": "DRAFT",
+      "latest": {
+        "id": "01a17dba-8814-744f-a33b-55ebc1cb65a4",
+        "revision": 1,
+        "status": "draft",
+        "productPlanInput": {
+          "form": "3d",
+          "planDigest": "1f82bb1380e205cca240af23a364aa9a33ed915c01e1cc62427480ce0ded5272",
+          "moduleDigest": "b0e15008990d2532404620fd0722dcf6171d3a4c5dc985e5ca96acb068ec676c",
+          "planModuleId": "01a17db7-83a1-711c-a427-ef026bb24b1c",
+          "schemaVersion": 1,
+          "planRevisionId": "01a17db7-8391-72c0-b956-bab0ad8873bc"
+        }
+      },
+      "release": null,
+      "packages": []
+    }
+  }
+}

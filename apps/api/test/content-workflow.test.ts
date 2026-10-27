@@ -274,7 +274,7 @@ async function fresh(skillEnabled = false) {
   ).body;
   const brief = await profile(product.id, { reportPlan: { ...profileData().reportPlan, presentation: 'standard' } });
   const access = await app.get(CatalogAdminAccessService).authorizeLocalOwner(fixture.owner.client, DemoIdentityScenarios.admin.id);
-  const publication = await reviewThreejsFixture(app, fixture, access, version.id, brief.id);
+  const publication = await reviewThreejsFixture(app, fixture, access, version.id, { profileId: brief.id });
   const skillSet = skillEnabled ? await createSkillSet(brief, publication.plan) : undefined;
   assert.equal(
     (
@@ -607,7 +607,7 @@ test("a four-domain package fixes question/hook/CTA references and exports only 
   const saved = await adopt(context.selection, preview.body);
   assert.equal(saved.status, 200, JSON.stringify(saved.body));
   assert.equal(ContentPackageSchema.safeParse(saved.body).success, true);
-  assert.equal(saved.body.manifest.schemaVersion, 1);
+  assert.equal(saved.body.manifest.schemaVersion, 3);
   assert.equal(sha(JSON.stringify(saved.body.manifest)), saved.body.digest);
   assert.equal(
     saved.body.manifest.assets.find(
@@ -863,7 +863,7 @@ test("adoption rejects missing domains, preview-only files, inconsistent fixed s
   );
   assert.equal(unsupported.body.canAdopt, false);
   assert.ok(
-    unsupported.body.issues.some((value: string) => value.includes("单人网页")),
+    unsupported.body.issues.some((value: string) => value.includes("固定同一共同创作设定")),
   );
 });
 
@@ -1889,8 +1889,8 @@ test("skill-bound packages preserve all five fixed uses, input fragments and pro
   assert.equal(result.status, 200, JSON.stringify(result.body));
   const saved = ContentPackageSchema.parse(result.body),
     serialized = JSON.stringify(saved);
-  assert.equal(saved.manifest.schemaVersion, 2);
-  if (saved.manifest.schemaVersion !== 2)
+  assert.equal(saved.manifest.schemaVersion, 3);
+  if (saved.manifest.schemaVersion !== 3 || !saved.manifest.skillSet)
     throw new Error("expected fixed skill package");
   assert.deepEqual(saved.manifest.skillSet, context.skillSet);
   assert.equal(saved.manifest.assessmentProduction?.skillVersions?.length, 2);

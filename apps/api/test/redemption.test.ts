@@ -368,7 +368,7 @@ test('production scope and HTTPS cookie policy exclude demo codes without a publ
   await fixture.runtime.client.product.create({data:{...fields,id:productId,slug:'live-t04-fixture',scope:'LIVE',status:'DRAFT',currentVersionId:null,
     publicSample: original.publicSample === null ? Prisma.JsonNull : original.publicSample as Prisma.InputJsonValue}});
   const source=await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:partnerV2}});
-  const version=await fixture.runtime.client.productVersion.create({data:{productId,scope:'LIVE',number:1,status:'PUBLISHED',publishedAt:new Date(),configuration:source.configuration as Prisma.InputJsonValue}});
+  const version=await fixture.owner.client.productVersion.create({data:{productId,scope:'LIVE',number:1,status:'PUBLISHED',publishedAt:new Date(),configuration:source.configuration as Prisma.InputJsonValue}});
   await fixture.runtime.client.product.update({where:{id:productId},data:{status:'PUBLISHED',currentVersionId:version.id,publishedAt:new Date()}});
   const record=await fixture.runtime.client.order.create({data:{platform:'MANUAL',reference:'local:live-scope:'+randomUUID(),productVersionId:version.id,scope:'LIVE',quantity:1,amountFen:990,status:'FULFILLED'}});
   const raw=newCredential(); await fixture.runtime.client.redemptionCode.create({data:{digest:credentialDigest(raw),scope:'LIVE',orderId:record.id,productVersionId:version.id,claimDeadline:new Date(Date.now()+86400000)}});

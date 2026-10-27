@@ -257,6 +257,24 @@
       "scope": "verified_technical_task",
       "evidence": "output/implementation/product-plan-contract-20261027/verification.md",
       "parentT16Complete": false
+    },
+    {
+      "id": "T13.C2",
+      "date": "2026-10-27",
+      "archive": "prd/v1/tasks/archive/completed/02-skill-policy-validation.md",
+      "archiveSha256": "6d779d17fe474c93ee2341bc9f4294ad1acf6b201c1ac2e2d0b85e69adf42a17",
+      "scope": "verified_technical_task",
+      "evidence": "output/implementation/skill-policy-validation-20261027/verification.md",
+      "parentT16Complete": false
+    },
+    {
+      "id": "T16.C2-B",
+      "date": "2026-10-27",
+      "archive": "prd/v1/tasks/archive/completed/03-threejs-publication-gates.md",
+      "archiveSha256": "77cadd0eae06aadf8999775a204ea8a503d590d397aea9bf8e8553b17b9fe636",
+      "scope": "verified_technical_task",
+      "evidence": "output/implementation/threejs-publication-gates-20261027/verification.md",
+      "parentT16Complete": false
     }
   ]
 }

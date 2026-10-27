@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-10-27T14:26:00.214Z",
+  "mode": "agent_autonomous_CUA",
+  "realLocalAuth": true,
+  "businessDatabase": "isolated_TEST",
+  "viewport": {
+    "desktop": "default",
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "reset": true
+  },
+  "layout": {
+    "documentWidth": 390,
+    "viewport": 390
+  },
+  "checks": [
+    {
+      "name": "real_local_auth_and_admin_scope",
+      "passed": true
+    },
+    {
+      "name": "manual_plan_selector_visible",
+      "passed": true
+    },
+    {
+      "name": "compatibility_does_not_imply_review_or_device_acceptance",
+      "passed": true
+    },
+    {
+      "name": "manual_fixed_plan_and_module_pass_review_precheck",
+      "passed": true
+    },
+    {
+      "name": "manual_save_retains_exact_plan_and_module",
+      "passed": true
+    },
+    {
+      "name": "human_review_appends_exact_r2_snapshot",
+      "passed": true
+    },
+    {
+      "name": "four_domain_adoption_uses_reviewed_threejs",
+      "passed": true
+    },
+    {
+      "name": "saved_package_shows_actual_pair_and_manual_source",
+      "passed": true
+    },
+    {
+      "name": "browser_json_export_retains_v3_fixed_plan_and_experience",
+      "passed": true
+    },
+    {
+      "name": "adoption_does_not_publish_product",
+      "passed": true
+    },
+    {
+      "name": "admin_version_publication_accepts_reviewed_threejs_in_test_database",
+      "passed": true
+    },
+    {
+      "name": "mobile_stale_plan_is_rejected_without_losing_unsaved_note",
+      "passed": true
+    },
+    {
+      "name": "390px_page_has_no_horizontal_overflow",
+      "passed": true
+    },
+    {
+      "name": "pending_plan_remains_compatible_draft_without_review_eligibility",
+      "passed": true
+    },
+    {
+      "name": "pending_plan_can_save_but_cannot_review",
+      "passed": true
+    },
+    {
+      "name": "legacy_published_dom_and_report_pair_remain_read_only",
+      "passed": true
+    },
+    {
+      "name": "backend_readback_matches_browser_publication_and_rejection",
+      "passed": true
+    }
+  ],
+  "passed": 17,
+  "failed": 0,
+  "cloudAcceptance": false,
+  "userApprovalClaimed": false
+}

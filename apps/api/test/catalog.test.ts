@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { reviewThreejsFixture } from './publication-fixture';
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -53,7 +54,7 @@ before(async () => {
   await fixture.runtime.client.product.create({ data: { ...fields, id: liveId, slug: 'live-scope-fixture', name: 'LIVE 范围隔离样本', scope: 'LIVE',
     status: 'DRAFT', currentVersionId: null, publishedAt: null,
     publicSample: { ...demoPublicSample(changedConfiguration), isDemo: false } } });
-  const liveVersion = await fixture.runtime.client.productVersion.create({ data: { productId: liveId, scope: 'LIVE', number: 1,
+  const liveVersion = await fixture.owner.client.productVersion.create({ data: { productId: liveId, scope: 'LIVE', number: 1,
     status: 'PUBLISHED', publishedAt: publication, configuration: changedConfiguration as Prisma.InputJsonValue } });
   await fixture.runtime.client.product.update({ where: { id: liveId }, data: { currentVersionId: liveVersion.id, status: 'PUBLISHED', publishedAt: publication } });
   await fixture.runtime.client.productTag.create({ data: { productId: liveId, tagId: demoId('tag-cooperation') } });
@@ -241,6 +242,8 @@ test('publication revalidates configuration and metadata and rolls all state bac
 
 test('publishing switches the catalog once and cannot rewrite a published rule or report snapshot', async () => {
   const previousReport = await fixture.runtime.client.report.findUniqueOrThrow({ where: { id: demoId('report-population-0') } });
+  await reviewThreejsFixture(app,fixture,access,version3.id);
+  await versions.review(access,partner,version3.id,{requestId:randomUUID()});
   const requestId = randomUUID(), audits = await fixture.runtime.client.adminAuditLog.count();
   const [first, second] = await Promise.all([versions.publish(access, partner, version3.id, { requestId }), versions.publish(access, partner, version3.id, { requestId })]);
   assert.deepEqual(first, second); assert.equal(first.status, 'published'); assert.equal(await fixture.runtime.client.adminAuditLog.count(), audits + 1);
@@ -278,6 +281,9 @@ test('the actual maintenance CLI validates, imports, previews, reviews, publishe
   const imported = await command('import', ['--product', 'fixture-draft', '--file', file, '--request-id', randomUUID()]);
   assert.equal(imported.number, 2); assert.equal(imported.status, 'draft');
   assert.equal((await command('preview', ['--product', 'fixture-draft', '--version', '2'])).isPreview, true);
+  assert.equal((await command('review', ['--product', 'fixture-draft', '--version', '2'])).status, 'reviewed');
+  await assert.rejects(command('publish', ['--product', 'fixture-draft', '--version', '2']));
+  await reviewThreejsFixture(app,fixture,access,imported.id);
   assert.equal((await command('review', ['--product', 'fixture-draft', '--version', '2'])).status, 'reviewed');
   assert.equal((await command('publish', ['--product', 'fixture-draft', '--version', '2'])).status, 'published');
   assert.equal((await read('/api/products/fixture-draft')).response.status, 200);

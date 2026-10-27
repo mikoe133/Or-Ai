@@ -25,6 +25,7 @@ import { currentSkillManifest } from './skill-policy-fixture';
 import { RuntimeVersionService } from '../src/catalog/runtime-version.service';
 import { methodProject, methodManifest } from './project-methods-fixture';
 import { MachineProjectsService } from '../src/operations/machine-projects.service';
+import { requireExperienceProductPolicy } from '../src/catalog/experience-product-policy';
 
 let fixture: Awaited<ReturnType<typeof createLocalFixture>>, app: INestApplication, directory: string, access: CatalogAdminAccess;
 let versions: VersionsService, experiences: ExperienceAuthoringService;
@@ -158,6 +159,9 @@ test('project MCP candidates preserve customized fixed methods through human rev
   assert.equal(reviewed.status, 'reviewed');
   assert.equal(reviewed.methods.length, 2);
   for (const binding of reviewed.methods) assert.equal((await fixture.runtime.client.styleSkillVersion.findUniqueOrThrow({ where: { id: binding.version.id } })).status, 'DRAFT');
+  await versions.review(access,context.boot.productId,content.productVersionId,{requestId:randomUUID()});
+  await versions.publish(access,context.boot.productId,content.productVersionId,{requestId:randomUUID()});
+  assert.equal((await app.get(RuntimeVersionService).read(content.productVersionId)).experience.manifest.renderer.key,'reflection-garden');
 });
 
 test('compatibility checks separately report review eligibility and never certify device acceptance', async () => {
@@ -183,4 +187,68 @@ test('manual authoring selects the exact experience module when a plan contains 
     reportPlan: value.profile.profile.reportPlan, methods: [], productPlan: { revisionId: plan.id, digest: plan.digest }, planModuleId: module.id,
     note: '人工制作也固定精确模块', source: 'manual', expectedRevision: 0, expectedVersionRevision: value.version.revision, requestId: randomUUID() });
   assert.equal(draft.productPlanInput?.planModuleId, module.id);
+});
+
+test('concurrent reviewers append one exact review and a newer plan cannot silently replace its publication inputs', async () => {
+  const value = await fresh(), result = await reviewThreejsFixture(app,fixture,access,value.version.id,{profileId:value.profile.id});
+  const current = await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:value.version.id}});
+  const draft = await experiences.save(access,productId,value.version.id,{manifest:result.draft.manifest,reportPlan:result.draft.reportPlan,
+    productPlan:{revisionId:result.plan.id,digest:result.plan.digest},methods:[],note:'并发审核固定输入',expectedRevision:2,expectedVersionRevision:current.revision,requestId:randomUUID()});
+  const reviews = await Promise.allSettled([1,2].map(()=>experiences.review(access,draft.id,{expectedRevision:draft.revision,requestId:randomUUID()})));
+  assert.equal(reviews.filter(item=>item.status==='fulfilled').length,1); assert.equal(reviews.filter(item=>item.status==='rejected').length,1);
+  await versions.review(access,productId,value.version.id,{requestId:randomUUID()});
+  await app.get(ProductionPlansService).save(access,productId,{plan:{...result.plan.plan,title:'商品规划的新修订'},expectedRevision:result.plan.revision,requestId:randomUUID()});
+  await assert.rejects(versions.publish(access,productId,value.version.id,{requestId:randomUUID()}));
+  assert.equal(await fixture.runtime.client.experienceRelease.count({where:{productVersionId:value.version.id}}),0);
+  assert.equal((await experiences.read(access,result.draft.id)).productPlanInput?.planRevisionId,result.plan.id);
+});
+
+test('a release INSERT failure rolls back state, audit and retry intent, then the same publication request succeeds once', async () => {
+  const value=await fresh(); await reviewThreejsFixture(app,fixture,access,value.version.id,{profileId:value.profile.id});
+  await versions.review(access,productId,value.version.id,{requestId:randomUUID()});
+  const product=await fixture.runtime.client.product.findUniqueOrThrow({where:{id:productId}}),audits=await fixture.runtime.client.adminAuditLog.count(),requestId=randomUUID();
+  await fixture.owner.client.$executeRawUnsafe(`CREATE FUNCTION orai.fail_publication_insert() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'Injected publication failure'; END $$`);
+  await fixture.owner.client.$executeRawUnsafe('CREATE TRIGGER publication_insert_failure BEFORE INSERT ON orai.experience_releases FOR EACH ROW EXECUTE FUNCTION orai.fail_publication_insert()');
+  try{await assert.rejects(versions.publish(access,productId,value.version.id,{requestId}));}
+  finally{await fixture.owner.client.$executeRawUnsafe('DROP TRIGGER publication_insert_failure ON orai.experience_releases');await fixture.owner.client.$executeRawUnsafe('DROP FUNCTION orai.fail_publication_insert()');}
+  assert.equal((await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:value.version.id}})).status,'REVIEWED');
+  assert.equal((await fixture.runtime.client.product.findUniqueOrThrow({where:{id:productId}})).currentVersionId,product.currentVersionId);
+  assert.equal(await fixture.runtime.client.experienceRelease.count({where:{productVersionId:value.version.id}}),0);
+  assert.equal(await fixture.runtime.client.adminAuditLog.count(),audits);
+  assert.equal(await fixture.runtime.client.idempotentRequest.count({where:{requestId}}),0);
+  const first=await versions.publish(access,productId,value.version.id,{requestId}),retry=await versions.publish(access,productId,value.version.id,{requestId});
+  assert.deepEqual(first,retry);assert.equal(await fixture.runtime.client.experienceRelease.count({where:{productVersionId:value.version.id}}),1);
+});
+
+test('review policy rejects forged fixed inputs and method snapshots while archived exact bindings remain usable', async () => {
+  const value=await fresh(),ready=await reviewThreejsFixture(app,fixture,access,value.version.id,{profileId:value.profile.id}),skills=app.get(SkillsService);
+  let source=await skills.create(access,'experience',{slug:'fixed-review-'+randomUUID(),requestId:randomUUID(),manifest:currentSkillManifest({
+    domain:'experience',name:'固定审核方法',description:'隔离校验样例',purposes:['scene_design','report_presentation'],styles:['紫色'],supportedForms:['3d'],
+    inputs:[{key:'creative-profile',description:'共同设定',required:true}],outputs:[{key:'scene',description:'场景和报告'}],instructions:'保留明确确认与恢复。',examples:[],references:[]})});
+  for(const action of ['review','activate'] as const)source=await skills.transition(access,'experience',source.skillId,source.id,action,{expectedRevision:source.revision,requestId:randomUUID()});
+  const workspace=await experiences.workspace(access,productId,value.version.id,{}),module=ready.plan.modules.find(item=>item.moduleKey==='experience')!;
+  const draft=await experiences.save(access,productId,value.version.id,{manifest:ready.draft.manifest,reportPlan:ready.draft.reportPlan,
+    productPlan:{revisionId:ready.plan.id,digest:ready.plan.digest},planModuleId:module.id,
+    methods:[{purpose:'scene_design',skillVersionId:source.id},{purpose:'report_presentation',skillVersionId:source.id}],note:'精确方法审核',
+    expectedRevision:workspace.latest!.revision,expectedVersionRevision:workspace.versionRevision,requestId:randomUUID()});
+  const version=await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:value.version.id}});
+  const baseline={manifest:draft.manifest,methods:draft.methods,productPlanInput:draft.productPlanInput!,projectPlanModuleId:null as string|null};
+  const check=(candidate:Parameters<typeof requireExperienceProductPolicy>[2])=>fixture.runtime.client.$transaction(tx=>requireExperienceProductPolicy(tx,version,candidate));
+  await check(baseline);
+  async function invalid(change:(candidate:typeof baseline)=>void){const candidate=structuredClone(baseline);change(candidate);await assert.rejects(check(candidate));}
+  await invalid(candidate=>{candidate.productPlanInput.planRevisionId=randomUUID();});
+  await invalid(candidate=>{candidate.productPlanInput.planDigest='0'.repeat(64);});
+  await invalid(candidate=>{candidate.productPlanInput.planModuleId=randomUUID();});
+  await invalid(candidate=>{candidate.productPlanInput.moduleDigest='0'.repeat(64);});
+  await invalid(candidate=>{candidate.productPlanInput.form='web';});
+  await invalid(candidate=>{candidate.projectPlanModuleId=randomUUID();});
+  await invalid(candidate=>{candidate.methods=candidate.methods.slice(0,1);});
+  await invalid(candidate=>{candidate.methods[1]!.purpose=candidate.methods[0]!.purpose;});
+  await invalid(candidate=>{delete candidate.methods[0]!.productPlanInput;});
+  await invalid(candidate=>{candidate.methods[0]!.version.digest='0'.repeat(64);});
+  await invalid(candidate=>{candidate.methods[0]!.version.manifest.instructions+=' 未固定修改';});
+  await invalid(candidate=>{candidate.methods[0]!.projectMethod={snapshotId:randomUUID(),digest:'a'.repeat(64)};});
+  await invalid(candidate=>{candidate.projectPlanModuleId=module.id;});
+  await skills.transition(access,'experience',source.skillId,source.id,'archive',{expectedRevision:source.revision,requestId:randomUUID()});
+  await check(baseline);
 });

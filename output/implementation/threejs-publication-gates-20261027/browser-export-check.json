@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 3,
+  "runtime": {
+    "experience": "threejs",
+    "engine": "dimensions_v1",
+    "report": "compatible_standard",
+    "themeKey": "demo-partner",
+    "renderer": {
+      "key": "reflection-garden",
+      "version": 1
+    },
+    "reportRenderer": {
+      "key": "garden-notes",
+      "version": 1
+    },
+    "compatibility": "registered_pair",
+    "deviceAcceptance": "not_recorded"
+  },
+  "planId": "01a17d69-c07b-7675-b018-349795fcd436",
+  "experienceId": "01a17d81-129b-7427-ae81-aa1857220f7c",
+  "matchingFixedPlan": true,
+  "deviceAcceptanceRecorded": false
+}

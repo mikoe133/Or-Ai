@@ -1,0 +1,14 @@
+{
+  "tables": 73,
+  "rows": 1508,
+  "existingTablesAndValuesUnchanged": true,
+  "originalMigrationChecksumsUnchanged": true,
+  "migrationCountBefore": 27,
+  "migrationCountAfter": 29,
+  "newMigrations": [
+    "20261027020000_threejs_publication_policy",
+    "20261027030000_threejs_publication_integrity"
+  ],
+  "historicalPlanInputsRemainNull": true,
+  "resetOrSeedPerformed": false
+}

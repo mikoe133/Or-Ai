@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { readyPublicationPlan } from './publication-fixture';
 import { currentSkillManifest, policyPlanDocument } from './skill-policy-fixture';
 import { ProductionPlansService } from '../src/operations/production-plans.service';
 import { before, after, test } from 'node:test';
@@ -46,7 +47,7 @@ before(async () => {
   experiences=app.get(ExperienceAuthoringService);versions=app.get(VersionsService);content=app.get(ContentService);
 });
 after(async()=>{await app?.close();await fixture?.close();if(directory)await rm(directory,{recursive:true,force:true});});
-async function fresh(onlyCover = false, overrides: Partial<z.infer<typeof CreativeProfileSchema>> = {}) {
+async function fresh(onlyCover = false, overrides: Partial<z.infer<typeof CreativeProfileSchema>> = {}, publishable = false) {
   const latest = await fixture.runtime.client.creativeProfileRevision.aggregate({where:{productId},_max:{number:true}});
   const profile = await content.saveProfile(access,productId,{expectedRevision:latest._max.number??0,requestId:randomUUID(),profile:CreativeProfileSchema.parse({
     schemaVersion:1,title:'相互理解',audience:'自我观察的成年人',situation:'日常沟通',emotionalGoal:'被理解与接纳',understandingGoal:'看见自己的协作节奏',takeaway:'一个具体的沟通行动',
@@ -57,14 +58,15 @@ async function fresh(onlyCover = false, overrides: Partial<z.infer<typeof Creati
   const version=await versions.importConfiguration(access,productId,{configuration:DemoProducts[0]!.configurations[1],requestId:randomUUID()});
   const workspace=await experiences.workspace(access,productId,version.id,{profileId:profile.id});
   const currentPlan=await fixture.runtime.client.productionPlanRevision.aggregate({where:{productId},_max:{number:true}});
-  const plan=await app.get(ProductionPlansService).save(access,productId,{plan:policyPlanDocument(profile.id,profile.profile.experienceForm),
+  const plan=await app.get(ProductionPlansService).save(access,productId,{plan:publishable?readyPublicationPlan(profile.id,profile.profile.experienceForm):policyPlanDocument(profile.id,profile.profile.experienceForm),
     expectedRevision:currentPlan._max.number??0,requestId:randomUUID()});
   const input:z.infer<typeof ExperienceSaveSchema>={manifest:workspace.defaultManifest,reportPlan:profile.profile.reportPlan,methods:[],note:'人工体验制作',
     productPlan:{revisionId:plan.id,digest:plan.digest},
     source:'manual',expectedRevision:0,expectedVersionRevision:version.revision,requestId:randomUUID()};
+  if(publishable){input.manifest.renderer={key:'reflection-garden',version:1};input.manifest.report.renderer={key:'garden-notes',version:1};}
   return {version,profile,input};
 }
-async function saved() {const value=await fresh();return {...value,draft:await experiences.save(access,productId,value.version.id,value.input)};}
+async function saved(publishable=false) {const value=await fresh(false,{},publishable);return {...value,draft:await experiences.save(access,productId,value.version.id,value.input)};}
 const draftBody=(value:Awaited<ReturnType<typeof saved>>)=>({manifest:value.draft.manifest,reportPlan:value.draft.reportPlan,methods:[],note:value.draft.note});
 async function machine(variant: string, productIds=[productId], skillIds:string[]=[]) {
   return app.get(MachineCredentialsService).create(access,{name:'T15-B '+variant,domain:variant,
@@ -143,7 +145,7 @@ test('planned product forms remain readable proposals and fail the same capabili
   }
 });
 
-test('default legacy publication also refuses unsupported input forms while retaining authoring-only report proposals',async()=>{
+test('default publication requires authored Three.js while retaining legacy reads and authoring-only report proposals',async()=>{
   for(const experienceForm of ['3d','game'] as const) {
     const value=await fresh(false,{experienceForm});
     await fixture.runtime.client.productVersion.update({where:{id:value.version.id},data:{creativeProfileRevisionId:value.profile.id,revision:{increment:1}}});
@@ -154,8 +156,8 @@ test('default legacy publication also refuses unsupported input forms while reta
   const compatible=await fresh(),journal=await fresh(false,{reportPlan:{...compatible.profile.profile.reportPlan,presentation:'journal'}});
   await fixture.runtime.client.productVersion.update({where:{id:journal.version.id},data:{creativeProfileRevisionId:journal.profile.id,revision:{increment:1}}});
   await versions.review(access,productId,journal.version.id,{requestId:randomUUID()});
-  await versions.publish(access,productId,journal.version.id,{requestId:randomUUID()});
-  const old=await app.get(RuntimeVersionService).read(journal.version.id);
+  await assert.rejects(versions.publish(access,productId,journal.version.id,{requestId:randomUUID()}));
+  const old=await app.get(RuntimeVersionService).read(demoId('demo-partner-v2'));
   assert.equal(old.experience.manifest.report.renderer.key,'legacy-text');
   const capabilities=(await experiences.workspace(access,productId,journal.version.id,{includeCapabilities:true})).capabilities!;
   assert.equal(capabilities.modules.content,'editable');
@@ -194,7 +196,7 @@ test('archived experience methods can only retain their existing purpose under t
 
 test('publication requires the latest reviewed matching experience and captures its exact release without changing old versions',async()=>{
   const legacy=await app.get(RuntimeVersionService).read(demoId('demo-partner-v2'));
-  const value=await saved();await versions.review(access,productId,value.version.id,{requestId:randomUUID()});
+  const value=await saved(true);await versions.review(access,productId,value.version.id,{requestId:randomUUID()});
   await assert.rejects(versions.publish(access,productId,value.version.id,{requestId:randomUUID()}));
   const reviewed=await experiences.review(access,value.draft.id,{expectedRevision:1,requestId:randomUUID()});
   const tampered=JSON.stringify({...reviewed.manifest,theme:{key:'different-theme',revision:1}});
@@ -208,7 +210,7 @@ test('publication requires the latest reviewed matching experience and captures 
   await assert.rejects(experiences.save(access,productId,value.version.id,{...value.input,expectedRevision:2,expectedVersionRevision:3,requestId:randomUUID()}));
 });
 
-test('registered quiet room and field notes publish together and preserve the existing server score and fixed report presentation',async()=>{
+test('quiet room and field notes retain compatible authoring and previews but cannot become a new normal product',async()=>{
   const value=await fresh();
   value.input.manifest.renderer={key:'quiet-room',version:1};
   value.input.manifest.report.renderer={key:'field-notes',version:1};
@@ -216,17 +218,17 @@ test('registered quiet room and field notes publish together and preserve the ex
   assert.equal((await experiences.check(access,productId,value.version.id,{manifest:draft.manifest,reportPlan:draft.reportPlan,methods:[],note:draft.note})).valid,true);
   const preview=await experiences.preview(access,draft.id,{answers:DemoProducts[0]!.configurations[1]!.questions.map(question=>({questionId:question.id,optionId:'often'}))});
   assert.equal(preview.report.totalScore,100);assert.equal(preview.presentation.renderer.key,'field-notes');
-  await experiences.review(access,draft.id,{expectedRevision:1,requestId:randomUUID()});
+  await assert.rejects(experiences.review(access,draft.id,{expectedRevision:1,requestId:randomUUID()}));
   await versions.review(access,productId,value.version.id,{requestId:randomUUID()});
-  await versions.publish(access,productId,value.version.id,{requestId:randomUUID()});
-  const runtime=await app.get(RuntimeVersionService).read(value.version.id);
-  assert.equal(runtime.experience.manifest.renderer.key,'quiet-room');
-  assert.equal(runtime.experience.manifest.report.renderer.key,'field-notes');
+  await assert.rejects(versions.publish(access,productId,value.version.id,{requestId:randomUUID()}));
+  const runtime=await app.get(RuntimeVersionService).read(demoId('demo-partner-v2'));
+  assert.equal(runtime.experience.manifest.renderer.key,'dom-choice');
+  assert.equal(runtime.experience.manifest.report.renderer.key,'legacy-text');
   assert.deepEqual(runtime.configuration,DemoProducts[0]!.configurations[1]);
 });
 
 test('content edits invalidate reviewed experience; preview uses sample answers and never creates usage or statistics',async()=>{
-  const value=await saved();
+  const value=await saved(true);
   const before={attempts:await fixture.runtime.client.attempt.count(),reports:await fixture.runtime.client.report.count(),events:await fixture.runtime.client.event.count()};
   const config=DemoProducts[0]!.configurations[1]!;
   const preview=await experiences.preview(access,value.draft.id,{answers:config.questions.map(q=>({questionId:q.id,optionId:'often'}))});
@@ -295,7 +297,7 @@ test('real MCP SDK can read context, upload an experience resource, save once an
 });
 
 test('the 3D garden has an opt-in v2 declaration, form-specific methods and a real MCP authoring/publication chain',async()=>{
-  const value=await fresh(false,{experienceForm:'3d'});
+  const value=await fresh(false,{experienceForm:'3d'},true);
   assert.equal(value.input.manifest.renderer.key,'reflection-garden');
   assert.equal(value.input.manifest.report.renderer.key,'garden-notes');
   const first=await experiences.save(access,productId,value.version.id,value.input);

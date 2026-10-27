@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { INestApplication } from '@nestjs/common';
 import { CreativeProfileSchema, ProductionPlanDocumentSchema } from '@orai/contracts/admin';
-import { ExperienceManifestSchema, reflectionGardenGraphics } from '@orai/contracts/experience';
+import { ExperienceManifestSchema, reflectionGardenGraphics, type ExperienceManifest } from '@orai/contracts/experience';
 import type { CatalogAdminAccess } from '../src/catalog/admin-access.service';
 import { ContentService } from '../src/operations/content.service';
 import { ExperienceAuthoringService } from '../src/operations/experience-authoring.service';
@@ -31,9 +31,9 @@ export function readyPublicationPlan(profileId: string, form = '3d') {
 }
 
 export async function reviewThreejsFixture(app: INestApplication, fixture: Awaited<ReturnType<typeof createLocalFixture>>,
-  access: CatalogAdminAccess, versionId: string, profileId?: string) {
+  access: CatalogAdminAccess, versionId: string, options: { profileId?: string; planId?: string; resources?: ExperienceManifest['resources'] } = {}) {
   const version = await fixture.runtime.client.productVersion.findUniqueOrThrow({ where: { id: versionId } });
-  const fixedProfileId = version.creativeProfileRevisionId ?? profileId;
+  const fixedProfileId = version.creativeProfileRevisionId ?? options.profileId;
   let profile = fixedProfileId ? await fixture.runtime.client.creativeProfileRevision.findUniqueOrThrow({ where: { id: fixedProfileId } }) : null;
   if (!profile) {
     const latest = await fixture.runtime.client.creativeProfileRevision.aggregate({ where: { productId: version.productId }, _max: { number: true } });
@@ -47,11 +47,12 @@ export async function reviewThreejsFixture(app: INestApplication, fixture: Await
   }
   const setting = CreativeProfileSchema.parse(profile.profile), plans = app.get(ProductionPlansService), experiences = app.get(ExperienceAuthoringService);
   const latest = await fixture.runtime.client.productionPlanRevision.aggregate({ where: { productId: version.productId }, _max: { number: true } });
-  const plan = await plans.save(access, version.productId, { plan: readyPublicationPlan(profile.id, setting.experienceForm),
-    expectedRevision: latest._max.number ?? 0, requestId: randomUUID() });
+  const plan = options.planId ? await plans.read(access, options.planId) : await plans.save(access, version.productId, {
+    plan: readyPublicationPlan(profile.id, setting.experienceForm), expectedRevision: latest._max.number ?? 0, requestId: randomUUID() });
   const workspace = await experiences.workspace(access, version.productId, version.id, { profileId: profile.id });
   const manifest = ExperienceManifestSchema.parse({ ...workspace.defaultManifest,
-    renderer: { key: 'reflection-garden', version: 1 }, report: { contentSchema: 'report_content_v1', renderer: { key: 'garden-notes', version: 1 } } });
+    renderer: { key: 'reflection-garden', version: 1 }, report: { contentSchema: 'report_content_v1', renderer: { key: 'garden-notes', version: 1 } },
+    ...(options.resources ? { resources: options.resources } : {}) });
   const draft = await experiences.save(access, version.productId, version.id, { manifest, reportPlan: setting.reportPlan, methods: [],
     productPlan: { revisionId: plan.id, digest: plan.digest }, note: '隔离 Three.js 兼容性验收样例', source: 'manual',
     expectedRevision: workspace.latest?.revision ?? 0, expectedVersionRevision: workspace.versionRevision, requestId: randomUUID() });

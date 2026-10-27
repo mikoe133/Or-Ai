@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { reviewThreejsFixture } from './publication-fixture';
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
@@ -72,6 +73,7 @@ async function resultCount(versionId=demoId('demo-partner-v2')){return (await fi
 async function freshVersion(configuration=structuredClone(DemoProducts[0]!.configurations[1]!)){
   const versions=app.get(VersionsService);
   const value=await versions.importConfiguration(authority,demoId('demo-partner'),{configuration,requestId:randomUUID()});
+  await reviewThreejsFixture(app,fixture,authority,value.id);
   await versions.review(authority,demoId('demo-partner'),value.id,{requestId:randomUUID()});
   await versions.publish(authority,demoId('demo-partner'),value.id,{requestId:randomUUID()});return value.id;
 }

@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { reviewThreejsFixture } from './publication-fixture';
 import { before, after, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID, createHash } from 'node:crypto';
@@ -135,9 +136,8 @@ test('two compatible presentations produce identical server results and report r
 });
 
 test('3D choices keep the fixed release through restore/conflict, produce the DOM score, consume once and lose access on refund', async () => {
-  const normal=await finish(await started()),{draft,manifest}=await draftManifest();
-  manifest.renderer={key:'reflection-garden',version:1};manifest.report.renderer={key:'garden-notes',version:1};
-  await fixture.owner.client.$transaction(tx=>insertRelease(tx,draft.id,manifest));
+  const normal=await finish(await started()),{draft}=await draftManifest();
+  await reviewThreejsFixture(app,fixture,access,draft.id);
   await versions.review(access,draft.productId,draft.id,{requestId:randomUUID()});
   await versions.publish(access,draft.productId,draft.id,{requestId:randomUUID()});
   const session=await started(draft.id),id=session.value.attemptId;
@@ -193,14 +193,10 @@ test('verified experience resources have independent purpose, same-version bindi
   await storage.receive(fileId + '.blob', (async function* () { yield bytes; })(), { byteSize: bytes.length, checksum, mimeType: 'image/jpeg' });
   const media = await storage.inspect(fileId + '.blob', bytes.length);
   await fixture.owner.client.assetFile.create({ data: { id: fileId, productVersionId: draft.id, scope: 'DEMO', ownerUserId: access.actorUserId,
-    kind: 'COVER', originalName: 'scene.jpg', mimeType: 'image/jpeg', byteSize: bytes.length, checksum, storageKey: fileId + '.blob',
+    kind: 'EXPERIENCE', originalName: 'scene.jpg', mimeType: 'image/jpeg', byteSize: bytes.length, checksum, storageKey: fileId + '.blob',
     status: 'AVAILABLE', expiresAt: new Date(Date.now() - 1000), verifiedAt: new Date(), width: media.width, height: media.height } });
   manifest.resources = [{ resourceId: 'scene-picture', fileId, purpose: 'illustration', label: '场景插画', checksum, byteSize: bytes.length, mimeType: 'image/jpeg' }];
-  await fixture.owner.client.$transaction(async tx => {
-    const releaseId = await insertRelease(tx, draft.id, manifest);
-    await tx.experienceResource.create({ data: { releaseId, productVersionId: draft.id, scope: 'DEMO', resourceId: 'scene-picture', fileId,
-      purpose: 'illustration', checksum, byteSize: bytes.length, mimeType: 'image/jpeg' } });
-  });
+  await reviewThreejsFixture(app,fixture,access,draft.id,{resources:manifest.resources});
   await versions.review(access, draft.productId, draft.id, { requestId: randomUUID() });
   await versions.publish(access, draft.productId, draft.id, { requestId: randomUUID() });
   const session = await started(draft.id), stranger = await started(), path = `/api/attempts/${session.value.attemptId}/resources/scene-picture`;

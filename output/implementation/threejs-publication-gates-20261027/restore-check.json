@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "checks": [
+    "upload fixture original",
+    "consistent database snapshot and object manifest",
+    "pg_restore into a new empty TEST database reproduces every table digest",
+    "restored object bytes match the same database manifest",
+    "missing and same-length damaged objects are rejected before accepting a restore",
+    "restore identity is explicitly rebound in TEST and restricted runtime permissions are reapplied",
+    "restored existing services read media, skill attachment and HTML original without executing it"
+  ],
+  "tableCount": 74,
+  "rowCount": 741,
+  "objectKinds": [
+    "asset_files",
+    "skill_reference_files",
+    "project_original_files"
+  ],
+  "objects": 3,
+  "dumpSha256": "4e514c428aa9468cc120e53bf258bc9e1be522d02668f8f54978d0d6d4a65f02",
+  "dumpBytes": 491238,
+  "sourceQuiesced": true,
+  "exportedSnapshotUsed": true,
+  "sourceDatabaseUnchanged": true,
+  "identityChange": "only restored TEST environment_marker.database_name is intentionally rebound after exact raw restore comparison",
+  "auth": "local owner capability in TEST only; no real login or credential issuance",
+  "rawDumpRetained": false,
+  "physicalDeviceValidated": false,
+  "cloudRestoreValidated": false,
+  "cloudCalls": 0,
+  "published": false,
+  "temporaryDatabasesRemoved": true,
+  "temporaryObjectDirectoriesRemoved": true
+}

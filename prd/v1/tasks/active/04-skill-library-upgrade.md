@@ -1,6 +1,6 @@
 # 04 · 盘点并前向升级旧 Skill 和项目方法
 
-任务标识：T13.C3。状态：等待前置。队列：主线。更新：2026-10-26。
+任务标识：T13.C3。状态：可执行。队列：主线。更新：2026-10-27。
 
 ## 目标与现状
 
@@ -8,7 +8,7 @@
 
 ## 前置与执行位置
 
-硬前置：[02 让全部商品 Skill 的 Three.js 要求在服务端生效](02-skill-policy-validation.md)、[03 接通项目制作链与 Three.js 发布校验](03-threejs-publication-gates.md)。
+硬前置已满足：[02 让全部商品 Skill 的 Three.js 要求在服务端生效](../archive/completed/02-skill-policy-validation.md)、[03 接通项目制作链与 Three.js 发布校验](../archive/completed/03-threejs-publication-gates.md)。
 
 原编号覆盖：`T13.C3`；范围拆分见[编号映射](../TASK-MAP.md)。步骤前缀只表示队列位置，原业务编号不重用。
 

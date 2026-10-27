@@ -1,5 +1,7 @@
 # T13-B 商品 skill 组合与制作来源
 
+2026-10-27补充：03已接通正式采用与发布检查，新采用包为v3（可选固定Skill组合），同时固定完整规划、已审核体验与精确方法；项目DRAFT定制方法保留snapshotId/digest，无需先全局启用。旧组合不能绕过新正式发布规则；历史v1/v2包和原作业恢复保持。04继续负责真实旧库的盘点/前向升级，见[03验证](../../output/implementation/threejs-publication-gates-20261027/verification.md)。
+
 2026-10-27：02已完成新方法声明与实际绑定政策。新组合保存需提供`productPlan:{revisionId,digest}`，每个选择可明确`planModuleId`（存在多个兼容模块时必须选择）；服务端固定版本化`productPlanInput`的计划/模块ID、摘要及形式。新绑定、上下文和制作使用校验当前v2规划、商品/scope/设定、用途、形式及合规manifest v2。直接体验绑定同样固定场景设计和报告呈现；项目方法复用其精确规划归属。没有该字段的历史组合、采用包和原作业恢复仍原样读取，不自动补字段或重算摘要；历史组合不能用作新制作授权。03负责正式采用/发布完整性，04负责旧库升级，见[02验证](../../output/implementation/skill-policy-validation-20261027/verification.md)。
 
 2026-10-26起始批次固定了Three.js基线和正文默认值，见[统一规范](PRODUCT-IMPLEMENTATION-POLICY.md)。原批次的形式匹配并非政策门禁；后续02已补服务端校验，04仍持有旧库升级。旧固定组合、方法快照和摘要保持，升级须新Skill版本＋新组合/方法快照并重新审核。

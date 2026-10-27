@@ -235,8 +235,11 @@ test('a different topic and question count can be added without changing the mod
   const { id: ignored, createdAt, updatedAt, ...data } = original;
   await runtime.client.product.create({ data: { ...data, id, slug: 'new-topic', name: '新的话题', status: 'DRAFT',
     currentVersionId: null, publishedAt: null, publicSample: demoPublicSample(validated) } });
-  const version = await runtime.client.productVersion.create({ data: { productId: id, scope: 'DEMO', number: 1,
-    status: 'PUBLISHED', configuration: validated, publishedAt: new Date() } });
+  // Restore this historical shape with owner authority. Runtime publication is
+  // exercised through the current Three.js services in publication tests.
+  const version = { id: randomUUID() };
+  await owner.query(`INSERT INTO orai.product_versions(id,product_id,scope,number,status,configuration,published_at)
+    VALUES($1,$2,'DEMO',1,'PUBLISHED',$3::jsonb,now())`, [version.id, id, JSON.stringify(validated)]);
   await runtime.client.product.update({ where: { id }, data: { currentVersionId: version.id, status: 'PUBLISHED', publishedAt: new Date() } });
   const row = await runtime.client.product.findUniqueOrThrow({ where: { id }, include: { category: true, tags: { include: { tag: true } }, currentVersion: true } });
   assert.equal(toPublicProduct(row).questionCount, 1);

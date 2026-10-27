@@ -18,7 +18,7 @@ export function SkillPlanInput({ productId, profileId, form, purposes, value, on
   const selected = !!current && !!value.reference && current.id === value.reference.revisionId && current.digest === value.reference.digest;
   return <fieldset className="content-block skill-plan-input" disabled={disabled} aria-label="方法的固定商品规划输入">
     <legend>固定商品规划 · 必填输入</legend>
-    <p>选择本次制作的规划与模块。保存后固定摘要；后续修改规划需追加新的方法绑定。</p>
+    <p>选择本次制作的规划与模块。保存后固定摘要；规划更新后需重新选择并保存新修订。</p>
     {query.isPending && <p role="status">正在读取商品规划…</p>}
     {query.isError && <Failure error={query.error} retry={() => void query.refetch()} />}
     {!query.isPending && !query.isError && !valid && <p role="status">当前商品尚无与此设定匹配的 v2 规划。请先到项目工作区保存商品规划。</p>}

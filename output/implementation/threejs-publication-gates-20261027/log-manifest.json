@@ -1,0 +1,52 @@
+[
+  {
+    "path": ".local/t16-c2b-20261027/typecheck-final.log",
+    "bytes": 1092,
+    "sha256": "547bb9b9c9c91995e18a9872e0599da751cda2394bec9c4dfe754cca239942ea"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/build-final.log",
+    "bytes": 6855,
+    "sha256": "e680cc1856a6e2152b36cdd9862dcfa735339be6bf212d852d08a4422a61f51c"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/full-final.log",
+    "bytes": 76874,
+    "sha256": "3e96259fde9a683fc4e8e569e0e4faf07167a39886f40c41f9ab31de1cb4f71f"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/coverage-final.log",
+    "bytes": 11804,
+    "sha256": "a52d347557994f013a99af124ebd5ea3a577ed1a22e3b2b111f87141cdacf976"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/offline-final.log",
+    "bytes": 2580,
+    "sha256": "706d7cd85da281630db6f4dbd6e7fd7937a4930df2298deea72ab59cd5489f90"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/restore-config-failure-fixed.log",
+    "bytes": 1076,
+    "sha256": "99edda5cdbf779ee811a0d0ec668c6a1bb5564165fdeebf0ff57f40d390e9775"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/restore-verified.log",
+    "bytes": 1322,
+    "sha256": "0f10da94bb3b0a5bba3d4084d9bd5ca6f69a17f4c6633e5ab97b2ed54b48f6d8"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/db-validate-final.log",
+    "bytes": 423,
+    "sha256": "bcd4cb751f040a68f83e349d5a3b2fb0ebb37669f55040eec883b3fb87b35431"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/development-migration.log",
+    "bytes": 931,
+    "sha256": "d3002c39f0379ff9203237a282d863bb3aee41441e46342b36c5a62ab430df5d"
+  },
+  {
+    "path": ".local/t16-c2b-20261027/development-status.log",
+    "bytes": 565,
+    "sha256": "5443197be4b4c4eb56a5703b79b8ca291757f89e3019abdc62ac7dd8e0a5157d"
+  }
+]

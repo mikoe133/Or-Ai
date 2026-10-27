@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ContentPackageSelectionSchema } from "@orai/contracts/admin";
+import { experienceTemplate } from '@orai/contracts/experience';
 import { Failure, Loading, Pager, useAction } from "../business/shared.js";
 import { adminApi, parseEditor } from "./api.js";
 import {
@@ -146,7 +147,7 @@ export function AdoptionPanel({
             <p>
               创作设定 r{profile.revision} · 题库 v
               {String(assessment.snapshot.versionNumber)} / r
-              {assessment.sourceRevision}。报告采用当前兼容标准图文模板。
+              {assessment.sourceRevision}。采用时一同固定已审核的 Three.js 体验与报告呈现。
             </p>
             {assessment.snapshot.status === "draft" && (
               <button
@@ -389,9 +390,17 @@ export function AdoptionPanel({
           </h4>
           <p>
             设定 r{saved.manifest.creativeProfile.revision} · 题库修订{" "}
-            {saved.manifest.assessment.sourceRevision} · 兼容标准图文报告
+            {saved.manifest.assessment.sourceRevision}
           </p>
-          <p>{saved.manifest.schemaVersion === 2 ? `固定 skill 组合 r${saved.manifest.skillSet.revision} · 五个专业用途` : '历史包：未关联 skill 组合'}</p>
+          {saved.manifest.schemaVersion === 3 && <div className="content-note" aria-label="固定 Three.js 交付">
+            <p>商品规划 r{saved.manifest.productPlan.revision} · 已审核体验 r{saved.manifest.experience.revision}</p>
+            <p>体验：{experienceTemplate({renderer:saved.manifest.runtime.renderer,report:{renderer:saved.manifest.runtime.reportRenderer}})?.label ?? saved.manifest.runtime.renderer.key}
+              {' · '}报告：{experienceTemplate({renderer:saved.manifest.runtime.renderer,report:{renderer:saved.manifest.runtime.reportRenderer}})?.reportLabel ?? saved.manifest.runtime.reportRenderer.key}</p>
+            <p>注册组合已校验；此采用包未记录设备验收。</p>
+          </div>}
+          <p>{saved.manifest.schemaVersion !== 1 && saved.manifest.skillSet
+            ? `固定 skill 组合 r${saved.manifest.skillSet.revision} · 五个专业用途`
+            : saved.manifest.schemaVersion === 3 ? '人工制作：未使用 Skill 组合' : '历史包：未关联 skill 组合'}</p>
           <p>{saved.note}</p>
           <ProductionOrigin source={saved.manifest.assessmentProduction} />
           <ul>
@@ -408,7 +417,7 @@ export function AdoptionPanel({
             导出采用清单 JSON
           </button>
           <p className="content-note">
-            包含创作设定、题库/模板、宣传内容、原文/改写快照和受保护文件引用。实际媒体可在各稿件中授权下载；导出不含消费者作答、报告、账户凭据或本地路径。
+            {saved.manifest.schemaVersion === 3 ? '包含固定商品规划、已审核体验、方法来源、创作设定与宣传内容。' : '包含创作设定、题库/模板、宣传内容、原文/改写快照和受保护文件引用。'}实际媒体可在各稿件中授权下载；导出不含消费者作答、报告、账户凭据或本地路径。
           </p>
           <details>
             <summary>查看固定清单</summary>

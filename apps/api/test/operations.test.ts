@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import { reviewThreejsFixture } from './publication-fixture';
+import { CatalogAdminAccessService } from '../src/catalog/admin-access.service';
 import assert from 'node:assert/strict';
 import { after, before, test } from 'node:test';
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
@@ -170,7 +172,10 @@ test('products, recommendation, version import/review/publication and immutable 
   assert.equal(imported.status, 200);
   const version = imported.body;
   assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id + '/preview')).body.isPreview, true);
-  const reviewed = await admin.request('/admin/products/' + id + '/versions/' + version.id + '/review', 'POST', { expectedRevision: version.revision, requestId: randomUUID() });
+  const authority = await app.get(CatalogAdminAccessService).authorizeLocalOwner(fixture.owner.client, DemoIdentityScenarios.admin.id);
+  await reviewThreejsFixture(app,fixture,authority,version.id);
+  const reviewed = await admin.request('/admin/products/' + id + '/versions/' + version.id + '/review', 'POST', {
+    expectedRevision: (await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:version.id}})).revision, requestId: randomUUID() });
   assert.equal(reviewed.status, 200);
   assert.equal((await admin.request('/admin/products/' + id + '/versions/' + version.id + '/publish', 'POST', { expectedRevision: reviewed.body.revision, requestId: randomUUID() })).status, 200);
   assert.equal((await admin.request('/products/' + input.slug)).status, 200);
@@ -364,7 +369,10 @@ test('version edits, reviews and publication reject stale revisions and idempote
   const edited = await admin.request(path, 'PUT', input); assert.equal(edited.status, 200);
   assert.equal((await admin.request(path, 'PUT', { ...input, expectedRevision: 99 })).status, 409);
   assert.equal((await admin.request(path + '/review', 'POST', { expectedRevision: input.expectedRevision, requestId: randomUUID() })).status, 409);
-  const reviewed = await admin.request(path + '/review', 'POST', { expectedRevision: edited.body.revision, requestId: randomUUID() });
+  const authority = await app.get(CatalogAdminAccessService).authorizeLocalOwner(fixture.owner.client, DemoIdentityScenarios.admin.id);
+  await reviewThreejsFixture(app,fixture,authority,imported.body.id);
+  const reviewed = await admin.request(path + '/review', 'POST', { expectedRevision:
+    (await fixture.runtime.client.productVersion.findUniqueOrThrow({where:{id:imported.body.id}})).revision, requestId: randomUUID() });
   assert.equal(reviewed.status, 200); assert.ok(reviewed.body.revision > edited.body.revision);
   assert.equal((await admin.request(path + '/publish', 'POST', { expectedRevision: edited.body.revision, requestId: randomUUID() })).status, 409);
   assert.equal((await admin.request(path + '/publish', 'POST', { expectedRevision: reviewed.body.revision, requestId: randomUUID() })).status, 200);
