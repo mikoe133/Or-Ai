@@ -105,7 +105,7 @@ test('real unprivileged Nginx forwards private API transport and Range while ser
     const www=await request(tls,'/account',{host:'www.store.unit.test',servername:'www.store.unit.test'});assert.equal(www.status,308);assert.equal(www.headers.location,'https://store.unit.test/account');
     await assert.rejects(request(tls,'/',{host:'unexpected.unit.test',servername:'unexpected.unit.test'}));
     const user=docker(['inspect',web,'--format','{{.Config.User}}']);assert.equal(user,'101:101');
-    console.log(JSON.stringify({checks:frontendImage?12:11,actualFrontendImage:frontendImage??null,network:'internal_isolated',https:'synthetic_local_certificate',proxyUser:user,realCloudConnections:0}));
+    console.log(JSON.stringify({checks:frontendImage?15:14,actualFrontendImage:frontendImage??null,network:'internal_isolated',https:'synthetic_local_certificate',proxyUser:user,realCloudConnections:0,newImageBuilds:0}));
   }finally{
     clientContainer=undefined;
     for(const name of [web,api,seed]){try{docker(['rm','-f',name]);}catch{}}

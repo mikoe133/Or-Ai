@@ -54,6 +54,12 @@ http {
     root /usr/share/nginx/html;
     add_header X-Content-Type-Options nosniff always;
     add_header Referrer-Policy strict-origin-when-cross-origin always;
+    gzip on;
+    gzip_vary on;
+    gzip_comp_level 6;
+    gzip_min_length 1024;
+    gzip_proxied any;
+    gzip_types text/javascript application/javascript text/css application/json image/svg+xml;
     location = /api { return 404; }
     location /api/ {
       proxy_pass http://api:4100;
