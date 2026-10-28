@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-28",
+  "scope": "isolated_TEST_synthetic_template_slice",
+  "parentTasksComplete": false,
+  "formalProductsSelected": 0,
+  "tests": {
+    "api": {
+      "passed": 507,
+      "failed": 0,
+      "log": ".local/t16-c3-implementation-20261028/api-regression.log",
+      "sha256": "791c416f745b6715603e45e3c8b5f690ee7e0038db09b9c7758b34cd12bf9771"
+    },
+    "web": {
+      "passed": 106,
+      "failed": 0,
+      "log": ".local/t16-c3-implementation-20261028/web-regression.log",
+      "sha256": "fe4a030928b0aa4321ca782ba7635409be042b47e06e1fb835e72b7aa29a68c6"
+    },
+    "mcp": {
+      "passed": 22,
+      "failed": 0,
+      "log": ".local/t16-c3-implementation-20261028/mcp-regression.log",
+      "sha256": "8a94faf87128a1d3bd458188aba1b9529e6957e1ea71fc62cc967b0419c4f60b"
+    }
+  },
+  "totalUniqueAutomatedTests": 635,
+  "additionalNativeProductionLifecycleChecks": {
+    "passed": 2,
+    "countedAgain": false
+  },
+  "typecheckPassed": true,
+  "workspaceBuildPassed": true,
+  "finalWebTypecheckAndBuildPassed": true,
+  "atlasPureModelAndSceneCoverage": {
+    "lines": 100,
+    "branches": 94.55,
+    "functions": 100
+  },
+  "migrations": {
+    "originalCount": 29,
+    "originalFilesUnchanged": true,
+    "totalCurrent": 30,
+    "added": "apps/api/prisma/migrations/20261028010000_atlas_template_pair/migration.sql",
+    "addedSha256": "e54ac2938096ff3daa521a45ad7d6c8a3511c46e6127861630be5e6602a593c3",
+    "appliedToOriginalDevelopmentDatabase": false,
+    "appliedToCloud": false
+  },
+  "rendererBudgets": [
+    {
+      "renderer": "reflection-garden@1",
+      "entryStaticImportsExcludeThree": true,
+      "rendererIsDynamic": true,
+      "gzipBytes": 165130,
+      "maxGzipBytes": 245760,
+      "files": [
+        {
+          "fileName": "assets/garden-renderer-CMzhT03R.js",
+          "rawBytes": 6558,
+          "gzipBytes": 3061
+        },
+        {
+          "fileName": "assets/experience-BwXptbhX.js",
+          "rawBytes": 98836,
+          "gzipBytes": 28514
+        },
+        {
+          "fileName": "assets/three.module-LK1pl1yG.js",
+          "rawBytes": 541919,
+          "gzipBytes": 133555
+        }
+      ]
+    },
+    {
+      "renderer": "relationship-atlas-prototype@1",
+      "entryStaticImportsExcludeThree": true,
+      "rendererIsDynamic": true,
+      "gzipBytes": 164495,
+      "maxGzipBytes": 225280,
+      "files": [
+        {
+          "fileName": "assets/atlas-renderer-D8cbdthc.js",
+          "rawBytes": 5058,
+          "gzipBytes": 2426
+        },
+        {
+          "fileName": "assets/experience-BwXptbhX.js",
+          "rawBytes": 98836,
+          "gzipBytes": 28514
+        },
+        {
+          "fileName": "assets/three.module-LK1pl1yG.js",
+          "rawBytes": 541919,
+          "gzipBytes": 133555
+        }
+      ]
+    }
+  ],
+  "cua": {
+    "passed": 26,
+    "failed": 0,
+    "environment": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "devicePixelRatio": 2,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      }
+    }
+  },
+  "screenshots": [
+    {
+      "name": "a-desktop.png",
+      "bytes": 73364,
+      "sha256": "96cc32d9c2e2d7c0e26b76cdc142219de19ae15c9b47abd0579525d527612567"
+    },
+    {
+      "name": "a-mobile.png",
+      "bytes": 75162,
+      "sha256": "cea4f7e6312b1f2de9d7000c29e7894e51b80586a423540596cc2719017f91b5"
+    },
+    {
+      "name": "a-null-report.png",
+      "bytes": 67047,
+      "sha256": "5a5ecbb0e1a18daacda374b290347584af8abaab7959db47be94edd88237ed02"
+    },
+    {
+      "name": "b-desktop.png",
+      "bytes": 92199,
+      "sha256": "03de92d5417514853b07215e753dacab2a41eccab4e6289d9bb59a8c69546e88"
+    },
+    {
+      "name": "b-desktop-selected.png",
+      "bytes": 71935,
+      "sha256": "8a1c47594873b41bfdec15c3fa2ba47ffd3f0fc34d4354060c012feaa772a6bb"
+    },
+    {
+      "name": "b-mobile.png",
+      "bytes": 85274,
+      "sha256": "b75d27d5e230aaa1b808e2e8d5e7878a4a6fe0e3eb8fc5d625af4d36c63ab920"
+    },
+    {
+      "name": "b-context-loss.png",
+      "bytes": 94744,
+      "sha256": "651bbc6b8ff30bb82d05c3f0d20a1a5aa30292af12583e5b9fd6e040f87009c6"
+    },
+    {
+      "name": "b-module-failure.png",
+      "bytes": 89729,
+      "sha256": "ee150f0a834671c88aaf2c4c968c7b98acc0d1d67983d699f6ab352adb4ffed8"
+    },
+    {
+      "name": "b-report.png",
+      "bytes": 75712,
+      "sha256": "d94affa6e3323fe12b130a3fed6e336693093cd005780df81d8065402e428830"
+    }
+  ],
+  "performance": {
+    "firstFrameMeasured": false,
+    "fpsMeasured": false,
+    "memoryStabilityMeasured": false,
+    "fullMatrixComplete": false,
+    "realDeviceAcceptanceComplete": false
+  },
+  "resourceChecks": {
+    "newDockerImageBuilds": 0,
+    "systemResourcesChanged": false,
+    "ownUiFixtureCleaned": true,
+    "remainingOriginalRunningContainersHealthy": 5,
+    "dockerDiskAvailableBytes": 1889124352
+  },
+  "boundaries": {
+    "contentGenerationResumed": false,
+    "modelComparisonResumed": false,
+    "realCloudOperations": false,
+    "realExternalClientConfigured": false,
+    "schedulesEnabled": false,
+    "formalPublicationOrTrade": false,
+    "wholeSiteRedesign": false
+  }
+}

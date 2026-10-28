@@ -1,0 +1,166 @@
+{
+  "scope": "isolated_TEST_synthetic_templates",
+  "date": "2026-10-28",
+  "userApproved": false,
+  "formalProductsSelected": 0,
+  "checks": [
+    {
+      "case": "B keyboard selects without saving",
+      "passed": true
+    },
+    {
+      "case": "B context loss preserves unconfirmed choice",
+      "passed": true,
+      "checked": "often"
+    },
+    {
+      "case": "B explicit retry restores WebGL with same choice",
+      "passed": true,
+      "checked": "often"
+    },
+    {
+      "case": "B 390px long-text layout",
+      "passed": true,
+      "overflow": false,
+      "pixels": [
+        82503
+      ]
+    },
+    {
+      "case": "B offline save preserves pending choice",
+      "passed": true,
+      "checked": "often"
+    },
+    {
+      "case": "B 768px layout and online recovery keeps choice",
+      "passed": true,
+      "checked": "often"
+    },
+    {
+      "case": "B offline retry saves exactly one confirmed answer",
+      "passed": true
+    },
+    {
+      "case": "B module failure falls back to the same saved question",
+      "passed": true,
+      "checked": "often"
+    },
+    {
+      "case": "B module download retry returns to real WebGL",
+      "passed": true
+    },
+    {
+      "case": "B confirms question 2",
+      "passed": true,
+      "answer": "经常如此"
+    },
+    {
+      "case": "B confirms question 3",
+      "passed": true,
+      "answer": "不适用（不适用）"
+    },
+    {
+      "case": "B confirms question 4",
+      "passed": true,
+      "answer": "不适用（不适用）"
+    },
+    {
+      "case": "B confirms question 5",
+      "passed": true,
+      "answer": "经常如此"
+    },
+    {
+      "case": "B confirms question 6",
+      "passed": true,
+      "answer": "经常如此"
+    },
+    {
+      "case": "B uses its own report renderer",
+      "passed": true,
+      "url": "http://127.0.0.1:5187/reports/01a181bf-08ea-7546-ab45-4f0aac8c69af"
+    },
+    {
+      "case": "A real garden renderer ready",
+      "passed": true,
+      "canvas": [
+        {
+          "drawCalls": "22",
+          "engine": "three.js r186",
+          "height": 161,
+          "pixelHeight": "161",
+          "pixelWidth": "190",
+          "triangles": "6600",
+          "width": 190
+        }
+      ],
+      "checked": []
+    },
+    {
+      "case": "A camera controls do not select or confirm answers",
+      "passed": true,
+      "checked": []
+    },
+    {
+      "case": "A real round-trip camera drag never selects an answer",
+      "passed": true,
+      "checked": []
+    },
+    {
+      "case": "A 390px layout",
+      "passed": true
+    },
+    {
+      "case": "A confirms non-applicable question 1",
+      "passed": true
+    },
+    {
+      "case": "A confirms non-applicable question 2",
+      "passed": true
+    },
+    {
+      "case": "A confirms non-applicable question 3",
+      "passed": true
+    },
+    {
+      "case": "A confirms non-applicable question 4",
+      "passed": true
+    },
+    {
+      "case": "A confirms non-applicable question 5",
+      "passed": true
+    },
+    {
+      "case": "A confirms non-applicable question 6",
+      "passed": true
+    },
+    {
+      "case": "A null result stays information-insufficient, never zero",
+      "passed": true,
+      "url": "http://127.0.0.1:5187/reports/01a181c4-818f-7138-8722-72440ee33938"
+    }
+  ],
+  "passed": 26,
+  "failed": 0,
+  "performanceAcceptanceComplete": false,
+  "realDeviceAcceptanceComplete": false,
+  "temporaryBrowserOverridesReset": true,
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "devicePixelRatio": 2,
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "screenshots": [
+    "a-desktop.png",
+    "a-mobile.png",
+    "a-null-report.png",
+    "b-desktop.png",
+    "b-desktop-selected.png",
+    "b-mobile.png",
+    "b-context-loss.png",
+    "b-module-failure.png",
+    "b-report.png"
+  ]
+}

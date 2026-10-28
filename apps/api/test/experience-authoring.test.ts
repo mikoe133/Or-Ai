@@ -23,6 +23,7 @@ import { CatalogAdminAccessService, type CatalogAdminAccess } from '../src/catal
 import { VersionsService } from '../src/catalog/versions.service';
 import { RuntimeVersionService } from '../src/catalog/runtime-version.service';
 import { DeliveryAdminService } from '../src/redemption/delivery-admin.service';
+import { ProjectProductionService } from '../src/operations/project-production.service';
 import { ExperienceAuthoringService } from '../src/operations/experience-authoring.service';
 import { ContentService } from '../src/operations/content.service';
 import { SkillsService } from '../src/operations/skills.service';
@@ -432,6 +433,21 @@ async function syntheticTemplateLifecycle(atlas = false) {
   assert.equal(draft.methods.length, 2);
   for (const binding of draft.methods) assert.deepEqual(binding.productPlanInput, draft.productPlanInput);
   assert.equal(draft.manifest.resources[0]!.checksum, hash(await readFile(picture)));
+  const production = app.get(ProjectProductionService), sceneModule = plan.modules.find(module => module.moduleKey === 'scene')!;
+  const captured = [];
+  for (const purpose of ['scene_design', 'report_presentation']) captured.push(await production.capture(access, sceneModule.id, {
+    expectedModuleDigest: sceneModule.digest, purpose, sourceVersionId: method.id,
+    expectedSourceRevision: method.revision, expectedSourceDigest: method.digest, requestId: randomUUID(),
+  }));
+  const now = new Date().toISOString();
+  const record = await production.save(access, sceneModule.id, { expectedModuleDigest: sceneModule.digest, expectedRevision: 0,
+    requestId: randomUUID(), methods: captured.map(snapshot => ({ snapshotId: snapshot.id, digest: snapshot.digest })), inputs: [],
+    outputs: [{ kind: 'experience_revision', outputKey: 'scene-bundle', revisionId: draft.id, digest: draft.digest }],
+    external: { client: 'synthetic-template-test', runKey: 'run-' + randomUUID(), note: '实际原生制作稿；没有导入ZIP原件', startedAt: now, finishedAt: now } });
+  assert.equal(record.outputs[0]!.purpose, 'authoring');
+  assert.equal(record.outputs[0]!.experienceRevisionId, draft.id);
+  assert.equal(record.archiveReady, false);
+  assert.deepEqual(await production.read(access, record.id), record);
   const sample = DemoProducts[0]!.configurations[1]!.questions.map(question => ({ questionId: question.id, optionId: 'often' }));
   const preview = await experiences.preview(access, draft.id, { answers: sample });
   assert.equal(preview.report.totalScore, 100);

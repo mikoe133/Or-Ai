@@ -1,0 +1,34 @@
+{
+  "scope": "isolated_TEST",
+  "originalDevelopmentDatabaseReadOrWritten": false,
+  "results": [
+    {
+      "kind": "A",
+      "productId": "01a181b4-e62e-718b-8da0-f4c2e44bb644",
+      "versionId": "01a181b4-e65a-737a-a98d-800cf6148672",
+      "attemptId": "01a181c0-2536-762a-adea-309c422d8710",
+      "answers": 6,
+      "reports": 1,
+      "reportsConsumed": 1,
+      "totalScore": null,
+      "reportRenderer": "garden-notes",
+      "releaseId": "0008f424-6c07-4261-a663-b48593b4f0d2",
+      "planId": "01a181b4-e674-751d-bc45-6db9f450146e",
+      "planDigest": "ac96bcf7995c85aa06e599c0147a004062e23f37f2dcb05da2abdbbf5358cdd0"
+    },
+    {
+      "kind": "B",
+      "productId": "01a181b4-e732-747f-afe1-446dae4efc4c",
+      "versionId": "01a181b4-e741-764f-a696-1b9e23854390",
+      "attemptId": "01a181b7-6a89-74a5-8456-2014635f3d62",
+      "answers": 6,
+      "reports": 1,
+      "reportsConsumed": 1,
+      "totalScore": 100,
+      "reportRenderer": "atlas-notes-prototype",
+      "releaseId": "ab6c2cab-a7b9-4563-a27b-1760f24d386d",
+      "planId": "01a181b4-e750-76b5-851b-85467331e236",
+      "planDigest": "a1085b5c40cb39615b729faf8f4a08dfab7d546ffe051205cd35be7e23a17d5f"
+    }
+  ]
+}

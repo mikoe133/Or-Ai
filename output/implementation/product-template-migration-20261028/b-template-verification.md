@@ -20,3 +20,5 @@
 - 日志：`b-api-db-red.log`、`b-api-green.log`、`b-web-{compile-green,green,typecheck,build}.log`，均位于本批 `.local` 目录。
 
 本实现仍为合成技术原型。浏览器/失败恢复、完整回归、实际性能与正式商品范围继续分别验收，尚不关闭05/06。
+
+后续结果：完整回归635项与26项自主CUA已通过，包含B键盘/窄屏、context丢失、模块失败、离线保存/恢复和独立报告。A/B原生项目产物与两个方法快照也实际保存并复跑通过。最终构建数字和仍未测的首帧/FPS/内存范围见[本批验证](verification.md)，上述GREEN数值保留当时检查点口径。

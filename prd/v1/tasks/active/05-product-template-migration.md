@@ -1,6 +1,8 @@
 # 05 · 按各商品规划制作模板并转制存量商品
 
-任务标识：T16.C3。状态：盘点及两份合成规划/合同检查已完成，实际模板/商品转制未完成；正式商品尚未选择。队列：主线。更新：2026-10-28。
+任务标识：T16.C3。状态：A实际制作链与B独立模板/报告及自主CUA通过；正式商品与存量转制待做。队列：主线。更新：2026-10-28。
+
+最新[合成技术批次](../../../../output/implementation/product-template-migration-20261028/verification.md)通过635项、类型/构建及26项CUA；[只归档该子批次](../archive/completed/05-06-synthetic-template-slice-20261028.md)。原商品没有转制，新迁移只用于TEST，05父任务继续未完成。以下准备阶段盘点/预算原记录按当时事实阅读。
 
 ## 目标与现状
 
@@ -42,7 +44,7 @@
 
 ## 完成条件
 
-2026-10-28接续07后的技术准备已完成，见[05/06准备合同](../../PRODUCT-TEMPLATE-PREPARATION.md)及[只读验证](../../../../output/implementation/product-template-migration-20261028/technical-preparation-verification.json)。两份草案分别为允许有界镜头的3D花园参考和固定正交的Three.js 2.5D坐标提案，现有v2合同接受、正式发布门禁都拒绝：A仅引用已注册组合，B仍未注册，全部必需项只在planned阶段。没有执行renderer/导入专业方法/制作成品/写库/发布，也没有性能或CUA验收；步骤2–7继续未完成。下一批可在隔离TEST接A实际制作链，再实现B独立模板，不等待正式选题偏好。
+2026-10-28前期[准备合同](../../PRODUCT-TEMPLATE-PREPARATION.md)与[只读结果](../../../../output/implementation/product-template-migration-20261028/technical-preparation-verification.json)作为原始输入保留。其后A/B实际仓库实现、隔离制作/方法/原生产物/消费者链与26项CUA已通过，详见本页顶部最新批次。原JSON仍为planned，未绑定为正式商品；剩余2–7的正式商品处置、专业方法/媒体和完整性能另行接续，不把本批TEST发布记成真实上线。
 
 所有计划继续使用的商品都已转制或明确保留待决缺口；被遗留的商品不能默认算合规。新模板及配套引用真实，正式内容与真机仍交后续专项验收。
 

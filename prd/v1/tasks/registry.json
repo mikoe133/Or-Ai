@@ -93,7 +93,7 @@
       "file": "active/05-product-template-migration.md",
       "title": "按各商品规划制作模板并转制存量商品",
       "lane": "主线",
-      "status": "盘点及两份合成合同准备完成；实际模板/商品转制未完成",
+      "status": "A实际制作链与B独立模板/报告、26项CUA通过；正式商品与存量转制待做",
       "dependsOn": [
         1,
         3,
@@ -112,7 +112,7 @@
       "file": "active/06-local-experience-acceptance.md",
       "title": "完成 Three.js 商品本地业务与性能验收",
       "lane": "主线",
-      "status": "预算/功能恢复矩阵已准备；实际验收等待05",
+      "status": "A/B合成业务链、构建预算与恢复部分通过；首帧/FPS/内存及完整矩阵待验",
       "dependsOn": [
         5
       ],

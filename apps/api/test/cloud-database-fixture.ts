@@ -1,6 +1,6 @@
 import {execFileSync,execFile} from 'node:child_process';
 import {promisify} from 'node:util';
-import {mkdtemp,writeFile,readFile,rm,mkdir} from 'node:fs/promises';
+import {mkdtemp,writeFile,readFile,rm,mkdir,copyFile} from 'node:fs/promises';
 import {join,resolve} from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';
 import {Pool} from 'pg';
@@ -9,11 +9,11 @@ const execute=promisify(execFile);
 export async function cloudDatabaseFixture(restrictedBootstrap=false){
   const root=resolve(process.cwd(),'../..');await mkdir(join(root,'.local'),{recursive:true});
   const directory=await mkdtemp(join(root,'.local/cloud-database-'));
-  const suffix=randomUUID().slice(0,8),name='orai-cloud-db-'+suffix,image='orai-cloud-db-proof:'+suffix;
+  const suffix=randomUUID().slice(0,8),name='orai-cloud-db-'+suffix;
   const bootstrapPassword='bootstrap-'+randomUUID(),ownerPassword='owner-'+randomUUID(),runtimePassword='runtime-'+randomUUID();
   const docker=(args:string[])=>execFileSync(process.execPath,[join(root,'scripts/docker.mjs'),...args],{cwd:root,encoding:'utf8',timeout:60000,maxBuffer:2*1024*1024,stdio:['ignore','pipe','pipe']}).trim();
   let management:Pool|undefined;
-  const cleanup=async()=>{await management?.end();try{docker(['rm','-fv',name]);}catch{}try{docker(['image','rm',image]);}catch{}await rm(directory,{recursive:true,force:true});};
+  const cleanup=async()=>{await management?.end();try{docker(['rm','-fv',name]);}catch{}await rm(directory,{recursive:true,force:true});};
   try{
     execFileSync('openssl',['req','-x509','-nodes','-newkey','rsa:2048','-keyout',join(directory,'ca.key'),'-out',join(directory,'ca.crt'),'-days','1','-subj','/CN=orai-isolated-proof-ca',
       '-addext','basicConstraints=critical,CA:TRUE','-addext','keyUsage=critical,keyCertSign,cRLSign'],{stdio:'ignore'});
@@ -21,11 +21,16 @@ export async function cloudDatabaseFixture(restrictedBootstrap=false){
     await writeFile(join(directory,'server.ext'),'basicConstraints=critical,CA:FALSE\nkeyUsage=critical,digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=IP:127.0.0.1,DNS:localhost\n');
     execFileSync('openssl',['x509','-req','-in',join(directory,'server.csr'),'-CA',join(directory,'ca.crt'),'-CAkey',join(directory,'ca.key'),'-CAcreateserial','-out',join(directory,'server.crt'),'-days','1','-sha256','-extfile',join(directory,'server.ext')],{stdio:'ignore'});
     const ca=await readFile(join(directory,'ca.crt'));
-    await writeFile(join(directory,'Dockerfile'),'FROM postgres:17.10-bookworm\nCOPY --chown=postgres:postgres server.key server.crt /run/pg-tls/\nRUN chmod 600 /run/pg-tls/server.key\n');
-    docker(['build','-t',image,directory]);
-    docker(['run','-d','--name',name,'--memory','256m','--cpus','1','--pids-limit','128','--security-opt','no-new-privileges:true',
-      '-e','POSTGRES_USER='+(restrictedBootstrap?'fixture_admin':'postgres'),'-e','POSTGRES_PASSWORD='+bootstrapPassword,'-e','POSTGRES_DB=postgres','-p','127.0.0.1::5432',image,
-      'postgres','-c','ssl=on','-c','ssl_cert_file=/run/pg-tls/server.crt','-c','ssl_key_file=/run/pg-tls/server.key']);
+    // Reuse the installed official image: TLS fixtures do not need a new image build.
+    await mkdir(join(directory,'pg-tls'));
+    await copyFile(join(directory,'server.key'),join(directory,'pg-tls/server.key'));
+    await copyFile(join(directory,'server.crt'),join(directory,'pg-tls/server.crt'));
+    docker(['create','--pull=never','--name',name,'--memory','256m','--cpus','1','--pids-limit','128','--security-opt','no-new-privileges:true',
+      '-e','POSTGRES_USER='+(restrictedBootstrap?'fixture_admin':'postgres'),'-e','POSTGRES_PASSWORD='+bootstrapPassword,'-e','POSTGRES_DB=postgres','-p','127.0.0.1::5432',
+      '--entrypoint','/bin/sh','postgres:17.10-bookworm','-c',
+      'chown postgres:postgres /run/pg-tls/server.key /run/pg-tls/server.crt && chmod 600 /run/pg-tls/server.key && exec docker-entrypoint.sh postgres -c ssl=on -c ssl_cert_file=/run/pg-tls/server.crt -c ssl_key_file=/run/pg-tls/server.key']);
+    docker(['cp',join(directory,'pg-tls'),name+':/run/pg-tls']);
+    docker(['start',name]);
     const ports=JSON.parse(docker(['inspect',name,'--format','{{json .NetworkSettings.Ports}}'])),port=Number(ports['5432/tcp'][0].HostPort);
     management=new Pool({host:'127.0.0.1',port,user:restrictedBootstrap?'fixture_admin':'postgres',password:bootstrapPassword,database:'postgres',ssl:{ca,rejectUnauthorized:true},max:1,connectionTimeoutMillis:1000});
     let ready=false;for(let count=0;count<40;count++){try{await management.query('SELECT 1');ready=true;break;}catch{}await new Promise<void>(resolve=>setTimeout(resolve,100));}

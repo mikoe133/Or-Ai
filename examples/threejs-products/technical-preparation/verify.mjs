@@ -17,7 +17,9 @@ for(const name of ['garden-observation.json','relationship-atlas.json']){
   assert.ok(Object.values(draft.productPlan.decisions).every(decision=>decision.status==='planned'&&decision.evidence.length===0));
   assert.equal(draft.productPlan.implementation,'threejs');assert.equal(new Set(draft.modules.flatMap(module=>module.methodPurposes)).size,7);
   const scene=draft.modules.find(module=>module.moduleKey==='scene');assert.ok(scene?.target.runtime);
-  const registered=!!registeredPlanRuntime(scene);assert.equal(registered,fixture.registeredPairReference);
+  // The JSON retains the preparation snapshot; its decisions remain planned
+  // even when a later repository implementation registers the referenced pair.
+  const registered=!!registeredPlanRuntime(scene);
   // Synthetic IDs are used only in this in-memory parser check, never saved.
   const plan=ProductionPlanDocumentSchema.parse({...draft,creativeProfileRevisionId:'00000000-0000-4000-8000-000000000051'});
   const manifest=ExperienceManifestSchema.parse({schemaVersion:1,
@@ -27,9 +29,10 @@ for(const name of ['garden-observation.json','relationship-atlas.json']){
     scenes:[{sceneId:'technical-scene',questionId:'technical-question',checkpointId:'technical-checkpoint',choices:[{objectId:'technical-object-a',optionId:'technical-option-a'},{objectId:'technical-object-b',optionId:'technical-option-b'}]}],resources:[]});
   assert.equal(supportsExperience(manifest),registered);
   const issues=threejsPublicationIssues(plan,scene,manifest);assert.ok(issues.length>0,'a complete planning document must not certify an unimplemented delivery');
-  results.push({file:name,planningContractValid:true,dimension:draft.productPlan.visualDimension,registeredPairReference:registered,
+  results.push({file:name,planningContractValid:true,dimension:draft.productPlan.visualDimension,
+    registeredAtPreparation:fixture.registeredPairReference,registeredPairReference:registered,
     requiredFeaturesStage:'planned',publicationBlocked:true,publicationIssueCount:issues.length,actualRuntimeImplemented:false,performanceMeasured:false});
 }
-assert.equal(results.filter(item=>item.registeredPairReference).length,1);
+assert.equal(results.filter(item=>item.registeredPairReference).length,2);
 console.log(JSON.stringify({scope:'synthetic_contract_preparation_only',results,actualProductsSelected:0,databaseWrites:0,
   actualDeliverablesCreated:0,newRenderersRegistered:0,browserOrDeviceAcceptancePerformed:false,cloudCalls:0},null,2));

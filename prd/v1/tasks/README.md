@@ -1,6 +1,6 @@
 # 当前任务：执行顺序与归档
 
-更新：2026-10-28。01–04及[07云适配](archive/completed/07-cloud-adapters.md)已完成各自本地范围并归档；**当前接续[05商品与模板转制](active/05-product-template-migration.md)**及06可自主完成的非正式规划与技术验证。07通过626项、类型/构建、35项离线检查、12项初始化专项及最新Linux镜像/恢复证明；真实部署仍属08。新增[17全站前端设计改造](active/17-frontend-design-refinement.md)：原Skill ZIP已接收核验、项目安装并完整读取，设计标准已规划，页面尚未改造，17独立排期。旧托管CI失败断言仍待权限可读日志，见[调查](../../../output/implementation/ci-investigation-20261028.md)。本地技术完成不等于云端或商业上线。
+更新：2026-10-28。01–04及[07云适配](archive/completed/07-cloud-adapters.md)已完成各自本地范围并归档；**当前接续[05商品与模板转制](active/05-product-template-migration.md)**及06剩余本地验收；A/B合成技术子批次已通过635项与26项自主CUA。07通过626项、类型/构建、35项离线检查、12项初始化专项及最新Linux镜像/恢复证明；真实部署仍属08。新增[17全站前端设计改造](active/17-frontend-design-refinement.md)：原Skill ZIP已接收核验、项目安装并完整读取，设计标准已规划，页面尚未改造，17独立排期。旧托管CI失败断言仍待权限可读日志，见[调查](../../../output/implementation/ci-investigation-20261028.md)。本地技术完成不等于云端或商业上线。
 
 实际待办集中在 `active/`。原完整完成任务在 `archive/completed/`；包含未完成项的旧文件与旧总表在 `archive/history/2026-10-26/`，不认定为完成。根目录的 `Txx-*.md` 仅兼容旧链接，不是另一套待办。新旧编号逐项见 [TASK-MAP.md](TASK-MAP.md)，状态数据见 [registry.json](registry.json)；其中 legacyCoverage 的 disposition/carryover 明确记录被替代方向及剩余验收承接。
 
@@ -16,8 +16,8 @@
 
 | 顺序 | Task | 稳定标识 | 当前状态 | 硬前置（顺序号） |
 | --- | --- | --- | --- | --- |
-| 05 | [按各商品规划制作模板并转制存量商品](active/05-product-template-migration.md) | T16.C3 | 盘点/两份合成合同已准备，实际转制待做 | 01、03、04（均已完成） |
-| 06 | [完成 Three.js 商品本地业务与性能验收](active/06-local-experience-acceptance.md) | T16.C4-L | 预算/恢复矩阵已准备，实际验收待05 | 05 |
+| 05 | [按各商品规划制作模板并转制存量商品](active/05-product-template-migration.md) | T16.C3 | A制作链、B独立模板/报告和CUA通过；正式转制待做 | 01、03、04（均已完成） |
+| 06 | [完成 Three.js 商品本地业务与性能验收](active/06-local-experience-acceptance.md) | T16.C4-L | 合成业务链/构建预算与恢复部分通过；首帧/FPS/内存待验 | 05 |
 | 08 | [预发布部署与真实账户、邮件、存储验收](active/08-cloud-auth-validation.md) | T09-V / T06-C | 07已完成，真实预发布待执行 | 07（已归档） |
 | 09 | [实现并验收远程 MCP 连接](active/09-remote-mcp.md) | T14-C | 等待云条件 | 08 |
 | 10 | [公网真机、内置浏览器与平台最终验收](active/10-public-device-acceptance.md) | T10-V / T16.C4-D | 等待前置与设备 | 06、08、17 |
@@ -31,7 +31,7 @@
 
 01–04及07已归档；当前05–06商品本地实现→17前端改造→10最终真机，08独立持有真实云端；11–12完成正式商品与首发。17是新需求的稳定编号，排期在05/06之后、10之前；Skill接收/完整阅读已完成，审计准备可提前，不重新编号旧任务。**硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
 
-05/06已接续完成[两种合成规划及预算/恢复矩阵](../PRODUCT-TEMPLATE-PREPARATION.md)，只读合同验证通过，实际renderer/制作链/转制/性能/CUA仍未执行，不归档05/06、不选择正式商品。
+05/06的[原准备合同](../PRODUCT-TEMPLATE-PREPARATION.md)已接续为[实际合成技术批次](../../../output/implementation/product-template-migration-20261028/verification.md)：A制作链、B独立模板/报告/注册、635项及26项自主CUA通过；仅[归档该子批次](archive/completed/05-06-synthetic-template-slice-20261028.md)。正式转制与完整性能仍由active的05/06持有，不将合成原型升格正式商品。
 
 09 只在启用远程 MCP 时执行，依赖08，不是普通商城 M5/M6 的硬前置。13–15 是外部日更制作分支：13/14 暂停，15 等真实手动全链后交接配置，仍不启用日程。16 按具体商品需要插入05之前；首款可以使用已有明确单选协议，不强制开发小游戏。
 

@@ -50,7 +50,7 @@ export default function RelationshipAtlas(props: ChoiceProps & {
         {!ready && <p className="atlas-loading" role="status">正在展开观察台…<small>文字回答已经可以使用。</small></p>}
       </div>
       <figcaption><span>一张观察台，几种不同的回答。</span><span>固定视角 / 选择后确认</span></figcaption>
-      <p className="atlas-map-note">编号对应右侧回答；所在位置不代表分数或关系好坏。</p>
+      <p className="atlas-map-note">编号对应文字回答；所在位置不代表分数或关系好坏。</p>
       {images.map(image => <img className="atlas-reference" src={image.url} alt={image.label} key={image.url} onError={unavailable} />)}
     </figure><fieldset className="atlas-answers" disabled={disabled} aria-describedby={hint}>
       <legend>哪一个更接近此刻的你？</legend><p id={hint}>选择一个回答，再确认记下。这里没有标准答案。</p>
