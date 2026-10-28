@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url';
 import { gzipSync } from 'node:zlib';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
-import { reflectionGardenGraphics } from '@orai/contracts/experience';
+import { reflectionGardenGraphics, relationshipAtlasGraphics } from '@orai/contracts/experience';
 
 function experienceBudgets(): Plugin {
   return {
@@ -23,21 +23,27 @@ function experienceBudgets(): Plugin {
       const hasThree = (ids: string[]) => ids.some(id => /\/node_modules\/(?:\.pnpm\/three@[^/]+\/node_modules\/)?three\//.test(id));
       if (chunks.some(item => eager.has(item.fileName) && hasThree(item.moduleIds)))
         this.error('Three.js must remain outside the application entry static imports');
-      const renderer = chunks.find(item => item.moduleIds.some(id => id.replaceAll('\\', '/').endsWith('/src/experience/garden-renderer.ts')));
-      if (!renderer) this.error('The registered garden renderer is missing from the build');
-      if (eager.has(renderer.fileName)) this.error('The garden renderer must be loaded dynamically');
-      // Count the entire renderer static import graph, including shared dependencies.
-      const files = [...closure([renderer.fileName])].map(fileName => {
-        const item = bundle[fileName];
-        if (!item || item.type !== 'chunk') throw new Error('Missing renderer chunk');
-        return { fileName, rawBytes: Buffer.byteLength(item.code), gzipBytes: gzipSync(item.code).byteLength };
+      const results = [
+        { key: 'reflection-garden@1', source: 'garden-renderer.ts', budget: reflectionGardenGraphics },
+        { key: 'relationship-atlas-prototype@1', source: 'atlas-renderer.ts', budget: relationshipAtlasGraphics },
+      ].map(spec => {
+        const renderer = chunks.find(item => item.moduleIds.some(id => id.replaceAll('\\', '/').endsWith('/src/experience/' + spec.source)));
+        if (!renderer) this.error(`Registered renderer ${spec.key} is missing from the build`);
+        if (eager.has(renderer.fileName)) this.error(`Renderer ${spec.key} must be loaded dynamically`);
+        // Each budget counts the full static import graph, including shared Three.js.
+        const files = [...closure([renderer.fileName])].map(fileName => {
+          const item = bundle[fileName];
+          if (!item || item.type !== 'chunk') throw new Error('Missing renderer chunk');
+          return { fileName, rawBytes: Buffer.byteLength(item.code), gzipBytes: gzipSync(item.code).byteLength };
+        });
+        const gzipBytes = files.reduce((sum, file) => sum + file.gzipBytes, 0);
+        if (gzipBytes > spec.budget.maxRendererGzipBytes)
+          this.error(`Renderer ${spec.key} gzip ${gzipBytes} exceeds budget ${spec.budget.maxRendererGzipBytes}`);
+        return { renderer: spec.key, entryStaticImportsExcludeThree: true, rendererIsDynamic: true,
+          gzipBytes, maxGzipBytes: spec.budget.maxRendererGzipBytes, files };
       });
-      const gzipBytes = files.reduce((sum, file) => sum + file.gzipBytes, 0);
-      if (gzipBytes > reflectionGardenGraphics.maxRendererGzipBytes)
-        this.error(`Garden renderer gzip ${gzipBytes} exceeds budget ${reflectionGardenGraphics.maxRendererGzipBytes}`);
       this.emitFile({ type: 'asset', fileName: 'experience-budget.json', source: JSON.stringify({
-        renderer: 'reflection-garden@1', entryStaticImportsExcludeThree: true,
-        rendererIsDynamic: true, gzipBytes, maxGzipBytes: reflectionGardenGraphics.maxRendererGzipBytes, files,
+        ...results[0], templates: results,
       }, null, 2) + '\n' });
     },
   };

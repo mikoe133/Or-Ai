@@ -23,7 +23,7 @@ test('atlas has a fixed orthographic camera, bounded geometry and stable 2–4 s
       for (const aspect of [.55, 1, 1.5, 2.4]) {
         atlas.resize(aspect);
         assert.deepEqual(atlas.camera.position, position);
-        assert.deepEqual(atlas.camera.quaternion, quaternion);
+        assert.deepEqual(atlas.camera.quaternion.toArray(), quaternion.toArray());
         for (const [index, target] of atlas.targets.entries()) {
           const point = target.position.clone().project(atlas.camera);
           assert.equal(atlas.pick((point.x + 1) * 400, (1 - point.y) * 300, 800, 600), index);

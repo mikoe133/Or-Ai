@@ -14,14 +14,14 @@ test('a non-superuser database owner with CREATEROLE can bootstrap without assum
   try{
     const {env}=await isolated.newDatabase();connections=await isolated.connections(parseCloudDatabaseTarget(env));
     assert.equal((await connections.bootstrap.query("SELECT rolsuper FROM pg_roles WHERE rolname=current_user")).rows[0].rolsuper,false);
-    const result=await applyCloudDatabasePlan(env,await createCloudDatabasePlan(env,'bootstrap'),connections,()=>{});assert.equal(result.migrations,29);
+    const result=await applyCloudDatabasePlan(env,await createCloudDatabasePlan(env,'bootstrap'),connections,()=>{});assert.equal(result.migrations,30);
     assert.equal((await connections.runtime.query('SELECT count(*)::int AS count FROM orai.users')).rows[0].count,0);
   }finally{await connections?.close();await isolated.cleanup();}
 });
 
 test('cloud maintenance preview pins project, TLS CA and all immutable migrations without making a database connection',async()=>{
   const env=fixture.envFor('postgres'),plan=await createCloudDatabasePlan(env,'bootstrap');
-  assert.equal(plan.schemaVersion,1);assert.equal(plan.migrations.length,29);assert.equal(plan.target.database,'postgres');
+  assert.equal(plan.schemaVersion,1);assert.equal(plan.migrations.length,30);assert.equal(plan.target.database,'postgres');
   for(const value of [new URL(env.DATABASE_URL).password,new URL(env.MIGRATION_DATABASE_URL).password,new URL(env.CLOUD_DATABASE_BOOTSTRAP_URL).password])
     assert.equal(JSON.stringify(plan).includes(value),false);
   const input=join(fixture.directory,'maintenance.env'),output=join(fixture.directory,'preview.json');
@@ -71,7 +71,7 @@ test('a stop after official migrations resumes grants without changing the appli
   try{
     await assert.rejects(applyCloudDatabasePlan(env,plan,connections,phase=>{if(phase==='migrations_applied')throw Error('Synthetic process stop');}));
     const before=(await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows;
-    assert.equal(before.length,29);assert.equal((await connections.owner.query('SELECT count(*)::int AS count FROM orai.environment_marker')).rows[0].count,0);
+    assert.equal(before.length,30);assert.equal((await connections.owner.query('SELECT count(*)::int AS count FROM orai.environment_marker')).rows[0].count,0);
     const result=await applyCloudDatabasePlan(env,plan,connections,()=>{});assert.equal(result.environment,'PRODUCTION');
     assert.deepEqual((await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows,before);
   }finally{await connections.close();}
@@ -124,7 +124,7 @@ test('real TLS initialization runs the original Prisma migrations, restricts run
     await connections.bootstrap.query('CREATE TABLE public.provider_sentinel (id int PRIMARY KEY)');await connections.bootstrap.query('INSERT INTO public.provider_sentinel VALUES (7)');
     const plan=await createCloudDatabasePlan(env,'bootstrap'),events:string[]=[];
     const result=await applyCloudDatabasePlan(env,plan,connections,(phase:string)=>{events.push(phase);});
-    assert.equal(result.migrations,29);assert.equal(result.environment,'PRODUCTION');assert.equal(result.seeded,false);assert.equal(result.administratorCreated,false);
+    assert.equal(result.migrations,30);assert.equal(result.environment,'PRODUCTION');assert.equal(result.seeded,false);assert.equal(result.administratorCreated,false);
     assert.equal((await connections.bootstrap.query('SELECT id FROM public.provider_sentinel')).rows[0].id,7);
     assert.equal((await connections.runtime.query('SELECT current_user AS name')).rows[0].name,'orai_app');
     assert.equal((await connections.runtime.query('SELECT environment,database_name FROM orai.environment_marker WHERE id=1')).rows[0].database_name,database);

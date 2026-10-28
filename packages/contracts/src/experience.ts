@@ -72,6 +72,10 @@ export const reflectionGardenGraphics = {
   backend: 'webgl2', assets: 'bundled_geometry', maxPixelRatio: 1.5, maxCanvasPixels: 1_500_000,
   maxTriangles: 14000, maxDrawCalls: 48, maxRendererGzipBytes: 240 * 1024,
 } as const;
+export const relationshipAtlasGraphics = {
+  backend: 'webgl2', assets: 'bundled_geometry', maxPixelRatio: 1.25, maxCanvasPixels: 1_000_000,
+  maxTriangles: 8000, maxDrawCalls: 32, maxRendererGzipBytes: 220 * 1024,
+} as const;
 export const registeredExperiences = [
   { key: 'dom-choice', version: 1, label: 'DOM 单选 · v1', reportKey: 'legacy-text', reportVersion: 1, reportLabel: '兼容图文报告 · v1',
     ...singleChoiceCapability, presentation: 'dom',
@@ -82,6 +86,10 @@ export const registeredExperiences = [
   { key: 'reflection-garden', version: 1, label: '静心花园 · 3D v1', reportKey: 'garden-notes', reportVersion: 1, reportLabel: '花园手记 · v1',
     ...singleChoiceCapability, authoringForms: ['web', '3d'], presentation: 'webgl_3d', graphics: reflectionGardenGraphics,
     limits: { maxOptions: 4, maxResources: 2, maxResourceBytes: 512 * 1024, maxTotalResourceBytes: 1024 * 1024 } },
+  { key: 'relationship-atlas-prototype', version: 1, label: '关系观察台 · Three.js 2.5D 技术原型 v1',
+    reportKey: 'atlas-notes-prototype', reportVersion: 1, reportLabel: '关系观察记录 · 技术原型 v1',
+    ...singleChoiceCapability, authoringForms: ['web', '3d'], presentation: 'webgl_3d', graphics: relationshipAtlasGraphics,
+    limits: { maxOptions: 4, maxResources: 2, maxResourceBytes: 256 * 1024, maxTotalResourceBytes: 512 * 1024 } },
 ] as const;
 
 export function experienceTemplate(pair: { renderer: { key: string; version: number }; report: { renderer: { key: string; version: number } } }) {

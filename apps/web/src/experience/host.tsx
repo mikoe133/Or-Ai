@@ -1,6 +1,6 @@
 import { Component, createContext, lazy, Suspense, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import type { ExperienceRelease } from '@orai/contracts/experience';
+import { experienceTemplate, type ExperienceRelease } from '@orai/contracts/experience';
 import type { ChoiceProps } from './types.js';
 import { SimpleChoice } from './simple-choice.js';
 import { resourceImage } from './model.js';
@@ -9,7 +9,9 @@ import './host.css';
 const DomChoice = lazy(() => import('./dom-choice.js'));
 const QuietRoom = lazy(() => import('./quiet-room.js'));
 const ReflectionGarden = lazy(() => import('./reflection-garden.js'));
-const templates = { 'dom-choice@1': DomChoice, 'quiet-room@1': QuietRoom, 'reflection-garden@1': ReflectionGarden };
+const RelationshipAtlas = lazy(() => import('./relationship-atlas.js'));
+const templates = { 'dom-choice@1': DomChoice, 'quiet-room@1': QuietRoom, 'reflection-garden@1': ReflectionGarden,
+  'relationship-atlas-prototype@1': RelationshipAtlas };
 const Context = createContext<{ release?: ExperienceRelease; simple: boolean; images: { url: string; label: string }[]; unavailable: () => void } | null>(null);
 class RendererBoundary extends Component<{ children: ReactNode; fallback: ReactNode; unavailable: () => void }, { failed: boolean }> {
   state = { failed: false };
@@ -42,7 +44,8 @@ export function ExperienceHost({ release, attemptId, children }: { release?: Exp
   }, [release?.id, attemptId, unavailable, simple]);
   return <Context.Provider value={{ release, simple, images, unavailable }}>
     <div style={{ display: 'contents' }} data-experience-release={release?.id ?? 'legacy'} data-experience-theme={release?.manifest.theme.key ?? 'legacy'} data-experience-renderer={release?`${release.manifest.renderer.key}@${release.manifest.renderer.version}`:'dom-choice@1'}>
-      {simple ? <><p role="status">已切换到简化界面，已保存进度保留。</p>{release?.manifest.renderer.key==='reflection-garden'&&<button type="button" onClick={()=>setSimple(false)}>重试花园画面</button>}</> : <button type="button" onClick={() => setSimple(true)}>使用简化界面</button>}
+      {simple ? <><p role="status">已切换到简化界面，已保存进度保留。</p>{release && experienceTemplate(release.manifest)?.presentation === 'webgl_3d' &&
+        <button type="button" onClick={()=>setSimple(false)}>{release.manifest.renderer.key === 'reflection-garden' ? '重试花园画面' : '重试观察台画面'}</button>}</> : <button type="button" onClick={() => setSimple(true)}>使用简化界面</button>}
       {children}
     </div>
   </Context.Provider>;
