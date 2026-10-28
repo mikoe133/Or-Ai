@@ -1,6 +1,6 @@
 # 当前任务：执行顺序与归档
 
-更新：2026-10-28。01–04及[07云适配](archive/completed/07-cloud-adapters.md)已完成各自本地范围并归档；**当前接续[05商品与模板转制](active/05-product-template-migration.md)**及06剩余本地验收；A/B合成技术子批次已通过635项与26项自主CUA。07通过626项、类型/构建、35项离线检查、12项初始化专项及最新Linux镜像/恢复证明；真实部署仍属08。新增[17全站前端设计改造](active/17-frontend-design-refinement.md)：原Skill ZIP已接收核验、项目安装并完整读取，设计标准已规划，页面尚未改造，17独立排期。旧托管CI失败断言仍待权限可读日志，见[调查](../../../output/implementation/ci-investigation-20261028.md)。本地技术完成不等于云端或商业上线。
+更新：2026-10-28。01–04及[07云适配](archive/completed/07-cloud-adapters.md)已完成各自本地范围并归档；**当前接续[05商品与模板转制](active/05-product-template-migration.md)**及06剩余本地验收；A/B合成技术子批次已通过635项与26项自主CUA。07通过626项、类型/构建、35项离线检查、12项初始化专项及最新Linux镜像/恢复证明；真实部署仍属08。新增[17全站前端设计改造](active/17-frontend-design-refinement.md)：原Skill ZIP已接收核验、项目安装并完整读取，设计标准、24张静态基线/首轮问题及根加载小修已有证据，主体改造未完成，17独立排期。旧托管CI失败断言仍待权限可读日志，见[调查](../../../output/implementation/ci-investigation-20261028.md)。本地技术完成不等于云端或商业上线。
 
 实际待办集中在 `active/`。原完整完成任务在 `archive/completed/`；包含未完成项的旧文件与旧总表在 `archive/history/2026-10-26/`，不认定为完成。根目录的 `Txx-*.md` 仅兼容旧链接，不是另一套待办。新旧编号逐项见 [TASK-MAP.md](TASK-MAP.md)，状态数据见 [registry.json](registry.json)；其中 legacyCoverage 的 disposition/carryover 明确记录被替代方向及剩余验收承接。
 
@@ -27,13 +27,15 @@
 | 14 | [真实 Codex/MCP 手动制作与退回重做演练](active/14-manual-production-rehearsal.md) | T14.W3 | 暂停：实际内容生成未恢复 | 04、05、06 |
 | 15 | [交付日更生产配置与恢复说明](active/15-external-schedule-handoff.md) | T14.W4 | 等待手动全链与运行参数 | 14 |
 | 16 | [按商品需要选择并实现首个新玩法](active/16-new-interaction-engine.md) | T17 | 待玩法选型 | 01、02、03 |
-| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | Skill与源码路由/组件/状态清单已准备；截图审计及改造未执行 | 完整改造依赖05、06；现状审计可先准备 |
+| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | 24张静态基线/首轮问题及根加载修复通过；完整审计/主体改造待做 | 完整改造依赖05、06；现状审计可先准备 |
 
 01–04及07已归档；当前05–06商品本地实现→17前端改造→10最终真机，08独立持有真实云端；11–12完成正式商品与首发。17是新需求的稳定编号，排期在05/06之后、10之前；Skill接收/完整阅读已完成，审计准备可提前，不重新编号旧任务。**硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
 
 05/06的[原准备合同](../PRODUCT-TEMPLATE-PREPARATION.md)已接续为[实际合成技术批次](../../../output/implementation/product-template-migration-20261028/verification.md)：A制作链、B独立模板/报告/注册、635项及26项自主CUA通过；仅[归档该子批次](archive/completed/05-06-synthetic-template-slice-20261028.md)。正式转制与完整性能仍由active的05/06持有，不将合成原型升格正式商品。
 
 后续[06实测](../../../output/implementation/local-experience-performance-20261028/verification.md)通过636项/类型/构建；已验证的36首帧、24活动、40卸载资源检查及22恢复仅[归档技术子范围](archive/completed/06-first-frame-activity-recovery-slice-20261028.md)。A自然heap/全局Nodes有增长、强制GC及真实hidden条件未具备，06不整体归档。17已独立完成[源码盘点准备](../../../output/implementation/t18-frontend-audit-preparation-20261028/README.md)，没有开始整站改造。
+
+再续[06内存对照](../../../output/implementation/local-experience-memory-audit-20261028/README.md)完成220次有界装卸，A旧canvas保留仍复现，Runtime.queryObjects可用但完整保留路径未取得，06内存待办保持。[17页面基线/根加载修复](../../../output/implementation/t18-frontend-baseline-20261028/verification.md)完成24张静态基线、五项首轮问题及三个视口加载GREEN/107项回归；仅[归档根加载子项](archive/completed/17-root-loading-flash-slice-20261028.md)，全站主体改造和授权后台完整审计未完成。
 
 09 只在启用远程 MCP 时执行，依赖08，不是普通商城 M5/M6 的硬前置。13–15 是外部日更制作分支：13/14 暂停，15 等真实手动全链后交接配置，仍不启用日程。16 按具体商品需要插入05之前；首款可以使用已有明确单选协议，不强制开发小游戏。
 

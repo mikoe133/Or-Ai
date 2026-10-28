@@ -6,6 +6,8 @@
 
 后续[本地实测批次](../../../../output/implementation/local-experience-performance-20261028/verification.md)：修复公共静态gzip和参考图重试，最终36首帧≤3000ms、24活动片段≥30fps、40装卸资源/静默检查及22恢复通过，完整636项/类型/构建通过。A自然堆末5次中位数增5,636,088 B且全局Nodes仍增长；强制GC接口缺失，不能关闭内存。IAB第二标签未产生hidden，真实隐藏/返回仍待验。原635项和旧原始文件保留原时间点事实。
 
+再续[内存对照](../../../../output/implementation/local-experience-memory-audit-20261028/README.md)：160次探针/AX交叉对照＋40次直接renderer＋20次清尺寸假设。A旧canvas在无探针/无逐轮AX及直接renderer时仍保留，B直接组回收；页面监听器和附着节点稳定。Runtime.queryObjects新确认可用，调试组均释放；HeapProfiler完整快照仍不可用，未取得GC根保留链，内存不关闭，也不再把“原collectGarbage不可用”泛化为所有堆查询都不可用。原批次数据/方法不追写。
+
 ## 目标与现状
 
 T16-B 已有浏览器样例和隔离 API 证据，但模板扩展和新政策会改变完整制作链。此任务只关闭新增商品的本地功能/预算部分；真实手机与公网验收由任务10完成，不能把整个 T16.C4 或 T16.5–.8 提前关闭。

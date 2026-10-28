@@ -2,7 +2,7 @@
 
 更新：2026-10-28。已按全商品 Three.js 决策重新编排，并同步已有云资源事实；旧执行路线移入[历史归档](tasks/archive/history/2026-10-26/ROADMAP-before-replan.md)。本文件解释优先级；**[当前任务索引](tasks/README.md)是完整执行顺序与状态的唯一入口**，每项细节在 active 中，不再混入已完成任务。
 
-当前[05商品与模板转制](tasks/active/05-product-template-migration.md)及06合成技术准备。01–04和[07云适配本地范围](tasks/archive/completed/07-cloud-adapters.md)已归档；04追加四份DRAFT，审核/启用和商品绑定另行执行。新增17是独立全站设计任务，首选Skill原包已正常接收、项目保存、完整阅读并校验，设计标准已登记，前端改造未执行，不扩大07范围。旧托管CI run40524842978具体断言因403权限待取，见[调查](../../output/implementation/ci-investigation-20261028.md)，不阻塞独立可做任务。
+当前[05商品与模板转制](tasks/active/05-product-template-migration.md)及06合成技术准备。01–04和[07云适配本地范围](tasks/archive/completed/07-cloud-adapters.md)已归档；04追加四份DRAFT，审核/启用和商品绑定另行执行。新增17是独立全站设计任务，首选Skill原包已正常接收、项目保存、完整阅读并校验，设计标准已登记；后续24张静态基线/首轮问题及根加载小修已有证据，主体改造未完成，不扩大07范围。旧托管CI run40524842978具体断言因403权限待取，见[调查](../../output/implementation/ci-investigation-20261028.md)，不阻塞独立可做任务。
 
 ## 推荐执行顺序
 
