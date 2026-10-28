@@ -1,0 +1,86 @@
+name: meetmyworld
+services:
+  api:
+    image: ${ORAI_API_IMAGE:?Set the exact verified API image}
+    env_file:
+      - path: ${ORAI_API_ENV_FILE:?Use the separately generated runtime file}
+        format: raw
+    environment:
+      NODE_ENV: production
+      APP_ENV: production
+      API_HOST: 0.0.0.0
+      API_PORT: 4100
+      ASSET_STORAGE_DRIVER: r2
+      ASSET_SPOOL_DIRECTORY: /tmp/orai-objects
+      ASSET_SPOOL_MAX_BYTES: 268435456
+      ASSET_SPOOL_MAX_FILES: 2
+      TRUST_PROXY_CIDRS: 172.30.84.2/32
+      NODE_EXTRA_CA_CERTS: /run/ca/supabase.pem
+      NODE_OPTIONS: --max-old-space-size=768
+    volumes:
+      - type: bind
+        source: ${ORAI_DB_CA_FILE:?Set the verified public Supabase CA file}
+        target: /run/ca/supabase.pem
+        read_only: true
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=320m,mode=0700,uid=1000,gid=1000
+    user: node
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: 2
+    mem_limit: 1536m
+    pids_limit: 256
+    restart: unless-stopped
+    stop_grace_period: 45s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+    networks:
+      app:
+        ipv4_address: 172.30.84.3
+  web:
+    image: ${ORAI_WEB_IMAGE:?Set the exact verified frontend image}
+    ports:
+      - 80:8080
+      - 443:8443
+    volumes:
+      - type: bind
+        source: ${ORAI_NGINX_CONFIG_FILE:?Generate and verify the canonical Nginx configuration}
+        target: /run/config/nginx.conf
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${ORAI_TLS_DIRECTORY:?Set the protected origin certificate directory}
+        target: /run/tls
+        read_only: true
+        bind:
+          create_host_path: false
+    user: 101:101
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=0700,uid=101,gid=101
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    cpus: .5
+    mem_limit: 128m
+    pids_limit: 64
+    restart: unless-stopped
+    stop_grace_period: 30s
+    depends_on:
+      api:
+        condition: service_healthy
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+    networks:
+      app:
+        ipv4_address: 172.30.84.2
+networks:
+  app:
+    ipam:
+      config:
+        - subnet: 172.30.84.0/24
