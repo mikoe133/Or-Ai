@@ -14,7 +14,7 @@ const localHost = value => {
   return !host.includes('.') || /(^|\.)(localhost|local|internal)$/.test(host) || isIP(host.replace(/^\[|\]$/g, '')) !== 0;
 };
 const parseUrl = value => { try { return new URL(value); } catch { return null; } };
-const publicOrigin = value => {
+export const publicOrigin = value => {
   const url = parseUrl(value);
   return url && url.protocol === 'https:' && !url.username && !url.password && url.pathname === '/' &&
     !url.search && !url.hash && !url.port && !localHost(url.hostname) ? url.origin : null;

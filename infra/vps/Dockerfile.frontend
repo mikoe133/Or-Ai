@@ -1,0 +1,32 @@
+# syntax=docker/dockerfile:1.7
+FROM --platform=$BUILDPLATFORM node:24.21.0-bookworm-slim AS build
+WORKDIR /workspace
+RUN npm install --global pnpm@10.33.2
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY apps/api/package.json apps/api/package.json
+COPY apps/web/package.json apps/web/package.json
+COPY packages/contracts/package.json packages/contracts/package.json
+RUN pnpm install --frozen-lockfile
+COPY tsconfig.base.json ./
+COPY packages/contracts packages/contracts
+COPY apps/web apps/web
+COPY examples/social-battery-room/public.json examples/social-battery-room/public.json
+COPY scripts/frontend-build-config.mjs scripts/cloud-preflight-lib.mjs scripts/
+# These are public build inputs. No API, R2, SMTP or migration credentials enter this stage.
+ARG VITE_APP_PUBLIC_ORIGIN
+ARG VITE_SUPABASE_URL
+ARG VITE_SUPABASE_PUBLISHABLE_KEY
+ENV VITE_APP_PUBLIC_ORIGIN=$VITE_APP_PUBLIC_ORIGIN VITE_SUPABASE_URL=$VITE_SUPABASE_URL VITE_SUPABASE_PUBLISHABLE_KEY=$VITE_SUPABASE_PUBLISHABLE_KEY
+RUN pnpm --filter @orai/contracts build \
+    && pnpm --filter @orai/web exec tsc -p tsconfig.test.json \
+    && node scripts/frontend-build-config.mjs \
+    && pnpm --filter @orai/web build
+
+FROM nginx:1.28.3-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236 AS runtime
+COPY --from=build --chown=101:101 /workspace/apps/web/dist /usr/share/nginx/html
+USER 101:101
+EXPOSE 8080 8443
+HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -q -O - http://127.0.0.1:8081/_health/live || exit 1
+# Missing rendered configuration/certificates fails closed. They are mounted separately at deployment.
+ENTRYPOINT ["nginx", "-c", "/run/config/nginx.conf", "-g", "daemon off;"]
