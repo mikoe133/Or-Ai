@@ -20,7 +20,7 @@ const bytes = Buffer.from("controlled local reference fixture\n");
 const checksum = createHash("sha256").update(bytes).digest("hex");
 const capabilities = ["connection_get", "upload_prepare", "upload_status", "upload_file", "upload_complete"];
 
-async function harness(t, domain = "assessment", mode = "legacy") {
+async function harness(t, domain = "assessment", mode = "legacy", extraEnv = {}) {
   const folder = await realpath(await mkdtemp(join(tmpdir(), "orai-mcp-test-")));
   const root = join(folder, "allowed");
   await mkdir(root);
@@ -36,7 +36,7 @@ async function harness(t, domain = "assessment", mode = "legacy") {
   };
   const uploads = new Map();
   const requests = [];
-  const state = { error: null, errorCode: null, redirect: null, echoToken: false, toolReplies: {} };
+  const state = { error: null, errorCode: null, redirect: null, echoToken: false, toolReplies: {}, delayUploadMs: 0 };
   const api = createServer(async (req, res) => {
     try {
       requests.push({ method: req.method, path: req.url, auth: req.headers.authorization,
@@ -98,6 +98,7 @@ async function harness(t, domain = "assessment", mode = "legacy") {
         const received = Buffer.concat(parts);
         assert.equal(received.length, upload.byteSize);
         assert.equal(createHash("sha256").update(received).digest("hex"), upload.checksum);
+        if (state.delayUploadMs) await new Promise(resolve => setTimeout(resolve, state.delayUploadMs));
         upload.status = "uploaded";
       } else if (req.method === "POST" && match[2] === "/complete") {
         assert.equal(req.headers["x-orai-upload-ticket"], ticket);
@@ -121,6 +122,7 @@ async function harness(t, domain = "assessment", mode = "legacy") {
   const env = {
     ORAI_MCP_DOMAIN: domain, ORAI_MCP_TOKEN: token,
     ORAI_MCP_ALLOWED_ROOT: root, ORAI_MCP_API_URL: apiUrl,
+    ...extraEnv,
   };
   const transport = new StdioClientTransport({
     command: process.execPath, args: [cliPath], env, stderr: "pipe",
@@ -158,6 +160,26 @@ async function harness(t, domain = "assessment", mode = "legacy") {
   };
   return { root, folder, client, call, prepare, state, requests, env, uploads };
 }
+
+test('MCP upload timeout is explicitly configurable while keeping loopback origins and strict bounds',async t=>{
+  const h=await harness(t);
+  assert.equal((await readConfig(h.env)).uploadTimeoutMs,120000);
+  assert.equal((await readConfig({...h.env,ORAI_MCP_UPLOAD_TIMEOUT_MS:'360000'})).uploadTimeoutMs,360000);
+  for(const value of ['','0','999','600001','Infinity','PRIVATE_SENTINEL'])
+    await assert.rejects(readConfig({...h.env,ORAI_MCP_UPLOAD_TIMEOUT_MS:value}),error=>!String(error).includes('PRIVATE_SENTINEL'));
+  await assert.rejects(readConfig({...h.env,ORAI_MCP_UPLOAD_TIMEOUT_MS:'360000',ORAI_MCP_API_URL:'https://store.unit.test'}));
+});
+
+test('stdio file upload aborts on its configured deadline and can resume with the same upload identity',async t=>{
+  const h=await harness(t,'assessment','legacy',{ORAI_MCP_UPLOAD_TIMEOUT_MS:'1000'}),prepared=await h.prepare();
+  h.state.delayUploadMs=1600;
+  const failed=await h.call('upload_file',{uploadId:prepared.uploadId,ticket:prepared.ticket,filePath:join(h.root,'reference.txt')});
+  assert.equal(failed.isError,true);assert.match(JSON.stringify(failed),/API_UNAVAILABLE/);
+  h.state.delayUploadMs=0;
+  const resumed=await h.call('upload_file',{uploadId:prepared.uploadId,ticket:prepared.ticket,filePath:join(h.root,'reference.txt')});
+  assert.equal(resumed.isError,undefined);assert.equal(resumed.structuredContent.data.uploadId,prepared.uploadId);
+  assert.equal(h.uploads.size,1);
+});
 
 async function readJson(req) {
   const parts = [];
