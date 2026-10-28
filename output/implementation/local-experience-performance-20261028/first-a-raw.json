@@ -1,0 +1,499 @@
+{
+  "readiness": {
+    "rendererReadyMs": 438.90000009536743,
+    "resourcesReadyMs": 438.90000009536743,
+    "firstPaintOpportunityMs": 443.8000000715256
+  },
+  "frames": [
+    {
+      "time": 424.6,
+      "callbackMs": 12.299999952316284,
+      "draws": 22
+    },
+    {
+      "time": 441.3,
+      "callbackMs": 0.7000000476837158,
+      "draws": 22
+    }
+  ],
+  "contexts": [
+    {
+      "id": 1,
+      "createdAt": 416.5,
+      "lost": false,
+      "draws": 44,
+      "live": {
+        "Texture": 5,
+        "Framebuffer": 3,
+        "Buffer": 24,
+        "Program": 2,
+        "Shader": 0,
+        "VertexArray": 7
+      },
+      "created": {
+        "Texture": 5,
+        "Framebuffer": 3,
+        "Buffer": 24,
+        "Program": 2,
+        "Shader": 4,
+        "VertexArray": 7
+      },
+      "deleted": {
+        "Shader": 4
+      }
+    }
+  ],
+  "draws": 44,
+  "pendingRAF": 0,
+  "visibility": "visible",
+  "now": 469.5,
+  "navigation": [
+    {
+      "name": "http://127.0.0.1:5187/attempts/01a181e7-d017-7127-b598-60d1dea1ac9e?question=question-1",
+      "entryType": "navigation",
+      "startTime": 0,
+      "duration": 46.90000009536743,
+      "navigationId": 3300,
+      "initiatorType": "navigation",
+      "deliveryType": "",
+      "nextHopProtocol": "http/1.1",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/html",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 0.40000009536743164,
+      "domainLookupStart": 0.40000009536743164,
+      "domainLookupEnd": 0.40000009536743164,
+      "connectStart": 0.40000009536743164,
+      "secureConnectionStart": 0,
+      "connectEnd": 0.40000009536743164,
+      "requestStart": 1.8000000715255737,
+      "responseStart": 7.700000047683716,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 7.700000047683716,
+      "responseEnd": 8,
+      "transferSize": 1505,
+      "encodedBodySize": 1205,
+      "decodedBodySize": 1205,
+      "responseStatus": 200,
+      "serverTiming": [],
+      "unloadEventStart": 10.400000095367432,
+      "unloadEventEnd": 10.400000095367432,
+      "domInteractive": 23.800000071525574,
+      "domContentLoadedEventStart": 31.90000009536743,
+      "domContentLoadedEventEnd": 34.10000002384186,
+      "domComplete": 46.800000071525574,
+      "loadEventStart": 46.90000009536743,
+      "loadEventEnd": 46.90000009536743,
+      "type": "reload",
+      "redirectCount": 0,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "notRestoredReasons": null,
+      "confidence": {
+        "randomizedTriggerRate": 0.4994798,
+        "value": "low"
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "/__orai-performance-probe.js",
+      "duration": 6.800000071525574,
+      "transferSize": 5395,
+      "encodedBodySize": 5095,
+      "decodedBodySize": 5095
+    },
+    {
+      "name": "/assets/react-yIOJJ3r4.js",
+      "duration": 8.5,
+      "transferSize": 8702,
+      "encodedBodySize": 8402,
+      "decodedBodySize": 8402
+    },
+    {
+      "name": "/assets/index-CEqXvQmH.js",
+      "duration": 9.400000095367432,
+      "transferSize": 276258,
+      "encodedBodySize": 275958,
+      "decodedBodySize": 275958
+    },
+    {
+      "name": "/assets/index-CsoRINY_.css",
+      "duration": 7.600000023841858,
+      "transferSize": 7641,
+      "encodedBodySize": 7341,
+      "decodedBodySize": 7341
+    },
+    {
+      "name": "/assets/tslib.es6-C-DzQg4N.js",
+      "duration": 8.300000071525574,
+      "transferSize": 5215,
+      "encodedBodySize": 4915,
+      "decodedBodySize": 4915
+    },
+    {
+      "name": "/assets/dist-B5b3PdTM.js",
+      "duration": 9.600000023841858,
+      "transferSize": 2420,
+      "encodedBodySize": 2120,
+      "decodedBodySize": 2120
+    },
+    {
+      "name": "/assets/experience-BwXptbhX.js",
+      "duration": 8.700000047683716,
+      "transferSize": 99136,
+      "encodedBodySize": 98836,
+      "decodedBodySize": 98836
+    },
+    {
+      "name": "/assets/privacy-DxSM2GRp.js",
+      "duration": 10.5,
+      "transferSize": 242685,
+      "encodedBodySize": 242385,
+      "decodedBodySize": 242385
+    },
+    {
+      "name": "/assets/assessment-CcLWb5lj.js",
+      "duration": 2.700000047683716,
+      "transferSize": 7731,
+      "encodedBodySize": 7431,
+      "decodedBodySize": 7431
+    },
+    {
+      "name": "/assets/flow-shell-DbHuOhiW.js",
+      "duration": 3.799999952316284,
+      "transferSize": 20776,
+      "encodedBodySize": 20476,
+      "decodedBodySize": 20476
+    },
+    {
+      "name": "/assets/home-BDQf_Npu.js",
+      "duration": 4.100000023841858,
+      "transferSize": 54431,
+      "encodedBodySize": 54131,
+      "decodedBodySize": 54131
+    },
+    {
+      "name": "/assets/home-ZFzT8y5Y.css",
+      "duration": 3.899999976158142,
+      "transferSize": 31695,
+      "encodedBodySize": 31395,
+      "decodedBodySize": 31395
+    },
+    {
+      "name": "/assets/flow-shell-DmO_DUur.css",
+      "duration": 4,
+      "transferSize": 16842,
+      "encodedBodySize": 16542,
+      "decodedBodySize": 16542
+    },
+    {
+      "name": "/assets/shared-DnG9oO0P.js",
+      "duration": 5.200000047683716,
+      "transferSize": 3517,
+      "encodedBodySize": 3217,
+      "decodedBodySize": 3217
+    },
+    {
+      "name": "/assets/shared-BQlXQneY.css",
+      "duration": 5.5,
+      "transferSize": 20769,
+      "encodedBodySize": 20469,
+      "decodedBodySize": 20469
+    },
+    {
+      "name": "/assets/download-BoKyQK_3.js",
+      "duration": 4.899999976158142,
+      "transferSize": 1386,
+      "encodedBodySize": 1086,
+      "decodedBodySize": 1086
+    },
+    {
+      "name": "/assets/model-DmgVhA9n.js",
+      "duration": 5.699999928474426,
+      "transferSize": 714,
+      "encodedBodySize": 414,
+      "decodedBodySize": 414
+    },
+    {
+      "name": "/assets/report-host-CoyQ-66a.css",
+      "duration": 6.5,
+      "transferSize": 2062,
+      "encodedBodySize": 1762,
+      "decodedBodySize": 1762
+    },
+    {
+      "name": "/assets/report-host-DhA7WG2Z.js",
+      "duration": 6,
+      "transferSize": 8255,
+      "encodedBodySize": 7955,
+      "decodedBodySize": 7955
+    },
+    {
+      "name": "/assets/model-U3MSu2Cg.js",
+      "duration": 7,
+      "transferSize": 2456,
+      "encodedBodySize": 2156,
+      "decodedBodySize": 2156
+    },
+    {
+      "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+      "duration": 6.799999952316284,
+      "transferSize": 917,
+      "encodedBodySize": 617,
+      "decodedBodySize": 617
+    },
+    {
+      "name": "/api/account/context",
+      "duration": 11,
+      "transferSize": 471,
+      "encodedBodySize": 171,
+      "decodedBodySize": 171
+    },
+    {
+      "name": "/api/session/context",
+      "duration": 14.799999952316284,
+      "transferSize": 481,
+      "encodedBodySize": 181,
+      "decodedBodySize": 181
+    },
+    {
+      "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+      "duration": 1.600000023841858,
+      "transferSize": 2749,
+      "encodedBodySize": 2449,
+      "decodedBodySize": 2449
+    },
+    {
+      "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+      "duration": 3,
+      "transferSize": 2704,
+      "encodedBodySize": 2404,
+      "decodedBodySize": 2404
+    },
+    {
+      "name": "/assets/store/mobile-account-mark.svg",
+      "duration": 3.200000047683716,
+      "transferSize": 640,
+      "encodedBodySize": 340,
+      "decodedBodySize": 340
+    },
+    {
+      "name": "/assets/store/icons/search.svg",
+      "duration": 3.600000023841858,
+      "transferSize": 543,
+      "encodedBodySize": 243,
+      "decodedBodySize": 243
+    },
+    {
+      "name": "/assets/store/icons/moon.svg",
+      "duration": 3.9000000953674316,
+      "transferSize": 544,
+      "encodedBodySize": 244,
+      "decodedBodySize": 244
+    },
+    {
+      "name": "/assets/store/icons/plus.svg",
+      "duration": 4,
+      "transferSize": 512,
+      "encodedBodySize": 212,
+      "decodedBodySize": 212
+    },
+    {
+      "name": "/assets/store/icons/grid.svg",
+      "duration": 4.800000071525574,
+      "transferSize": 676,
+      "encodedBodySize": 376,
+      "decodedBodySize": 376
+    },
+    {
+      "name": "/assets/store/icons/users.svg",
+      "duration": 5.100000023841858,
+      "transferSize": 595,
+      "encodedBodySize": 295,
+      "decodedBodySize": 295
+    },
+    {
+      "name": "/assets/store/icons/partnership.svg",
+      "duration": 5.899999976158142,
+      "transferSize": 624,
+      "encodedBodySize": 324,
+      "decodedBodySize": 324
+    },
+    {
+      "name": "/assets/store/icons/headphones.svg",
+      "duration": 6.700000047683716,
+      "transferSize": 618,
+      "encodedBodySize": 318,
+      "decodedBodySize": 318
+    },
+    {
+      "name": "/assets/store/icons/bag.svg",
+      "duration": 7.5,
+      "transferSize": 549,
+      "encodedBodySize": 249,
+      "decodedBodySize": 249
+    },
+    {
+      "name": "/assets/store/icons/chevron.svg",
+      "duration": 7,
+      "transferSize": 509,
+      "encodedBodySize": 209,
+      "decodedBodySize": 209
+    },
+    {
+      "name": "/assets/store/icons/file.svg",
+      "duration": 8,
+      "transferSize": 589,
+      "encodedBodySize": 289,
+      "decodedBodySize": 289
+    },
+    {
+      "name": "/assets/store/icons/help.svg",
+      "duration": 8.799999952316284,
+      "transferSize": 588,
+      "encodedBodySize": 288,
+      "decodedBodySize": 288
+    },
+    {
+      "name": "/assets/store/icons/sparkles.svg",
+      "duration": 9,
+      "transferSize": 586,
+      "encodedBodySize": 286,
+      "decodedBodySize": 286
+    },
+    {
+      "name": "/assets/store/icons/game.svg",
+      "duration": 10.700000047683716,
+      "transferSize": 592,
+      "encodedBodySize": 292,
+      "decodedBodySize": 292
+    },
+    {
+      "name": "/assets/store/icons/home.svg",
+      "duration": 9.799999952316284,
+      "transferSize": 553,
+      "encodedBodySize": 253,
+      "decodedBodySize": 253
+    },
+    {
+      "name": "/assets/store/icons/report.svg",
+      "duration": 11.600000023841858,
+      "transferSize": 602,
+      "encodedBodySize": 302,
+      "decodedBodySize": 302
+    },
+    {
+      "name": "/assets/store/icons/profile.svg",
+      "duration": 12.5,
+      "transferSize": 603,
+      "encodedBodySize": 303,
+      "decodedBodySize": 303
+    },
+    {
+      "name": "/assets/store/favicon.svg",
+      "duration": 4.200000047683716,
+      "transferSize": 952,
+      "encodedBodySize": 652,
+      "decodedBodySize": 652
+    },
+    {
+      "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+      "duration": 6.5,
+      "transferSize": 2749,
+      "encodedBodySize": 2449,
+      "decodedBodySize": 2449
+    },
+    {
+      "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+      "duration": 6.299999952316284,
+      "transferSize": 2704,
+      "encodedBodySize": 2404,
+      "decodedBodySize": 2404
+    },
+    {
+      "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+      "duration": 5.399999976158142,
+      "transferSize": 94516,
+      "encodedBodySize": 94216,
+      "decodedBodySize": 94216
+    },
+    {
+      "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+      "duration": 7.299999952316284,
+      "transferSize": 94460,
+      "encodedBodySize": 94160,
+      "decodedBodySize": 94160
+    },
+    {
+      "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+      "duration": 6.299999952316284,
+      "transferSize": 94560,
+      "encodedBodySize": 94260,
+      "decodedBodySize": 94260
+    },
+    {
+      "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+      "duration": 6.5,
+      "transferSize": 95396,
+      "encodedBodySize": 95096,
+      "decodedBodySize": 95096
+    },
+    {
+      "name": "/api/account/context",
+      "duration": 8.700000047683716,
+      "transferSize": 471,
+      "encodedBodySize": 171,
+      "decodedBodySize": 171
+    },
+    {
+      "name": "/api/attempts/01a181e7-d017-7127-b598-60d1dea1ac9e/questions",
+      "duration": 28.5,
+      "transferSize": 5460,
+      "encodedBodySize": 5160,
+      "decodedBodySize": 5160
+    },
+    {
+      "name": "/assets/reflection-garden-qHAQkT3J.js",
+      "duration": 3.100000023841858,
+      "transferSize": 5629,
+      "encodedBodySize": 5329,
+      "decodedBodySize": 5329
+    },
+    {
+      "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+      "duration": 3.8000000715255737,
+      "transferSize": 7291,
+      "encodedBodySize": 6991,
+      "decodedBodySize": 6991
+    },
+    {
+      "name": "/api/attempts/01a181e7-d017-7127-b598-60d1dea1ac9e/resources/technical-reference",
+      "duration": 21.600000023841858,
+      "transferSize": 1061,
+      "encodedBodySize": 761,
+      "decodedBodySize": 761
+    },
+    {
+      "name": "/assets/garden-renderer-CMzhT03R.js",
+      "duration": 1.3000000715255737,
+      "transferSize": 6858,
+      "encodedBodySize": 6558,
+      "decodedBodySize": 6558
+    },
+    {
+      "name": "/assets/three.module-LK1pl1yG.js",
+      "duration": 1.7000000476837158,
+      "transferSize": 542219,
+      "encodedBodySize": 541919,
+      "decodedBodySize": 541919
+    }
+  ]
+}

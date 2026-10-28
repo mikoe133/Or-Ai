@@ -6,6 +6,9 @@ import { mkdtemp, mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawn } from 'node:child_process';
+import { Readable } from 'node:stream';
+import { createHash } from 'node:crypto';
+import { startPerformanceServer } from './experience-performance-server.mjs';
 
 const root = process.cwd(), require = createRequire(join(root, 'apps/api/package.json'));
 require('reflect-metadata');
@@ -16,16 +19,19 @@ const { DemoProducts, DemoIdentityScenarios, demoId } = require('./.test-build/s
 const { AdminProductInputSchema, CreativeProfileSchema, ProductionPlanDocumentSchema } = require('@orai/contracts/admin');
 const { currentSkillManifest } = require('./.test-build/test/skill-policy-fixture.js');
 const names = ['CatalogAdminAccessService', 'CatalogAdminService', 'ContentService', 'VersionsService',
-  'ProductionPlansService', 'ExperienceAuthoringService', 'SkillsService', 'DeliveryAdminService'];
+  'ProductionPlansService', 'ExperienceAuthoringService', 'SkillsService', 'DeliveryAdminService', 'FilesService'];
 const paths = ['catalog/admin-access.service', 'operations/catalog-admin.service', 'operations/content.service', 'catalog/versions.service',
-  'operations/production-plans.service', 'operations/experience-authoring.service', 'operations/skills.service', 'redemption/delivery-admin.service'];
+  'operations/production-plans.service', 'operations/experience-authoring.service', 'operations/skills.service', 'redemption/delivery-admin.service', 'operations/files.service'];
 const classes = Object.fromEntries(names.map((name, index) => [name, require('./.test-build/src/' + paths[index] + '.js')[name]]));
 const port = Number(process.env.ORAI_TEMPLATE_UI_PORT || 5187), origin = 'http://127.0.0.1:' + port;
 const privateDirectory = join(root, '.local/t16-c3-implementation-20261028'), stateFile = join(privateDirectory, 'ui-state.json');
-let fixture, app, web, directory, closing = false;
+const referenceImages = process.env.ORAI_TEMPLATE_RESOURCE_FIXTURE === '1';
+const startup = { apiBootstrapMs: null, apiListenMs: null, referenceImages };
+let fixture, app, web, performanceServer, directory, closing = false;
 async function stop(code = 0) {
   if (closing) return; closing = true;
   if (web && web.exitCode === null) { const exited = new Promise(resolve => web.once('exit', resolve)); web.kill('SIGTERM'); await exited; }
+  await performanceServer?.close();
   await app?.close(); await fixture?.close();
   if (directory) await rm(directory, { recursive: true, force: true });
   await rm(stateFile, { force: true }); process.stdout.write('CLEANED isolated product template TEST fixture\n'); process.exit(code);
@@ -35,10 +41,13 @@ try {
   await mkdir(privateDirectory, { recursive: true });
   process.chdir(join(root, 'apps/api')); fixture = await createLocalFixture('t16');
   directory = await mkdtemp(join(tmpdir(), 'orai-template-cua-'));
+  const bootstrapStarted = performance.now();
   const module = await Test.createTestingModule({ imports: [AppModule] }).overrideProvider(APP_CONFIG).useValue({ ...fixture.configuration,
     security: { ...fixture.configuration.security, origins: [origin], readIpLimit: 3000, writeIpLimit: 3000 },
     assets: { ...fixture.configuration.assets, driver: 'local', directory } }).compile();
-  app = module.createNestApplication({ logger: false }); configureApp(app); await app.listen(0, '127.0.0.1');
+  startup.apiBootstrapMs = performance.now() - bootstrapStarted;
+  app = module.createNestApplication({ logger: false }); configureApp(app);
+  const listenStarted = performance.now(); await app.listen(0, '127.0.0.1'); startup.apiListenMs = performance.now() - listenStarted;
   const get = name => app.get(classes[name]);
   const access = await get('CatalogAdminAccessService').authorizeLocalOwner(fixture.owner.client, DemoIdentityScenarios.admin.id);
   const original = await get('CatalogAdminService').product(access, demoId('demo-partner')), products = [];
@@ -78,6 +87,16 @@ try {
     const workspace = await get('ExperienceAuthoringService').workspace(access, product.id, version.id, { profileId: profile.id });
     const manifest = workspace.defaultManifest, runtime = plan.modules.find(item => item.moduleKey === 'scene').definition.target.runtime;
     manifest.renderer = runtime.renderer; manifest.report.renderer = runtime.reportRenderer;
+    if (referenceImages) {
+      const bytes = await readFile(join(root, 'apps/api/test/fixtures/cover.jpg'));
+      const checksum = createHash('sha256').update(bytes).digest('hex'), files = get('FilesService');
+      const prepared = await files.prepare(access, { productVersionId: version.id, kind: 'experience', fileName: 'technical-reference.jpg',
+        mimeType: 'image/jpeg', byteSize: bytes.length, checksum, requestId: randomUUID() });
+      const stream = Readable.from([bytes]); stream.headers = { 'content-type': 'application/octet-stream', 'content-length': String(bytes.length) };
+      await files.upload(access, prepared.id, stream); await files.complete(access, prepared.id, { requestId: randomUUID() });
+      manifest.resources = [{ resourceId: 'technical-reference', fileId: prepared.id, purpose: 'illustration', label: '既有JPEG技术参考',
+        mimeType: 'image/jpeg', byteSize: bytes.length, checksum }];
+    }
     const draft = await get('ExperienceAuthoringService').save(access, product.id, version.id, { manifest, reportPlan: profile.profile.reportPlan,
       productPlan: { revisionId: plan.id, digest: plan.digest }, methods: ['scene_design', 'report_presentation'].map(purpose => ({ purpose, skillVersionId: method.id })),
       note: 'CUA合成' + kind + '实际模板验收', source: 'manual', expectedRevision: 0, expectedVersionRevision: version.revision, requestId: randomUUID() });
@@ -91,10 +110,14 @@ try {
       code: issued.deliveries[0].code, orderId: order.id, renderer: manifest.renderer.key, reportRenderer: manifest.report.renderer.key });
   }
   const apiOrigin = await app.getUrl();
-  web = spawn(process.execPath, [join(root, 'apps/web/node_modules/vite/bin/vite.js'), 'preview', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], {
+  if (process.env.ORAI_TEMPLATE_PERF_PROBE === '1') {
+    const webStarted = performance.now(); performanceServer = await startPerformanceServer({ root, apiOrigin, port });
+    startup.webListenMs = performance.now() - webStarted;
+  } else { web = spawn(process.execPath, [join(root, 'apps/web/node_modules/vite/bin/vite.js'), 'preview', '--host', '127.0.0.1', '--port', String(port), '--strictPort'], {
     cwd: join(root, 'apps/web'), env: { ...process.env, API_PORT: new URL(apiOrigin).port, WEB_PORT: String(port) }, stdio: ['ignore', 'pipe', 'pipe'],
   });
   web.stdout.on('data', bytes => process.stdout.write(bytes)); web.stderr.on('data', bytes => process.stderr.write(bytes));
-  await writeFile(stateFile, JSON.stringify({ pid: process.pid, database: fixture.name, apiOrigin, origin, products }, null, 2), { mode: 0o600 });
+  }
+  await writeFile(stateFile, JSON.stringify({ pid: process.pid, database: fixture.name, apiOrigin, origin, products, startup }, null, 2), { mode: 0o600 });
   process.stdout.write('READY isolated TEST template UI: ' + origin + '/redeem\n');
 } catch (error) { process.stderr.write('TEMPLATE_UI_SETUP_FAILED: ' + String(error.message).slice(0, 300) + '\n'); await stop(1); }
