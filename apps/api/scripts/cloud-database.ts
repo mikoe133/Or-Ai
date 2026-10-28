@@ -63,15 +63,16 @@ export async function createCloudDatabasePlan(env:NodeJS.ProcessEnv,action:Cloud
 }
 // Prisma 7's prisma-client generator does not expose DMMF. The reviewed SQL,
 // rather than private client metadata, is the authority for managed table names.
-async function managedTables(plan:CloudDatabasePlan){
-  const tables=new Set<string>();
+async function managedObjects(plan:CloudDatabasePlan){
+  const tables=new Set<string>(),functions=new Set<string>();
   for(const migration of plan.migrations){
     const sql=await readFile(resolve('prisma/migrations',migration.name,'migration.sql'),'utf8');
     if(sha(sql)!==migration.checksum)return refused('MAINTENANCE_PLAN_CHANGED');
     for(const match of sql.matchAll(/^CREATE TABLE\s+(?:(?:"orai"|orai)\.)?"?([a-z][a-z0-9_]*)"?\s*\(/gm))tables.add(match[1]!);
+    for(const match of sql.matchAll(/^CREATE(?: OR REPLACE)? FUNCTION\s+(?:(?:"orai"|orai)\.)?"?([a-z][a-z0-9_]*)"?\s*\(/gm))functions.add(match[1]!);
   }
   if(!tables.size)return refused('MAINTENANCE_PLAN_CHANGED');
-  return tables;
+  return {tables,functions};
 }
 type History={migration_name:string;checksum:string;finished_at:Date|null;rolled_back_at:Date|null};
 async function history(client:PoolClient){
@@ -106,11 +107,16 @@ async function prepareRoles(client:PoolClient,target:CloudDatabaseTarget){
   }catch(error){await client.query('ROLLBACK');throw error;}
 }
 async function namespace(client:PoolClient,target:CloudDatabaseTarget,plan:CloudDatabasePlan){
-  const knownTables=await managedTables(plan);
+  const known=await managedObjects(plan);
   const schema=(await client.query("SELECT pg_get_userbyid(nspowner) AS owner FROM pg_namespace WHERE nspname='orai'")).rows[0];
   if(schema&&schema.owner!==target.migrationRole)return refused('EXISTING_SCHEMA_OWNER_REJECTED');
   const tables=(await client.query<{tablename:string;tableowner:string}>("SELECT tablename,tableowner FROM pg_tables WHERE schemaname='orai' ORDER BY tablename")).rows;
-  if(tables.some(table=>table.tableowner!==target.migrationRole||table.tablename!=='_prisma_migrations'&&!knownTables.has(table.tablename)))return refused('UNTRACKED_SCHEMA_OBJECTS_REJECTED');
+  if(tables.some(table=>table.tableowner!==target.migrationRole||table.tablename!=='_prisma_migrations'&&!known.tables.has(table.tablename)))return refused('UNTRACKED_SCHEMA_OBJECTS_REJECTED');
+  // The current immutable migrations create ordinary tables and indexes, with
+  // no views, foreign tables or sequences. Never grant access to stray objects.
+  if((await client.query("SELECT 1 FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='orai' AND c.relkind NOT IN ('r','i') LIMIT 1")).rowCount)return refused('UNTRACKED_SCHEMA_OBJECTS_REJECTED');
+  const functions=(await client.query<{name:string;owner:string}>("SELECT p.proname AS name,pg_get_userbyid(p.proowner) AS owner FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='orai'")).rows;
+  if(functions.some(fn=>fn.owner!==target.migrationRole||!known.functions.has(fn.name)))return refused('UNTRACKED_SCHEMA_OBJECTS_REJECTED');
   const markerTable=tables.some(table=>table.tablename==='environment_marker');
   const markers=markerTable?(await client.query('SELECT id,environment,database_name FROM orai.environment_marker')).rows:[];
   if(markers.length>1||markers[0]&&(markers[0].id!==1||markers[0].environment!=='PRODUCTION'||markers[0].database_name!==target.database))return refused('DATABASE_MARKER_REJECTED');
@@ -194,7 +200,14 @@ export async function runCloudDatabaseCommand(args:string[],factory:(target:Clou
     await record('started');connections=await factory(parseCloudDatabaseTarget(env));
     const result=await applyCloudDatabasePlan(env,plan,connections,record);await record('completed');return {ok:true,result};
   }catch(error){const code=error instanceof CloudDatabaseError?error.code:'MAINTENANCE_INPUT_OR_OPERATION_FAILED';
-    if(output&&requestId)await output.writeFile(JSON.stringify({schemaVersion:1,requestId,fingerprint,phase:'failed',code,at:new Date().toISOString()})+'\n').catch(()=>undefined);
+    if(output&&requestId)await (async()=>{await output!.writeFile(JSON.stringify({schemaVersion:1,requestId,fingerprint,phase:'failed',code,at:new Date().toISOString()})+'\n');await output!.sync();})().catch(()=>undefined);
     return {ok:false,error:code};
-  }finally{await connections?.close();await output?.close();}
+  }finally{
+    let cleanupFailed=false;
+    try{await connections?.close();}catch{cleanupFailed=true;
+      if(output&&requestId)await (async()=>{await output!.writeFile(JSON.stringify({schemaVersion:1,requestId,fingerprint,phase:'cleanup_failed',at:new Date().toISOString()})+'\n');await output!.sync();})().catch(()=>undefined);
+    }
+    try{await output?.close();}catch{cleanupFailed=true;}
+    if(cleanupFailed)return {ok:false,error:'CLOUD_MAINTENANCE_CLEANUP_FAILED'};
+  }
 }

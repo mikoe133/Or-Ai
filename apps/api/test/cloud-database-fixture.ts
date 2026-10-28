@@ -1,13 +1,14 @@
 import {execFileSync,execFile} from 'node:child_process';
 import {promisify} from 'node:util';
-import {mkdtemp,writeFile,readFile,rm} from 'node:fs/promises';
+import {mkdtemp,writeFile,readFile,rm,mkdir} from 'node:fs/promises';
 import {join,resolve} from 'node:path';
 import {createHash,randomUUID} from 'node:crypto';
 import {Pool} from 'pg';
 import {createCloudDatabaseConnections,type CloudDatabaseTarget,type CloudDatabaseConnections} from '../scripts/cloud-database';
 const execute=promisify(execFile);
 export async function cloudDatabaseFixture(){
-  const root=resolve(process.cwd(),'../..'),directory=await mkdtemp(join(root,'.local/cloud-database-'));
+  const root=resolve(process.cwd(),'../..');await mkdir(join(root,'.local'),{recursive:true});
+  const directory=await mkdtemp(join(root,'.local/cloud-database-'));
   const suffix=randomUUID().slice(0,8),name='orai-cloud-db-'+suffix,image='orai-cloud-db-proof:'+suffix;
   const bootstrapPassword='bootstrap-'+randomUUID(),ownerPassword='owner-'+randomUUID(),runtimePassword='runtime-'+randomUUID();
   const docker=(args:string[])=>execFileSync(process.execPath,[join(root,'scripts/docker.mjs'),...args],{cwd:root,encoding:'utf8',timeout:60000,maxBuffer:2*1024*1024,stdio:['ignore','pipe','pipe']}).trim();
