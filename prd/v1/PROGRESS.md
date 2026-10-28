@@ -4,7 +4,9 @@
 
 **当前任务：[05商品与模板转制（T16.C3）](tasks/active/05-product-template-migration.md)及06本地功能/性能验证。07本地范围已归档，真实云仍待08。** 新增[17全站前端设计改造（T18）](tasks/active/17-frontend-design-refinement.md)独立排期，首选Skill原ZIP已接收核验、项目安装、完整阅读并提炼设计标准，未改页面。完整排期看[任务索引](tasks/README.md)。
 
-05/06已完成[合成技术实现批次](../../output/implementation/product-template-migration-20261028/verification.md)：A固定规划MCP制作链、B独立Three.js正交观察台/报告/注册、第30份迁移及26项自主CUA通过；API507＋web106＋MCP22＝635项，类型/构建通过。新增项目方法快照/原生产物断言后A/B两链专项再次通过。原29迁移未改，新迁移仅用于隔离TEST；正式商品、存量转制和首帧/FPS/内存/完整恢复仍未完成，05/06继续active；仅[归档已完成子批次](tasks/archive/completed/05-06-synthetic-template-slice-20261028.md)。
+06后续[本地实测](../../output/implementation/local-experience-performance-20261028/verification.md)修复静态gzip及图片重试；最终36首帧≤3s、24活动≥30fps、40次卸载资源/静默及22恢复通过，507 API＋107 web＋22 MCP＝636项，类型/构建通过。A自然堆末5次中位数增5,636,088 B、全局Nodes仍增长，强制GC未提供；IAB第二标签仍visible，完整内存/真实hidden保持06待验。临时TEST及浏览器设置/标签已清理，原5容器healthy。17仅完成[源码路由/状态/组件清单准备](../../output/implementation/t18-frontend-audit-preparation-20261028/README.md)，截图审计及实际页面改造未执行。
+
+05/06此前完成[合成技术实现批次](../../output/implementation/product-template-migration-20261028/verification.md)：A固定规划MCP制作链、B独立Three.js正交观察台/报告/注册、第30份迁移及26项自主CUA通过；当批API507＋web106＋MCP22＝635项，类型/构建通过。新增项目方法快照/原生产物断言后A/B两链专项再次通过。原29迁移未改，新迁移仅用于隔离TEST；该批首帧/FPS尚未测，后续结果见上。正式商品、存量转制与完整内存/恢复仍未完成，05/06继续active；仅[归档已完成子批次](tasks/archive/completed/05-06-synthetic-template-slice-20261028.md)。
 
 ## 当前实施事实
 

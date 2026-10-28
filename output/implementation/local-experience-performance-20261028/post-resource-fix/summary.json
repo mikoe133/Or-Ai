@@ -1,0 +1,891 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-28",
+  "applicationCommit": "802c5e6",
+  "staticCompressionCommit": "af2b685",
+  "scope": "isolated TEST, synthetic A/B, desktop in-app Chromium; not real phones or cloud deployment",
+  "cold": [
+    {
+      "template": "A",
+      "profile": "baseline",
+      "samples": 9,
+      "passed": 9,
+      "minMs": 455,
+      "maxMs": 509.2999999523163
+    },
+    {
+      "template": "A",
+      "profile": "constrained_5mbps_100ms_4x",
+      "samples": 9,
+      "passed": 9,
+      "minMs": 1815.5,
+      "maxMs": 2470.399999976158
+    },
+    {
+      "template": "B",
+      "profile": "baseline",
+      "samples": 9,
+      "passed": 9,
+      "minMs": 457.89999997615814,
+      "maxMs": 494
+    },
+    {
+      "template": "B",
+      "profile": "constrained_5mbps_100ms_4x",
+      "samples": 9,
+      "passed": 9,
+      "minMs": 1947.5999999046326,
+      "maxMs": 2208.2000000476837
+    }
+  ],
+  "activity": {
+    "samples": 24,
+    "passed": 24,
+    "minimumFps": 56.30026809651474,
+    "maximumFps": 60.00067039855188
+  },
+  "unmount": [
+    {
+      "template": "A",
+      "cycles": 20,
+      "resourceReleasePassed": 20,
+      "warmupHeapMedianBytes": 15001708,
+      "lastFiveHeapMedianBytes": 20637796,
+      "heapMedianDeltaBytes": 5636088,
+      "attachedNodeCounts": [
+        243
+      ],
+      "globalFirstLastFive": {
+        "Documents": {
+          "firstFive": [
+            64,
+            64,
+            64,
+            23,
+            21
+          ],
+          "lastFive": [
+            21,
+            21,
+            21,
+            21,
+            21
+          ]
+        },
+        "Nodes": {
+          "firstFive": [
+            1467,
+            1612,
+            1757,
+            1080,
+            1099
+          ],
+          "lastFive": [
+            2154,
+            2191,
+            2336,
+            2373,
+            2518
+          ]
+        },
+        "JSEventListeners": {
+          "firstFive": [
+            631,
+            689,
+            747,
+            534,
+            550
+          ],
+          "lastFive": [
+            728,
+            694,
+            752,
+            718,
+            776
+          ]
+        },
+        "DetachedScriptStates": {
+          "firstFive": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "lastFive": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "forcedGcThreshold": "not verified"
+    },
+    {
+      "template": "B",
+      "cycles": 20,
+      "resourceReleasePassed": 20,
+      "warmupHeapMedianBytes": 20291184,
+      "lastFiveHeapMedianBytes": 14785620,
+      "heapMedianDeltaBytes": -5505564,
+      "attachedNodeCounts": [
+        248
+      ],
+      "globalFirstLastFive": {
+        "Documents": {
+          "firstFive": [
+            44,
+            44,
+            44,
+            41,
+            21
+          ],
+          "lastFive": [
+            21,
+            21,
+            21,
+            21,
+            21
+          ]
+        },
+        "Nodes": {
+          "firstFive": [
+            3370,
+            3501,
+            3632,
+            931,
+            656
+          ],
+          "lastFive": [
+            741,
+            741,
+            741,
+            741,
+            741
+          ]
+        },
+        "JSEventListeners": {
+          "firstFive": [
+            931,
+            975,
+            1019,
+            498,
+            468
+          ],
+          "lastFive": [
+            498,
+            498,
+            498,
+            498,
+            498
+          ]
+        },
+        "DetachedScriptStates": {
+          "firstFive": [
+            5,
+            5,
+            5,
+            0,
+            0
+          ],
+          "lastFive": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "forcedGcThreshold": "not verified"
+    }
+  ],
+  "recoveries": {
+    "samples": 22,
+    "passed": 22
+  },
+  "verification": {
+    "api": 507,
+    "web": 107,
+    "mcp": 22,
+    "total": 636,
+    "typecheck": "passed",
+    "build": "passed",
+    "nginxProtocolAndRouting": 4
+  },
+  "limits": [
+    "Forced GC unavailable; original post-GC heap threshold remains unverified. A unforced last-five median grows 5636088 bytes, exceeding the numerical 5MiB allowance if applied without GC; not declared passed.",
+    "A global Nodes/JSEventListeners rise while attached DOM stays flat; minor/natural GC and probe instrumentation do not prove absence of retained objects.",
+    "A second IAB tab leaves original document visible; actual hidden/resume not verified.",
+    "WebGL object counts are instrumentation, not a GPU memory measurement."
+  ],
+  "files": [
+    {
+      "path": "apps/web/dist/assets/assessment-ClR9i_Fq.js",
+      "sha256": "f134570311ab3dd7fb948a2a40d411189ed0c962fd259ca6c321b77ce6f4494d",
+      "bytes": 7431
+    },
+    {
+      "path": "apps/web/dist/assets/assessment-Da9Hlykf.js",
+      "sha256": "be89da5b500f0edada276c7acd9a535d9cf61d1cddd42ada12d2df2a7ed78368",
+      "bytes": 11657
+    },
+    {
+      "path": "apps/web/dist/assets/assessment-t30AGNAA.css",
+      "sha256": "6372875bf767bbc542194fa82c5d185d7178a170a1d8b98bc16ad35de3803309",
+      "bytes": 10999
+    },
+    {
+      "path": "apps/web/dist/assets/atlas-notes-CmoI4Dwj.js",
+      "sha256": "fa8829e19df9d5336471c2c19f6d19c452705d84e0e079e43f117c605c3e6d66",
+      "bytes": 2371
+    },
+    {
+      "path": "apps/web/dist/assets/atlas-renderer-D8cbdthc.js",
+      "sha256": "82012b2b67f8d2a87675a2f8ab921cd4310a530f00d707cc2f22f2701e8ecfa2",
+      "bytes": 5058
+    },
+    {
+      "path": "apps/web/dist/assets/catalog-D20uTyps.js",
+      "sha256": "eac86427e5a2242efd8ce7edef3779677d94cbc9f15cbcc2ac1bb5343bd23bab",
+      "bytes": 14576
+    },
+    {
+      "path": "apps/web/dist/assets/catalog-tPp-bDZK.css",
+      "sha256": "0656a3debfad5738f95f1503360fbed61a1581515470c77aaf8e6f78363bddd9",
+      "bytes": 6498
+    },
+    {
+      "path": "apps/web/dist/assets/developer-B6nCY5r6.js",
+      "sha256": "491da61b1939de8e7c34cfefa0da6d1404ea557d5a18a6478d22b2cd16a1d4a1",
+      "bytes": 875
+    },
+    {
+      "path": "apps/web/dist/assets/dist-B5b3PdTM.js",
+      "sha256": "ad21337201b59f497c573dc5a37896f63fc070176a235323826f25f36468cacd",
+      "bytes": 2120
+    },
+    {
+      "path": "apps/web/dist/assets/dom-choice-Bdu3wCrn.js",
+      "sha256": "26c173fe8c9af3b1b21292f2db8393266943c213b3da94b1582f7131a18056ae",
+      "bytes": 649
+    },
+    {
+      "path": "apps/web/dist/assets/download-BoKyQK_3.js",
+      "sha256": "86dc9cb16c14e34cac52e98720a298317f6111652a4d7154aaedc2378076fa20",
+      "bytes": 1086
+    },
+    {
+      "path": "apps/web/dist/assets/experience-BwXptbhX.js",
+      "sha256": "00070e8360fe167b882a00b75bcffb7468e8e3b97342584800017e9cd70a5d01",
+      "bytes": 98836
+    },
+    {
+      "path": "apps/web/dist/assets/field-notes-B_6w6ik8.js",
+      "sha256": "a577989bfbfbab4dcfa8d20983df42e94620bea06d9ec99d0bd11ee1df5b1290",
+      "bytes": 3963
+    },
+    {
+      "path": "apps/web/dist/assets/flow/full-report-wide-hero-content.svg",
+      "sha256": "5cffdce6361a7718ea8ae0233395d40f702ff5f83ed0960679be5086c32f78b8",
+      "bytes": 4436386
+    },
+    {
+      "path": "apps/web/dist/assets/flow/option-grid-answer-content.svg",
+      "sha256": "2f097c5e181819422c1045cb254099ba257491c93d8d84134ab7f972a9a26f54",
+      "bytes": 2137815
+    },
+    {
+      "path": "apps/web/dist/assets/flow/option-grid-atmosphere.svg",
+      "sha256": "a2ce43b9d1693c0aea589002b02ce4157c0ace86eb9715e1dd06f2c5c4977d81",
+      "bytes": 2449
+    },
+    {
+      "path": "apps/web/dist/assets/flow/option-grid-double-contours.svg",
+      "sha256": "5e64be9ab7c9bcd4b483dd710033fb520f749be9539f69f1ee0c598da62adf83",
+      "bytes": 6792
+    },
+    {
+      "path": "apps/web/dist/assets/flow/product-detail-wide-hero-content.svg",
+      "sha256": "c533c5f5a4d74010f9da3c289f4b02a72e82ce699793651be2fa505df8710898",
+      "bytes": 9091467
+    },
+    {
+      "path": "apps/web/dist/assets/flow-shell-DWYV32f0.js",
+      "sha256": "3eb21ff236206372992a95b522cbde802b0d1cdd8ad197ab8e41292a2711a40d",
+      "bytes": 20476
+    },
+    {
+      "path": "apps/web/dist/assets/flow-shell-DmO_DUur.css",
+      "sha256": "3aa3993d0acaa9ecf2b450d29d9af77f04d44aef9967979143a69efdf8731f33",
+      "bytes": 16542
+    },
+    {
+      "path": "apps/web/dist/assets/garden-notes-B3VguBRk.js",
+      "sha256": "1542287b2c0c5b8ec3fbabfc5780bf3c1ac2c23ce2acc6da664fa513dd38da19",
+      "bytes": 224
+    },
+    {
+      "path": "apps/web/dist/assets/garden-preview-rYyww-GT.js",
+      "sha256": "a1e1824384d8b489a9b6303d1e6a9518db7f9486d803173e6e4d321dc2ad38c7",
+      "bytes": 2524
+    },
+    {
+      "path": "apps/web/dist/assets/garden-renderer-CMzhT03R.js",
+      "sha256": "e81e67768592819878feef0c8ce40e10469eef9cb7c09a9e14993b34bcdf827a",
+      "bytes": 6558
+    },
+    {
+      "path": "apps/web/dist/assets/help-D0s2LSOI.js",
+      "sha256": "cc2c06ee461494146c6898c4794c08971ce978f3123beb7417dc0425a5dd7cb2",
+      "bytes": 2240
+    },
+    {
+      "path": "apps/web/dist/assets/home-BvQi19hq.js",
+      "sha256": "436fd5f45a041618d9bf3ff78f79c1cbc0e21e0946a6533a7a79b08bd2a0c0d8",
+      "bytes": 54131
+    },
+    {
+      "path": "apps/web/dist/assets/home-ZFzT8y5Y.css",
+      "sha256": "52444ea340c2fb5d7037f581eeae2b8112f7aabb5969af4079905d02a8ab658b",
+      "bytes": 31395
+    },
+    {
+      "path": "apps/web/dist/assets/home-y3pJ9b8P.js",
+      "sha256": "a6428a02ffbffb2b77ea4883b39a423636f3597f72d9e7cb7ad453cad02ea6c8",
+      "bytes": 18491
+    },
+    {
+      "path": "apps/web/dist/assets/index-CsoRINY_.css",
+      "sha256": "ffe0c283420e71be427ddead18a4c1a643f7042a449c927d5c416c64454cae28",
+      "bytes": 7341
+    },
+    {
+      "path": "apps/web/dist/assets/index-DtNOkYf-.js",
+      "sha256": "750ba3a68421c4b7bb2d330e82f9239e18a275e98cbd793f72b8cb45ca195625",
+      "bytes": 275958
+    },
+    {
+      "path": "apps/web/dist/assets/layout-BDK1MB9B.js",
+      "sha256": "63094860e454023ffe5e04d804c4b93ca1fcc6d66565bcddb9142cc6a6dbd734",
+      "bytes": 1485
+    },
+    {
+      "path": "apps/web/dist/assets/legacy-report-u2uSgb7Z.js",
+      "sha256": "f4309055d0f8c984381d6ca6c48ff4d5a47864ac336aa722387f4d7b79dc3d75",
+      "bytes": 291
+    },
+    {
+      "path": "apps/web/dist/assets/library-qfZvoUKE.js",
+      "sha256": "2dad7e1b886d7752990e8ed60c37c4844bd306ccfe39073d0ff7ffbc6c5e9265",
+      "bytes": 10621
+    },
+    {
+      "path": "apps/web/dist/assets/model-Cmozy6R-.js",
+      "sha256": "2606211af6334cc9cbff6be79ca11533936c318a9e168a88e2ce2d9392d27a01",
+      "bytes": 2224
+    },
+    {
+      "path": "apps/web/dist/assets/model-DmgVhA9n.js",
+      "sha256": "9d2223d1399917e7623282b0a4ce1f86abb2438c9a2593f4479d0881d8b7e8b0",
+      "bytes": 414
+    },
+    {
+      "path": "apps/web/dist/assets/pages-Blydsquz.js",
+      "sha256": "c549a0e4aa59a8a0b090f77d1b1dab7286b04762604dbe9f66aebaee27186c7d",
+      "bytes": 7644
+    },
+    {
+      "path": "apps/web/dist/assets/pages-Cu2_w_h9.css",
+      "sha256": "e300c4b198ad0d57304075dab0a1236ffc5f750fdbb4b994d6a867a11170f457",
+      "bytes": 137103
+    },
+    {
+      "path": "apps/web/dist/assets/pages-CzY1EJjx.js",
+      "sha256": "6382cb10db3a431dc4a86a1e70a8e2d981bd9de316532e389d2293f5f6cb0c83",
+      "bytes": 403669
+    },
+    {
+      "path": "apps/web/dist/assets/preview-ClHVvG-V.js",
+      "sha256": "bea27ca30b521b5aed562bfdb40e4c08565bc4a992f58221905e5d7e128c5a04",
+      "bytes": 1975
+    },
+    {
+      "path": "apps/web/dist/assets/preview-state-DTJO9SjA.js",
+      "sha256": "f64e0495054196fa9114dd4cca46218709ed8553c5c3f3f3539e0a47b554a3ec",
+      "bytes": 4293
+    },
+    {
+      "path": "apps/web/dist/assets/privacy-DxSM2GRp.js",
+      "sha256": "7c09adcbb10105def2a6b47b8f1dcc73eed20fcca2f8aa3afc6dcbdb06a99148",
+      "bytes": 242385
+    },
+    {
+      "path": "apps/web/dist/assets/product-detail-BRiP8mif.js",
+      "sha256": "0e24e8af449a086fe0cd50cf3695de9e3585ca1198495b9f646defab3b985a4b",
+      "bytes": 6824
+    },
+    {
+      "path": "apps/web/dist/assets/product-detail-DCFUGTAH.css",
+      "sha256": "1f524321f74a89f902bfc43d137385316add1c858542df9260ddf7833d0aa2da",
+      "bytes": 10951
+    },
+    {
+      "path": "apps/web/dist/assets/product-detail-DCmXPvS4.js",
+      "sha256": "5f3fd73a640867fbd2232530f8d7962eaf191d61141164f6db153b7545f9498e",
+      "bytes": 3507
+    },
+    {
+      "path": "apps/web/dist/assets/project-workspace-I7MQpM2e.css",
+      "sha256": "b7af07b74fe614bcab02386c619b8c698f8e2cf3bf7f65597d9577a54e41201b",
+      "bytes": 101356
+    },
+    {
+      "path": "apps/web/dist/assets/project-workspace-KUmCggnb.js",
+      "sha256": "b7a899e2315ec55bdcbf9a8fba956dbdfe5509ceef3bbf430a6b29b9d6cf6d6e",
+      "bytes": 308219
+    },
+    {
+      "path": "apps/web/dist/assets/quiet-room-B3CwGywR.js",
+      "sha256": "1236ee5b4192f7dc65367743ed05c8f2c2a1d173229096c73a7ef97c1ed8505a",
+      "bytes": 3201
+    },
+    {
+      "path": "apps/web/dist/assets/quiet-room-B7lNFKJT.css",
+      "sha256": "cd575114737c8fe515d924052c607fcfa3bac2df8eb9162470d79e2679db1347",
+      "bytes": 8627
+    },
+    {
+      "path": "apps/web/dist/assets/react-yIOJJ3r4.js",
+      "sha256": "2041a82019c82a36973c9359ea068c5d791168412a727328cc9c4b3fff1cd4c6",
+      "bytes": 8402
+    },
+    {
+      "path": "apps/web/dist/assets/redemption/guided-redemption-atmosphere.svg",
+      "sha256": "4428f306ae200c371add79dd5ca1c88a7371c14f172917675f18448f665fa36d",
+      "bytes": 2404
+    },
+    {
+      "path": "apps/web/dist/assets/redemption/guided-redemption-content.svg",
+      "sha256": "85b347b4e65e3c277dea2e97bfef82e41efa75290cf0cb9ec158ca6c64c7ed86",
+      "bytes": 2140092
+    },
+    {
+      "path": "apps/web/dist/assets/redemption/guided-redemption-success-content.svg",
+      "sha256": "13049b93087b5391f7d3adf33198442509f234a014e388f340e4bce2c4393284",
+      "bytes": 2140076
+    },
+    {
+      "path": "apps/web/dist/assets/redemption-BiAdoWm1.css",
+      "sha256": "f939ddedb6699bdbf2834d704f9794c0c69c588ff380410fc9b110b7599fd660",
+      "bytes": 14983
+    },
+    {
+      "path": "apps/web/dist/assets/redemption-Dt9dnm2e.js",
+      "sha256": "7b681dc5a21aa9101c2af765340c2dbcf76fc7456cd5516047c01ba2fe6b8ce0",
+      "bytes": 7792
+    },
+    {
+      "path": "apps/web/dist/assets/redemption-art-CIs1LqW7.js",
+      "sha256": "25e58dd945d7b4cedc1827b3e6da42d4f6e65f9c7ccca4e362d1b3541f68292a",
+      "bytes": 1782
+    },
+    {
+      "path": "apps/web/dist/assets/reflection-garden-BzIdN5tL.js",
+      "sha256": "a8d42920b15857d2c09f0778916df3a500801e82313ec678bf1384c5812428a1",
+      "bytes": 5329
+    },
+    {
+      "path": "apps/web/dist/assets/reflection-garden-Cvo4W8Jn.css",
+      "sha256": "6123d084b85239b5e6626fe6e2139a97ff427d8169f2f30103175e567c12fbe0",
+      "bytes": 6991
+    },
+    {
+      "path": "apps/web/dist/assets/relationship-atlas-CruN3dzT.css",
+      "sha256": "a90cb34428f3835da875d79f44efe640f46c9b8daef9ab55af65b775bd0aeef1",
+      "bytes": 7409
+    },
+    {
+      "path": "apps/web/dist/assets/relationship-atlas-DbsHNhVp.js",
+      "sha256": "25ad686a63c2cfeae84d3374a9602ee3013f526e1274af0549e7fcb2cbca207b",
+      "bytes": 4671
+    },
+    {
+      "path": "apps/web/dist/assets/report-C2g0AlRa.js",
+      "sha256": "b24f0557c92f5af42949aaeb0f4e6396caf69b7c9b55e51f61338eb6d7f46e83",
+      "bytes": 11624
+    },
+    {
+      "path": "apps/web/dist/assets/report-DqlOqBh7.css",
+      "sha256": "899f0eab303f7a0638d3ab8576eadca310dd27c436da27b1898b9335bd187631",
+      "bytes": 12738
+    },
+    {
+      "path": "apps/web/dist/assets/report-host-BHxyg5qA.js",
+      "sha256": "26e1d1a2a2d6e2d126c80b51cd75fc988bb45ec3528f565cb9720e94cdf4637c",
+      "bytes": 8067
+    },
+    {
+      "path": "apps/web/dist/assets/report-host-CoyQ-66a.css",
+      "sha256": "dfcbfd9881eb17613b9e7d9f58b5037e23e1b1b481af472911b4e78e56bd63d7",
+      "bytes": 1762
+    },
+    {
+      "path": "apps/web/dist/assets/room-art-DrZPt5NP.js",
+      "sha256": "c7a893b1fc4fa91b881132143cd310d5987b285ff9dfccee6d0eb93e122cf4cc",
+      "bytes": 3416
+    },
+    {
+      "path": "apps/web/dist/assets/room-sample-CdNrixsW.js",
+      "sha256": "8bb449563f1e9bae81c02962d1234a6092ff428732e20b4dacc68b50239ab0d4",
+      "bytes": 3091
+    },
+    {
+      "path": "apps/web/dist/assets/shared-BQlXQneY.css",
+      "sha256": "ae0dc1be55cc9f8cedc35adeb1f6a13066e121133a8c1ecf060f9deb5c71291b",
+      "bytes": 20469
+    },
+    {
+      "path": "apps/web/dist/assets/shared-CKWhwQKQ.js",
+      "sha256": "923f813497ccc3409a8126a13eb1fd4897db3d49f221bed240167ce9af7a0203",
+      "bytes": 3217
+    },
+    {
+      "path": "apps/web/dist/assets/store/README.md",
+      "sha256": "9be374f79745496b7f4a09f8dd3a947105d979a0ec192a4c5c262de5ed24a7b1",
+      "bytes": 2466
+    },
+    {
+      "path": "apps/web/dist/assets/store/adopted-inner-connected-top.svg",
+      "sha256": "5577115b72fc6e485983d8cc3be1674e65df2c21f0decfd5252bb77f19f379b3",
+      "bytes": 842
+    },
+    {
+      "path": "apps/web/dist/assets/store/adopted-left-strip-seamless.svg",
+      "sha256": "3587744e978768f7ae10f11ed3d24f7ac5f6e48ff8dd6ddee916d61e8bf3d496",
+      "bytes": 9590
+    },
+    {
+      "path": "apps/web/dist/assets/store/ambient-orbits.svg",
+      "sha256": "e05ef7506ec2cc1f8ddabfc38ec6fffbb2656d6dbf2468e29a22b81da4f7c914",
+      "bytes": 663
+    },
+    {
+      "path": "apps/web/dist/assets/store/favicon.svg",
+      "sha256": "4777e672cf385ede48c0fcd55a5c03333e7ea060480db8fe66b49a4b0c9d43b3",
+      "bytes": 652
+    },
+    {
+      "path": "apps/web/dist/assets/store/featured-blush.png",
+      "sha256": "7cb6c60b2e8c19b0f812bcd29a11632b25239f69bbd517e20cbb93a36d41aa8a",
+      "bytes": 1708341
+    },
+    {
+      "path": "apps/web/dist/assets/store/featured-lavender.png",
+      "sha256": "c13ead2ca37403b95f4398153dbd106f162594067914c3c2a969bf506edcbed8",
+      "bytes": 1595616
+    },
+    {
+      "path": "apps/web/dist/assets/store/featured-periwinkle.png",
+      "sha256": "4d8c87414cb70f838b2bf17ab8fcfc6884b5f3e72b589c1ce2a3d74967c5c791",
+      "bytes": 1828972
+    },
+    {
+      "path": "apps/web/dist/assets/store/featured-teal.png",
+      "sha256": "fe8734aafb4da9b02e72237c1e38f6371474786ba6f114970f5ff75aacdeb90e",
+      "bytes": 1662656
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/Manrope-Bold.ttf",
+      "sha256": "b9584e099e0e7f1e1e914c3037aabb9010c50346a3ce8df5eeeeecc0563044d8",
+      "bytes": 94928
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/Manrope-SemiBold.ttf",
+      "sha256": "6bad1a774228464cc88b8b0271555b266f7a3c64a7bedf15e165fdab4f6ac0ce",
+      "bytes": 95096
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/NotoSansSC-400.ttf",
+      "sha256": "1d711ec28a3bd62e3e72a13690adfd5ae997a61aa1f1b02a89eb9184626b019a",
+      "bytes": 94216
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/NotoSansSC-500.ttf",
+      "sha256": "c3c352550a8252289a3500708a2de5a834d9fe1e1c13578f377ed313ab03be01",
+      "bytes": 94160
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/NotoSansSC-700.ttf",
+      "sha256": "2872d1444717d13e4b707f313290fe1675fc0d595f7e914a5f10388c4ff8d5ab",
+      "bytes": 94260
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/NotoSansSC-OFL.txt",
+      "sha256": "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded",
+      "bytes": 4387
+    },
+    {
+      "path": "apps/web/dist/assets/store/fonts/OFL.txt",
+      "sha256": "d6a309fcfb963d329a93baf9df66fa5f3c23a4be2b5f67edf24d6cafecde12ac",
+      "bytes": 4386
+    },
+    {
+      "path": "apps/web/dist/assets/store/glass-tint-transparent-right.svg",
+      "sha256": "870f256670e881dabe52c1b232c33ca2f98640017f6200a82a5397324140c722",
+      "bytes": 735
+    },
+    {
+      "path": "apps/web/dist/assets/store/green-floor-glow.svg",
+      "sha256": "f4e160e3ac7c98ad7484cc2f679d2c2851103255050c3f45556386b59906ce3a",
+      "bytes": 897
+    },
+    {
+      "path": "apps/web/dist/assets/store/homepage-meetmyworld-symbol.svg",
+      "sha256": "79ed469f85d400f5c70c68796ba1c53db15b32c6c096520ede770b8351b9228a",
+      "bytes": 617
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/arrow.svg",
+      "sha256": "3dfca386206ccd93f3448e091ce80621255d08b9e62ac67c2aa96b816d47c0c0",
+      "bytes": 217
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/arrowUp.svg",
+      "sha256": "c28b91d79f68972cb96046793a8af82f340867e1ea18619fbf3a1df5f6f66cbe",
+      "bytes": 216
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/bag.svg",
+      "sha256": "30c0123da45442297c7ff7a83868f5a5d7adc2b00879a401ad971bac581856e4",
+      "bytes": 249
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/bookmark.svg",
+      "sha256": "a0093a96d403d9f127cb5eba704746f4f85d51d9d3519bc4990dc15da63e3ea5",
+      "bytes": 244
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/briefcase.svg",
+      "sha256": "52fa240468b740619181124ef74e4bb3e3cf3d24e43e4a6cd5ed58cc381669f6",
+      "bytes": 290
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/chevron.svg",
+      "sha256": "fcea6c7d5c7953b4c429cc0a193f968db000b215d251f5b2c85d70ba9e0866d3",
+      "bytes": 209
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/clock.svg",
+      "sha256": "e2ca920e45f4eab8e3cd40ced70fbb012f7844faa9ca5b498bc4df63e1dc880d",
+      "bytes": 238
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/code.svg",
+      "sha256": "ab5a76ebf5c3de55261280b01ccbbf7a027775565352ed43e959cd9a9892caf7",
+      "bytes": 233
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/file.svg",
+      "sha256": "0474389a63bb64cb154e35b6cd67a8cf14a09664e5a350e2976641df38b7f259",
+      "bytes": 289
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/game.svg",
+      "sha256": "dd62caadf4e0ff4d01ca05cfa4ae6933fa459f82997b284ba5da5f22d17e18d0",
+      "bytes": 292
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/grid.svg",
+      "sha256": "f7dd6321f42c10a47ee61c3240c5f950068b3d63b6b8c075e9d55c794a5c9883",
+      "bytes": 376
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/headphones.svg",
+      "sha256": "91117c1a6667f3929c0821ed267b629620caf287a4bffaf6ae2c031e5b3b89e4",
+      "bytes": 318
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/heart.svg",
+      "sha256": "b24ea02751f1e5d09cf9349d1d129b9f9fefe2884114b3c9fd0ebc3fd919bae3",
+      "bytes": 298
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/help.svg",
+      "sha256": "99a899bb053e642ff77ff243d108aa16395f72dc91a451ad47a7841c3efb7999",
+      "bytes": 288
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/home.svg",
+      "sha256": "b1edb8d75508c5c06122b20998ac50410e30222b5651cc15b02ad9b5056c4447",
+      "bytes": 253
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/leaf.svg",
+      "sha256": "041be296d1a6c0312d62c0bca4eb1161c24354420b3dc6dc493ed80f088c826e",
+      "bytes": 276
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/moon.svg",
+      "sha256": "1c7e176af0635c85e6ff4b23c59cafbcd06436e279166f9346a973227cc04333",
+      "bytes": 244
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/partnership.svg",
+      "sha256": "4d7066dc250fbf2ce320cae2b17286c3aa47563d9ba8d9b29b7f26ad8e590e10",
+      "bytes": 324
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/plus.svg",
+      "sha256": "909e22bcd3db8df5ea295e393e70882bb9a7bf8682d4ba839ea388200587eb29",
+      "bytes": 212
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/profile.svg",
+      "sha256": "9c4c4f20b2d351836ef379e938b8824600c75d7297c8293fcb85cd3b4edfa9cf",
+      "bytes": 303
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/report.svg",
+      "sha256": "b136a5c75316a7335098f48b7665b698b894ab2c0bd61da3bf7f1389324805a8",
+      "bytes": 302
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/search-star.svg",
+      "sha256": "c84021cf7059e7c1576980b52592408458c0454d347180771c11dfab2c5b50fc",
+      "bytes": 262
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/search.svg",
+      "sha256": "43a5c49d3733cd18112384d404ed86cf78b47126fa1b9609a133acef0d980909",
+      "bytes": 243
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/sliders.svg",
+      "sha256": "8ad9cc43ca77727b13f25cbbccf9b100c020035a57acb91600149130c803f5b2",
+      "bytes": 285
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/smile.svg",
+      "sha256": "3bef74c2fbc1a1e5c3f8879c47b12305e7f8f62c904d15bbbc4b6039714d118a",
+      "bytes": 275
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/sparkles.svg",
+      "sha256": "2c9ee93db92b74d9f5a63ba977e5cb1ccd21b9bb9d96573536fe97eff263c6f3",
+      "bytes": 286
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/user.svg",
+      "sha256": "c1b478296e11ef30ac9cca9e5efb5228b25d87589207a186f6fdeec864586161",
+      "bytes": 251
+    },
+    {
+      "path": "apps/web/dist/assets/store/icons/users.svg",
+      "sha256": "1f89c91eecd1a9c56dcf002831fd86d54dcd9bdc61da13096812d5faad2b23ad",
+      "bytes": 295
+    },
+    {
+      "path": "apps/web/dist/assets/store/left-edge-bright-exterior.svg",
+      "sha256": "b85615bd1b7ad6cb0f050d0462a224c55243d9000c22b4bc8f97ff3f14750f03",
+      "bytes": 870
+    },
+    {
+      "path": "apps/web/dist/assets/store/mini-blush.svg",
+      "sha256": "8ec2975e419550c48a238dc9f50d137ab09a0bd0ef7b0e0770df5f4e8b12f4eb",
+      "bytes": 1178
+    },
+    {
+      "path": "apps/web/dist/assets/store/mini-lavender.svg",
+      "sha256": "498a3c2ea834281aa1001f24eb4c81091cc0da9cef8760bc5a923a19db07f310",
+      "bytes": 1489
+    },
+    {
+      "path": "apps/web/dist/assets/store/mini-periwinkle.svg",
+      "sha256": "8151213d9aa3e5839e657a2f645e73d1466a2be8096fef1bbbafd674d5c06567",
+      "bytes": 1190
+    },
+    {
+      "path": "apps/web/dist/assets/store/mini-teal.svg",
+      "sha256": "2df08bcff1e5a0d24036bad7f5dbdc9c9c5953955ddb1bdbac07c2bfdb10fb39",
+      "bytes": 1228
+    },
+    {
+      "path": "apps/web/dist/assets/store/mobile-account-mark.svg",
+      "sha256": "c69d28dde00aedb5903af37e34522fa4aa1295b2821a685c409fe0e69c28e46d",
+      "bytes": 340
+    },
+    {
+      "path": "apps/web/dist/assets/store/mobile-atmosphere.svg",
+      "sha256": "9fbb1d8ca85c470d0e46b26cf51b5fe546419f059f2a40470afc75ffa0b8c00e",
+      "bytes": 2799
+    },
+    {
+      "path": "apps/web/dist/assets/store/mobile-avatar-source.png",
+      "sha256": "ad0a8449131fc2c80c1127d3795e48c15180b7ccc34e8b9ac7c2cb34c01c1cf4",
+      "bytes": 3707
+    },
+    {
+      "path": "apps/web/dist/assets/store/mobile-notification.svg",
+      "sha256": "075636ac897d5405eb4b5d132b093ac0ec4fc94e74f3e3c4fc8fcdc4db204b10",
+      "bytes": 437
+    },
+    {
+      "path": "apps/web/dist/assets/store/multicolor-corner-glow.svg",
+      "sha256": "bcb178f0adf2a7b8199fb51699b8834a8301b14734e5f53f61dd8618cc9a4b32",
+      "bytes": 1921
+    },
+    {
+      "path": "apps/web/dist/assets/store/panel-surface-soft-upper-left.svg",
+      "sha256": "31d5dbae0a581e786975d0dc2be8cce423905ebefd640c7c2245a98523484ad9",
+      "bytes": 1590
+    },
+    {
+      "path": "apps/web/dist/assets/store/sidebar-transition-soft-base.svg",
+      "sha256": "a72807f482f298886c3e4b8f5bda84752bb559cd8bd461eb686f9fcf36fc59b6",
+      "bytes": 2924
+    },
+    {
+      "path": "apps/web/dist/assets/store/top-right-lilac-glow.svg",
+      "sha256": "1ae763c3e44a0b5185e7cd7b42dec92eb9800162cef5cc6732038082139e2bc4",
+      "bytes": 1025
+    },
+    {
+      "path": "apps/web/dist/assets/three.module-LK1pl1yG.js",
+      "sha256": "de5b3f41032990cbc7714b30995059bda11d441adf0a18b3875a531edc2c8bcd",
+      "bytes": 541919
+    },
+    {
+      "path": "apps/web/dist/assets/tslib.es6-C-DzQg4N.js",
+      "sha256": "5e3fe10ec67630bcb8d9d75e6dc8be7dacb3a92193bd6a624cef6c214cc380fd",
+      "bytes": 4915
+    },
+    {
+      "path": "apps/web/dist/assets/upcoming-G-xy8dtk.js",
+      "sha256": "3e63de10804b840483c90ab5642e2d479d70e4c115b7099a053ab29b51856bb4",
+      "bytes": 1214
+    },
+    {
+      "path": "apps/web/dist/assets/workspace-layout-D8WbuwRy.js",
+      "sha256": "d17733d11e83d261c8b4eaf5b84200f1c2eb8c7ff167be50060ed22754c3de9d",
+      "bytes": 687
+    },
+    {
+      "path": "apps/web/dist/demo/partner.svg",
+      "sha256": "55c4c43ec22b2af7ef19ebea57bea3f83a3c8ecdb95bd16aa58a7dc8b986eff9",
+      "bytes": 475
+    },
+    {
+      "path": "apps/web/dist/experience-budget.json",
+      "sha256": "ed6ee19a17a89049cbe8ca78aaf124128bf8ce8429bfc57c97167c0f48a30509",
+      "bytes": 1803
+    },
+    {
+      "path": "apps/web/dist/index.html",
+      "sha256": "57e18555307c075159c9ae545ac441bbc214e312ffec6d3fe3732040d10c2b9a",
+      "bytes": 1153
+    }
+  ]
+}

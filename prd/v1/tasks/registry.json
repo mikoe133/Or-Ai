@@ -112,7 +112,7 @@
       "file": "active/06-local-experience-acceptance.md",
       "title": "完成 Three.js 商品本地业务与性能验收",
       "lane": "主线",
-      "status": "A/B合成业务链、构建预算与恢复部分通过；首帧/FPS/内存及完整矩阵待验",
+      "status": "36首帧/24活动/22恢复及40次卸载资源检查通过；完整内存与真实隐藏生命周期待验",
       "dependsOn": [
         5
       ],
@@ -366,7 +366,7 @@
       "file": "active/17-frontend-design-refinement.md",
       "title": "依据 anti-ai-web-design 审计并改造全站前端",
       "lane": "主线",
-      "status": "项目Skill已保存/完整阅读/校验，设计标准已规划；前端审计改造未执行",
+      "status": "Skill及源码路由/状态/共用组件清单已准备；截图审计和前端改造未执行",
       "dependsOn": [
         5,
         6

@@ -34,6 +34,8 @@
 
 新增[05/06合成模板技术子批次](completed/05-06-synthetic-template-slice-20261028.md)：A实际制作链、B独立正交Three.js/报告、635项及26项自主CUA通过；正式转制与完整性能仍由active的05/06持有，不计为父任务完成。
 
+后续[06首帧/活动/参考图恢复子批次](completed/06-first-frame-activity-recovery-slice-20261028.md)：最终36首帧、24活动、40卸载资源/静默及22恢复通过，636项/类型/构建通过；内存与真实hidden仍未完成，06不整体关闭。
+
 见[已完成批次与证据](completed/BATCHES-20261026.md)：只归档实际完成的本地子批次，父任务的未完成项仍在 active 中。
 
 ## 历史快照

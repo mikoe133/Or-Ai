@@ -1,0 +1,16 @@
+{
+  "method": "open a second local IAB tab, read original document.visibilityState for 750ms, then close cover tab",
+  "before": {
+    "draws": 46,
+    "pendingRAF": 0,
+    "visibility": "visible"
+  },
+  "covered": {
+    "drawsAfter": 46,
+    "drawsBefore": 46,
+    "pendingRAF": 0,
+    "visibility": "visible"
+  },
+  "actualHiddenObserved": false,
+  "conclusion": "IAB kept the original document visible; this is not evidence for real background/foreground lifecycle. Keep actual hidden/resume pending."
+}

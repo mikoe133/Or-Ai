@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "applicationCommit": "802c5e6",
+  "stage": "source_inventory_only",
+  "baselineScreenshotsComplete": false,
+  "visualAuditComplete": false,
+  "routes": [
+    {
+      "path": "/auth/login",
+      "localPath": "/auth/login",
+      "index": false,
+      "component": "AuthForm",
+      "source": "apps/web/src/app.tsx",
+      "line": 30,
+      "kind": "runtime"
+    },
+    {
+      "path": "/auth/register",
+      "localPath": "/auth/register",
+      "index": false,
+      "component": "AuthForm",
+      "source": "apps/web/src/app.tsx",
+      "line": 31,
+      "kind": "runtime"
+    },
+    {
+      "path": "/auth/forgot",
+      "localPath": "/auth/forgot",
+      "index": false,
+      "component": "AuthForm",
+      "source": "apps/web/src/app.tsx",
+      "line": 32,
+      "kind": "runtime"
+    },
+    {
+      "path": "/auth/callback",
+      "localPath": "/auth/callback",
+      "index": false,
+      "component": "AuthCallbackPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 33,
+      "kind": "runtime"
+    },
+    {
+      "path": "/auth/reset",
+      "localPath": "/auth/reset",
+      "index": false,
+      "component": "AuthCallbackPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 34,
+      "kind": "runtime"
+    },
+    {
+      "path": "/account",
+      "localPath": "/account",
+      "index": false,
+      "component": "AccountPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 35,
+      "kind": "runtime"
+    },
+    {
+      "path": "/*",
+      "localPath": "*",
+      "index": false,
+      "component": "NotFound",
+      "source": "apps/web/src/app.tsx",
+      "line": 36,
+      "kind": "fallback"
+    },
+    {
+      "path": "/",
+      "localPath": "/",
+      "index": false,
+      "component": "Catalog",
+      "source": "apps/web/src/app.tsx",
+      "line": 43,
+      "kind": "runtime"
+    },
+    {
+      "path": "/apps",
+      "localPath": "/apps",
+      "index": false,
+      "component": "Library",
+      "source": "apps/web/src/app.tsx",
+      "line": 44,
+      "kind": "runtime"
+    },
+    {
+      "path": "/reports",
+      "localPath": "/reports",
+      "index": false,
+      "component": "Library",
+      "source": "apps/web/src/app.tsx",
+      "line": 45,
+      "kind": "runtime"
+    },
+    {
+      "path": "/help",
+      "localPath": "/help",
+      "index": false,
+      "component": "Help",
+      "source": "apps/web/src/app.tsx",
+      "line": 46,
+      "kind": "runtime"
+    },
+    {
+      "path": "/developers",
+      "localPath": "/developers",
+      "index": false,
+      "component": "Developer",
+      "source": "apps/web/src/app.tsx",
+      "line": 48,
+      "kind": "runtime"
+    },
+    {
+      "path": "/together",
+      "localPath": "/together",
+      "index": false,
+      "component": "Upcoming",
+      "source": "apps/web/src/app.tsx",
+      "line": 49,
+      "kind": "runtime"
+    },
+    {
+      "path": "/collaborations",
+      "localPath": "/collaborations",
+      "index": false,
+      "component": "Upcoming",
+      "source": "apps/web/src/app.tsx",
+      "line": 50,
+      "kind": "runtime"
+    },
+    {
+      "path": "/products/:slug",
+      "localPath": "/products/:slug",
+      "index": false,
+      "component": "Product",
+      "source": "apps/web/src/app.tsx",
+      "line": 51,
+      "kind": "runtime"
+    },
+    {
+      "path": "/redeem",
+      "localPath": "/redeem",
+      "index": false,
+      "component": "Redeem",
+      "source": "apps/web/src/app.tsx",
+      "line": 52,
+      "kind": "runtime"
+    },
+    {
+      "path": "/redeem/success",
+      "localPath": "/redeem/success",
+      "index": false,
+      "component": "Navigate",
+      "source": "apps/web/src/app.tsx",
+      "line": 53,
+      "kind": "runtime"
+    },
+    {
+      "path": "/reports/:id",
+      "localPath": "/reports/:id",
+      "index": false,
+      "component": "Report",
+      "source": "apps/web/src/app.tsx",
+      "line": 54,
+      "kind": "runtime"
+    },
+    {
+      "path": "/attempts/:id",
+      "localPath": "/attempts/:id",
+      "index": false,
+      "component": "Attempt",
+      "source": "apps/web/src/app.tsx",
+      "line": 55,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/*",
+      "localPath": "/admin/*",
+      "index": false,
+      "component": "Admin",
+      "source": "apps/web/src/app.tsx",
+      "line": 56,
+      "kind": "runtime"
+    },
+    {
+      "path": "/preview",
+      "localPath": "/preview",
+      "index": false,
+      "component": "HomePage",
+      "source": "apps/web/src/app.tsx",
+      "line": 57,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/experience/quiet-room",
+      "localPath": "/preview/experience/quiet-room",
+      "index": false,
+      "component": "QuietRoomPreview",
+      "source": "apps/web/src/app.tsx",
+      "line": 58,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/experience/reflection-garden",
+      "localPath": "/preview/experience/reflection-garden",
+      "index": false,
+      "component": "GardenPreview",
+      "source": "apps/web/src/app.tsx",
+      "line": 59,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/products/partner",
+      "localPath": "/preview/products/partner",
+      "index": false,
+      "component": "ProductDetailPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 60,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/assessment/partner",
+      "localPath": "/preview/assessment/partner",
+      "index": false,
+      "component": "AssessmentPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 61,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/reports/partner",
+      "localPath": "/preview/reports/partner",
+      "index": false,
+      "component": "ReportPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 62,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/redeem",
+      "localPath": "/preview/redeem",
+      "index": false,
+      "component": "RedemptionPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 63,
+      "kind": "preview"
+    },
+    {
+      "path": "/preview/redeem/success",
+      "localPath": "/preview/redeem/success",
+      "index": false,
+      "component": "RedemptionPage",
+      "source": "apps/web/src/app.tsx",
+      "line": 64,
+      "kind": "preview"
+    },
+    {
+      "path": "/*",
+      "localPath": "*",
+      "index": false,
+      "component": "SupportingPages",
+      "source": "apps/web/src/app.tsx",
+      "line": 65,
+      "kind": "fallback"
+    },
+    {
+      "path": "/admin",
+      "localPath": "",
+      "index": true,
+      "component": "Overview",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 30,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/products",
+      "localPath": "products",
+      "index": false,
+      "component": "Products",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 31,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/assets",
+      "localPath": "assets",
+      "index": false,
+      "component": "Assets",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 35,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/content/*",
+      "localPath": "content/*",
+      "index": false,
+      "component": "ContentWorkbench",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 36,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/skills/*",
+      "localPath": "skills/*",
+      "index": false,
+      "component": "SkillsApp",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 37,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/machine",
+      "localPath": "machine",
+      "index": false,
+      "component": "CodexConnections",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 38,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/machine/configurations",
+      "localPath": "machine/configurations",
+      "index": false,
+      "component": "CodexConnections",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 42,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/orders",
+      "localPath": "orders",
+      "index": false,
+      "component": "Orders",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 43,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/*",
+      "localPath": "*",
+      "index": false,
+      "component": "p",
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 44,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/content",
+      "localPath": "",
+      "index": true,
+      "component": "ContentProducts",
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 38,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/content/:productId",
+      "localPath": ":productId",
+      "index": false,
+      "component": "ProductWorkbench",
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 39,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/skills",
+      "localPath": "",
+      "index": true,
+      "component": "Navigate",
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 55,
+      "kind": "runtime"
+    },
+    {
+      "path": "/admin/skills/:domain",
+      "localPath": ":domain",
+      "index": false,
+      "component": "LibraryRoute",
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 56,
+      "kind": "runtime"
+    }
+  ]
+}

@@ -1,0 +1,4614 @@
+[
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "repetition": 1,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 2162.100000023842,
+        "resourcesReadyMs": 2162.600000023842,
+        "firstPaintOpportunityMs": 2169.8000000715256
+      },
+      "frames": [
+        {
+          "time": 2123.32,
+          "callbackMs": 26.399999976158142,
+          "draws": 22
+        },
+        {
+          "time": 2156.8,
+          "callbackMs": 3,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 2116.399999976158,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 2183.5,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1863.7000000476837,
+          "navigationId": 2997,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.5,
+          "domainLookupStart": 0.5,
+          "domainLookupEnd": 0.5,
+          "connectStart": 0.5,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.5,
+          "requestStart": 2.3000000715255737,
+          "responseStart": 3.399999976158142,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 3.399999976158142,
+          "responseEnd": 108.39999997615814,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 119.30000007152557,
+          "unloadEventEnd": 119.30000007152557,
+          "domInteractive": 259.10000002384186,
+          "domContentLoadedEventStart": 571.1000000238419,
+          "domContentLoadedEventEnd": 578.5,
+          "domComplete": 1863.2000000476837,
+          "loadEventStart": 1863.7000000476837,
+          "loadEventEnd": 1863.7000000476837,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 123.89999997615814,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 126.89999997615814,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 136.5,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 222.5,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 411.89999997615814,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 122.10000002384186,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 234,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 423.5,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 135.29999995231628,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 153.60000002384186,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 155.79999995231628,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 177.69999992847443,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 131,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 143.5,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 246.60000002384186,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 248.80000007152557,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 255.60000002384186,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 257.6999999284744,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 238.60000002384186,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 286.8000000715256,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 342.5,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 335.40000009536743,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 337.3000000715256,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 105,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 105.80000007152557,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 108.10000002384186,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 892.9000000953674,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 747.5,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "duration": 754.5,
+          "transferSize": 94460,
+          "encodedBodySize": 94160,
+          "decodedBodySize": 94160
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 756.7999999523163,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "duration": 780.5,
+          "transferSize": 95396,
+          "encodedBodySize": 95096,
+          "decodedBodySize": 95096
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 199.5,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 237.69999992847443,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 305.2999999523163,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 752,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 842.7999999523163,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 537.8999999761581,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 780.3999999761581,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 345.6999999284744,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 566.5999999046326,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 677,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 844.3999999761581,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 647.5,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 455.89999997615814,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 882.7000000476837,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 947.7000000476837,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 950.2999999523163,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 952,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 604.7999999523163,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 181.80000007152557,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 605.8999999761581,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 107.89999997615814,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 330.89999997615814,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 104.5,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "canvases": [
+          {
+            "width": 490,
+            "height": 467,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "490",
+            "pixelHeight": "467"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "repetition": 2,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 2147.899999976158,
+        "resourcesReadyMs": 2147.899999976158,
+        "firstPaintOpportunityMs": 2153.7999999523163
+      },
+      "frames": [
+        {
+          "time": 2109.6,
+          "callbackMs": 23.59999990463257,
+          "draws": 22
+        },
+        {
+          "time": 2143,
+          "callbackMs": 2.0999999046325684,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 2103.600000023842,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 2159.899999976158,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1855.6999999284744,
+          "navigationId": 1927,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.2999999523162842,
+          "domainLookupStart": 0.2999999523162842,
+          "domainLookupEnd": 0.2999999523162842,
+          "connectStart": 0.2999999523162842,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.2999999523162842,
+          "requestStart": 1.5,
+          "responseStart": 2.299999952316284,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 2.299999952316284,
+          "responseEnd": 107.10000002384186,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 115.79999995231628,
+          "unloadEventEnd": 115.79999995231628,
+          "domInteractive": 256.60000002384186,
+          "domContentLoadedEventStart": 564.6000000238419,
+          "domContentLoadedEventEnd": 572.6000000238419,
+          "domComplete": 1855,
+          "loadEventStart": 1855.1000000238419,
+          "loadEventEnd": 1855.6999999284744,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 122.69999992847443,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 137.29999995231628,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 410.89999997615814,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 132.10000002384186,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 124.5,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 222.69999992847443,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 228.19999992847443,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 422.2999999523163,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 134.5,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 157.69999992847443,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 181.90000009536743,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 159.89999997615814,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 142.60000002384186,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 154.19999992847443,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 248,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 257.5,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 260.09999990463257,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 262.60000002384186,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 290.2000000476837,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 234.89999997615814,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 336.60000002384186,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 335.7999999523163,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 345.6999999284744,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 102.89999997615814,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 103.39999997615814,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 105.89999997615814,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 882,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 705.7999999523163,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "duration": 736.7999999523163,
+          "transferSize": 94460,
+          "encodedBodySize": 94160,
+          "decodedBodySize": 94160
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 748.2000000476837,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "duration": 770.1000000238419,
+          "transferSize": 95396,
+          "encodedBodySize": 95096,
+          "decodedBodySize": 95096
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 200.39999997615814,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 238.10000002384186,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 456.60000002384186,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 538.2999999523163,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 566.8999999761581,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 751.8999999761581,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 783,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 304.6999999284744,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 345.39999997615814,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 648.0999999046326,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 676.8999999761581,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 799.2999999523163,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 832.6999999284744,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 888,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 902,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 938,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 947.7000000476837,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 601.2999999523163,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 183.10000002384186,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 607.0999999046326,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 110.60000002384186,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 331.7999999523163,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 104.29999995231628,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "canvases": [
+          {
+            "width": 490,
+            "height": 467,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "490",
+            "pixelHeight": "467"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "repetition": 3,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 2464.7999999523163,
+        "resourcesReadyMs": 2465.1999999284744,
+        "firstPaintOpportunityMs": 2470.399999976158
+      },
+      "frames": [
+        {
+          "time": 2422,
+          "callbackMs": 26.399999976158142,
+          "draws": 22
+        },
+        {
+          "time": 2456.2,
+          "callbackMs": 4.399999976158142,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 2416.0999999046326,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 2576.5999999046326,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 2002.8999999761581,
+          "navigationId": 121,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.8999999761581421,
+          "domainLookupStart": 0.8999999761581421,
+          "domainLookupEnd": 0.8999999761581421,
+          "connectStart": 0.8999999761581421,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.8999999761581421,
+          "requestStart": 3,
+          "responseStart": 3.799999952316284,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 3.799999952316284,
+          "responseEnd": 107.09999990463257,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 114.89999997615814,
+          "unloadEventEnd": 114.89999997615814,
+          "domInteractive": 253,
+          "domContentLoadedEventStart": 563.5999999046326,
+          "domContentLoadedEventEnd": 571.3999999761581,
+          "domComplete": 2002.1999999284744,
+          "loadEventStart": 2002.8999999761581,
+          "loadEventEnd": 2002.8999999761581,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 124.70000004768372,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 136.10000002384186,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 412,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 119.29999995231628,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 131.39999997615814,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 222.19999992847443,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 231.89999997615814,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 423.89999997615814,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 134.39999997615814,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 158.10000002384186,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 182.39999997615814,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 163.10000002384186,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 143.5,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 154.70000004768372,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 248.20000004768372,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 238.5,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 257.7999999523163,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 260.60000002384186,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 265.2000000476837,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 291.60000002384186,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 342.5,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 333,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 345.39999997615814,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 105.59999990463257,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 106.5,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 108.59999990463257,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 843.3999999761581,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 431.2000000476837,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 556.2000000476837,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 210.5,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 321.10000002384186,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 443.60000002384186,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 758,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 215.10000002384186,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 330,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 541.6000000238419,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 654.1000000238419,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 665.8999999761581,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 983.8999999761581,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 984.0999999046326,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 984.3999999761581,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 984.7999999523163,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 717.3999999761581,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "duration": 724.3999999761581,
+          "transferSize": 94460,
+          "encodedBodySize": 94160,
+          "decodedBodySize": 94160
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 738.8999999761581,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "duration": 762.5999999046326,
+          "transferSize": 95396,
+          "encodedBodySize": 95096,
+          "decodedBodySize": 95096
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 755.1000000238419,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 825,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 237.79999995231628,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 239,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 229.5,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 109.5,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 112.40000009536743,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 107,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 113.60000002384186,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 334.60000002384186,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 118.60000002384186,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "canvases": [
+          {
+            "width": 490,
+            "height": 467,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "490",
+            "pixelHeight": "467"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "repetition": 1,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 2390,
+        "resourcesReadyMs": 2390,
+        "firstPaintOpportunityMs": 2392.600000023842
+      },
+      "frames": [
+        {
+          "time": 2352.8,
+          "callbackMs": 24,
+          "draws": 22
+        },
+        {
+          "time": 2368.9,
+          "callbackMs": 2.5,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 2346.8000000715256,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 2503.600000023842,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1860.1000000238419,
+          "navigationId": 1225,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.40000009536743164,
+          "domainLookupStart": 0.40000009536743164,
+          "domainLookupEnd": 0.40000009536743164,
+          "connectStart": 0.40000009536743164,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.40000009536743164,
+          "requestStart": 2.3000000715255737,
+          "responseStart": 3.600000023841858,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 3.600000023841858,
+          "responseEnd": 108.30000007152557,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 118.30000007152557,
+          "unloadEventEnd": 118.30000007152557,
+          "domInteractive": 257.2000000476837,
+          "domContentLoadedEventStart": 567.6000000238419,
+          "domContentLoadedEventEnd": 574.6000000238419,
+          "domComplete": 1859.4000000953674,
+          "loadEventStart": 1859.9000000953674,
+          "loadEventEnd": 1860.1000000238419,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 123.69999992847443,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 135.39999997615814,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 413.7000000476837,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 113.70000004768372,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 127.60000002384186,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 221.60000002384186,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 226,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 422.7999999523163,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 139.10000002384186,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 153.29999995231628,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 177.39999997615814,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 142.79999995231628,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 157.10000002384186,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 128.39999997615814,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 247.89999997615814,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 245.79999995231628,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 255.19999992847443,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 257.09999990463257,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 240.70000004768372,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 288.60000002384186,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 344,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 333.10000002384186,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 335.59999990463257,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 106.19999992847443,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 107.59999990463257,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 107.20000004768372,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 666.2000000476837,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 853.3999999761581,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 217.59999990463257,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 323.2999999523163,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 330.1999999284744,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 443.09999990463257,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 555.8999999761581,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 653.8000000715256,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 855.4000000953674,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 212,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 432.8000000715256,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 543.2999999523163,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 857.3999999761581,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 862.1999999284744,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 886.1999999284744,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 739.1999999284744,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "duration": 743.4000000953674,
+          "transferSize": 94460,
+          "encodedBodySize": 94160,
+          "decodedBodySize": 94160
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 745.3000000715256,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "duration": 779.5,
+          "transferSize": 95396,
+          "encodedBodySize": 95096,
+          "decodedBodySize": 95096
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 746,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 763.8999999761581,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 869.8999999761581,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 177.60000002384186,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 174.19999992847443,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 168.30000007152557,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 107.20000004768372,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 116.5,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 327.2000000476837,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvases": [
+          {
+            "width": 386,
+            "height": 368,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "386",
+            "pixelHeight": "368"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "repetition": 2,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 2136.7999999523163,
+        "resourcesReadyMs": 2137.399999976158,
+        "firstPaintOpportunityMs": 2139.7999999523163
+      },
+      "frames": [
+        {
+          "time": 2098.19,
+          "callbackMs": 26.199999928474426,
+          "draws": 22
+        },
+        {
+          "time": 2131.6,
+          "callbackMs": 2.299999952316284,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 2093.399999976158,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 2167.600000023842,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1862.8999999761581,
+          "navigationId": 7172,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.19999992847442627,
+          "domainLookupStart": 0.19999992847442627,
+          "domainLookupEnd": 0.19999992847442627,
+          "connectStart": 0.19999992847442627,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.19999992847442627,
+          "requestStart": 1.399999976158142,
+          "responseStart": 2.1999999284744263,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 2.1999999284744263,
+          "responseEnd": 107.69999992847443,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 115.19999992847443,
+          "unloadEventEnd": 115.19999992847443,
+          "domInteractive": 245,
+          "domContentLoadedEventStart": 554.5,
+          "domContentLoadedEventEnd": 560.6999999284744,
+          "domComplete": 1862.3999999761581,
+          "loadEventStart": 1862.8999999761581,
+          "loadEventEnd": 1862.8999999761581,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 118.60000002384186,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 130.10000002384186,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 406.10000002384186,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 125.10000002384186,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 213.69999992847443,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 115.29999995231628,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 417.39999997615814,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 225.60000002384186,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 134.29999995231628,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 157.60000002384186,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 181.5,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 143.29999995231628,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 162.5,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 248.79999995231628,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 155.10000002384186,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 257.5,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 260.39999997615814,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 265.10000002384186,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 291,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 235.70000004768372,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 337.2999999523163,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 337.2000000476837,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 345.8000000715256,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 105.89999997615814,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 108.79999995231628,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 105.60000002384186,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 855.0999999046326,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 708.2999999523163,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "duration": 732.1999999284744,
+          "transferSize": 94460,
+          "encodedBodySize": 94160,
+          "decodedBodySize": 94160
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 743.5999999046326,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "duration": 767.6999999284744,
+          "transferSize": 95396,
+          "encodedBodySize": 95096,
+          "decodedBodySize": 95096
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 202.79999995231628,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 237,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 855.8000000715256,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 646.8999999761581,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 303,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 344.10000002384186,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 454.10000002384186,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 536,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 675.5,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 749.7000000476837,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 857.7000000476837,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 564.6000000238419,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 781.1000000238419,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 886,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 908,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 923.8999999761581,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 962.3999999761581,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 561,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 183.89999997615814,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 577.2999999523163,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 118.10000002384186,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 355.2999999523163,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 104,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvases": [
+          {
+            "width": 386,
+            "height": 368,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "386",
+            "pixelHeight": "368"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "repetition": 3,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 2128,
+        "resourcesReadyMs": 2128.100000023842,
+        "firstPaintOpportunityMs": 2129.7999999523163
+      },
+      "frames": [
+        {
+          "time": 2096.1,
+          "callbackMs": 20.700000047683716,
+          "draws": 22
+        },
+        {
+          "time": 2112.8,
+          "callbackMs": 1.0999999046325684,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 2091,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 2143.100000023842,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1839,
+          "navigationId": 2631,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.2999999523162842,
+          "domainLookupStart": 0.2999999523162842,
+          "domainLookupEnd": 0.2999999523162842,
+          "connectStart": 0.2999999523162842,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.2999999523162842,
+          "requestStart": 1.5,
+          "responseStart": 2.200000047683716,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 2.200000047683716,
+          "responseEnd": 106.29999995231628,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 113.39999997615814,
+          "unloadEventEnd": 113.39999997615814,
+          "domInteractive": 249.10000002384186,
+          "domContentLoadedEventStart": 555.7000000476837,
+          "domContentLoadedEventEnd": 561.7000000476837,
+          "domComplete": 1838.8999999761581,
+          "loadEventStart": 1839,
+          "loadEventEnd": 1839,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 121,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 127.39999997615814,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 139.79999995231628,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 221,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 226.39999997615814,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 408.6999999284744,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 122.5,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 420,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 132.89999997615814,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 151.79999995231628,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 176.10000002384186,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 142.59999990463257,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 156.79999995231628,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 129.70000004768372,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 242.09999990463257,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 244.89999997615814,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 251.59999990463257,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 263.59999990463257,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 278.09999990463257,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 234.5,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 333.1999999284744,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 331.5,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 333.10000002384186,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 106.19999992847443,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 106.20000004768372,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 107.89999997615814,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 220.80000007152557,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 333.10000002384186,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 446.10000002384186,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 875.5,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 215.70000004768372,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 325.89999997615814,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 436.60000002384186,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 735.3999999761581,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-500.ttf",
+          "duration": 754.7999999523163,
+          "transferSize": 94460,
+          "encodedBodySize": 94160,
+          "decodedBodySize": 94160
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 761.5,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-SemiBold.ttf",
+          "duration": 783.3999999761581,
+          "transferSize": 95396,
+          "encodedBodySize": 95096,
+          "decodedBodySize": 95096
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 535.5,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 578.2000000476837,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 878.7999999523163,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 638.6000000238419,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 686.2999999523163,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 789.8999999761581,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 825.3999999761581,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 892.8999999761581,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 929.1999999284744,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 955,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 957.5999999046326,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 265.39999997615814,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 169.10000002384186,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 264,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 107.5,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 337.5,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 103.39999997615814,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "canvases": [
+          {
+            "width": 386,
+            "height": 368,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "386",
+            "pixelHeight": "368"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "repetition": 1,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 1815.5,
+        "resourcesReadyMs": 1815.5999999046326,
+        "firstPaintOpportunityMs": 1820.2999999523163
+      },
+      "frames": [
+        {
+          "time": 1776.198,
+          "callbackMs": 21.600000023841858,
+          "draws": 22
+        },
+        {
+          "time": 1809.6,
+          "callbackMs": 2.200000047683716,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 1779.2999999523163,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 1823.6999999284744,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1733.1999999284744,
+          "navigationId": 5392,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.2999999523162842,
+          "domainLookupStart": 0.2999999523162842,
+          "domainLookupEnd": 0.2999999523162842,
+          "connectStart": 0.2999999523162842,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.2999999523162842,
+          "requestStart": 1.399999976158142,
+          "responseStart": 2.399999976158142,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 2.399999976158142,
+          "responseEnd": 104.29999995231628,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 113.29999995231628,
+          "unloadEventEnd": 113.29999995231628,
+          "domInteractive": 249.89999997615814,
+          "domContentLoadedEventStart": 558.0999999046326,
+          "domContentLoadedEventEnd": 564.1999999284744,
+          "domComplete": 1732.5,
+          "loadEventStart": 1733.0999999046326,
+          "loadEventEnd": 1733.1999999284744,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 123.39999997615814,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 128.29999995231628,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 137.89999997615814,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 411.39999997615814,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 130.69999992847443,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 221.39999997615814,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 226.59999990463257,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 423.1999999284744,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 139.89999997615814,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 153.80000007152557,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 178.20000004768372,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 158.60000002384186,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 131.89999997615814,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 143.60000002384186,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 244.30000007152557,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 246.89999997615814,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 254,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 280.2999999523163,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 265.7999999523163,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 241.89999997615814,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 349,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 341.7000000476837,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 343.89999997615814,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 107.29999995231628,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 107.40000009536743,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 109.80000007152557,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 546.2000000476837,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 557.7000000476837,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 641.6000000238419,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-Bold.ttf",
+          "duration": 650.7999999523163,
+          "transferSize": 95228,
+          "encodedBodySize": 94928,
+          "decodedBodySize": 94928
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 648.6999999284744,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 200.60000002384186,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 233.39999997615814,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 558.6000000238419,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 661.8999999761581,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 736.2999999523163,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 742.6000000238419,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 747.6000000238419,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 752,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 764.4000000953674,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 838.1000000238419,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 845.6000000238419,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 850,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 204.30000007152557,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 302.90000009536743,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 312.60000002384186,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 339.10000002384186,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 194.70000004768372,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 181.89999997615814,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 204.39999997615814,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 184.59999990463257,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 419.7000000476837,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvases": [
+          {
+            "width": 263,
+            "height": 250,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "263",
+            "pixelHeight": "250"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "repetition": 2,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 1906.7000000476837,
+        "resourcesReadyMs": 1906.7000000476837,
+        "firstPaintOpportunityMs": 1908.8999999761581
+      },
+      "frames": [
+        {
+          "time": 1860.1,
+          "callbackMs": 21.600000023841858,
+          "draws": 22
+        },
+        {
+          "time": 1892.6,
+          "callbackMs": 1.399999976158142,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 1868.3999999761581,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 1918,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1732.2999999523163,
+          "navigationId": 2563,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.2999999523162842,
+          "domainLookupStart": 0.2999999523162842,
+          "domainLookupEnd": 0.2999999523162842,
+          "connectStart": 0.2999999523162842,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.2999999523162842,
+          "requestStart": 1.399999976158142,
+          "responseStart": 2.200000047683716,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 2.200000047683716,
+          "responseEnd": 102.79999995231628,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 112,
+          "unloadEventEnd": 112,
+          "domInteractive": 249.79999995231628,
+          "domContentLoadedEventStart": 557.2000000476837,
+          "domContentLoadedEventEnd": 563.2000000476837,
+          "domComplete": 1731.7000000476837,
+          "loadEventStart": 1732.2999999523163,
+          "loadEventEnd": 1732.2999999523163,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "low"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 122.79999995231628,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 132.59999990463257,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 137.29999995231628,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 410.39999997615814,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 222.60000002384186,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 228.20000004768372,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 124.39999997615814,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 422.2000000476837,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 135.30000007152557,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 154.60000002384186,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 178.39999997615814,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 143.89999997615814,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 158.39999997615814,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 131.89999997615814,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 244,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 246.80000007152557,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 253.80000007152557,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 261.10000002384186,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 285.2000000476837,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 236.89999997615814,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 340.60000002384186,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 333.2999999523163,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 337.59999990463257,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 104.5,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 104.20000004768372,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 106.39999997615814,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 426,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 435.60000002384186,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 466.60000002384186,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 649.1999999284744,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 654.6999999284744,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 671.5,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 746,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 753,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 760.5,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 775.0999999046326,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 849,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 203.10000002384186,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 208.20000004768372,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 212.80000007152557,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 311.60000002384186,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 855.8999999761581,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 627.7999999523163,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 632.7000000476837,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-Bold.ttf",
+          "duration": 635,
+          "transferSize": 95228,
+          "encodedBodySize": 94928,
+          "decodedBodySize": 94928
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 310.90000009536743,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 340.10000002384186,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 193.39999997615814,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 183.70000004768372,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 206.5,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 180.79999995231628,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 404,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        },
+        {
+          "name": "/assets/store/favicon.svg",
+          "duration": 105.5,
+          "transferSize": 952,
+          "encodedBodySize": 652,
+          "decodedBodySize": 652
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvases": [
+          {
+            "width": 263,
+            "height": 250,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "263",
+            "pixelHeight": "250"
+          }
+        ]
+      }
+    },
+    "passed": true
+  },
+  {
+    "template": "A",
+    "profile": "constrained_5mbps_100ms_4x",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "repetition": 3,
+    "raw": {
+      "readiness": {
+        "rendererReadyMs": 1813.2999999523163,
+        "resourcesReadyMs": 1813.2999999523163,
+        "firstPaintOpportunityMs": 1815.5
+      },
+      "frames": [
+        {
+          "time": 1774.7,
+          "callbackMs": 20.899999976158142,
+          "draws": 22
+        },
+        {
+          "time": 1808.1,
+          "callbackMs": 1.600000023841858,
+          "draws": 22
+        }
+      ],
+      "contexts": [
+        {
+          "id": 1,
+          "createdAt": 1778.1999999284744,
+          "lost": false,
+          "draws": 44,
+          "live": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 0,
+            "VertexArray": 7
+          },
+          "created": {
+            "Texture": 5,
+            "Framebuffer": 3,
+            "Buffer": 24,
+            "Program": 2,
+            "Shader": 4,
+            "VertexArray": 7
+          },
+          "deleted": {
+            "Shader": 4
+          }
+        }
+      ],
+      "draws": 44,
+      "pendingRAF": 0,
+      "visibility": "visible",
+      "now": 1824,
+      "navigation": [
+        {
+          "name": "http://127.0.0.1:5187/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae?question=question-1",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 1729.6999999284744,
+          "navigationId": 7454,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "http/1.1",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "gzip",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 0.2999999523162842,
+          "domainLookupStart": 0.2999999523162842,
+          "domainLookupEnd": 0.2999999523162842,
+          "connectStart": 0.2999999523162842,
+          "secureConnectionStart": 0,
+          "connectEnd": 0.2999999523162842,
+          "requestStart": 1.2999999523162842,
+          "responseStart": 1.7999999523162842,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 1.7999999523162842,
+          "responseEnd": 106.79999995231628,
+          "transferSize": 906,
+          "encodedBodySize": 606,
+          "decodedBodySize": 1205,
+          "responseStatus": 200,
+          "serverTiming": [],
+          "unloadEventStart": 114.29999995231628,
+          "unloadEventEnd": 114.29999995231628,
+          "domInteractive": 247.79999995231628,
+          "domContentLoadedEventStart": 557.2999999523163,
+          "domContentLoadedEventEnd": 563.1999999284744,
+          "domComplete": 1729.3999999761581,
+          "loadEventStart": 1729.6999999284744,
+          "loadEventEnd": 1729.6999999284744,
+          "type": "reload",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        }
+      ],
+      "resources": [
+        {
+          "name": "/__orai-performance-probe.js",
+          "duration": 121.80000007152557,
+          "transferSize": 2113,
+          "encodedBodySize": 1813,
+          "decodedBodySize": 5095
+        },
+        {
+          "name": "/assets/react-yIOJJ3r4.js",
+          "duration": 134,
+          "transferSize": 3527,
+          "encodedBodySize": 3227,
+          "decodedBodySize": 8402
+        },
+        {
+          "name": "/assets/index-DtNOkYf-.js",
+          "duration": 409.40000009536743,
+          "transferSize": 87433,
+          "encodedBodySize": 87133,
+          "decodedBodySize": 275958
+        },
+        {
+          "name": "/assets/dist-B5b3PdTM.js",
+          "duration": 111.5,
+          "transferSize": 1335,
+          "encodedBodySize": 1035,
+          "decodedBodySize": 2120
+        },
+        {
+          "name": "/assets/tslib.es6-C-DzQg4N.js",
+          "duration": 130.60000002384186,
+          "transferSize": 2108,
+          "encodedBodySize": 1808,
+          "decodedBodySize": 4915
+        },
+        {
+          "name": "/assets/experience-BwXptbhX.js",
+          "duration": 221.60000002384186,
+          "transferSize": 28814,
+          "encodedBodySize": 28514,
+          "decodedBodySize": 98836
+        },
+        {
+          "name": "/assets/index-CsoRINY_.css",
+          "duration": 224.20000004768372,
+          "transferSize": 2833,
+          "encodedBodySize": 2533,
+          "decodedBodySize": 7341
+        },
+        {
+          "name": "/assets/privacy-DxSM2GRp.js",
+          "duration": 421.2000000476837,
+          "transferSize": 64552,
+          "encodedBodySize": 64252,
+          "decodedBodySize": 242385
+        },
+        {
+          "name": "/assets/assessment-ClR9i_Fq.js",
+          "duration": 142.10000002384186,
+          "transferSize": 3424,
+          "encodedBodySize": 3124,
+          "decodedBodySize": 7431
+        },
+        {
+          "name": "/assets/flow-shell-DWYV32f0.js",
+          "duration": 158.79999995231628,
+          "transferSize": 7309,
+          "encodedBodySize": 7009,
+          "decodedBodySize": 20476
+        },
+        {
+          "name": "/assets/home-BvQi19hq.js",
+          "duration": 180.19999992847443,
+          "transferSize": 18590,
+          "encodedBodySize": 18290,
+          "decodedBodySize": 54131
+        },
+        {
+          "name": "/assets/flow-shell-DmO_DUur.css",
+          "duration": 139.19999992847443,
+          "transferSize": 4079,
+          "encodedBodySize": 3779,
+          "decodedBodySize": 16542
+        },
+        {
+          "name": "/assets/home-ZFzT8y5Y.css",
+          "duration": 155.89999997615814,
+          "transferSize": 7327,
+          "encodedBodySize": 7027,
+          "decodedBodySize": 31395
+        },
+        {
+          "name": "/assets/shared-CKWhwQKQ.js",
+          "duration": 134.40000009536743,
+          "transferSize": 1960,
+          "encodedBodySize": 1660,
+          "decodedBodySize": 3217
+        },
+        {
+          "name": "/assets/shared-BQlXQneY.css",
+          "duration": 252,
+          "transferSize": 4689,
+          "encodedBodySize": 4389,
+          "decodedBodySize": 20469
+        },
+        {
+          "name": "/assets/download-BoKyQK_3.js",
+          "duration": 246.39999997615814,
+          "transferSize": 1062,
+          "encodedBodySize": 762,
+          "decodedBodySize": 1086
+        },
+        {
+          "name": "/assets/model-DmgVhA9n.js",
+          "duration": 255.89999997615814,
+          "transferSize": 714,
+          "encodedBodySize": 414,
+          "decodedBodySize": 414
+        },
+        {
+          "name": "/assets/report-host-CoyQ-66a.css",
+          "duration": 241.29999995231628,
+          "transferSize": 851,
+          "encodedBodySize": 551,
+          "decodedBodySize": 1762
+        },
+        {
+          "name": "/assets/model-Cmozy6R-.js",
+          "duration": 261.09999990463257,
+          "transferSize": 1552,
+          "encodedBodySize": 1252,
+          "decodedBodySize": 2224
+        },
+        {
+          "name": "/assets/report-host-BHxyg5qA.js",
+          "duration": 287.2999999523163,
+          "transferSize": 3488,
+          "encodedBodySize": 3188,
+          "decodedBodySize": 8067
+        },
+        {
+          "name": "/assets/store/homepage-meetmyworld-symbol.svg",
+          "duration": 345.60000002384186,
+          "transferSize": 917,
+          "encodedBodySize": 617,
+          "decodedBodySize": 617
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 337.6999999284744,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/session/context",
+          "duration": 339.2999999523163,
+          "transferSize": 481,
+          "encodedBodySize": 181,
+          "decodedBodySize": 181
+        },
+        {
+          "name": "/assets/flow/option-grid-atmosphere.svg#%E5%8F%8C%E8%89%B2%E7%8E%AF%E5%A2%83%E5%85%89",
+          "duration": 105,
+          "transferSize": 1147,
+          "encodedBodySize": 847,
+          "decodedBodySize": 2449
+        },
+        {
+          "name": "/assets/store/mobile-account-mark.svg",
+          "duration": 105.89999997615814,
+          "transferSize": 640,
+          "encodedBodySize": 340,
+          "decodedBodySize": 340
+        },
+        {
+          "name": "/assets/store/icons/search.svg",
+          "duration": 108,
+          "transferSize": 543,
+          "encodedBodySize": 243,
+          "decodedBodySize": 243
+        },
+        {
+          "name": "/assets/store/icons/moon.svg",
+          "duration": 544.7999999523163,
+          "transferSize": 544,
+          "encodedBodySize": 244,
+          "decodedBodySize": 244
+        },
+        {
+          "name": "/assets/redemption/guided-redemption-atmosphere.svg#%E4%BE%A7%E6%A0%8F%E6%B8%90%E5%8F%98%E7%8E%BB%E7%92%83",
+          "duration": 554.6999999284744,
+          "transferSize": 1130,
+          "encodedBodySize": 830,
+          "decodedBodySize": 2404
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-400.ttf",
+          "duration": 632.4000000953674,
+          "transferSize": 94516,
+          "encodedBodySize": 94216,
+          "decodedBodySize": 94216
+        },
+        {
+          "name": "/assets/store/fonts/NotoSansSC-700.ttf",
+          "duration": 637.3000000715256,
+          "transferSize": 94560,
+          "encodedBodySize": 94260,
+          "decodedBodySize": 94260
+        },
+        {
+          "name": "/assets/store/fonts/Manrope-Bold.ttf",
+          "duration": 639.2000000476837,
+          "transferSize": 95228,
+          "encodedBodySize": 94928,
+          "decodedBodySize": 94928
+        },
+        {
+          "name": "/api/account/context",
+          "duration": 200.19999992847443,
+          "transferSize": 471,
+          "encodedBodySize": 171,
+          "decodedBodySize": 171
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/questions",
+          "duration": 236.20000004768372,
+          "transferSize": 5460,
+          "encodedBodySize": 5160,
+          "decodedBodySize": 5160
+        },
+        {
+          "name": "/assets/store/icons/plus.svg",
+          "duration": 560.1000000238419,
+          "transferSize": 512,
+          "encodedBodySize": 212,
+          "decodedBodySize": 212
+        },
+        {
+          "name": "/assets/store/icons/grid.svg",
+          "duration": 663.6000000238419,
+          "transferSize": 676,
+          "encodedBodySize": 376,
+          "decodedBodySize": 376
+        },
+        {
+          "name": "/assets/store/icons/users.svg",
+          "duration": 728.3000000715256,
+          "transferSize": 595,
+          "encodedBodySize": 295,
+          "decodedBodySize": 295
+        },
+        {
+          "name": "/assets/store/icons/partnership.svg",
+          "duration": 732.7000000476837,
+          "transferSize": 624,
+          "encodedBodySize": 324,
+          "decodedBodySize": 324
+        },
+        {
+          "name": "/assets/store/icons/headphones.svg",
+          "duration": 737.5,
+          "transferSize": 618,
+          "encodedBodySize": 318,
+          "decodedBodySize": 318
+        },
+        {
+          "name": "/assets/store/icons/home.svg",
+          "duration": 341.8000000715256,
+          "transferSize": 553,
+          "encodedBodySize": 253,
+          "decodedBodySize": 253
+        },
+        {
+          "name": "/assets/store/icons/chevron.svg",
+          "duration": 742.6000000238419,
+          "transferSize": 509,
+          "encodedBodySize": 209,
+          "decodedBodySize": 209
+        },
+        {
+          "name": "/assets/store/icons/bag.svg",
+          "duration": 766.2000000476837,
+          "transferSize": 549,
+          "encodedBodySize": 249,
+          "decodedBodySize": 249
+        },
+        {
+          "name": "/assets/store/icons/file.svg",
+          "duration": 833.3000000715256,
+          "transferSize": 589,
+          "encodedBodySize": 289,
+          "decodedBodySize": 289
+        },
+        {
+          "name": "/assets/store/icons/help.svg",
+          "duration": 838.3000000715256,
+          "transferSize": 588,
+          "encodedBodySize": 288,
+          "decodedBodySize": 288
+        },
+        {
+          "name": "/assets/store/icons/sparkles.svg",
+          "duration": 843.1000000238419,
+          "transferSize": 586,
+          "encodedBodySize": 286,
+          "decodedBodySize": 286
+        },
+        {
+          "name": "/assets/store/icons/game.svg",
+          "duration": 204.60000002384186,
+          "transferSize": 592,
+          "encodedBodySize": 292,
+          "decodedBodySize": 292
+        },
+        {
+          "name": "/assets/store/icons/profile.svg",
+          "duration": 303.2999999523163,
+          "transferSize": 603,
+          "encodedBodySize": 303,
+          "decodedBodySize": 303
+        },
+        {
+          "name": "/assets/store/icons/report.svg",
+          "duration": 313,
+          "transferSize": 602,
+          "encodedBodySize": 302,
+          "decodedBodySize": 302
+        },
+        {
+          "name": "/assets/reflection-garden-BzIdN5tL.js",
+          "duration": 190.20000004768372,
+          "transferSize": 2590,
+          "encodedBodySize": 2290,
+          "decodedBodySize": 5329
+        },
+        {
+          "name": "/assets/reflection-garden-Cvo4W8Jn.css",
+          "duration": 178.29999995231628,
+          "transferSize": 2247,
+          "encodedBodySize": 1947,
+          "decodedBodySize": 6991
+        },
+        {
+          "name": "/api/attempts/01a181f5-8038-711c-95ae-565fb3d8d5ae/resources/technical-reference",
+          "duration": 203.89999997615814,
+          "transferSize": 1061,
+          "encodedBodySize": 761,
+          "decodedBodySize": 761
+        },
+        {
+          "name": "/assets/garden-renderer-CMzhT03R.js",
+          "duration": 182,
+          "transferSize": 3361,
+          "encodedBodySize": 3061,
+          "decodedBodySize": 6558
+        },
+        {
+          "name": "/assets/three.module-LK1pl1yG.js",
+          "duration": 422.3000000715256,
+          "transferSize": 133855,
+          "encodedBodySize": 133555,
+          "decodedBodySize": 541919
+        }
+      ],
+      "environment": {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvases": [
+          {
+            "width": 263,
+            "height": 250,
+            "engine": "three.js r186",
+            "drawCalls": "22",
+            "triangles": "6600",
+            "pixelWidth": "263",
+            "pixelHeight": "250"
+          }
+        ]
+      }
+    },
+    "passed": true
+  }
+]
