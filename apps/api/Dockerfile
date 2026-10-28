@@ -19,10 +19,34 @@ COPY tsconfig.base.json ./
 COPY packages/contracts packages/contracts
 COPY apps/api apps/api
 RUN pnpm --filter @orai/api... build \
+    && pnpm --filter @orai/api exec tsc -p tsconfig.tools.json \
     && pnpm --filter @orai/api deploy --prod /deploy/api \
     # pnpm can retain Prisma's optional build peer. Prisma 7's runtime uses
     # portable query-compiler WASM; schema migration binaries stay in the builder.
     && find /deploy/api/node_modules -type f -name 'schema-engine-*' -delete
+
+FROM node:24.21.0-bookworm-slim AS maintenance
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates openssl \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm install --global pnpm@10.33.2
+WORKDIR /workspace
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
+COPY apps/api/package.json apps/api/package.json
+COPY apps/web/package.json apps/web/package.json
+COPY packages/contracts/package.json packages/contracts/package.json
+# Install the CLI engines on the target CPU, independently of the native builder.
+# This image is used only for explicit one-shot maintenance, never API startup.
+RUN pnpm install --frozen-lockfile --filter @orai/api...
+COPY --from=build --chown=node:node /workspace/packages/contracts/dist packages/contracts/dist
+COPY --from=build --chown=node:node /workspace/apps/api/.tools-build apps/api/.tools-build
+COPY --from=build --chown=node:node /workspace/apps/api/prisma apps/api/prisma
+COPY --from=build --chown=node:node /workspace/apps/api/prisma.config.ts apps/api/prisma.config.ts
+WORKDIR /workspace/apps/api
+ENV NODE_ENV=production APP_ENV=production
+USER node
+ENTRYPOINT ["node", ".tools-build/scripts/cloud-database-cli.js"]
+CMD ["preview"]
 
 FROM node:24.21.0-bookworm-slim AS runtime
 RUN apt-get update \

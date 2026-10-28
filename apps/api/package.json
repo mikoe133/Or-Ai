@@ -18,6 +18,7 @@
     "db:migrate": "node --env-file-if-exists=../../.env node_modules/prisma/build/index.js migrate deploy",
     "db:status": "node --env-file-if-exists=../../.env node_modules/prisma/build/index.js migrate status",
     "db:provision": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/provision-cli.js",
+    "db:cloud": "tsc -p tsconfig.tools.json && node .tools-build/scripts/cloud-database-cli.js",
     "db:seed": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/seed-cli.js",
     "catalog:manage": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/catalog-cli.js",
     "delivery:manage": "tsc -p tsconfig.tools.json && node --env-file-if-exists=../../.env .tools-build/scripts/delivery-cli.js",

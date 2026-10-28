@@ -39,7 +39,7 @@ export class MachineApi {
         body: body as BodyInit | undefined,
         ...(body instanceof Readable ? { duplex: "half" } : {}),
         redirect: "error",
-        signal: AbortSignal.timeout(body instanceof Readable ? 120_000 : 30_000),
+        signal: AbortSignal.timeout(body instanceof Readable ? this.config.uploadTimeoutMs : 30_000),
       });
     } catch {
       throw new AdapterError("API_UNAVAILABLE", "The configured local API could not complete the request.", true);

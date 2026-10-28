@@ -26,6 +26,7 @@
     "db:migrate": "pnpm --filter @orai/api db:migrate",
     "db:status": "pnpm --filter @orai/api db:status",
     "db:provision": "pnpm --filter @orai/api db:provision",
+    "db:cloud": "pnpm --filter @orai/api db:cloud",
     "db:seed": "pnpm --filter @orai/api db:seed",
     "catalog:manage": "pnpm --filter @orai/api catalog:manage",
     "delivery:manage": "pnpm --filter @orai/api delivery:manage",

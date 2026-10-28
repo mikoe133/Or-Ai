@@ -183,11 +183,12 @@ export async function runCloudDatabaseCommand(args:string[],factory:(target:Clou
   let output:Awaited<ReturnType<typeof open>>|undefined,connections:CloudDatabaseConnections|undefined;
   let requestId:string|undefined,fingerprint:string|undefined;
   try{
-    const {positionals,values}=parseArgs({args,allowPositionals:true,strict:true,options:{'env-file':{type:'string'},out:{type:'string'},file:{type:'string'},mode:{type:'string'},'confirm-target':{type:'string'}}});
-    const action=positionals[0];if(positionals.length!==1||!['preview','apply'].includes(action??'')||!values['env-file']||!values.out||
-      !isAbsolute(values['env-file'])||!isAbsolute(values.out)||action==='preview'&&(values.file||values['confirm-target'])||action==='apply'&&(!values.file||!isAbsolute(values.file)||values.mode||!values['confirm-target']))return refused('EXPLICIT_MAINTENANCE_INPUT_REQUIRED');
-    const info=await lstat(values['env-file']);if(!info.isFile()||info.isSymbolicLink()||info.size>1024*1024||(info.mode&0o077)!==0)return refused('PRIVATE_MAINTENANCE_ENV_REQUIRED');
-    const env=parseEnv(await readFile(values['env-file'],'utf8'));
+    const {positionals,values}=parseArgs({args,allowPositionals:true,strict:true,options:{'env-file':{type:'string'},'config-file':{type:'string'},out:{type:'string'},file:{type:'string'},mode:{type:'string'},'confirm-target':{type:'string'}}});
+    const sourcePath=values['config-file']??values['env-file'];
+    const action=positionals[0];if(positionals.length!==1||!['preview','apply'].includes(action??'')||!sourcePath||!values.out||values['env-file']&&values['config-file']||
+      !isAbsolute(sourcePath)||!isAbsolute(values.out)||action==='preview'&&(values.file||values['confirm-target'])||action==='apply'&&(!values.file||!isAbsolute(values.file)||values.mode||!values['confirm-target']))return refused('EXPLICIT_MAINTENANCE_INPUT_REQUIRED');
+    const info=await lstat(sourcePath);if(!info.isFile()||info.isSymbolicLink()||info.size>1024*1024||(info.mode&0o077)!==0)return refused('PRIVATE_MAINTENANCE_ENV_REQUIRED');
+    const env=parseEnv(await readFile(sourcePath,'utf8'));
     if(action==='preview'){
       const plan=await createCloudDatabasePlan(env,mode.parse(values.mode??'bootstrap'));
       output=await open(values.out,'wx',0o600);await output.writeFile(JSON.stringify(plan,null,2)+'\n');await output.sync();return {ok:true};
