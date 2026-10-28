@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID, createHash } from 'node:crypto';
 import { ExperienceManifestSchema, ExperienceResourceSchema, supportsExperience } from '@orai/contracts/experience';
-import { confirmedCheckpoint, resourceImage, sceneSelection } from '../src/experience/model.js';
+import { confirmedCheckpoint, resourceImage, sceneSelection, scopedResourceImages } from '../src/experience/model.js';
 
 function manifest() {
   return ExperienceManifestSchema.parse({ schemaVersion: 1,
@@ -24,6 +24,15 @@ test('refresh checkpoints derive exclusively from saved answers, preserve zero r
   assert.deepEqual(confirmedCheckpoint(questions, [], 0, 'question-a'), { schemaVersion: 1, revision: 0, lastConfirmedQuestionId: null, nextQuestionId: 'question-a' });
   assert.equal(confirmedCheckpoint(questions, [{ questionId: 'question-a' }], 1, 'question-a').nextQuestionId, 'question-b');
   assert.equal(confirmedCheckpoint(questions, questions.map(q => ({ questionId: q.id })), 2, 'question-b').nextQuestionId, null);
+});
+test('resuming a scene never reuses revoked image URLs or files from another attempt or fixed release', () => {
+  const images = [{ url: 'blob:synthetic-old-generation', label: '已校验参考图' }];
+  const batch = { identity: 'attempt-a/release-a/0', images };
+  assert.deepEqual(scopedResourceImages(batch, 'attempt-a/release-a/0', true), images);
+  assert.deepEqual(scopedResourceImages(batch, 'attempt-a/release-a/0', false), []);
+  for (const next of ['attempt-a/release-a/1', 'attempt-b/release-a/0', 'attempt-a/release-b/0'])
+    assert.deepEqual(scopedResourceImages(batch, next, true), []);
+  assert.deepEqual(scopedResourceImages(null, 'attempt-a/release-a/1', true), []);
 });
 test('unregistered templates and reserved model/audio purposes do not become runnable merely because their manifests parse', () => {
   const value = manifest(); assert.equal(supportsExperience(value), true);
