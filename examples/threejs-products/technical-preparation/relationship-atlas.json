@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "purpose": "synthetic_technical_preparation_only",
+  "userApprovedFormalProduct": false,
+  "databaseObjectIds": [],
+  "runtimeImplementedForThisPlan": false,
+  "registeredPairReference": false,
+  "actualPerformanceMeasured": false,
+  "actualDeliverablesCreated": false,
+  "publishable": false,
+  "plan": {
+    "schemaVersion": 2,
+    "title": "合成B：固定视角的关系坐标技术草案",
+    "selection": {
+      "basis": "manual",
+      "rationale": "非正式合成技术草案，不来源于用户认可的正式商品；只检查现有合同与能力差异。",
+      "evidenceKeys": []
+    },
+    "freshnessWindowHours": 24,
+    "evidence": [],
+    "modules": [
+      {
+        "moduleKey": "assessment",
+        "title": "技术规划模块：assessment",
+        "domain": "assessment",
+        "required": true,
+        "purpose": "合成结构验证；实际商品、专业方法和交付物均未确定/制作",
+        "dependsOn": [],
+        "target": {
+          "form": "3d",
+          "runtime": null
+        },
+        "methodPurposes": [
+          "assessment_design",
+          "report_writing"
+        ],
+        "methodRetention": "manifest_instructions_and_references",
+        "outputs": [
+          {
+            "outputKey": "assessment",
+            "label": "技术占位声明：assessment",
+            "required": true,
+            "kind": "assessment",
+            "original": {
+              "storage": "platform",
+              "representation": "structured"
+            },
+            "files": []
+          },
+          {
+            "outputKey": "report",
+            "label": "技术占位声明：report",
+            "required": true,
+            "kind": "report",
+            "original": {
+              "storage": "platform",
+              "representation": "structured"
+            },
+            "files": []
+          }
+        ]
+      },
+      {
+        "moduleKey": "scene",
+        "title": "技术规划模块：scene",
+        "domain": "experience",
+        "required": true,
+        "purpose": "合成结构验证；实际商品、专业方法和交付物均未确定/制作",
+        "dependsOn": [
+          "assessment"
+        ],
+        "target": {
+          "form": "3d",
+          "runtime": {
+            "renderer": {
+              "key": "relationship-atlas-prototype",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "atlas-notes-prototype",
+              "version": 1
+            },
+            "inputSchema": "single_choice_v1",
+            "engine": "dimensions_v1",
+            "reportSchema": "report_content_v1"
+          }
+        },
+        "methodPurposes": [
+          "scene_design",
+          "report_presentation"
+        ],
+        "methodRetention": "manifest_instructions_and_references",
+        "outputs": [
+          {
+            "outputKey": "scene-bundle",
+            "label": "技术占位声明：scene_bundle",
+            "required": true,
+            "kind": "scene_bundle",
+            "original": {
+              "storage": "platform",
+              "representation": "file"
+            },
+            "files": [
+              {
+                "fileKey": "source",
+                "purpose": "original",
+                "label": "尚未导入的原件",
+                "required": true,
+                "mimeTypes": [
+                  "application/zip"
+                ],
+                "sourceUrl": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "moduleKey": "cover",
+        "title": "技术规划模块：cover",
+        "domain": "cover",
+        "required": true,
+        "purpose": "合成结构验证；实际商品、专业方法和交付物均未确定/制作",
+        "dependsOn": [
+          "assessment",
+          "scene"
+        ],
+        "target": {
+          "form": "3d",
+          "runtime": null
+        },
+        "methodPurposes": [
+          "cover_design"
+        ],
+        "methodRetention": "manifest_instructions_and_references",
+        "outputs": [
+          {
+            "outputKey": "image",
+            "label": "技术占位声明：image",
+            "required": true,
+            "kind": "image",
+            "original": {
+              "storage": "platform",
+              "representation": "file"
+            },
+            "files": [
+              {
+                "fileKey": "source",
+                "purpose": "original",
+                "label": "尚未导入的原件",
+                "required": true,
+                "mimeTypes": [
+                  "image/png"
+                ],
+                "sourceUrl": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "moduleKey": "copy",
+        "title": "技术规划模块：copy",
+        "domain": "copy",
+        "required": true,
+        "purpose": "合成结构验证；实际商品、专业方法和交付物均未确定/制作",
+        "dependsOn": [
+          "assessment",
+          "scene"
+        ],
+        "target": {
+          "form": "3d",
+          "runtime": null
+        },
+        "methodPurposes": [
+          "copywriting"
+        ],
+        "methodRetention": "manifest_instructions_and_references",
+        "outputs": [
+          {
+            "outputKey": "copy",
+            "label": "技术占位声明：copy",
+            "required": true,
+            "kind": "copy",
+            "original": {
+              "storage": "platform",
+              "representation": "structured"
+            },
+            "files": []
+          }
+        ]
+      },
+      {
+        "moduleKey": "video",
+        "title": "技术规划模块：video",
+        "domain": "video",
+        "required": true,
+        "purpose": "合成结构验证；实际商品、专业方法和交付物均未确定/制作",
+        "dependsOn": [
+          "scene",
+          "cover",
+          "copy"
+        ],
+        "target": {
+          "form": "3d",
+          "runtime": null
+        },
+        "methodPurposes": [
+          "video_production"
+        ],
+        "methodRetention": "manifest_instructions_and_references",
+        "outputs": [
+          {
+            "outputKey": "video",
+            "label": "技术占位声明：video",
+            "required": true,
+            "kind": "video",
+            "original": {
+              "storage": "platform",
+              "representation": "file"
+            },
+            "files": [
+              {
+                "fileKey": "source",
+                "purpose": "original",
+                "label": "尚未导入的原件",
+                "required": true,
+                "mimeTypes": [
+                  "video/mp4"
+                ],
+                "sourceUrl": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "retention": "platform_originals_and_exact_methods",
+    "productPlan": {
+      "schemaVersion": 1,
+      "implementation": "threejs",
+      "basedOnPlanRevisionId": null,
+      "visualDimension": "2.5d",
+      "experienceModuleKey": "scene",
+      "assessmentModuleKey": "assessment",
+      "decisions": {
+        "interaction": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "只有明确单选协议single_choice_v1；用2至4个有文字语义的场景对象映射optionId，点击/键盘只改变待确认选择。",
+          "evidence": []
+        },
+        "feedback": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "清楚呈现选中/未确认/保存中/失败，颜色配文字和焦点，不从镜头角度或动画路径得分。",
+          "evidence": []
+        },
+        "confirmation": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "明确确认按钮触发既有保存；保留expectedRevision/requestId和一次消费语义，不自动提交。",
+          "evidence": []
+        },
+        "recovery": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "以服务器确认答案恢复；当前未确认输入单独保留，断网/未知写入结果复用相同requestId，不换题或复制消费。",
+          "evidence": []
+        },
+        "accessibility": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "同题文字及键盘/触摸操作、焦点、减少动态和长文重排；真实设备后续验收。",
+          "evidence": []
+        },
+        "fallback": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "无WebGL2、模块/资源加载失败或context丢失时使用同题同选项的DOM文字/故障回退，不把回退当正常Three.js交付。",
+          "evidence": []
+        },
+        "resources": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "先用仓库内可信几何体；没有导入实际媒体/GLB/音频/脚本，没有把ZIP原件当可执行代码。",
+          "evidence": []
+        },
+        "scene": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "拟用Three.js正交分层坐标台呈现单人关系观察，暖灰纸色和有限紫色刻线；前后层承担选项语义，不用花园/DOM小屋冒充这个模板。",
+          "evidence": []
+        },
+        "camera": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "固定正交视角，不提供自由漫游、拖动旋转或镜头过渡；窄屏按语义重新排布，不能硬裁切正文。",
+          "evidence": []
+        },
+        "report": {
+          "requirement": "required",
+          "status": "planned",
+          "details": "拟制作地图手记报告模板atlas-notes-prototype，保留标准结构化结果；未注册/未实现，不自动回退花园手记冒称配套完成。",
+          "evidence": []
+        },
+        "animation": {
+          "requirement": "not_required",
+          "status": "planned",
+          "details": "明确不需要环境/镜头动画；反馈只服务当前选择和保存状态，不能因选了Three.js自动增加运动。",
+          "evidence": []
+        }
+      },
+      "budgets": {
+        "devices": [
+          "desktop",
+          "ios_safari",
+          "android_chrome",
+          "wechat",
+          "platform_webview"
+        ],
+        "maxRendererGzipBytes": 225280,
+        "maxTotalResourceBytes": 524288,
+        "maxFirstFrameMs": 3000,
+        "maxPixelRatio": 1.25,
+        "maxCanvasPixels": 1000000,
+        "maxTriangles": 8000,
+        "maxDrawCalls": 32,
+        "minFps": 30
+      },
+      "sources": []
+    }
+  }
+}

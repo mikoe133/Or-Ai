@@ -1,0 +1,33 @@
+{
+  "scope": "synthetic_contract_preparation_only",
+  "results": [
+    {
+      "file": "garden-observation.json",
+      "planningContractValid": true,
+      "dimension": "3d",
+      "registeredPairReference": true,
+      "requiredFeaturesStage": "planned",
+      "publicationBlocked": true,
+      "publicationIssueCount": 1,
+      "actualRuntimeImplemented": false,
+      "performanceMeasured": false
+    },
+    {
+      "file": "relationship-atlas.json",
+      "planningContractValid": true,
+      "dimension": "2.5d",
+      "registeredPairReference": false,
+      "requiredFeaturesStage": "planned",
+      "publicationBlocked": true,
+      "publicationIssueCount": 2,
+      "actualRuntimeImplemented": false,
+      "performanceMeasured": false
+    }
+  ],
+  "actualProductsSelected": 0,
+  "databaseWrites": 0,
+  "actualDeliverablesCreated": 0,
+  "newRenderersRegistered": 0,
+  "browserOrDeviceAcceptancePerformed": false,
+  "cloudCalls": 0
+}

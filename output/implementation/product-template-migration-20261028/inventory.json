@@ -1,0 +1,991 @@
+{
+  "checkedAt": "2026-10-27T17:05:40.093Z",
+  "localDevelopmentOnly": true,
+  "readOnlyTransaction": true,
+  "consumerAnswersRead": false,
+  "consumerReferenceCountsOnly": true,
+  "summary": {
+    "products": 7,
+    "versions": 10,
+    "demoProducts": 7,
+    "nonDemoProducts": 0,
+    "currentV2Plans": 0,
+    "experienceReleases": 5,
+    "threejsReleases": 0,
+    "authoringRevisions": 0,
+    "selectedForConversion": 0,
+    "converted": 0,
+    "published": 0
+  },
+  "registeredCapabilities": [
+    {
+      "renderer": "dom-choice@1",
+      "label": "DOM 单选 · v1",
+      "report": "legacy-text@1",
+      "reportLabel": "兼容图文报告 · v1",
+      "contentKind": "assessment",
+      "inputSchema": "single_choice_v1",
+      "engine": "dimensions_v1",
+      "contentSchema": "report_content_v1",
+      "interaction": "confirmed_single_choice",
+      "presentation": "dom",
+      "authoringForms": [
+        "web"
+      ],
+      "perspectives": [
+        "self",
+        "single_person_relationship"
+      ],
+      "reportPlans": [
+        "standard"
+      ],
+      "editors": [
+        "questions",
+        "scoring",
+        "scene_mapping",
+        "resources",
+        "report_content",
+        "report_presentation"
+      ],
+      "resourcePurposes": [
+        "illustration",
+        "texture"
+      ],
+      "limits": {
+        "maxOptions": 10,
+        "maxResources": 8,
+        "maxResourceBytes": 4194304,
+        "maxTotalResourceBytes": 16777216
+      }
+    },
+    {
+      "renderer": "quiet-room@1",
+      "label": "安静小屋 · 2.5D v1",
+      "report": "field-notes@1",
+      "reportLabel": "小屋手记 · v1",
+      "contentKind": "assessment",
+      "inputSchema": "single_choice_v1",
+      "engine": "dimensions_v1",
+      "contentSchema": "report_content_v1",
+      "interaction": "confirmed_single_choice",
+      "presentation": "illustrated_2_5d",
+      "authoringForms": [
+        "web"
+      ],
+      "perspectives": [
+        "self",
+        "single_person_relationship"
+      ],
+      "reportPlans": [
+        "standard"
+      ],
+      "editors": [
+        "questions",
+        "scoring",
+        "scene_mapping",
+        "resources",
+        "report_content",
+        "report_presentation"
+      ],
+      "resourcePurposes": [
+        "illustration",
+        "texture"
+      ],
+      "limits": {
+        "maxOptions": 4,
+        "maxResources": 2,
+        "maxResourceBytes": 524288,
+        "maxTotalResourceBytes": 1048576
+      }
+    },
+    {
+      "renderer": "reflection-garden@1",
+      "label": "静心花园 · 3D v1",
+      "report": "garden-notes@1",
+      "reportLabel": "花园手记 · v1",
+      "contentKind": "assessment",
+      "inputSchema": "single_choice_v1",
+      "engine": "dimensions_v1",
+      "contentSchema": "report_content_v1",
+      "interaction": "confirmed_single_choice",
+      "presentation": "webgl_3d",
+      "authoringForms": [
+        "web",
+        "3d"
+      ],
+      "perspectives": [
+        "self",
+        "single_person_relationship"
+      ],
+      "reportPlans": [
+        "standard"
+      ],
+      "editors": [
+        "questions",
+        "scoring",
+        "scene_mapping",
+        "resources",
+        "report_content",
+        "report_presentation"
+      ],
+      "resourcePurposes": [
+        "illustration",
+        "texture"
+      ],
+      "limits": {
+        "maxOptions": 4,
+        "maxResources": 2,
+        "maxResourceBytes": 524288,
+        "maxTotalResourceBytes": 1048576
+      },
+      "graphics": {
+        "backend": "webgl2",
+        "assets": "bundled_geometry",
+        "maxPixelRatio": 1.5,
+        "maxCanvasPixels": 1500000,
+        "maxTriangles": 14000,
+        "maxDrawCalls": 48,
+        "maxRendererGzipBytes": 245760
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "ad743070-ad8b-47cf-a321-9adc60873f8a",
+      "slug": "demo-partner",
+      "name": "伴侣协作测试 · 演示",
+      "scope": "DEMO",
+      "status": "PUBLISHED",
+      "currentVersionId": "53e2ec1b-fff5-46f8-a63f-a8501300cb6c",
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": null,
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "f8150dee-5e77-4a41-b17f-4308949ea2b8",
+          "number": 1,
+          "revision": 0,
+          "status": "PUBLISHED",
+          "configurationDigest": "e625a86bf4bdafd9d0a4167ed47ff435f092de97a4db0bb7190fa3f45522f729",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 6,
+          "optionCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": {
+            "id": "49337b51-d0b2-4bc6-a85d-fd1633212fc5",
+            "digest": "dfafb424b9f127e899fa762acd7c4cf9727ea5351ccfc924a2d1d3cb2d78ed0b",
+            "renderer": {
+              "key": "dom-choice",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "legacy-text",
+              "version": 1
+            },
+            "resources": [],
+            "authoringId": null
+          },
+          "authoring": [],
+          "media": [
+            {
+              "id": "802606a8-15bd-42c0-8677-4a4a55546327",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "87b6065d-716a-42cf-8564-554f44ed9cf1",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "9765ceb1-ca68-4663-b365-e2bed2ff2076",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "c09f1a81-d4d7-484a-977f-669786d5d932",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "d700fcd8-18c7-45f3-8196-bd9b4ba3843b",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "e8c1aac8-22c1-4aa9-a9fe-a83323325388",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "f8a98758-2ed8-4cae-a932-03ee2b1e62d2",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "f91e8da0-d637-4afa-bb9d-cf356f0123be",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 23,
+            "attempts": 22,
+            "reports": 21
+          }
+        },
+        {
+          "id": "53e2ec1b-fff5-46f8-a63f-a8501300cb6c",
+          "number": 2,
+          "revision": 0,
+          "status": "PUBLISHED",
+          "configurationDigest": "f844d4ac23691598552dc525b263abaf0bc7323b5e7c51886f48404522a845b1",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 6,
+          "optionCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": {
+            "id": "280bfb11-6791-411b-a5f5-b1067cd8b329",
+            "digest": "afb496e747b4a343ff9c6ede50122fe15b961e19bbcc4520f4a0becbc89d75d7",
+            "renderer": {
+              "key": "dom-choice",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "legacy-text",
+              "version": 1
+            },
+            "resources": [],
+            "authoringId": null
+          },
+          "authoring": [],
+          "media": [
+            {
+              "id": "11ebfd15-95b2-4768-b146-41830b5eb0a4",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "1568aff2-0ee2-4799-81fe-bbce5590bd67",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "6c17f306-c728-4f73-bf49-25b6d00e163b",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "8bb89e6a-39de-430c-8738-9f6331edb1b4",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "97b4f22f-31aa-4d2f-af67-f1ca0996e179",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "a9c67d4e-272d-47e6-bc31-01f84621dd08",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "e343fff9-6af9-4c77-a27c-ea770c317f45",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "ef82030a-afaf-4486-9ccc-bdd7d19b2c76",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 4,
+            "attempts": 2,
+            "reports": 2
+          }
+        }
+      ],
+      "fixedSkillSets": [],
+      "adoptionPackages": [],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "creative_profile_missing",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    },
+    {
+      "id": "01a157f3-3f92-77db-8967-0d27328e3eb6",
+      "slug": "demo-relationship-garden-t12",
+      "name": "关系花园 · 内容制作演示",
+      "scope": "DEMO",
+      "status": "REVIEWED",
+      "currentVersionId": null,
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": {
+        "id": "01a157f3-3fed-768f-9f0b-f373cf84150d",
+        "number": 1,
+        "digest": "f84ad1c6f35cda9ca0faf3e900d0a4dd4954820ad1ee789be8d3d1f4ff41b2ca",
+        "form": "web",
+        "perspective": "single_person_relationship"
+      },
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "01a157f3-3fcf-704d-8cca-1706f9d52a2a",
+          "number": 1,
+          "revision": 1,
+          "status": "REVIEWED",
+          "configurationDigest": "f844d4ac23691598552dc525b263abaf0bc7323b5e7c51886f48404522a845b1",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 6,
+          "optionCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": null,
+          "authoring": [],
+          "media": [
+            {
+              "id": "01a157f3-402a-75f9-b3ff-114ea150ca7e",
+              "kind": "COPY",
+              "status": "READY",
+              "hasFile": false
+            },
+            {
+              "id": "01a157f3-40f0-75cc-9a97-7bd9515ca936",
+              "kind": "COVER",
+              "status": "READY",
+              "hasFile": true
+            },
+            {
+              "id": "01a157f3-4170-751d-907a-b606442ea1ba",
+              "kind": "VIDEO",
+              "status": "READY",
+              "hasFile": true
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 0,
+            "attempts": 0,
+            "reports": 0
+          }
+        }
+      ],
+      "fixedSkillSets": [],
+      "adoptionPackages": [
+        {
+          "id": "01a157f3-812d-705b-8c63-46430c5b2bbb",
+          "digest": "2001ec4929d56270a94222a3793a3309948adf7133883ef1a03325ea26dfe827",
+          "schemaVersion": 1
+        }
+      ],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "new_threejs_creative_profile_required_before_new_binding",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    },
+    {
+      "id": "01a15846-9112-73f9-8a2d-9ec2c5cc809a",
+      "slug": "demo-skill-pairing-t13",
+      "name": "关系花园 · skill 配套演示",
+      "scope": "DEMO",
+      "status": "REVIEWED",
+      "currentVersionId": null,
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": {
+        "id": "01a15846-914a-71db-9b3c-9542906686a5",
+        "number": 1,
+        "digest": "9b7fb84cfa6384a2d6520d7ec0f91c1898ad90235d33ba76675fb2cd0f7f2cb8",
+        "form": "web",
+        "perspective": "single_person_relationship"
+      },
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "01a15846-926a-746f-b8b4-394048500bf3",
+          "number": 1,
+          "revision": 1,
+          "status": "REVIEWED",
+          "configurationDigest": "f844d4ac23691598552dc525b263abaf0bc7323b5e7c51886f48404522a845b1",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 6,
+          "optionCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": null,
+          "authoring": [],
+          "media": [
+            {
+              "id": "01a15846-92c1-764d-a655-0c81c42b0943",
+              "kind": "COPY",
+              "status": "READY",
+              "hasFile": false
+            },
+            {
+              "id": "01a15846-939e-71b5-bf0f-b419d7e3e6fc",
+              "kind": "COVER",
+              "status": "READY",
+              "hasFile": true
+            },
+            {
+              "id": "01a15846-9464-77a5-8f12-37ffa2186302",
+              "kind": "VIDEO",
+              "status": "READY",
+              "hasFile": true
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 0,
+            "attempts": 0,
+            "reports": 0
+          }
+        },
+        {
+          "id": "01a15846-966c-7739-9638-713b8fbedde8",
+          "number": 2,
+          "revision": 1,
+          "status": "REVIEWED",
+          "configurationDigest": "f844d4ac23691598552dc525b263abaf0bc7323b5e7c51886f48404522a845b1",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 6,
+          "optionCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": null,
+          "authoring": [],
+          "media": [
+            {
+              "id": "01a15846-96ab-724f-8a11-f2077370df79",
+              "kind": "COPY",
+              "status": "READY",
+              "hasFile": false
+            },
+            {
+              "id": "01a15846-9725-767a-abfe-7e0f27543ab2",
+              "kind": "COVER",
+              "status": "READY",
+              "hasFile": true
+            },
+            {
+              "id": "01a15846-97af-74e5-bce5-f93bf58d7719",
+              "kind": "VIDEO",
+              "status": "READY",
+              "hasFile": true
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 0,
+            "attempts": 0,
+            "reports": 0
+          }
+        },
+        {
+          "id": "01a158a6-74fd-76d9-b624-e2d42940e8d0",
+          "number": 3,
+          "revision": 0,
+          "status": "DRAFT",
+          "configurationDigest": "f844d4ac23691598552dc525b263abaf0bc7323b5e7c51886f48404522a845b1",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 6,
+          "optionCounts": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": "01a15846-914a-71db-9b3c-9542906686a5",
+          "release": null,
+          "authoring": [],
+          "media": [
+            {
+              "id": "01a158a6-7822-72ae-87ad-f67585f995cf",
+              "kind": "COPY",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "01a158a6-7ba2-771e-8bee-469d037d9379",
+              "kind": "COVER",
+              "status": "DRAFT",
+              "hasFile": true
+            },
+            {
+              "id": "01a158a6-7edf-775b-8ad7-52d6b8dbc2ff",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": true
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 0,
+            "attempts": 0,
+            "reports": 0
+          }
+        }
+      ],
+      "fixedSkillSets": [
+        {
+          "id": "01a15846-922c-763d-a1f9-b2b570212dd4",
+          "digest": "309c2a61222c1e6480c37879b4b6405fc94cafcebb310c1e38931c219e452c6f"
+        },
+        {
+          "id": "01a15846-964e-7259-832f-182454a1a65b",
+          "digest": "242f6b211b27edfc95062b28a1d57313c92467a9421fb87190985eb253cec01c"
+        },
+        {
+          "id": "01a16806-e7d5-711f-860a-4524e8e915e6",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc"
+        },
+        {
+          "id": "01a16806-ffb8-7071-9e3f-01683586701d",
+          "digest": "173c8746093dd187f31f20c4f16393efe50080f26764049aee0f67b503d672fc"
+        }
+      ],
+      "adoptionPackages": [
+        {
+          "id": "01a15846-9571-77f8-8a92-456395e3d1a0",
+          "digest": "c832ef1f88e120dfd81384bd922ccffc04f94cf272deaf6cb1db70c48ac28cb3",
+          "schemaVersion": 2
+        },
+        {
+          "id": "01a15846-98c3-70fc-b970-ad271a7b5527",
+          "digest": "afdcd2ef99222ead56c95f970fcf11bf846ebb5efab815e2ad7243277d050f98",
+          "schemaVersion": 2
+        }
+      ],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "new_threejs_creative_profile_required_before_new_binding",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    },
+    {
+      "id": "7158b838-df20-4d3e-8e5e-0ad2a4e0eaaf",
+      "slug": "demo-social",
+      "name": "社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化",
+      "scope": "DEMO",
+      "status": "PUBLISHED",
+      "currentVersionId": "18700e22-8362-4f2b-84a9-13f66c041137",
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": null,
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "18700e22-8362-4f2b-84a9-13f66c041137",
+          "number": 1,
+          "revision": 0,
+          "status": "PUBLISHED",
+          "configurationDigest": "3d10c39c2817aac009ed10b9f9cf512787759067d3ad80e6d525d4eb6b13ec7b",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 3,
+          "optionCounts": [
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": {
+            "id": "b9b06e2a-e65f-4a03-b50f-08421ca57db4",
+            "digest": "91f534ed18761ca9dc18d076116c20ad3945cd1e658ce19c542d3382ba4cb921",
+            "renderer": {
+              "key": "dom-choice",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "legacy-text",
+              "version": 1
+            },
+            "resources": [],
+            "authoringId": null
+          },
+          "authoring": [],
+          "media": [
+            {
+              "id": "01a14553-03b8-73bc-a969-52a50cc236c4",
+              "kind": "COPY",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "01a14556-357d-7187-8f56-f36e5d712bc1",
+              "kind": "COPY",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "01a1455a-73cb-708c-afd8-4d1ca4019f85",
+              "kind": "COPY",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "0705db7f-f1b3-493e-a5f0-967f9ca43b37",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "2847c526-fb99-4a15-aa0f-81a7803cd292",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "2d69a946-daca-4c1f-9d03-b43704e2372f",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "52d70a69-bf0f-4fcc-82bb-42618c3c0c8a",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "66376168-a991-4ae3-90ae-cff81998aceb",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "6c844a1a-ab89-41ea-9acf-85ae7e15c5cc",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "a436538f-180f-46b4-b9d1-55ba7619279c",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "fea9055f-86f7-470e-8a15-95537eb387d8",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 5,
+            "attempts": 2,
+            "reports": 2
+          }
+        }
+      ],
+      "fixedSkillSets": [],
+      "adoptionPackages": [],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "creative_profile_missing",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    },
+    {
+      "id": "372be896-8aab-4adb-acfd-6b30db1ccfd1",
+      "slug": "demo-work",
+      "name": "工作边界测试 · 演示",
+      "scope": "DEMO",
+      "status": "PUBLISHED",
+      "currentVersionId": "d83a304b-eeb6-45b0-bed4-3c4b16654d55",
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": null,
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "d83a304b-eeb6-45b0-bed4-3c4b16654d55",
+          "number": 1,
+          "revision": 0,
+          "status": "PUBLISHED",
+          "configurationDigest": "768941984e2cb24083d8ea4c7f694b3912bd303ab5f21d8f7ec3f8fc0fc114d7",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 3,
+          "optionCounts": [
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": {
+            "id": "e5a221e0-b2d1-48bd-8142-47bdc9694cc6",
+            "digest": "bf31b03e0e7a2031fc6fcaf1158d7c8172fd9311b6c4c075ce112e9ff16be988",
+            "renderer": {
+              "key": "dom-choice",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "legacy-text",
+              "version": 1
+            },
+            "resources": [],
+            "authoringId": null
+          },
+          "authoring": [],
+          "media": [
+            {
+              "id": "0590b422-e10c-462a-aa7c-428062c211cc",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "3f3c28c0-2bc9-49f9-afb4-65170ba49e22",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "42548b97-6c29-467f-b128-ddda1602c25d",
+              "kind": "SCRIPT",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "4b422c0e-a163-479c-8f59-ed9d074d6fc6",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "5854355f-1af2-4472-b26d-a42ce171bf9e",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "ead4f1cf-47f9-416a-8299-826b7d830b32",
+              "kind": "COPY",
+              "status": "REVIEWED",
+              "hasFile": false
+            },
+            {
+              "id": "f620297b-c25b-4681-ae53-b774f3f1feb7",
+              "kind": "VIDEO",
+              "status": "DRAFT",
+              "hasFile": false
+            },
+            {
+              "id": "fd0d7915-d497-457a-b3e8-16c975222e2c",
+              "kind": "COVER",
+              "status": "REVIEWED",
+              "hasFile": false
+            }
+          ],
+          "lockedHistoricalReferences": {
+            "entitlements": 9,
+            "attempts": 9,
+            "reports": 4
+          }
+        }
+      ],
+      "fixedSkillSets": [],
+      "adoptionPackages": [],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "creative_profile_missing",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    },
+    {
+      "id": "6faa93d4-6cf2-4f83-81a1-0bc2e8bddae9",
+      "slug": "fixture-archived",
+      "name": "已下架商品 · 测试状态",
+      "scope": "DEMO",
+      "status": "ARCHIVED",
+      "currentVersionId": "1531f67b-878e-4375-bcaf-ba0037a63f3d",
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": null,
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "1531f67b-878e-4375-bcaf-ba0037a63f3d",
+          "number": 1,
+          "revision": 0,
+          "status": "PUBLISHED",
+          "configurationDigest": "768941984e2cb24083d8ea4c7f694b3912bd303ab5f21d8f7ec3f8fc0fc114d7",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 3,
+          "optionCounts": [
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": {
+            "id": "f1ac1949-dcd7-41ef-b0e9-2822595759ef",
+            "digest": "89fd04473775915ce9cd7925321c0c8de49c8db20180c78a79450aa37dfc47b8",
+            "renderer": {
+              "key": "dom-choice",
+              "version": 1
+            },
+            "reportRenderer": {
+              "key": "legacy-text",
+              "version": 1
+            },
+            "resources": [],
+            "authoringId": null
+          },
+          "authoring": [],
+          "media": [],
+          "lockedHistoricalReferences": {
+            "entitlements": 0,
+            "attempts": 0,
+            "reports": 0
+          }
+        }
+      ],
+      "fixedSkillSets": [],
+      "adoptionPackages": [],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "creative_profile_missing",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    },
+    {
+      "id": "da800201-5b90-477c-a324-b56627de05fb",
+      "slug": "fixture-draft",
+      "name": "草稿商品 · 测试状态",
+      "scope": "DEMO",
+      "status": "REVIEWED",
+      "currentVersionId": null,
+      "classification": "existing_demo_or_history",
+      "conversionSelected": false,
+      "disposition": "preserve_all_original_versions_require_actual_product_plan_for_conversion",
+      "latestProfile": null,
+      "latestPlan": null,
+      "versions": [
+        {
+          "id": "6f495c12-9e9f-491d-a6da-9d77f7cfc291",
+          "number": 1,
+          "revision": 5,
+          "status": "REVIEWED",
+          "configurationDigest": "768941984e2cb24083d8ea4c7f694b3912bd303ab5f21d8f7ec3f8fc0fc114d7",
+          "engine": "dimensions_v1",
+          "inputSchema": "single_choice_v1",
+          "questions": 3,
+          "optionCounts": [
+            4,
+            4,
+            4
+          ],
+          "gardenChoiceCountCompatible": true,
+          "fixedProfileId": null,
+          "release": null,
+          "authoring": [],
+          "media": [],
+          "lockedHistoricalReferences": {
+            "entitlements": 0,
+            "attempts": 0,
+            "reports": 0
+          }
+        }
+      ],
+      "fixedSkillSets": [],
+      "adoptionPackages": [],
+      "gaps": [
+        "current_v2_product_plan_missing",
+        "creative_profile_missing",
+        "normal_threejs_runtime_not_selected",
+        "product_specific_scene_and_report_methods_require_review",
+        "matching_cover_video_copy_require_recheck"
+      ]
+    }
+  ]
+}
