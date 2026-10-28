@@ -1,0 +1,72 @@
+Browser tab: 4, Title: "我的应用 · MeetMyWorld", URL: "http://127.0.0.1:5187/apps".
+1 AXWebArea 我的应用 · MeetMyWorld, URL: 127.0.0.1:5187/apps
+	2 container
+		3 link Description: 跳到页面内容, Value: 127.0.0.1:5187/apps#flow-content
+		4 link Description: MeetMyWorld 商城首页, Value: 127.0.0.1:5187/
+		5 text /
+		6 link Description: 发现, Value: 127.0.0.1:5187/
+		7 container
+			8 search text field (settable) 搜索测试、场景或关键词
+			9 text ⌘ K
+		10 checkbox Description: 切换氛围光, Value: 1
+		11 link Description: 我的空间, Value: 127.0.0.1:5187/account
+		12 link Description: 登录 / 注册, Value: 127.0.0.1:5187/auth/login
+		13 link Description: 输入兑换码, Value: 127.0.0.1:5187/redeem
+		14 container 探索者问候
+			15 container
+				16 text 你好，探索者 今天，也多了解自己一点
+			17 heading 发现有趣的自己, Value: 2, ID: store-title
+				18 text 发现有趣的自己
+			19 text 从一个问题开始，看看你的生活倾向。
+		20 container 快捷导航
+			21 link Description: 我的空间, Value: 127.0.0.1:5187/
+			22 link Description: 共同探索／双人报告, Value: 127.0.0.1:5187/together
+			23 link Description: 品牌、IP 联名或定制, Value: 127.0.0.1:5187/collaborations
+			24 button 联系我们
+		25 container
+			26 container 我的空间
+				27 heading 我的空间, Value: 2
+					28 text 我的空间
+				29 button (expanded) Description: 收起侧栏, Secondary Actions: Collapse
+				30 container 空间导航
+					31 link Description: 应用商城, Value: 127.0.0.1:5187/
+					32 link Description: 我的应用, Value: 127.0.0.1:5187/apps
+					33 link Description: 我的报告, Value: 127.0.0.1:5187/reports
+					34 link Description: 使用帮助, Value: 127.0.0.1:5187/help
+				35 heading 一份报告，一点新发现, Value: 3
+					36 text 一份报告，一点新发现
+				37 container
+					38 text 在购买平台获得兑换码，
+					39 text 来到这里，开始认识自己。
+				40 link Description: 输入兑换码, Value: 127.0.0.1:5187/redeem
+				41 text 无需登录，也能兑换与查看报告
+			42 container
+				43 heading 我的应用, Value: 1
+					44 text 我的应用
+				45 container 商品来源
+					46 checkbox 本机未绑定商品, Value: 1
+					47 checkbox 账户已绑定商品, Value: 0
+					48 link Description: 领取或恢复, Value: 127.0.0.1:5187/redeem
+					49 link Description: 账户与绑定, Value: 127.0.0.1:5187/account
+				50 text 这里仅显示本机兑换码会话中的未绑定商品。 两份列表独立显示。
+				51 heading 2
+				52 button
+				53 heading 2
+				54 button
+				55 container 分页
+				56 button 退出本机兑换会话
+				57 link Description: 查看我的报告, Value: 127.0.0.1:5187/reports
+		58 container 商城工具
+			59 link Description: 输入兑换码, Value: 127.0.0.1:5187/redeem
+			60 link Description: 发现测试, Value: 127.0.0.1:5187/
+			61 link Description: 使用帮助, Value: 127.0.0.1:5187/help
+		62 text meetmyworld © 2026 每一个小问题，都藏着一点新的自己。
+		63 text 仅供娱乐与自我观察
+		64 container 帮助导航
+			65 link Description: 使用帮助, Value: 127.0.0.1:5187/help
+			66 text /
+			67 button 兑换说明
+			68 text /
+			69 button 联系我们
+
+The focused UI element is 1 AXWebArea 我的应用 · MeetMyWorld, URL: 127.0.0.1:5187/apps

@@ -1,0 +1,22 @@
+{
+  "bodyBackground": "rgb(248, 250, 252)",
+  "box": {
+    "height": 72,
+    "width": 390,
+    "x": 0,
+    "y": 0
+  },
+  "color": "rgb(15, 23, 42)",
+  "label": "正在加载页面…",
+  "loadingBackground": "rgba(0, 0, 0, 0)",
+  "readyState": "interactive",
+  "viewport": {
+    "height": 844,
+    "width": 390
+  },
+  "expected": {
+    "darkBackdrop": true,
+    "coversViewport": true
+  },
+  "passed": false
+}

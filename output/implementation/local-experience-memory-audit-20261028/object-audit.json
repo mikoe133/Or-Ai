@@ -1,0 +1,10 @@
+{
+  "mediaQueryLists": {
+    "description": "Array(0)"
+  },
+  "resizeObservers": {
+    "description": "Array(2)"
+  },
+  "heapProfilerEnabled": false,
+  "heapProfilerError": "Error: This method is not supported through raw CDP."
+}

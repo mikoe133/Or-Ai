@@ -1,0 +1,10 @@
+{
+  "queryObjects": {
+    "supported": true,
+    "description": "Array(20)"
+  },
+  "takeHeapSnapshot": {
+    "supported": false,
+    "message": "Error: This method is not supported through raw CDP."
+  }
+}

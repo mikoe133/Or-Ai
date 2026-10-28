@@ -1,0 +1,22 @@
+Browser tab: 4, Title: "概览与审计 · MeetMyWorld 运营后台", URL: "http://127.0.0.1:5187/admin".
+1 AXWebArea 概览与审计 · MeetMyWorld 运营后台, URL: 127.0.0.1:5187/admin
+	2 container root
+		3 link Description: 跳到后台内容, Value: 127.0.0.1:5187/admin#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 link Description: 运营后台, Value: 127.0.0.1:5187/admin
+			7 text / 访问验证 未登录
+			8 link Description: 账户设置, Value: 127.0.0.1:5187/account
+		9 container Description: 运营后台, ID: admin-workspace
+			10 heading 运营后台, Value: 1
+				11 text 运营后台
+			12 container
+				13 heading 需要管理员账户, Value: 2
+					14 text 需要管理员账户
+				15 text 请先登录已验证的管理员邮箱。
+				16 link Description: 邮箱登录, Value: 127.0.0.1:5187/auth/login
+				17 text 使用已验证的管理员邮箱，继续制作与管理。
+			18 container
+				19 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea 概览与审计 · MeetMyWorld 运营后台, URL: 127.0.0.1:5187/admin

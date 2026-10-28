@@ -1,0 +1,39 @@
+Browser tab: 4, Title: "MeetMyWorld · 发现有趣的自己", URL: "http://127.0.0.1:5187/apps".
+1 AXWebArea 我的应用 · MeetMyWorld, URL: 127.0.0.1:5187/apps
+	2 container
+		3 link 127.0.0.1:5187/apps#flow-content
+		4 link 127.0.0.1:5187/
+		5 link 127.0.0.1:5187/
+		6 container
+			7 search text field (settable)
+		8 link 127.0.0.1:5187/account
+		9 link 127.0.0.1:5187/auth/login
+		10 heading 2
+		11 container
+			12 link 127.0.0.1:5187/
+			13 link 127.0.0.1:5187/together
+			14 link 127.0.0.1:5187/collaborations
+			15 button
+		16 container
+			17 container
+				18 link 127.0.0.1:5187/
+				19 link 127.0.0.1:5187/apps
+				20 link 127.0.0.1:5187/reports
+				21 link 127.0.0.1:5187/help
+			22 container
+				23 heading 1
+				24 checkbox 1
+				25 checkbox 0
+				26 link 127.0.0.1:5187/redeem
+				27 link 127.0.0.1:5187/account
+				28 link 127.0.0.1:5187/reports
+		29 container
+			30 link 127.0.0.1:5187/redeem
+			31 link 127.0.0.1:5187/
+			32 link 127.0.0.1:5187/help
+		33 container
+			34 link 127.0.0.1:5187/help
+			35 button
+			36 button
+
+The focused UI element is 1 AXWebArea 我的应用 · MeetMyWorld, URL: 127.0.0.1:5187/apps

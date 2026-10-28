@@ -1,0 +1,1247 @@
+{
+  "schemaVersion": 1,
+  "applicationCommit": "0b8de30",
+  "scope": "settled isolated TEST states; synthetic data, account configuration incomplete and unauthenticated admin; desktop emulated widths only",
+  "pages": [
+    {
+      "key": "store",
+      "path": "/",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "store-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "伴侣协作测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "工作边界测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "按场景发现"
+          },
+          {
+            "level": "H2",
+            "text": "最新上架"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "工作边界测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化"
+          },
+          {
+            "level": "H2",
+            "text": "伴侣协作测试 · 演示"
+          }
+        ],
+        "main": [
+          {
+            "height": 735,
+            "id": "flow-content",
+            "scrollHeight": 1011,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n你好，探索者\n今天，也多了解自己一点\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n全部\n关系情感\n职场工作\n自我探索\n生活消费\n趣味娱乐\n继续上次测试\n随机发现\n搜索与筛选\n按关键词、价格或时长探索\n演示体验\n合成B · 商品模板技术验收\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n合成A · 商品模板技术验收\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n伴侣协作测试 · 演示\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n工作边界测试 · 演示\n面对临时任务，你会怎样表达工作边界？\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n按场景发现\n从生活里，找到好奇的自己\n关系情感\n看见彼此的相处方式\n协作、沟通与关系边界\n职场工作\n给隐形劳动一份说明\n工作分工与职场边界\n自我探索\n找到你的生活倾向\n情绪、期待与自我观察\n生活消费\n读懂每一次心动消费\n习惯、选择与消费动机\n趣味娱乐\n给日常一点轻松灵感\n社交电量与生活关键词\n最新上架\n共 5 个商品\n排序\n最新优先\n推荐优先\n合成B · 商品模板技术验收\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n合成A · 商品模板技术验收\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n工作边界测试 · 演示\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n伴侣协作测试 · 演示\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n上一页\n第 1 页 · 共 5 条\n下一页\n趣味自测，仅供娱乐与自我观察。\n当前含演示商品 · 标记价格为测试价格\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "发现有趣的自己 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "product",
+      "path": "/products/demo-partner",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "product-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "伴侣协作测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "测评介绍"
+          },
+          {
+            "level": "H2",
+            "text": "报告样例"
+          },
+          {
+            "level": "H2",
+            "text": "逐步平衡 · 演示样例"
+          },
+          {
+            "level": "H2",
+            "text": "购买与兑换说明"
+          }
+        ],
+        "main": [
+          {
+            "height": 843,
+            "id": "flow-content",
+            "scrollHeight": 1368,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n应用商城\n/\n关系情感\n关系情感\n伴侣协作测试 · 演示\n\n一起安排生活时，你们的协作节奏是什么？\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n6 道题\n约 3 分钟\n版本 2\n测试价格\n¥ 9.90\n已有兑换码，领取或恢复\n测评介绍\n\n演示主动分担、回应和共同安排的多维测试。 演示内容，不用于购买。\n\n报告样例\n公开示例\n逐步平衡 · 演示样例\n\n这是独立编写的公开样例，不来自任何私人报告。\n\n共同分担\n50\n沟通回应\n50\n\n从一个小场景开始观察自己的选择。\n\n这是公开样例，与个人报告分开。\n购买与兑换说明\n\n演示内容，不用于购买；¥9.90 仅为联调价格。\n\n当前未提供购买链接。\n\n测试码用于本地演示，正式交付规则以后确定。\n\n返回商城\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "伴侣协作测试 · 演示 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "redeem",
+      "path": "/redeem",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "redeem-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "领取或恢复商品"
+          },
+          {
+            "level": "H2",
+            "text": "从这里开始探索"
+          }
+        ],
+        "main": [
+          {
+            "height": 843,
+            "id": "flow-content",
+            "scrollHeight": 876,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n领取或恢复商品\n\n粘贴购买平台交付的完整兑换码。未绑定商品可换设备恢复，恢复不会增加报告次数。\n\n兑换码\n领取或恢复\n\n兑换码只用于本次领取或恢复，请妥善保管，不要公开分享。\n\n从这里开始探索\n在原购买平台取得完整兑换码。\n输入兑换码，领取或恢复已有权益。\n前往我的应用作答，完成后查看报告。\n\n无需先注册。恢复已有商品不会增加报告机会；演示预览中的示例码不能在这里兑换。\n\n兑换与恢复帮助\n\n已绑定商品请登录原账户查看，不会被恢复为匿名商品。\n\n邮箱登录\n查看我的应用\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "领取或恢复商品 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "apps",
+      "path": "/apps",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "apps-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "我的应用"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          }
+        ],
+        "main": [
+          {
+            "height": 735,
+            "id": "flow-content",
+            "scrollHeight": 738,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n你好，探索者\n今天，也多了解自己一点\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n我的应用\n本机未绑定商品\n账户已绑定商品\n领取或恢复\n账户与绑定\n\n这里仅显示本机兑换码会话中的未绑定商品。两份列表独立显示。\n\n合成B · 商品模板技术验收\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n版本 1 · 权益有效 · 已用 0/1 份报告\n\n访问截至 2027/2/25 18:52:05\n\n报告：尚未生成\n\n继续作答\n合成A · 商品模板技术验收\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n版本 1 · 权益有效 · 已用 0/1 份报告\n\n访问截至 2027/2/25 18:50:05\n\n报告：尚未生成\n\n继续作答\n上一页\n第 1 页 · 共 2 条\n下一页\n退出本机兑换会话\n查看我的报告\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "我的应用 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "reports-empty",
+      "path": "/reports",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "reports-empty-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "我的报告"
+          }
+        ],
+        "main": [
+          {
+            "height": 735,
+            "id": "flow-content",
+            "scrollHeight": 739,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n你好，探索者\n今天，也多了解自己一点\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n我的报告\n本机未绑定商品\n账户已绑定商品\n领取或恢复\n账户与绑定\n\n这里仅显示本机兑换码会话中的未绑定商品。两份列表独立显示。\n\n这里暂时没有内容。\n\n查看我的应用\n\n本页按应用分页，列出其中已生成的报告；过期、撤权、删除状态以服务端为准。\n\n上一页\n第 1 页 · 共 2 条\n下一页\n退出本机兑换会话\n查看我的应用\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "我的报告 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "login",
+      "path": "/auth/login",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "login-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "邮箱登录"
+          }
+        ],
+        "main": [
+          {
+            "height": 843,
+            "id": "flow-content",
+            "scrollHeight": 843,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n商城\n账户\n帮助\n我的空间\n邮箱登录\n\n邮箱账户用于保存已绑定商品，方便换设备访问。登录后，本机未绑定商品仍需主动确认绑定。\n\n账户服务配置不完整，请联系站点管理员。\n\n邮箱登录\n注册\n找回密码\n账户状态\n\n本机商品与邮箱账户独立保存，绑定始终由你主动确认。\n\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "邮箱登录 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "account",
+      "path": "/account",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "account-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "账户状态"
+          }
+        ],
+        "main": [
+          {
+            "height": 843,
+            "id": "flow-content",
+            "scrollHeight": 843,
+            "scrollWidth": 1043,
+            "width": 1043
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n我的空间\n应用商城\n我的应用\n我的报告\n使用帮助\n一份报告，一点新发现\n\n在购买平台获得兑换码，\n来到这里，开始认识自己。\n\n输入兑换码\n无需登录，也能兑换与查看报告\n商城\n账户\n帮助\n我的空间\n账户状态\n\n当前未登录。\n\n邮箱登录\n注册\n找回密码\n账户状态\n查看本机未绑定商品\n\n本机商品与邮箱账户独立保存，绑定始终由你主动确认。\n\nmeetmyworld © 2026\n每一个小问题，都藏着一点新的自己。\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "账户状态 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "admin-access",
+      "path": "/admin",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "admin-access-1440.png",
+      "raw": {
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "运营后台"
+          },
+          {
+            "level": "H2",
+            "text": "需要管理员账户"
+          }
+        ],
+        "main": [],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n尚未登录\n后台访问需验证身份\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\n访问验证\n未登录\nM\n运营后台\nm / w\n需要管理员账户\n\n请先登录已验证的管理员邮箱。\n\n邮箱登录\n使用已验证的管理员邮箱，继续制作与管理。\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "概览与审计 · MeetMyWorld 运营后台",
+        "viewport": {
+          "dpr": 1,
+          "height": 1000,
+          "width": 1440
+        }
+      }
+    },
+    {
+      "key": "store",
+      "path": "/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "store-768.png",
+      "raw": {
+        "documentWidth": 753,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "伴侣协作测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "工作边界测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "按场景发现"
+          },
+          {
+            "level": "H2",
+            "text": "最新上架"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "工作边界测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化"
+          },
+          {
+            "level": "H2",
+            "text": "伴侣协作测试 · 演示"
+          }
+        ],
+        "main": [
+          {
+            "height": 1658,
+            "id": "flow-content",
+            "scrollHeight": 1658,
+            "scrollWidth": 560,
+            "width": 560
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n全部\n关系情感\n职场工作\n自我探索\n生活消费\n趣味娱乐\n继续上次测试\n随机发现\n搜索与筛选\n按关键词、价格或时长探索\n演示体验\n合成B · 商品模板技术验收\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n合成A · 商品模板技术验收\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n伴侣协作测试 · 演示\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n工作边界测试 · 演示\n面对临时任务，你会怎样表达工作边界？\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n按场景发现\n从生活里，找到好奇的自己\n关系情感\n看见彼此的相处方式\n协作、沟通与关系边界\n职场工作\n给隐形劳动一份说明\n工作分工与职场边界\n自我探索\n找到你的生活倾向\n情绪、期待与自我观察\n生活消费\n读懂每一次心动消费\n习惯、选择与消费动机\n趣味娱乐\n给日常一点轻松灵感\n社交电量与生活关键词\n最新上架\n共 5 个商品\n排序\n最新优先\n推荐优先\n合成B · 商品模板技术验收\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n合成A · 商品模板技术验收\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n工作边界测试 · 演示\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n伴侣协作测试 · 演示\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n上一页\n第 1 页 · 共 5 条\n下一页\n趣味自测，仅供娱乐与自我观察。\n当前含演示商品 · 标记价格为测试价格\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "发现有趣的自己 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "product",
+      "path": "/products/demo-partner",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "product-768.png",
+      "raw": {
+        "documentWidth": 753,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "伴侣协作测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "测评介绍"
+          },
+          {
+            "level": "H2",
+            "text": "报告样例"
+          },
+          {
+            "level": "H2",
+            "text": "逐步平衡 · 演示样例"
+          },
+          {
+            "level": "H2",
+            "text": "购买与兑换说明"
+          }
+        ],
+        "main": [
+          {
+            "height": 1508,
+            "id": "flow-content",
+            "scrollHeight": 1508,
+            "scrollWidth": 560,
+            "width": 560
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n应用商城\n/\n关系情感\n关系情感\n伴侣协作测试 · 演示\n\n一起安排生活时，你们的协作节奏是什么？\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n6 道题\n约 3 分钟\n版本 2\n测试价格\n¥ 9.90\n已有兑换码，领取或恢复\n测评介绍\n\n演示主动分担、回应和共同安排的多维测试。 演示内容，不用于购买。\n\n报告样例\n公开示例\n逐步平衡 · 演示样例\n\n这是独立编写的公开样例，不来自任何私人报告。\n\n共同分担\n50\n沟通回应\n50\n\n从一个小场景开始观察自己的选择。\n\n这是公开样例，与个人报告分开。\n购买与兑换说明\n\n演示内容，不用于购买；¥9.90 仅为联调价格。\n\n当前未提供购买链接。\n\n测试码用于本地演示，正式交付规则以后确定。\n\n返回商城\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "伴侣协作测试 · 演示 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "redeem",
+      "path": "/redeem",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "redeem-768.png",
+      "raw": {
+        "documentWidth": 753,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "领取或恢复商品"
+          },
+          {
+            "level": "H2",
+            "text": "从这里开始探索"
+          }
+        ],
+        "main": [
+          {
+            "height": 1182,
+            "id": "flow-content",
+            "scrollHeight": 1182,
+            "scrollWidth": 560,
+            "width": 560
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n领取或恢复商品\n\n粘贴购买平台交付的完整兑换码。未绑定商品可换设备恢复，恢复不会增加报告次数。\n\n兑换码\n领取或恢复\n\n兑换码只用于本次领取或恢复，请妥善保管，不要公开分享。\n\n从这里开始探索\n在原购买平台取得完整兑换码。\n输入兑换码，领取或恢复已有权益。\n前往我的应用作答，完成后查看报告。\n\n无需先注册。恢复已有商品不会增加报告机会；演示预览中的示例码不能在这里兑换。\n\n兑换与恢复帮助\n\n已绑定商品请登录原账户查看，不会被恢复为匿名商品。\n\n邮箱登录\n查看我的应用\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "领取或恢复商品 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "apps",
+      "path": "/apps",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "apps-768.png",
+      "raw": {
+        "documentWidth": 753,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "我的应用"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          }
+        ],
+        "main": [
+          {
+            "height": 1060,
+            "id": "flow-content",
+            "scrollHeight": 1060,
+            "scrollWidth": 560,
+            "width": 560
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的应用\n本机未绑定商品\n账户已绑定商品\n领取或恢复\n账户与绑定\n\n这里仅显示本机兑换码会话中的未绑定商品。两份列表独立显示。\n\n合成B · 商品模板技术验收\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n版本 1 · 权益有效 · 已用 0/1 份报告\n\n访问截至 2027/2/25 18:52:05\n\n报告：尚未生成\n\n继续作答\n合成A · 商品模板技术验收\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n版本 1 · 权益有效 · 已用 0/1 份报告\n\n访问截至 2027/2/25 18:50:05\n\n报告：尚未生成\n\n继续作答\n上一页\n第 1 页 · 共 2 条\n下一页\n退出本机兑换会话\n查看我的报告\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "我的应用 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "reports-empty",
+      "path": "/reports",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "reports-empty-768.png",
+      "raw": {
+        "documentWidth": 768,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "我的报告"
+          }
+        ],
+        "main": [
+          {
+            "height": 799,
+            "id": "flow-content",
+            "scrollHeight": 799,
+            "scrollWidth": 575,
+            "width": 575
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的报告\n本机未绑定商品\n账户已绑定商品\n领取或恢复\n账户与绑定\n\n这里仅显示本机兑换码会话中的未绑定商品。两份列表独立显示。\n\n这里暂时没有内容。\n\n查看我的应用\n\n本页按应用分页，列出其中已生成的报告；过期、撤权、删除状态以服务端为准。\n\n上一页\n第 1 页 · 共 2 条\n下一页\n退出本机兑换会话\n查看我的应用\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "我的报告 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "login",
+      "path": "/auth/login",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "login-768.png",
+      "raw": {
+        "documentWidth": 768,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "邮箱登录"
+          }
+        ],
+        "main": [
+          {
+            "height": 907,
+            "id": "flow-content",
+            "scrollHeight": 907,
+            "scrollWidth": 575,
+            "width": 575
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n商城\n账户\n帮助\n我的空间\n邮箱登录\n\n邮箱账户用于保存已绑定商品，方便换设备访问。登录后，本机未绑定商品仍需主动确认绑定。\n\n账户服务配置不完整，请联系站点管理员。\n\n邮箱登录\n注册\n找回密码\n账户状态\n\n本机商品与邮箱账户独立保存，绑定始终由你主动确认。\n\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "邮箱登录 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "account",
+      "path": "/account",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "account-768.png",
+      "raw": {
+        "documentWidth": 768,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "账户状态"
+          }
+        ],
+        "main": [
+          {
+            "height": 907,
+            "id": "flow-content",
+            "scrollHeight": 907,
+            "scrollWidth": 575,
+            "width": 575
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\n/\n发现\n⌘ K\n我的空间\n登录 / 注册\n商城\n账户\n帮助\n我的空间\n账户状态\n\n当前未登录。\n\n邮箱登录\n注册\n找回密码\n账户状态\n查看本机未绑定商品\n\n本机商品与邮箱账户独立保存，绑定始终由你主动确认。\n\nmeetmyworld © 2026\n仅供娱乐与自我观察\n使用帮助\n/\n兑换说明\n/\n联系我们",
+        "title": "账户状态 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "admin-access",
+      "path": "/admin",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "admin-access-768.png",
+      "raw": {
+        "documentWidth": 768,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "运营后台"
+          },
+          {
+            "level": "H2",
+            "text": "需要管理员账户"
+          }
+        ],
+        "main": [],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\n访问验证\n未登录\nM\n运营后台\nm / w\n需要管理员账户\n\n请先登录已验证的管理员邮箱。\n\n邮箱登录\n使用已验证的管理员邮箱，继续制作与管理。\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "概览与审计 · MeetMyWorld 运营后台",
+        "viewport": {
+          "dpr": 1,
+          "height": 1024,
+          "width": 768
+        }
+      }
+    },
+    {
+      "key": "store",
+      "path": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "store-390.png",
+      "raw": {
+        "documentWidth": 375,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "伴侣协作测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "工作边界测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "按场景发现"
+          },
+          {
+            "level": "H2",
+            "text": "最新上架"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "工作边界测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化"
+          },
+          {
+            "level": "H2",
+            "text": "伴侣协作测试 · 演示"
+          }
+        ],
+        "main": [
+          {
+            "height": 1157,
+            "id": "flow-content",
+            "scrollHeight": 1157,
+            "scrollWidth": 375,
+            "width": 375
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\nOr-Ai\n登录 / 注册\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n全部\n关系情感\n职场工作\n自我探索\n生活消费\n趣味娱乐\n搜索与筛选\n按关键词、价格或时长探索\n演示体验\n合成B · 商品模板技术验收\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n合成A · 商品模板技术验收\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n伴侣协作测试 · 演示\n一起安排生活时，你们的协作节奏是什么？\n6 道题 · 约 3 分钟\n¥ 9.90\n测试价格\n演示体验\n工作边界测试 · 演示\n面对临时任务，你会怎样表达工作边界？\n3 道题 · 约 2 分钟\n¥ 9.90\n测试价格\n按场景发现\n关系情感\n看见彼此的相处方式\n协作、沟通与关系边界\n职场工作\n给隐形劳动一份说明\n工作分工与职场边界\n自我探索\n找到你的生活倾向\n情绪、期待与自我观察\n生活消费\n读懂每一次心动消费\n习惯、选择与消费动机\n趣味娱乐\n给日常一点轻松灵感\n社交电量与生活关键词\n最新上架\n共 5 个商品\n排序\n最新优先\n推荐优先\n合成B · 商品模板技术验收\n6 道题 · 约 3 分钟\n¥ 9.90\n合成A · 商品模板技术验收\n6 道题 · 约 3 分钟\n¥ 9.90\n工作边界测试 · 演示\n3 道题 · 约 2 分钟\n¥ 9.90\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n3 道题 · 约 2 分钟\n¥ 9.90\n伴侣协作测试 · 演示\n6 道题 · 约 3 分钟\n¥ 9.90\n上一页\n第 1 页 · 共 5 条\n下一页\n仅供娱乐与自我观察\n发现\n应用\n报告\n我的",
+        "title": "发现有趣的自己 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "product",
+      "path": "/products/demo-partner",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "product-390.png",
+      "raw": {
+        "documentWidth": 375,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "伴侣协作测试 · 演示"
+          },
+          {
+            "level": "H2",
+            "text": "测评介绍"
+          },
+          {
+            "level": "H2",
+            "text": "报告样例"
+          },
+          {
+            "level": "H2",
+            "text": "逐步平衡 · 演示样例"
+          },
+          {
+            "level": "H2",
+            "text": "购买与兑换说明"
+          }
+        ],
+        "main": [
+          {
+            "height": 1615,
+            "id": "flow-content",
+            "scrollHeight": 1615,
+            "scrollWidth": 375,
+            "width": 375
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\nOr-Ai\n登录 / 注册\n应用商城\n/\n关系情感\n关系情感\n伴侣协作测试 · 演示\n\n一起安排生活时，你们的协作节奏是什么？\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n6 道题\n约 3 分钟\n版本 2\n测试价格\n¥ 9.90\n已有兑换码，领取或恢复\n测评介绍\n\n演示主动分担、回应和共同安排的多维测试。 演示内容，不用于购买。\n\n报告样例\n公开示例\n逐步平衡 · 演示样例\n\n这是独立编写的公开样例，不来自任何私人报告。\n\n共同分担\n50\n沟通回应\n50\n\n从一个小场景开始观察自己的选择。\n\n这是公开样例，与个人报告分开。\n购买与兑换说明\n\n演示内容，不用于购买；¥9.90 仅为联调价格。\n\n当前未提供购买链接。\n\n测试码用于本地演示，正式交付规则以后确定。\n\n返回商城\n仅供娱乐与自我观察\n发现\n应用\n报告\n我的",
+        "title": "伴侣协作测试 · 演示 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "redeem",
+      "path": "/redeem",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "redeem-390.png",
+      "raw": {
+        "documentWidth": 390,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "确认你的访问权限"
+          }
+        ],
+        "main": [],
+        "probePresent": false,
+        "ready": true,
+        "text": "meetmyworld\n个人空间\n确认你的访问权限\n\n正在确认访问状态…\n\n返回商城",
+        "title": "MeetMyWorld · 发现有趣的自己",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "apps",
+      "path": "/apps",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "apps-390.png",
+      "raw": {
+        "documentWidth": 375,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "我的应用"
+          },
+          {
+            "level": "H2",
+            "text": "合成B · 商品模板技术验收"
+          },
+          {
+            "level": "H2",
+            "text": "合成A · 商品模板技术验收"
+          }
+        ],
+        "main": [
+          {
+            "height": 1133,
+            "id": "flow-content",
+            "scrollHeight": 1133,
+            "scrollWidth": 375,
+            "width": 375
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\nOr-Ai\n登录 / 注册\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的应用\n本机未绑定商品\n账户已绑定商品\n领取或恢复\n账户与绑定\n\n这里仅显示本机兑换码会话中的未绑定商品。两份列表独立显示。\n\n合成B · 商品模板技术验收\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n版本 1 · 权益有效 · 已用 0/1 份报告\n\n访问截至 2027/2/25 18:52:05\n\n报告：尚未生成\n\n继续作答\n合成A · 商品模板技术验收\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n版本 1 · 权益有效 · 已用 0/1 份报告\n\n访问截至 2027/2/25 18:50:05\n\n报告：尚未生成\n\n继续作答\n上一页\n第 1 页 · 共 2 条\n下一页\n退出本机兑换会话\n查看我的报告\n仅供娱乐与自我观察\n发现\n应用\n报告\n我的",
+        "title": "我的应用 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "reports-empty",
+      "path": "/reports",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "reports-empty-390.png",
+      "raw": {
+        "documentWidth": 375,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "发现有趣的自己"
+          },
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "我的报告"
+          }
+        ],
+        "main": [
+          {
+            "height": 809,
+            "id": "flow-content",
+            "scrollHeight": 809,
+            "scrollWidth": 375,
+            "width": 375
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\nOr-Ai\n登录 / 注册\n发现有趣的自己\n\n从一个问题开始，看看你的生活倾向。\n\n我的报告\n本机未绑定商品\n账户已绑定商品\n领取或恢复\n账户与绑定\n\n这里仅显示本机兑换码会话中的未绑定商品。两份列表独立显示。\n\n这里暂时没有内容。\n\n查看我的应用\n\n本页按应用分页，列出其中已生成的报告；过期、撤权、删除状态以服务端为准。\n\n上一页\n第 1 页 · 共 2 条\n下一页\n退出本机兑换会话\n查看我的应用\n仅供娱乐与自我观察\n发现\n应用\n报告\n我的",
+        "title": "我的报告 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "login",
+      "path": "/auth/login",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "login-390.png",
+      "raw": {
+        "documentWidth": 390,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "邮箱登录"
+          }
+        ],
+        "main": [
+          {
+            "height": 528,
+            "id": "flow-content",
+            "scrollHeight": 528,
+            "scrollWidth": 390,
+            "width": 390
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\nOr-Ai\n登录 / 注册\n商城\n账户\n帮助\n我的空间\n邮箱登录\n\n邮箱账户用于保存已绑定商品，方便换设备访问。登录后，本机未绑定商品仍需主动确认绑定。\n\n账户服务配置不完整，请联系站点管理员。\n\n邮箱登录\n注册\n找回密码\n账户状态\n\n本机商品与邮箱账户独立保存，绑定始终由你主动确认。\n\n仅供娱乐与自我观察\n发现\n应用\n报告\n我的",
+        "title": "邮箱登录 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "account",
+      "path": "/account",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "account-390.png",
+      "raw": {
+        "documentWidth": 390,
+        "headings": [
+          {
+            "level": "H2",
+            "text": "我的空间"
+          },
+          {
+            "level": "H3",
+            "text": "一份报告，一点新发现"
+          },
+          {
+            "level": "H1",
+            "text": "账户状态"
+          }
+        ],
+        "main": [
+          {
+            "height": 519,
+            "id": "flow-content",
+            "scrollHeight": 519,
+            "scrollWidth": 390,
+            "width": 390
+          }
+        ],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到页面内容\nOr-Ai\n登录 / 注册\n商城\n账户\n帮助\n我的空间\n账户状态\n\n当前未登录。\n\n邮箱登录\n注册\n找回密码\n账户状态\n查看本机未绑定商品\n\n本机商品与邮箱账户独立保存，绑定始终由你主动确认。\n\n仅供娱乐与自我观察\n发现\n应用\n报告\n我的",
+        "title": "账户状态 · MeetMyWorld",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "key": "admin-access",
+      "path": "/admin",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "admin-access-390.png",
+      "raw": {
+        "documentWidth": 390,
+        "headings": [
+          {
+            "level": "H1",
+            "text": "运营后台"
+          },
+          {
+            "level": "H2",
+            "text": "需要管理员账户"
+          }
+        ],
+        "main": [],
+        "probePresent": false,
+        "ready": true,
+        "text": "跳到后台内容\n访问验证\n未登录\nM\n运营后台\nm / w\n需要管理员账户\n\n请先登录已验证的管理员邮箱。\n\n邮箱登录\n使用已验证的管理员邮箱，继续制作与管理。\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "概览与审计 · MeetMyWorld 运营后台",
+        "viewport": {
+          "dpr": 1,
+          "height": 844,
+          "width": 390
+        }
+      }
+    }
+  ]
+}

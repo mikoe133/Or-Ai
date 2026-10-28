@@ -1,0 +1,43 @@
+Browser tab: 4, Title: "MeetMyWorld · 发现有趣的自己", URL: "http://127.0.0.1:5187/account".
+1 AXWebArea 账户状态 · MeetMyWorld, URL: 127.0.0.1:5187/account
+	2 container
+		3 link 127.0.0.1:5187/account#flow-content
+		4 link 127.0.0.1:5187/
+		5 link 127.0.0.1:5187/
+		6 container
+			7 search text field (settable)
+		8 link 127.0.0.1:5187/account
+		9 link 127.0.0.1:5187/auth/login
+		10 container
+			11 link 127.0.0.1:5187/
+			12 link 127.0.0.1:5187/together
+			13 link 127.0.0.1:5187/collaborations
+			14 button
+		15 container
+			16 container
+				17 link 127.0.0.1:5187/
+				18 link 127.0.0.1:5187/apps
+				19 link 127.0.0.1:5187/reports
+				20 link 127.0.0.1:5187/help
+			21 container
+				22 link 127.0.0.1:5187/
+				23 link 127.0.0.1:5187/account
+				24 link 127.0.0.1:5187/help
+			25 container
+				26 heading 1
+				27 container
+					28 link 127.0.0.1:5187/auth/login
+					29 link 127.0.0.1:5187/auth/register
+					30 link 127.0.0.1:5187/auth/forgot
+					31 link 127.0.0.1:5187/account
+				32 link 127.0.0.1:5187/apps
+		33 container
+			34 link 127.0.0.1:5187/redeem
+			35 link 127.0.0.1:5187/
+			36 link 127.0.0.1:5187/help
+		37 container
+			38 link 127.0.0.1:5187/help
+			39 button
+			40 button
+
+The focused UI element is 1 AXWebArea 账户状态 · MeetMyWorld, URL: 127.0.0.1:5187/account
