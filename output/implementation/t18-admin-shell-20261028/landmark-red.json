@@ -1,0 +1,9 @@
+{
+  "applicationCommit": "308d118",
+  "test": "admin navigation leads to one main workspace while locked navigation stays unavailable",
+  "compiled": true,
+  "expectedMainLandmarks": 1,
+  "actualMainLandmarks": 0,
+  "passed": false,
+  "scope": "actual AdminShell SSR, no real account or server permission changed"
+}
