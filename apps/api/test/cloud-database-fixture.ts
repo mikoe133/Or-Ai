@@ -6,7 +6,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import {Pool} from 'pg';
 import {createCloudDatabaseConnections,type CloudDatabaseTarget,type CloudDatabaseConnections} from '../scripts/cloud-database';
 const execute=promisify(execFile);
-export async function cloudDatabaseFixture(){
+export async function cloudDatabaseFixture(restrictedBootstrap=false){
   const root=resolve(process.cwd(),'../..');await mkdir(join(root,'.local'),{recursive:true});
   const directory=await mkdtemp(join(root,'.local/cloud-database-'));
   const suffix=randomUUID().slice(0,8),name='orai-cloud-db-'+suffix,image='orai-cloud-db-proof:'+suffix;
@@ -24,19 +24,20 @@ export async function cloudDatabaseFixture(){
     await writeFile(join(directory,'Dockerfile'),'FROM postgres:17.10-bookworm\nCOPY --chown=postgres:postgres server.key server.crt /run/pg-tls/\nRUN chmod 600 /run/pg-tls/server.key\n');
     docker(['build','-t',image,directory]);
     docker(['run','-d','--name',name,'--memory','256m','--cpus','1','--pids-limit','128','--security-opt','no-new-privileges:true',
-      '-e','POSTGRES_USER=postgres','-e','POSTGRES_PASSWORD='+bootstrapPassword,'-e','POSTGRES_DB=postgres','-p','127.0.0.1::5432',image,
+      '-e','POSTGRES_USER='+(restrictedBootstrap?'fixture_admin':'postgres'),'-e','POSTGRES_PASSWORD='+bootstrapPassword,'-e','POSTGRES_DB=postgres','-p','127.0.0.1::5432',image,
       'postgres','-c','ssl=on','-c','ssl_cert_file=/run/pg-tls/server.crt','-c','ssl_key_file=/run/pg-tls/server.key']);
     const ports=JSON.parse(docker(['inspect',name,'--format','{{json .NetworkSettings.Ports}}'])),port=Number(ports['5432/tcp'][0].HostPort);
-    management=new Pool({host:'127.0.0.1',port,user:'postgres',password:bootstrapPassword,database:'postgres',ssl:{ca,rejectUnauthorized:true},max:1,connectionTimeoutMillis:1000});
+    management=new Pool({host:'127.0.0.1',port,user:restrictedBootstrap?'fixture_admin':'postgres',password:bootstrapPassword,database:'postgres',ssl:{ca,rejectUnauthorized:true},max:1,connectionTimeoutMillis:1000});
     let ready=false;for(let count=0;count<40;count++){try{await management.query('SELECT 1');ready=true;break;}catch{}await new Promise<void>(resolve=>setTimeout(resolve,100));}
     if(!ready)throw Error('Isolated TLS database did not become ready');
+    if(restrictedBootstrap)await management.query((await management.query("SELECT format('CREATE ROLE postgres LOGIN NOSUPERUSER NOCREATEDB CREATEROLE INHERIT NOBYPASSRLS PASSWORD %L',$1::text) AS sql",[bootstrapPassword])).rows[0].sql);
     const projectRef='a'.repeat(20),hostname='aws-0-unit.pooler.supabase.com';
     const envFor=(database:string)=>({APP_ENV:'production',NODE_ENV:'production',DATABASE_SSL_MODE:'verify-full',CLOUD_DATABASE_PROJECT_REF:projectRef,
       CLOUD_DATABASE_EXPECTED_HOST:hostname,CLOUD_DATABASE_NAME:database,CLOUD_DATABASE_CA_FILE:join(directory,'ca.crt'),CLOUD_DATABASE_CA_SHA256:createHash('sha256').update(ca).digest('hex'),
       CLOUD_DATABASE_BOOTSTRAP_URL:'postgresql://postgres.'+projectRef+':'+bootstrapPassword+'@'+hostname+':5432/'+database+'?schema=orai',
       MIGRATION_DATABASE_URL:'postgresql://orai_owner.'+projectRef+':'+ownerPassword+'@'+hostname+':5432/'+database+'?schema=orai',
       DATABASE_URL:'postgresql://orai_app.'+projectRef+':'+runtimePassword+'@'+hostname+':5432/'+database+'?schema=orai'});
-    async function newDatabase(){const database='orai_test_cloud_'+randomUUID().replaceAll('-','').slice(0,12);await management!.query('CREATE DATABASE "'+database+'"');return {database,env:envFor(database)};}
+    async function newDatabase(){const database='orai_test_cloud_'+randomUUID().replaceAll('-','').slice(0,12);await management!.query('CREATE DATABASE "'+database+'"'+(restrictedBootstrap?' OWNER postgres':''));return {database,env:envFor(database)};}
     const localUrl=(raw:string)=>{const value=new URL(raw);value.hostname='127.0.0.1';value.port=String(port);value.username=decodeURIComponent(value.username).split('.')[0]!;return value;};
     const connections=async(target:CloudDatabaseTarget):Promise<CloudDatabaseConnections>=>{
       // Exercise the production CA pinning/copy, pools and official Prisma child;

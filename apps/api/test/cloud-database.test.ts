@@ -9,6 +9,16 @@ let fixture:Awaited<ReturnType<typeof cloudDatabaseFixture>>;
 before(async()=>{fixture=await cloudDatabaseFixture();});
 after(async()=>{await fixture?.cleanup();});
 
+test('a non-superuser database owner with CREATEROLE can bootstrap without assuming provider superuser privileges',async()=>{
+  const isolated=await cloudDatabaseFixture(true);let connections:Awaited<ReturnType<typeof isolated.connections>>|undefined;
+  try{
+    const {env}=await isolated.newDatabase();connections=await isolated.connections(parseCloudDatabaseTarget(env));
+    assert.equal((await connections.bootstrap.query("SELECT rolsuper FROM pg_roles WHERE rolname=current_user")).rows[0].rolsuper,false);
+    const result=await applyCloudDatabasePlan(env,await createCloudDatabasePlan(env,'bootstrap'),connections,()=>{});assert.equal(result.migrations,29);
+    assert.equal((await connections.runtime.query('SELECT count(*)::int AS count FROM orai.users')).rows[0].count,0);
+  }finally{await connections?.close();await isolated.cleanup();}
+});
+
 test('cloud maintenance preview pins project, TLS CA and all immutable migrations without making a database connection',async()=>{
   const env=fixture.envFor('postgres'),plan=await createCloudDatabasePlan(env,'bootstrap');
   assert.equal(plan.schemaVersion,1);assert.equal(plan.migrations.length,29);assert.equal(plan.target.database,'postgres');
