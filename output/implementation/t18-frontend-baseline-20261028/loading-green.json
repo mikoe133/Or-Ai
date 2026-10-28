@@ -1,0 +1,56 @@
+[
+  {
+    "bodyBackground": "rgb(248, 250, 252)",
+    "box": {
+      "height": 844,
+      "width": 390,
+      "x": 0,
+      "y": 0
+    },
+    "color": "rgb(236, 234, 245)",
+    "label": "正在加载页面…",
+    "loadingBackground": "rgb(20, 21, 28)",
+    "readyState": "interactive",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    },
+    "passed": true
+  },
+  {
+    "bodyBackground": "rgb(248, 250, 252)",
+    "box": {
+      "height": 1024,
+      "width": 768,
+      "x": 0,
+      "y": 0
+    },
+    "color": "rgb(236, 234, 245)",
+    "label": "正在加载页面…",
+    "loadingBackground": "rgb(20, 21, 28)",
+    "readyState": "interactive",
+    "viewport": {
+      "height": 1024,
+      "width": 768
+    },
+    "passed": true
+  },
+  {
+    "bodyBackground": "rgb(248, 250, 252)",
+    "box": {
+      "height": 1000,
+      "width": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "color": "rgb(236, 234, 245)",
+    "label": "正在加载页面…",
+    "loadingBackground": "rgb(20, 21, 28)",
+    "readyState": "interactive",
+    "viewport": {
+      "height": 1000,
+      "width": 1440
+    },
+    "passed": true
+  }
+]

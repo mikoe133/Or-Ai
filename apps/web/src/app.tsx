@@ -38,7 +38,7 @@ function SupportingPages() {
 
 export function App() {
   const location=useLocation();
-  return <Suspense fallback={<p role="status" className="p-6">正在加载页面…</p>}>{location.pathname.startsWith('/preview')&&<div className="p-3 text-center">独立设计预览 · 数据为示例　<Link to="/">进入真实业务商城</Link></div>}<Routes>
+  return <Suspense fallback={<p role="status" className="app-route-loading">正在加载页面…</p>}>{location.pathname.startsWith('/preview')&&<div className="p-3 text-center">独立设计预览 · 数据为示例　<Link to="/">进入真实业务商城</Link></div>}<Routes>
     <Route element={<Workspace />}>
       <Route path="/" element={<Catalog />} />
       <Route path="/apps" element={<Library />} />
