@@ -25,7 +25,7 @@ function EventCharts({ overview }: { overview: OverviewData }) {
   return <>
     <div className="overview-chart-grid">
       <section className="overview-chart-panel overview-event-panel" aria-label="体验事件">
-        <div className="overview-panel-heading"><div><span className="overview-eyebrow">EXPERIENCE</span><h3>体验事件</h3></div><span className="overview-scope">累计次数</span></div>
+        <div className="overview-panel-heading"><h3>体验事件</h3><span className="overview-scope">累计次数</span></div>
         <div className="overview-segmented" role="group" aria-label="筛选事件来源">
           {[{ key: "all", label: "全部来源" }, ...eventSources].map(item => <button key={item.key} type="button" aria-pressed={source === item.key} onClick={() => setSource(item.key as EventSource | "all")}>{item.label}</button>)}
         </div>
@@ -34,7 +34,7 @@ function EventCharts({ overview }: { overview: OverviewData }) {
         <p className="overview-chart-note">按事件次数独立统计，同一用户可产生多次事件。</p>
       </section>
       <section className="overview-chart-panel" aria-label="订单状态分布">
-        <div className="overview-panel-heading"><div><span className="overview-eyebrow">DELIVERY</span><h3>订单状态</h3></div><Link to="/admin/orders">查看订单 ↗</Link></div>
+        <div className="overview-panel-heading"><h3>订单状态</h3><Link to="/admin/orders">查看订单 ↗</Link></div>
         <RingChart data={statusCounts(overview.orders.statuses)} label="人工登记订单状态分布" unit="笔登记订单" />
         <p className="overview-chart-note">来自人工登记记录，登记金额未核实平台支付。</p>
       </section>
@@ -59,7 +59,7 @@ function Audit() {
   const audit = useQuery({ queryKey: ["private", "admin", "audit", page], queryFn: ({ signal }) => adminApi.audit(page, signal), placeholderData: keepPreviousData });
   const data = isAccessFailure(audit.error) ? undefined : audit.data;
   return <section className="overview-audit" aria-label="操作审计" aria-busy={audit.isFetching}>
-    <div className="admin-section-title"><div><span className="overview-eyebrow">ACTIVITY LOG</span><h3>操作审计</h3></div>{data && <span className="overview-scope">共 {formatCount(data.total)} 条记录</span>}</div>
+    <div className="admin-section-title"><h3>操作审计</h3>{data && <span className="overview-scope">共 {formatCount(data.total)} 条记录</span>}</div>
     {!data ? (audit.isError ? <Failure error={audit.error} retry={() => void audit.refetch()} /> : <Loading />) : <>
       {audit.isError && <RefreshNotice busy={audit.isFetching} retry={() => void audit.refetch()} />}
       <div className="overview-chart-panel overview-audit-chart">
@@ -90,7 +90,7 @@ export function Overview() {
   const result = useQuery({ queryKey: ["private", "admin", "overview"], queryFn: ({ signal }) => adminApi.overview(signal) });
   const data = isAccessFailure(result.error) ? undefined : result.data;
   return <div className="admin-overview">
-    <div className="admin-heading"><div><span className="overview-eyebrow">WORKSPACE / OVERVIEW</span><h2>运营概览</h2><p>从体验到交付，查看每一份内容的运营记录。</p></div><Link className="biz-button admin-primary" to="/admin/content">进入内容工作台 ↗</Link></div>
+    <div className="admin-heading"><div><h2>运营概览</h2><p>查看累计登记、体验事件与最近操作。</p></div><Link className="biz-button admin-primary" to="/admin/content">进入内容工作台 ↗</Link></div>
     {!data ? (result.isError ? <Failure error={result.error} retry={() => void result.refetch()} /> : <Loading />) : <>
       <Demo show={data.scope === "demo"} />
       <div className="admin-stat-strip">
@@ -107,9 +107,9 @@ export function Overview() {
         <Audit />
       </div>
       <aside className="admin-overview-aside" aria-label="运营工作入口">
-        {data && <section className="overview-source-panel" aria-label="事件来源占比"><span className="overview-eyebrow">SOURCES</span><h3>事件来源</h3><RingChart data={sourceCounts(data.events)} label="所有体验事件的来源占比" unit="次累计事件" /><p className="overview-chart-note">按事件记录来源统计，来源归因尚未确认。</p></section>}
+        {data && <section className="overview-source-panel" aria-label="事件来源占比"><h3>事件来源</h3><RingChart data={sourceCounts(data.events)} label="所有体验事件的来源占比" unit="次累计事件" /><p className="overview-chart-note">按事件记录来源统计，来源归因尚未确认。</p></section>}
         <section><h3>继续工作</h3>
-          {[{ to: "/admin/content", title: "制作与核对内容", note: "题库、报告、封面、视频与文案" }, { to: "/admin/skills", title: "维护制作方法", note: "四类 skill 与固定参考资料" }, { to: "/admin/orders", title: "处理订单与交付", note: "人工登记、发码与售后" }, { to: "/admin/machine", title: "查看 Codex 连接", note: "授权范围与调用记录" }].map(item => <Link key={item.to} className="admin-shortcut" to={item.to}><span><strong>{item.title}</strong><small>{item.note}</small></span><span>↗</span></Link>)}
+          {[{ to: "/admin/content", title: "制作与核对内容", note: "题库、报告、封面、视频与文案" }, { to: "/admin/skills", title: "维护制作方法", note: "五类 Skill 与固定参考资料" }, { to: "/admin/orders", title: "处理订单与交付", note: "人工登记、发码与售后" }, { to: "/admin/machine", title: "查看 Codex 连接", note: "授权范围与调用记录" }].map(item => <Link key={item.to} className="admin-shortcut" to={item.to}><span><strong>{item.title}</strong><small>{item.note}</small></span><span>↗</span></Link>)}
         </section>
         <section><h3>数据口径</h3><p>登记金额未核实平台支付，不等于实际收入。</p><p>浏览来自客户端观察；兑换、开始、完成与退款由业务事务记录。事件次数不等于用户人数。</p></section>
       </aside>

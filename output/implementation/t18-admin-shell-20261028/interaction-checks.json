@@ -1,0 +1,296 @@
+[
+  {
+    "scenario": "verified TEST member remains denied",
+    "code": "FORBIDDEN",
+    "status": 403,
+    "passed": true
+  },
+  {
+    "name": "Keyboard first tab exposes skip link",
+    "passed": true,
+    "evidence": {
+      "className": "admin-skip",
+      "text": "跳到后台内容",
+      "top": 12
+    }
+  },
+  {
+    "name": "Skip link reaches the unique main workspace",
+    "passed": true,
+    "evidence": {
+      "count": 1,
+      "id": "admin-workspace",
+      "tag": "MAIN"
+    }
+  },
+  {
+    "name": "Mobile drawer opens with three named groups and focus inside",
+    "passed": true,
+    "evidence": {
+      "expanded": "true",
+      "focus": "admin-brand",
+      "groups": [
+        "运营管理",
+        "内容制作",
+        "连接与交付"
+      ],
+      "width": 248
+    }
+  },
+  {
+    "name": "Drawer reverse Tab wraps to the last link",
+    "passed": true,
+    "evidence": {
+      "focus": "admin-return"
+    }
+  },
+  {
+    "name": "Escape closes the drawer and restores trigger focus",
+    "passed": true,
+    "evidence": {
+      "expanded": "false",
+      "focus": "admin-menu-toggle",
+      "sidebar": "none"
+    }
+  },
+  {
+    "name": "Drawer navigation selects the route, closes and focuses main",
+    "passed": true,
+    "evidence": {
+      "current": [
+        "商品与版本"
+      ],
+      "documentWidth": 390,
+      "expanded": "false",
+      "focus": "admin-workspace",
+      "path": "/admin/products",
+      "table": {
+        "scrollWidth": 650,
+        "width": 347
+      },
+      "viewport": 390
+    }
+  },
+  {
+    "name": "Narrow product table scroll stays inside its own region",
+    "passed": true,
+    "evidence": {
+      "current": [
+        "商品与版本"
+      ],
+      "documentWidth": 390,
+      "expanded": "false",
+      "focus": "admin-workspace",
+      "path": "/admin/products",
+      "table": {
+        "scrollWidth": 650,
+        "width": 347
+      },
+      "viewport": 390
+    }
+  },
+  {
+    "name": "Product filter retains input and renders the matching TEST product",
+    "passed": true,
+    "evidence": {
+      "query": "demo-work",
+      "status": "published",
+      "result": "one matching published TEST product"
+    }
+  },
+  {
+    "name": "Desktop PageDown scrolls the workspace while shell remains fixed",
+    "passed": true,
+    "evidence": {
+      "before": {
+        "document": 0,
+        "main": 0,
+        "sidebarTop": 0,
+        "topbarTop": 0
+      },
+      "after": {
+        "document": 0,
+        "main": 259,
+        "sidebarTop": 0,
+        "topbarTop": 0
+      }
+    }
+  },
+  {
+    "name": "Event source filter shows a real zero state",
+    "passed": true,
+    "evidence": {
+      "source": "website",
+      "message": "网站暂无体验事件。"
+    }
+  },
+  {
+    "name": "Event counts restore and audit grouping keeps source data",
+    "passed": true,
+    "evidence": {
+      "bars": [
+        "0",
+        "0",
+        "33",
+        "27",
+        "0",
+        "0",
+        "0"
+      ],
+      "metrics": [
+        "37",
+        "¥366.30",
+        "5",
+        "32"
+      ],
+      "selected": [
+        "按对象"
+      ]
+    }
+  },
+  {
+    "name": "Changed navigation and overview text samples meet 4.5 contrast",
+    "passed": true,
+    "evidence": [
+      {
+        "background": "rgb(25, 26, 35)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "11px",
+        "selector": ".admin-nav-label",
+        "ratio": 7.39
+      },
+      {
+        "background": "rgb(48, 43, 69)",
+        "color": "rgb(190, 165, 236)",
+        "fontSize": "13px",
+        "selector": ".admin-nav-item[aria-current=\"page\"]",
+        "ratio": 6.28
+      },
+      {
+        "background": "rgb(20, 21, 28)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "11px",
+        "selector": ".admin-topbar-account",
+        "ratio": 7.78
+      },
+      {
+        "background": "rgb(27, 29, 40)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "11px",
+        "selector": ".overview-bar-axis",
+        "ratio": 7.16
+      },
+      {
+        "background": "rgb(27, 29, 40)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "12px",
+        "selector": ".overview-chart-note",
+        "ratio": 7.16
+      },
+      {
+        "background": "rgb(27, 29, 40)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "11px",
+        "selector": ".overview-chart-legend small",
+        "ratio": 7.16
+      },
+      {
+        "background": "rgb(48, 43, 69)",
+        "color": "rgb(219, 199, 245)",
+        "fontSize": "12px",
+        "selector": ".overview-segmented button[aria-pressed=\"true\"]",
+        "ratio": 8.67
+      },
+      {
+        "background": "rgb(20, 21, 28)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "12px",
+        "selector": ".overview-segmented button[aria-pressed=\"false\"]",
+        "ratio": 7.78
+      },
+      {
+        "background": "rgb(190, 165, 236)",
+        "color": "rgb(36, 27, 53)",
+        "fontSize": "12px",
+        "selector": ".admin-heading .admin-primary",
+        "ratio": 7.62
+      }
+    ]
+  },
+  {
+    "name": "Tablet navigation exposes the current skill library and keyboard focus",
+    "passed": true,
+    "evidence": {
+      "current": "skill 库",
+      "expanded": "true",
+      "focus": "admin-brand",
+      "width": 768
+    }
+  },
+  {
+    "name": "Returning to desktop closes drawer state while sidebar stays available",
+    "passed": true,
+    "evidence": {
+      "open": false,
+      "sidebar": "flex"
+    }
+  },
+  {
+    "name": "Reduced motion keeps narrow workspace ready without finite entry animation",
+    "passed": true,
+    "evidence": {
+      "finiteAnimations": 0,
+      "main": "admin-workspace",
+      "reduced": true,
+      "viewport": 390,
+      "width": 390
+    }
+  },
+  {
+    "name": "Signed-out access panel and locked navigation at 1440",
+    "passed": true,
+    "evidence": {
+      "documentWidth": 1440,
+      "links": 0,
+      "locked": 7,
+      "main": 1,
+      "mark": false,
+      "status": "unverified",
+      "width": 1440
+    }
+  },
+  {
+    "name": "Signed-out access panel and locked navigation at 768",
+    "passed": true,
+    "evidence": {
+      "documentWidth": 768,
+      "links": 0,
+      "locked": 7,
+      "main": 1,
+      "mark": false,
+      "status": "unverified",
+      "width": 768
+    }
+  },
+  {
+    "name": "Signed-out access panel and locked navigation at 390",
+    "passed": true,
+    "evidence": {
+      "documentWidth": 390,
+      "links": 0,
+      "locked": 7,
+      "main": 1,
+      "mark": false,
+      "status": "unverified",
+      "width": 390
+    }
+  },
+  {
+    "name": "Signed-out TEST account cannot read admin overview",
+    "passed": true,
+    "evidence": {
+      "code": "AUTH_REQUIRED",
+      "status": 401
+    }
+  }
+]

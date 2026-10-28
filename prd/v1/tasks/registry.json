@@ -366,7 +366,7 @@
       "file": "active/17-frontend-design-refinement.md",
       "title": "依据 anti-ai-web-design 审计并改造全站前端",
       "lane": "主线",
-      "status": "24张静态基线/首轮问题与根加载最小修复通过；授权后台完整审计/主体改造未完成",
+      "status": "后台共享骨架/概览首批通过：108前端＋2专项、21组前后比较与20项CUA；全站/编辑器/完整状态及05/06依赖保持",
       "dependsOn": [
         5,
         6

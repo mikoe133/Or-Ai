@@ -38,6 +38,11 @@ const navigation = [
     icon: "M6 3h12v18l-3-2-3 2-3-2-3 2z M9 7h6 M9 11h6 M9 15h3",
   },
 ];
+const navigationGroups = [
+  { id: "operations", title: "运营管理", items: navigation.slice(0, 2) },
+  { id: "content", title: "内容制作", items: navigation.slice(2, 5) },
+  { id: "delivery", title: "连接与交付", items: navigation.slice(5) },
+];
 
 export function AdminShell({
   children,
@@ -158,47 +163,59 @@ export function AdminShell({
             ×
           </button>
         </div>
-        <div className="admin-nav-label">
-          工作空间<span>01</span>
-        </div>
         <nav className="admin-navigation" aria-label="后台导航">
-          {navigation.map((item) => {
-            const content = (
-              <>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d={item.icon} />
-                </svg>
-                <span>{item.title}</span>
-              </>
-            );
-            return authorized ? (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === "/admin"}
-                className="admin-nav-item"
-                onClick={() => setMenuOpen(false)}
-              >
-                {content}
-              </NavLink>
-            ) : (
-              <span
-                key={item.to}
-                className="admin-nav-item admin-nav-locked"
-                aria-disabled="true"
-              >
-                {content}
-              </span>
-            );
-          })}
+          {navigationGroups.map((group) => (
+            <div
+              key={group.id}
+              className="admin-nav-group"
+              role="group"
+              aria-labelledby={`admin-nav-${group.id}`}
+            >
+              <div className="admin-nav-label" id={`admin-nav-${group.id}`}>
+                {group.title}
+              </div>
+              {group.items.map((item) => {
+                const content = (
+                  <>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d={item.icon} />
+                    </svg>
+                    <span>{item.title}</span>
+                  </>
+                );
+                return authorized ? (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    end={item.to === "/admin"}
+                    className="admin-nav-item"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      if (menuOpen) main.current?.focus();
+                    }}
+                  >
+                    {content}
+                  </NavLink>
+                ) : (
+                  <span
+                    key={item.to}
+                    className="admin-nav-item admin-nav-locked"
+                    aria-disabled="true"
+                  >
+                    {content}
+                  </span>
+                );
+              })}
+            </div>
+          ))}
         </nav>
         <div className="admin-sidebar-footer">
           <Link className="admin-account" to="/account">
@@ -216,7 +233,6 @@ export function AdminShell({
           <Link className="admin-return" to="/">
             ← 返回商城
           </Link>
-          <div className="admin-edition">MEETMYWORLD / OPERATIONS</div>
         </div>
       </aside>
       <header className="admin-topbar">
@@ -245,7 +261,11 @@ export function AdminShell({
           <strong>{authorized ? current.title : "访问验证"}</strong>
         </div>
         <div className="admin-topbar-account">
-          <span className="admin-status-dot" />
+          <span
+            className="admin-status-dot"
+            data-status={authorized ? "verified" : "unverified"}
+            aria-hidden="true"
+          />
           {authorized
             ? "已验证的管理员"
             : accountPresent
@@ -256,20 +276,22 @@ export function AdminShell({
           </Link>
         </div>
       </header>
-      <section
+      <main
         ref={main}
         id="admin-workspace"
         className="admin-main biz-view"
-        aria-label="运营后台"
-        tabIndex={0}
+        aria-labelledby="admin-workspace-title"
+        tabIndex={-1}
       >
-        <h1 className="admin-sr-only">运营后台</h1>
+        <h1 id="admin-workspace-title" className="admin-sr-only">
+          {authorized ? current.title : "后台访问验证"}
+        </h1>
         <div className="admin-page-body">{children}</div>
         <footer className="admin-workspace-footer">
           <span>meetmyworld</span>
           <span>内容与工作，都有迹可循。</span>
         </footer>
-      </section>
+      </main>
     </div>
   );
 }

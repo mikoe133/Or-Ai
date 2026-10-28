@@ -19,7 +19,7 @@
   --admin-success: #accdbc;
   --admin-radius: 4px;
   display: grid;
-  grid-template: 52px minmax(0, 1fr) / 196px minmax(0, 1fr);
+  grid-template: 56px minmax(0, 1fr) / 216px minmax(0, 1fr);
   height: 100dvh;
   min-height: 0;
   width: 100%;
@@ -75,7 +75,7 @@
   grid-area: 1 / 1 / 3 / 2;
   background: #191a23;
   border-right: 1px solid var(--admin-border);
-  padding: 25px 14px 17px;
+  padding: 24px 16px 16px;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -84,7 +84,7 @@
   scrollbar-color: var(--admin-border) transparent;
 }
 .admin-shell .admin-brand-row {
-  margin-bottom: 43px;
+  margin-bottom: 32px;
 }
 .admin-shell .admin-brand {
   display: flex;
@@ -109,40 +109,36 @@
   display: block;
   color: var(--admin-muted);
   font:
-    10px/1.6 "PingFang SC",
+    11px/1.6 "PingFang SC",
     sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-top: 4px;
 }
 .admin-shell .admin-nav-label {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 11px 13px;
+  margin: 0 12px 8px;
   color: var(--admin-muted);
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-.admin-shell .admin-nav-label span {
-  font:
-    9px AdminManrope,
-    sans-serif;
+  font-size: 11px;
 }
 .admin-shell .admin-navigation {
   display: grid;
-  gap: 5px;
+  gap: 24px;
+}
+.admin-shell .admin-nav-group {
+  display: grid;
+  gap: 4px;
 }
 .admin-shell .admin-nav-item {
   position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 41px;
-  padding: 9px 11px;
+  min-height: 44px;
+  padding: 10px 12px;
   color: #c8c4d6;
   border-radius: 4px;
   text-decoration: none;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 13px;
 }
 .admin-shell .admin-nav-item svg {
   width: 17px;
@@ -185,18 +181,18 @@
   padding: 19px 0;
   border-top: 1px solid var(--admin-border);
   color: var(--admin-text);
-  font-size: 11px;
+  font-size: 12px;
   text-decoration: none;
 }
 .admin-shell .admin-account small {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--admin-muted);
   margin-top: 4px;
 }
 .admin-shell .admin-account > span:last-child {
   margin-left: auto;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--admin-muted);
 }
 .admin-shell .admin-avatar {
@@ -225,21 +221,13 @@
 .admin-shell .admin-return:hover {
   color: var(--admin-accent);
 }
-.admin-shell .admin-edition {
-  color: #8e8a9f;
-  font:
-    8px/1.5 AdminManrope,
-    sans-serif;
-  letter-spacing: 1px;
-  margin-top: 15px;
-}
 .admin-shell .admin-topbar {
   grid-area: 1 / 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding: 0 26px;
+  padding: 0 32px;
   border-bottom: 1px solid var(--admin-border);
   background: var(--admin-bg);
   min-width: 0;
@@ -248,7 +236,7 @@
   display: flex;
   gap: 12px;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   min-width: 0;
 }
 .admin-shell .admin-breadcrumb a {
@@ -270,7 +258,7 @@
   gap: 10px;
   align-items: center;
   color: var(--admin-muted);
-  font-size: 10px;
+  font-size: 11px;
   white-space: nowrap;
 }
 .admin-shell .admin-topbar-account .admin-avatar {
@@ -280,13 +268,17 @@
 }
 .admin-shell .admin-status-dot {
   display: inline-block;
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--admin-accent);
+  background: var(--admin-muted);
   flex-shrink: 0;
 }
+.admin-shell .admin-status-dot[data-status="verified"] {
+  background: var(--admin-success);
+}
 .admin-shell .admin-main.biz-view {
+  position: relative;
   grid-area: 2 / 2;
   display: block;
   width: 100%;
@@ -295,7 +287,7 @@
   min-height: 0;
   min-width: 0;
   margin: 0;
-  padding: 27px 26px 20px;
+  padding: 32px 32px 24px;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -314,6 +306,9 @@
   max-width: 1600px;
   min-width: 0;
   margin: 0 auto;
+}
+.admin-shell .admin-page-body > * {
+  min-width: 0;
 }
 .admin-shell .admin-workspace-footer {
   display: flex;
@@ -339,7 +334,7 @@
   font-size: 25px;
 }
 .admin-shell .biz-view h2 {
-  font-size: 24px;
+  font-size: 26px;
 }
 .admin-shell .biz-view h3 {
   font-size: 15px;
@@ -627,16 +622,9 @@
   padding: 32px;
   display: grid;
   justify-items: start;
-  gap: 22px;
-  border-top: 2px solid var(--admin-accent);
+  gap: 20px;
+  border: 1px solid var(--admin-border);
   background: var(--admin-panel);
-}
-.admin-shell .admin-access-mark {
-  font:
-    26px AdminManrope,
-    sans-serif;
-  color: var(--admin-accent);
-  letter-spacing: -2px;
 }
 .admin-shell .admin-access-panel h2 {
   font-size: 27px;
@@ -692,7 +680,7 @@
   overflow-wrap: anywhere;
 }
 .admin-shell .admin-stat small {
-  font-size: 10px;
+  font-size: 11px;
 }
 .admin-shell .admin-overview-grid {
   display: grid;
@@ -747,7 +735,7 @@
 }
 .admin-shell .admin-shortcut small {
   display: block;
-  font-size: 10px;
+  font-size: 11px;
   margin-top: 5px;
 }
 .admin-shell .admin-audit-object {
@@ -776,7 +764,7 @@
 
 @media (min-width: 1700px) {
   .admin-shell {
-    grid-template-columns: 210px minmax(0, 1fr);
+    grid-template-columns: 232px minmax(0, 1fr);
   }
   .admin-shell .admin-main.biz-view {
     padding: 32px 36px 22px;
@@ -784,7 +772,7 @@
 }
 @media (max-width: 1100px) {
   .admin-shell {
-    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-columns: 196px minmax(0, 1fr);
   }
   .admin-shell .admin-brand > span {
     font-size: 13px;
@@ -819,7 +807,7 @@
     display: none;
     position: fixed;
     inset: 0 auto 0 0;
-    width: 225px;
+    width: 248px;
     z-index: 42;
   }
   .admin-shell.admin-menu-open .admin-sidebar {
@@ -839,8 +827,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 28px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     padding: 3px;
     border: 0;
     background: transparent;
@@ -887,7 +875,7 @@
   }
   .admin-shell .admin-breadcrumb {
     gap: 9px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .admin-shell .admin-breadcrumb > a {
     display: none;
@@ -896,7 +884,7 @@
     display: none;
   }
   .admin-shell .admin-topbar-account {
-    font-size: 9px;
+    font-size: 11px;
     gap: 7px;
   }
   .admin-shell .admin-topbar-account .admin-avatar {

@@ -68,9 +68,6 @@ export function AdminApp() {
         <Failure error={context.error} retry={() => void context.refetch()} />
       ) : !context.data.account ? (
         <section className="admin-access-panel">
-          <div className="admin-access-mark" aria-hidden="true">
-            m / w
-          </div>
           <h2>需要管理员账户</h2>
           <p>
             {context.data.configured

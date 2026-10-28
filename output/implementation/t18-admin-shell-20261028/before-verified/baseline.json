@@ -1,0 +1,1374 @@
+{
+  "phase": "before-verified",
+  "scope": "synthetic seeded TEST, actual API; desktop viewport emulation; visible content, fonts and finite CSS animations ready",
+  "rows": [
+    {
+      "key": "overview",
+      "path": "/admin",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "overview-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin",
+            "label": "概览与审计"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "运营概览"
+          },
+          {
+            "tag": "H3",
+            "text": "体验事件"
+          },
+          {
+            "tag": "H3",
+            "text": "订单状态"
+          },
+          {
+            "tag": "H3",
+            "text": "操作审计"
+          },
+          {
+            "tag": "H3",
+            "text": "事件来源"
+          },
+          {
+            "tag": "H3",
+            "text": "继续工作"
+          },
+          {
+            "tag": "H3",
+            "text": "数据口径"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\n概览与审计\n已验证的管理员\nM\n运营后台\nWORKSPACE / OVERVIEW\n运营概览\n\n从体验到交付，查看每一份内容的运营记录。\n\n进入内容工作台 ↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n人工登记订单\n37\n运营记录 · 笔\n登记金额\n¥366.30\n未核实平台支付\n商品\n5\n商品资料 · 款\n素材\n32\n已登记内容 · 份\n累计数据 · 截至\n2026/10/28 20:50:57\nEXPERIENCE\n体验事件\n累计次数\n全部来源\n网站\n人工记录\n测试来源\n全部来源，共 60 次事件。\n体验事件数量 · 全部来源，柱长按数量比较。\n0\n40\n浏览商品\n0\n兑换成功\n0\n开始体验\n33\n完成体验\n27\n查看报告\n0\n导出分享内容\n0\n退款撤权\n0\n\n按事件次数独立统计，同一用户可产生多次事件。\n\nDELIVERY\n订单状态\n查看订单 ↗\n人工登记订单状态分布\n37\n笔登记订单\n待交付\n0\n0.0%\n已交付\n36\n97.3%\n已退款\n1\n2.7%\n已取消\n0\n0.0%\n\n来自人工登记记录，登记金额未核实平台支付。\n\n查看体验事件明细按事件与来源核对原始数量\nACTIVITY LOG\n操作审计\n共 1 条记录\n当前页操作分布\n\n第 1 页 · 本页 1 条\n\n按操作\n按对象\n当前页审计操作分布，柱长按数量比较。\n0\n1\ndemo_seed\n1\n\n仅统计当前页，翻页后同步更新。\n\n操作明细\n按时间倒序\n时间\t操作\t对象\n2026/10/28 20:24:00\tdemo_seed\t商品\nad743070-ad8b-47cf-a321-9adc60873f8a\n上一页\n第 1 页 · 共 1 条\n下一页\nSOURCES\n事件来源\n所有体验事件的来源占比\n60\n次累计事件\n网站\n0\n0.0%\n人工记录\n0\n0.0%\n测试来源\n60\n100.0%\n\n按事件记录来源统计，来源归因尚未确认。\n\n继续工作\n制作与核对内容\n题库、报告、封面、视频与文案\n↗\n维护制作方法\n四类 skill 与固定参考资料\n↗\n处理订单与交付\n人工登记、发码与售后\n↗\n查看 Codex 连接\n授权范围与调用记录\n↗\n数据口径\n\n登记金额未核实平台支付，不等于实际收入。\n\n浏览来自客户端观察；兑换、开始、完成与退款由业务事务记录。事件次数不等于用户人数。\n\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "概览与审计 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 1374,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "products",
+      "path": "/admin/products",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "products-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/products",
+            "label": "商品与版本"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "商品与版本"
+          },
+          {
+            "tag": "H3",
+            "text": "全部商品"
+          },
+          {
+            "tag": "H3",
+            "text": "分类"
+          },
+          {
+            "tag": "H3",
+            "text": "标签"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\n商品与版本\n已验证的管理员\nM\n运营后台\nCATALOG / PRODUCTS\n商品与版本\n\n管理商品资料、配置版本与发布状态。公开样例与私人报告分开保存。\n\n新建商品\n↗\n搜索商品\n商品状态\n全部\n草稿\n已审核\n已发布\n已下架\n筛选商品\n全部商品\n5 个商品\n商品名称\t状态\t价格\t时长\t修订\t\n操作\n\n已下架商品 · 测试状态\nfixture-archived\n\t已下架\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n草稿商品 · 测试状态\nfixture-draft\n\t草稿\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\ndemo-social\n\t已发布\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n工作边界测试 · 演示\ndemo-work\n\t已发布\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n伴侣协作测试 · 演示\ndemo-partner\n\t已发布\t¥ 9.90\t3 分钟\tr0\t编辑商品\n↗\n上一页\n第 1 页 · 共 5 条\n下一页\n分类与标签参考\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "商品与版本 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 948,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "content",
+      "path": "/admin/content",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "content-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/content",
+            "label": "内容工作台"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "内容工作台"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\n内容工作台\n已验证的管理员\nM\n运营后台\nCONTENT / WORKSPACE\n内容工作台\n\n从共同设定出发，组织商品内容、交互体验、结果交付与传播内容。\n\n管理商品资料\n搜索内容商品\n查找商品\n商品 / 创作入口\n当前状态\n01\n已下架商品 · 测试状态\n用简短题目验证不同商品共用同一套引擎。\n已归档\n进入工作台 ↗\n02\n草稿商品 · 测试状态\n用简短题目验证不同商品共用同一套引擎。\n草稿\n进入工作台 ↗\n03\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n验证长标题、主题切换与不适用维度的展示。\n已发布\n进入工作台 ↗\n04\n工作边界测试 · 演示\n用简短题目验证不同商品共用同一套引擎。\n已发布\n进入工作台 ↗\n05\n伴侣协作测试 · 演示\n演示主动分担、回应和共同安排的多维测试。\n已发布\n进入工作台 ↗\n上一页\n第 1 页 · 共 5 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "内容工作台 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 948,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "assets",
+      "path": "/admin/assets",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "assets-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/assets",
+            "label": "素材与文件"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "素材与文件"
+          },
+          {
+            "tag": "H3",
+            "text": "全部素材"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\n素材与文件\n已验证的管理员\nM\n运营后台\nLIBRARY / MEDIA\n素材与文件\n\n按版本、平台与状态管理封面、视频、脚本和文案。\n\n新建素材\n↗\n筛选类别\n全部\n封面\n视频\n脚本\n文案\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选状态\n全部\n草稿\n已审核\n已就绪\n已归档\n筛选素材\n全部素材\n32 份素材\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 抖音 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 抖音 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n上一页\n第 1 页 · 共 32 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "素材与文件 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 2126,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "skills",
+      "path": "/admin/skills/assessment",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "skills-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/skills",
+            "label": "skill 库"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "题库与报告 skill 库"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\nskill 库\n已验证的管理员\nM\n运营后台\n创作方法 / SKILL LIBRARY\n题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n题目与规则设计\n报告写作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n本领域的创作方法\n当前页 0 项\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n没有匹配的 skill\n\n调整筛选条件，或新建本领域的第一份创作方法。\n\n上一页\n第 1 页 · 共 0 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "skill 库 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 948,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "connections",
+      "path": "/admin/machine",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "connections-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/machine",
+            "label": "Codex 连接"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "连接我的 Codex"
+          },
+          {
+            "tag": "H3",
+            "text": "你希望 Codex 帮你做什么？"
+          },
+          {
+            "tag": "H3",
+            "text": "连接与商品范围"
+          },
+          {
+            "tag": "H3",
+            "text": "各类内容的访问权限"
+          },
+          {
+            "tag": "H3",
+            "text": "允许使用的共享 Skill（可选）"
+          },
+          {
+            "tag": "H3",
+            "text": "数量与有效期"
+          },
+          {
+            "tag": "H3",
+            "text": "这次连接允许什么"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\nCodex 连接\n已验证的管理员\nM\n运营后台\n\n运行配置草稿 →\n\nYOUR CODEX / CONTENT STUDIO\n连接我的 Codex\n\n让 Codex 帮你创建商品、使用允许的 Skill、上传题目和宣传素材草稿。一次连接，后续多个商品都可沿用。\n\n你希望 Codex 帮你做什么？\n由你选择允许的操作\n创建商品项目\n\n根据选题建立商品和制作计划，先保存为草稿。\n\n使用允许的 Skill\n\n读取允许的方法，为商品保存独立的方法版本；共享库保持原样。\n\n上传商品草稿\n\n上传题目、报告方案、封面、视频或文案，留给你查看和审核。\n\n↳\n审核和上架仍由你操作。Codex 不能读取用户答卷和个人报告。\n高级设置\n可选 · 一次设置，后续商品复用\n这次连接允许什么\n确认前请核对\n允许做的事\n尚未允许任何操作\n能访问的商品\n仅限归入本连接制作空间的商品。\n分类：关系情感\nSkill 范围\n尚未允许读取 Skill\n额度与到期\n最多新建 12 个商品 · 每商品 8 个方法 / 20 次制作批次\n到期：2026/11/04 20:51（上海时间）\n授权边界\n不能审核或上架，不能修改共享 Skill 库；不能读取用户答卷和个人报告。\n各内容领域分别授权。\n先核对权限摘要，再由你确认连接。\n内容制作和定时任务需要之后另行安排。\n连接我的 Codex\n\n管理已有单领域连接\n\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "Codex 连接 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 962,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "orders",
+      "path": "/admin/orders",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "orders-1440.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/orders",
+            "label": "订单与售后"
+          }
+        ],
+        "documentWidth": 1440,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "订单与售后"
+          },
+          {
+            "tag": "H3",
+            "text": "订单记录"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nmeetmyworld\n运营后台\n工作空间\n01\n概览与审计\n商品与版本\n内容工作台\n素材与文件\nskill 库\nCodex 连接\n订单与售后\nM\n管理员\n邮箱已验证\n↗\n← 返回商城\nMEETMYWORLD / OPERATIONS\n运营后台\n/\n订单与售后\n已验证的管理员\nM\n运营后台\nCOMMERCE / ORDERS\n订单与售后\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\nCSV 导入\n人工录入\n↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n筛选订单引用\n筛选状态\n全部\n待交付\n已交付\n已退款\n已取消\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选订单\n订单记录\n37 笔人工登记订单\n引用\t平台\t数量\t状态\t金额\t操作\ndemo:unclaimed-REVOKED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-EXPIRED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-ISSUED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:deleted-report\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:not-applicable\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:invalid\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:refunded\t人工\t1 份\t已退款\t¥ 9.90\t查看订单\ndemo:entitlement-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:report-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:bound\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:revision-conflict\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:submitted\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:all-answered\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:reissued\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:pending\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:partial\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-20\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-19\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-18\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-17\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\n上一页\n第 1 页 · 共 37 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "订单与售后 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        },
+        "workspace": {
+          "height": 948,
+          "scrollHeight": 1659,
+          "scrollWidth": 1233,
+          "tag": "SECTION",
+          "width": 1233,
+          "x": 196,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "overview",
+      "path": "/admin",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "overview-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin",
+            "label": "概览与审计"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "运营概览"
+          },
+          {
+            "tag": "H3",
+            "text": "体验事件"
+          },
+          {
+            "tag": "H3",
+            "text": "订单状态"
+          },
+          {
+            "tag": "H3",
+            "text": "操作审计"
+          },
+          {
+            "tag": "H3",
+            "text": "事件来源"
+          },
+          {
+            "tag": "H3",
+            "text": "继续工作"
+          },
+          {
+            "tag": "H3",
+            "text": "数据口径"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\n概览与审计\n已验证的管理员\nM\n运营后台\nWORKSPACE / OVERVIEW\n运营概览\n\n从体验到交付，查看每一份内容的运营记录。\n\n进入内容工作台 ↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n人工登记订单\n37\n运营记录 · 笔\n登记金额\n¥366.30\n未核实平台支付\n商品\n5\n商品资料 · 款\n素材\n32\n已登记内容 · 份\n累计数据 · 截至\n2026/10/28 20:51:01\nEXPERIENCE\n体验事件\n累计次数\n全部来源\n网站\n人工记录\n测试来源\n全部来源，共 60 次事件。\n体验事件数量 · 全部来源，柱长按数量比较。\n0\n40\n浏览商品\n0\n兑换成功\n0\n开始体验\n33\n完成体验\n27\n查看报告\n0\n导出分享内容\n0\n退款撤权\n0\n\n按事件次数独立统计，同一用户可产生多次事件。\n\nDELIVERY\n订单状态\n查看订单 ↗\n人工登记订单状态分布\n37\n笔登记订单\n待交付\n0\n0.0%\n已交付\n36\n97.3%\n已退款\n1\n2.7%\n已取消\n0\n0.0%\n\n来自人工登记记录，登记金额未核实平台支付。\n\n查看体验事件明细按事件与来源核对原始数量\nACTIVITY LOG\n操作审计\n共 1 条记录\n当前页操作分布\n\n第 1 页 · 本页 1 条\n\n按操作\n按对象\n当前页审计操作分布，柱长按数量比较。\n0\n1\ndemo_seed\n1\n\n仅统计当前页，翻页后同步更新。\n\n操作明细\n按时间倒序\n时间\t操作\t对象\n2026/10/28 20:24:00\tdemo_seed\t商品\nad743070-ad8b-47cf-a321-9adc60873f8a\n上一页\n第 1 页 · 共 1 条\n下一页\nSOURCES\n事件来源\n所有体验事件的来源占比\n60\n次累计事件\n网站\n0\n0.0%\n人工记录\n0\n0.0%\n测试来源\n60\n100.0%\n\n按事件记录来源统计，来源归因尚未确认。\n\n继续工作\n制作与核对内容\n题库、报告、封面、视频与文案\n↗\n维护制作方法\n四类 skill 与固定参考资料\n↗\n处理订单与交付\n人工登记、发码与售后\n↗\n查看 Codex 连接\n授权范围与调用记录\n↗\n数据口径\n\n登记金额未核实平台支付，不等于实际收入。\n\n浏览来自客户端观察；兑换、开始、完成与退款由业务事务记录。事件次数不等于用户人数。\n\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "概览与审计 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 1744,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "products",
+      "path": "/admin/products",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "products-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/products",
+            "label": "商品与版本"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "商品与版本"
+          },
+          {
+            "tag": "H3",
+            "text": "全部商品"
+          },
+          {
+            "tag": "H3",
+            "text": "分类"
+          },
+          {
+            "tag": "H3",
+            "text": "标签"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\n商品与版本\n已验证的管理员\nM\n运营后台\nCATALOG / PRODUCTS\n商品与版本\n\n管理商品资料、配置版本与发布状态。公开样例与私人报告分开保存。\n\n新建商品\n↗\n搜索商品\n商品状态\n全部\n草稿\n已审核\n已发布\n已下架\n筛选商品\n全部商品\n5 个商品\n商品名称\t状态\t价格\t时长\t修订\t\n操作\n\n已下架商品 · 测试状态\nfixture-archived\n\t已下架\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n草稿商品 · 测试状态\nfixture-draft\n\t草稿\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\ndemo-social\n\t已发布\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n工作边界测试 · 演示\ndemo-work\n\t已发布\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n伴侣协作测试 · 演示\ndemo-partner\n\t已发布\t¥ 9.90\t3 分钟\tr0\t编辑商品\n↗\n上一页\n第 1 页 · 共 5 条\n下一页\n分类与标签参考\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "商品与版本 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 972,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "content",
+      "path": "/admin/content",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "content-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/content",
+            "label": "内容工作台"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "内容工作台"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\n内容工作台\n已验证的管理员\nM\n运营后台\nCONTENT / WORKSPACE\n内容工作台\n\n从共同设定出发，组织商品内容、交互体验、结果交付与传播内容。\n\n管理商品资料\n搜索内容商品\n查找商品\n商品 / 创作入口\n当前状态\n01\n已下架商品 · 测试状态\n用简短题目验证不同商品共用同一套引擎。\n已归档\n进入工作台 ↗\n02\n草稿商品 · 测试状态\n用简短题目验证不同商品共用同一套引擎。\n草稿\n进入工作台 ↗\n03\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n验证长标题、主题切换与不适用维度的展示。\n已发布\n进入工作台 ↗\n04\n工作边界测试 · 演示\n用简短题目验证不同商品共用同一套引擎。\n已发布\n进入工作台 ↗\n05\n伴侣协作测试 · 演示\n演示主动分担、回应和共同安排的多维测试。\n已发布\n进入工作台 ↗\n上一页\n第 1 页 · 共 5 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "内容工作台 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 972,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "assets",
+      "path": "/admin/assets",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "assets-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/assets",
+            "label": "素材与文件"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "素材与文件"
+          },
+          {
+            "tag": "H3",
+            "text": "全部素材"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\n素材与文件\n已验证的管理员\nM\n运营后台\nLIBRARY / MEDIA\n素材与文件\n\n按版本、平台与状态管理封面、视频、脚本和文案。\n\n新建素材\n↗\n筛选类别\n全部\n封面\n视频\n脚本\n文案\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选状态\n全部\n草稿\n已审核\n已就绪\n已归档\n筛选素材\n全部素材\n32 份素材\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 抖音 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 抖音 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n上一页\n第 1 页 · 共 32 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "素材与文件 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 4425,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "skills",
+      "path": "/admin/skills/assessment",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "skills-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/skills",
+            "label": "skill 库"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "题库与报告 skill 库"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\nskill 库\n已验证的管理员\nM\n运营后台\n创作方法 / SKILL LIBRARY\n题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n题目与规则设计\n报告写作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n本领域的创作方法\n当前页 0 项\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n没有匹配的 skill\n\n调整筛选条件，或新建本领域的第一份创作方法。\n\n上一页\n第 1 页 · 共 0 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "skill 库 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 972,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "connections",
+      "path": "/admin/machine",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "connections-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/machine",
+            "label": "Codex 连接"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "连接我的 Codex"
+          },
+          {
+            "tag": "H3",
+            "text": "你希望 Codex 帮你做什么？"
+          },
+          {
+            "tag": "H3",
+            "text": "连接与商品范围"
+          },
+          {
+            "tag": "H3",
+            "text": "各类内容的访问权限"
+          },
+          {
+            "tag": "H3",
+            "text": "允许使用的共享 Skill（可选）"
+          },
+          {
+            "tag": "H3",
+            "text": "数量与有效期"
+          },
+          {
+            "tag": "H3",
+            "text": "这次连接允许什么"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\nCodex 连接\n已验证的管理员\nM\n运营后台\n\n运行配置草稿 →\n\nYOUR CODEX / CONTENT STUDIO\n连接我的 Codex\n\n让 Codex 帮你创建商品、使用允许的 Skill、上传题目和宣传素材草稿。一次连接，后续多个商品都可沿用。\n\n你希望 Codex 帮你做什么？\n由你选择允许的操作\n创建商品项目\n\n根据选题建立商品和制作计划，先保存为草稿。\n\n使用允许的 Skill\n\n读取允许的方法，为商品保存独立的方法版本；共享库保持原样。\n\n上传商品草稿\n\n上传题目、报告方案、封面、视频或文案，留给你查看和审核。\n\n↳\n审核和上架仍由你操作。Codex 不能读取用户答卷和个人报告。\n高级设置\n可选 · 一次设置，后续商品复用\n这次连接允许什么\n确认前请核对\n允许做的事\n尚未允许任何操作\n能访问的商品\n仅限归入本连接制作空间的商品。\n分类：关系情感\nSkill 范围\n尚未允许读取 Skill\n额度与到期\n最多新建 12 个商品 · 每商品 8 个方法 / 20 次制作批次\n到期：2026/11/04 20:51（上海时间）\n授权边界\n不能审核或上架，不能修改共享 Skill 库；不能读取用户答卷和个人报告。\n各内容领域分别授权。\n先核对权限摘要，再由你确认连接。\n内容制作和定时任务需要之后另行安排。\n连接我的 Codex\n\n管理已有单领域连接\n\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "Codex 连接 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 1456,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "orders",
+      "path": "/admin/orders",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "orders-768.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/orders",
+            "label": "订单与售后"
+          }
+        ],
+        "documentWidth": 768,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "订单与售后"
+          },
+          {
+            "tag": "H3",
+            "text": "订单记录"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n运营后台\n/\n订单与售后\n已验证的管理员\nM\n运营后台\nCOMMERCE / ORDERS\n订单与售后\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\nCSV 导入\n人工录入\n↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n筛选订单引用\n筛选状态\n全部\n待交付\n已交付\n已退款\n已取消\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选订单\n订单记录\n37 笔人工登记订单\n引用\t平台\t数量\t状态\t金额\t操作\ndemo:unclaimed-REVOKED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-EXPIRED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-ISSUED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:deleted-report\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:not-applicable\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:invalid\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:refunded\t人工\t1 份\t已退款\t¥ 9.90\t查看订单\ndemo:entitlement-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:report-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:bound\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:revision-conflict\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:submitted\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:all-answered\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:reissued\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:pending\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:partial\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-20\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-19\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-18\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-17\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\n上一页\n第 1 页 · 共 37 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "订单与售后 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 1024,
+          "width": 768
+        },
+        "workspace": {
+          "height": 972,
+          "scrollHeight": 1694,
+          "scrollWidth": 757,
+          "tag": "SECTION",
+          "width": 757,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "overview",
+      "path": "/admin",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "overview-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin",
+            "label": "概览与审计"
+          }
+        ],
+        "documentWidth": 390,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "运营概览"
+          },
+          {
+            "tag": "H3",
+            "text": "体验事件"
+          },
+          {
+            "tag": "H3",
+            "text": "订单状态"
+          },
+          {
+            "tag": "H3",
+            "text": "操作审计"
+          },
+          {
+            "tag": "H3",
+            "text": "事件来源"
+          },
+          {
+            "tag": "H3",
+            "text": "继续工作"
+          },
+          {
+            "tag": "H3",
+            "text": "数据口径"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n概览与审计\n已验证的管理员\nM\n运营后台\nWORKSPACE / OVERVIEW\n运营概览\n\n从体验到交付，查看每一份内容的运营记录。\n\n进入内容工作台 ↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n人工登记订单\n37\n运营记录 · 笔\n登记金额\n¥366.30\n未核实平台支付\n商品\n5\n商品资料 · 款\n素材\n32\n已登记内容 · 份\n累计数据 · 截至\n2026/10/28 20:51:04\nEXPERIENCE\n体验事件\n累计次数\n全部来源\n网站\n人工记录\n测试来源\n全部来源，共 60 次事件。\n体验事件数量 · 全部来源，柱长按数量比较。\n0\n40\n浏览商品\n0\n兑换成功\n0\n开始体验\n33\n完成体验\n27\n查看报告\n0\n导出分享内容\n0\n退款撤权\n0\n\n按事件次数独立统计，同一用户可产生多次事件。\n\nDELIVERY\n订单状态\n查看订单 ↗\n人工登记订单状态分布\n37\n笔登记订单\n待交付\n0\n0.0%\n已交付\n36\n97.3%\n已退款\n1\n2.7%\n已取消\n0\n0.0%\n\n来自人工登记记录，登记金额未核实平台支付。\n\n查看体验事件明细\n按事件与来源核对原始数量\nACTIVITY LOG\n操作审计\n共 1 条记录\n当前页操作分布\n\n第 1 页 · 本页 1 条\n\n按操作\n按对象\n当前页审计操作分布，柱长按数量比较。\n0\n1\ndemo_seed\n1\n\n仅统计当前页，翻页后同步更新。\n\n操作明细\n按时间倒序\n时间\t操作\t对象\n2026/10/28 20:24:00\tdemo_seed\t商品\nad743070-ad8b-47cf-a321-9adc60873f8a\n上一页\n第 1 页 · 共 1 条\n下一页\nSOURCES\n事件来源\n所有体验事件的来源占比\n60\n次累计事件\n网站\n0\n0.0%\n人工记录\n0\n0.0%\n测试来源\n60\n100.0%\n\n按事件记录来源统计，来源归因尚未确认。\n\n继续工作\n制作与核对内容\n题库、报告、封面、视频与文案\n↗\n维护制作方法\n四类 skill 与固定参考资料\n↗\n处理订单与交付\n人工登记、发码与售后\n↗\n查看 Codex 连接\n授权范围与调用记录\n↗\n数据口径\n\n登记金额未核实平台支付，不等于实际收入。\n\n浏览来自客户端观察；兑换、开始、完成与退款由业务事务记录。事件次数不等于用户人数。\n\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "概览与审计 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 2675,
+          "scrollWidth": 379,
+          "tag": "SECTION",
+          "width": 379,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "products",
+      "path": "/admin/products",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "products-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/products",
+            "label": "商品与版本"
+          }
+        ],
+        "documentWidth": 550,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "商品与版本"
+          },
+          {
+            "tag": "H3",
+            "text": "全部商品"
+          },
+          {
+            "tag": "H3",
+            "text": "分类"
+          },
+          {
+            "tag": "H3",
+            "text": "标签"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n商品与版本\n已验证的管理员\nM\n运营后台\nCATALOG / PRODUCTS\n商品与版本\n\n管理商品资料、配置版本与发布状态。公开样例与私人报告分开保存。\n\n新建商品\n↗\n搜索商品\n商品状态\n全部\n草稿\n已审核\n已发布\n已下架\n筛选商品\n全部商品\n5 个商品\n商品名称\t状态\t价格\t时长\t修订\t\n操作\n\n已下架商品 · 测试状态\nfixture-archived\n\t已下架\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n草稿商品 · 测试状态\nfixture-draft\n\t草稿\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\ndemo-social\n\t已发布\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n工作边界测试 · 演示\ndemo-work\n\t已发布\t¥ 9.90\t2 分钟\tr0\t编辑商品\n↗\n\n伴侣协作测试 · 演示\ndemo-partner\n\t已发布\t¥ 9.90\t3 分钟\tr0\t编辑商品\n↗\n上一页\n第 1 页 · 共 5 条\n下一页\n分类与标签参考\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "商品与版本 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 1076,
+          "scrollWidth": 364,
+          "tag": "SECTION",
+          "width": 364,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "content",
+      "path": "/admin/content",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "content-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/content",
+            "label": "内容工作台"
+          }
+        ],
+        "documentWidth": 390,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "内容工作台"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n内容工作台\n已验证的管理员\nM\n运营后台\nCONTENT / WORKSPACE\n内容工作台\n\n从共同设定出发，组织商品内容、交互体验、结果交付与传播内容。\n\n管理商品资料\n搜索内容商品\n查找商品\n商品 / 创作入口\n当前状态\n01\n已下架商品 · 测试状态\n用简短题目验证不同商品共用同一套引擎。\n已归档\n进入工作台 ↗\n02\n草稿商品 · 测试状态\n用简短题目验证不同商品共用同一套引擎。\n草稿\n进入工作台 ↗\n03\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n验证长标题、主题切换与不适用维度的展示。\n已发布\n进入工作台 ↗\n04\n工作边界测试 · 演示\n用简短题目验证不同商品共用同一套引擎。\n已发布\n进入工作台 ↗\n05\n伴侣协作测试 · 演示\n演示主动分担、回应和共同安排的多维测试。\n已发布\n进入工作台 ↗\n上一页\n第 1 页 · 共 5 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "内容工作台 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 888,
+          "scrollWidth": 379,
+          "tag": "SECTION",
+          "width": 379,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "assets",
+      "path": "/admin/assets",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "assets-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/assets",
+            "label": "素材与文件"
+          }
+        ],
+        "documentWidth": 390,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "素材与文件"
+          },
+          {
+            "tag": "H3",
+            "text": "全部素材"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          },
+          {
+            "tag": "H3",
+            "text": "A"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n素材与文件\n已验证的管理员\nM\n运营后台\nLIBRARY / MEDIA\n素材与文件\n\n按版本、平台与状态管理封面、视频、脚本和文案。\n\n新建素材\n↗\n筛选类别\n全部\n封面\n视频\n脚本\n文案\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选状态\n全部\n草稿\n已审核\n已就绪\n已归档\n筛选素材\n全部素材\n32 份素材\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 抖音 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 抖音 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 抖音 · r0\n\n已审核\n编辑素材\n↗\n文案\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n脚本\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n视频\n\n暂无预览文件\n\nA\n\n视频 · 小红书 · r0\n\n草稿\n编辑素材\n↗\n封面\n\n暂无预览文件\n\nA\n\n封面 · 小红书 · r0\n\n已审核\n编辑素材\n↗\n上一页\n第 1 页 · 共 32 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "素材与文件 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 8580,
+          "scrollWidth": 379,
+          "tag": "SECTION",
+          "width": 379,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "skills",
+      "path": "/admin/skills/assessment",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "skills-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/skills",
+            "label": "skill 库"
+          }
+        ],
+        "documentWidth": 390,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "题库与报告 skill 库"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nskill 库\n已验证的管理员\nM\n运营后台\n创作方法 / SKILL LIBRARY\n题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n题目与规则设计\n报告写作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n本领域的创作方法\n当前页 0 项\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n没有匹配的 skill\n\n调整筛选条件，或新建本领域的第一份创作方法。\n\n上一页\n第 1 页 · 共 0 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "skill 库 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 1110,
+          "scrollWidth": 379,
+          "tag": "SECTION",
+          "width": 379,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "connections",
+      "path": "/admin/machine",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "connections-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/machine",
+            "label": "Codex 连接"
+          }
+        ],
+        "documentWidth": 390,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "连接我的 Codex"
+          },
+          {
+            "tag": "H3",
+            "text": "你希望 Codex 帮你做什么？"
+          },
+          {
+            "tag": "H3",
+            "text": "连接与商品范围"
+          },
+          {
+            "tag": "H3",
+            "text": "各类内容的访问权限"
+          },
+          {
+            "tag": "H3",
+            "text": "允许使用的共享 Skill（可选）"
+          },
+          {
+            "tag": "H3",
+            "text": "数量与有效期"
+          },
+          {
+            "tag": "H3",
+            "text": "这次连接允许什么"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\nCodex 连接\n已验证的管理员\nM\n运营后台\n\n运行配置草稿 →\n\nYOUR CODEX / CONTENT STUDIO\n连接我的 Codex\n\n让 Codex 帮你创建商品、使用允许的 Skill、上传题目和宣传素材草稿。一次连接，后续多个商品都可沿用。\n\n你希望 Codex 帮你做什么？\n由你选择允许的操作\n创建商品项目\n\n根据选题建立商品和制作计划，先保存为草稿。\n\n使用允许的 Skill\n\n读取允许的方法，为商品保存独立的方法版本；共享库保持原样。\n\n上传商品草稿\n\n上传题目、报告方案、封面、视频或文案，留给你查看和审核。\n\n↳\n审核和上架仍由你操作。Codex 不能读取用户答卷和个人报告。\n高级设置\n可选 · 一次设置，后续商品复用\n这次连接允许什么\n确认前请核对\n允许做的事\n尚未允许任何操作\n能访问的商品\n仅限归入本连接制作空间的商品。\n分类：关系情感\nSkill 范围\n尚未允许读取 Skill\n额度与到期\n最多新建 12 个商品 · 每商品 8 个方法 / 20 次制作批次\n到期：2026/11/04 20:51（上海时间）\n授权边界\n不能审核或上架，不能修改共享 Skill 库；不能读取用户答卷和个人报告。\n各内容领域分别授权。\n先核对权限摘要，再由你确认连接。\n内容制作和定时任务需要之后另行安排。\n连接我的 Codex\n\n管理已有单领域连接\n\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "Codex 连接 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 1490,
+          "scrollWidth": 379,
+          "tag": "SECTION",
+          "width": 379,
+          "x": 0,
+          "y": 52
+        }
+      }
+    },
+    {
+      "key": "orders",
+      "path": "/admin/orders",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "orders-390.png",
+      "raw": {
+        "current": [
+          {
+            "href": "/admin/orders",
+            "label": "订单与售后"
+          }
+        ],
+        "documentWidth": 390,
+        "headings": [
+          {
+            "tag": "H1",
+            "text": "运营后台"
+          },
+          {
+            "tag": "H2",
+            "text": "订单与售后"
+          },
+          {
+            "tag": "H3",
+            "text": "订单记录"
+          }
+        ],
+        "ready": true,
+        "text": "跳到后台内容\n订单与售后\n已验证的管理员\nM\n运营后台\nCOMMERCE / ORDERS\n订单与售后\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\nCSV 导入\n人工录入\n↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n筛选订单引用\n筛选状态\n全部\n待交付\n已交付\n已退款\n已取消\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选订单\n订单记录\n37 笔人工登记订单\n引用\t平台\t数量\t状态\t金额\t操作\ndemo:unclaimed-REVOKED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-EXPIRED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-ISSUED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:deleted-report\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:not-applicable\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:invalid\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:refunded\t人工\t1 份\t已退款\t¥ 9.90\t查看订单\ndemo:entitlement-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:report-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:bound\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:revision-conflict\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:submitted\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:all-answered\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:reissued\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:pending\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:partial\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-20\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-19\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-18\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-17\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\n上一页\n第 1 页 · 共 37 条\n下一页\nmeetmyworld\n内容与工作，都有迹可循。",
+        "title": "订单与售后 · MeetMyWorld 运营后台",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        },
+        "workspace": {
+          "height": 792,
+          "scrollHeight": 1786,
+          "scrollWidth": 379,
+          "tag": "SECTION",
+          "width": 379,
+          "x": 0,
+          "y": 52
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "scenario": "verified TEST member remains denied",
+    "code": "FORBIDDEN",
+    "status": 403,
+    "passed": true
+  }
+]

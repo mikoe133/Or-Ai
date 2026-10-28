@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-28",
+  "redCheckpoint": "696d890",
+  "scope": "T18 independent admin shell and overview slice; synthetic TEST identity substitute; actual API; no real identity or deployment",
+  "webTests": {
+    "total": 108,
+    "fixtureIsolation": 2,
+    "passed": true,
+    "landmarkGreen": true
+  },
+  "buildAndTypecheck": {
+    "passed": true,
+    "warning": "Existing three.module chunk remains over 500kB; no warning threshold changed"
+  },
+  "screenshots": {
+    "baseline": 21,
+    "final": 21,
+    "signedOut": 3,
+    "desktopViewportEmulationOnly": true
+  },
+  "interactionChecks": {
+    "total": 20,
+    "passed": 20
+  },
+  "cleanup": {
+    "fixtureReportedCleaned": true,
+    "privateStateRemoved": true,
+    "originalContainers": [
+      "orai-auth-local-gateway-1: Up 6 days (healthy)",
+      "orai-auth-local-auth-1: Up 6 days (healthy)",
+      "orai-auth-local-auth-db-1: Up 6 hours (healthy)",
+      "orai-auth-local-mail-1: Up 6 days (healthy)",
+      "orai-db-1: Up 6 hours (healthy)"
+    ],
+    "originalFiveHealthy": true,
+    "browser": "TEST account signed out, media and viewport reset, own tab closed via CUA"
+  },
+  "sourceSha256": {
+    "apps/web/src/admin/shell.tsx": "8fb451308dd9144af7d67355a5fbcffcf993cf60e52b0aaeb524dc5558a56f07",
+    "apps/web/src/admin/admin.css": "3aea1f16ec278872616b71404472b92a2e1193e54b0bf5c6c2be925b9c1b6a9d",
+    "apps/web/src/admin/overview.tsx": "bc6ce318fba81c2aeaf5d5a0e07c741bd61ab25f4fe3973edf2a238561386909",
+    "apps/web/src/admin/overview.css": "bc010e84c955be2c340eeee10559497a5dc742ed9b57e5d5d14c73f53c5cadff",
+    "apps/web/src/admin/pages.tsx": "77540659c2431f6ea4ef5722fc79cb0019f04d7e3741d1778779ead79c8985f5",
+    "apps/web/test/admin-shell.test.ts": "33f992c3c78d7c8c52a743e2653a0d6d5d8ab274b5623937e665ae67d18e7806",
+    "apps/web/e2e/admin-design-fixture.mjs": "2e2b30ffec0c742bbb559e37aa250fd2bb9d762db91804766aaaff66ecf3a54d"
+  }
+}

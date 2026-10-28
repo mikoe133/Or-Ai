@@ -1,0 +1,44 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "screenshot": "access-1440.png",
+    "documentWidth": 1440,
+    "links": 0,
+    "locked": 7,
+    "main": 1,
+    "mark": false,
+    "status": "unverified",
+    "width": 1440
+  },
+  {
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "access-768.png",
+    "documentWidth": 768,
+    "links": 0,
+    "locked": 7,
+    "main": 1,
+    "mark": false,
+    "status": "unverified",
+    "width": 768
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "screenshot": "access-390.png",
+    "documentWidth": 390,
+    "links": 0,
+    "locked": 7,
+    "main": 1,
+    "mark": false,
+    "status": "unverified",
+    "width": 390
+  }
+]
