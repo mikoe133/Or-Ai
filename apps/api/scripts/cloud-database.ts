@@ -102,7 +102,11 @@ async function prepareRoles(client:PoolClient,target:CloudDatabaseTarget){
       // its schema already exists. Only the separate migration login gets it.
       if(name===target.migrationRole)await client.query((await client.query("SELECT format('GRANT CREATE ON DATABASE %I TO %I',$1::text,$2::text) AS statement",[target.database,name])).rows[0].statement);
     }
+    // PostgreSQL 17 gives a CREATEROLE creator ADMIN but no SET membership by
+    // default. Grant SET only to the management identity, never to orai_app.
+    await client.query('GRANT orai_owner TO CURRENT_USER WITH INHERIT FALSE, SET TRUE');
     await client.query('CREATE SCHEMA IF NOT EXISTS orai AUTHORIZATION orai_owner');
+    await client.query('SET LOCAL ROLE orai_owner');
     await client.query('REVOKE ALL ON SCHEMA orai FROM PUBLIC');await client.query('COMMIT');
   }catch(error){await client.query('ROLLBACK');throw error;}
 }
@@ -146,7 +150,16 @@ export async function applyCloudDatabasePlan(env:NodeJS.ProcessEnv,input:unknown
     if((await client.query('SELECT current_database() AS name')).rows[0].name!==target.database)return refused('DATABASE_IDENTITY_REJECTED');
     await client.query("SET statement_timeout='30s'");await client.query("SET lock_timeout='5s'");
     await client.query("SELECT pg_advisory_lock(hashtextextended('orai-cloud-maintenance',0))");locked=true;
-    await roles(client);const state=await namespace(client,target,reviewed),before=await history(client);verifyHistory(before,reviewed);
+    const existing=await roles(client);
+    const {state,before}=await(async()=>{
+      // A provider manager need not inherit the application's private schema.
+      // Once the owner exists, inspect its objects through that separate login.
+      const inspector=existing.some(role=>role.rolname===target.migrationRole)?await connections.owner.connect():client!;
+      try{
+        if(inspector!==client&&(await inspector.query('SELECT current_user AS name')).rows[0].name!==target.migrationRole)return refused('MIGRATION_IDENTITY_REJECTED');
+        return {state:await namespace(inspector,target,reviewed),before:await history(inspector)};
+      }finally{if(inspector!==client)inspector.release();}
+    })();verifyHistory(before,reviewed);
     if(state.marker&&before.length===reviewed.migrations.length&&reviewed.mode==='bootstrap'){await verifyRuntime(connections,target);await progress('runtime_verified');
       return {migrations:before.length,environment:'PRODUCTION' as const,seeded:false,administratorCreated:false,alreadyInitialized:true};}
     if(state.marker&&reviewed.mode!=='migrate')return refused('EXISTING_TARGET_NEEDS_MIGRATE_PLAN');
@@ -154,7 +167,9 @@ export async function applyCloudDatabasePlan(env:NodeJS.ProcessEnv,input:unknown
     await prepareRoles(client,target);await progress('roles_ready');
     if((await connections.owner.query('SELECT current_user AS name')).rows[0].name!==target.migrationRole)return refused('MIGRATION_IDENTITY_REJECTED');
     try{await connections.migrate();}catch{return refused('MIGRATION_EXECUTION_FAILED');}
-    const applied=await history(client);verifyHistory(applied,reviewed);if(applied.length!==reviewed.migrations.length)return refused('MIGRATION_SET_INCOMPLETE');
+    const historyOwner=await connections.owner.connect();let applied:History[];
+    try{applied=await history(historyOwner);}finally{historyOwner.release();}
+    verifyHistory(applied,reviewed);if(applied.length!==reviewed.migrations.length)return refused('MIGRATION_SET_INCOMPLETE');
     await progress('migrations_applied');
     const owner=await connections.owner.connect();try{
       await owner.query('BEGIN');try{
