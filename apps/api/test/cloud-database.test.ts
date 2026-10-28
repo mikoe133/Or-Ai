@@ -35,7 +35,7 @@ test('cloud target selection refuses loopback, mismatched project/roles, insecur
   assert.throws(()=>assertLocalTarget(source));assert.equal(parseCloudDatabaseTarget(source).runtimeRole,'orai_app');
 });
 test('real TLS initialization runs the original Prisma migrations, restricts runtime permissions and preserves provider schemas',async()=>{
-  const {database,env}=await fixture.newDatabase(),target=parseCloudDatabaseTarget(env),connections=fixture.connections(target);
+  const {database,env}=await fixture.newDatabase(),target=parseCloudDatabaseTarget(env),connections=await fixture.connections(target);
   try{
     await connections.bootstrap.query('CREATE TABLE public.provider_sentinel (id int PRIMARY KEY)');await connections.bootstrap.query('INSERT INTO public.provider_sentinel VALUES (7)');
     const plan=await createCloudDatabasePlan(env,'bootstrap'),events:string[]=[];
@@ -55,7 +55,7 @@ test('real TLS initialization runs the original Prisma migrations, restricts run
   }finally{await connections.close();}
 });
 test('an interrupted initial migration preserves roles/schema and an exact retry can finish without seeding or resetting passwords',async()=>{
-  const {env}=await fixture.newDatabase(),connections=fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
+  const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
   try{
     await assert.rejects(applyCloudDatabasePlan(env,plan,{...connections,migrate:async()=>{throw Error('PRIVATE_PROVIDER_FAILURE');}},()=>{}),error=>!String(error).includes('PRIVATE_PROVIDER_FAILURE'));
     assert.equal((await connections.bootstrap.query("SELECT pg_get_userbyid(nspowner) AS name FROM pg_namespace WHERE nspname='orai'")).rows[0].name,'orai_owner');
@@ -64,12 +64,13 @@ test('an interrupted initial migration preserves roles/schema and an exact retry
   }finally{await connections.close();}
 });
 test('unmarked business data, a development marker, changed source digests and elevated runtime roles are refused and retained',async()=>{
-  const {env}=await fixture.newDatabase(),connections=fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
+  const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
   try{
-    await connections.bootstrap.query('CREATE SCHEMA orai AUTHORIZATION orai_owner');await connections.owner.query('CREATE TABLE orai.untracked_data (id int)');
+    await assert.rejects(applyCloudDatabasePlan(env,plan,{...connections,migrate:async()=>{throw Error('Synthetic interruption');}},()=>{}));
+    await connections.owner.query('CREATE TABLE orai.untracked_data (id int)');
     await connections.owner.query('INSERT INTO orai.untracked_data VALUES (9)');
     await assert.rejects(applyCloudDatabasePlan(env,plan,connections,()=>{}));assert.equal((await connections.owner.query('SELECT id FROM orai.untracked_data')).rows[0].id,9);
-    const other=await fixture.newDatabase(),next=fixture.connections(parseCloudDatabaseTarget(other.env));
+    const other=await fixture.newDatabase(),next=await fixture.connections(parseCloudDatabaseTarget(other.env));
     try{await applyCloudDatabasePlan(other.env,await createCloudDatabasePlan(other.env,'bootstrap'),next,()=>{});
       await next.owner.query("UPDATE orai.environment_marker SET environment='DEVELOPMENT' WHERE id=1");
       await assert.rejects(applyCloudDatabasePlan(other.env,await createCloudDatabasePlan(other.env,'bootstrap'),next,()=>{}));
