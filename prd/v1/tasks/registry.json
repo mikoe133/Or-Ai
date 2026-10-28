@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-28",
-  "currentTask": "T09-I",
+  "currentTask": "T16.C3",
   "scope": "implementation",
   "rules": {
     "allNormalProductsRequireThreejs": true,
@@ -129,10 +129,10 @@
     {
       "order": 7,
       "id": "T09-I",
-      "file": "active/07-cloud-adapters.md",
+      "file": "archive/completed/07-cloud-adapters.md",
       "title": "实现云端路由、持久存储与初始化适配",
       "lane": "主线",
-      "status": "进行中：本地适配已实现，最新完整回归与维护镜像收尾",
+      "status": "已完成（本地云适配与隔离验证）",
       "dependsOn": [],
       "conditionalDependsOn": [],
       "recommendedAfter": [
@@ -147,7 +147,9 @@
         "T09.7",
         "T09.8"
       ],
-      "complete": false
+      "complete": true,
+      "completedAt": "2026-10-28",
+      "evidence": "output/implementation/cloud-adapters-20261028/verification.md"
     },
     {
       "order": 8,
@@ -155,7 +157,7 @@
       "file": "active/08-cloud-auth-validation.md",
       "title": "预发布部署与真实账户、邮件、存储验收",
       "lane": "主线",
-      "status": "等待07与真实部署验收",
+      "status": "07本地前置已完成；真实预发布/认证/邮件/存储待执行",
       "dependsOn": [
         7
       ],
@@ -432,7 +434,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "各分段全部满足才可关闭原项；本次未实施。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，原项尚未关闭。"
     },
     {
       "legacyId": "T09.2",
@@ -444,7 +446,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "各分段全部满足才可关闭原项；本次未实施。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，原项尚未关闭。"
     },
     {
       "legacyId": "T09.3",
@@ -456,7 +458,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "各分段全部满足才可关闭原项；本次未实施。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，原项尚未关闭。"
     },
     {
       "legacyId": "T09.4",
@@ -479,7 +481,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "各分段全部满足才可关闭原项；本次未实施。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，原项尚未关闭。"
     },
     {
       "legacyId": "T09.6",
@@ -491,7 +493,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "各分段全部满足才可关闭原项；本次未实施。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，原项尚未关闭。"
     },
     {
       "legacyId": "T09.7",
@@ -503,7 +505,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "各分段全部满足才可关闭原项；本次未实施。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，原项尚未关闭。"
     },
     {
       "legacyId": "T09.8",
@@ -516,7 +518,7 @@
       ],
       "carryover": [],
       "history": "prd/v1/tasks/archive/history/2026-10-26/T09-cloud-validation.md",
-      "note": "07准备恢复工具，08实测云备份/回滚，10补真实国内三网/设备；三段都不可用本地证据替代。"
+      "note": "07本地云适配/隔离验证已完成；08真实云部署与业务验收仍未通过，10还持有公网三网/设备。"
     },
     {
       "legacyId": "T10.6",

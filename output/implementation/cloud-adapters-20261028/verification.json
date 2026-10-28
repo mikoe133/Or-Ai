@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-28",
+  "task": "T09-I",
+  "scope": "local application adapters and isolated verification only",
+  "apiTests": 503,
+  "webTests": 101,
+  "mcpTests": 22,
+  "totalTests": 626,
+  "failures": 0,
+  "typecheck": "passed",
+  "build": "passed",
+  "offlineChecks": 35,
+  "cloudDatabaseFocusedTests": 12,
+  "cloudDatabaseCoverage": {
+    "lines": 97.32,
+    "branches": 83.82,
+    "functions": 93.02
+  },
+  "originalMigrations": 29,
+  "maintenanceImageProof": {
+    "passed": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "uid": 1000,
+    "tlsVerified": true,
+    "bootstrapSuperuser": false,
+    "originalMigrations": 29,
+    "exactRetry": true,
+    "restrictedRuntime": true,
+    "journal": true,
+    "manifestSql": true,
+    "realCloudCalls": 0
+  },
+  "frontendImageProtocolChecks": 12,
+  "localRestore": {
+    "checks": 7,
+    "tablesIncludingMigrationLedger": 74,
+    "objects": 3,
+    "sourceDatabaseUnchanged": true,
+    "temporaryDatabasesRemoved": true
+  },
+  "developmentPreservation": {
+    "checkedAt": "2026-10-28T07:07:05.567Z",
+    "businessTables": 73,
+    "rows": 1521,
+    "allTableDigestsUnchanged": true,
+    "originalMigrationsUnchanged": 29,
+    "referenceFilesUnchanged": 3,
+    "readOnly": true,
+    "resetOrSeed": false,
+    "realCloudCalls": 0
+  },
+  "localAuthRecovered": {
+    "containerHealthy": true,
+    "httpHealth": 200,
+    "resetOrSeed": false,
+    "tableHashesBeforeCrashUnavailable": true
+  },
+  "resourceEvents": [
+    {
+      "kind": "disk_exhaustion",
+      "evidence": "final-tests.log",
+      "databaseSqlState": "53100",
+      "message": "No space left on device",
+      "businessDatabaseRestoredAndCompared": true,
+      "laterFullSuitePassed": true
+    },
+    {
+      "kind": "memory_exhaustion",
+      "evidence": "Docker State.OOMKilled=true for original business/auth database containers after final image build",
+      "exitCode": 137,
+      "businessAndAuthContainersRestored": true,
+      "businessDatabaseHashesComparedAfterRecovery": true,
+      "boundedLatestMaintenanceProofPassedAfterRecovery": true
+    }
+  ],
+  "verifiedImagesArchivedLocally": [
+    {
+      "bytes": 353913344,
+      "sha256": "69151e9e81566ec1df269487a8b254a67de85c18cb66ea75fd54449f9d8f29ce",
+      "tags": [
+        "orai-api:vps-local",
+        "orai-maintenance:vps-local"
+      ],
+      "containsVolumes": false
+    },
+    {
+      "bytes": 254318592,
+      "sha256": "3f81a13f090fb2d6ecc901db4c9af1dc1175877dabbe95c5bdd5df0dfb8de98b",
+      "tags": [
+        "orai-maintenance:vps-final"
+      ],
+      "containsVolumes": false
+    }
+  ],
+  "cleanupScope": "Only this task image tags, their identified rebuildable cache, and three confirmed failed current-run TEST databases; no original/user volumes, user files or system settings removed/changed. Ephemeral isolated fixture volumes were removed by their own test cleanup.",
+  "realCloudCalls": 0,
+  "realCloudDeployed": false,
+  "dnsChanged": false,
+  "newContinuousCredentials": false,
+  "frontendSourceChanged": false,
+  "scheduledProductionEnabled": false,
+  "task08And10StillPending": true,
+  "logDigests": [
+    {
+      "privatePath": ".local/t09-i-20261028/final-restricted-typecheck.log",
+      "sha256": "6984fd54a55098fa8f94a50a32270ea587d9e422b9efde9eac2deff86d28f77c"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/final-restricted-build.log",
+      "sha256": "3bfdf288e5f5449385f15418ca8170ed4ac826ea3cd69497e29d56cfe8d5b26e"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/final-restricted-tests.log",
+      "sha256": "d15a44a7b3ce89e7eb4c196ca79b830128940da5d2197bec2a200fc575c8ca07"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/final-restricted-offline.log",
+      "sha256": "e22c07eb826f3793a5e05a3a5d8a3aebb8cbb57041f096676edeb1a7a2dbdd3e"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/cloud-db-restricted-owner-green-final.log",
+      "sha256": "d2b2a337779c33ccc90aedf7a2822d8f398286d0963ba2f348b1df0641d9ac58"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/maintenance-restricted-build.log",
+      "sha256": "1a16aacc31c1afedf2d35c5f38ec4844e205a6061403077f52fc4179e95fc871"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/maintenance-restricted-proof-final.log",
+      "sha256": "c89d542cfecf2d68a96418debe8bee87618946d00347b8a000013b3b3cc257d6"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/api-image-final-smoke.log",
+      "sha256": "a20baa7700270fbfde01ed86dccc656629ea1c357de310f674a0103c493d4fcc"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/frontend-runtime-proof-amd64.log",
+      "sha256": "32e7bb7ebbffcd799c12182c36361257c47c2979185d20d8eb11dbc662d7a79c"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/local-restore-retry.log",
+      "sha256": "5216a74ea0357d35a23a9c20c061d2e0ea3232a91e073bdd33d6fb5c98a18f34"
+    },
+    {
+      "privatePath": ".local/t09-i-20261028/development-after-oom.log",
+      "sha256": "d60dbe305cdde4cd279787464f7ac08d2d93d0a5d552801fe9f47860b09d3355"
+    }
+  ]
+}

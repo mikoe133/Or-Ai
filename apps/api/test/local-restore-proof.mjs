@@ -1,6 +1,6 @@
 import assert from'node:assert/strict';
 import{createRequire}from'node:module';import{fileURLToPath}from'node:url';
-import{join}from'node:path';import{mkdtemp,mkdir,writeFile,readFile,copyFile,lstat,rename,rm}from'node:fs/promises';
+import{join,isAbsolute}from'node:path';import{mkdtemp,mkdir,writeFile,readFile,copyFile,lstat,rename,rm}from'node:fs/promises';
 import{tmpdir}from'node:os';import{createHash,randomBytes,randomUUID}from'node:crypto';
 import{Readable}from'node:stream';import{execFileSync}from'node:child_process';
 const root=fileURLToPath(new URL('../../../',import.meta.url)),api=createRequire(join(root,'apps/api/package.json'));
@@ -13,7 +13,13 @@ const classes=Object.fromEntries(['FilesService','SkillFilesService','SkillsServ
  const files={FilesService:'operations/files.service',SkillFilesService:'operations/skill-files.service',SkillsService:'operations/skills.service',ContentService:'operations/content.service',ProductionPlansService:'operations/production-plans.service',ProjectOriginalFilesService:'operations/project-original-files.service',CatalogAdminAccessService:'catalog/admin-access.service'};
  return[name,api('./.test-build/src/'+files[name]+'.js')[name]];
 }));
-const evidence=join(root,'.local/local-continuation-20261023/restore'),checks=[];
+const explicitOutput=process.argv.length===4&&process.argv[2]==='--out-dir';
+assert.ok(process.argv.length===2||explicitOutput,'Only an explicit output directory may be supplied');
+if(explicitOutput)assert.ok(isAbsolute(process.argv[3]),'Use an absolute new output directory');
+const evidence=explicitOutput?process.argv[3]:join(root,'.local/local-continuation-20261023/restore'),checks=[];
+// Reserve before the catch handler: an existing evidence directory is never
+// modified, including by the failure reporter.
+if(explicitOutput)await mkdir(evidence,{mode:0o700});
 const sha=value=>createHash('sha256').update(value).digest('hex');
 const pass=label=>{checks.push(label);console.log('PASS '+label);};
 const quote=value=>'"'+value.replaceAll('"','""')+'"';
@@ -43,7 +49,6 @@ async function verifyObjects(dir,objects){
 }
 async function contentBytes(value){const chunks=[];for await(const chunk of value.stream)chunks.push(Buffer.from(chunk));return Buffer.concat(chunks);}
 try{
- assert.equal(process.argv.length,2,'Only this fixed TEST-only proof is supported');
  await mkdir(evidence,{recursive:true});process.chdir(join(root,'apps/api'));fixture=await createLocalFixture('t09');
  directory=await mkdtemp(join(tmpdir(),'orai-local-restore-'));const sourceDir=join(directory,'source'),backupDir=join(directory,'backup'),restoreDir=join(directory,'restored');
  for(const dir of[sourceDir,backupDir,restoreDir])await mkdir(dir,{mode:0o700});

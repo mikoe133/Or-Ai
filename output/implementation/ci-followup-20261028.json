@@ -1,0 +1,206 @@
+{
+  "checkedAt": "2026-10-27T17:20:09.440Z",
+  "conclusion": "success",
+  "headSha": "7dbc17553d1d156ab7f0e168f1676060385175d4",
+  "jobs": [
+    {
+      "completedAt": "2026-10-27T17:11:50Z",
+      "conclusion": "success",
+      "databaseId": 122340663099,
+      "name": "verify",
+      "startedAt": "2026-10-27T17:04:50Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-27T17:04:52Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-27T17:04:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:05:07Z",
+          "conclusion": "success",
+          "name": "Initialize containers",
+          "number": 2,
+          "startedAt": "2026-10-27T17:04:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:05:23Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 3,
+          "startedAt": "2026-10-27T17:05:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:05:29Z",
+          "conclusion": "success",
+          "name": "Run pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413",
+          "number": 4,
+          "startedAt": "2026-10-27T17:05:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:05:35Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 5,
+          "startedAt": "2026-10-27T17:05:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:05:37Z",
+          "conclusion": "success",
+          "name": "Run pnpm install --frozen-lockfile",
+          "number": 6,
+          "startedAt": "2026-10-27T17:05:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:05:37Z",
+          "conclusion": "success",
+          "name": "Run pnpm check:toolchain",
+          "number": 7,
+          "startedAt": "2026-10-27T17:05:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:01Z",
+          "conclusion": "success",
+          "name": "Run pnpm typecheck",
+          "number": 8,
+          "startedAt": "2026-10-27T17:05:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:23Z",
+          "conclusion": "success",
+          "name": "Run pnpm build",
+          "number": 9,
+          "startedAt": "2026-10-27T17:06:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:23Z",
+          "conclusion": "success",
+          "name": "Check offline production configuration boundaries",
+          "number": 10,
+          "startedAt": "2026-10-27T17:06:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:23Z",
+          "conclusion": "success",
+          "name": "Check provider-independent upload byte budgets",
+          "number": 11,
+          "startedAt": "2026-10-27T17:06:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:25Z",
+          "conclusion": "success",
+          "name": "Run pnpm db:validate",
+          "number": 12,
+          "startedAt": "2026-10-27T17:06:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:27Z",
+          "conclusion": "success",
+          "name": "Run pnpm db:migrate",
+          "number": 13,
+          "startedAt": "2026-10-27T17:06:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:36Z",
+          "conclusion": "success",
+          "name": "Run pnpm db:provision",
+          "number": 14,
+          "startedAt": "2026-10-27T17:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:06:47Z",
+          "conclusion": "success",
+          "name": "Run pnpm db:seed",
+          "number": 15,
+          "startedAt": "2026-10-27T17:06:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:10:55Z",
+          "conclusion": "success",
+          "name": "Run pnpm test",
+          "number": 16,
+          "startedAt": "2026-10-27T17:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:42Z",
+          "conclusion": "success",
+          "name": "Build Linux API image",
+          "number": 17,
+          "startedAt": "2026-10-27T17:10:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:45Z",
+          "conclusion": "success",
+          "name": "Verify isolated production image liveness and readiness",
+          "number": 18,
+          "startedAt": "2026-10-27T17:11:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:45Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "number": 33,
+          "startedAt": "2026-10-27T17:11:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:45Z",
+          "conclusion": "success",
+          "name": "Post Run pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413",
+          "number": 34,
+          "startedAt": "2026-10-27T17:11:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:45Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "number": 35,
+          "startedAt": "2026-10-27T17:11:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:46Z",
+          "conclusion": "success",
+          "name": "Stop containers",
+          "number": 36,
+          "startedAt": "2026-10-27T17:11:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-27T17:11:46Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 37,
+          "startedAt": "2026-10-27T17:11:46Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/mikoe133/Or-Ai/actions/runs/40547141767/job/122340663099"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/mikoe133/Or-Ai/actions/runs/40547141767",
+  "scope": "Task04_commit_only",
+  "oldFailedRunOriginalAssertionStillUnavailable": true
+}

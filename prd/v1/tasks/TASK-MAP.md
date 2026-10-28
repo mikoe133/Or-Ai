@@ -33,14 +33,14 @@
 | T06.C1 | [08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 仍未完成，按新任务执行。 |
 | T06.C2 | [08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 仍未完成，按新任务执行。 |
 | T06.C3 | [08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 仍未完成，按新任务执行。 |
-| T09.1 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T09.2 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T09.3 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 各分段全部满足才可关闭原项；本次未实施。 |
+| T09.1 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
+| T09.2 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
+| T09.3 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
 | T09.4 | [08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 仍未完成，按新任务执行。 |
-| T09.5 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T09.6 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T09.7 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T09.8 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 07准备恢复工具，08实测云备份/回滚，10补真实国内三网/设备；三段都不可用本地证据替代。 |
+| T09.5 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
+| T09.6 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
+| T09.7 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
+| T09.8 | [07 T09-I](active/07-cloud-adapters.md)、[08 T09-V / T06-C](active/08-cloud-auth-validation.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 07恢复工具/清单和本地验证已完成，08仍须实测云备份/回滚，10补真实国内三网/设备；三段都不可用本地证据替代。 |
 | T10.6 | [10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 仍未完成，按新任务执行。 |
 | T10.7 | [10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 仍未完成，按新任务执行。 |
 | T11.1 | [11 T11-A](active/11-formal-product-package.md) | 仍未完成，按新任务执行。 |
@@ -49,7 +49,7 @@
 | T11.4 | [11 T11-A](active/11-formal-product-package.md) | 仍未完成，按新任务执行。 |
 | T11.5 | [12 T11-B](active/12-commercial-pilot.md) | 仍未完成，按新任务执行。 |
 | T11.6 | [12 T11-B](active/12-commercial-pilot.md) | 仍未完成，按新任务执行。 |
-| T11.7 | [11 T11-A](active/11-formal-product-package.md)、[12 T11-B](active/12-commercial-pilot.md) | 各分段全部满足才可关闭原项；本次未实施。 |
+| T11.7 | [11 T11-A](active/11-formal-product-package.md)、[12 T11-B](active/12-commercial-pilot.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
 | T13.C2 | [02 T13.C2（已完成）](archive/completed/02-skill-policy-validation.md) | 技术范围完成；564项、13项自主CUA和类型/构建通过。旧方法前向升级由04持有。 |
 | T13.C3 | [04 T13.C3（已完成）](archive/completed/04-skill-library-upgrade.md) | 升级工具/隔离全链/选定四份新DRAFT和六个旧版本处置均完成；594项、最终专项13项、16项自主CUA及保全通过。审核启用/实际商品规划绑定另由05/11显式执行。 |
 | T14.C1 | [09 T14-C](active/09-remote-mcp.md) | 仍未完成，按新任务执行。 |
@@ -61,10 +61,10 @@
 | T16.1 | [11 T11-A](active/11-formal-product-package.md)；验收转入 [06](active/06-local-experience-acceptance.md)、[10](active/10-public-device-acceptance.md)、[11](active/11-formal-product-package.md) | 原 DOM 小屋剩余 UI/打磨方向被全商品 Three.js 取代，不继续制作、不补勾旧记录；正式内容价值在11、新商品本地/真机在06/10验收。 |
 | T16.2 | [11 T11-A](active/11-formal-product-package.md)；验收转入 [06](active/06-local-experience-acceptance.md)、[10](active/10-public-device-acceptance.md)、[11](active/11-formal-product-package.md) | 原 DOM 小屋剩余 UI/打磨方向被全商品 Three.js 取代，不继续制作、不补勾旧记录；正式内容价值在11、新商品本地/真机在06/10验收。 |
 | T16.3 | [11 T11-A](active/11-formal-product-package.md)；验收转入 [06](active/06-local-experience-acceptance.md)、[10](active/10-public-device-acceptance.md)、[11](active/11-formal-product-package.md) | 原 DOM 小屋剩余 UI/打磨方向被全商品 Three.js 取代，不继续制作、不补勾旧记录；正式内容价值在11、新商品本地/真机在06/10验收。 |
-| T16.5 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 各分段全部满足才可关闭原项；本次未实施。 |
-| T16.6 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 各分段全部满足才可关闭原项；本次未实施。 |
+| T16.5 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
+| T16.6 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
 | T16.7 | [11 T11-A](active/11-formal-product-package.md) | 仍未完成，按新任务执行。 |
-| T16.8 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 各分段全部满足才可关闭原项；本次未实施。 |
+| T16.8 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 07本地云适配/隔离验证已完成，08真实部署和业务仍待验；原项未关闭。 |
 | T16.C2 | [01 T16.C2-A（已完成）](archive/completed/01-product-plan-contract.md)、[03 T16.C2-B（已完成）](archive/completed/03-threejs-publication-gates.md) | 01规划合同和03发布门禁均完成本地技术范围；商品转制与设备验收仍由05/06/10持有。 |
 | T16.C3 | [05 T16.C3](active/05-product-template-migration.md) | 仍未完成，按新任务执行。 |
 | T16.C4 | [06 T16.C4-L](active/06-local-experience-acceptance.md)、[10 T10-V / T16.C4-D](active/10-public-device-acceptance.md) | 06持有本地范围，10持有公网真机；正式包变化在11/12触发对应复验，不用样例代替每款商品。 |
@@ -86,3 +86,7 @@
 ## 后续追加范围
 
 每次增加、拆分或插入任务，更新 registry 的稳定ID、旧条目持有者、硬/条件/推荐依赖及当前索引。顺序变化只调整队列，不能改写已冻结验收结果。完成时归档后保留旧路径兼容入口。
+
+## 新增用户需求（不计入原46条）
+
+[17 / T18 全站前端设计改造](active/17-frontend-design-refinement.md)：项目anti-ai-web-design原包已接收、完整阅读并校验，设计标准已规划；实际前端改造未执行。完整实现依赖05/06，10增加17前置，不加入07完成条件。

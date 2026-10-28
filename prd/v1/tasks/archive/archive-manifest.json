@@ -247,7 +247,7 @@
       "uncheckedIds": []
     }
   ],
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "executionCompletions": [
     {
       "id": "T16.C2-A",
@@ -275,6 +275,24 @@
       "scope": "verified_technical_task",
       "evidence": "output/implementation/threejs-publication-gates-20261027/verification.md",
       "parentT16Complete": false
+    },
+    {
+      "id": "T13.C3",
+      "date": "2026-10-28",
+      "archive": "prd/v1/tasks/archive/completed/04-skill-library-upgrade.md",
+      "archiveSha256": "72eea3173ea776a767133ae35a983b21627c3104fdb321417c32ce53cb52dad6",
+      "scope": "verified_local_upgrade_batch",
+      "evidence": "output/implementation/skill-library-upgrade-20261028/verification.md",
+      "parentT13Complete": false
+    },
+    {
+      "id": "T09-I",
+      "date": "2026-10-28",
+      "archive": "prd/v1/tasks/archive/completed/07-cloud-adapters.md",
+      "archiveSha256": "e098e04863cac9eeb8ca55a196bed4abf57b3d7519045b72de71ca814733aca7",
+      "scope": "verified_local_cloud_adapters",
+      "evidence": "output/implementation/cloud-adapters-20261028/verification.md",
+      "parentT09Complete": false
     }
   ]
 }

@@ -68,6 +68,23 @@ test('R2 stages validated bytes privately and conditionally creates a fixed obje
     assert.deepEqual(f.objects.data.get(id)?.bytes,png);assert.deepEqual(await readdir(f.directory),[]);
   }finally{await f.close();}
 });
+test('R2 fixed objects survive adapter recreation and a three-kind backup restores exact bytes while rejecting missing or corrupt files',async()=>{
+  const f=await setup();let restored:R2AssetStorage|undefined;
+  try{
+    const objects=[{key:key(),bytes:png,mime:'image/png',original:false},
+      {key:key(),bytes:Buffer.from('Fixed reference bytes'),mime:'text/markdown',original:false},
+      {key:key(),bytes:Buffer.from('<!doctype html><html>Retained original</html>'),mime:'text/html',original:true}];
+    for(const object of objects)await (object.original?f.storage.receiveOriginal(object.key,Readable.from([object.bytes]),file(object.bytes,object.mime)):
+      f.storage.receive(object.key,Readable.from([object.bytes]),file(object.bytes,object.mime)));
+    const backup=new Objects();for(const [id,entry] of f.objects.data)backup.data.set(id,{...entry,bytes:Buffer.from(entry.bytes)});
+    f.storage.onModuleDestroy();restored=new R2AssetStorage(f.configuration,backup as never);
+    for(const object of objects){const handle=await restored.read(object.key);try{assert.deepEqual(await collect(handle.createReadStream({autoClose:false})),object.bytes);}finally{await handle.close();}}
+    const first=objects[0]!,entry=backup.data.get(first.key)!;backup.data.delete(first.key);await assert.rejects(restored.read(first.key));
+    backup.data.set(first.key,{...entry,bytes:Buffer.alloc(entry.bytes.length)});await assert.rejects(restored.read(first.key));
+    backup.data.set(first.key,entry);const handle=await restored.read(first.key);await handle.close();
+    assert.deepEqual(await readdir(f.directory),[]);assert.equal(backup.data.size,3);
+  }finally{restored?.onModuleDestroy();await f.close();}
+});
 test('R2 rejects invalid media, digest, size and object keys before provider writes and removes temporary bytes',async()=>{
   const f=await setup();try{for(const expected of [{...file(png),checksum:'0'.repeat(64)},{...file(png),byteSize:png.length-1},{...file(png),byteSize:png.length+1},file(Buffer.from('invalid'))])
       await assert.rejects(f.storage.receive(key(),Readable.from([png]),expected));

@@ -8,6 +8,8 @@ import {renderVpsNginx} from '../vps-routing.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const docker=args=>execFileSync(process.execPath,[join(root,'scripts/docker.mjs'),...args],{cwd:root,encoding:'utf8',timeout:60000,maxBuffer:2*1024*1024,stdio:['ignore','pipe','pipe']}).trim();
 const nginx='nginx:1.28.3-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236';
+const frontendImage=process.env.ORAI_VPS_WEB_IMAGE;
+if(frontendImage)assert.match(frontendImage,/^[a-z0-9][a-z0-9/:._@-]+$/);
 const stub=String.raw`
 const http=require('node:http');
 http.createServer((request,response)=>{
@@ -44,12 +46,12 @@ test('real unprivileged Nginx forwards private API transport and Range while ser
     await writeFile(join(directory,'nginx.conf'),renderVpsNginx({APP_PUBLIC_ORIGIN:'https://store.unit.test',UPLOAD_INGRESS_BODY_BYTES:'1024',ASSET_UPLOAD_TIMEOUT_MS:'360000'}));
     execFileSync('openssl',['req','-x509','-newkey','rsa:2048','-nodes','-keyout',join(directory,'tls/privkey.pem'),'-out',join(directory,'tls/fullchain.pem'),'-days','1','-subj','/CN=store.unit.test','-addext','subjectAltName=DNS:store.unit.test,DNS:www.store.unit.test'],{stdio:'ignore'});
     await chmod(join(directory,'tls/privkey.pem'),0o644);
-    await writeFile(join(directory,'Dockerfile'),'FROM '+nginx+'\nCOPY nginx.conf /etc/nginx/nginx.conf\nCOPY www/ /usr/share/nginx/html/\nCOPY tls/ /run/tls/\n');
-    docker(['build','-t',image,directory]);
+    await writeFile(join(directory,'Dockerfile'),'FROM '+(frontendImage??nginx)+'\nCOPY nginx.conf /etc/nginx/nginx.conf\n'+(frontendImage?'':'COPY www/ /usr/share/nginx/html/\n')+'COPY tls/ /run/tls/\n');
+    docker(['build',...(frontendImage?['--platform','linux/amd64']:[]),'-t',image,directory]);
     docker(['network','create','--internal',network]);
     docker(['run','-d','--name',api,'--network',network,'--network-alias','api','--read-only','--cap-drop','ALL','--security-opt','no-new-privileges:true',
       '--memory','128m','--cpus','.5','--pids-limit','32','--user','node','node:24.21.0-bookworm-slim','node','-e',stub]);
-    docker(['run','-d','--name',web,'--network',network,'--network-alias','web','--read-only','--tmpfs','/tmp:rw,noexec,nosuid,size=16m,mode=1777','--cap-drop','ALL','--security-opt','no-new-privileges:true',
+    docker(['run','-d',...(frontendImage?['--platform','linux/amd64']:[]),'--name',web,'--network',network,'--network-alias','web','--read-only','--tmpfs','/tmp:rw,noexec,nosuid,size=16m,mode=1777','--cap-drop','ALL','--security-opt','no-new-privileges:true',
       '--memory','128m','--cpus','.5','--pids-limit','32','--user','101:101',
       '--entrypoint','nginx',image,'-g','daemon off;']);
     if(docker(['inspect',web,'--format','{{.State.Running}}'])!=='true'){
@@ -59,7 +61,11 @@ test('real unprivileged Nginx forwards private API transport and Range while ser
     clientContainer=api;const tls=8443,plain=8080;
     let ready=false;for(let count=0;count<30;count++){try{if((await request(tls,'/')).status===200){ready=true;break;}}catch{}await new Promise(resolve=>setTimeout(resolve,100));}
     assert.ok(ready,'local proxy did not become ready');
-    const spa=await request(tls,'/admin/content/synthetic?tab=skills');assert.equal(spa.status,200);assert.match(spa.body,/SPA fixture/);assert.match(spa.headers['cache-control'],/no-cache/);
+    const spa=await request(tls,'/admin/content/synthetic?tab=skills');assert.equal(spa.status,200);assert.match(spa.body,frontendImage?/<div id="root">/:/SPA fixture/);assert.match(spa.headers['cache-control'],/no-cache/);
+    if(frontendImage){
+      const asset=/src="(\/assets\/[^"?]+\.js)"/.exec(spa.body);assert.ok(asset,'actual frontend entry asset is missing');
+      const built=await request(tls,asset[1]);assert.equal(built.status,200);assert.match(built.headers['content-type'],/javascript/);
+    }
     const echo=await request(tls,'/api/echo?revision=7',{method:'POST',headers:{'content-type':'application/json',cookie:'session=synthetic',authorization:'Bearer SYNTHETIC',origin:'https://store.unit.test','x-csrf-token':'SYNTHETIC','x-forwarded-proto':'http','x-forwarded-for':'8.8.8.8'},body:'{"draft":true}'});
     assert.equal(echo.status,200);const body=JSON.parse(echo.body);assert.equal(body.url,'/api/echo?revision=7');assert.equal(body.headers.cookie,'session=synthetic');
     assert.equal(body.headers.authorization,'Bearer SYNTHETIC');assert.equal(body.headers['x-csrf-token'],'SYNTHETIC');assert.equal(body.headers.origin,'https://store.unit.test');
@@ -73,7 +79,7 @@ test('real unprivileged Nginx forwards private API transport and Range while ser
     const www=await request(tls,'/account',{host:'www.store.unit.test',servername:'www.store.unit.test'});assert.equal(www.status,308);assert.equal(www.headers.location,'https://store.unit.test/account');
     await assert.rejects(request(tls,'/',{host:'unexpected.unit.test',servername:'unexpected.unit.test'}));
     const user=docker(['inspect',web,'--format','{{.Config.User}}']);assert.equal(user,'101:101');
-    console.log(JSON.stringify({checks:11,network:'internal_isolated',https:'synthetic_local_certificate',proxyUser:user,realCloudConnections:0}));
+    console.log(JSON.stringify({checks:frontendImage?12:11,actualFrontendImage:frontendImage??null,network:'internal_isolated',https:'synthetic_local_certificate',proxyUser:user,realCloudConnections:0}));
   }finally{
     clientContainer=undefined;
     for(const name of [web,api]){try{docker(['rm','-f',name]);}catch{}}

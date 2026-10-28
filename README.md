@@ -2,9 +2,10 @@
 
 2026-10-28：所有正常商品体验使用Three.js，视觉、动画、镜头与交互按每款商品规划确定。01规划合同、02 Skill政策、03项目/发布校验和04旧方法前向升级已完成各自本地范围；API/MCP/后台固定v2规划及精确方法，新采用包v3，旧版本与历史数据保留。04选定四份方法追加为DRAFT，未自动启用或重绑。
 
-- [按序任务](prd/v1/tasks/README.md)：01–04已归档，当前05商品与模板转制；其余12批仍按依赖与暂停边界执行。
+- [按序任务](prd/v1/tasks/README.md)：01–04及07本地范围已归档，当前05/06合成技术准备；包含新增17在内的其余12批仍按依赖与暂停边界执行。
 - [路线与条件](prd/v1/ROADMAP.md)、[当前进度](prd/v1/PROGRESS.md)：04代码594项、类型/构建，最终专项13项及16项自主CUA通过；完整Git存档与后续功能完成分别记录。
-- [已完成归档](prd/v1/tasks/archive/README.md)：保留9份原完整任务及当前01–04完成范围，云端/真机/正式商品/商业验收仍有独立任务持有。
+- [已完成归档](prd/v1/tasks/archive/README.md)：保留9份原完整任务及当前01–04、07完成范围，云端/真机/正式商品/商业验收仍有独立任务持有。
+- [项目设计Skill](.agents/skills/anti-ai-web-design/SKILL.md)已保存并完整阅读，[17/T18后续全站设计任务](prd/v1/tasks/active/17-frontend-design-refinement.md)已登记；前端改造未执行，商品Three.js差异规划保留。
 - [商品实现规范](prd/v1/PRODUCT-IMPLEMENTATION-POLICY.md)、[v1文档入口](prd/v1/README.md)：固定产品规则与工程/制作合同。
 
 当前按用户授权对已有安全项目改动正常提交推送，结果以Git回执为准；按依赖继续任务。旧托管CI run40524842978的失败断言因403权限尚不可读，见[独立调查](output/implementation/ci-investigation-20261028.md)，不冒称已修复。真实云部署、商业发布和交易未完成；内容/模型比较暂停，日更配置未启用。
@@ -70,7 +71,7 @@ pnpm test
 
 Prisma 7.10.0、pg 适配器和客户端版本一致，生成客户端/维护脚本/测试产物被 Git/Docker 忽略；构建与检查会重新生成客户端。Zod 固定 4.6.5，公开入口不导出私有配置；seed 报告/身份场景仍是合成 fixture。T05 验收使用实际接口生成的报告，真实认证/收信由 T06 验收。
 
-`.github/workflows/ci.yml` 配置了固定工具链、PostgreSQL service、相同检查和 Linux 容器构建；尚未推送触发远程 CI。
+`.github/workflows/ci.yml`配置固定工具链、PostgreSQL、相同检查和Linux镜像；04提交7dbc175的托管CI已成功，当前批次的推送/CI结果单独记录，不能替代旧失败run的原始断言。
 
 ## 商品目录与版本维护
 
