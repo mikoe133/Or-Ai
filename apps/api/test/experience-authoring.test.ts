@@ -331,12 +331,12 @@ test('the 3D garden has an opt-in v2 declaration, form-specific methods and a re
   assert.equal((await experiences.read(access,first.id)).manifest.renderer.key,'reflection-garden');
 });
 
-async function syntheticGardenContext(form: 'web' | '3d' = '3d') {
+async function syntheticGardenContext(form: 'web' | '3d' = '3d', preparationName = 'garden-observation') {
   const value = await fresh(false, { experienceForm: form });
   // Fix the profile through the real authoring service, then bind the A plan.
   await experiences.save(access, productId, value.version.id, value.input);
   const preparation = JSON.parse(await readFile(resolve(__dirname,
-    '../../../../examples/threejs-products/technical-preparation/garden-observation.json'), 'utf8'));
+    '../../../../examples/threejs-products/technical-preparation/' + preparationName + '.json'), 'utf8'));
   const document = ProductionPlanDocumentSchema.parse({ ...preparation.plan, creativeProfileRevisionId: value.profile.id });
   for (const module of document.modules) module.target.form = form;
   const latest = await fixture.runtime.client.productionPlanRevision.aggregate({ where: { productId }, _max: { number: true } });
@@ -384,8 +384,10 @@ test('synthetic A MCP context follows its fixed Three.js pair even when the prof
   assert.equal(checked.publication?.eligibleForReview, false);
 });
 
-test('synthetic A pins its actual plan and methods through SDK authoring, review, consumer restore, report and revocation', async () => {
-  const value = await syntheticGardenContext(), plans = app.get(ProductionPlansService);
+async function syntheticTemplateLifecycle(atlas = false) {
+  const value = await syntheticGardenContext('3d', atlas ? 'relationship-atlas' : 'garden-observation'), plans = app.get(ProductionPlansService);
+  const rendererKey = atlas ? 'relationship-atlas-prototype' : 'reflection-garden';
+  const reportKey = atlas ? 'atlas-notes-prototype' : 'garden-notes';
   const document = structuredClone(value.plan.plan);
   assert.equal(document.schemaVersion, 2);
   if (document.schemaVersion !== 2) throw new Error('Expected current A plan');
@@ -397,6 +399,11 @@ test('synthetic A pins its actual plan and methods through SDK authoring, review
     report: 'apps/web/src/experience/garden-notes.tsx', accessibility: 'apps/web/src/experience/reflection-garden.tsx',
     fallback: 'apps/web/src/experience/host.tsx', resources: 'apps/web/src/experience/garden-scene.ts',
   };
+  if (atlas) Object.assign(implementation, { scene: 'apps/web/src/experience/atlas-scene.ts',
+    camera: 'apps/web/src/experience/atlas-scene.ts', interaction: 'apps/web/src/experience/relationship-atlas.tsx',
+    feedback: 'apps/web/src/experience/relationship-atlas.tsx', confirmation: 'apps/web/src/experience/relationship-atlas.tsx',
+    report: 'apps/web/src/experience/atlas-notes.tsx', accessibility: 'apps/web/src/experience/relationship-atlas.tsx',
+    resources: 'apps/web/src/experience/atlas-scene.ts' });
   for (const [key, reference] of Object.entries(implementation)) Object.assign(
     document.productPlan.decisions[key as keyof typeof document.productPlan.decisions], {
       status: 'implemented', evidence: [{ kind: 'implementation', reference,
@@ -404,6 +411,11 @@ test('synthetic A pins its actual plan and methods through SDK authoring, review
     });
   const plan = await plans.save(access, productId, { plan: document, expectedRevision: value.plan.revision, requestId: randomUUID() });
   const method = await methods(['3d']), issued = await machine('experience', [productId], [method.skillId]);
+  const selected = await call(issued.token!, 'context_bundle_get', { productVersionId: value.version.id,
+    productPlan: { revisionId: plan.id, digest: plan.digest }, includeCapabilities: true, capabilityVersion: 2 });
+  assert.equal(selected.status, 200, JSON.stringify(selected.body));
+  assert.equal(selected.body.capabilities.status, 'compatible', 'the exact synthetic renderer/report pair must be implemented and registered');
+  assert.equal(selected.body.capabilities.selected.renderer, rendererKey + '@1');
   const picture = join(directory, 'synthetic-a-reference.jpg');
   await writeFile(picture, await readFile(join(__dirname, '../../test/fixtures/cover.jpg')));
   const result = await execute(process.execPath, [resolve(__dirname, '../../../../packages/mcp/test/real-experience-client.mjs')], {
@@ -414,7 +426,7 @@ test('synthetic A pins its actual plan and methods through SDK authoring, review
   });
   const checked = JSON.parse(result.stdout), draft = await experiences.read(access, checked.revisionId);
   assert.equal(checked.ok, true);
-  assert.equal(draft.manifest.renderer.key, 'reflection-garden');
+  assert.equal(draft.manifest.renderer.key, rendererKey);
   assert.equal(draft.productPlanInput?.planRevisionId, plan.id);
   assert.equal(draft.productPlanInput?.planDigest, plan.digest);
   assert.equal(draft.methods.length, 2);
@@ -423,7 +435,7 @@ test('synthetic A pins its actual plan and methods through SDK authoring, review
   const sample = DemoProducts[0]!.configurations[1]!.questions.map(question => ({ questionId: question.id, optionId: 'often' }));
   const preview = await experiences.preview(access, draft.id, { answers: sample });
   assert.equal(preview.report.totalScore, 100);
-  assert.equal(preview.presentation.renderer.key, 'garden-notes');
+  assert.equal(preview.presentation.renderer.key, reportKey);
   await experiences.review(access, draft.id, { expectedRevision: draft.revision, requestId: randomUUID() });
   await versions.review(access, productId, value.version.id, { requestId: randomUUID() });
   await versions.publish(access, productId, value.version.id, { requestId: randomUUID() });
@@ -466,7 +478,7 @@ test('synthetic A pins its actual plan and methods through SDK authoring, review
   const submit = await consumer(`/api/attempts/${attemptId}/submit`, 'POST', { expectedRevision: revision, requestId: randomUUID() });
   assert.equal(submit.status, 200);
   assert.deepEqual(submit.body.content, preview.report);
-  assert.equal(submit.body.presentation.renderer.key, 'garden-notes');
+  assert.equal(submit.body.presentation.renderer.key, reportKey);
   assert.equal(submit.body.presentation.releaseId, release.id);
   const retry = await consumer(`/api/attempts/${attemptId}/submit`, 'POST', { expectedRevision: 0, requestId: randomUUID() });
   assert.equal(retry.body.id, submit.body.id);
@@ -476,4 +488,10 @@ test('synthetic A pins its actual plan and methods through SDK authoring, review
   assert.notEqual((await consumer(`/api/reports/${submit.body.id}`)).status, 200);
   const legacy = await app.get(RuntimeVersionService).read(demoId('demo-partner-v2'));
   assert.equal(legacy.experience.manifest.renderer.key, 'dom-choice');
-});
+}
+
+test('synthetic A pins its actual plan and methods through SDK authoring, review, consumer restore, report and revocation',
+  () => syntheticTemplateLifecycle());
+
+test('synthetic B pins an independent atlas/report pair through SDK authoring and the consumer lifecycle',
+  () => syntheticTemplateLifecycle(true));
