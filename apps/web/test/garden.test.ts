@@ -63,6 +63,12 @@ test('pixel budgets bound high DPR and oversized canvases; dragging and out-of-b
   assert.equal(gardenTap({ x: 10, y: 10 }, { x: 40, y: 12 }), false);
 });
 
+test('a garden camera drag returning to its start must never become an answer selection', () => {
+  const dragged = { x: 10, y: 10, dragged: true };
+  assert.equal(gardenTap(dragged, { x: 10, y: 10 }), false);
+  assert.equal(gardenTap({ x: 10, y: 10 }, { x: 10, y: 10 }), true);
+});
+
 test('on-demand frames coalesce, stop at rest/hidden state, and reject late work after disposal', () => {
   let next = 0, renders = 0, moving = false;
   const pending = new Map<number, (time: number) => void>();

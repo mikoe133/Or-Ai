@@ -30,3 +30,7 @@
 - 编译通过后顺序执行 `experience-authoring.test.js` 与 `experience.test.js`：**24/24通过**，耗时约15.3秒。日志 `.local/t16-c3-implementation-20261028/a-chain-{compile,regression}.log`。
 
 A 制作上下文及此合成制作/消费者链已通过。B 独立模板、性能/浏览器/真机及正式商品仍未完成；不据这24项关闭整个05/06。
+
+## A 拖动判定 RED
+
+浏览器确认左右观察不改变答案后，补充往返拖动边界：`gardenTap` 只检查首尾距离，忽略整次手势已发生拖动。新测试编译成功并实际执行1项，返回true而预期false。日志 `a-gesture-{compile-red,red}.log`。此失败尚未修复，先保留RED检查点；同一规划要求镜头拖动不能变成答案选择。
