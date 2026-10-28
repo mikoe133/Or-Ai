@@ -1,0 +1,38 @@
+{
+  "origin": "http://orai-cua-007cb7cc-3183-4639-b56f-a90e572fab7d.localhost:5187",
+  "hostname": "orai-cua-007cb7cc-3183-4639-b56f-a90e572fab7d.localhost",
+  "source": "actual isolated fixture in existing IAB; no DNS/system configuration changed",
+  "before": [
+    {
+      "name": "orai_csrf",
+      "domain": "orai-cua-007cb7cc-3183-4639-b56f-a90e572fab7d.localhost",
+      "path": "/",
+      "httpOnly": true
+    }
+  ],
+  "after": [
+    {
+      "name": "orai_csrf",
+      "domain": "orai-cua-007cb7cc-3183-4639-b56f-a90e572fab7d.localhost",
+      "path": "/",
+      "httpOnly": true
+    },
+    {
+      "name": "orai_session",
+      "domain": "orai-cua-007cb7cc-3183-4639-b56f-a90e572fab7d.localhost",
+      "path": "/",
+      "httpOnly": true
+    }
+  ],
+  "cookiesConfinedToFixtureHost": true,
+  "redeemWorked": true,
+  "afterLogout": [
+    {
+      "name": "orai_csrf",
+      "domain": "orai-cua-007cb7cc-3183-4639-b56f-a90e572fab7d.localhost",
+      "path": "/",
+      "httpOnly": true
+    }
+  ],
+  "sessionClearedAfterLogout": true
+}

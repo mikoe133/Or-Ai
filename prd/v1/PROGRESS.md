@@ -8,6 +8,8 @@
 
 再续[220次内存对照](../../output/implementation/local-experience-memory-audit-20261028/README.md)：A在无探针/无逐轮AX及直接renderer时仍保留旧canvas，页面监听器/附着节点稳定；Runtime.queryObjects新确认可用，HeapProfiler完整快照/保留路径仍缺，06内存未关闭。独立[T18首轮基线/加载修复](../../output/implementation/t18-frontend-baseline-20261028/verification.md)新增八类页面24张有限动效结束静态截图、五项首轮问题；根Suspense浅色过渡经RED检查点e78f0a6→GREEN070d4b8，三个视口和107项前端/类型/构建通过。主体页面未重设计，完整T18和05/06依赖保持；临时TEST/自己的页签/设置已清理，原5容器healthy。
 
+同轮另修[验收夹具Cookie主机隔离](../../output/implementation/ui-fixture-cookie-isolation-20261028/README.md)：原同host不同端口不能隔离同名Cookie。0679146先RED，随后每运行使用独立保留.localhost主机；两个专项及实际IAB兑换/host-only Cookie/退出清理通过，CI新增门禁。只影响测试夹具，不改生产配置；不据新隔离成功宣称旧127浏览器会话从未受影响。
+
 05/06此前完成[合成技术实现批次](../../output/implementation/product-template-migration-20261028/verification.md)：A固定规划MCP制作链、B独立Three.js正交观察台/报告/注册、第30份迁移及26项自主CUA通过；当批API507＋web106＋MCP22＝635项，类型/构建通过。新增项目方法快照/原生产物断言后A/B两链专项再次通过。原29迁移未改，新迁移仅用于隔离TEST；该批首帧/FPS尚未测，后续结果见上。正式商品、存量转制与完整内存/恢复仍未完成，05/06继续active；仅[归档已完成子批次](tasks/archive/completed/05-06-synthetic-template-slice-20261028.md)。
 
 ## 当前实施事实

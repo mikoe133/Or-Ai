@@ -44,6 +44,8 @@ jobs:
         run: node --test scripts/test/cloud-preflight.test.mjs
       - name: Check provider-independent upload byte budgets
         run: node --test scripts/test/upload-budget.test.mjs
+      - name: Check loopback UI fixture cookie isolation
+        run: node --test scripts/test/ui-fixture-origin.test.mjs
       - run: pnpm db:validate
       - run: pnpm db:migrate
       - run: pnpm db:provision
