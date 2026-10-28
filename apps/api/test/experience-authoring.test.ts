@@ -22,6 +22,7 @@ import { configureApp } from '../src/common/configure-app';
 import { CatalogAdminAccessService, type CatalogAdminAccess } from '../src/catalog/admin-access.service';
 import { VersionsService } from '../src/catalog/versions.service';
 import { RuntimeVersionService } from '../src/catalog/runtime-version.service';
+import { DeliveryAdminService } from '../src/redemption/delivery-admin.service';
 import { ExperienceAuthoringService } from '../src/operations/experience-authoring.service';
 import { ContentService } from '../src/operations/content.service';
 import { SkillsService } from '../src/operations/skills.service';
@@ -381,4 +382,98 @@ test('synthetic A MCP context follows its fixed Three.js pair even when the prof
   const checked = await experiences.check(access, productId, value.version.id, draft);
   assert.equal(checked.valid, true);
   assert.equal(checked.publication?.eligibleForReview, false);
+});
+
+test('synthetic A pins its actual plan and methods through SDK authoring, review, consumer restore, report and revocation', async () => {
+  const value = await syntheticGardenContext(), plans = app.get(ProductionPlansService);
+  const document = structuredClone(value.plan.plan);
+  assert.equal(document.schemaVersion, 2);
+  if (document.schemaVersion !== 2) throw new Error('Expected current A plan');
+  document.productPlan.basedOnPlanRevisionId = value.plan.id;
+  const implementation = {
+    scene: 'apps/web/src/experience/garden-scene.ts', camera: 'apps/web/src/experience/garden-renderer.ts',
+    interaction: 'apps/web/src/experience/reflection-garden.tsx', feedback: 'apps/web/src/experience/reflection-garden.tsx',
+    confirmation: 'apps/web/src/experience/reflection-garden.tsx', recovery: 'apps/web/src/experience/host.tsx',
+    report: 'apps/web/src/experience/garden-notes.tsx', accessibility: 'apps/web/src/experience/reflection-garden.tsx',
+    fallback: 'apps/web/src/experience/host.tsx', resources: 'apps/web/src/experience/garden-scene.ts',
+  };
+  for (const [key, reference] of Object.entries(implementation)) Object.assign(
+    document.productPlan.decisions[key as keyof typeof document.productPlan.decisions], {
+      status: 'implemented', evidence: [{ kind: 'implementation', reference,
+        summary: '合成技术演练引用仓库实际能力；不是性能、设备或正式商品验收' }],
+    });
+  const plan = await plans.save(access, productId, { plan: document, expectedRevision: value.plan.revision, requestId: randomUUID() });
+  const method = await methods(['3d']), issued = await machine('experience', [productId], [method.skillId]);
+  const picture = join(directory, 'synthetic-a-reference.jpg');
+  await writeFile(picture, await readFile(join(__dirname, '../../test/fixtures/cover.jpg')));
+  const result = await execute(process.execPath, [resolve(__dirname, '../../../../packages/mcp/test/real-experience-client.mjs')], {
+    env: { ...process.env, ORAI_MCP_API_URL: base, ORAI_MCP_TOKEN: issued.token!, ORAI_MCP_DOMAIN: 'experience', ORAI_MCP_ALLOWED_ROOT: directory,
+      ORAI_MCP_EXPERIENCE_SCENARIO_JSON: JSON.stringify({ productVersionId: value.version.id,
+        productPlan: { revisionId: plan.id, digest: plan.digest }, skillVersionId: method.id,
+        expectedRevision: 1, expectedVersionRevision: 1, filePath: picture }) }, maxBuffer: 1000000,
+  });
+  const checked = JSON.parse(result.stdout), draft = await experiences.read(access, checked.revisionId);
+  assert.equal(checked.ok, true);
+  assert.equal(draft.manifest.renderer.key, 'reflection-garden');
+  assert.equal(draft.productPlanInput?.planRevisionId, plan.id);
+  assert.equal(draft.productPlanInput?.planDigest, plan.digest);
+  assert.equal(draft.methods.length, 2);
+  for (const binding of draft.methods) assert.deepEqual(binding.productPlanInput, draft.productPlanInput);
+  assert.equal(draft.manifest.resources[0]!.checksum, hash(await readFile(picture)));
+  const sample = DemoProducts[0]!.configurations[1]!.questions.map(question => ({ questionId: question.id, optionId: 'often' }));
+  const preview = await experiences.preview(access, draft.id, { answers: sample });
+  assert.equal(preview.report.totalScore, 100);
+  assert.equal(preview.presentation.renderer.key, 'garden-notes');
+  await experiences.review(access, draft.id, { expectedRevision: draft.revision, requestId: randomUUID() });
+  await versions.review(access, productId, value.version.id, { requestId: randomUUID() });
+  await versions.publish(access, productId, value.version.id, { requestId: randomUUID() });
+  const runtime = await app.get(RuntimeVersionService).read(value.version.id);
+  assert.deepEqual(runtime.experience.manifest, draft.manifest);
+
+  const delivery = app.get(DeliveryAdminService), cookies = new Map<string, string>();
+  let csrf = '';
+  async function consumer(path: string, verb = 'GET', body?: unknown) {
+    const response = await fetch(base + path, { method: verb, headers: { origin: 'http://127.0.0.1:5173',
+      cookie: [...cookies].map(([key, entry]) => key + '=' + entry).join('; '),
+      ...(verb === 'GET' ? {} : { 'content-type': 'application/json', 'x-csrf-token': csrf }) },
+      body: body === undefined ? undefined : JSON.stringify(body) });
+    for (const entry of response.headers.getSetCookie()) {
+      const [key, ...parts] = entry.split(';')[0]!.split('='); cookies.set(key!, parts.join('='));
+    }
+    return { status: response.status, body: await response.json() };
+  }
+  const order = await delivery.recordOrder(access, { platform: 'manual', reference: 'demo:synthetic-a:' + randomUUID(),
+    productVersionId: value.version.id, scope: 'demo', quantity: 1, amountFen: 0, requestId: randomUUID() });
+  const codes = await delivery.issueOrder(access, order.id, { requestId: randomUUID() });
+  csrf = (await consumer('/api/session/context')).body.csrfToken;
+  const claim = await consumer('/api/redemptions/claim', 'POST', { code: codes.deliveries[0]!.code, requestId: randomUUID() });
+  assert.equal(claim.status, 200);
+  const started = await consumer('/api/attempts', 'POST', { entitlementId: claim.body.entitlement.id, requestId: randomUUID() });
+  assert.equal(started.status, 200);
+  const attemptId = started.body.attemptId, release = started.body.experience.release, requestId = randomUUID();
+  const first = { optionId: 'often', expectedRevision: 0, requestId };
+  assert.equal((await consumer(`/api/attempts/${attemptId}/answers/question-1`, 'PUT', first)).status, 200);
+  assert.equal((await consumer(`/api/attempts/${attemptId}/answers/question-1`, 'PUT', first)).status, 200);
+  assert.equal((await consumer(`/api/attempts/${attemptId}/answers/question-2`, 'PUT', {
+    optionId: 'often', expectedRevision: 0, requestId: randomUUID() })).status, 409);
+  const restored = await consumer(`/api/attempts/${attemptId}/questions`);
+  assert.equal(restored.body.answers.length, 1);
+  assert.deepEqual(restored.body.experience.release, release);
+  assert.equal(restored.body.experience.checkpoint.nextQuestionId, 'question-2');
+  let revision = 1;
+  for (const answer of sample.slice(1)) assert.equal((await consumer(`/api/attempts/${attemptId}/answers/${answer.questionId}`, 'PUT', {
+    optionId: answer.optionId, expectedRevision: revision++, requestId: randomUUID() })).status, 200);
+  const submit = await consumer(`/api/attempts/${attemptId}/submit`, 'POST', { expectedRevision: revision, requestId: randomUUID() });
+  assert.equal(submit.status, 200);
+  assert.deepEqual(submit.body.content, preview.report);
+  assert.equal(submit.body.presentation.renderer.key, 'garden-notes');
+  assert.equal(submit.body.presentation.releaseId, release.id);
+  const retry = await consumer(`/api/attempts/${attemptId}/submit`, 'POST', { expectedRevision: 0, requestId: randomUUID() });
+  assert.equal(retry.body.id, submit.body.id);
+  assert.equal((await fixture.runtime.client.entitlement.findUniqueOrThrow({ where: { id: claim.body.entitlement.id } })).reportsConsumed, 1);
+  await delivery.refundOrder(access, order.id, { requestId: randomUUID() });
+  assert.notEqual((await consumer(`/api/attempts/${attemptId}/questions`)).status, 200);
+  assert.notEqual((await consumer(`/api/reports/${submit.body.id}`)).status, 200);
+  const legacy = await app.get(RuntimeVersionService).read(demoId('demo-partner-v2'));
+  assert.equal(legacy.experience.manifest.renderer.key, 'dom-choice');
 });
