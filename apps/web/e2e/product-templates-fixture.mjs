@@ -9,6 +9,7 @@ import { spawn } from 'node:child_process';
 import { Readable } from 'node:stream';
 import { createHash } from 'node:crypto';
 import { startPerformanceServer } from './experience-performance-server.mjs';
+import { uiFixtureOrigin } from './ui-fixture-origin.mjs';
 
 const root = process.cwd(), require = createRequire(join(root, 'apps/api/package.json'));
 require('reflect-metadata');
@@ -23,7 +24,7 @@ const names = ['CatalogAdminAccessService', 'CatalogAdminService', 'ContentServi
 const paths = ['catalog/admin-access.service', 'operations/catalog-admin.service', 'operations/content.service', 'catalog/versions.service',
   'operations/production-plans.service', 'operations/experience-authoring.service', 'operations/skills.service', 'redemption/delivery-admin.service', 'operations/files.service'];
 const classes = Object.fromEntries(names.map((name, index) => [name, require('./.test-build/src/' + paths[index] + '.js')[name]]));
-const port = Number(process.env.ORAI_TEMPLATE_UI_PORT || 5187), origin = 'http://127.0.0.1:' + port;
+const port = Number(process.env.ORAI_TEMPLATE_UI_PORT || 5187), origin = uiFixtureOrigin(port);
 const privateDirectory = join(root, '.local/t16-c3-implementation-20261028'), stateFile = join(privateDirectory, 'ui-state.json');
 const referenceImages = process.env.ORAI_TEMPLATE_RESOURCE_FIXTURE === '1';
 const startup = { apiBootstrapMs: null, apiListenMs: null, referenceImages };
