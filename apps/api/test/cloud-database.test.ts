@@ -137,6 +137,20 @@ test('an interrupted initial migration preserves roles/schema and an exact retry
     assert.equal((await connections.runtime.query('SELECT count(*)::int AS count FROM orai.users')).rows[0].count,0);
   }finally{await connections.close();}
 });
+test('an explicitly reviewed migrate plan can restore precise runtime grants without changing immutable migration history',async()=>{
+  const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),bootstrap=await createCloudDatabasePlan(env,'bootstrap');
+  try{
+    await applyCloudDatabasePlan(env,bootstrap,connections,()=>{});
+    const before=(await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows;
+    await connections.owner.query('REVOKE SELECT ON orai.products FROM orai_app');
+    await assert.rejects(applyCloudDatabasePlan(env,bootstrap,connections,()=>{}),{code:'RUNTIME_GRANTS_REJECTED'});
+    const migrate=await createCloudDatabasePlan(env,'migrate');assert.notEqual(migrate.fingerprint,bootstrap.fingerprint);
+    await applyCloudDatabasePlan(env,migrate,connections,()=>{});
+    assert.equal((await connections.runtime.query('SELECT count(*)::int AS count FROM orai.products')).rows[0].count,0);
+    await assert.rejects(connections.runtime.query('SELECT * FROM orai._prisma_migrations'),{code:'42501'});
+    assert.deepEqual((await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows,before);
+  }finally{await connections.close();}
+});
 test('unmarked business data, a development marker, changed source digests and elevated runtime roles are refused and retained',async()=>{
   const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
   try{
