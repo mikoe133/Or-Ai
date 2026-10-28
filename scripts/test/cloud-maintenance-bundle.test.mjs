@@ -20,7 +20,7 @@ test('the root maintenance command previews only an explicit private environment
       MIGRATION_DATABASE_URL:`postgresql://orai_owner.${ref}:synthetic-migration-only@${host}:5432/postgres?schema=orai`,
       DATABASE_URL:`postgresql://orai_app.${ref}:synthetic-runtime-only@${host}:5432/postgres?schema=orai`};
     await writeFile(input,Object.entries(fields).map(([key,value])=>key+'='+value).join('\n'),{mode:0o600});
-    const result=execFileSync('pnpm',['run','db:cloud','preview','--env-file',input,'--out',output],{cwd:root,env:{PATH:process.env.PATH,DATABASE_URL:'PRIVATE_INHERITED_VALUE',APP_ENV:'development'},encoding:'utf8',timeout:60000,stdio:['ignore','pipe','pipe']});
+    const result=execFileSync('pnpm',['run','db:cloud','--','preview','--config-file',input,'--out',output],{cwd:root,env:{...process.env,DATABASE_URL:'PRIVATE_INHERITED_VALUE',APP_ENV:'development'},encoding:'utf8',timeout:60000,stdio:['ignore','pipe','pipe']});
     assert.match(result,/"ok":true/);assert.equal((await stat(output)).mode&0o777,0o600);
     const plan=JSON.parse(await readFile(output,'utf8'));assert.equal(plan.migrations.length,29);assert.equal(plan.target.database,'postgres');
     for(const value of ['PRIVATE_INHERITED_VALUE','synthetic-bootstrap-only','synthetic-migration-only','synthetic-runtime-only'])assert.equal(JSON.stringify(plan).includes(value),false);
