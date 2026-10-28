@@ -1,6 +1,6 @@
 import {before,after,test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile,writeFile,stat} from 'node:fs/promises';
+import {readFile,writeFile,stat,chmod} from 'node:fs/promises';
 import {join} from 'node:path';
 import {createCloudDatabasePlan,parseCloudDatabaseTarget,applyCloudDatabasePlan,runCloudDatabaseCommand} from '../scripts/cloud-database';
 import {cloudDatabaseFixture} from './cloud-database-fixture';
@@ -22,6 +22,80 @@ test('cloud maintenance preview pins project, TLS CA and all immutable migration
   assert.deepEqual(JSON.parse(await readFile(output,'utf8')),plan);
   assert.equal((await runCloudDatabaseCommand(['apply','--env-file',input,'--file',output,'--out',join(fixture.directory,'not-applied.jsonl')],()=>{connections++;throw Error();})).ok,false);
   assert.equal(connections,0);
+});
+
+test('cloud CLI appends private resumable journals, refuses changed inputs and never reconnects when outputs already exist',async()=>{
+  const {env}=await fixture.newDatabase(),input=join(fixture.directory,'cli.env'),planFile=join(fixture.directory,'cli-plan.json'),journal=join(fixture.directory,'cli-journal.jsonl');
+  await writeFile(input,Object.entries(env).map(([key,value])=>key+'='+value).join('\n'),{mode:0o600});
+  assert.equal((await runCloudDatabaseCommand(['preview','--env-file',input,'--out',planFile])).ok,true);
+  const plan=JSON.parse(await readFile(planFile,'utf8'));let opened=0;
+  const factory=async(target:ReturnType<typeof parseCloudDatabaseTarget>)=>{opened++;return fixture.connections(target);};
+  const args=['apply','--env-file',input,'--file',planFile,'--confirm-target',plan.fingerprint,'--out',journal];
+  assert.equal((await runCloudDatabaseCommand(args,factory)).ok,true);assert.equal(opened,1);
+  const original=await readFile(journal,'utf8'),events=original.trim().split('\n').map(line=>JSON.parse(line));
+  assert.deepEqual(events.map(event=>event.phase),['started','roles_ready','migrations_applied','runtime_verified','completed']);
+  assert.equal(new Set(events.map(event=>event.requestId)).size,1);assert.equal((await stat(journal)).mode&0o777,0o600);
+  assert.equal((await runCloudDatabaseCommand(args,factory)).ok,false);assert.equal(opened,1);assert.equal(await readFile(journal,'utf8'),original);
+  await writeFile(planFile,JSON.stringify({...plan,fingerprint:'0'.repeat(64)}));
+  assert.equal((await runCloudDatabaseCommand([...args.slice(0,-1),join(fixture.directory,'changed.jsonl')],factory)).ok,false);assert.equal(opened,1);
+  await chmod(input,0o644);assert.equal((await runCloudDatabaseCommand(args,factory)).ok,false);assert.equal(opened,1);
+});
+
+test('provider connection and cleanup failures are sanitized in CLI results and durable journals',async()=>{
+  const {env}=await fixture.newDatabase(),input=join(fixture.directory,'failure.env'),file=join(fixture.directory,'failure-plan.json');
+  await writeFile(input,Object.entries(env).map(([key,value])=>key+'='+value).join('\n'),{mode:0o600});
+  await runCloudDatabaseCommand(['preview','--env-file',input,'--out',file]);const plan=JSON.parse(await readFile(file,'utf8'));
+  const args=['apply','--env-file',input,'--file',file,'--confirm-target',plan.fingerprint,'--out'];
+  const journal=join(fixture.directory,'failed.jsonl');
+  const failed=await runCloudDatabaseCommand([...args,journal],()=>{throw Error('PRIVATE_PROVIDER_CREDENTIAL');});
+  assert.equal(failed.ok,false);assert.equal(JSON.stringify(failed).includes('PRIVATE_PROVIDER_CREDENTIAL'),false);
+  const events=(await readFile(journal,'utf8')).trim().split('\n').map(line=>JSON.parse(line));assert.deepEqual(events.map(event=>event.phase),['started','failed']);
+  const cleanup=await runCloudDatabaseCommand([...args,join(fixture.directory,'cleanup.jsonl')],async(target)=>{
+    const actual=await fixture.connections(target);return {...actual,async close(){await actual.close();throw Error('PRIVATE_CLEANUP_CREDENTIAL');}};
+  });
+  assert.deepEqual(cleanup,{ok:false,error:'CLOUD_MAINTENANCE_CLEANUP_FAILED'});
+});
+
+test('a stop after official migrations resumes grants without changing the applied migration ledger',async()=>{
+  const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
+  try{
+    await assert.rejects(applyCloudDatabasePlan(env,plan,connections,phase=>{if(phase==='migrations_applied')throw Error('Synthetic process stop');}));
+    const before=(await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows;
+    assert.equal(before.length,29);assert.equal((await connections.owner.query('SELECT count(*)::int AS count FROM orai.environment_marker')).rows[0].count,0);
+    const result=await applyCloudDatabasePlan(env,plan,connections,()=>{});assert.equal(result.environment,'PRODUCTION');
+    assert.deepEqual((await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows,before);
+  }finally{await connections.close();}
+});
+
+test('an actual SQL failure in the official migration engine retains its ledger and requires review before any retry',async()=>{
+  const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
+  try{
+    await connections.bootstrap.query("CREATE FUNCTION public.synthetic_migration_failure() RETURNS event_trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'SYNTHETIC_DDL_FAILURE'; END $$");
+    await connections.bootstrap.query("CREATE EVENT TRIGGER synthetic_failure ON ddl_command_start WHEN TAG IN ('CREATE TYPE') EXECUTE FUNCTION public.synthetic_migration_failure()");
+    await assert.rejects(applyCloudDatabasePlan(env,plan,connections,()=>{}),{code:'MIGRATION_EXECUTION_FAILED'});
+    await connections.bootstrap.query('DROP EVENT TRIGGER synthetic_failure');
+    const before=(await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows;
+    assert.equal(before.length,1);assert.equal(before[0].finished_at,null);
+    await assert.rejects(applyCloudDatabasePlan(env,plan,connections,()=>{}),{code:'MIGRATION_HISTORY_REQUIRES_REVIEW'});
+    assert.deepEqual((await connections.bootstrap.query('SELECT * FROM orai._prisma_migrations ORDER BY migration_name')).rows,before);
+    assert.equal((await connections.bootstrap.query("SELECT to_regclass('orai.users') AS relation")).rows[0].relation,null);
+  }finally{await connections.close();}
+});
+
+test('untracked views, sequences and functions are retained and refused even on an otherwise initialized target',async()=>{
+  const {env}=await fixture.newDatabase(),connections=await fixture.connections(parseCloudDatabaseTarget(env)),plan=await createCloudDatabasePlan(env,'bootstrap');
+  try{
+    await applyCloudDatabasePlan(env,plan,connections,()=>{});
+    for(const [create,drop,exists] of [
+      ['CREATE VIEW orai.untracked_view AS SELECT 9 AS id','DROP VIEW orai.untracked_view',"SELECT to_regclass('orai.untracked_view') IS NOT NULL AS found"],
+      ['CREATE SEQUENCE orai.untracked_sequence','DROP SEQUENCE orai.untracked_sequence',"SELECT to_regclass('orai.untracked_sequence') IS NOT NULL AS found"],
+      ["CREATE FUNCTION orai.untracked_function() RETURNS int LANGUAGE sql AS $$ SELECT 9 $$",'DROP FUNCTION orai.untracked_function()',"SELECT to_regprocedure('orai.untracked_function()') IS NOT NULL AS found"],
+    ]){
+      await connections.owner.query(create!);
+      try{await assert.rejects(applyCloudDatabasePlan(env,plan,connections,()=>{}),{code:'UNTRACKED_SCHEMA_OBJECTS_REJECTED'});assert.equal((await connections.owner.query(exists!)).rows[0].found,true);}
+      finally{await connections.owner.query(drop!);}
+    }
+  }finally{await connections.close();}
 });
 test('cloud target selection refuses loopback, mismatched project/roles, insecure transport and shared passwords without weakening local guards',async()=>{
   const source=fixture.envFor('postgres');
