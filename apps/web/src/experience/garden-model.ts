@@ -11,8 +11,8 @@ export function gardenPointer(x: number, y: number, width: number, height: numbe
   if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0 || x < 0 || y < 0 || x > width || y > height) return null;
   return { x: x / width * 2 - 1, y: 1 - y / height * 2 };
 }
-export function gardenTap(start: { x: number; y: number }, end: { x: number; y: number }) {
-  return Math.hypot(end.x - start.x, end.y - start.y) <= 7;
+export function gardenTap(start: { x: number; y: number; dragged?: boolean }, end: { x: number; y: number }) {
+  return !start.dragged && Math.hypot(end.x - start.x, end.y - start.y) <= 7;
 }
 
 // A static garden has no idle animation. Coalesce invalidations and cancel work while hidden/unmounted.

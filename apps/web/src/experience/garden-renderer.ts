@@ -13,7 +13,7 @@ export function mountGarden(canvas: HTMLCanvasElement, markers: HTMLButtonElemen
   catch (error) { garden.dispose(); throw error; }
   renderer.outputColorSpace = SRGBColorSpace; renderer.setClearColor('#ede6ef', 0);
   let disposed = false, failed = false, ready = false, disabled = false, angle = 0, targetAngle = 0, aspect = 1.35;
-  let start: { x: number; y: number; angle: number; id: number } | null = null;
+  let start: { x: number; y: number; angle: number; id: number; dragged: boolean } | null = null;
   const fail = () => { if (disposed || failed) return; failed = true; loop.dispose(); options.onFailure(); };
   const loop = gardenFrameLoop(callback => requestAnimationFrame(callback), id => cancelAnimationFrame(id), () => {
     if (failed || renderer.getContext().isContextLost()) { fail(); return false; }
@@ -44,10 +44,11 @@ export function mountGarden(canvas: HTMLCanvasElement, markers: HTMLButtonElemen
   const visibility = () => { loop.setVisible(!document.hidden); if (!document.hidden) resize(); };
   const down = (event: PointerEvent) => {
     if (disabled || failed || !event.isPrimary || event.button !== 0) return;
-    start = { x: event.clientX, y: event.clientY, angle: targetAngle, id: event.pointerId }; canvas.setPointerCapture(event.pointerId);
+    start = { x: event.clientX, y: event.clientY, angle: targetAngle, id: event.pointerId, dragged: false }; canvas.setPointerCapture(event.pointerId);
   };
   const move = (event: PointerEvent) => {
     if (!start || event.pointerId !== start.id || disabled) return;
+    if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 7) start.dragged = true;
     if (Math.abs(event.clientX - start.x) > 7) { targetAngle = Math.max(-.45, Math.min(.45, start.angle - (event.clientX - start.x) * .003)); loop.invalidate(); }
   };
   const up = (event: PointerEvent) => {
