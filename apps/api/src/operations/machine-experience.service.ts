@@ -5,7 +5,8 @@ import { IdSchema } from '@orai/contracts';
 import { ExperienceManifestSchema } from '@orai/contracts/experience';
 import { MachineExperienceSaveSchema, ExperienceDraftInputSchema, ExperienceMachineListInputSchema, ExperienceMachineListSchema,
   ExperienceContextInputSchema, ExperienceContextSchema, ExperienceReferenceInputSchema, MachineSkillReferenceSchema,
-  ProductConfigurationSchema, CreativeProfileSchema, productCapabilities, registeredExperienceCapabilities, type MachineContentOperation } from '@orai/contracts/admin';
+  ProductConfigurationSchema, CreativeProfileSchema, ProductionPlanModuleSchema, SkillProductPlanInputSchema,
+  productCapabilities, registeredExperienceCapabilities, type MachineContentOperation } from '@orai/contracts/admin';
 import { CatalogAdminAccessService, type CatalogAdminAccess } from '../catalog/admin-access.service';
 import { type MachineRequirement, machineDenied } from '../catalog/machine-authorization';
 import { configurationDigest, defaultExperience } from '../catalog/experience-authoring';
@@ -15,6 +16,7 @@ import { parseInput } from '../common/parse-input';
 import { profileDto } from './content-projections';
 import { ExperienceAuthoringService } from './experience-authoring.service';
 import { SkillFilesService } from './skill-files.service';
+import { bindSkillProductPlan } from './skill-product-policy';
 
 const identity = z.object({ revisionId: IdSchema }).strict();
 function safePaths<T>(value: T): T {
@@ -81,15 +83,34 @@ export class MachineExperienceService {
           }):[];
           const methods=await this.experiences.methods(tx,scoped,choices,[],p.experienceForm,
             {productId:v.productId,profileId:v.creativeProfile.id,productPlan:body.productPlan});
+          // A supplied plan is authoritative even before methods are selected.
+          const fixed = body.productPlan ? await bindSkillProductPlan(tx, scoped, { productId: v.productId, profileId: v.creativeProfile.id,
+            reference: body.productPlan, moduleId: body.planModuleId, purpose: 'scene_design', domain: 'experience', form: p.experienceForm }) : undefined;
           const defaultManifest=defaultExperience(v,v.product.themeKey,v.creativeProfile);
+          if (fixed) {
+            const module = await tx.productionPlanModule.findUniqueOrThrow({ where: { id: fixed.planModuleId } });
+            const runtime = ProductionPlanModuleSchema.parse(module.definition).target.runtime;
+            if (runtime) {
+              if (runtime.inputSchema !== defaultManifest.content.inputSchema || runtime.engine !== defaultManifest.content.engine ||
+                runtime.reportSchema !== defaultManifest.report.contentSchema)
+                throw new ApiException('VALIDATION_ERROR', '固定商品规划声明的答案、评估或报告协议尚未实现', 400);
+              defaultManifest.renderer = runtime.renderer;
+              defaultManifest.report.renderer = runtime.reportRenderer;
+            }
+          }
           const latest=body.includeCapabilities?await tx.experienceAuthoringRevision.findFirst({where:{productVersionId:v.id},orderBy:{number:'desc'}}):null;
+          const latestPlan = SkillProductPlanInputSchema.safeParse(latest?.productPlanInput);
+          const selectedManifest = latest && (!fixed || latestPlan.success &&
+            latestPlan.data.planRevisionId === fixed.planRevisionId && latestPlan.data.planDigest === fixed.planDigest &&
+            latestPlan.data.planModuleId === fixed.planModuleId && latestPlan.data.moduleDigest === fixed.moduleDigest &&
+            latest.configurationDigest === configurationDigest(v.configuration)) ? ExperienceManifestSchema.parse(latest.manifest) : defaultManifest;
           return ExperienceContextSchema.parse(safePaths({productVersionId:v.id,versionRevision:v.revision,creativeProfile:profileDto(v.creativeProfile),
             defaultManifest,reportPlan:p.reportPlan,
             questions:config.questions.map(({id,text,dimensionId,required,options})=>({id,text,dimensionId,required,options:options.map(({id,label,notApplicable})=>({id,label,notApplicable}))})),
             methods,supported:{renderer:'dom-choice@1',report:'legacy-text@1',resources:['illustration','texture'],
               ...(body.includeTemplates?{templates:registeredExperienceCapabilities(2).map(template=>({renderer:template.renderer,report:template.report,...template.limits}))}:{}),
             },...(body.includeCapabilities?{capabilities:productCapabilities({profile:p,profileRevisionId:v.creativeProfile.id,profileFixed:true,
-              manifest:latest?ExperienceManifestSchema.parse(latest.manifest):defaultManifest,hasContentVersion:true,capabilityVersion:body.capabilityVersion})}:{}),}));
+              manifest:selectedManifest,hasContentVersion:true,capabilityVersion:body.capabilityVersion})}:{}),}));
         });
       }
       case 'references_validate': {
