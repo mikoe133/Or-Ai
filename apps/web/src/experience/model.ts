@@ -1,5 +1,10 @@
 import type { ExperienceManifest, ExperienceResource } from '@orai/contracts/experience';
 
+export type ResourceImageBatch = { identity: string; images: { url: string; label: string }[] };
+export function scopedResourceImages(batch: ResourceImageBatch | null, identity: string, enabled: boolean) {
+  return enabled && batch?.identity === identity ? batch.images : [];
+}
+
 export function sceneSelection(manifest: ExperienceManifest, sceneId: string, objectId: string) {
   const scene = manifest.scenes.find(s => s.sceneId === sceneId), choice = scene?.choices.find(c => c.objectId === objectId);
   return scene && choice ? { questionId: scene.questionId, optionId: choice.optionId } : null;
