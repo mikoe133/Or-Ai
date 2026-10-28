@@ -147,7 +147,7 @@ export async function applyCloudDatabasePlan(env:NodeJS.ProcessEnv,input:unknown
     await client.query("SET statement_timeout='30s'");await client.query("SET lock_timeout='5s'");
     await client.query("SELECT pg_advisory_lock(hashtextextended('orai-cloud-maintenance',0))");locked=true;
     await roles(client);const state=await namespace(client,target,reviewed),before=await history(client);verifyHistory(before,reviewed);
-    if(state.marker&&before.length===reviewed.migrations.length){await verifyRuntime(connections,target);await progress('runtime_verified');
+    if(state.marker&&before.length===reviewed.migrations.length&&reviewed.mode==='bootstrap'){await verifyRuntime(connections,target);await progress('runtime_verified');
       return {migrations:before.length,environment:'PRODUCTION' as const,seeded:false,administratorCreated:false,alreadyInitialized:true};}
     if(state.marker&&reviewed.mode!=='migrate')return refused('EXISTING_TARGET_NEEDS_MIGRATE_PLAN');
     if(!state.marker&&reviewed.mode!=='bootstrap')return refused('INITIAL_TARGET_NEEDS_BOOTSTRAP_PLAN');
