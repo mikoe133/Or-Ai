@@ -14,7 +14,7 @@ import { promisify } from 'node:util';
 import type { Request } from 'express';
 import { Test } from '@nestjs/testing';
 import type { INestApplication } from '@nestjs/common';
-import { CreativeProfileSchema, StyleSkillManifestSchema, type ExperienceSaveSchema } from '@orai/contracts/admin';
+import { CreativeProfileSchema, StyleSkillManifestSchema, ProductionPlanDocumentSchema, type ExperienceSaveSchema } from '@orai/contracts/admin';
 import type { z } from 'zod';
 import { AppModule } from '../src/app.module';
 import { APP_CONFIG } from '../src/config/configuration';
@@ -328,4 +328,57 @@ test('the 3D garden has an opt-in v2 declaration, form-specific methods and a re
   const published=await app.get(RuntimeVersionService).read(value.version.id);
   assert.deepEqual(published.experience.manifest,saved.manifest);assert.deepEqual(published.configuration,DemoProducts[0]!.configurations[1]);
   assert.equal((await experiences.read(access,first.id)).manifest.renderer.key,'reflection-garden');
+});
+
+async function syntheticGardenContext(form: 'web' | '3d' = '3d') {
+  const value = await fresh(false, { experienceForm: form });
+  // Fix the profile through the real authoring service, then bind the A plan.
+  await experiences.save(access, productId, value.version.id, value.input);
+  const preparation = JSON.parse(await readFile(resolve(__dirname,
+    '../../../../examples/threejs-products/technical-preparation/garden-observation.json'), 'utf8'));
+  const document = ProductionPlanDocumentSchema.parse({ ...preparation.plan, creativeProfileRevisionId: value.profile.id });
+  for (const module of document.modules) module.target.form = form;
+  const latest = await fixture.runtime.client.productionPlanRevision.aggregate({ where: { productId }, _max: { number: true } });
+  const plan = await app.get(ProductionPlansService).save(access, productId, {
+    plan: document, expectedRevision: latest._max.number ?? 0, requestId: randomUUID(),
+  });
+  const issued = await machine('experience');
+  const module = plan.modules.find(item => item.moduleKey === 'scene')!;
+  return { ...value, plan, issued, module, context: { productVersionId: value.version.id,
+    productPlan: { revisionId: plan.id, digest: plan.digest }, planModuleId: module.id,
+    includeCapabilities: true, capabilityVersion: 2 } };
+}
+
+test('synthetic A MCP context validates the exact plan even without selected methods', async () => {
+  const value = await syntheticGardenContext();
+  const forged = await call(value.issued.token!, 'context_bundle_get', {
+    ...value.context, productPlan: { ...value.context.productPlan, digest: 'f'.repeat(64) },
+  });
+  assert.equal(forged.status, 409, 'a supplied plan digest must never be ignored when no methods are selected');
+  const valid = await call(value.issued.token!, 'context_bundle_get', value.context);
+  assert.equal(valid.status, 200, JSON.stringify(valid.body));
+  assert.equal(valid.body.defaultManifest.renderer.key, 'reflection-garden');
+  const wrongModule = await call(value.issued.token!, 'context_bundle_get', {
+    ...value.context, planModuleId: value.plan.modules.find(item => item.moduleKey === 'cover')!.id,
+  });
+  assert.equal(wrongModule.status, 400);
+  const missing = await call(value.issued.token!, 'context_bundle_get', {
+    ...value.context, productPlan: { revisionId: randomUUID(), digest: value.plan.digest },
+  });
+  assert.equal(missing.status, 404);
+});
+
+test('synthetic A MCP context follows its fixed Three.js pair even when the profile form is web', async () => {
+  const value = await syntheticGardenContext('web');
+  const result = await call(value.issued.token!, 'context_bundle_get', value.context);
+  assert.equal(result.status, 200, JSON.stringify(result.body));
+  assert.equal(result.body.defaultManifest.renderer.key, 'reflection-garden');
+  assert.equal(result.body.defaultManifest.report.renderer.key, 'garden-notes');
+  assert.equal(result.body.capabilities.selected.renderer, 'reflection-garden@1');
+  // The draft is still planning-only; selecting a renderer cannot certify delivery.
+  const draft = { manifest: result.body.defaultManifest, reportPlan: value.profile.profile.reportPlan,
+    methods: [], productPlan: value.context.productPlan, planModuleId: value.module.id, note: '合成A规划检查' };
+  const checked = await experiences.check(access, productId, value.version.id, draft);
+  assert.equal(checked.valid, true);
+  assert.equal(checked.publication?.eligibleForReview, false);
 });
