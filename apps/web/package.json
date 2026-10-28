@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -p tsconfig.json --noEmit && vite build",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "tsc -p tsconfig.test.json && node --test .test-build/test/*.test.js",
+    "test": "tsc -p tsconfig.test.json && node --test .test-build/test/*.test.js && node --test ../../scripts/test/ui-fixture-origin.test.mjs",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
