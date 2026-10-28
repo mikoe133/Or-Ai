@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-28",
+  "sourceMetadataProvided": {
+    "path": "/Skills/anti-ai-web-design/anti-ai-web-design.zip",
+    "libraryFileId": "libfile_5d3572cee9888191a9e9e5082359db58",
+    "fileId": "file_00000000a1c882118a9e813e2f4536d1",
+    "reportedBytes": 530188,
+    "reportedUpdatedAt": "2026-10-28T06:17:44Z"
+  },
+  "metadataIndependentlyVerified": false,
+  "downloaded": false,
+  "actualBytes": null,
+  "sha256": null,
+  "installed": false,
+  "skillFullyRead": false,
+  "relatedVideoAndReferencesRead": false,
+  "missingCapabilities": [
+    "Library SKILL.md is not in the available catalog or inspected local skill roots",
+    "No connected Library binary-download or download-URL tool is exposed"
+  ],
+  "availablePageReferenceReaderCannotDownloadZip": true,
+  "pluginSearchFoundUsableLibraryConnector": false,
+  "externalWebsiteFallbackUsed": false,
+  "globalConfigurationChanged": false,
+  "projectDestinationPlanned": ".agents/skills/anti-ai-web-design",
+  "archiveDestinationPlanned": ".agents/skill-packages/anti-ai-web-design",
+  "taskId": "T18",
+  "taskOrder": 17,
+  "frontendChanged": false,
+  "task07CompletionConditionChanged": false
+}

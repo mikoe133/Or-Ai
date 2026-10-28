@@ -1,0 +1,21 @@
+{
+  "reportedBy": "coordinating session 01a15d49-f07b-77f4-aefd-c07074fc9015",
+  "sourceSkillReadReported": "c0/library",
+  "metadataSearchMatchedReported": true,
+  "libraryFileId": "libfile_5d3572cee9888191a9e9e5082359db58",
+  "reportedBytes": 530188,
+  "reportedUpdatedAt": "2026-10-28T06:17:44Z",
+  "officialAuxiliaryScriptsReported": 3,
+  "selectionReported": "selection000",
+  "helperReported": "library_download.py",
+  "initialFailureReported": "DNS failure",
+  "subsequentSupportedHelperError": "Library prepare_materialize is not available",
+  "exitCodeReported": 1,
+  "downloadedFilesReported": 0,
+  "uncertainTransferReported": false,
+  "zipAvailableInThisWorkspace": false,
+  "sha256": null,
+  "installed": false,
+  "fullSkillRulesReadHere": false,
+  "workaroundUsed": false
+}

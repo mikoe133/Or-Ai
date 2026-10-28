@@ -1,0 +1,31 @@
+{
+  "sourceLibraryId": "libfile_5d3572cee9888191a9e9e5082359db58",
+  "sourceFileId": "file_00000000a1c882118a9e813e2f4536d1",
+  "sourcePath": "/Skills/anti-ai-web-design/anti-ai-web-design.zip",
+  "reportedUpdatedAt": "2026-10-28T06:17:44Z",
+  "transferMethodReported": "official library_file_transfer.py / prepare_materialize",
+  "bytes": 530188,
+  "sha256": "3a874c0cfd394d04ac66cf8fde1d9253305e2b8ff671a18eb226092373a79689",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "bytes": 35316,
+      "sha256": "2097106664718164d6fc23ebf784118d206e54e127f9d41c3d7db7019f7e9423"
+    },
+    {
+      "path": "assets/dashboard-after.png",
+      "bytes": 165550,
+      "sha256": "7099cc92b7e94ea4b27136a6c4d0fc01334433bc37cebb0243e24317372b465c"
+    },
+    {
+      "path": "assets/dashboard-before.png",
+      "bytes": 348698,
+      "sha256": "3352dd7f3f5720ba649570eb35c272c192bc829b21865055e976839aa66abd4f"
+    },
+    {
+      "path": "references/video-timeline.md",
+      "bytes": 4131,
+      "sha256": "f0eb58cbff4ac461a3a798435d922f12fde8168152b38c86189ab82df8ed160b"
+    }
+  ]
+}
