@@ -25,8 +25,16 @@ export async function createLocalFixture(label: string) {
   async function close() {
     try {
       await runtime.close(); await owner.close();
-      const remaining = await maintenance.pool.query('SELECT pid, usename FROM pg_stat_activity WHERE datname=$1', [name]);
-      assert.deepEqual(remaining.rows, [], 'Fixture connections must physically disconnect before cleanup');
+      const deadline = Date.now() + 5000;
+      let remaining: { pid: number; usename: string | null }[];
+      do {
+        const snapshot = await maintenance.pool.query<{ pid: number; usename: string | null }>('SELECT pid, usename FROM pg_stat_activity WHERE datname=$1', [name]);
+        remaining = snapshot.rows;
+        if (!remaining.length) break;
+        // Give PostgreSQL a bounded chance to finish session cleanup after clients close.
+        await new Promise(resolve => setTimeout(resolve, 25));
+      } while (Date.now() < deadline);
+      assert.deepEqual(remaining, [], 'Fixture connections must physically disconnect before cleanup');
       await maintenance.pool.query('DROP DATABASE "' + name + '"');
     } finally { await maintenance.close(); }
   }

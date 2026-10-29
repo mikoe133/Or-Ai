@@ -1,0 +1,38 @@
+✖ fixture cleanup waits for a real TEST connection to finish closing before dropping its database (1848.441792ms)
+✔ fixture cleanup still fails after its bounded wait when a real TEST connection stays open (1459.730917ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3453.472875
+
+✖ failing tests:
+
+test at .test-build/test/local-fixture-cleanup.test.js:35:22
+✖ fixture cleanup waits for a real TEST connection to finish closing before dropping its database (1848.441792ms)
+  AssertionError [ERR_ASSERTION]: Fixture connections must physically disconnect before cleanup
+  + actual - expected
+
+  + [
+  +   {
+  +     pid: 275891,
+  +     usename: 'orai_app'
+  +   }
+  + ]
+  - []
+
+      at Object.close (/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/.test-build/test/local-fixture.js:35:30)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/.test-build/test/local-fixture-cleanup.test.js:42:9)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { pid: 275891, usename: 'orai_app' } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

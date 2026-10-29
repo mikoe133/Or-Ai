@@ -20,6 +20,8 @@
 
 ## 当前实施事实
 
+Skill提交6b269c9的[托管run40868218624](https://github.com/mikoe133/Or-Ai/actions/runs/40868218624)在R2 after清理断言失败（507项API业务断言通过、一个待退出会话），不记CI成功。已[独立修复测试夹具断连等待](../../output/implementation/t18-fixture-disconnect-20261029/README.md)：旧源码/真实连接有效RED，新实现两数据库回归＋四R2共6项GREEN、类型检查通过，仍零会话才DROP，无生产连接池或强制断开改动。后续提交CI另核对，连接配置/项目继续。
+
 2026-10-29另完成[T18 Skill目录/版本工作台](../../output/implementation/t18-admin-skills-20261029/README.md)：有效刷新RED/GREEN、112前端＋2专项、类型/构建、24组同TEST前后比较与28项CUA，六文字样本最低6.58:1。普通/网络恢复保留输入、拒绝访问隐藏、冲突/历史/手机跳转已有证据；临时TEST及自己的页签清理，原五容器healthy。[只归档该子批次](tasks/archive/completed/17-admin-skills-slice-20261029.md)，继续连接配置/项目及完整状态；父T18与05/06、商城审核/13/14暂停保持。
 
 - 基础目录/版本、兑换权益、单选评分/报告/统计、账户本地流程、运营接口、内容工作台/引用/采用、Skill库、项目方法/产物/回执/审核留存和本地正式UI均有既有验收证据。

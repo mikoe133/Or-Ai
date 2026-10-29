@@ -1,0 +1,14 @@
+✔ fixture cleanup waits for a real TEST connection to finish closing before dropping its database (2091.890958ms)
+✔ fixture cleanup still fails after its bounded wait when a real TEST connection stays open (6522.113375ms)
+✔ the application selects R2 from its configuration without making a provider request at startup (1806.252083ms)
+✔ R2 media preparation retains administrator scope and normal pending/upload semantics (41.847417ms)
+✔ R2 Skill reference preparation uses the existing owner, domain, type and quota checks (29.012625ms)
+✔ all upload purposes reject bytes above the configured body budget before allocating a pending file (3.659167ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8748.861834

@@ -1,0 +1,46 @@
+verify	Run pnpm test	2026-10-29T11:54:07.3094371Z ../../.env not found. Continuing without it.
+verify	Run pnpm test	2026-10-29T11:54:07.3115122Z ✔ the application selects R2 from its configuration without making a provider request at startup (5066.377656ms)
+verify	Run pnpm test	2026-10-29T11:54:07.3135362Z ✔ R2 media preparation retains administrator scope and normal pending/upload semantics (78.653964ms)
+verify	Run pnpm test	2026-10-29T11:54:07.3202800Z ✔ R2 Skill reference preparation uses the existing owner, domain, type and quota checks (33.794353ms)
+verify	Run pnpm test	2026-10-29T11:54:07.3205479Z ✔ all upload purposes reject bytes above the configured body budget before allocating a pending file (7.150578ms)
+verify	Run pnpm test	2026-10-29T11:54:07.3208107Z ✖ /home/runner/work/Or-Ai/Or-Ai/apps/api/.test-build/test/r2-services.test.js (31.575565ms)
+verify	Run pnpm test	2026-10-29T11:54:18.7035090Z ℹ tests 508
+verify	Run pnpm test	2026-10-29T11:54:18.7035455Z ℹ suites 0
+verify	Run pnpm test	2026-10-29T11:54:18.7036775Z ℹ pass 507
+verify	Run pnpm test	2026-10-29T11:54:18.7037235Z ℹ fail 1
+verify	Run pnpm test	2026-10-29T11:54:18.7037671Z ℹ cancelled 0
+verify	Run pnpm test	2026-10-29T11:54:18.7038130Z ℹ skipped 0
+verify	Run pnpm test	2026-10-29T11:54:18.7038554Z ℹ todo 0
+verify	Run pnpm test	2026-10-29T11:54:18.7039044Z ℹ duration_ms 224942.402126
+verify	Run pnpm test	2026-10-29T11:54:18.7049792Z
+verify	Run pnpm test	2026-10-29T11:54:18.7050170Z ✖ failing tests:
+verify	Run pnpm test	2026-10-29T11:54:18.7050441Z
+verify	Run pnpm test	2026-10-29T11:54:18.7050827Z test at .test-build/test/r2-services.test.js:36:23
+verify	Run pnpm test	2026-10-29T11:54:18.7052098Z ✖ /home/runner/work/Or-Ai/Or-Ai/apps/api/.test-build/test/r2-services.test.js (31.575565ms)
+verify	Run pnpm test	2026-10-29T11:54:18.7053862Z   AssertionError [ERR_ASSERTION]: Fixture connections must physically disconnect before cleanup
+verify	Run pnpm test	2026-10-29T11:54:18.7054774Z   + actual - expected
+verify	Run pnpm test	2026-10-29T11:54:18.7055197Z
+verify	Run pnpm test	2026-10-29T11:54:18.7055528Z   + [
+verify	Run pnpm test	2026-10-29T11:54:18.7055867Z   +   {
+verify	Run pnpm test	2026-10-29T11:54:18.7056211Z   +     pid: 1162,
+verify	Run pnpm test	2026-10-29T11:54:18.7056601Z   +     usename: null
+verify	Run pnpm test	2026-10-29T11:54:18.7057588Z   +   }
+verify	Run pnpm test	2026-10-29T11:54:18.7057948Z   + ]
+verify	Run pnpm test	2026-10-29T11:54:18.7058272Z   - []
+verify	Run pnpm test	2026-10-29T11:54:18.7058600Z
+verify	Run pnpm test	2026-10-29T11:54:18.7059433Z       at Object.close (/home/runner/work/Or-Ai/Or-Ai/apps/api/.test-build/test/local-fixture.js:35:30)
+verify	Run pnpm test	2026-10-29T11:54:18.7060705Z       at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+verify	Run pnpm test	2026-10-29T11:54:18.7062195Z       at async TestContext.<anonymous> (/home/runner/work/Or-Ai/Or-Ai/apps/api/.test-build/test/r2-services.test.js:36:58)
+verify	Run pnpm test	2026-10-29T11:54:18.7063761Z       at async TestHook.run (node:internal/test_runner/test:1409:7)
+verify	Run pnpm test	2026-10-29T11:54:18.7064673Z       at async Test.runHook (node:internal/test_runner/test:1289:9)
+verify	Run pnpm test	2026-10-29T11:54:18.7065489Z       at async after (node:internal/test_runner/test:1342:9)
+verify	Run pnpm test	2026-10-29T11:54:18.7066294Z       at async Test.run (node:internal/test_runner/test:1428:7) {
+verify	Run pnpm test	2026-10-29T11:54:18.7066962Z     generatedMessage: false,
+verify	Run pnpm test	2026-10-29T11:54:18.7067435Z     code: 'ERR_ASSERTION',
+verify	Run pnpm test	2026-10-29T11:54:18.7067995Z     actual: [ { pid: 1162, usename: null } ],
+verify	Run pnpm test	2026-10-29T11:54:18.7068533Z     expected: [],
+verify	Run pnpm test	2026-10-29T11:54:18.7069000Z     operator: 'deepStrictEqual',
+verify	Run pnpm test	2026-10-29T11:54:18.7069477Z     diff: 'simple'
+verify	Run pnpm test	2026-10-29T11:54:18.7069793Z   }
+verify	Run pnpm test	2026-10-29T11:54:18.7251052Z /home/runner/work/Or-Ai/Or-Ai/apps/api:
+verify	Run pnpm test	2026-10-29T11:54:18.7253631Z  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @orai/api@0.1.0 test: `pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/*.test.js`

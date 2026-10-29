@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-29",
+  "failedRun": {
+    "url": "https://github.com/mikoe133/Or-Ai/actions/runs/40868218624",
+    "headSha": "6b269c92232ce384c00293cf727240267263639b",
+    "conclusion": "failure",
+    "step": "Run pnpm test",
+    "assertion": "Fixture connections must physically disconnect before cleanup",
+    "actual": [
+      {
+        "pid": 1162,
+        "usename": null
+      }
+    ],
+    "apiAssertionsPassed": 507,
+    "totalIncludingCleanupFailure": 508
+  },
+  "red": "Compiled old fixture helper from 6b269c9 with the actual test compiler options, ran new real-database tests, then restored compiled bytes in finally; connection-drain assertion failed as expected",
+  "green": {
+    "tests": 6,
+    "passed": 6,
+    "includes": [
+      "real delayed connection close",
+      "real persistent connection remains alive after cleanup refusal",
+      "four unchanged R2 service tests"
+    ],
+    "typecheck": "passed"
+  },
+  "constraints": [
+    "No production API changes",
+    "No forced disconnect or DROP WITH FORCE",
+    "Assert zero sessions before dropping only exact randomized TEST database",
+    "No real R2 request or cloud configuration"
+  ],
+  "source": [
+    {
+      "file": "apps/api/test/local-fixture.ts",
+      "sha256": "c1d2dbd614c2d11ea4e1356b75a5633d5cdb97b6d1c78dd0f699644adbaf9803"
+    },
+    {
+      "file": "apps/api/test/local-fixture-cleanup.test.ts",
+      "sha256": "4e7a79eb0225027f485974af3ee5c251c47c0a7378a62d4fce894f51d42b683a"
+    }
+  ]
+}
