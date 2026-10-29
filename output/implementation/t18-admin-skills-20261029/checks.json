@@ -1,0 +1,231 @@
+[
+  {
+    "name": "Skill 503 refresh retains the existing editor",
+    "actual": {
+      "editors": 1,
+      "inputs": 1
+    },
+    "passed": true
+  },
+  {
+    "name": "background reconnect 503 preserves an unsubmitted Skill draft",
+    "actual": {
+      "name": "TEST 未保存的 Skill 名称",
+      "requests": 3
+    },
+    "passed": true
+  },
+  {
+    "name": "Skill filtering reads matching methods",
+    "actual": {
+      "rows": 1
+    },
+    "passed": true
+  },
+  {
+    "name": "pending Skill filter labels and disables previous method rows",
+    "actual": {
+      "enabled": 0,
+      "rows": 1
+    },
+    "passed": true
+  },
+  {
+    "name": "filtered empty state differs from an empty library",
+    "actual": {
+      "rows": 0,
+      "clear": 2
+    },
+    "passed": true
+  },
+  {
+    "name": "clearing Skill filters synchronizes all five controls",
+    "actual": {
+      "rows": 1,
+      "values": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    "passed": true
+  },
+  {
+    "name": "browser back restores submitted Skill filters",
+    "actual": {
+      "q": "TEST-no-method"
+    },
+    "passed": true
+  },
+  {
+    "name": "Skill list 503 preserves data and unsubmitted filters",
+    "actual": {
+      "rows": 1,
+      "style": "TEST unsubmitted"
+    },
+    "passed": true
+  },
+  {
+    "name": "Skill list 403 hides private data and keeps current library recovery",
+    "actual": {
+      "editor": 0,
+      "recovery": "/admin/skills/cover",
+      "rows": 0
+    },
+    "passed": true
+  },
+  {
+    "name": "dirty Skill draft prevents history switch and review",
+    "actual": {
+      "history": true,
+      "review": true
+    },
+    "passed": true
+  },
+  {
+    "name": "Skill revision conflict preserves inputs without a write",
+    "actual": {
+      "name": "TEST 冲突后保留的名称",
+      "blockedMethods": [
+        "PUT"
+      ]
+    },
+    "passed": true
+  },
+  {
+    "name": "unsaved Skill navigation guard keeps the current editor",
+    "actual": {
+      "editor": 1
+    },
+    "passed": true
+  },
+  {
+    "name": "discard resets Skill form and clears its previous action error",
+    "actual": {
+      "errors": 0
+    },
+    "passed": true
+  },
+  {
+    "name": "local Skill JSON validation retains malformed input",
+    "actual": {
+      "value": "{"
+    },
+    "passed": true
+  },
+  {
+    "name": "Skill action 403 hides private editor and draft",
+    "actual": {
+      "editor": 0,
+      "inputs": 0
+    },
+    "passed": true
+  },
+  {
+    "name": "reviewed historical Skill remains read-only with its original digest",
+    "actual": {
+      "digest": "e4ddd2d32c5a6dfa2bb71b4bbde521b0b9d94683b3930f1784c08a8f442983cc",
+      "disabled": true,
+      "review": true
+    },
+    "passed": true
+  },
+  {
+    "name": "historical comparison reads actual version differences",
+    "actual": {
+      "diff": 1
+    },
+    "passed": true
+  },
+  {
+    "name": "phone Skill section navigation focuses references and retains draft",
+    "actual": {
+      "focus": "skill-inspector",
+      "name": "TEST 页内导航保留",
+      "overflow": false,
+      "top": 75.8515625
+    },
+    "passed": true
+  },
+  {
+    "name": "phone body jump remains within the dirty Skill editor",
+    "actual": {
+      "focus": "skill-instructions-heading",
+      "name": "TEST 页内导航保留"
+    },
+    "passed": true
+  },
+  {
+    "name": "dirty Skill still blocks navigation to another library",
+    "actual": {
+      "url": "/admin/skills/assessment"
+    },
+    "passed": true
+  },
+  {
+    "name": "empty experience library offers its own first method action",
+    "actual": {
+      "empty": 1
+    },
+    "passed": true
+  },
+  {
+    "name": "new method keeps required Three.js policy and hides a redundant completed action",
+    "actual": {
+      "threejs": true,
+      "unneeded": 0,
+      "perProduct": true
+    },
+    "passed": true
+  },
+  {
+    "name": "initial Skill failure uses its library recovery and no stale rows",
+    "actual": {
+      "recovery": "/admin/skills/video",
+      "rows": 0
+    },
+    "passed": true
+  },
+  {
+    "name": "eight Skill surfaces at three viewports stay within the document",
+    "actual": {
+      "screenshots": 24,
+      "overflow": []
+    },
+    "passed": true
+  },
+  {
+    "name": "Skill text and status samples exceed WCAG AA",
+    "actual": {
+      "samples": 6,
+      "minimum": 6.58
+    },
+    "passed": true
+  },
+  {
+    "name": "actual historical Skill digest remains unchanged after all interactions",
+    "actual": {
+      "digest": "e4ddd2d32c5a6dfa2bb71b4bbde521b0b9d94683b3930f1784c08a8f442983cc",
+      "status": "reviewed"
+    },
+    "passed": true
+  },
+  {
+    "name": "actual TEST member receives Skill API 403 with private views absent",
+    "actual": {
+      "status": 403,
+      "editors": 0
+    },
+    "passed": true
+  },
+  {
+    "name": "logout closes the TEST Skill session and actual API returns 401",
+    "actual": {
+      "logout": 200,
+      "skills": 401
+    },
+    "passed": true
+  }
+]

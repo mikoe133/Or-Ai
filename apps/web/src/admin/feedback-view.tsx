@@ -1,14 +1,17 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import type { StyleSkillManifest } from "@orai/contracts/admin";
 
-export type AdminRecoveryArea = "content" | "products" | "assets" | "orders";
+export type AdminRecoveryArea = "content" | "products" | "assets" | "orders" | "skills";
 const recoveryLabels: Record<AdminRecoveryArea, string> = {
-  content: "返回内容目录", products: "返回商品目录", assets: "返回素材目录", orders: "返回订单列表",
+  content: "返回内容目录", products: "返回商品目录", assets: "返回素材目录", orders: "返回订单列表", skills: "返回 Skill 目录",
 };
 
-export function AdminRecovery({ area = "content", onReturn }: { area?: AdminRecoveryArea; onReturn?: () => void }) {
+export function AdminRecovery({ area = "content", onReturn, skillDomain = "assessment" }: {
+  area?: AdminRecoveryArea; onReturn?: () => void; skillDomain?: StyleSkillManifest["domain"];
+}) {
   return <nav className="admin-error-recovery" aria-label="后台恢复入口">
-    <Link to={`/admin/${area}`} reloadDocument={!onReturn} onClick={onReturn ? event => {
+    <Link to={area === "skills" ? `/admin/skills/${skillDomain}` : `/admin/${area}`} reloadDocument={!onReturn} onClick={onReturn ? event => {
       if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey) {
         event.preventDefault();
         onReturn();

@@ -7,7 +7,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ProductionDomainSchema,
   StyleSkillManifestSchema,
@@ -20,7 +20,10 @@ import {
   threejsSkillPolicyIssues,
   type StyleSkillManifest,
 } from "@orai/contracts/admin";
-import { Failure, Loading, Pager, useAction } from "../business/shared.js";
+import { Loading, Pager, useAction } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { AdminEmptyState, AdminListProgress } from "./feedback-view.js";
+import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
 import { api } from "../api/consumer.js";
 import { ClientError } from "../api/client.js";
 import { allPages } from "./content-api.js";
@@ -72,7 +75,8 @@ function LibraryRoute() {
 function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
   const [params, setParams] = useSearchParams(),
     [dirty, setDirty] = useState(false),
-    [notice, setNotice] = useState("");
+    [notice, setNotice] = useState(""),
+    [localAccessError, setLocalAccessError] = useState<unknown>(null);
   const client = useQueryClient();
   const skillId = params.get("skill") ?? "",
     versionId = params.get("version") ?? "",
@@ -81,10 +85,16 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
   const query = new URLSearchParams(
     [...params].filter(([key]) => !["skill", "version", "new"].includes(key)),
   ).toString();
+  const appliedQ = params.get("q") ?? "", appliedStyle = params.get("style") ?? "", appliedPurpose = params.get("purpose") ?? "", appliedForm = params.get("form") ?? "", appliedStatus = params.get("status") ?? "";
+  const [filters, setFilters] = useState({ q: appliedQ, style: appliedStyle, purpose: appliedPurpose, form: appliedForm, status: appliedStatus });
+  useEffect(() => { setFilters({ q: appliedQ, style: appliedStyle, purpose: appliedPurpose, form: appliedForm, status: appliedStatus }); }, [appliedQ, appliedStyle, appliedPurpose, appliedForm, appliedStatus]);
+  const filtered = Boolean(appliedQ || appliedStyle || appliedPurpose || appliedForm || appliedStatus);
+  function clearFilters() { setFilters({ q: "", style: "", purpose: "", form: "", status: "" }); setParams({}); }
   const list = useQuery({
     queryKey: ["private", "admin", "skills", domain, query],
     queryFn: ({ signal }) => skillsApi.list(domain, query, signal),
     refetchOnWindowFocus: false,
+    placeholderData: keepPreviousData,
   });
   const skill = useQuery({
     queryKey: ["private", "admin", "skills-detail", domain, skillId],
@@ -114,6 +124,14 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
     enabled: !!skillId && !!selectedId,
     refetchOnWindowFocus: false,
   });
+  const accessError = [localAccessError, list.error, skill.error, versions.error, selected.error].find(isAccessFailure);
+  const listData = accessError ? undefined : list.data;
+  const editorError = skill.error ?? selected.error ?? versions.error;
+  const readingEditor = skill.isFetching || versions.isFetching || selected.isFetching;
+  async function readAgain() {
+    const results = await Promise.all([list.refetch(), ...(skillId ? [skill.refetch(), versions.refetch()] : []), ...(skillId && selectedId ? [selected.refetch()] : [])]);
+    if (results.every(result => result.isSuccess)) setLocalAccessError(null);
+  }
   useEffect(() => {
     if (!dirty) return;
     const unload = (event: BeforeUnloadEvent) => {
@@ -123,6 +141,7 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
     const click = (event: MouseEvent) => {
       const anchor = (event.target as Element).closest("a[href]");
       if (anchor && !anchor.hasAttribute("download")) {
+        if (anchor.getAttribute("href")?.startsWith("#")) return;
         event.preventDefault();
         event.stopPropagation();
         setNotice("有未保存的 skill 修改，请先保存或放弃。");
@@ -183,7 +202,6 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
     >
       <div className="content-section-heading">
         <div>
-          <span className="content-eyebrow">创作方法 / SKILL LIBRARY</span>
           <h2>{skillDomains[domain]} skill 库</h2>
           <p>维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。</p>
         </div>
@@ -194,6 +212,7 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
         ) : (
           <button
             className="skill-primary"
+            disabled={Boolean(accessError)}
             onClick={() => choose("", "", true)}
           >
             新建 skill
@@ -216,11 +235,11 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
           {notice}
         </p>
       )}
+      {accessError ? <Failure area="skills" skillDomain={domain} error={accessError} retry={() => void readAgain()} /> : <>
       {!hasEditor && (
         <>
           <form
             className="content-fields skill-filters"
-            key={query}
             onSubmit={(event) => {
               event.preventDefault();
               if (dirty) {
@@ -240,7 +259,9 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
               搜索 skill
               <input
                 name="q"
-                defaultValue={params.get("q") ?? ""}
+                value={filters.q}
+                onChange={event => setFilters({ ...filters, q: event.target.value })}
+                maxLength={100}
                 placeholder="名称或说明"
               />
             </label>
@@ -248,13 +269,15 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
               风格标签
               <input
                 name="style"
-                defaultValue={params.get("style") ?? ""}
+                value={filters.style}
+                onChange={event => setFilters({ ...filters, style: event.target.value })}
+                maxLength={40}
                 placeholder="例如：温柔"
               />
             </label>
             <label>
               专业用途
-              <select name="purpose" defaultValue={params.get("purpose") ?? ""}>
+              <select name="purpose" value={filters.purpose} onChange={event => setFilters({ ...filters, purpose: event.target.value })}>
                 <option value="">全部用途</option>
                 {skillPurposes[domain].map((p) => (
                   <option key={p} value={p}>
@@ -265,7 +288,7 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
             </label>
             <label>
               支持形式
-              <select name="form" defaultValue={params.get("form") ?? ""}>
+              <select name="form" value={filters.form} onChange={event => setFilters({ ...filters, form: event.target.value })}>
                 <option value="">全部形式</option>
                 {["web", "cards", "2.5d", "3d", "game"].map((form) => (
                   <option key={form}>{form}</option>
@@ -274,7 +297,7 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
             </label>
             <label>
               包含版本状态
-              <select name="status" defaultValue={params.get("status") ?? ""}>
+              <select name="status" value={filters.status} onChange={event => setFilters({ ...filters, status: event.target.value })}>
                 <option value="">全部状态</option>
                 {Object.entries(skillStatuses).map(([value, label]) => (
                   <option key={value} value={value}>
@@ -284,17 +307,19 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
               </select>
             </label>
             <button>查询 skill</button>
+            {filtered && <button type="button" onClick={clearFilters}>清除筛选</button>}
           </form>
-          {list.isPending ? (
-            <Loading />
-          ) : list.isError ? (
-            <Failure error={list.error} retry={() => void list.refetch()} />
+          {!listData ? (
+            list.isError ? <Failure area="skills" skillDomain={domain} error={list.error} retry={() => void list.refetch()} /> : <div className="admin-list-loading"><Loading label="正在读取 Skill 目录…" /></div>
           ) : (
-            <>
+            <section className="admin-list-results" aria-label="Skill 目录" aria-busy={list.isFetching}>
+              {list.isError && <RefreshNotice busy={list.isFetching} retry={() => void list.refetch()} />}
+              {list.isFetching && <AdminListProgress pending={list.isPlaceholderData} />}
               <div className="skill-list-summary">
-                <span>本领域的创作方法</span>
-                <span>当前页 {list.data.items.length} 项</span>
+                <h3>{filtered ? "筛选结果" : "全部方法"}</h3>
+                <div className="admin-catalog-actions"><span>{listData.total} 份方法</span><button type="button" aria-label="更新 Skill 目录" disabled={list.isFetching} onClick={() => void list.refetch()}>更新目录</button></div>
               </div>
+              {listData.items.length ? <>
               <div className="skill-table-wrap">
                 <table className="skill-list">
                   <thead>
@@ -309,12 +334,13 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {list.data.items.map((row) => (
+                    {listData.items.map((row) => (
                       <tr key={row.id}>
                         <td className="skill-name-cell">
                           <button
                             className="skill-row-name"
                             onClick={() => choose(row.id, row.latest.id)}
+                            disabled={list.isPlaceholderData}
                             aria-label={"打开 " + row.name}
                           >
                             {row.name}
@@ -352,6 +378,7 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
                           <button
                             className="skill-open"
                             onClick={() => choose(row.id, row.latest.id)}
+                            disabled={list.isPlaceholderData}
                             aria-label={"查看 " + row.name}
                           >
                             打开 <span aria-hidden="true">↗</span>
@@ -361,15 +388,10 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
                     ))}
                   </tbody>
                 </table>
-                {!list.data.items.length && (
-                  <div className="skill-empty">
-                    <strong>没有匹配的 skill</strong>
-                    <p>调整筛选条件，或新建本领域的第一份创作方法。</p>
-                  </div>
-                )}
               </div>
+              <fieldset className="admin-list-pagination" disabled={list.isPlaceholderData}>
               <Pager
-                {...list.data}
+                {...listData}
                 onChange={(page) => {
                   if (dirty) return;
                   const next = new URLSearchParams(params);
@@ -377,16 +399,21 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
                   setParams(next);
                 }}
               />
-            </>
+              </fieldset>
+              </> : <AdminEmptyState title={filtered ? "没有匹配的 Skill" : "本领域还没有方法"}
+                actions={filtered ? <button type="button" onClick={clearFilters}>清除筛选</button> : <button type="button" onClick={() => choose("", "", true)}>新建 skill</button>}>
+                {filtered ? "调整关键词、风格或用途，也可以清除筛选查看本领域全部方法。" : "从一份草稿开始，固定方法和参考资料后再审核使用。"}
+              </AdminEmptyState>}
+            </section>
           )}
         </>
       )}
       {hasEditor &&
-        (skillId && (skill.isError || selected.isError || versions.isError) ? (
-          <Failure error={skill.error ?? selected.error ?? versions.error} />
-        ) : skillId && (!skill.data || !selected.data || !versions.data) ? (
-          <Loading />
+        (skillId && (!skill.data || !selected.data || !versions.data) ? (
+          editorError ? <Failure area="skills" skillDomain={domain} error={editorError} retry={() => void readAgain()} /> : <Loading label="正在读取方法与固定版本…" />
         ) : (
+          <>
+          {editorError && <RefreshNotice busy={readingEditor || dirty} retry={() => void readAgain()} />}
           <SkillEditor
             key={
               (selected.data?.id ?? "new") +
@@ -400,8 +427,12 @@ function SkillLibrary({ domain }: { domain: keyof typeof skillDomains }) {
             choose={(v) => choose(skillId, v)}
             onDirty={setDirty}
             onSaved={saved}
+            onReturn={() => choose("", "")}
+            onAccessFailure={setLocalAccessError}
           />
+          </>
         ))}
+      </>}
     </section>
   );
 }
@@ -413,6 +444,8 @@ function SkillEditor({
   choose,
   onDirty,
   onSaved,
+  onReturn,
+  onAccessFailure,
 }: {
   domain: keyof typeof skillDomains;
   skill: Skill | null;
@@ -421,6 +454,8 @@ function SkillEditor({
   choose: (versionId: string) => void;
   onDirty: (value: boolean) => void;
   onSaved: (value: SkillVersion) => Promise<void>;
+  onReturn: () => void;
+  onAccessFailure: (error: unknown) => void;
 }) {
   const queryClient = useQueryClient();
   const [draft, setDraft] = useState<StyleSkillManifest>(
@@ -481,6 +516,10 @@ function SkillEditor({
     enabled: !!skill && !!version && !!compare,
     refetchOnWindowFocus: false,
   });
+  useEffect(() => {
+    const error = [action.error, diff.error].find(isAccessFailure);
+    if (error) onAccessFailure(error);
+  }, [action.error, diff.error, onAccessFailure]);
   function install(value: StyleSkillManifest) {
     if (value.domain !== domain)
       throw new ClientError("VALIDATION_ERROR", "导入内容属于其他领域。");
@@ -493,15 +532,12 @@ function SkillEditor({
     <section className="skill-editor" aria-label="skill 编辑器">
       <div className="skill-editor-heading">
         <div>
-          <span className="content-eyebrow">
-            {skill ? "版本工作台" : "建立创作方法"}
-          </span>
-          <strong>{draft.name}</strong>
-          <h3>
+          <h3>{draft.name}</h3>
+          <p>
             {version
               ? `v${version.number} · ${skillStatuses[version.status]}`
               : "新建 skill 草稿"}
-          </h3>
+          </p>
         </div>
         <span className={"skill-editor-state" + (dirty ? " is-dirty" : "")}>
           <i aria-hidden="true" />
@@ -521,15 +557,17 @@ function SkillEditor({
           此版本已固定。需要调整方法时，复制为新版本后编辑，现有绑定继续使用原版本。
         </p>
       )}
-      <div className="content-note" role="note" aria-label="Three.js 商品制作要求">
+      <div className="skill-policy-note" role="note" aria-label="Three.js 商品制作要求">
         <p>{productImplementationPolicy.summary} 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。</p>
-        <p>{!policyIssues.length ? '已声明商品政策 v1、共同条款、专业条款和必填规划输入；具体方法与产物仍需审核。' : editable ? '此草稿尚缺商品政策。补齐后核对并保存；动画与交互仍由具体商品规划确定。' : '此历史版本保持原文。用于新的 Three.js 商品前，复制并补齐商品政策，再审核。'}</p>
+        {!policyIssues.length ? <details><summary>查看商品政策依据</summary><p>已声明商品政策 v1、共同条款、专业条款和必填规划输入；具体方法与产物仍需审核。</p></details> :
+          <p className="skill-policy-warning">{editable ? '此草稿尚缺商品政策。补齐后核对并保存；动画与交互仍由具体商品规划确定。' : '此历史版本保持原文。用于新的 Three.js 商品前，复制并补齐商品政策，再审核。'}</p>}
         {!!policyIssues.length && <ul>{policyIssues.map(issue => <li key={issue.path + issue.message}>{issue.message}</li>)}</ul>}
-        {editable && <button type="button" disabled={action.busy || pending || !policyIssues.length} onClick={() => void action.run(async () => StyleSkillManifestSchema.parse(withThreejsSkillPolicy({
+        {editable && policyIssues.length > 0 && <button type="button" disabled={action.busy || pending} onClick={() => void action.run(async () => StyleSkillManifestSchema.parse(withThreejsSkillPolicy({
           ...draft, inputs: JSON.parse(inputs), outputs: JSON.parse(outputs), examples: JSON.parse(examples),
         })), install)}>补齐 Three.js 商品政策</button>}
       </div>
-      {Boolean(action.error) && <Failure error={action.error} />}
+      {Boolean(action.error) && <Failure area="skills" skillDomain={domain} error={action.error} draft={editable} onReturn={onReturn} />}
+      <nav className="skill-editor-sections" aria-label="方法页内导航"><a href="#skill-instructions-heading">方法正文</a><a href="#skill-inspector">版本与参考资料</a></nav>
       <div className="skill-editor-workspace">
         <fieldset
           className="skill-document"
@@ -636,7 +674,7 @@ function SkillEditor({
           </details>
           <div className="skill-document-heading">
             <span>02</span>
-            <h4>SKILL.md</h4>
+            <h4 id="skill-instructions-heading" tabIndex={-1}>SKILL.md</h4>
             <small>{editable ? "编辑创作方法正文" : "固定版本 · 只读"}</small>
           </div>
           <label>
@@ -741,7 +779,7 @@ function SkillEditor({
             </>
           )}
         </fieldset>
-        <aside className="skill-inspector" aria-label="版本与参考资料">
+        <aside id="skill-inspector" tabIndex={-1} className="skill-inspector" aria-label="版本与参考资料">
           <section className="skill-version-panel">
             <div className="skill-inspector-heading">
               <h4>版本信息</h4>
@@ -882,6 +920,7 @@ function SkillEditor({
                 skillId={skill.id}
                 disabled={action.busy}
                 onPending={setPending}
+                onAccessFailure={onAccessFailure}
                 onUploaded={(path, file) =>
                   setDraft({
                     ...draft,
@@ -928,7 +967,7 @@ function SkillEditor({
                 </select>
               </label>
               {diff.isError ? (
-                <Failure error={diff.error} />
+                <Failure area="skills" skillDomain={domain} error={diff.error} retry={() => void diff.refetch()} />
               ) : diff.data ? (
                 <>
                   <p>
@@ -1031,6 +1070,7 @@ function SkillEditor({
             <button
               disabled={!dirty || action.busy}
               onClick={() => {
+                action.resetError();
                 install(version?.manifest ?? defaultSkill(domain));
                 setSlug(skill?.slug ?? "");
                 setResetKey((v) => v + 1);
@@ -1108,12 +1148,14 @@ function SkillReferenceUpload({
   disabled,
   onPending,
   onUploaded,
+  onAccessFailure,
 }: {
-  domain: string;
+  domain: keyof typeof skillDomains;
   skillId: string;
   disabled: boolean;
   onPending: (v: boolean) => void;
   onUploaded: (path: string, file: SkillFile) => void;
+  onAccessFailure: (error: unknown) => void;
 }) {
   const [file, setFile] = useState<File | null>(null),
     [path, setPath] = useState("references/guide.md"),
@@ -1121,6 +1163,7 @@ function SkillReferenceUpload({
     [attempt, setAttempt] = useState(0),
     [notice, setNotice] = useState("");
   const action = useAction();
+  useEffect(() => { if (isAccessFailure(action.error)) onAccessFailure(action.error); }, [action.error, onAccessFailure]);
   return (
     <section className="content-file-slot">
       <label>
@@ -1231,7 +1274,7 @@ function SkillReferenceUpload({
         取消待上传参考
       </button>
       {notice && <p role="status">{notice}</p>}
-      {Boolean(action.error) && <Failure error={action.error} />}
+      {Boolean(action.error) && <Failure area="skills" skillDomain={domain} error={action.error} draft />}
     </section>
   );
 }

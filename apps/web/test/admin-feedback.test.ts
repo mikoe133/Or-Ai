@@ -24,6 +24,15 @@ test("a pending filter explicitly identifies retained rows as the previous direc
   assert.match(html, /正在读取筛选结果，暂时显示上一份目录/);
 });
 
+test("Skill error recovery returns to the selected library without losing its domain", () => {
+  for (const domain of ["assessment", "cover", "video", "copy", "experience"] as const) {
+    const html = renderToStaticMarkup(createElement(MemoryRouter, null,
+      createElement(AdminRecovery, { area: "skills", skillDomain: domain })));
+    assert.match(html, new RegExp(`href="/admin/skills/${domain}"`));
+    assert.doesNotMatch(html, /href="\/(?:redeem|apps)"/);
+  }
+});
+
 test("compact capability context keeps required setup warnings visible outside optional technical details", () => {
   const value = productCapabilities({ hasContentVersion: true, capabilityVersion: 2 });
   const html = renderToStaticMarkup(createElement(ContentCapabilities, { value, hasVersion: true }));

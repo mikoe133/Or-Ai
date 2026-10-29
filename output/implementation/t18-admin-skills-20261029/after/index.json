@@ -1,0 +1,294 @@
+{
+  "phase": "after",
+  "scope": "same isolated TEST fixture; four deterministic methods and one reviewed historical version; no formal content",
+  "rows": [
+    {
+      "key": "library-assessment",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "library-assessment-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n题目与规则设计\n报告写作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 assessment 修订稿\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n题目与规则设计\n\t3d\tv2草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 1440
+    },
+    {
+      "key": "library-cover",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "library-cover-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "封面 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n封面制作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 cover\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n封面制作\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 1440
+    },
+    {
+      "key": "library-video",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "library-video-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "视频 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n视频与分镜\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 video\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n视频与分镜\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 1440
+    },
+    {
+      "key": "library-copy",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "library-copy-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "引流文案 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n传播文案\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 copy\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n传播文案\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 1440
+    },
+    {
+      "key": "library-experience",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "library-experience-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "交互体验 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n场景与交互设计\n报告呈现\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n0 份方法\n更新目录\n本领域还没有方法\n\n从一份草稿开始，固定方法和参考资料后再审核使用。\n\n新建 skill",
+      "width": 1440
+    },
+    {
+      "key": "draft",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "draft-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\nTEST 合成方法 assessment 修订稿\n\nv2 · 草稿\n\n可编辑草稿\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n01\n方法资料\n名称、用途与适用形式\n稳定标识\n名称\n说明\n风格标签（逗号分隔）\n专业用途\n题目与规则设计\n报告写作\n支持商品形式\nweb\ncards\n2.5d\n3d\ngame\n02\nSKILL.md\n编辑创作方法正文\nSKILL.md 正文\n03\n输入与输出约定\nJSON 规范与示例\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n04\n从文件导入\n导入 Markdown 正文\n导入平台清单 JSON\n\nMarkdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。\n\n版本信息\n2 个版本\n历史版本\nv2 · 草稿\nv1 · 已审核\n领域\n题库与报告\n当前状态\n草稿\n形式\n3d\n读取最新 skill 稿\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n包内参考路径\n参考附件\n上传并校验参考\n取消待上传参考\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n固定版本摘要\n与历史版本比较\n请选择\nv1 · 已审核\n导出当前版本\n导出 skill JSON\n导出 SKILL.md\n保存 skill 草稿\n放弃 skill 修改\n复制为新版本\n审核 skill\n启用 skill\n归档 skill",
+      "width": 1440
+    },
+    {
+      "key": "history",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "history-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\nTEST 合成方法 assessment\n\nv1 · 已审核\n\n固定版本 · 只读\n\n此版本已固定。需要调整方法时，复制为新版本后编辑，现有绑定继续使用原版本。\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n01\n方法资料\n展开查看名称、用途与适用形式\n02\nSKILL.md\n固定版本 · 只读\nSKILL.md 正文\n03\n输入与输出约定\nJSON 规范与示例\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n版本信息\n2 个版本\n历史版本\nv2 · 草稿\nv1 · 已审核\n领域\n题库与报告\n当前状态\n已审核\n形式\n3d\n读取最新 skill 稿\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n固定版本摘要\n与历史版本比较\n请选择\nv2 · 草稿\n导出当前版本\n导出 skill JSON\n导出 SKILL.md\n复制为新版本\n审核 skill\n启用 skill\n归档 skill",
+      "width": 1440
+    },
+    {
+      "key": "new",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "new-1440.png",
+      "documentWidth": 1440,
+      "ready": true,
+      "text": "交互体验 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\n新的交互体验 skill\n\n新建 skill 草稿\n\n可编辑草稿\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n01\n方法资料\n名称、用途与适用形式\n稳定标识\n名称\n说明\n风格标签（逗号分隔）\n专业用途\n场景与交互设计\n报告呈现\n支持商品形式\nweb\ncards\n2.5d\n3d\ngame\n02\nSKILL.md\n编辑创作方法正文\nSKILL.md 正文\n03\n输入与输出约定\nJSON 规范与示例\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n04\n从文件导入\n导入 Markdown 正文\n导入平台清单 JSON\n\nMarkdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。\n\n版本信息\n尚未保存\n领域\n交互体验\n当前状态\n新建草稿\n形式\n3d\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n先保存 skill，再上传参考文件。\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n保存 skill 草稿\n放弃 skill 修改",
+      "width": 1440
+    },
+    {
+      "key": "library-assessment",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "library-assessment-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n题目与规则设计\n报告写作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 assessment 修订稿\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n题目与规则设计\n\t3d\tv2草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 768
+    },
+    {
+      "key": "library-cover",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "library-cover-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "封面 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n封面制作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 cover\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n封面制作\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 768
+    },
+    {
+      "key": "library-video",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "library-video-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "视频 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n视频与分镜\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 video\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n视频与分镜\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 768
+    },
+    {
+      "key": "library-copy",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "library-copy-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "引流文案 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n传播文案\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 copy\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n传播文案\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 768
+    },
+    {
+      "key": "library-experience",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "library-experience-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "交互体验 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n场景与交互设计\n报告呈现\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n0 份方法\n更新目录\n本领域还没有方法\n\n从一份草稿开始，固定方法和参考资料后再审核使用。\n\n新建 skill",
+      "width": 768
+    },
+    {
+      "key": "draft",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "draft-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\nTEST 合成方法 assessment 修订稿\n\nv2 · 草稿\n\n可编辑草稿\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n方法正文\n版本与参考资料\n01\n方法资料\n名称、用途与适用形式\n稳定标识\n名称\n说明\n风格标签（逗号分隔）\n专业用途\n题目与规则设计\n报告写作\n支持商品形式\nweb\ncards\n2.5d\n3d\ngame\n02\nSKILL.md\n编辑创作方法正文\nSKILL.md 正文\n03\n输入与输出约定\nJSON 规范与示例\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n04\n从文件导入\n导入 Markdown 正文\n导入平台清单 JSON\n\nMarkdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。\n\n版本信息\n2 个版本\n历史版本\nv2 · 草稿\nv1 · 已审核\n领域\n题库与报告\n当前状态\n草稿\n形式\n3d\n读取最新 skill 稿\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n包内参考路径\n参考附件\n上传并校验参考\n取消待上传参考\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n固定版本摘要\n与历史版本比较\n请选择\nv1 · 已审核\n导出当前版本\n导出 skill JSON\n导出 SKILL.md\n保存 skill 草稿\n放弃 skill 修改\n复制为新版本\n审核 skill\n启用 skill\n归档 skill",
+      "width": 768
+    },
+    {
+      "key": "history",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "history-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\nTEST 合成方法 assessment\n\nv1 · 已审核\n\n固定版本 · 只读\n\n此版本已固定。需要调整方法时，复制为新版本后编辑，现有绑定继续使用原版本。\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n方法正文\n版本与参考资料\n01\n方法资料\n展开查看名称、用途与适用形式\n02\nSKILL.md\n固定版本 · 只读\nSKILL.md 正文\n03\n输入与输出约定\nJSON 规范与示例\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n版本信息\n2 个版本\n历史版本\nv2 · 草稿\nv1 · 已审核\n领域\n题库与报告\n当前状态\n已审核\n形式\n3d\n读取最新 skill 稿\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n固定版本摘要\n与历史版本比较\n请选择\nv2 · 草稿\n导出当前版本\n导出 skill JSON\n导出 SKILL.md\n复制为新版本\n审核 skill\n启用 skill\n归档 skill",
+      "width": 768
+    },
+    {
+      "key": "new",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "new-768.png",
+      "documentWidth": 768,
+      "ready": true,
+      "text": "交互体验 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\n新的交互体验 skill\n\n新建 skill 草稿\n\n可编辑草稿\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n方法正文\n版本与参考资料\n01\n方法资料\n名称、用途与适用形式\n稳定标识\n名称\n说明\n风格标签（逗号分隔）\n专业用途\n场景与交互设计\n报告呈现\n支持商品形式\nweb\ncards\n2.5d\n3d\ngame\n02\nSKILL.md\n编辑创作方法正文\nSKILL.md 正文\n03\n输入与输出约定\nJSON 规范与示例\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n04\n从文件导入\n导入 Markdown 正文\n导入平台清单 JSON\n\nMarkdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。\n\n版本信息\n尚未保存\n领域\n交互体验\n当前状态\n新建草稿\n形式\n3d\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n先保存 skill，再上传参考文件。\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n保存 skill 草稿\n放弃 skill 修改",
+      "width": 768
+    },
+    {
+      "key": "library-assessment",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "library-assessment-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n题目与规则设计\n报告写作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 assessment 修订稿\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n题目与规则设计\n\t3d\tv2草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 390
+    },
+    {
+      "key": "library-cover",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "library-cover-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "封面 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n封面制作\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 cover\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n封面制作\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 390
+    },
+    {
+      "key": "library-video",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "library-video-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "视频 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n视频与分镜\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 video\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n视频与分镜\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 390
+    },
+    {
+      "key": "library-copy",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "library-copy-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "引流文案 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n传播文案\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n1 份方法\n更新目录\n名称与说明\t风格 / 用途\t支持形式\t最新版本\t\n操作\n\nTEST 合成方法 copy\n\n仅用于独立 localhost 后台界面与错误状态验证，不是正式内容。\n\n\tTEST · 温柔\n传播文案\n\t3d\tv1草稿\t打开\n↗\n上一页\n第 1 页 · 共 1 条\n下一页",
+      "width": 390
+    },
+    {
+      "key": "library-experience",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "library-experience-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "交互体验 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n新建 skill\n题库与报告\n封面\n视频\n引流文案\n交互体验\n搜索 skill\n风格标签\n专业用途\n全部用途\n场景与交互设计\n报告呈现\n支持形式\n全部形式\nweb\ncards\n2.5d\n3d\ngame\n包含版本状态\n全部状态\n草稿\n已审核\n已启用\n已归档\n查询 skill\n全部方法\n0 份方法\n更新目录\n本领域还没有方法\n\n从一份草稿开始，固定方法和参考资料后再审核使用。\n\n新建 skill",
+      "width": 390
+    },
+    {
+      "key": "draft",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "draft-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\nTEST 合成方法 assessment 修订稿\n\nv2 · 草稿\n\n可编辑草稿\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n方法正文\n版本与参考资料\n01\n方法资料\n稳定标识\n名称\n说明\n风格标签（逗号分隔）\n专业用途\n题目与规则设计\n报告写作\n支持商品形式\nweb\ncards\n2.5d\n3d\ngame\n02\nSKILL.md\nSKILL.md 正文\n03\n输入与输出约定\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n04\n从文件导入\n导入 Markdown 正文\n导入平台清单 JSON\n\nMarkdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。\n\n版本信息\n2 个版本\n历史版本\nv2 · 草稿\nv1 · 已审核\n领域\n题库与报告\n当前状态\n草稿\n形式\n3d\n读取最新 skill 稿\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n包内参考路径\n参考附件\n上传并校验参考\n取消待上传参考\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n固定版本摘要\n与历史版本比较\n请选择\nv1 · 已审核\n导出当前版本\n导出 skill JSON\n导出 SKILL.md\n保存 skill 草稿\n放弃 skill 修改\n复制为新版本\n审核 skill\n启用 skill\n归档 skill",
+      "width": 390
+    },
+    {
+      "key": "history",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "history-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "题库与报告 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\nTEST 合成方法 assessment\n\nv1 · 已审核\n\n固定版本 · 只读\n\n此版本已固定。需要调整方法时，复制为新版本后编辑，现有绑定继续使用原版本。\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n方法正文\n版本与参考资料\n01\n方法资料\n02\nSKILL.md\nSKILL.md 正文\n03\n输入与输出约定\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n版本信息\n2 个版本\n历史版本\nv2 · 草稿\nv1 · 已审核\n领域\n题库与报告\n当前状态\n已审核\n形式\n3d\n读取最新 skill 稿\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n固定版本摘要\n与历史版本比较\n请选择\nv2 · 草稿\n导出当前版本\n导出 skill JSON\n导出 SKILL.md\n复制为新版本\n审核 skill\n启用 skill\n归档 skill",
+      "width": 390
+    },
+    {
+      "key": "new",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "new-390.png",
+      "documentWidth": 390,
+      "ready": true,
+      "text": "交互体验 skill 库\n\n维护本领域的方法、风格与参考资料，固定版本供外部制作工具读取。\n\n← 返回 skill 列表\n题库与报告\n封面\n视频\n引流文案\n交互体验\n新的交互体验 skill\n\n新建 skill 草稿\n\n可编辑草稿\n\n所有商品的正常体验统一使用 Three.js；动画、镜头和交互按每款商品的固定规划确定。 所有领域的 Skill 都需明确此要求，报告与传播素材按同一商品设定配套。\n\n查看商品政策依据\n方法正文\n版本与参考资料\n01\n方法资料\n稳定标识\n名称\n说明\n风格标签（逗号分隔）\n专业用途\n场景与交互设计\n报告呈现\n支持商品形式\nweb\ncards\n2.5d\n3d\ngame\n02\nSKILL.md\nSKILL.md 正文\n03\n输入与输出约定\n输入规范 JSON\n输出规范 JSON\n示例 JSON\n04\n从文件导入\n导入 Markdown 正文\n导入平台清单 JSON\n\nMarkdown 导入只替换正文，元数据在表单中填写。新保存使用平台 v2 清单；v1 历史清单可读取，需补齐商品政策后用于新制作。跨环境导入需重新上传参考文件并登记本机文件 ID。\n\n版本信息\n尚未保存\n领域\n交互体验\n当前状态\n新建草稿\n形式\n3d\n固定参考资料\n0 份\n\n此版本尚未关联参考文件。\n\n先保存 skill，再上传参考文件。\n\n参考文件每份最多 5 MiB，每版最多 20 份、25 MiB。原始文件与历史版本保留；此页仅修改引用关联。\n\n保存 skill 草稿\n放弃 skill 修改",
+      "width": 390
+    }
+  ]
+}

@@ -230,26 +230,26 @@
   margin: 0 0 8px;
   font-size: 10px;
 }
-.admin-shell .biz-view .skill-editor-heading strong {
+.admin-shell .biz-view .skill-editor-heading h3 {
+  display: block;
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
-.admin-shell .biz-view .skill-editor-heading h3 {
-  display: inline-block;
-  margin: 0 0 0 14px;
+.admin-shell .biz-view .skill-editor-heading p {
+  margin: 8px 0 0;
   font-size: 12px;
   font-weight: 400;
   color: var(--admin-muted, #a09eb5);
-  vertical-align: baseline;
 }
 .admin-shell .biz-view .skill-editor-state {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--admin-muted, #a09eb5);
 }
 .admin-shell .biz-view .skill-editor-state i {
@@ -578,6 +578,20 @@
 .admin-shell .biz-view .skill-editor [disabled] {
   cursor: not-allowed;
 }
+.admin-shell .biz-view .skill-library > .content-section-heading h2 { margin: 0 0 8px; font-size: 26px; letter-spacing: -.025em; }
+.admin-shell .biz-view .skill-list-summary h3 { margin: 0; color: var(--admin-text); font-size: 14px; font-weight: 600; }
+.admin-shell .biz-view .skill-filters label, .admin-shell .biz-view .skill-list th, .admin-shell .biz-view .skill-status { font-size: 12px; }
+.admin-shell .biz-view .skill-list { font-size: 13px; }
+.admin-shell .biz-view .skill-status-reviewed { color: #e4c18d; }
+.admin-shell .biz-view .skill-policy-note { margin-bottom: 20px; padding: 12px 16px; border-left: 2px solid var(--admin-border); background: var(--admin-panel); color: var(--admin-muted); font-size: 12px; line-height: 1.75; }
+.admin-shell .biz-view .skill-policy-note :is(p, ul) { margin: 0 0 8px; }
+.admin-shell .biz-view .skill-policy-note :last-child { margin-bottom: 0; }
+.admin-shell .biz-view .skill-policy-note summary { cursor: pointer; }
+.admin-shell .biz-view .skill-policy-note details p { margin-top: 8px; }
+.admin-shell .biz-view .skill-policy-note .skill-policy-warning { color: #e4c18d; }
+.admin-shell .biz-view .skill-editor-sections { display: none; }
+.admin-shell .biz-view .skill-editor :is(#skill-inspector, #skill-instructions-heading) { scroll-margin-top: 20px; }
+.admin-shell .biz-view .skill-editor :is(#skill-inspector, #skill-instructions-heading):focus { outline: 2px solid var(--admin-accent); outline-offset: 5px; }
 .admin-shell .biz-view .skill-visually-hidden {
   position: absolute;
   width: 1px;
@@ -602,6 +616,8 @@
   }
 }
 @media (max-width: 950px) {
+  .admin-shell .biz-view .skill-editor-sections { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+  .admin-shell .biz-view .skill-editor-sections a { color: var(--admin-accent); font-size: 13px; text-underline-offset: 5px; }
   .admin-shell .biz-view .skill-editor-workspace {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -628,10 +644,7 @@
     gap: 13px;
     align-items: flex-start;
   }
-  .admin-shell .biz-view .skill-editor-heading h3 {
-    display: block;
-    margin: 7px 0 0;
-  }
+  .admin-shell .biz-view .skill-library > .content-section-heading h2 { font-size: 24px; }
   .admin-shell .biz-view .skill-editor .skill-document {
     padding: 0 15px 16px;
   }

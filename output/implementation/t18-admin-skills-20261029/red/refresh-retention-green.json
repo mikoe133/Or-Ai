@@ -1,0 +1,8 @@
+{
+  "expectedEditorsAfter503": 1,
+  "actual": {
+    "editors": 1,
+    "inputs": 1
+  },
+  "passed": true
+}

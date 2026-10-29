@@ -1,0 +1,44 @@
+[
+  {
+    "bg": "rgb(20, 21, 28)",
+    "color": "rgb(236, 234, 245)",
+    "font": "26px",
+    "selector": ".content-section-heading h2",
+    "ratio": 15.3
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(170, 167, 189)",
+    "font": "12px",
+    "selector": ".skill-filters label",
+    "ratio": 7.16
+  },
+  {
+    "bg": "rgb(20, 21, 28)",
+    "color": "rgb(236, 234, 245)",
+    "font": "14px",
+    "selector": ".skill-list-summary h3",
+    "ratio": 15.3
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(170, 167, 189)",
+    "font": "12px",
+    "selector": ".skill-name-cell p",
+    "ratio": 7.16
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(170, 167, 189)",
+    "font": "12px",
+    "selector": ".skill-status",
+    "ratio": 7.16
+  },
+  {
+    "bg": "rgb(34, 36, 48)",
+    "color": "rgb(170, 167, 189)",
+    "font": "12px",
+    "selector": ".skill-list th",
+    "ratio": 6.58
+  }
+]

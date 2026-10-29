@@ -1,0 +1,10 @@
+{
+  "baseCommit": "498459a",
+  "expectedEditorsAfter503": 1,
+  "actual": {
+    "editors": 0,
+    "errors": 1,
+    "inputs": 0
+  },
+  "passed": false
+}
