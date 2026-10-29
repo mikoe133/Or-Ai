@@ -1,0 +1,8 @@
+{
+  "expectedErrorsAfterReturning": 0,
+  "actual": {
+    "errors": 0,
+    "rows": 5
+  },
+  "passed": true
+}

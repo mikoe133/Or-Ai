@@ -76,6 +76,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
     void client.invalidateQueries({ queryKey: ["public"] });
   }
   function choose(value: AdminProduct) {
+    action.resetError();
     setEditorOpen(true);
     setActiveTab("metadata");
     setCurrent(value);
@@ -89,6 +90,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
     setNotice("");
   }
   function newProduct() {
+    action.resetError();
     setEditorOpen(true);
     setActiveTab("metadata");
     setCurrent(null);
@@ -131,6 +133,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
       ),
     );
   }
+  function returnToList() { action.resetError(); setEditorOpen(false); setNotice(""); }
   return (
     <div className="admin-management admin-products">
       <header ref={headingRef} className="admin-management-heading">
@@ -139,7 +142,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
           <p>{editorOpen ? "维护商品资料与配置版本，审核后再发布。" : "管理商品资料、配置版本与发布状态。公开样例与私人报告分开保存。"}</p>
         </div>
         <div className="biz-row">
-          {editorOpen ? <button type="button" disabled={action.busy} onClick={() => { setEditorOpen(false); setNotice(""); }}>返回商品列表</button> :
+          {editorOpen ? <button type="button" disabled={action.busy} onClick={returnToList}>返回商品列表</button> :
             <button className="admin-primary" type="button" disabled={action.busy} onClick={newProduct}>新建商品 <span aria-hidden="true">↗</span></button>}
         </div>
       </header>
@@ -552,7 +555,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
       </details>
       {notice && <p role="status">{notice}</p>}
       {Boolean(action.error) && (
-        <Failure area="products" error={action.error} retry={changed} draft />
+        <Failure area="products" error={action.error} retry={changed} draft onReturn={returnToList} />
       )}
     </div>
   );

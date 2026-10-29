@@ -1,0 +1,431 @@
+[
+  {
+    "name": "permission recovery requires a fresh refund confirmation",
+    "passed": true,
+    "actual": {
+      "confirmed": false
+    }
+  },
+  {
+    "name": "product invalid JSON stays local and retains draft",
+    "passed": true,
+    "actual": {
+      "draft": "{",
+      "errors": 1
+    }
+  },
+  {
+    "name": "product action error clears on returning to catalog",
+    "passed": true,
+    "actual": {
+      "errors": 0,
+      "rows": 5
+    }
+  },
+  {
+    "name": "new product editor does not inherit previous error",
+    "passed": true,
+    "actual": {
+      "errors": 0
+    }
+  },
+  {
+    "name": "new asset form keeps one creation action and a stable product selector",
+    "passed": true,
+    "actual": {
+      "duplicateActions": 0,
+      "selector": 1
+    }
+  },
+  {
+    "name": "asset filter reads matching copy rows",
+    "passed": true,
+    "actual": {
+      "tiles": 8
+    }
+  },
+  {
+    "name": "asset empty result offers clear recovery",
+    "passed": true,
+    "actual": {
+      "tiles": 0,
+      "clear": 2
+    }
+  },
+  {
+    "name": "asset clear synchronizes query filters and rows",
+    "passed": true,
+    "actual": {
+      "kind": "",
+      "platform": "",
+      "rows": 20,
+      "status": ""
+    }
+  },
+  {
+    "name": "asset browser back restores submitted filters",
+    "passed": true,
+    "actual": {
+      "kind": "copy",
+      "platform": "manual"
+    }
+  },
+  {
+    "name": "pending asset filter labels previous rows and disables editing",
+    "passed": true,
+    "actual": {
+      "enabled": 0,
+      "tiles": 20
+    }
+  },
+  {
+    "name": "asset refresh 503 retains rows and unsubmitted filter",
+    "passed": true,
+    "actual": {
+      "kind": "copy",
+      "loading": 0,
+      "tiles": 20
+    }
+  },
+  {
+    "name": "asset refresh 403 hides private rows and uses asset recovery",
+    "passed": true,
+    "actual": {
+      "filter": 0,
+      "recovery": "/admin/assets",
+      "tiles": 0
+    }
+  },
+  {
+    "name": "asset pagination reads second page",
+    "passed": true,
+    "actual": {
+      "rows": 12
+    }
+  },
+  {
+    "name": "controlled image path gets actual API 404 and readable fallback",
+    "passed": true,
+    "actual": {
+      "failed": 1,
+      "missing": 8,
+      "text": 10,
+      "videoPreload": "none",
+      "responses": [
+        {
+          "path": "/api/files/2d69a946-daca-4c1f-9d03-b43704e2372f",
+          "status": 404
+        }
+      ]
+    }
+  },
+  {
+    "name": "preview retry returns a readable fallback without raw broken media",
+    "passed": true,
+    "actual": {
+      "failed": 1
+    }
+  },
+  {
+    "name": "asset revision conflict retains text and blocks the TEST write",
+    "passed": true,
+    "actual": {
+      "draft": "TEST 未提交文案：冲突后保留这段输入。",
+      "blockedMethods": [
+        "PATCH"
+      ]
+    }
+  },
+  {
+    "name": "asset action error clears on returning to catalog",
+    "passed": true,
+    "actual": {
+      "errors": 0
+    }
+  },
+  {
+    "name": "asset action 403 hides the editor and list",
+    "passed": true,
+    "actual": {
+      "editor": 0,
+      "text": 0,
+      "tiles": 0
+    }
+  },
+  {
+    "name": "order pagination reads remaining records",
+    "passed": true,
+    "actual": {
+      "rows": 17
+    }
+  },
+  {
+    "name": "pending order filter labels previous rows and disables details",
+    "passed": true,
+    "actual": {
+      "enabled": 0,
+      "rows": 20
+    }
+  },
+  {
+    "name": "order empty filter removes stale rows and offers recovery",
+    "passed": true,
+    "actual": {
+      "rows": 0
+    }
+  },
+  {
+    "name": "order clear synchronizes URL and reference",
+    "passed": true,
+    "actual": {
+      "value": ""
+    }
+  },
+  {
+    "name": "order browser back restores submitted reference",
+    "passed": true,
+    "actual": {
+      "value": "TEST-no-order-t18"
+    }
+  },
+  {
+    "name": "order refresh 503 retains rows and unsubmitted reference",
+    "passed": true,
+    "actual": {
+      "reference": "TEST unsubmitted reference",
+      "rows": 20
+    }
+  },
+  {
+    "name": "order list 403 hides private rows and uses order recovery",
+    "passed": true,
+    "actual": {
+      "recovery": "/admin/orders",
+      "rows": 0
+    }
+  },
+  {
+    "name": "fulfilled order and revoked code retain issuance replacement and refund gates",
+    "passed": true,
+    "actual": {
+      "delivery": 0,
+      "issue": true,
+      "refund": true,
+      "replace": true
+    }
+  },
+  {
+    "name": "order detail refresh keeps facts and disables mutations",
+    "passed": true,
+    "actual": {
+      "facts": 1,
+      "refund": true
+    }
+  },
+  {
+    "name": "order detail 503 retains facts and confirmation input",
+    "passed": true,
+    "actual": {
+      "confirmed": true,
+      "facts": 1
+    }
+  },
+  {
+    "name": "order detail 403 hides facts codes and refund area",
+    "passed": true,
+    "actual": {
+      "codes": 0,
+      "confirmation": 0,
+      "facts": 0
+    }
+  },
+  {
+    "name": "product search keeps selected version and manual inputs while waiting",
+    "passed": true,
+    "actual": {
+      "disabled": true,
+      "reference": "TEST 未提交人工订单",
+      "value": "53e2ec1b-fff5-46f8-a63f-a8501300cb6c"
+    }
+  },
+  {
+    "name": "failed product search keeps visible fixed selection and manual inputs",
+    "passed": true,
+    "actual": {
+      "recovery": "/admin/orders",
+      "reference": "TEST 未提交人工订单",
+      "value": "53e2ec1b-fff5-46f8-a63f-a8501300cb6c"
+    }
+  },
+  {
+    "name": "controlled order save failure retains manual form without writing an order",
+    "passed": true,
+    "actual": {
+      "amount": "990",
+      "reference": "TEST 未提交人工订单",
+      "version": "53e2ec1b-fff5-46f8-a63f-a8501300cb6c",
+      "blockedMethods": [
+        "POST"
+      ]
+    }
+  },
+  {
+    "name": "order action error clears when changing to list",
+    "passed": true,
+    "actual": {
+      "errors": 0
+    }
+  },
+  {
+    "name": "CSV import remains disabled before successful dry run",
+    "passed": true,
+    "actual": {
+      "disabled": true
+    }
+  },
+  {
+    "name": "uncached asset request shows a stable dark loading surface",
+    "passed": true,
+    "actual": {
+      "bg": "rgb(20, 21, 28)",
+      "loading": 1,
+      "tiles": 0
+    }
+  },
+  {
+    "name": "initial asset 503 offers relevant recovery without fake empty data",
+    "passed": true,
+    "actual": {
+      "recovery": "/admin/assets",
+      "tiles": 0,
+      "responses": [
+        {
+          "path": "/api/admin/assets",
+          "status": 503
+        }
+      ],
+      "attempts": [
+        {
+          "method": "GET",
+          "path": "/admin/assets",
+          "fulfilled": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/admin/assets",
+          "fulfilled": true
+        }
+      ]
+    }
+  },
+  {
+    "name": "phone keyboard and reduced-motion retain focus and contain table overflow",
+    "passed": true,
+    "actual": {
+      "label": "筛选状态",
+      "outline": "2px",
+      "overflow": false,
+      "reduced": true,
+      "tableOverflow": "auto",
+      "tag": "SELECT"
+    }
+  },
+  {
+    "name": "phone order action opens detail with selected order navigation",
+    "passed": true,
+    "actual": {
+      "current": "订单与售后",
+      "detail": 1
+    }
+  },
+  {
+    "name": "wide asset catalog remains contained",
+    "passed": true,
+    "actual": {
+      "columns": "388px 388px 388px 388px",
+      "doc": 2048,
+      "width": 2048
+    }
+  },
+  {
+    "name": "seven page surfaces at three viewports have no document overflow",
+    "passed": true,
+    "actual": {
+      "screenshots": 21,
+      "widths": [
+        1440,
+        768,
+        390
+      ],
+      "overflow": []
+    }
+  },
+  {
+    "name": "seven rendered media text and status samples exceed WCAG AA contrast",
+    "passed": true,
+    "actual": {
+      "samples": 7,
+      "minimum": 7.16
+    }
+  },
+  {
+    "name": "real TEST member gets actual assets and orders 403 and sees no admin data",
+    "passed": true,
+    "actual": {
+      "api": {
+        "assets": 403,
+        "orders": 403
+      },
+      "visible": {
+        "orders": 0,
+        "assets": 0
+      },
+      "scope": "SupabaseAuthGateway protocol substitute, seeded member, real API role check"
+    }
+  },
+  {
+    "name": "logout removes TEST session and actual private endpoints return 401",
+    "passed": true,
+    "actual": {
+      "assets": 401,
+      "logout": 200,
+      "orders": 401
+    }
+  },
+  {
+    "name": "same-route product recovery link returns to list and clears local editor error",
+    "passed": true,
+    "actual": {
+      "editor": 0,
+      "errors": 0,
+      "rows": 5
+    }
+  },
+  {
+    "name": "same-route asset recovery link keeps submitted filter and clears editor error",
+    "passed": true,
+    "actual": {
+      "editor": 0,
+      "errors": 0,
+      "rows": 8
+    }
+  },
+  {
+    "name": "same-route order recovery link returns to list and clears local form error",
+    "passed": true,
+    "actual": {
+      "errors": 0,
+      "manual": 0,
+      "rows": 20
+    }
+  },
+  {
+    "name": "access-error recovery navigation rechecks actual account and server data",
+    "passed": true,
+    "actual": {
+      "document": true,
+      "accountCheck": true,
+      "rows": 20
+    }
+  }
+]

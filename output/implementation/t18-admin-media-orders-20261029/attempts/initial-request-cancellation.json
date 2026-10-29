@@ -1,0 +1,3 @@
+{
+  "note": "Initial navigation can cancel an early Fetch request and issue another. The first initial-503 attempt did not reach the error panel before its assertion deadline; the eventual UI reported a network failure. Retried below by handling every paused request until a real 503 response was observed. The initial loading assertion remains valid."
+}

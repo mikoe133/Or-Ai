@@ -2,7 +2,7 @@
 
 更新：2026-10-29。01商品规划合同、02 Skill服务端政策、03项目/发布门禁、04旧方法前向升级及07云适配已完成各自本地范围并归档。04代码594项、类型/构建、最终专项13项和16项自主CUA通过；选定开发库四份方法追加v2 DRAFT，未自动启用或重绑。技术完成不代表云端或商业上线。
 
-**当前任务：[05商品与模板转制（T16.C3）](tasks/active/05-product-template-migration.md)及06本地功能/性能验证。07本地范围已归档，真实云仍待08。** 新增[17全站前端设计改造（T18）](tasks/active/17-frontend-design-refinement.md)独立排期，首选Skill原ZIP已接收核验、项目安装、完整阅读并提炼设计标准；后台共享骨架/概览首批已实现并验证，全站改造仍未完成，细节见下。完整排期看[任务索引](tasks/README.md)。
+**当前任务：[05商品与模板转制（T16.C3）](tasks/active/05-product-template-migration.md)及06本地功能/性能验证。07本地范围已归档，真实云仍待08。** [17全站前端设计改造（T18）](tasks/active/17-frontend-design-refinement.md)按独立后台子批次推进，Skill及标准、骨架/概览、商品/内容、素材/订单首批已有实现和验证；Skill/连接/项目及完整状态、全站仍未完成，细节见下。完整排期看[任务索引](tasks/README.md)。
 
 06后续[本地实测](../../output/implementation/local-experience-performance-20261028/verification.md)修复静态gzip及图片重试；最终36首帧≤3s、24活动≥30fps、40次卸载资源/静默及22恢复通过，507 API＋107 web＋22 MCP＝636项，类型/构建通过。A自然堆末5次中位数增5,636,088 B、全局Nodes仍增长，强制GC未提供；IAB第二标签仍visible，完整内存/真实hidden保持06待验。临时TEST及浏览器设置/标签已清理，原5容器healthy。该批当时17仅完成[源码路由/状态/组件清单准备](../../output/implementation/t18-frontend-audit-preparation-20261028/README.md)，截图审计及实际页面改造未执行。
 
@@ -15,6 +15,8 @@
 后续[T18后台共享骨架与概览](../../output/implementation/t18-admin-shell-20261028/verification.md)已实际改造：三组导航、唯一main/skip link、移动选页焦点、内部滚动包含块、390px商品整页溢出及概览字阶/语义色。有效SSR RED696d890→GREEN；108前端＋2隔离专项、类型/构建、同一合成TEST真实API的21组前后截图比较及20项CUA通过，九个文字样本最低6.28:1。已退出并清理TEST/私有状态/自己页签和浏览器设置，原五容器healthy；[只归档该子批次](tasks/archive/completed/17-admin-shell-overview-slice-20261028.md)，完整后台业务状态/编辑器、全站设计及05/06依赖保持，未修改商城/真实权限或进行云部署。
 
 2026-10-29续[T18商品/内容目录与工作台](../../output/implementation/t18-catalog-content-20261029/verification.md)：111前端＋2隔离专项、类型/构建、18组同TEST前后截图与36项CUA通过；三处历史SHA文本保持，六个文字样本最低7.16:1。覆盖缓存刷新/等待/初次失败/空态、模拟403/409、真实TEST成员403和退出401、未保存保护与固定版本，全部TEST/页签/网络设置已清理，原五容器healthy。[仅归档该子范围](tasks/archive/completed/17-admin-catalog-workbench-slice-20261029.md)，素材/订单/Skill/连接等剩余表面及05/06仍待；未改商城或真实外部环境。2026-10-29最新边界已写任务：后台可直接推进，商城用户端须先交本地截图并等待用户明确审核通过。
+
+随后完成[T18素材/订单与操作错误恢复](../../output/implementation/t18-admin-media-orders-20261029/verification.md)：111前端＋2专项、类型/构建、21组同TEST前后比较与47项CUA通过，七个文字样本最低7.16:1。覆盖媒体缺文件/真实404回退、筛选/分页/刷新/权限、冲突与表单输入保留、订单确认门禁和同路由恢复；两TEST库/私有状态/页签均清理，原五容器healthy。[仅归档该子批次](tasks/archive/completed/17-admin-media-orders-slice-20261029.md)，Skill/连接/运行配置/项目及完整状态继续，完整T18/05/06与商城截图审核边界保持。未执行上传、发码、导入、退款或真实云操作。
 
 ## 当前实施事实
 

@@ -1,0 +1,3 @@
+{
+  "note": "Storage.clearDataForOrigin is unavailable through this browser tool. The TEST account had already logged out (actual API 401). Cleared script-visible storage/cookies on the unique TEST hostname using Runtime, then closed the owned tab; no browser-wide clearing."
+}

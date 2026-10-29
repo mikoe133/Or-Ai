@@ -138,6 +138,7 @@ export function ContentHistory({
     refetchOnWindowFocus: false,
   });
   function choose(id: string) {
+    action.resetError();
     setSelectedId(id);
     setCompareId("");
     setNote("");

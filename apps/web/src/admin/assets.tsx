@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import {
   AdminAssetCreateSchema,
@@ -13,7 +13,11 @@ import {
   type Upload,
 } from "./api.js";
 import { ProductVersionSelect } from "./shared.js";
-import { Failure, Loading, Pager, useAction } from "../business/shared.js";
+import { Loading, Pager, useAction } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { AdminEmptyState, AdminListProgress } from "./feedback-view.js";
+import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
+import { AssetPreview } from "./asset-preview.js";
 import "./management.css";
 const assetKinds: Record<string, string> = { cover: "封面", video: "视频", script: "脚本", copy: "文案" };
 const assetStatuses: Record<string, string> = { draft: "草稿", reviewed: "已审核", ready: "已就绪", archived: "已归档" };
@@ -33,11 +37,23 @@ export function Assets() {
     [file, setFile] = useState<File | null>(null),
     [upload, setUpload] = useState<Upload | null>(null),
     [notice, setNotice] = useState("");
+  const appliedKind = params.get("kind") ?? "", appliedPlatform = params.get("platform") ?? "", appliedStatus = params.get("status") ?? "";
+  const [kindDraft, setKindDraft] = useState(appliedKind), [platformDraft, setPlatformDraft] = useState(appliedPlatform), [statusDraft, setStatusDraft] = useState(appliedStatus);
+  useEffect(() => { setKindDraft(appliedKind); setPlatformDraft(appliedPlatform); setStatusDraft(appliedStatus); }, [appliedKind, appliedPlatform, appliedStatus]);
   useEffect(() => { headingRef.current?.scrollIntoView({ block: "start" }); }, [editorOpen, selected?.id]);
   const list = useQuery({
     queryKey: ["private", "admin", "assets", params.toString()],
     queryFn: ({ signal }) => adminApi.assets(params.toString(), signal),
+    placeholderData: keepPreviousData,
   });
+  const accessError = [list.error, action.error].find(isAccessFailure);
+  const listData = accessError ? undefined : list.data;
+  const filtered = Boolean(appliedKind || appliedPlatform || appliedStatus);
+  function clearFilters() { setKindDraft(""); setPlatformDraft(""); setStatusDraft(""); setParams({}); }
+  async function recoverAccess() {
+    const result = await list.refetch();
+    if (result.isSuccess) action.resetError();
+  }
   const media = kind === "cover" || kind === "video",
     pendingFile = media && Boolean(file) && upload?.status !== "available";
   const dirty =
@@ -93,6 +109,7 @@ export function Assets() {
     });
   }
   function choose(value: Asset) {
+    action.resetError();
     setEditorOpen(true);
     setSelected(value);
     setVersion(value.productVersionId);
@@ -105,6 +122,7 @@ export function Assets() {
     setNotice("");
   }
   function newAsset() {
+    action.resetError();
     setEditorOpen(true);
     setSelected(null);
     setFile(null);
@@ -113,16 +131,18 @@ export function Assets() {
     setText("");
     setNotice("");
   }
+  function returnToList() { action.resetError(); setNotice(""); setEditorOpen(false); }
   return (
     <div className="admin-management admin-assets">
       <header ref={headingRef} className="admin-management-heading">
-        <div><span className="admin-eyebrow">LIBRARY / MEDIA</span><h2>{editorOpen ? (selected ? selected.variant : "新建素材") : "素材与文件"}</h2>
+        <div><h2>{editorOpen ? (selected ? selected.variant : "新建素材") : "素材与文件"}</h2>
           <p>{editorOpen ? "保存草稿、审核，再标记就绪。采用后的商品封面才会公开。" : "按版本、平台与状态管理封面、视频、脚本和文案。"}</p>
         </div>
-        <div className="biz-row">{editorOpen ? <button type="button" disabled={action.busy} onClick={() => setEditorOpen(false)}>返回素材列表</button> :
-          <button type="button" className="admin-primary" disabled={action.busy} onClick={newAsset}>新建素材 <span aria-hidden="true">↗</span></button>}
+        <div className="biz-row">{editorOpen ? <button type="button" disabled={action.busy || Boolean(accessError)} onClick={returnToList}>返回素材列表</button> :
+          <button type="button" className="admin-primary" disabled={action.busy || Boolean(accessError)} onClick={newAsset}>新建素材 <span aria-hidden="true">↗</span></button>}
         </div>
       </header>
+      {accessError ? <Failure area="assets" error={accessError} retry={() => void recoverAccess()} /> : <>
       {!editorOpen && <>
       <form
         className="biz-row admin-filterbar"
@@ -143,7 +163,8 @@ export function Assets() {
           <select
             aria-label="筛选类别"
             name="kind"
-            defaultValue={params.get("kind") ?? ""}
+            value={kindDraft}
+            onChange={event => setKindDraft(event.target.value)}
           >
             <option value="">全部</option>
             {["cover", "video", "script", "copy"].map((value) => (
@@ -156,7 +177,8 @@ export function Assets() {
           <select
             aria-label="筛选平台"
             name="platform"
-            defaultValue={params.get("platform") ?? ""}
+            value={platformDraft}
+            onChange={event => setPlatformDraft(event.target.value)}
           >
             <option value="">全部</option>
             {["manual", "douyin", "xiaohongshu"].map((value) => (
@@ -169,7 +191,8 @@ export function Assets() {
           <select
             aria-label="筛选状态"
             name="status"
-            defaultValue={params.get("status") ?? ""}
+            value={statusDraft}
+            onChange={event => setStatusDraft(event.target.value)}
           >
             <option value="">全部</option>
             {["draft", "reviewed", "ready", "archived"].map((value) => (
@@ -178,44 +201,53 @@ export function Assets() {
           </select>
         </label>
         <button>筛选素材</button>
+        {filtered && <button type="button" onClick={clearFilters}>清除筛选</button>}
       </form>
-      {list.isPending ? (
-        <Loading />
-      ) : list.isError ? (
-        <Failure error={list.error} retry={() => void list.refetch()} />
+      {!listData ? (
+        list.isError ? <Failure area="assets" error={list.error} retry={() => void list.refetch()} /> :
+          <div className="admin-list-loading"><Loading label="正在读取素材目录…" /></div>
       ) : (
-        <>
-          <div className="admin-section-heading"><h3>全部素材</h3><span>{list.data.total} 份素材</span></div>
+        <section className="admin-list-results" aria-label="素材目录" aria-busy={list.isFetching}>
+          {list.isError && <RefreshNotice busy={list.isFetching} retry={() => void list.refetch()} />}
+          {list.isFetching && <AdminListProgress pending={list.isPlaceholderData} />}
+          <div className="admin-section-heading"><h3>{filtered ? "筛选结果" : "全部素材"}</h3>
+            <div className="admin-catalog-actions"><span>{listData.total} 份素材</span><button type="button" aria-label="更新素材目录" disabled={list.isFetching} onClick={() => void list.refetch()}>更新目录</button></div>
+          </div>
+          {listData.items.length > 0 ? <>
           <div className="admin-media-grid">
-            {list.data.items.map((value) => (
+            {listData.items.map((value) => (
               <article className="admin-media-tile" key={value.id}>
                 <div className="admin-media-thumbnail">
-                  {value.kind === "cover" && value.downloadPath ? <img src={value.downloadPath} alt={value.variant + "封面"} loading="lazy" /> : value.kind === "video" && value.downloadPath ?
-                    <video src={value.downloadPath} preload="none" controls aria-label={value.variant + "视频预览"} /> :
-                    <div className="admin-media-text-preview"><span>{assetKinds[value.kind]}</span><p>{value.text || "暂无预览文件"}</p></div>}
+                  <AssetPreview asset={value} />
                 </div>
                 <div className="admin-media-caption">
                   <h3>{value.variant}</h3>
                   <p>{assetKinds[value.kind]} · {assetPlatforms[value.platform] ?? value.platform} · r{value.revision}</p>
+                  <p className="admin-media-version"><span>商品版本</span><code>{value.productVersionId}</code></p>
                   <div className="biz-row"><span className="admin-status" data-status={value.status}>{assetStatuses[value.status] ?? value.status}</span>
-                    <button className="admin-table-action" disabled={action.busy} onClick={() => choose(value)}>编辑素材 <span aria-hidden="true">↗</span></button></div>
+                    <button className="admin-table-action" disabled={action.busy || list.isPlaceholderData} onClick={() => choose(value)}>编辑素材 <span aria-hidden="true">↗</span></button></div>
                 </div>
               </article>
             ))}
           </div>
-          {!list.data.total && <p>没有匹配素材。</p>}
+          <fieldset className="admin-list-pagination" disabled={list.isPlaceholderData}>
           <Pager
-            {...list.data}
+            {...listData}
             onChange={(page) =>
               setParams({ ...Object.fromEntries(params), page: String(page) })
             }
           />
-        </>
+          </fieldset>
+          </> : <AdminEmptyState title={filtered ? "没有匹配的素材" : "还没有素材"}
+            actions={filtered ? <button type="button" onClick={clearFilters}>清除筛选</button> : <button type="button" onClick={newAsset}>新建素材</button>}>
+            {filtered ? "调整类别、平台或状态，也可以清除筛选查看全部素材。" : "先关联商品版本，再保存封面、视频、脚本或文案。"}
+          </AdminEmptyState>}
+        </section>
       )}
       </>}
       {editorOpen && <>
       <section className="admin-form-panel admin-media-editor">
-        <h3>{selected ? "编辑素材" : "新建素材"}</h3>
+        <div className="admin-section-heading"><h3>{selected ? "素材资料" : "填写素材资料"}</h3>{selected && <span className="admin-status" data-status={selected.status}>{assetStatuses[selected.status]} · r{selected.revision}</span>}</div>
         <form
           onSubmit={(event) => {
             event.preventDefault();
@@ -262,6 +294,7 @@ export function Assets() {
             {!selected ? (
               <>
                 <ProductVersionSelect
+                  area="assets"
                   value={version}
                   onChange={(value) => {
                     setVersion(value);
@@ -295,9 +328,7 @@ export function Assets() {
                 </label>
               </>
             ) : (
-              <p>
-                版本 {selected.productVersionId} · {selected.kind}
-              </p>
+              <p className="admin-media-fixed-version">固定商品版本 <code>{selected.productVersionId}</code> · {assetKinds[selected.kind]}</p>
             )}
             <label>
               平台
@@ -407,24 +438,7 @@ export function Assets() {
                         ? "新文件预览（尚未保存到素材）"
                         : "当前已保存媒体预览"}
                     </p>
-                    {kind === "video" ? (
-                      <video
-                        key={upload?.downloadPath ?? selected?.downloadPath}
-                        controls
-                        preload="metadata"
-                        src={
-                          upload?.downloadPath ?? selected?.downloadPath ?? ""
-                        }
-                      />
-                    ) : (
-                      <img
-                        className="biz-cover"
-                        alt="待审核封面预览"
-                        src={
-                          upload?.downloadPath ?? selected?.downloadPath ?? ""
-                        }
-                      />
-                    )}
+                    <div className="admin-media-editor-preview"><AssetPreview asset={{ kind, variant, text, downloadPath: upload?.downloadPath ?? selected?.downloadPath ?? null }} /></div>
                   </>
                 )}
                 {pendingFile && <p>新文件尚未校验，请先上传并校验后保存。</p>}
@@ -444,10 +458,10 @@ export function Assets() {
             </button>
           </fieldset>
         </form>
-        <button type="button" disabled={action.busy} onClick={newAsset}>新建另一份素材</button>
+        {selected && <button type="button" disabled={action.busy} onClick={newAsset}>新建另一份素材</button>}
         {selected && (
           <>
-            <p>素材状态：{selected.status}</p>
+            <p>素材状态：{assetStatuses[selected.status]}</p>
             <p>
               修订 {selected.revision} · 文件 {selected.fileId ?? "无"}
             </p>
@@ -547,8 +561,9 @@ export function Assets() {
         {notice && <p role="status">{notice}</p>}
       </section>
       </>}
+      </>}
       {Boolean(action.error) && (
-        <Failure error={action.error} retry={changed} />
+        !accessError && <Failure area="assets" error={action.error} retry={changed} draft={editorOpen} onReturn={returnToList} />
       )}
     </div>
   );

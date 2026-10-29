@@ -1,0 +1,405 @@
+{
+  "phase": "after",
+  "scope": "synthetic TEST actual API, desktop viewport emulation; no issuance/import/refund actions",
+  "rows": [
+    {
+      "key": "assets-list",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "assets-list-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "素材与文件",
+        "全部素材",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A"
+      ],
+      "ready": true,
+      "text": "素材与文件\n\n按版本、平台与状态管理封面、视频、脚本和文案。\n\n新建素材\n↗\n筛选类别\n全部\n封面\n视频\n脚本\n文案\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选状态\n全部\n草稿\n已审核\n已就绪\n已归档\n筛选素材\n全部素材\n32 份素材\n更新目录\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n草稿\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n上一页\n第 1 页 · 共 32 条\n下一页",
+      "width": 1440
+    },
+    {
+      "key": "asset-new",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "asset-new-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "新建素材",
+        "填写素材资料"
+      ],
+      "ready": true,
+      "text": "新建素材\n\n保存草稿、审核，再标记就绪。采用后的商品封面才会公开。\n\n返回素材列表\n填写素材资料\n搜索交付商品\n商品版本\n请选择已发布商品\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n工作边界测试 · 演示\n伴侣协作测试 · 演示\n每次最多显示 50 款匹配商品，可搜索缩小范围；订单与素材固定引用所选版本。\n素材类别\n封面\n视频\n脚本\n文案\n平台\n人工\n抖音\n小红书\n变体名\n媒体文件\n上传并校验\n保存素材草稿",
+      "width": 1440
+    },
+    {
+      "key": "asset-text",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "asset-text-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "A",
+        "素材资料"
+      ],
+      "ready": true,
+      "text": "A\n\n保存草稿、审核，再标记就绪。采用后的商品封面才会公开。\n\n返回素材列表\n素材资料\n已审核 · r0\n\n固定商品版本 18700e22-8362-4f2b-84a9-13f66c041137 · 文案\n\n平台\n人工\n抖音\n小红书\n变体名\n文字内容\n保存素材修改\n新建另一份素材\n\n素材状态：已审核\n\n修订 0 · 文件 无\n\n刷新素材与修订刷新会替换尚未保存的表单与文件选择。\n审核素材\n标记就绪\n归档素材",
+      "width": 1440
+    },
+    {
+      "key": "orders-list",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "orders-list-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "订单与售后",
+        "订单记录"
+      ],
+      "ready": true,
+      "text": "订单与售后\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\nCSV 导入\n人工录入\n↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n筛选订单引用\n筛选状态\n全部\n待交付\n已交付\n已退款\n已取消\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选订单\n订单记录\n37 笔人工登记订单\n更新列表\n人工登记订单，金额为记录值，不代表平台资金到账。\n引用\t平台\t数量\t状态\t金额\t操作\ndemo:unclaimed-REVOKED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-EXPIRED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-ISSUED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:deleted-report\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:not-applicable\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:invalid\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:refunded\t人工\t1 份\t已退款\t¥ 9.90\t查看订单\ndemo:entitlement-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:report-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:bound\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:revision-conflict\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:submitted\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:all-answered\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:reissued\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:pending\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:partial\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-20\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-19\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-18\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-17\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\n上一页\n第 1 页 · 共 37 条\n下一页",
+      "width": 1440
+    },
+    {
+      "key": "order-detail",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "order-detail-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "订单详情",
+        "交付与售后",
+        "退款与撤权"
+      ],
+      "ready": true,
+      "text": "订单详情\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n交付与售后\n完整兑换码仅首次显示\n更新详情\n订单引用\ndemo:unclaimed-REVOKED\n订单状态\n已交付\n数量 / 登记金额\n1 份 / ¥ 9.90\n发码\n已撤销\n7c37f503-9743-47a1-885b-2495a00fdacd\n补发该码\n退款与撤权\n已核对订单并在原平台处理退款\n退款并撤权\n\n此操作撤销本站访问，不处理平台资金。绑定归属、历史报告快照和已消耗次数保留。",
+      "width": 1440
+    },
+    {
+      "key": "order-manual",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "order-manual-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "人工录入订单",
+        "订单资料"
+      ],
+      "ready": true,
+      "text": "人工录入订单\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n订单资料\n人工登记\n搜索交付商品\n商品版本\n请选择已发布商品\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n工作边界测试 · 演示\n伴侣协作测试 · 演示\n每次最多显示 50 款匹配商品，可搜索缩小范围；订单与素材固定引用所选版本。\n平台\n人工\n抖音\n小红书\n订单引用\n数量\n金额（分）\n记录订单",
+      "width": 1440
+    },
+    {
+      "key": "order-csv",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": "order-csv-1440.png",
+      "documentWidth": 1440,
+      "heading": [
+        "CSV 订单导入",
+        "批量导入"
+      ],
+      "ready": true,
+      "text": "CSV 订单导入\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n批量导入\n先预演，再导入\n\n表头：platform,reference,productVersionId,quantity,amountFen。最多 500 行；先预演核对，再执行导入。\n\nCSV 内容\n选择 CSV 文件\n预演 CSV\n导入通过的行",
+      "width": 1440
+    },
+    {
+      "key": "assets-list",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "assets-list-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "素材与文件",
+        "全部素材",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A"
+      ],
+      "ready": true,
+      "text": "素材与文件\n\n按版本、平台与状态管理封面、视频、脚本和文案。\n\n新建素材\n↗\n筛选类别\n全部\n封面\n视频\n脚本\n文案\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选状态\n全部\n草稿\n已审核\n已就绪\n已归档\n筛选素材\n全部素材\n32 份素材\n更新目录\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n草稿\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n上一页\n第 1 页 · 共 32 条\n下一页",
+      "width": 768
+    },
+    {
+      "key": "asset-new",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "asset-new-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "新建素材",
+        "填写素材资料"
+      ],
+      "ready": true,
+      "text": "新建素材\n\n保存草稿、审核，再标记就绪。采用后的商品封面才会公开。\n\n返回素材列表\n填写素材资料\n搜索交付商品\n商品版本\n请选择已发布商品\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n工作边界测试 · 演示\n伴侣协作测试 · 演示\n每次最多显示 50 款匹配商品，可搜索缩小范围；订单与素材固定引用所选版本。\n素材类别\n封面\n视频\n脚本\n文案\n平台\n人工\n抖音\n小红书\n变体名\n媒体文件\n上传并校验\n保存素材草稿",
+      "width": 768
+    },
+    {
+      "key": "asset-text",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "asset-text-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "A",
+        "素材资料"
+      ],
+      "ready": true,
+      "text": "A\n\n保存草稿、审核，再标记就绪。采用后的商品封面才会公开。\n\n返回素材列表\n素材资料\n已审核 · r0\n\n固定商品版本 18700e22-8362-4f2b-84a9-13f66c041137 · 文案\n\n平台\n人工\n抖音\n小红书\n变体名\n文字内容\n保存素材修改\n新建另一份素材\n\n素材状态：已审核\n\n修订 0 · 文件 无\n\n刷新素材与修订刷新会替换尚未保存的表单与文件选择。\n审核素材\n标记就绪\n归档素材",
+      "width": 768
+    },
+    {
+      "key": "orders-list",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "orders-list-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "订单与售后",
+        "订单记录"
+      ],
+      "ready": true,
+      "text": "订单与售后\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\nCSV 导入\n人工录入\n↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n筛选订单引用\n筛选状态\n全部\n待交付\n已交付\n已退款\n已取消\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选订单\n订单记录\n37 笔人工登记订单\n更新列表\n人工登记订单，金额为记录值，不代表平台资金到账。\n引用\t平台\t数量\t状态\t金额\t操作\ndemo:unclaimed-REVOKED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-EXPIRED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-ISSUED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:deleted-report\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:not-applicable\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:invalid\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:refunded\t人工\t1 份\t已退款\t¥ 9.90\t查看订单\ndemo:entitlement-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:report-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:bound\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:revision-conflict\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:submitted\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:all-answered\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:reissued\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:pending\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:partial\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-20\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-19\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-18\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-17\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\n上一页\n第 1 页 · 共 37 条\n下一页",
+      "width": 768
+    },
+    {
+      "key": "order-detail",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "order-detail-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "订单详情",
+        "交付与售后",
+        "退款与撤权"
+      ],
+      "ready": true,
+      "text": "订单详情\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n交付与售后\n完整兑换码仅首次显示\n更新详情\n订单引用\ndemo:unclaimed-REVOKED\n订单状态\n已交付\n数量 / 登记金额\n1 份 / ¥ 9.90\n发码\n已撤销\n7c37f503-9743-47a1-885b-2495a00fdacd\n补发该码\n退款与撤权\n已核对订单并在原平台处理退款\n退款并撤权\n\n此操作撤销本站访问，不处理平台资金。绑定归属、历史报告快照和已消耗次数保留。",
+      "width": 768
+    },
+    {
+      "key": "order-manual",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "order-manual-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "人工录入订单",
+        "订单资料"
+      ],
+      "ready": true,
+      "text": "人工录入订单\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n订单资料\n人工登记\n搜索交付商品\n商品版本\n请选择已发布商品\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n工作边界测试 · 演示\n伴侣协作测试 · 演示\n每次最多显示 50 款匹配商品，可搜索缩小范围；订单与素材固定引用所选版本。\n平台\n人工\n抖音\n小红书\n订单引用\n数量\n金额（分）\n记录订单",
+      "width": 768
+    },
+    {
+      "key": "order-csv",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "order-csv-768.png",
+      "documentWidth": 768,
+      "heading": [
+        "CSV 订单导入",
+        "批量导入"
+      ],
+      "ready": true,
+      "text": "CSV 订单导入\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n批量导入\n先预演，再导入\n\n表头：platform,reference,productVersionId,quantity,amountFen。最多 500 行；先预演核对，再执行导入。\n\nCSV 内容\n选择 CSV 文件\n预演 CSV\n导入通过的行",
+      "width": 768
+    },
+    {
+      "key": "assets-list",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "assets-list-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "素材与文件",
+        "全部素材",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A"
+      ],
+      "ready": true,
+      "text": "素材与文件\n\n按版本、平台与状态管理封面、视频、脚本和文案。\n\n新建素材\n↗\n筛选类别\n全部\n封面\n视频\n脚本\n文案\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选状态\n全部\n草稿\n已审核\n已就绪\n已归档\n筛选素材\n全部素材\n32 份素材\n更新目录\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 抖音 · r0\n\n商品版本\n18700e22-8362-4f2b-84a9-13f66c041137\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n草稿\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 抖音 · r0\n\n商品版本\nd83a304b-eeb6-45b0-bed4-3c4b16654d55\n\n已审核\n编辑素材\n↗\n文案摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n文案 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n脚本摘录\n\n演示素材，正式脚本和文案尚未制作。\n\nA\n\n脚本 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n视频预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n视频 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n草稿\n编辑素材\n↗\n封面预览\n\n尚未关联预览文件\n\n在素材详情中查看或补充文件。\nA\n\n封面 · 小红书 · r0\n\n商品版本\n53e2ec1b-fff5-46f8-a63f-a8501300cb6c\n\n已审核\n编辑素材\n↗\n上一页\n第 1 页 · 共 32 条\n下一页",
+      "width": 390
+    },
+    {
+      "key": "asset-new",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "asset-new-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "新建素材",
+        "填写素材资料"
+      ],
+      "ready": true,
+      "text": "新建素材\n\n保存草稿、审核，再标记就绪。采用后的商品封面才会公开。\n\n返回素材列表\n填写素材资料\n搜索交付商品\n商品版本\n请选择已发布商品\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n工作边界测试 · 演示\n伴侣协作测试 · 演示\n每次最多显示 50 款匹配商品，可搜索缩小范围；订单与素材固定引用所选版本。\n素材类别\n封面\n视频\n脚本\n文案\n平台\n人工\n抖音\n小红书\n变体名\n媒体文件\n上传并校验\n保存素材草稿",
+      "width": 390
+    },
+    {
+      "key": "asset-text",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "asset-text-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "A",
+        "素材资料"
+      ],
+      "ready": true,
+      "text": "A\n\n保存草稿、审核，再标记就绪。采用后的商品封面才会公开。\n\n返回素材列表\n素材资料\n已审核 · r0\n\n固定商品版本 18700e22-8362-4f2b-84a9-13f66c041137 · 文案\n\n平台\n人工\n抖音\n小红书\n变体名\n文字内容\n保存素材修改\n新建另一份素材\n\n素材状态：已审核\n\n修订 0 · 文件 无\n\n刷新素材与修订刷新会替换尚未保存的表单与文件选择。\n审核素材\n标记就绪\n归档素材",
+      "width": 390
+    },
+    {
+      "key": "orders-list",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "orders-list-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "订单与售后",
+        "订单记录"
+      ],
+      "ready": true,
+      "text": "订单与售后\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\nCSV 导入\n人工录入\n↗\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n筛选订单引用\n筛选状态\n全部\n待交付\n已交付\n已退款\n已取消\n筛选平台\n全部\n人工\n抖音\n小红书\n筛选订单\n订单记录\n37 笔人工登记订单\n更新列表\n人工登记订单，金额为记录值，不代表平台资金到账。\n引用\t平台\t数量\t状态\t金额\t操作\ndemo:unclaimed-REVOKED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-EXPIRED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:unclaimed-ISSUED\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:deleted-report\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:not-applicable\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:invalid\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:refunded\t人工\t1 份\t已退款\t¥ 9.90\t查看订单\ndemo:entitlement-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:report-expired\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:bound\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:revision-conflict\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:submitted\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:all-answered\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:reissued\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:pending\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:partial\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-20\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-19\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-18\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\ndemo:population-17\t人工\t1 份\t已交付\t¥ 9.90\t查看订单\n上一页\n第 1 页 · 共 37 条\n下一页",
+      "width": 390
+    },
+    {
+      "key": "order-detail",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "order-detail-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "订单详情",
+        "交付与售后",
+        "退款与撤权"
+      ],
+      "ready": true,
+      "text": "订单详情\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n交付与售后\n完整兑换码仅首次显示\n更新详情\n订单引用\ndemo:unclaimed-REVOKED\n订单状态\n已交付\n数量 / 登记金额\n1 份 / ¥ 9.90\n发码\n已撤销\n7c37f503-9743-47a1-885b-2495a00fdacd\n补发该码\n退款与撤权\n已核对订单并在原平台处理退款\n退款并撤权\n\n此操作撤销本站访问，不处理平台资金。绑定归属、历史报告快照和已消耗次数保留。",
+      "width": 390
+    },
+    {
+      "key": "order-manual",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "order-manual-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "人工录入订单",
+        "订单资料"
+      ],
+      "ready": true,
+      "text": "人工录入订单\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n订单资料\n人工登记\n搜索交付商品\n商品版本\n请选择已发布商品\n社交电量测试 · 演示：观察相处时长、独处恢复和一天中的节奏变化\n工作边界测试 · 演示\n伴侣协作测试 · 演示\n每次最多显示 50 款匹配商品，可搜索缩小范围；订单与素材固定引用所选版本。\n平台\n人工\n抖音\n小红书\n订单引用\n数量\n金额（分）\n记录订单",
+      "width": 390
+    },
+    {
+      "key": "order-csv",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "order-csv-390.png",
+      "documentWidth": 390,
+      "heading": [
+        "CSV 订单导入",
+        "批量导入"
+      ],
+      "ready": true,
+      "text": "CSV 订单导入\n\n人工登记用于交付与售后，不代表平台核单或资金到账。\n\n返回订单列表\n\n演示商品与测试数据 · 不代表正式测评或真实销售\n\n批量导入\n先预演，再导入\n\n表头：platform,reference,productVersionId,quantity,amountFen。最多 500 行；先预演核对，再执行导入。\n\nCSV 内容\n选择 CSV 文件\n预演 CSV\n导入通过的行",
+      "width": 390
+    }
+  ]
+}

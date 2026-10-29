@@ -8,7 +8,7 @@ import { ContentCapabilities } from "../src/admin/content-capabilities.js";
 import { productCapabilities } from "@orai/contracts/admin";
 
 test("operator recovery stays in the relevant admin directory and account, without consumer redemption actions", () => {
-  for (const area of ["products", "content"] as const) {
+  for (const area of ["products", "content", "assets", "orders"] as const) {
     const html = renderToStaticMarkup(createElement(MemoryRouter, null,
       createElement(AdminRecovery, { area })));
     assert.match(html, new RegExp(`href="/admin/${area}"`));

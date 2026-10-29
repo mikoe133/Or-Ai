@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-29",
+  "task": "17 / T18 admin media, orders and scoped recovery slice",
+  "baseCommit": "f7bdb7466e0e5a5855e73a3b22b01f13200002d8",
+  "scope": "Real isolated Nest API and seeded TEST databases; SupabaseAuthGateway protocol substitute; CUA only; no real account, content production, uploads, issuance, CSV import, refunds or deployment",
+  "tests": {
+    "frontend": 111,
+    "fixtureIsolation": 2,
+    "typecheckAndBuild": "passed via @orai/web build",
+    "cua": 47,
+    "pairedScreenshots": 21,
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "extraWidth": 2048,
+    "contrastSamples": 7,
+    "minimumContrast": 7.16
+  },
+  "evidencePhases": {
+    "mainFixtureChecks": 43,
+    "recoveryFixtureChecks": 4,
+    "pairedScreenshots": "same first TEST fixture before and after; final recovery handler addition has separate targeted validation",
+    "preliminaryAttemptsPreserved": "attempts/"
+  },
+  "consumerSourceUnchanged": true,
+  "backendAndContractsUnchanged": true,
+  "workflowUnchanged": true,
+  "originalUntrackedFilesPreserved": [
+    "orai@0.1.0",
+    "pnpm"
+  ],
+  "cleanup": {
+    "ownTestDatabaseRemoved": true,
+    "privateStateRemoved": true,
+    "fixtureCleaned": true,
+    "recoveryFixture": {
+      "ownTestDatabaseRemoved": true,
+      "privateStateRemoved": true,
+      "fixtureCleaned": true
+    },
+    "containers": [
+      {
+        "name": "orai-auth-local-gateway-1",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "orai-auth-local-auth-1",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "orai-auth-local-auth-db-1",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "orai-auth-local-mail-1",
+        "state": "running",
+        "health": "healthy"
+      },
+      {
+        "name": "orai-db-1",
+        "state": "running",
+        "health": "healthy"
+      }
+    ]
+  },
+  "source": [
+    {
+      "file": "apps/web/src/admin/asset-preview.tsx",
+      "sha256": "bed018769ba21cddb4a4a8058c9852965fcbdbdcd5c42defc20b2308a72caf5a"
+    },
+    {
+      "file": "apps/web/src/admin/assets.tsx",
+      "sha256": "89f84760776e56102fe277f9d5f529fba2c7fa5b900f98665490bb236b7852a6"
+    },
+    {
+      "file": "apps/web/src/admin/content-history.tsx",
+      "sha256": "c0e85b49eab9f87022e38fe752d8fe8db0b2bc70dce3acc9fe9dbc501322dc6a"
+    },
+    {
+      "file": "apps/web/src/admin/feedback-view.tsx",
+      "sha256": "fecf06a7c63d5d21ebacfb73afecfe8a9fee0863ee668b089b8382fc1f15f7ba"
+    },
+    {
+      "file": "apps/web/src/admin/feedback.tsx",
+      "sha256": "7cddcc46378c6fac21039e6a7a05f4960a1b21f6103f682349736f5bfde6645a"
+    },
+    {
+      "file": "apps/web/src/admin/management.css",
+      "sha256": "0e92f1102eaee2dc9632bc1db764ede4c709afec24d8d7230c2c65774a7b801f"
+    },
+    {
+      "file": "apps/web/src/admin/orders.tsx",
+      "sha256": "308beca1404a7cc0c33353c1ce31ac36919eb52448f59a59d61a485bd6182b2e"
+    },
+    {
+      "file": "apps/web/src/admin/products.tsx",
+      "sha256": "27e2a041edc9ec9b95415e3e0ed02685b79266d2b40b5c5750124346c485ba11"
+    },
+    {
+      "file": "apps/web/src/admin/shared.tsx",
+      "sha256": "88440933bb98d3486608c31f1e68df1a820195b1695e403e615ecfa1c2c5cd14"
+    },
+    {
+      "file": "apps/web/test/admin-feedback.test.ts",
+      "sha256": "0ebceb60b3fffc69d470e1ae3ed93bcd05492ad9b89d1fb882d419f4a9a05577"
+    }
+  ],
+  "limitations": [
+    "No real uploaded media playback or cloud storage test; preview 404 uses a controlled TEST response path and actual API 404.",
+    "503/403/409 network cases are controlled Fetch responses; seeded member 403 and logged-out 401 are actual API responses.",
+    "Synthetic TEST identities are not real Supabase/cloud authentication.",
+    "Mobile/tablet sizes are desktop viewport emulation, not real devices.",
+    "Existing Vite >500kB chunk warning remains.",
+    "Full T18, product conversion/performance, Skill/connection/project surfaces and storefront review remain open."
+  ]
+}

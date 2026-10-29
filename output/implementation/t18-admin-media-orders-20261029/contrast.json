@@ -1,0 +1,51 @@
+[
+  {
+    "bg": "rgb(20, 21, 28)",
+    "color": "rgb(236, 234, 245)",
+    "font": "26px",
+    "selector": ".admin-management-heading h2",
+    "ratio": 15.3
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(170, 167, 189)",
+    "font": "12px",
+    "selector": ".admin-filterbar label",
+    "ratio": 7.16
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(236, 234, 245)",
+    "font": "15px",
+    "selector": ".admin-media-caption h3",
+    "ratio": 14.09
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(170, 167, 189)",
+    "font": "11px",
+    "selector": ".admin-media-version code",
+    "ratio": 7.16
+  },
+  {
+    "bg": "rgb(20, 21, 28)",
+    "color": "rgb(236, 234, 245)",
+    "font": "13px",
+    "selector": ".admin-media-text-preview p",
+    "ratio": 15.3
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(228, 193, 141)",
+    "font": "12px",
+    "selector": ".admin-status[data-status=reviewed]",
+    "ratio": 9.83
+  },
+  {
+    "bg": "rgb(27, 29, 40)",
+    "color": "rgb(170, 167, 189)",
+    "font": "12px",
+    "selector": ".admin-status[data-status=draft]",
+    "ratio": 7.16
+  }
+]

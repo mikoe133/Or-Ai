@@ -1,0 +1,14 @@
+{
+  "note": "First strict preview-response assertion had not enabled Network events. UI fallback was visible; enabled Network and reran the exact response observation.",
+  "check": {
+    "name": "controlled image path gets actual API 404 and readable fallback",
+    "passed": false,
+    "actual": {
+      "failed": 1,
+      "missing": 8,
+      "text": 10,
+      "videoPreload": "none",
+      "responses": []
+    }
+  }
+}

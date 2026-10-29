@@ -1,0 +1,37 @@
+{
+  "ownTestDatabaseRemoved": true,
+  "privateStateRemoved": true,
+  "fixtureCleaned": true,
+  "recoveryFixture": {
+    "ownTestDatabaseRemoved": true,
+    "privateStateRemoved": true,
+    "fixtureCleaned": true
+  },
+  "containers": [
+    {
+      "name": "orai-auth-local-gateway-1",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "orai-auth-local-auth-1",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "orai-auth-local-auth-db-1",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "orai-auth-local-mail-1",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "name": "orai-db-1",
+      "state": "running",
+      "health": "healthy"
+    }
+  ]
+}

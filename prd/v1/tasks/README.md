@@ -27,7 +27,7 @@
 | 14 | [真实 Codex/MCP 手动制作与退回重做演练](active/14-manual-production-rehearsal.md) | T14.W3 | 暂停：实际内容生成未恢复 | 04、05、06 |
 | 15 | [交付日更生产配置与恢复说明](active/15-external-schedule-handoff.md) | T14.W4 | 等待手动全链与运行参数 | 14 |
 | 16 | [按商品需要选择并实现首个新玩法](active/16-new-interaction-engine.md) | T17 | 待玩法选型 | 01、02、03 |
-| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | 商品/内容目录及工作台首批通过；其余表面/全站/完整状态待做 | 完整改造依赖05、06；现状审计可先准备 |
+| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | 素材/订单及错误恢复首批通过；Skill/连接/项目、全站与完整状态待做 | 完整改造依赖05、06；现状审计可先准备 |
 
 01–04及07已归档；当前05–06商品本地实现→17前端改造→10最终真机，08独立持有真实云端；11–12完成正式商品与首发。17是新需求的队列编号（稳定ID为T18），完整退出在05/06之后、10之前；已独立完成根加载与后台共享骨架/概览首批，不重新编号旧任务或移除依赖。**硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
 
@@ -40,6 +40,8 @@
 后续[17后台共享骨架/概览首批](../../../output/implementation/t18-admin-shell-20261028/verification.md)已完成有效SSR RED/GREEN、108前端＋2隔离专项、类型/构建、授权合成TEST七页三视口的21组前后比较和20项CUA；导航分组、main/焦点、区域滚动及概览可读性已有真实代码，390px商品整页溢出修复。仅[归档该子范围](archive/completed/17-admin-shell-overview-slice-20261028.md)，全站/编辑器/完整状态与05/06退出依赖不变。
 
 2026-10-29续[商品/内容目录与工作台首批](../../../output/implementation/t18-catalog-content-20261029/verification.md)：111前端＋2隔离专项、类型/构建、18组同TEST前后比较及36项CUA通过，包含普通刷新保留、权限拒绝隐藏、加载/失败/空态、冲突草稿、固定历史、手机栏目和未保存保护。[仅归档该子批次](archive/completed/17-admin-catalog-workbench-slice-20261029.md)；素材/订单/Skill/连接等剩余表面与完整状态继续推进，完整T18及05/06依赖保持。商城按最新截图审核边界另行执行。
+
+随后完成[素材/订单与错误恢复首批](../../../output/implementation/t18-admin-media-orders-20261029/verification.md)：111前端＋2专项、类型/构建、21组同TEST前后比较及47项CUA，七样本文字最低7.16:1。[仅归档该子批次](archive/completed/17-admin-media-orders-slice-20261029.md)；Skill/连接/运行配置/项目与完整状态继续，父任务和商城截图审核边界保持。两TEST已清理，未上传、发码、导入或退款。
 
 09 只在启用远程 MCP 时执行，依赖08，不是普通商城 M5/M6 的硬前置。13–15 是外部日更制作分支：13/14 暂停，15 等真实手动全链后交接配置，仍不启用日程。16 按具体商品需要插入05之前；首款可以使用已有明确单选协议，不强制开发小游戏。
 

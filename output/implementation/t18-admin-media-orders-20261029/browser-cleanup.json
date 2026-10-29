@@ -1,0 +1,19 @@
+{
+  "localStorage": 0,
+  "scriptVisibleCookies": 0,
+  "sessionStorage": 0,
+  "viewportReset": true,
+  "interceptionCleared": true,
+  "reducedMotionReset": true,
+  "accountRevoked": true,
+  "ownTab": "8",
+  "ownTabClosed": true,
+  "recoveryFixture": {
+    "ownTab": "9",
+    "closed": true,
+    "accountRevoked": true,
+    "scriptStorageCleared": true,
+    "interceptionCleared": true,
+    "viewportReset": true
+  }
+}

@@ -1,20 +1,23 @@
 import { useEffect, useRef, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { AdminCreateOrderSchema } from "@orai/contracts/admin";
 import { adminApi } from "./api.js";
 import { ProductVersionSelect } from "./shared.js";
 import {
   Demo,
-  Failure,
   Loading,
   Pager,
   useAction,
 } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { AdminEmptyState, AdminListProgress } from "./feedback-view.js";
+import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
 import { downloadBlob } from "../business/download.js";
 import "./management.css";
 const orderStatuses: Record<string, string> = { pending: "待交付", fulfilled: "已交付", refunded: "已退款", cancelled: "已取消" };
 const orderPlatforms: Record<string, string> = { manual: "人工", douyin: "抖音", xiaohongshu: "小红书" };
+const codeStatuses: Record<string, string> = { issued: "待兑换", claimed: "已兑换", expired: "已过期", revoked: "已撤销" };
 type Delivery = Awaited<ReturnType<typeof adminApi.issue>>;
 export function Orders({ scope }: { scope: "demo" | "live" }) {
   const headingRef = useRef<HTMLElement>(null);
@@ -31,32 +34,39 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
     [confirmed, setConfirmed] = useState(false);
   const orderId = params.get("order") ?? "",
     page = Number(params.get("page")) || 1;
+  const appliedReference = params.get("reference") ?? "", appliedStatus = params.get("status") ?? "", appliedPlatform = params.get("platform") ?? "";
+  const [referenceDraft, setReferenceDraft] = useState(appliedReference), [statusDraft, setStatusDraft] = useState(appliedStatus), [platformDraft, setPlatformDraft] = useState(appliedPlatform);
+  useEffect(() => { setReferenceDraft(appliedReference); setStatusDraft(appliedStatus); setPlatformDraft(appliedPlatform); }, [appliedReference, appliedStatus, appliedPlatform]);
+  const listQuery = new URLSearchParams({ page: String(page), ...(appliedReference ? { reference: appliedReference } : {}), ...(appliedStatus ? { status: appliedStatus } : {}), ...(appliedPlatform ? { platform: appliedPlatform } : {}) }).toString();
   const list = useQuery({
-    queryKey: ["private", "admin", "orders", params.toString()],
+    queryKey: ["private", "admin", "orders", listQuery],
     queryFn: ({ signal }) =>
-      adminApi.orders(
-        new URLSearchParams({
-          page: String(page),
-          ...(params.get("reference")
-            ? { reference: params.get("reference")! }
-            : {}),
-          ...(params.get("status") ? { status: params.get("status")! } : {}),
-          ...(params.get("platform")
-            ? { platform: params.get("platform")! }
-            : {}),
-        }).toString(),
-        signal,
-      ),
+      adminApi.orders(listQuery, signal),
+    placeholderData: keepPreviousData,
   });
   const detail = useQuery({
     queryKey: ["private", "admin", "order", orderId],
     queryFn: ({ signal }) => adminApi.order(orderId, signal),
     enabled: Boolean(orderId),
   });
+  const accessError = [list.error, orderId && detail.error, action.error].find(isAccessFailure);
+  const accessDenied = Boolean(accessError);
+  const listData = accessError ? undefined : list.data;
+  const detailData = accessError ? undefined : detail.data;
+  const filtered = Boolean(appliedReference || appliedStatus || appliedPlatform);
+  function clearFilters() { setReferenceDraft(""); setStatusDraft(""); setPlatformDraft(""); setParams({}); }
+  async function recoverAccess() {
+    const results = await Promise.all([list.refetch(), ...(orderId ? [detail.refetch()] : [])]);
+    if (results.every(result => result.isSuccess)) action.resetError();
+  }
+  useEffect(() => {
+    if (accessDenied) { setSecret(null); setConfirmed(false); }
+  }, [accessDenied]);
   useEffect(() => {
     headingRef.current?.scrollIntoView({ block: "start" });
     setSecret(null);
     setConfirmed(false);
+    action.resetError();
   }, [orderId, view]);
   function changed() {
     void client.invalidateQueries({ queryKey: ["private", "admin", "orders"] });
@@ -68,6 +78,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
     });
   }
   function selected(id: string) {
+    action.resetError();
     setView("list");
     setParams({ ...Object.fromEntries(params), order: id });
   }
@@ -88,6 +99,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
     );
   }
   function showView(next: "list" | "manual" | "csv") {
+    action.resetError();
     setView(next);
     setSecret(null);
     setConfirmed(false);
@@ -98,15 +110,16 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
   return (
     <div className="admin-management admin-orders">
       <header ref={headingRef} className="admin-management-heading">
-        <div><span className="admin-eyebrow">COMMERCE / ORDERS</span><h2>{view === "manual" ? "人工录入订单" : view === "csv" ? "CSV 订单导入" : orderId ? "订单详情" : "订单与售后"}</h2>
+        <div><h2>{view === "manual" ? "人工录入订单" : view === "csv" ? "CSV 订单导入" : orderId ? "订单详情" : "订单与售后"}</h2>
           <p>人工登记用于交付与售后，不代表平台核单或资金到账。</p>
         </div>
-        <div className="biz-row">{view !== "list" || orderId ? <button type="button" disabled={action.busy} onClick={() => showView("list")}>返回订单列表</button> : <>
-          <button type="button" disabled={action.busy} onClick={() => showView("csv")}>CSV 导入</button>
-          <button type="button" className="admin-primary" disabled={action.busy} onClick={() => showView("manual")}>人工录入 <span aria-hidden="true">↗</span></button>
+        <div className="biz-row">{view !== "list" || orderId ? <button type="button" disabled={action.busy || Boolean(accessError)} onClick={() => showView("list")}>返回订单列表</button> : <>
+          <button type="button" disabled={action.busy || Boolean(accessError)} onClick={() => showView("csv")}>CSV 导入</button>
+          <button type="button" className="admin-primary" disabled={action.busy || Boolean(accessError)} onClick={() => showView("manual")}>人工录入 <span aria-hidden="true">↗</span></button>
         </>}</div>
       </header>
       <Demo show={scope === "demo"} />
+      {accessError ? <Failure area="orders" error={accessError} retry={() => void recoverAccess()} /> : <>
       {view === "manual" &&
       <section className="admin-form-panel">
         <div className="admin-section-heading"><h3>订单资料</h3><span>人工登记</span></div>
@@ -135,7 +148,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
             );
           }}
         >
-          <ProductVersionSelect value={version} onChange={setVersion} />
+          <ProductVersionSelect area="orders" value={version} onChange={setVersion} />
           <div className="biz-grid">
             <label>
               平台
@@ -184,7 +197,7 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           </button>
         </form>
       </section>}
-      {view === "csv" && <section className="admin-form-panel">
+      {view === "csv" && <section className="admin-form-panel admin-order-csv">
         <div className="admin-section-heading"><h3>批量导入</h3><span>先预演，再导入</span></div>
         <p>
           表头：platform,reference,productVersionId,quantity,amountFen。最多 500
@@ -313,7 +326,9 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           <input
             aria-label="筛选订单引用"
             name="reference"
-            defaultValue={params.get("reference") ?? ""}
+            value={referenceDraft}
+            maxLength={120}
+            onChange={event => setReferenceDraft(event.target.value)}
           />
         </label>
         <label>
@@ -321,7 +336,8 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           <select
             aria-label="筛选状态"
             name="status"
-            defaultValue={params.get("status") ?? ""}
+            value={statusDraft}
+            onChange={event => setStatusDraft(event.target.value)}
           >
             <option value="">全部</option>
             {["pending", "fulfilled", "refunded", "cancelled"].map((value) => (
@@ -334,7 +350,8 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           <select
             aria-label="筛选平台"
             name="platform"
-            defaultValue={params.get("platform") ?? ""}
+            value={platformDraft}
+            onChange={event => setPlatformDraft(event.target.value)}
           >
             <option value="">全部</option>
             {["manual", "douyin", "xiaohongshu"].map((value) => (
@@ -343,16 +360,22 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           </select>
         </label>
         <button>筛选订单</button>
+        {filtered && <button type="button" onClick={clearFilters}>清除筛选</button>}
       </form>
-      {list.isPending ? (
-        <Loading />
-      ) : list.isError ? (
-        <Failure error={list.error} retry={() => void list.refetch()} />
+      {!listData ? (
+        list.isError ? <Failure area="orders" error={list.error} retry={() => void list.refetch()} /> :
+          <div className="admin-list-loading"><Loading label="正在读取订单列表…" /></div>
       ) : (
-        <>
-          <div className="admin-section-heading"><h3>订单记录</h3><span>{list.data.total} 笔人工登记订单</span></div>
+        <section className="admin-list-results" aria-label="订单列表" aria-busy={list.isFetching}>
+          {list.isError && <RefreshNotice busy={list.isFetching} retry={() => void list.refetch()} />}
+          {list.isFetching && <AdminListProgress pending={list.isPlaceholderData} />}
+          <div className="admin-section-heading"><h3>{filtered ? "筛选结果" : "订单记录"}</h3>
+            <div className="admin-catalog-actions"><span>{listData.total} 笔人工登记订单</span><button type="button" aria-label="更新订单列表" disabled={list.isFetching} onClick={() => void list.refetch()}>更新列表</button></div>
+          </div>
+          {listData.items.length > 0 ? <>
           <div className="biz-table-wrap admin-data-table">
             <table>
+              <caption className="admin-sr-only">人工登记订单，金额为记录值，不代表平台资金到账。</caption>
               <thead>
                 <tr>
                   <th>引用</th><th>平台</th><th>数量</th>
@@ -362,14 +385,14 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
                 </tr>
               </thead>
               <tbody>
-                {list.data.items.map((value) => (
+                {listData.items.map((value) => (
                   <tr key={value.id}>
                     <td><strong>{value.reference}</strong></td>
                     <td>{orderPlatforms[value.platform] ?? value.platform}</td><td>{value.quantity} 份</td>
                     <td><span className="admin-status" data-status={value.status}>{orderStatuses[value.status] ?? value.status}</span></td>
-                    <td>¥ {(value.amountFen / 100).toFixed(2)}</td>
+                    <td className="admin-order-amount">¥ {(value.amountFen / 100).toFixed(2)}</td>
                     <td>
-                      <button onClick={() => selected(value.id)}>
+                      <button className="admin-table-action" disabled={action.busy || list.isPlaceholderData} onClick={() => selected(value.id)}>
                         查看订单
                       </button>
                     </td>
@@ -378,54 +401,58 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
               </tbody>
             </table>
           </div>
-          {list.data.total === 0 && <p>没有匹配的订单。</p>}
+          <fieldset className="admin-list-pagination" disabled={list.isPlaceholderData}>
           <Pager
-            {...list.data}
+            {...listData}
             onChange={(next) =>
               setParams({ ...Object.fromEntries(params), page: String(next) })
             }
           />
-        </>
+          </fieldset>
+          </> : <AdminEmptyState title={filtered ? "没有匹配的订单" : "还没有订单"}
+            actions={filtered ? <button type="button" onClick={clearFilters}>清除筛选</button> : <button type="button" onClick={() => showView("manual")}>人工录入</button>}>
+            {filtered ? "调整订单引用、平台或状态，也可以清除筛选查看全部记录。" : "完成外部平台核单后，可人工录入或通过 CSV 导入。"}
+          </AdminEmptyState>}
+        </section>
       )}
       </>}
       {view === "list" && orderId && (
         <section className="admin-form-panel admin-order-detail">
-          <div className="admin-section-heading"><h3>交付与售后</h3><span>完整兑换码仅首次显示</span></div>
-          {detail.isPending ? (
-            <Loading />
-          ) : detail.isError ? (
-            <Failure error={detail.error} retry={() => void detail.refetch()} />
+          <div className="admin-section-heading"><h3>交付与售后</h3><div className="admin-catalog-actions"><span>完整兑换码仅首次显示</span><button type="button" aria-label="更新订单详情" disabled={detail.isFetching} onClick={() => void detail.refetch()}>更新详情</button></div></div>
+          {!detailData ? (
+            detail.isError ? <Failure area="orders" error={detail.error} retry={() => void detail.refetch()} /> : <Loading label="正在读取订单详情…" />
           ) : (
             <>
+              {detail.isError && <RefreshNotice busy={detail.isFetching} retry={() => void detail.refetch()} />}
               <div className="admin-facts-row">
-                <div><span>订单引用</span><strong>{detail.data.reference}</strong></div>
-                <div><span>订单状态</span><strong>{orderStatuses[detail.data.status] ?? detail.data.status}</strong></div>
-                <div><span>数量 / 金额</span><strong>{detail.data.quantity} 份 / ¥ {(detail.data.amountFen / 100).toFixed(2)}</strong></div>
+                <div><span>订单引用</span><strong>{detailData.reference}</strong></div>
+                <div><span>订单状态</span><strong className="admin-status" data-status={detailData.status}>{orderStatuses[detailData.status] ?? detailData.status}</strong></div>
+                <div><span>数量 / 登记金额</span><strong>{detailData.quantity} 份 / ¥ {(detailData.amountFen / 100).toFixed(2)}</strong></div>
               </div>
               <button
                 className="admin-primary"
-                disabled={action.busy || detail.data.status !== "pending"}
+                disabled={action.busy || detail.isFetching || detailData.status !== "pending"}
                 onClick={() => void deliver()}
               >
                 发码
               </button>
-              {detail.data.codes.map((code) => (
-                <div key={code.id} className="biz-row">
-                  <small>
-                    码 ID {code.id} · {code.status}
-                  </small>
+              <ul className="admin-order-codes" aria-label="兑换码记录">{detailData.codes.map((code) => (
+                <li key={code.id}>
+                  <div><span className="admin-status" data-status={code.status}>{codeStatuses[code.status] ?? code.status}</span><code>{code.id}</code></div>
                   <button
                     disabled={
                       action.busy ||
+                      detail.isFetching ||
                       code.status === "revoked" ||
-                      detail.data.status === "refunded"
+                      detailData.status === "refunded"
                     }
                     onClick={() => void deliver(code.id)}
                   >
                     补发该码
                   </button>
-                </div>
-              ))}
+                </li>
+              ))}</ul>
+              {detailData.codes.length === 0 && <p className="admin-order-no-codes">尚无兑换码记录。核对订单后再执行发码。</p>}
               {secret && (
                 <section className="biz-card">
                   <h3>
@@ -477,9 +504,10 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
                 className="admin-danger"
                 disabled={
                   action.busy ||
+                  detail.isFetching ||
                   !confirmed ||
-                  detail.data.status === "refunded" ||
-                  detail.data.status === "cancelled"
+                  detailData.status === "refunded" ||
+                  detailData.status === "cancelled"
                 }
                 onClick={() =>
                   void action.run(
@@ -505,8 +533,9 @@ export function Orders({ scope }: { scope: "demo" | "live" }) {
           )}
         </section>
       )}
+      </>}
       {Boolean(action.error) && (
-        <Failure error={action.error} retry={changed} />
+        !accessError && <Failure area="orders" error={action.error} retry={changed} draft={view !== "list"} onReturn={() => showView("list")} />
       )}
     </div>
   );
