@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Failure, Loading, useAction } from "../business/shared.js";
+import { Loading, useAction } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { AdminEmptyState } from "./feedback-view.js";
+import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
 import { allPages, contentApi, type Revision } from "./content-api.js";
 import { workflowApi } from "./workflow-api.js";
 import { domains, statuses, stringField } from "./content-model.js";
@@ -144,13 +147,14 @@ export function ContentHistory({
   const label = (row: Revision) =>
     `${domains[row.domain]} · ${stringField(row.snapshot.variant) || "题库 v" + String(row.snapshot.versionNumber)} · r${row.sourceRevision} · ${statuses[stringField(row.snapshot.status)]}`;
   if (history.isPending) return active ? <Loading /> : null;
-  if (history.isError)
+  if (history.isError && (!history.data || isAccessFailure(history.error)))
     return (
       <Failure error={history.error} retry={() => void history.refetch()} />
     );
-  if (!selected) return <p>当前商品尚无内容修订。</p>;
+  if (!selected) return <AdminEmptyState title="尚无内容修订">先保存商品内容或传播稿件，再到这里核对固定原稿与引用。</AdminEmptyState>;
   return (
     <section className="content-editor content-history-editor" aria-label="引用与历史工作台">
+      {history.isError && <RefreshNotice busy={history.isFetching} retry={() => void history.refetch()} />}
       <h3>引用、影响与修订历史</h3>
       <p>
         选择固定修订查看原稿。上游更新只产生待复查提示，历史内容与采用包不会跟着变化。

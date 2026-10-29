@@ -1,5 +1,5 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Link,
   Route,
@@ -7,7 +7,11 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import { Failure, Loading, Pager } from "../business/shared.js";
+import { Loading, Pager } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { AdminEmptyState, AdminListProgress } from "./feedback-view.js";
+import { RefreshNotice } from "./refresh-notice.js";
+import { productStatusLabels } from "./catalog-model.js";
 import { adminApi } from "./api.js";
 import { allPages, contentApi } from "./content-api.js";
 import {
@@ -32,6 +36,11 @@ import { ContentCapabilities } from './content-capabilities.js';
 import { isAccessFailure } from '../api/access-verification.js';
 import "./content.css";
 const ProjectWorkspace = lazy(() => import('./project-workspace.js').then(module => ({ default: module.ProjectWorkspace })));
+const workbenchTabs = {
+  project: '项目工作区', profile: '创作设定', skills: 'skill 组合', assessment: '商品内容',
+  experience: '体验设计', result: '结果交付', cover: domains.cover, video: domains.video, copy: domains.copy,
+  preview: '整套预览', history: '引用与历史', adoption: '成套采用', cleanup: '文件清理',
+};
 export function ContentWorkbench() {
   return (
     <Routes>
@@ -45,12 +54,17 @@ function ContentProducts() {
     list = useQuery({
       queryKey: ["private", "admin", "content-products", params.toString()],
       queryFn: ({ signal }) => adminApi.products(params.toString(), signal),
+      placeholderData: keepPreviousData,
     });
+  const appliedQuery = params.get("query") ?? "";
+  const [queryDraft, setQueryDraft] = useState(appliedQuery);
+  useEffect(() => setQueryDraft(appliedQuery), [appliedQuery]);
+  const data = isAccessFailure(list.error) ? undefined : list.data;
+  function clearFilters() { setQueryDraft(""); setParams({}); }
   return (
     <section className="content-index" aria-label="内容商品目录">
       <div className="content-section-heading">
         <div>
-          <span className="content-eyebrow">CONTENT / WORKSPACE</span>
           <h2>内容工作台</h2>
           <p>从共同设定出发，组织商品内容、交互体验、结果交付与传播内容。</p>
         </div>
@@ -71,49 +85,61 @@ function ContentProducts() {
             aria-label="搜索内容商品"
             maxLength={100}
             placeholder="按商品名称或关键词查找"
-            defaultValue={params.get("query") ?? ""}
+            value={queryDraft}
+            onChange={event => setQueryDraft(event.target.value)}
           />
         </label>
         <button>查找商品</button>
+        {appliedQuery && <button type="button" onClick={clearFilters}>清除筛选</button>}
       </form>
-      {list.isPending ? (
-        <Loading />
-      ) : list.isError ? (
-        <Failure error={list.error} retry={() => void list.refetch()} />
+      {!data ? (
+        list.isError ? <Failure error={list.error} retry={() => void list.refetch()} /> :
+          <div className="admin-list-loading"><Loading label="正在读取内容目录…" /></div>
       ) : (
-        <>
+        <section className="admin-list-results" aria-label="内容目录" aria-busy={list.isFetching}>
+          {list.isError && <RefreshNotice busy={list.isFetching} retry={() => void list.refetch()} />}
+          {list.isFetching && <AdminListProgress pending={list.isPlaceholderData} />}
+          <div className="content-directory-heading"><h3>{appliedQuery ? "筛选结果" : "全部内容商品"}</h3>
+            <div className="admin-catalog-actions"><span>{data.total} 个商品</span><button type="button" aria-label="更新内容目录" disabled={list.isFetching} onClick={() => void list.refetch()}>更新目录</button></div>
+          </div>
+          {data.items.length > 0 ? <>
           <div className="content-list-caption" aria-hidden="true">
             <span>商品 / 创作入口</span><span>当前状态</span><span />
           </div>
-          <div className="content-product-list">
-            {list.data.items.map((product, index) => (
+          <div className="content-product-list" inert={list.isPlaceholderData || undefined}>
+            {data.items.map((product) => (
               <Link
                 className="content-product-row"
                 key={product.id}
                 to={"/admin/content/" + product.id}
+                aria-disabled={list.isPlaceholderData || undefined}
+                tabIndex={list.isPlaceholderData ? -1 : undefined}
+                onClick={event => { if (list.isPlaceholderData) event.preventDefault(); }}
               >
-                <span className="content-product-number" aria-hidden="true">{String((list.data.page - 1) * list.data.pageSize + index + 1).padStart(2, "0")}</span>
                 <span className="content-product-name">
                   <strong>{product.name}</strong>
                   <small>{product.summary}</small>
                 </span>
-                <span className="content-badge">
-                  {statuses[product.status]}
+                <span className="content-badge" data-status={product.status}>
+                  {productStatusLabels[product.status] ?? product.status}
                 </span>
                 <span className="content-product-enter">进入工作台 <span aria-hidden="true">↗</span></span>
               </Link>
             ))}
           </div>
-          {list.data.total === 0 && (
-            <p>没有匹配商品。可先到商品管理创建商品。</p>
-          )}
+          <fieldset className="admin-list-pagination" disabled={list.isPlaceholderData}>
           <Pager
-            {...list.data}
+            {...data}
             onChange={(page) =>
               setParams({ ...Object.fromEntries(params), page: String(page) })
             }
           />
-        </>
+          </fieldset>
+          </> : <AdminEmptyState title={appliedQuery ? "没有匹配的内容商品" : "还没有内容商品"}
+            actions={appliedQuery ? <button type="button" onClick={clearFilters}>清除筛选</button> : <Link className="biz-button" to="/admin/products">建立商品资料</Link>}>
+            {appliedQuery ? "试试其他关键词，或清除筛选查看全部内容目录。" : "建立商品后，可以在这里组织创作设定、体验、报告与传播内容。"}
+          </AdminEmptyState>}
+        </section>
       )}
     </section>
   );
@@ -154,7 +180,10 @@ function ProductWorkbench() {
     [versionChoice, setVersionChoice] = useState<string | null>(
       params.get("version"),
     ),
-    [tab, setTab] = useState(params.get("tab") ?? (params.has('version') || params.has('profile') ? 'profile' : 'project')),
+    [tab, setTab] = useState(() => {
+      const value = params.get("tab");
+      return value && Object.hasOwn(workbenchTabs, value) ? value : (params.has('version') || params.has('profile') ? 'profile' : 'project');
+    }),
     [inspectionId, setInspectionId] = useState(""),
     [dirty, setDirty] = useState<Record<string, boolean>>({}),
     [navigationNotice, setNavigationNotice] = useState(""),
@@ -197,6 +226,14 @@ function ProductWorkbench() {
     refetchOnWindowFocus: false,
   });
   const hasDirty = Object.values(dirty).some(Boolean);
+  function changeTab(key: string) {
+    if (dirty.project && key !== 'project') {
+      setNavigationNotice('请先保存或放弃项目规划，再切换页签。');
+      return;
+    }
+    setTab(key);
+    remember("tab", key);
+  }
   const tabsRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const node = tabsRef.current;
@@ -310,15 +347,18 @@ function ProductWorkbench() {
   }
   if ((product.isPending && !product.data) || (profiles.isPending && !profiles.data) || (versions.isPending && !versions.data))
     return <Loading />;
-  const contextError = product.error ?? profiles.error ?? versions.error;
-  if (!product.data || !profiles.data || !versions.data || isAccessFailure(contextError))
+  const contextErrors = [product.error, profiles.error, versions.error].filter(Boolean);
+  const contextError = contextErrors.find(isAccessFailure) ?? contextErrors[0];
+  const accessError = [...contextErrors, ...(tab === 'project' ? [] : [rows.error, experience.error])].find(isAccessFailure);
+  if (!product.data || !profiles.data || !versions.data || accessError)
     return (
       <Failure
-        error={product.error ?? profiles.error ?? versions.error}
+        error={accessError ?? contextError}
         retry={() => {
           void product.refetch();
           void profiles.refetch();
           void versions.refetch();
+          if (versionId && tab !== 'project') { void rows.refetch(); void experience.refetch(); }
         }}
       />
     );
@@ -358,7 +398,6 @@ function ProductWorkbench() {
       <div className="content-context-bar" hidden={tab === 'project'}>
       <div className="content-section-heading">
         <div>
-          <span className="content-eyebrow">CONTENT / WORKSPACE</span>
           <h2>{product.data.name}</h2>
           <p>{capability(profile?.profile)}</p>
         </div>
@@ -415,30 +454,18 @@ function ProductWorkbench() {
         </p>
       )}
       {navigationNotice && <p role="alert">{navigationNotice}</p>}
+      <label className="content-mobile-navigation">
+        当前工作区
+        <select aria-label="切换内容工作区" value={tab} onChange={event => changeTab(event.target.value)}>
+          {Object.entries(workbenchTabs).map(([key, label]) => <option key={key} value={key}>{label}{dirty[key] ? " · 有未保存修改" : ""}</option>)}
+        </select>
+      </label>
       <nav ref={tabsRef} className="content-tabs" aria-label="内容工作台页签">
-        {Object.entries({
-          project: '项目工作区',
-          profile: "创作设定",
-          skills: 'skill 组合',
-          assessment: '商品内容',
-          experience: '体验设计',
-          result: '结果交付',
-          cover: domains.cover,
-          video: domains.video,
-          copy: domains.copy,
-          preview: "整套预览",
-          history: "引用与历史",
-          adoption: "成套采用",
-          cleanup: "文件清理",
-        }).map(([key, label]) => (
+        {Object.entries(workbenchTabs).map(([key, label]) => (
           <button
             key={key}
             aria-current={tab === key ? "page" : undefined}
-            onClick={() => {
-              if(dirty.project&&key!=='project'){setNavigationNotice('请先保存或放弃项目规划，再切换页签。');return;}
-              setTab(key);
-              remember("tab", key);
-            }}
+            onClick={() => changeTab(key)}
           >
             {label}
             {(dirty[key] || (key === 'result' && (dirty.assessment || dirty.experience || dirty.sample))) ? " ·" : ""}
@@ -624,7 +651,6 @@ function ProductWorkbench() {
       </div>
       <aside className="content-inspector" aria-label="当前创作上下文">
         <div className="content-inspector-title">
-          <span className="content-eyebrow">CONTEXT</span>
           <h3>制作依据</h3>
         </div>
         <dl className="content-context-facts">

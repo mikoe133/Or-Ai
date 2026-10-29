@@ -5,7 +5,7 @@
 - [按序任务](prd/v1/tasks/README.md)：01–04及07本地范围已归档，当前05/06合成技术准备；包含新增17在内的其余12批仍按依赖与暂停边界执行。
 - [路线与条件](prd/v1/ROADMAP.md)、[当前进度](prd/v1/PROGRESS.md)：04代码594项、类型/构建，最终专项13项及16项自主CUA通过；完整Git存档与后续功能完成分别记录。
 - [已完成归档](prd/v1/tasks/archive/README.md)：保留9份原完整任务及当前01–04、07完成范围，云端/真机/正式商品/商业验收仍有独立任务持有。
-- [项目设计Skill](.agents/skills/anti-ai-web-design/SKILL.md)已保存并完整阅读，[17/T18后续全站设计任务](prd/v1/tasks/active/17-frontend-design-refinement.md)已登记；后台共享骨架/概览首批已实现并验证，全站改造未完成，商品Three.js差异规划保留。
+- [项目设计Skill](.agents/skills/anti-ai-web-design/SKILL.md)已保存并完整阅读，[17/T18后续全站设计任务](prd/v1/tasks/active/17-frontend-design-refinement.md)已登记；后台共享骨架/概览、商品/内容目录与工作台首批已实现并验证；商城用户端需先截图审核，全站改造未完成，商品Three.js差异规划保留。
 - [商品实现规范](prd/v1/PRODUCT-IMPLEMENTATION-POLICY.md)、[v1文档入口](prd/v1/README.md)：固定产品规则与工程/制作合同。
 
 当前按用户授权对已有安全项目改动正常提交推送，结果以Git回执为准；按依赖继续任务。旧托管CI run40524842978的失败断言因403权限尚不可读，见[独立调查](output/implementation/ci-investigation-20261028.md)，不冒称已修复。真实云部署、商业发布和交易未完成；内容/模型比较暂停，日更配置未启用。

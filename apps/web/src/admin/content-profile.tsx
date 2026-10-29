@@ -8,7 +8,8 @@ import {
   domains,
   platforms,
 } from "./content-model.js";
-import { Failure, useAction } from "../business/shared.js";
+import { useAction } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
 export function ProfileEditor({
   product,
   selected,
@@ -367,7 +368,7 @@ export function ProfileEditor({
       </form>
       {dirty && <p className="content-note">设定有未保存修改。</p>}
       {notice && <p role="status">{notice}</p>}
-      {Boolean(action.error) && <Failure error={action.error} />}
+      {Boolean(action.error) && <Failure error={action.error} draft />}
     </section>
   );
 }

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Slow content filter keeps old rows inert until current results arrive",
+    "evidence": {
+      "busy": "true",
+      "rows": 5
+    },
+    "limitation": "Readonly DOM facade did not expose HTMLElement.inert; resampled the native inert attribute instead. Network latency reset."
+  }
+]

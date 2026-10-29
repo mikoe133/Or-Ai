@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "currentTask": "T16.C3",
   "scope": "implementation",
   "rules": {
@@ -8,7 +8,9 @@
     "contentGeneration": "paused",
     "modelComparison": "paused",
     "externalSchedule": "not_enabled",
-    "archiveOnVerifiedCompletionOnly": true
+    "archiveOnVerifiedCompletionOnly": true,
+    "adminDesignReview": "autonomous_implementation_and_verification",
+    "storefrontDesignReview": "user_screenshot_approval_before_finalizing_or_continuing"
   },
   "tasks": [
     {
@@ -366,7 +368,7 @@
       "file": "active/17-frontend-design-refinement.md",
       "title": "依据 anti-ai-web-design 审计并改造全站前端",
       "lane": "主线",
-      "status": "后台共享骨架/概览首批通过：108前端＋2专项、21组前后比较与20项CUA；全站/编辑器/完整状态及05/06依赖保持",
+      "status": "商品/内容目录与工作台首批通过：111前端＋2专项、18组前后比较及36项CUA；其余后台/完整状态/全站及05/06依赖保持",
       "dependsOn": [
         5,
         6

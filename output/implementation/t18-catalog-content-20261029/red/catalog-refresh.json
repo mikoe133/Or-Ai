@@ -1,0 +1,11 @@
+{
+  "application": "415a353",
+  "trigger": "stale list reconnect with list network blocked",
+  "expectedCachedRows": 5,
+  "actual": {
+    "message": "连接失败，请检查网络后重试；操作状态需重新确认。\n\n重新读取",
+    "recovery": [],
+    "visibleRows": 0
+  },
+  "passed": false
+}

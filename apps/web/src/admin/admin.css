@@ -758,6 +758,21 @@
   font-size: 11px;
 }
 .admin-shell .admin-refresh-notice button { min-height: 28px; padding: 4px 8px; font-size: 10px; }
+.admin-shell .biz-view .admin-list-results { min-width: 0; }
+.admin-shell .biz-view .admin-catalog-actions { display: flex; align-items: center; gap: 16px; color: var(--admin-muted); font-size: 12px; }
+.admin-shell .biz-view .admin-catalog-actions button { min-height: 32px; padding: 4px 8px; border-color: transparent; background: transparent; color: var(--admin-muted); font-size: 12px; }
+.admin-shell .biz-view .admin-catalog-actions button:hover:not(:disabled) { border-color: var(--admin-border); background: var(--admin-panel); }
+.admin-shell .biz-view .admin-list-loading { min-height: 240px; padding: 24px; border-block: 1px solid var(--admin-border); }
+.admin-shell .biz-view .admin-list-progress { margin: 0 0 16px; color: var(--admin-muted); font-size: 12px; }
+.admin-shell .biz-view .admin-list-empty { display: grid; justify-items: start; gap: 12px; min-height: 240px; align-content: center; padding: 32px; border-block: 1px solid var(--admin-border); }
+.admin-shell .biz-view .admin-list-empty :is(h3, p) { margin: 0; }
+.admin-shell .biz-view .admin-list-empty p { max-width: 55ch; color: var(--admin-muted); }
+.admin-shell .biz-view .admin-list-empty-actions { margin-top: 4px; }
+.admin-shell .biz-view .admin-list-pagination { min-width: 0; padding: 0; margin: 0; border: 0; }
+.admin-shell .biz-view .admin-list-results > .admin-refresh-notice { margin-bottom: 20px; }
+.admin-shell .biz-view .admin-failure-panel { margin: 16px 0; padding: 20px; border: 1px solid #655054; background: var(--admin-panel); }
+.admin-shell .biz-view .admin-failure-panel .biz-error { margin: 0; padding: 0; border: 0; background: transparent; }
+.admin-shell .biz-view .admin-error-recovery { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--admin-border); font-size: 12px; }
 .admin-shell :is(.admin-menu-toggle, .admin-nav-close, .admin-nav-scrim) {
   display: none;
 }

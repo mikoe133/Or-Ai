@@ -1,0 +1,419 @@
+[
+  {
+    "name": "Transient catalog refresh keeps five cached rows and unsent search input",
+    "passed": true,
+    "evidence": {
+      "notice": "数据更新暂时失败，当前内容已保留。重新读取",
+      "query": "未提交的搜索文本",
+      "rows": 5
+    }
+  },
+  {
+    "name": "Retry replaces the transient notice without clearing input",
+    "passed": true,
+    "evidence": {
+      "rows": 5
+    }
+  },
+  {
+    "name": "No-match product state exposes a clear-filter action",
+    "passed": true,
+    "evidence": {
+      "query": "orai-empty-state"
+    }
+  },
+  {
+    "name": "Clear filter resets both the controls and catalog result",
+    "passed": true,
+    "evidence": {
+      "query": "",
+      "rows": 5,
+      "status": ""
+    }
+  },
+  {
+    "name": "Slow product filter labels and disables previous rows",
+    "passed": true,
+    "evidence": {
+      "busy": "true",
+      "disabled": true,
+      "rows": 5
+    }
+  },
+  {
+    "name": "Browser back restores applied search controls and rows",
+    "passed": true,
+    "evidence": {
+      "query": "",
+      "rows": 5
+    }
+  },
+  {
+    "name": "Content no-match state has a reversible clear-filter action",
+    "passed": true,
+    "evidence": {
+      "query": "no-match-content"
+    }
+  },
+  {
+    "name": "Slow content filter keeps old rows inert until current results arrive",
+    "passed": true,
+    "evidence": {
+      "busy": "true",
+      "inert": true,
+      "rows": 5
+    }
+  },
+  {
+    "name": "Initial loading keeps controls and empty data area at 1440",
+    "passed": true,
+    "evidence": {
+      "doc": 1440,
+      "loading": "正在读取商品目录…",
+      "rows": 0,
+      "width": 1440
+    }
+  },
+  {
+    "name": "Initial loading keeps controls and empty data area at 768",
+    "passed": true,
+    "evidence": {
+      "doc": 768,
+      "loading": "正在读取商品目录…",
+      "rows": 0,
+      "width": 768
+    }
+  },
+  {
+    "name": "Initial loading keeps controls and empty data area at 390",
+    "passed": true,
+    "evidence": {
+      "doc": 390,
+      "loading": "正在读取商品目录…",
+      "rows": 0,
+      "width": 390
+    }
+  },
+  {
+    "name": "Initial failure keeps filters and admin recovery at 1440",
+    "passed": true,
+    "evidence": {
+      "doc": 1440,
+      "links": [
+        "/admin/products",
+        "/account"
+      ],
+      "query": "initial-load-case",
+      "rows": 0,
+      "width": 1440
+    }
+  },
+  {
+    "name": "Initial failure keeps filters and admin recovery at 768",
+    "passed": true,
+    "evidence": {
+      "doc": 768,
+      "links": [
+        "/admin/products",
+        "/account"
+      ],
+      "query": "initial-load-case",
+      "rows": 0,
+      "width": 768
+    }
+  },
+  {
+    "name": "Initial failure keeps filters and admin recovery at 390",
+    "passed": true,
+    "evidence": {
+      "doc": 390,
+      "links": [
+        "/admin/products",
+        "/account"
+      ],
+      "query": "initial-load-case",
+      "rows": 0,
+      "width": 390
+    }
+  },
+  {
+    "name": "Retry after simulated initial failure returns to a real empty result",
+    "passed": true,
+    "evidence": {
+      "source": "real TEST API after interception cleared"
+    }
+  },
+  {
+    "name": "Simulated 403 removes cached catalog instead of retaining privileged rows",
+    "passed": true,
+    "evidence": {
+      "editorButtons": 0,
+      "failure": true,
+      "retainedNotice": false,
+      "rows": 0
+    }
+  },
+  {
+    "name": "Admin directory refresh after interception cleanup uses the real TEST API",
+    "passed": true,
+    "evidence": {
+      "rows": 5
+    }
+  },
+  {
+    "name": "Local validation failure preserves the exact invalid draft",
+    "passed": true,
+    "evidence": {
+      "retained": "当前输入已保留。请核对最新状态后，再决定保存或重新读取。",
+      "value": "{\"name\":"
+    }
+  },
+  {
+    "name": "Simulated revision conflict retains the local draft and explains recovery",
+    "passed": true,
+    "evidence": {
+      "description": "TEST 本地未保存草稿",
+      "message": "TEST 资料已被其他操作更新，请重新读取后核对。",
+      "retained": "当前输入已保留。请核对最新状态后，再决定保存或重新读取。"
+    }
+  },
+  {
+    "name": "Dirty profile locks version context while all thirteen mobile sections remain available",
+    "passed": true,
+    "evidence": {
+      "profileDisabled": true,
+      "sections": 13,
+      "versionDisabled": true
+    }
+  },
+  {
+    "name": "Switching mobile sections retains the unsaved profile draft",
+    "passed": true,
+    "evidence": {
+      "title": "TEST 未保存的创作设定"
+    }
+  },
+  {
+    "name": "Leaving the product remains blocked until draft is saved or discarded",
+    "passed": true,
+    "evidence": {
+      "notice": [
+        "请先保存或放弃工作台中的修改，再离开此商品。"
+      ],
+      "path": "/admin/content/372be896-8aab-4adb-acfd-6b30db1ccfd1"
+    }
+  },
+  {
+    "name": "Discard restores the profile and releases the context controls",
+    "passed": true,
+    "evidence": {
+      "disabled": false,
+      "title": "工作边界测试 · 演示 · 创作设定"
+    }
+  },
+  {
+    "name": "Compact capability context still exposes registered combinations and required warning",
+    "passed": true,
+    "evidence": {
+      "open": true,
+      "registered": 4,
+      "warnings": "尚未固定共同创作设定；已有单选内容可继续维护，体验制作需先选择设定"
+    }
+  },
+  {
+    "name": "Published configuration is labelled fixed and cannot be replaced or republished",
+    "passed": true,
+    "evidence": {
+      "fixed": "此版本已发布并固定。修改配置后请导入为新版本，历史版本不会被覆盖。",
+      "publish": true,
+      "replace": true,
+      "review": true
+    }
+  },
+  {
+    "name": "Access denial takes priority over a simultaneous context network error",
+    "passed": true,
+    "evidence": {
+      "editor": 0,
+      "message": "TEST 设定访问已拒绝。",
+      "workbench": 0
+    }
+  },
+  {
+    "name": "Context retry restores actual TEST data after all interceptions are cleared",
+    "passed": true,
+    "evidence": {
+      "source": "real product/profile/version API"
+    }
+  },
+  {
+    "name": "Revisions access denial removes the entire private workbench context",
+    "passed": true,
+    "evidence": {
+      "message": "TEST 内容稿件访问已拒绝。",
+      "workbench": 0,
+      "canceledRowProbes": 1
+    }
+  },
+  {
+    "name": "Content directory update failure retains rows and unsent filter text",
+    "passed": true,
+    "evidence": {
+      "input": "未提交的内容搜索",
+      "rows": 5
+    }
+  },
+  {
+    "name": "Content retry recovers without clearing the unsent filter",
+    "passed": true,
+    "evidence": {
+      "source": "real TEST list after network block removed"
+    }
+  },
+  {
+    "name": "Changed directory and capability text samples meet 4.5 contrast",
+    "passed": true,
+    "evidence": [
+      {
+        "background": "rgb(20, 21, 28)",
+        "color": "rgb(236, 234, 245)",
+        "fontSize": "14px",
+        "selector": ".content-directory-heading > h3",
+        "ratio": 15.3
+      },
+      {
+        "background": "rgb(20, 21, 28)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "12px",
+        "selector": ".admin-catalog-actions span",
+        "ratio": 7.78
+      },
+      {
+        "background": "rgb(27, 29, 40)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "12px",
+        "selector": ".content-index-search label",
+        "ratio": 7.16
+      },
+      {
+        "background": "rgb(20, 21, 28)",
+        "color": "rgb(170, 167, 189)",
+        "fontSize": "12px",
+        "selector": ".content-product-row small",
+        "ratio": 7.78
+      },
+      {
+        "background": "rgb(20, 21, 28)",
+        "color": "rgb(172, 205, 188)",
+        "fontSize": "12px",
+        "selector": ".content-product-row .content-badge[data-status=\"published\"]",
+        "ratio": 10.59
+      },
+      {
+        "background": "rgb(27, 29, 40)",
+        "color": "rgb(228, 193, 141)",
+        "fontSize": "11px",
+        "selector": ".content-capabilities pending status",
+        "ratio": 9.83
+      }
+    ]
+  },
+  {
+    "name": "Reduced motion disables directory hover transitions on narrow layout",
+    "passed": true,
+    "evidence": {
+      "reduced": true,
+      "transition": "0s",
+      "viewport": 390,
+      "width": 390
+    }
+  },
+  {
+    "name": "Filtered empty states remain reversible without document overflow at all three widths",
+    "passed": true,
+    "evidence": [
+      {
+        "kind": "products",
+        "actions": [
+          "清除筛选"
+        ],
+        "doc": 1440,
+        "empty": true,
+        "width": 1440
+      },
+      {
+        "kind": "products",
+        "actions": [
+          "清除筛选"
+        ],
+        "doc": 768,
+        "empty": true,
+        "width": 768
+      },
+      {
+        "kind": "products",
+        "actions": [
+          "清除筛选"
+        ],
+        "doc": 390,
+        "empty": true,
+        "width": 390
+      },
+      {
+        "kind": "content",
+        "actions": [
+          "清除筛选"
+        ],
+        "doc": 1440,
+        "empty": true,
+        "width": 1440
+      },
+      {
+        "kind": "content",
+        "actions": [
+          "清除筛选"
+        ],
+        "doc": 768,
+        "empty": true,
+        "width": 768
+      },
+      {
+        "kind": "content",
+        "actions": [
+          "清除筛选"
+        ],
+        "doc": 390,
+        "empty": true,
+        "width": 390
+      }
+    ]
+  },
+  {
+    "name": "Verified seeded TEST member is actually rejected by the real admin API",
+    "passed": true,
+    "evidence": {
+      "code": "FORBIDDEN",
+      "overviewStatus": 403,
+      "role": "user",
+      "status": 200,
+      "verified": true
+    }
+  },
+  {
+    "name": "Real TEST member sees no operable admin links or private catalog rows",
+    "passed": true,
+    "evidence": {
+      "links": 0,
+      "locked": 7,
+      "rows": 0
+    }
+  },
+  {
+    "name": "Both TEST identities are signed out and private API requires authentication",
+    "passed": true,
+    "evidence": {
+      "code": "AUTH_REQUIRED",
+      "status": 401
+    }
+  }
+]

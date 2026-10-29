@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-29",
+  "baselineCommit": "415a353",
+  "scope": "Admin catalog/content directory, compact workbench chrome and feedback; no storefront design changes",
+  "webTests": {
+    "total": 111,
+    "fixtureIsolation": 2,
+    "passed": true
+  },
+  "buildAndTypecheck": {
+    "passed": true,
+    "knownWarning": "Existing Three.js module remains over 500kB; threshold unchanged"
+  },
+  "screenshots": {
+    "baseline": 18,
+    "final": 18,
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "desktopEmulationOnly": true
+  },
+  "interactions": {
+    "total": 36,
+    "passed": 36,
+    "faultResponses": "503, 403 and 409 injected only into non-Document Fetch requests in the isolated TEST tab; no real permissions changed",
+    "realMember": {
+      "provider": "synthetic Auth protocol substitute",
+      "actualAdminApiStatus": 403
+    },
+    "draftWrites": "Only initial same-value PATCH in disposable TEST; no new production content"
+  },
+  "cleanup": {
+    "reportedCleaned": true,
+    "privateStateRemoved": true,
+    "originalContainers": [
+      "orai-auth-local-gateway-1: Up 7 days (healthy)",
+      "orai-auth-local-auth-1: Up 7 days (healthy)",
+      "orai-auth-local-auth-db-1: Up 27 hours (healthy)",
+      "orai-auth-local-mail-1: Up 7 days (healthy)",
+      "orai-db-1: Up 27 hours (healthy)"
+    ],
+    "originalFiveHealthy": true,
+    "browser": "Both TEST identities logged out; Fetch, network, media and viewport reset; own tab closed"
+  },
+  "sourceSha256": {
+    "apps/web/src/admin/admin.css": "1a083be71abd52ea17e304c8ea313b874d7a93ba2f0e886c6e85f8ef2e567e7b",
+    "apps/web/src/admin/content-capabilities.tsx": "0cb03864b7849b9c6e4f7a4db734cb527c1c3724a4adeb4e78ef5a9ef7d4edf6",
+    "apps/web/src/admin/content-history.tsx": "d4d12e4c9a58d9accfc8df1ed955f230d30de4e58d908eaaa030b100e87aaa83",
+    "apps/web/src/admin/content-profile.tsx": "b8fb7c088ddf7b38ca54a3fb6967204785a32c312bf9df556392af11379d9ff5",
+    "apps/web/src/admin/content.css": "2ef4a958ba5ee83866b25b03c0db442d94ffd2d357f43659f5cb978f4eb0d2dc",
+    "apps/web/src/admin/content.tsx": "d5bf125c08aacf4ede0c05686462d2c02a5f2868e9bc7e69b8eaf5b325c222fa",
+    "apps/web/src/admin/management.css": "8250626f08e2ebfa3a7ecbeff299740d8a079a3dbf7af817fa6d2516f2b69f54",
+    "apps/web/src/admin/products.tsx": "a5d4741b79d666b2ff0ad113490dfa3baba32c6d8df24a524ca6d8f6454d2a39",
+    "apps/web/src/admin/catalog-model.ts": "6d6a02172600a2076cb97e9620386d9f9bc07f6f3844c7179e61874e0d587ae4",
+    "apps/web/src/admin/feedback-view.tsx": "d65eef76140fe9421c73c81ce1e58929dc3b0b37b74af65c4774894391271a42",
+    "apps/web/src/admin/feedback.tsx": "ee2d308bc9f9b8bbd29ecf5adb58dbbe570eb651e0119c74d3c422c815c34230",
+    "apps/web/test/admin-feedback.test.ts": "4284ba11dbfc4feac1d2991dba85d9fd069393c2000b5664daac283e5b0eb2e0"
+  }
+}

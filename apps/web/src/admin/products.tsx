@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { keepPreviousData, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import {
   AdminProductInputSchema,
@@ -11,10 +11,13 @@ import {
   productMetadata,
   type AdminProduct,
 } from "./api.js";
-import { Failure, Loading, Pager, useAction } from "../business/shared.js";
+import { Loading, Pager, useAction } from "../business/shared.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { AdminEmptyState, AdminListProgress } from "./feedback-view.js";
+import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
+import { productStatusLabels as productStatuses } from "./catalog-model.js";
 import "./management.css";
 
-const productStatuses: Record<string, string> = { draft: "草稿", reviewed: "已审核", published: "已发布", archived: "已下架" };
 type Version = Awaited<ReturnType<typeof adminApi.importVersion>>;
 export function Products({ scope }: { scope: "demo" | "live" }) {
   const headingRef = useRef<HTMLElement>(null);
@@ -34,11 +37,18 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
       ReturnType<typeof adminApi.preview>
     > | null>(null),
     [notice, setNotice] = useState("");
+  const appliedQuery = params.get("query") ?? "", appliedStatus = params.get("status") ?? "";
+  const [queryDraft, setQueryDraft] = useState(appliedQuery), [statusDraft, setStatusDraft] = useState(appliedStatus);
+  useEffect(() => { setQueryDraft(appliedQuery); setStatusDraft(appliedStatus); }, [appliedQuery, appliedStatus]);
   useEffect(() => { headingRef.current?.scrollIntoView({ block: "start" }); }, [editorOpen, current?.id]);
   const list = useQuery({
     queryKey: ["private", "admin", "products", params.toString()],
     queryFn: ({ signal }) => adminApi.products(params.toString(), signal),
+    placeholderData: keepPreviousData,
   });
+  const listData = isAccessFailure(list.error) ? undefined : list.data;
+  const filtered = Boolean(appliedQuery || appliedStatus);
+  function clearFilters() { setQueryDraft(""); setStatusDraft(""); setParams({}); }
   const categories = useQuery({
       queryKey: ["private", "admin", "categories"],
       queryFn: ({ signal }) => adminApi.categories(signal),
@@ -124,7 +134,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
   return (
     <div className="admin-management admin-products">
       <header ref={headingRef} className="admin-management-heading">
-        <div><span className="admin-eyebrow">CATALOG / PRODUCTS</span>
+        <div>
           <h2>{editorOpen ? (current ? current.name : "新建商品") : "商品与版本"}</h2>
           <p>{editorOpen ? "维护商品资料与配置版本，审核后再发布。" : "管理商品资料、配置版本与发布状态。公开样例与私人报告分开保存。"}</p>
         </div>
@@ -154,7 +164,9 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
             aria-label="搜索商品"
             name="query"
             maxLength={100}
-            defaultValue={params.get("query") ?? ""}
+            value={queryDraft}
+            onChange={event => setQueryDraft(event.target.value)}
+            placeholder="商品名称或标识"
           />
         </label>
         <label>
@@ -162,7 +174,8 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
           <select
             aria-label="商品状态"
             name="status"
-            defaultValue={params.get("status") ?? ""}
+            value={statusDraft}
+            onChange={event => setStatusDraft(event.target.value)}
           >
             <option value="">全部</option>
             {["draft", "reviewed", "published", "archived"].map((value) => (
@@ -171,32 +184,42 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
           </select>
         </label>
         <button>筛选商品</button>
+        {filtered && <button type="button" className="admin-filter-reset" onClick={clearFilters}>清除筛选</button>}
       </form>
-      {list.isPending ? (
-        <Loading />
-      ) : list.isError ? (
-        <Failure error={list.error} retry={() => void list.refetch()} />
+      {!listData ? (
+        list.isError ? <Failure area="products" error={list.error} retry={() => void list.refetch()} /> :
+          <div className="admin-list-loading"><Loading label="正在读取商品目录…" /></div>
       ) : (
-        <>
-          <div className="admin-section-heading"><h3>全部商品</h3><span>{list.data.total} 个商品</span></div>
+        <section className="admin-list-results" aria-label="商品目录" aria-busy={list.isFetching}>
+          {list.isError && <RefreshNotice busy={list.isFetching} retry={() => void list.refetch()} />}
+          {list.isFetching && <AdminListProgress pending={list.isPlaceholderData} />}
+          <div className="admin-section-heading"><h3>{filtered ? "筛选结果" : "全部商品"}</h3>
+            <div className="admin-catalog-actions"><span>{listData.total} 个商品</span><button type="button" aria-label="更新商品目录" disabled={list.isFetching} onClick={() => void list.refetch()}>更新目录</button></div>
+          </div>
+          {listData.items.length > 0 ? <>
           <div className="biz-table-wrap admin-data-table">
             <table><thead><tr><th>商品名称</th><th>状态</th><th>价格</th><th>时长</th><th>修订</th><th><span className="admin-sr-only">操作</span></th></tr></thead>
-              <tbody>{list.data.items.map((value) => <tr key={value.id}>
+              <tbody>{listData.items.map((value) => <tr key={value.id}>
                 <td><strong>{value.name}</strong><small className="admin-table-subtitle">{value.slug}</small></td>
                 <td><span className="admin-status" data-status={value.status}>{productStatuses[value.status] ?? value.status}</span></td>
                 <td>¥ {(value.priceFen / 100).toFixed(2)}</td><td>{value.durationMinutes} 分钟</td><td>r{value.revision}</td>
-                <td><button className="admin-table-action" onClick={() => choose(value)} disabled={action.busy}>编辑商品 <span aria-hidden="true">↗</span></button></td>
+                <td><button className="admin-table-action" onClick={() => choose(value)} disabled={action.busy || list.isPlaceholderData}>编辑商品 <span aria-hidden="true">↗</span></button></td>
               </tr>)}</tbody>
             </table>
           </div>
-          {!list.data.items.length && <div className="admin-empty-state"><h3>没有匹配的商品</h3><p>调整搜索条件，或创建第一份商品资料。</p></div>}
+          <fieldset className="admin-list-pagination" disabled={list.isPlaceholderData}>
           <Pager
-            {...list.data}
+            {...listData}
             onChange={(page) =>
               setParams({ ...Object.fromEntries(params), page: String(page) })
             }
           />
-        </>
+          </fieldset>
+          </> : <AdminEmptyState title={filtered ? "没有匹配的商品" : "还没有商品"}
+            actions={filtered ? <button type="button" onClick={clearFilters}>清除筛选</button> : <button type="button" onClick={newProduct}>新建商品</button>}>
+            {filtered ? "试试其他关键词或商品状态，也可以清除筛选查看全部目录。" : "先建立商品资料，再配置内容版本与制作计划。"}
+          </AdminEmptyState>}
+        </section>
       )}
       </>}
       {editorOpen && (
@@ -216,7 +239,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
           {current && (
             <>
               <p>
-                商品状态：{current.status} · 修订 {current.revision}
+                商品状态：{productStatuses[current.status] ?? current.status} · 修订 {current.revision}
               </p>
               <button
                 disabled={action.busy}
@@ -295,15 +318,16 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
                 <Loading />
               ) : versions.isError ? (
                 <Failure
-                  error={versions.error}
+                  area="products" error={versions.error}
                   retry={() => void versions.refetch()}
                 />
               ) : (
                 <>
-                  <div className="biz-row">
+                  <div className="admin-version-list" aria-label="商品配置版本">
                     {versions.data?.items.map((value) => (
                       <button
                         key={value.id}
+                        aria-pressed={version?.id === value.id}
                         disabled={action.busy}
                         onClick={() =>
                           void action.run(
@@ -323,15 +347,17 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
                           )
                         }
                       >
-                        预览版本 {value.number}（{value.status}）
+                        预览版本 {value.number} · {productStatuses[value.status] ?? value.status}
                       </button>
                     ))}
                   </div>
+                  {!versions.data?.items.length && <AdminEmptyState title="尚无配置版本">从配置文件读取内容，导入后会建立新的草稿版本。</AdminEmptyState>}
                   {versions.data && (
                     <Pager {...versions.data} onChange={setVersionPage} />
                   )}
                 </>
               )}
+              {version?.status === "published" && <p className="admin-version-fixed" role="status">此版本已发布并固定。修改配置后请导入为新版本，历史版本不会被覆盖。</p>}
               <label>
                 从 JSON 文件读取配置
                 <input
@@ -425,7 +451,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
               {version && (
                 <>
                   <p>
-                    版本 {version.number} · {version.status} · 修订{" "}
+                    版本 {version.number} · {productStatuses[version.status] ?? version.status} · 修订{" "}
                     {version.revision}
                   </p>
                   {configuration !== loaded && (
@@ -504,7 +530,9 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
       <details className="admin-reference-details">
         <summary>分类与标签参考</summary>
         {categories.isError || tags.isError ? (
-          <Failure error={categories.error ?? tags.error} />
+          <Failure area="products" error={categories.error ?? tags.error} retry={() => { void categories.refetch(); void tags.refetch(); }} />
+        ) : categories.isPending || tags.isPending ? (
+          <Loading label="正在读取分类与标签…" />
         ) : (
           <>
             <h3>分类</h3>
@@ -524,7 +552,7 @@ export function Products({ scope }: { scope: "demo" | "live" }) {
       </details>
       {notice && <p role="status">{notice}</p>}
       {Boolean(action.error) && (
-        <Failure error={action.error} retry={changed} />
+        <Failure area="products" error={action.error} retry={changed} draft />
       )}
     </div>
   );

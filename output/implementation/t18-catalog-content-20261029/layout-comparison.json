@@ -1,0 +1,236 @@
+[
+  {
+    "page": "products-list",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "beforeDocumentWidth": 1440,
+    "afterDocumentWidth": 1440,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "product-editor",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "beforeDocumentWidth": 1440,
+    "afterDocumentWidth": 1440,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "product-published",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "beforeDocumentWidth": 1440,
+    "afterDocumentWidth": 1440,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-list",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "beforeDocumentWidth": 1440,
+    "afterDocumentWidth": 1440,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-profile",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "beforeDocumentWidth": 1440,
+    "afterDocumentWidth": 1440,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-history",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "beforeDocumentWidth": 1440,
+    "afterDocumentWidth": 1440,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 1,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "products-list",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "beforeDocumentWidth": 768,
+    "afterDocumentWidth": 768,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "product-editor",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "beforeDocumentWidth": 768,
+    "afterDocumentWidth": 768,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "product-published",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "beforeDocumentWidth": 768,
+    "afterDocumentWidth": 768,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-list",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "beforeDocumentWidth": 768,
+    "afterDocumentWidth": 768,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-profile",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "beforeDocumentWidth": 768,
+    "afterDocumentWidth": 768,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-history",
+    "viewport": {
+      "width": 768,
+      "height": 1024
+    },
+    "beforeDocumentWidth": 768,
+    "afterDocumentWidth": 768,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 1,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "products-list",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeDocumentWidth": 390,
+    "afterDocumentWidth": 390,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "product-editor",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeDocumentWidth": 390,
+    "afterDocumentWidth": 390,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "product-published",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeDocumentWidth": 390,
+    "afterDocumentWidth": 390,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-list",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeDocumentWidth": 390,
+    "afterDocumentWidth": 390,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-profile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeDocumentWidth": 390,
+    "afterDocumentWidth": 390,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 0,
+    "historicalDigestsUnchanged": true
+  },
+  {
+    "page": "content-history",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "beforeDocumentWidth": 390,
+    "afterDocumentWidth": 390,
+    "samePrimaryHeading": true,
+    "noDocumentOverflow": true,
+    "historicalDigestCount": 1,
+    "historicalDigestsUnchanged": true
+  }
+]
