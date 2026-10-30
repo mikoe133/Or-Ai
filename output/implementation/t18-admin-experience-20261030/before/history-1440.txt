@@ -1,0 +1,208 @@
+Browser tab: 8, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=experience&version=dceb5635-8924-49bd-abd9-f8101732ed9a".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=experience&version=dceb5635-8924-49bd-abd9-f8101732ed9a
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=experience&version=dceb5635-8924-49bd-abd9-f8101732ed9a#admin-workspace
+		191 container Description: 运营工作空间, ID: admin-sidebar
+			192 link Description: MeetMyWorld 运营后台, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin
+			193 container 后台导航
+				194 container 运营管理
+					195 text 运营管理
+					196 link Description: 概览与审计, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin
+					197 link Description: 商品与版本, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/products
+				198 container 内容制作
+					199 text 内容制作
+					200 link Description: 内容工作台, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/content
+					201 link Description: 素材与文件, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/assets
+					202 link Description: skill 库, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/skills
+				203 container 连接与交付
+					204 text 连接与交付
+					205 link Description: Codex 连接, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/machine
+					206 link Description: 订单与售后, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/orders
+			207 link Description: M 管理员 邮箱已验证, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/account
+			208 link Description: ← 返回商城, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/
+		4 container
+			209 link Description: 运营后台, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin
+			210 text / 内容工作台 已验证的管理员
+			7 link Description: 账户设置, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/account
+		8 container 内容工作台, ID: admin-workspace
+			9 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				10 text 内容工作台
+			11 link Description: ← 全部内容商品, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/content
+			12 heading TEST Three.js 只读项目, Value: 2
+				13 text TEST Three.js 只读项目
+			14 text 当前支持单人自我探索，体验以已注册模板为准
+			15 text 演示范围
+			16 container
+				17 text 内容版本 · 单选 v1
+				18 pop up button (collapsed, settable) Description: 工作台内容版本, Value: v1 · 草稿, Secondary Actions: Expand
+					19 menu
+						20 (selected) v1 · 草稿
+						21 建立单选内容版本
+			22 container
+				23 text 共同创作设定
+				24 pop up button (collapsed, settable) Description: 共同创作设定, Value: r1 · TEST 只读创作设定, Secondary Actions: Expand
+					25 menu
+						26 (selected) r1 · TEST 只读创作设定
+			211 container 内容工作台页签
+				212 button 项目工作区
+				213 button 创作设定
+				214 button skill 组合
+				215 button 商品内容
+				216 button 体验设计
+				217 button 结果交付
+				218 button 封面
+				219 button 视频与分镜
+				220 button 引流文案
+				221 button 整套预览
+				222 button 引用与历史
+				223 button 成套采用
+				224 button 文件清理
+			44 container 商品能力与制作范围
+				45 container
+					46 heading 商品能力与制作范围, Value: 3
+						47 text 商品能力与制作范围
+					48 text 组合兼容
+				49 container
+					50 text 静心花园 · 3D v1  ·  花园手记 · v1
+				51 button (collapsed) 查看版本依据、支持范围与后续形式, Secondary Actions: Expand
+					52 text 查看版本依据、支持范围与后续形式
+			53 container 体验设计制作工作台
+				54 text EXPERIENCE / SCENES
+				55 heading 体验设计, Value: 3
+					56 text 体验设计
+				57 text 按注册能力把商品内容映射为交互场景，保留明确确认与恢复。
+				58 text r1 · 已审核
+				59 container
+					60 text 体验修订
+					61 pop up button (collapsed, settable) Description: 体验修订, Value: r1 · 已审核 · 运营制作, Secondary Actions: Expand
+						62 menu
+							63 当前稿 · r2
+							64 r2 · 草稿 · 运营制作
+							65 (selected) r1 · 已审核 · 运营制作
+				66 button 读取最新稿
+				67 text 正在查看历史修订。
+				68 text 希望带来的感受 TEST 情绪目标 希望获得的理解 TEST 理解目标 共同意象 TEST 独立商品世界观 表达方式 TEST 清楚简短
+				69 container
+					70 container
+						71 heading 01 / 形式与主题, Value: 4
+							72 text 01 / 形式与主题
+						73 text 只采用已注册、能够完成交付的模板组合。
+					74 container
+						75 text 交互模板
+						76 pop up button (disabled, collapsed, settable) Description: 交互模板, Value: 静心花园 · 3D v1, Secondary Actions: Expand
+							77 menu
+								78 (disabled) DOM 单选 · v1
+								79 (disabled) 安静小屋 · 2.5D v1
+								80 (disabled) 静心花园 · 3D v1
+								81 (disabled) 关系观察台 · Three.js 2.5D 技术原型 v1
+					82 container
+						83 text 主题标识
+						84 text field (disabled) Description: 体验主题标识, Value: test-older-theme
+					85 container
+						86 text 主题修订
+						87 stepper (disabled, settable, integer) Description: 体验主题修订, Value: 1
+					88 text 主题标识和修订与模板一起固定。安静小屋为 2.5D 插画，静心花园为 3D 内置几何体；任意模型、音频和自定义脚本尚未启用。
+					89 container
+						90 link Description: 查看独立的 3D 交互样例, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/preview/experience/reflection-garden
+						91 text  · 使用固定示例题目，不代表当前商品的预览或发布。
+					92 container
+						93 heading 02 / 题目与场景映射, Value: 4
+							94 text 02 / 题目与场景映射
+						95 text 选择必须对应原选项，点击确认后才保存。分支、任务与自由探索尚未启用。
+					96 container
+						97 button (expanded) 01 · TEST 原始题目, Secondary Actions: Collapse
+							98 text 01
+							99 text  · 
+							100 text TEST 原始题目
+						101 text 场景标识
+						102 text field (disabled) Description: 场景 1 标识, Value: daily-need
+						103 text 恢复检查点
+						104 text field (disabled) Description: 场景 1 检查点, Value: daily-need
+						105 text 经常会
+						106 text often
+						107 text field (disabled) Description: 场景 1 选项 1 对象, Value: often
+						108 text 偶尔会
+						109 text sometimes
+						110 text field (disabled) Description: 场景 1 选项 2 对象, Value: sometimes
+						111 text 暂时不适用
+						112 text na
+						113 text field (disabled) Description: 场景 1 选项 3 对象, Value: na
+					114 container
+						115 heading 03 / 体验资源, Value: 4
+							116 text 03 / 体验资源
+						117 text 插画与纹理独立于宣传素材，最多  2  项、合计  1  MiB。
+					118 text 尚无图片资源。基础单选可直接运行。
+					119 container
+						120 heading 04 / 制作方法与说明, Value: 4
+							121 text 04 / 制作方法与说明
+						122 text 方法版本与当前体验修订一起保留。
+					123 text 正常商品体验须使用 Three.js，并固定这次制作的商品规划。注册兼容检查、内容审核和设备验收分别记录。
+					124 checkbox (disabled, settable, integer) Description: 人工制作（不绑定方法）, Value: 1
+					125 container 方法的固定商品规划输入
+						126 text 固定商品规划 · 必填输入
+						127 text 选择本次制作的规划与模块。保存后固定摘要；规划更新后需重新选择并保存新修订。
+						128 container
+							129 text 商品规划
+							130 pop up button (disabled, collapsed, settable) Description: 方法固定商品规划, Value: 选择固定商品规划, Secondary Actions: Expand
+								131 menu
+									132 (disabled) 选择固定商品规划
+									133 (disabled) r1 · TEST Three.js 项目规划
+						134 button (disabled) 刷新可选规划
+						135 link Description: 查看项目工作区, Value: orai-cua-9a24df07-b4ba-489a-8fbb-66de4fa2276e.localhost:5193/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project
+					136 container
+						137 text 制作说明
+						138 text entry area (disabled) Description: 体验制作说明, Value: TEST 历史体验只读说明
+					139 button (collapsed) 结构化清单 · JSON, Secondary Actions: Expand
+						140 text 结构化清单 · JSON
+				141 button 检查兼容性
+				142 button (disabled) 保存体验与结果草稿
+				143 button (disabled) 审核体验
+			144 container 当前创作上下文
+				145 heading 制作依据, Value: 3
+					146 text 制作依据
+				147 definition list
+					148 container 内容版本 · 单选
+						149 text 内容版本 · 单选
+					150 text v1 · 草稿
+					151 container 共同创作设定
+						152 text 共同创作设定
+					153 text r1 · TEST 只读创作设定
+					154 container 保存状态
+						155 text 保存状态
+					156 text 无未保存修改
+				157 heading 四类内容, Value: 4
+					158 text 四类内容
+				159 container 四类内容齐备情况
+					160 text 题库与报告
+					161 container
+						162 text 1  份
+					163 text 可预览
+					164 text 封面
+					165 container
+						166 text 0  份
+					167 text 待制作
+					168 text 视频与分镜
+					169 container
+						170 text 0  份
+					171 text 待制作
+					172 text 引流文案
+					173 container
+						174 text 0  份
+					175 text 待制作
+				176 heading 共同目标, Value: 4
+					177 text 共同目标
+				178 definition list
+					179 container 情绪感受
+						180 text 情绪感受
+					181 text TEST 情绪目标
+					182 container 加深理解
+						183 text 加深理解
+					184 text TEST 理解目标
+					185 container 语言风格
+						186 text 语言风格
+					187 text TEST 清楚简短
+				188 text 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+			189 container
+				190 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 8 container 内容工作台, ID: admin-workspace

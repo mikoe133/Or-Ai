@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { purposeDomain, type StyleSkillManifest } from '@orai/contracts/admin';
@@ -8,12 +9,14 @@ import './skill-plan-input.css';
 
 export type SkillPlanChoice = { reference?: { revisionId: string; digest: string }; modules: Record<string,string> };
 type Purpose = StyleSkillManifest['purposes'][number];
-export function SkillPlanInput({ productId, profileId, form, purposes, value, onChange, disabled = false }:{
+export function SkillPlanInput({ productId, profileId, form, purposes, value, onChange, disabled = false, onReadFailure }:{
   productId: string; profileId: string; form: string; purposes: Purpose[]; value: SkillPlanChoice;
   onChange: (value: SkillPlanChoice) => void; disabled?: boolean;
+  onReadFailure?: (error: unknown, verify: () => Promise<unknown>) => void;
 }) {
   const query = useQuery({ queryKey: ['private','admin','skill-product-plan',productId],
     queryFn: ({signal}) => projectApi.plans(productId,signal), refetchOnWindowFocus: false });
+  useEffect(() => { if (query.error) onReadFailure?.(query.error, () => query.refetch({throwOnError:true})); }, [query.error, onReadFailure]);
   const current = query.data?.items[0], valid = current?.plan.schemaVersion === 2 && current.creativeProfileRevisionId === profileId;
   const selected = !!current && !!value.reference && current.id === value.reference.revisionId && current.digest === value.reference.digest;
   return <fieldset className="content-block skill-plan-input" disabled={disabled} aria-label="方法的固定商品规划输入">

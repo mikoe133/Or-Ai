@@ -1,0 +1,43 @@
+{
+  "testOnly": true,
+  "allWriteResponsesRejected": true,
+  "requestCount": 477,
+  "writeCount": 11,
+  "groups": [
+    {
+      "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a/experience",
+      "bodyDigest": "d1e578e5d5feed94a29e4c4286c5736fccbe337c6b4e13db0a685d7c1a69b0b5",
+      "statuses": [
+        503
+      ]
+    },
+    {
+      "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a/experience",
+      "bodyDigest": "5294a31c608b0631944be8960415d8169c7ab3e20df60472e13050767583fb4e",
+      "statuses": [
+        503,
+        503,
+        403,
+        409
+      ]
+    },
+    {
+      "path": "/api/admin/experience-revisions/44596cbe-77bd-4d45-8290-28baea9eaa00/review",
+      "bodyDigest": "4d6035470cd043160e3a22d0b5ce9d7457169e46c5ef89834ac085b02bb00f08",
+      "statuses": [
+        503,
+        503,
+        409
+      ]
+    },
+    {
+      "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a/experience",
+      "bodyDigest": "dcb19e3fd1aadf9b42456111f8682d017900ee420fc7ce9da4d8cad03dafe4b9",
+      "statuses": [
+        503,
+        503,
+        409
+      ]
+    }
+  ]
+}

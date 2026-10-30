@@ -1,0 +1,8 @@
+{
+  "expected": "A failed read must retain the draft and must not announce a successful latest-version load",
+  "observed": {
+    "note": "TEST 当前体验制作说明",
+    "successNotice": 1
+  },
+  "reproduced": true
+}

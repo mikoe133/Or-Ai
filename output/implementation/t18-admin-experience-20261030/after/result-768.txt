@@ -1,0 +1,177 @@
+- link "跳到后台内容":
+  - /url: "#admin-workspace"
+- banner:
+  - button "展开后台导航":
+  - link "运营后台":
+    - /url: /admin
+  - generic: /
+  - strong: 内容工作台
+  - text: 已验证的管理员
+  - link "账户设置":
+    - /url: /account
+    - text: M
+- main "内容工作台" [active]:
+  - heading "内容工作台" [level=1]
+  - link "← 全部内容商品":
+    - /url: /admin/content
+  - heading "TEST Three.js 只读项目" [level=2]
+  - paragraph: 当前支持单人自我探索，体验以已注册模板为准
+  - generic: 演示范围
+  - text: 内容版本 · 单选 v1
+  - combobox "工作台内容版本":
+    - option "v1 · 草稿" [selected]
+    - option "建立单选内容版本"
+  - text: 共同创作设定
+  - combobox "共同创作设定":
+    - option "r1 · TEST 只读创作设定" [selected]
+  - text: 当前工作区
+  - combobox "切换内容工作区":
+    - option "项目工作区"
+    - option "创作设定"
+    - option "skill 组合"
+    - option "商品内容"
+    - option "体验设计"
+    - option "结果交付" [selected]
+    - option "封面"
+    - option "视频与分镜"
+    - option "引流文案"
+    - option "整套预览"
+    - option "引用与历史"
+    - option "成套采用"
+    - option "文件清理"
+  - region "商品能力与制作范围":
+    - heading "商品能力与制作范围" [level=3]
+    - generic: 组合兼容
+    - paragraph: 静心花园 · 3D v1 · 花园手记 · v1
+    - generic "查看版本依据、支持范围与后续形式"
+  - button "核对配置与来源"
+  - region "题库报告编辑器":
+    - heading "结果内容 · 解释与建议" [level=3]
+    - paragraph: 结构化结果来自本版本的评估规则，叙事方案与呈现模板在下方分别核对。
+    - generic: v1 · 草稿
+    - paragraph: 当前引擎 dimensions_v1，单人作答。已发布版本通过“派生新版本”继续编辑。
+    - heading "01 / 结果解释与行动建议" [level=4]
+    - paragraph: 与商品内容共用同一份版本草稿；切换页签可继续编辑。
+    - text: 报告提示
+    - textbox "报告提示": 仅供自我探索，不构成心理诊断或关系结论。
+    - heading "慢慢探索" [level=4]
+    - text: 结果解释
+    - textbox "报告 1 解释": TEST 原始结果解释
+    - text: 行动建议
+    - textbox "报告 1 建议": 今天试着记录一个自己的需要。
+    - heading "正在觉察" [level=4]
+    - text: 结果解释
+    - textbox "报告 2 解释": 你会留意自己的感受与需要。
+    - text: 行动建议
+    - textbox "报告 2 建议": 试着把一个需要具体地表达出来。
+    - generic: 题库内容已与当前版本同步
+    - button "保存内容与结果草稿" [disabled]
+    - button "派生新版本"
+    - button "放弃题库修改" [disabled]
+  - heading "公开报告样例" [level=3]
+  - paragraph: 与私人报告模板分开保存；此样例用于商品页和分享卡试读。
+  - text: 样例标题
+  - textbox "样例标题": TEST 无公开样例
+  - text: 样例说明
+  - textbox "样例说明": TEST 不含真实个人报告
+  - text: 样例维度
+  - textbox "样例维度": TEST 未评估
+  - text: 样例分值（留空代表不足）
+  - spinbutton "样例分值（留空代表不足）"
+  - text: 样例建议
+  - textbox "样例建议": TEST 不作正式交付
+  - button "保存公开样例" [disabled]
+  - button "放弃样例修改" [disabled]
+  - region "结果呈现制作工作台":
+    - heading "结果呈现与叙事方案" [level=3]
+    - paragraph: 核对结构化结果如何呈现，以及它怎样承接体验。
+    - generic: r2 · 草稿
+    - text: 体验修订
+    - combobox "体验修订":
+      - option "当前稿 · r2" [selected]
+      - option "r2 · 草稿 · 运营制作"
+      - option "r1 · 已审核 · 运营制作"
+    - button "核对服务器状态"
+    - button "采用最新稿"
+    - heading "02 / 结果模板与叙事方案" [level=4]
+    - paragraph: 结果模板需与体验模板成对兼容；与体验设计共用同一份修订草稿。
+    - text: 结果呈现模板
+    - combobox "报告呈现模板":
+      - option "花园手记 · v1" [selected]
+    - paragraph: 当前配对体验：静心花园 · 3D v1。结果文案沿用上方的结构化报告；手记等呈现由模板决定。
+    - generic "叙事方案 · TEST 报告规划"
+    - paragraph: TEST 未制作正式报告
+    - paragraph: 形式：标准图文
+    - paragraph:
+      - strong: TEST 回顾
+      - text: · TEST 结构校验
+    - text: 当前仍按既有图文结构展示，章节描述用于制作约束。调整报告方案时先建立新的设定修订。
+    - heading "04 / 制作方法与说明" [level=4]
+    - paragraph: 方法版本与当前体验修订一起保留。
+    - paragraph: 正常商品体验须使用 Three.js，并固定这次制作的商品规划。注册兼容检查、内容审核和设备验收分别记录。
+    - checkbox "人工制作（不绑定方法）" [checked]
+    - text: 人工制作（不绑定方法）
+    - group "方法的固定商品规划输入":
+      - generic: 固定商品规划 · 必填输入
+      - paragraph: 选择本次制作的规划与模块。保存后固定摘要；规划更新后需重新选择并保存新修订。
+      - text: 商品规划
+      - combobox "方法固定商品规划":
+        - option "选择固定商品规划" [selected]
+        - option "r1 · TEST Three.js 项目规划"
+      - button "刷新可选规划"
+      - link "查看项目工作区":
+        - /url: /admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project
+    - link "管理体验制作 Skill":
+      - /url: /admin/skills/experience
+    - text: 制作说明
+    - textbox "体验制作说明": TEST 当前体验制作说明
+    - generic "结构化清单 · JSON"
+    - button "检查兼容性"
+    - button "保存体验与结果草稿"
+    - button "审核体验"
+    - region "体验与报告演示预览":
+      - heading "03 / 演示结果预览" [level=4]
+      - paragraph: 选择只用于样例计算，不会创建用户答卷或消耗报告次数。
+      - paragraph: 第 1/1 题
+      - heading "TEST 原始题目" [level=4]
+      - radio "经常会" [checked]
+      - text: 经常会
+      - radio "偶尔会"
+      - text: 偶尔会
+      - radio "暂时不适用"
+      - text: 暂时不适用
+      - button "预览上一题" [disabled]
+      - button "预览下一题" [disabled]
+      - button "生成演示预览"
+  - complementary "当前创作上下文":
+    - heading "制作依据" [level=3]
+    - term: 内容版本 · 单选
+    - definition: v1 · 草稿
+    - term: 共同创作设定
+    - definition: r1 · TEST 只读创作设定
+    - term: 保存状态
+    - definition: 无未保存修改
+    - heading "四类内容" [level=4]
+    - generic "四类内容齐备情况":
+      - strong: 题库与报告
+      - generic: 1 份
+      - generic: 可预览
+      - strong: 封面
+      - generic: 0 份
+      - generic: 待制作
+      - strong: 视频与分镜
+      - generic: 0 份
+      - generic: 待制作
+      - strong: 引流文案
+      - generic: 0 份
+      - generic: 待制作
+    - heading "共同目标" [level=4]
+    - term: 情绪感受
+    - definition: TEST 情绪目标
+    - term: 加深理解
+    - definition: TEST 理解目标
+    - term: 语言风格
+    - definition: TEST 清楚简短
+    - paragraph: 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+  - generic: meetmyworld
+  - generic: 内容与工作，都有迹可循。

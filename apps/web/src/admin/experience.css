@@ -4,6 +4,8 @@
 .flow-admin-page .experience-intent span{display:block;font-size:11px;color:var(--admin-muted,#70677d);margin-bottom:5px}
 .flow-admin-page .experience-toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:20px 0}
 .flow-admin-page .experience-toolbar label{min-width:220px;flex:1}
+.flow-admin-page .experience-unknown{padding:16px;margin-block:16px;background:var(--admin-soft);border:1px solid var(--admin-border);border-inline-start:3px solid var(--admin-accent)}
+.flow-admin-page .experience-unknown p{margin:0 0 12px;line-height:1.7}
 .flow-admin-page .experience-scene summary{line-height:1.7}
 .flow-admin-page .experience-choice-map{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,1fr);align-items:center;gap:20px;border-top:1px solid var(--admin-border,#e4e0eb);padding:10px 0}
 .flow-admin-page .experience-choice-map code{display:block;font-size:11px;color:var(--admin-muted,#70677d)}

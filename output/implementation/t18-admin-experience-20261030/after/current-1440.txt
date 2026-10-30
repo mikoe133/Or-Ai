@@ -1,0 +1,203 @@
+- link "跳到后台内容":
+  - /url: "#admin-workspace"
+- complementary "运营工作空间":
+  - link "MeetMyWorld 运营后台":
+    - /url: /admin
+    - text: meetmyworld
+    - generic: 运营后台
+  - navigation "后台导航":
+    - group "运营管理":
+      - generic: 运营管理
+      - link "概览与审计":
+        - /url: /admin
+        - generic: 概览与审计
+      - link "商品与版本":
+        - /url: /admin/products
+        - generic: 商品与版本
+    - group "内容制作":
+      - generic: 内容制作
+      - link "内容工作台":
+        - /url: /admin/content
+        - generic: 内容工作台
+      - link "素材与文件":
+        - /url: /admin/assets
+        - generic: 素材与文件
+      - link "skill 库":
+        - /url: /admin/skills
+        - generic: skill 库
+    - group "连接与交付":
+      - generic: 连接与交付
+      - link "Codex 连接":
+        - /url: /admin/machine
+        - generic: Codex 连接
+      - link "订单与售后":
+        - /url: /admin/orders
+        - generic: 订单与售后
+  - link "M 管理员 邮箱已验证":
+    - /url: /account
+    - generic: M
+    - text: 管理员
+    - generic: 邮箱已验证
+    - generic: ↗
+  - link "← 返回商城":
+    - /url: /
+- banner:
+  - link "运营后台":
+    - /url: /admin
+  - generic: /
+  - strong: 内容工作台
+  - text: 已验证的管理员
+  - link "账户设置":
+    - /url: /account
+    - text: M
+- main "内容工作台" [active]:
+  - heading "内容工作台" [level=1]
+  - link "← 全部内容商品":
+    - /url: /admin/content
+  - heading "TEST Three.js 只读项目" [level=2]
+  - paragraph: 当前支持单人自我探索，体验以已注册模板为准
+  - generic: 演示范围
+  - text: 内容版本 · 单选 v1
+  - combobox "工作台内容版本":
+    - option "v1 · 草稿" [selected]
+    - option "建立单选内容版本"
+  - text: 共同创作设定
+  - combobox "共同创作设定":
+    - option "r1 · TEST 只读创作设定" [selected]
+  - navigation "内容工作台页签":
+    - button "项目工作区"
+    - button "创作设定"
+    - button "skill 组合"
+    - button "商品内容"
+    - button "体验设计"
+    - button "结果交付"
+    - button "封面"
+    - button "视频与分镜"
+    - button "引流文案"
+    - button "整套预览"
+    - button "引用与历史"
+    - button "成套采用"
+    - button "文件清理"
+  - region "商品能力与制作范围":
+    - heading "商品能力与制作范围" [level=3]
+    - generic: 组合兼容
+    - paragraph: 静心花园 · 3D v1 · 花园手记 · v1
+    - generic "查看版本依据、支持范围与后续形式"
+  - region "体验设计制作工作台":
+    - heading "体验设计" [level=3]
+    - paragraph: 按注册能力把商品内容映射为交互场景，保留明确确认与恢复。
+    - generic: r2 · 草稿
+    - text: 体验修订
+    - combobox "体验修订":
+      - option "当前稿 · r2" [selected]
+      - option "r2 · 草稿 · 运营制作"
+      - option "r1 · 已审核 · 运营制作"
+    - button "核对服务器状态"
+    - button "采用最新稿"
+    - paragraph:
+      - generic: 希望带来的感受
+      - text: TEST 情绪目标
+    - paragraph:
+      - generic: 希望获得的理解
+      - text: TEST 理解目标
+    - paragraph:
+      - generic: 共同意象
+      - text: TEST 独立商品世界观
+    - paragraph:
+      - generic: 表达方式
+      - text: TEST 清楚简短
+    - heading "01 / 形式与主题" [level=4]
+    - paragraph: 只采用已注册、能够完成交付的模板组合。
+    - text: 交互模板
+    - combobox "交互模板":
+      - option "DOM 单选 · v1"
+      - option "安静小屋 · 2.5D v1"
+      - option "静心花园 · 3D v1" [selected]
+      - option "关系观察台 · Three.js 2.5D 技术原型 v1"
+    - text: 主题标识
+    - textbox "体验主题标识": test-project
+    - text: 主题修订
+    - spinbutton "体验主题修订": "1"
+    - paragraph: 主题标识和修订与模板一起固定。安静小屋为 2.5D 插画，静心花园为 3D 内置几何体；任意模型、音频和自定义脚本尚未启用。
+    - paragraph:
+      - link "查看独立的 3D 交互样例":
+        - /url: /preview/experience/reflection-garden
+      - text: · 使用固定示例题目，不代表当前商品的预览或发布。
+    - heading "02 / 题目与场景映射" [level=4]
+    - paragraph: 选择必须对应原选项，点击确认后才保存。分支、任务与自由探索尚未启用。
+    - generic "01 · TEST 原始题目"
+    - text: 场景标识
+    - textbox "场景 1 标识": daily-need
+    - text: 恢复检查点
+    - textbox "场景 1 检查点": daily-need
+    - text: 经常会
+    - code: often
+    - textbox "场景 1 选项 1 对象": often
+    - text: 偶尔会
+    - code: sometimes
+    - textbox "场景 1 选项 2 对象": sometimes
+    - text: 暂时不适用
+    - code: na
+    - textbox "场景 1 选项 3 对象": na
+    - heading "03 / 体验资源" [level=4]
+    - paragraph: 插画与纹理独立于宣传素材，最多 2 项、合计 1 MiB。
+    - paragraph: 尚无图片资源。基础单选可直接运行。
+    - text: 添加体验图片
+    - button "体验图片文件"
+    - button "上传并校验体验图片" [disabled]
+    - generic: 每份最多 0.5 MiB；保存后资源会随体验修订固定。
+    - heading "04 / 制作方法与说明" [level=4]
+    - paragraph: 方法版本与当前体验修订一起保留。
+    - paragraph: 正常商品体验须使用 Three.js，并固定这次制作的商品规划。注册兼容检查、内容审核和设备验收分别记录。
+    - checkbox "人工制作（不绑定方法）" [checked]
+    - text: 人工制作（不绑定方法）
+    - group "方法的固定商品规划输入":
+      - generic: 固定商品规划 · 必填输入
+      - paragraph: 选择本次制作的规划与模块。保存后固定摘要；规划更新后需重新选择并保存新修订。
+      - text: 商品规划
+      - combobox "方法固定商品规划":
+        - option "选择固定商品规划" [selected]
+        - option "r1 · TEST Three.js 项目规划"
+      - button "刷新可选规划"
+      - link "查看项目工作区":
+        - /url: /admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project
+    - link "管理体验制作 Skill":
+      - /url: /admin/skills/experience
+    - text: 制作说明
+    - textbox "体验制作说明": TEST 当前体验制作说明
+    - generic "结构化清单 · JSON"
+    - button "检查兼容性"
+    - button "保存体验与结果草稿"
+    - button "审核体验"
+  - complementary "当前创作上下文":
+    - heading "制作依据" [level=3]
+    - term: 内容版本 · 单选
+    - definition: v1 · 草稿
+    - term: 共同创作设定
+    - definition: r1 · TEST 只读创作设定
+    - term: 保存状态
+    - definition: 无未保存修改
+    - heading "四类内容" [level=4]
+    - generic "四类内容齐备情况":
+      - strong: 题库与报告
+      - generic: 1 份
+      - generic: 可预览
+      - strong: 封面
+      - generic: 0 份
+      - generic: 待制作
+      - strong: 视频与分镜
+      - generic: 0 份
+      - generic: 待制作
+      - strong: 引流文案
+      - generic: 0 份
+      - generic: 待制作
+    - heading "共同目标" [level=4]
+    - term: 情绪感受
+    - definition: TEST 情绪目标
+    - term: 加深理解
+    - definition: TEST 理解目标
+    - term: 语言风格
+    - definition: TEST 清楚简短
+    - paragraph: 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+  - generic: meetmyworld
+  - generic: 内容与工作，都有迹可循。

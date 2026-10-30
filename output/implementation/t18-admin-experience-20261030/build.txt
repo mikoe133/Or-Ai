@@ -1,0 +1,93 @@
+
+> orai@0.1.0 build /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai
+> pnpm -r --if-present build
+
+Scope: 4 of 5 workspace projects
+packages/contracts build$ tsc -p tsconfig.json
+packages/contracts build: Done
+apps/api build$ pnpm db:generate && tsc -p tsconfig.json
+apps/web build$ tsc -p tsconfig.json --noEmit && vite build
+packages/mcp build$ tsc -p tsconfig.json
+apps/api build: > @orai/api@0.1.0 db:generate /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api
+apps/api build: > node node_modules/prisma/build/index.js generate
+apps/api build: Loaded Prisma config from prisma.config.ts.
+apps/api build: Prisma schema loaded from prisma/schema.prisma.
+packages/mcp build: Done
+apps/api build: ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 286ms
+apps/api build: Done
+apps/web build: vite v8.3.4 building client environment for production...
+apps/web build: transforming...
+apps/web build: ✓ 610 modules transformed.
+apps/web build: rendering chunks...
+apps/web build: computing gzip size...
+apps/web build: dist/index.html                                1.15 kB │ gzip:   0.57 kB
+apps/web build: dist/experience-budget.json                    1.80 kB │ gzip:   0.41 kB
+apps/web build: dist/assets/report-host-CoyQ-66a.css           1.76 kB │ gzip:   0.54 kB
+apps/web build: dist/assets/catalog-tPp-bDZK.css               6.49 kB │ gzip:   1.52 kB
+apps/web build: dist/assets/reflection-garden-Cvo4W8Jn.css     6.99 kB │ gzip:   1.95 kB
+apps/web build: dist/assets/relationship-atlas-CruN3dzT.css    7.40 kB │ gzip:   2.01 kB
+apps/web build: dist/assets/index-CxZ5cYmd.css                 7.47 kB │ gzip:   2.61 kB
+apps/web build: dist/assets/quiet-room-B7lNFKJT.css            8.62 kB │ gzip:   2.34 kB
+apps/web build: dist/assets/product-detail-DCFUGTAH.css       10.95 kB │ gzip:   2.64 kB
+apps/web build: dist/assets/assessment-t30AGNAA.css           10.99 kB │ gzip:   2.66 kB
+apps/web build: dist/assets/report-DqlOqBh7.css               12.73 kB │ gzip:   2.94 kB
+apps/web build: dist/assets/redemption-BiAdoWm1.css           14.98 kB │ gzip:   3.24 kB
+apps/web build: dist/assets/flow-shell-DmO_DUur.css           16.54 kB │ gzip:   3.79 kB
+apps/web build: dist/assets/shared-BQlXQneY.css               20.46 kB │ gzip:   4.38 kB
+apps/web build: dist/assets/home-ZFzT8y5Y.css                 31.39 kB │ gzip:   7.04 kB
+apps/web build: dist/assets/project-workspace-DnkYi60V.css   110.80 kB │ gzip:  16.75 kB
+apps/web build: dist/assets/pages-CW71dVxj.css               159.03 kB │ gzip:  22.08 kB
+apps/web build: dist/assets/garden-notes-DQzESzZb.js           0.22 kB │ gzip:   0.18 kB
+apps/web build: dist/assets/legacy-report-BtuLOsdd.js          0.29 kB │ gzip:   0.22 kB
+apps/web build: dist/assets/model-DmgVhA9n.js                  0.41 kB │ gzip:   0.27 kB
+apps/web build: dist/assets/dom-choice-BzjhBFt9.js             0.64 kB │ gzip:   0.43 kB
+apps/web build: dist/assets/workspace-layout-BcgDMsNw.js       0.68 kB │ gzip:   0.47 kB
+apps/web build: dist/assets/developer-CV7voj1K.js              0.87 kB │ gzip:   0.53 kB
+apps/web build: dist/assets/download-BoKyQK_3.js               1.08 kB │ gzip:   0.76 kB
+apps/web build: dist/assets/upcoming-BOPozldl.js               1.21 kB │ gzip:   0.75 kB
+apps/web build: dist/assets/layout-CMOHOJKj.js                 1.48 kB │ gzip:   0.85 kB
+apps/web build: dist/assets/redemption-art-C918XmfL.js         1.78 kB │ gzip:   0.92 kB
+apps/web build: dist/assets/preview-C-B-Q8dT.js                1.97 kB │ gzip:   1.08 kB
+apps/web build: dist/assets/dist-B5b3PdTM.js                   2.12 kB │ gzip:   1.04 kB
+apps/web build: dist/assets/model-7eZoUHfX.js                  2.22 kB │ gzip:   1.25 kB
+apps/web build: dist/assets/help-PoSkrI6T.js                   2.24 kB │ gzip:   1.09 kB
+apps/web build: dist/assets/atlas-notes-B-WGeLKZ.js            2.37 kB │ gzip:   1.00 kB
+apps/web build: dist/assets/garden-preview-B-cBKXk4.js         2.52 kB │ gzip:   1.33 kB
+apps/web build: dist/assets/room-sample-CdNrixsW.js            3.09 kB │ gzip:   1.76 kB
+apps/web build: dist/assets/quiet-room-C1IBH4g7.js             3.20 kB │ gzip:   1.47 kB
+apps/web build: dist/assets/shared-DkQ0wtNV.js                 3.21 kB │ gzip:   1.66 kB
+apps/web build: dist/assets/room-art-B27NrGMH.js               3.41 kB │ gzip:   1.30 kB
+apps/web build: dist/assets/product-detail-BvssoRxG.js         3.50 kB │ gzip:   1.90 kB
+apps/web build: dist/assets/field-notes-B3pbwfDl.js            3.96 kB │ gzip:   1.65 kB
+apps/web build: dist/assets/preview-state-DTJO9SjA.js          4.29 kB │ gzip:   2.12 kB
+apps/web build: dist/assets/relationship-atlas-8xF9WAe7.js     4.67 kB │ gzip:   2.13 kB
+apps/web build: dist/assets/tslib.es6-C-DzQg4N.js              4.91 kB │ gzip:   1.81 kB
+apps/web build: dist/assets/atlas-renderer-D8cbdthc.js         5.05 kB │ gzip:   2.42 kB
+apps/web build: dist/assets/reflection-garden-BuV460IN.js      5.32 kB │ gzip:   2.29 kB
+apps/web build: dist/assets/garden-renderer-CMzhT03R.js        6.55 kB │ gzip:   3.07 kB
+apps/web build: dist/assets/product-detail-acwXY7PM.js         6.82 kB │ gzip:   2.61 kB
+apps/web build: dist/assets/assessment-DlWqXT3b.js             7.43 kB │ gzip:   3.12 kB
+apps/web build: dist/assets/pages-DaOkVskN.js                  7.64 kB │ gzip:   2.84 kB
+apps/web build: dist/assets/redemption-Cgb87ia0.js             7.79 kB │ gzip:   2.93 kB
+apps/web build: dist/assets/report-host-cn5YWxW0.js            8.06 kB │ gzip:   3.18 kB
+apps/web build: dist/assets/react-yIOJJ3r4.js                  8.40 kB │ gzip:   3.23 kB
+apps/web build: dist/assets/library-BQpKhHge.js               10.62 kB │ gzip:   3.93 kB
+apps/web build: dist/assets/report-Cympy_Wy.js                11.62 kB │ gzip:   4.16 kB
+apps/web build: dist/assets/assessment-F0KlYimT.js            11.65 kB │ gzip:   4.09 kB
+apps/web build: dist/assets/catalog-Bhvz84lB.js               14.57 kB │ gzip:   4.64 kB
+apps/web build: dist/assets/home-BWpSTaYr.js                  18.49 kB │ gzip:   5.61 kB
+apps/web build: dist/assets/flow-shell-luiPYXrf.js            20.47 kB │ gzip:   7.02 kB
+apps/web build: dist/assets/home-CjWSz8Fe.js                  54.13 kB │ gzip:  18.40 kB
+apps/web build: dist/assets/experience-BwXptbhX.js            98.83 kB │ gzip:  28.71 kB
+apps/web build: dist/assets/privacy-DxSM2GRp.js              242.38 kB │ gzip:  64.76 kB
+apps/web build: dist/assets/index-C3FOWfm5.js                275.97 kB │ gzip:  88.05 kB
+apps/web build: dist/assets/project-workspace-idbmQvDM.js    311.87 kB │ gzip:  95.13 kB
+apps/web build: dist/assets/pages-BfdIs1Xi.js                431.65 kB │ gzip: 120.37 kB
+apps/web build: dist/assets/three.module-LK1pl1yG.js         541.91 kB │ gzip: 134.53 kB
+apps/web build: ✓ built in 906ms
+apps/web build: [plugin builtin:vite-reporter] 
+apps/web build: (!) Some chunks are larger than 500 kB after minification. Consider:
+apps/web build: - Using dynamic import() to code-split the application
+apps/web build: - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+apps/web build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+apps/web build: Done

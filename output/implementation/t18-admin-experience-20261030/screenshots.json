@@ -1,0 +1,137 @@
+[
+  {
+    "state": "current",
+    "width": 1440,
+    "height": 1000,
+    "before": "before/current-1440.png",
+    "after": "after/current-1440.jpg",
+    "metrics": {
+      "documentWidth": 1440,
+      "height": 1000,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "width": 1440
+    }
+  },
+  {
+    "state": "history",
+    "width": 1440,
+    "height": 1000,
+    "before": "before/history-1440.png",
+    "after": "after/history-1440.jpg",
+    "metrics": {
+      "documentWidth": 1440,
+      "height": 1000,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "width": 1440
+    }
+  },
+  {
+    "state": "result",
+    "width": 1440,
+    "height": 1000,
+    "before": "before/result-1440.png",
+    "after": "after/result-1440.jpg",
+    "metrics": {
+      "documentWidth": 1440,
+      "height": 1000,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "width": 1440
+    }
+  },
+  {
+    "state": "current",
+    "width": 768,
+    "height": 1024,
+    "before": "before/current-768.png",
+    "after": "after/current-768.jpg",
+    "metrics": {
+      "documentWidth": 768,
+      "height": 1024,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "width": 768
+    }
+  },
+  {
+    "state": "history",
+    "width": 768,
+    "height": 1024,
+    "before": "before/history-768.png",
+    "after": "after/history-768.jpg",
+    "metrics": {
+      "documentWidth": 768,
+      "height": 1024,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "width": 768
+    }
+  },
+  {
+    "state": "result",
+    "width": 768,
+    "height": 1024,
+    "before": "before/result-768.png",
+    "after": "after/result-768.jpg",
+    "metrics": {
+      "documentWidth": 768,
+      "height": 1024,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "width": 768
+    }
+  },
+  {
+    "state": "current",
+    "width": 390,
+    "height": 844,
+    "before": "before/current-390.png",
+    "after": "after/current-390.jpg",
+    "metrics": {
+      "documentWidth": 390,
+      "height": 844,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "width": 390
+    }
+  },
+  {
+    "state": "history",
+    "width": 390,
+    "height": 844,
+    "before": "before/history-390.png",
+    "after": "after/history-390.jpg",
+    "metrics": {
+      "documentWidth": 390,
+      "height": 844,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "width": 390
+    }
+  },
+  {
+    "state": "result",
+    "width": 390,
+    "height": 844,
+    "before": "before/result-390.png",
+    "after": "after/result-390.jpg",
+    "metrics": {
+      "documentWidth": 390,
+      "height": 844,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "width": 390
+    }
+  }
+]

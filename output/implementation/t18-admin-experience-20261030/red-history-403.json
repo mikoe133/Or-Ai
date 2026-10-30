@@ -1,0 +1,8 @@
+{
+  "expected": "Denied experience history hides private experience/result editor",
+  "observed": {
+    "editable": true,
+    "value": "TEST 当前体验制作说明"
+  },
+  "reproduced": true
+}

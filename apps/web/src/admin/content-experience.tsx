@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { ExperienceDraftInputSchema } from '@orai/contracts/admin';
 import { experienceTemplate, registeredExperiences } from '@orai/contracts/experience';
-import { Failure, Loading, Pager, useAction } from '../business/shared.js';
+import { Loading, Pager, useAction } from '../business/shared.js';
+import { ClientError } from '../api/client.js';
+import { AdminFailure as Failure } from './feedback.js';
+import { isAccessFailure, RefreshNotice } from './refresh-notice.js';
 import { ReportHost } from '../experience/report-host.js';
 import { experienceApi, type ExperienceWorkspace } from './experience-api.js';
 import { adminApi, type Upload } from './api.js';
@@ -16,42 +19,78 @@ import { SkillPlanInput } from './skill-plan-input.js';
 
 type Proposal=ReturnType<typeof ExperienceDraftInputSchema.parse>;
 type Revision=NonNullable<ExperienceWorkspace['latest']>;
+type ReadFailure=(error:unknown,verify?:()=>Promise<unknown>,key?:string)=>void;
+type ExperienceRequest={kind:'save';productId:string;versionId:string;body:object}|{kind:'review';revisionId:string;body:object};
+const uncertainResponse=(error:unknown)=>error instanceof ClientError&&(error.status===0||error.status>=500||error.status===408||error.code==='INVALID_RESPONSE');
 const methodNames={scene_design:'场景与交互设计',report_presentation:'报告呈现'} as const;
-export function ExperienceDesk({productId,versionId,profile,active,view='experience',contentDirty=false,onDirty,onChanged}:{productId:string;versionId:string;profile?:Profile;active:boolean;view?:'experience'|'result';contentDirty?:boolean;onDirty:(v:boolean)=>void;onChanged:()=>void}) {
+export function ExperienceDesk({productId,versionId,profile,active,view='experience',contentDirty=false,onDirty,onPending,onChanged}:{productId:string;versionId:string;profile?:Profile;active:boolean;view?:'experience'|'result';contentDirty?:boolean;onDirty:(v:boolean)=>void;onPending?:(v:boolean)=>void;onChanged:()=>void}) {
   const query=useQuery({queryKey:['private','admin','experience',productId,versionId,profile?.id],enabled:!!versionId&&active,
     queryFn:({signal})=>experienceApi.workspace(productId,versionId,profile?.id,signal),refetchOnWindowFocus:false});
-  const [session,setSession]=useState<ExperienceWorkspace|null>(null),[page,setPage]=useState(1),[selected,setSelected]=useState(''),[epoch,setEpoch]=useState(0),[dirty,setDirty]=useState(false),[notice,setNotice]=useState('');
+  const [session,setSession]=useState<ExperienceWorkspace|null>(null),[page,setPage]=useState(1),[selected,setSelected]=useState(''),[selectedRow,setSelectedRow]=useState<Revision|null>(null),[epoch,setEpoch]=useState(0),[dirty,setDirty]=useState(false),[notice,setNotice]=useState('');
+  const [unknown,setUnknown]=useState(false),[busy,setBusy]=useState(false),[reading,setReading]=useState(false),[accessError,setAccessError]=useState<unknown>(null),[recoveryEpoch,setRecoveryEpoch]=useState(0);
+  const probes=useRef(new Map<string,()=>Promise<unknown>>()),acceptNextRead=useRef(false);
   const history=useQuery({queryKey:['private','admin','experience-history',versionId,page],enabled:!!versionId&&active,
     queryFn:({signal})=>experienceApi.history(productId,versionId,page,signal),refetchOnWindowFocus:false});
   useEffect(()=>{if(query.data&&!session)setSession(query.data);},[query.data,session]);
-  useEffect(()=>{onDirty(dirty);return()=>onDirty(false);},[dirty,onDirty]);
-  async function reload(message='已读取最新体验配置。') {
-    const result=await query.refetch();await history.refetch();
-    if(result.data){setSession(result.data);setSelected('');setEpoch(n=>n+1);setDirty(false);setNotice(message);onChanged();}
+  const denial=[query.error,history.error].find(isAccessFailure)??accessError;
+  const protectedResult=unknown||busy;
+  const reportDirty=useCallback((value:boolean,pending=false,working=false)=>{setDirty(value);setUnknown(pending);setBusy(working);},[]);
+  const readFailed=useCallback<ReadFailure>((error,verify,key)=>{if(verify)probes.current.set(key??'nested',verify);if(isAccessFailure(error))setAccessError(error);},[]);
+  useEffect(()=>{if(denial)setAccessError(denial);},[denial]);
+  useEffect(()=>{onDirty(protectedResult||!denial&&dirty);return()=>onDirty(false);},[dirty,protectedResult,denial,onDirty]);
+  useEffect(()=>{onPending?.(protectedResult);return()=>onPending?.(false);},[protectedResult,onPending]);
+  async function readState(accept=false,message?:string) {
+    if(reading||accept&&unknown)return false;
+    setReading(true);
+    try{
+      const latestRead=query.refetch({throwOnError:true});
+      const results=await Promise.allSettled([latestRead,history.refetch({throwOnError:true}),...Array.from(probes.current.values(),verify=>verify())]);
+      const failure=results.find(result=>result.status==='rejected');
+      if(failure?.status==='rejected')throw failure.reason;
+      const latest=await latestRead;
+      if(!latest.data)throw new Error('未读取到体验配置');
+      const takeLatest=accept||acceptNextRead.current;
+      setAccessError(null);probes.current.clear();setRecoveryEpoch(value=>value+1);
+      if(takeLatest){setSession(latest.data);setSelected('');setSelectedRow(null);setEpoch(value=>value+1);setDirty(false);acceptNextRead.current=false;}
+      setNotice(message??(takeLatest?'已读取最新体验配置。':'已核对服务器状态，当前草稿和查看修订已保留。'));
+      requestAnimationFrame(()=>document.getElementById('experience-refresh')?.focus({preventScroll:true}));
+      return true;
+    }catch{setNotice(message?message+' 后续读取未完成，当前草稿已保留。':'读取未完成，当前草稿和历史选择已保留。');return false;}
+    finally{setReading(false);}
   }
+  async function saved(message:string){acceptNextRead.current=true;if(await readState(false,message))onChanged();}
+  const unavailable=reading||query.isFetching||history.isFetching||query.isError||history.isError;
   if(!versionId)return <p className="content-note">{profile && !['web','3d'].includes(profile.profile.experienceForm)
     ? '此创作形式的体验与结果制作尚未启用，可先在项目工作区完善方案。'
     : '先在“商品内容”保存或选择一个单选内容版本，再配置体验设计与结果呈现。'}</p>;
-  if(!session)return query.isError?<Failure error={query.error} retry={()=>void query.refetch()}/>:active?<Loading/>:null;
-  const row=selected?history.data?.items.find(r=>r.id===selected)??session.latest:session.latest;
+  if(!session)return denial?<Failure error={denial} retry={()=>void readState()}/>:query.isError?<Failure error={query.error} retry={()=>void readState()}/>:active?<Loading/>:null;
+  const historical=!!selected&&selected!==session.latest?.id;
+  const row=historical?(selectedRow?.id===selected?selectedRow:history.data?.items.find(r=>r.id===selected)??null):session.latest;
   const remoteChanged=query.data?.latest?.revision!==session.latest?.revision||query.data?.versionRevision!==session.versionRevision;
-  return <section className="content-editor experience-desk" aria-label={view==='result'?'结果呈现制作工作台':'体验设计制作工作台'}>
-    <div className="content-section-heading"><div><span className="content-eyebrow">{view==='result'?'RESULT / PRESENTATION':'EXPERIENCE / SCENES'}</span><h3>{view==='result'?'结果呈现与叙事方案':'体验设计'}</h3><p>{view==='result'?'核对结构化结果如何呈现，以及它怎样承接体验。':'按注册能力把商品内容映射为交互场景，保留明确确认与恢复。'}</p></div>
+  const header=<>
+    <div className="content-section-heading"><div><h3>{view==='result'?'结果呈现与叙事方案':'体验设计'}</h3><p>{view==='result'?'核对结构化结果如何呈现，以及它怎样承接体验。':'按注册能力把商品内容映射为交互场景，保留明确确认与恢复。'}</p></div>
       <span className="content-badge">{session.release?'已固定发布':row?`r${row.revision} · ${row.status==='reviewed'?'已审核':'草稿'}`:'尚未制作'}</span></div>
     {notice&&<p role="status" className="content-note">{notice}</p>}
+    {unavailable&&(query.isError||history.isError)&&<RefreshNotice busy={reading} retry={()=>void readState()}/>}
     {contentDirty&&<p className="content-note">商品内容或结果文案有未保存修改。体验修订引用服务器上已保存的内容；先保存内容草稿并重新校验后，再审核或生成演示结果。</p>}
-    {remoteChanged&&<p role="status">体验或题库已有新修订。当前输入已保留，读取最新稿后再继续。</p>}
-    <div className="experience-toolbar"><label>体验修订<select aria-label="体验修订" value={selected} disabled={dirty} onChange={e=>setSelected(e.target.value)}>
+    {remoteChanged&&<p role="status">体验或题库已有新修订。当前输入已保留，采用最新稿前请先核对本地修改。</p>}
+    <div className="experience-toolbar"><label>体验修订<select aria-label="体验修订" value={selected} disabled={dirty||protectedResult||unavailable} onChange={e=>{const id=e.target.value;setSelected(id);setSelectedRow(history.data?.items.find(r=>r.id===id)??null);setNotice('');}}>
       <option value="">当前稿{session.latest?` · r${session.latest.revision}`:''}</option>
+      {selectedRow&&!history.data?.items.some(row=>row.id===selectedRow.id)&&<option value={selectedRow.id}>r{selectedRow.revision} · 固定历史</option>}
       {history.data?.items.map(v=><option key={v.id} value={v.id}>r{v.revision} · {v.status==='reviewed'?'已审核':'草稿'} · {v.source==='mcp'?'MCP 制作':'运营制作'}</option>)}
-    </select></label><button type="button" onClick={()=>void reload()} disabled={query.isFetching}>读取最新稿{dirty?'（放弃当前修改）':''}</button></div>
-    {history.data&&history.data.total>history.data.pageSize&&<Pager page={page} total={history.data.total} pageSize={history.data.pageSize} onChange={value=>{if(!dirty)setPage(value);}}/>}
-    <ExperienceEditor key={`${selected}:${epoch}`} productId={productId} workspace={session} row={row} historical={!!selected&&selected!==session.latest?.id}
-      view={view} contentDirty={contentDirty} onDirty={setDirty} onSaved={message=>reload(message)} />
-    {history.isError&&<Failure error={history.error} retry={()=>void history.refetch()}/>}
-  </section>;
+    </select></label><button id="experience-refresh" type="button" onClick={()=>void readState()} disabled={reading||busy}>核对服务器状态</button>
+      <button type="button" onClick={()=>void readState(true)} disabled={protectedResult||unavailable}>{dirty?'放弃修改并读取最新稿':'采用最新稿'}</button></div>
+    {history.data&&history.data.total>history.data.pageSize&&<fieldset disabled={dirty||protectedResult||unavailable}><Pager page={page} total={history.data.total} pageSize={history.data.pageSize} onChange={setPage}/></fieldset>}
+    {historical&&!row&&<p role="alert">此历史修订无法读取，请重新选择；不会以当前稿替代历史。</p>}
+  </>;
+  return <>
+    {denial&&<Failure error={denial} retry={reading?undefined:()=>void readState()}/>}
+    <ExperienceEditor key={`${selected}:${epoch}`} productId={productId} workspace={session} row={row} historical={historical}
+      view={view} contentDirty={contentDirty} onDirty={reportDirty} onSaved={saved} header={header}
+      blocked={!!denial||historical&&!row} unavailable={unavailable} recoveryEpoch={recoveryEpoch} onReadFailure={readFailed} onRefresh={()=>void readState()}/>
+  </>;
 }
-function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,onDirty,onSaved}:{productId:string;workspace:ExperienceWorkspace;row:Revision|null;historical:boolean;view:'experience'|'result';contentDirty:boolean;onDirty:(v:boolean)=>void;onSaved:(v:string)=>Promise<void>}) {
+function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,onDirty,onSaved,header,blocked,unavailable,recoveryEpoch,onReadFailure,onRefresh}:{productId:string;workspace:ExperienceWorkspace;row:Revision|null;historical:boolean;view:'experience'|'result';contentDirty:boolean;onDirty:(v:boolean,pending?:boolean,busy?:boolean)=>void;onSaved:(v:string)=>Promise<void>;header:ReactNode;blocked:boolean;unavailable:boolean;recoveryEpoch:number;onReadFailure:ReadFailure;onRefresh:()=>void}) {
   const fixedPlan=row?.productPlanInput??row?.methods[0]?.productPlanInput;
   const initial:Proposal={manifest:row?.manifest??workspace.release?.manifest??workspace.defaultManifest,
     reportPlan:row?.reportPlan??workspace.reportPlan??{schemaVersion:1,title:'旧版兼容报告',narrative:'按原版本展示',presentation:'standard',sections:[{sectionId:'report',title:'观察与建议',purpose:'保留已有结果'}]},
@@ -63,23 +102,46 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
     [check,setCheck]=useState<Awaited<ReturnType<typeof experienceApi.check>>|null>(null),[preview,setPreview]=useState<Awaited<ReturnType<typeof experienceApi.preview>>|null>(null),
     [uploading,setUploading]=useState(false),[pending,setPending]=useState(false),[questionIndex,setQuestionIndex]=useState(0),
     [answers,setAnswers]=useState<Record<string,string>>(Object.fromEntries(workspace.questions.map(q=>[q.id,q.options[0]!.id])));
+  const [pendingRequest,setPendingRequest]=useState<ExperienceRequest|null>(null),[needsRecheck,setNeedsRecheck]=useState(false),[nestedError,setNestedError]=useState<unknown>(null);
   const action=useAction(),readonly=historical||['published','archived'].includes(workspace.versionStatus)||workspace.capabilities?.modules.experience==='read_only'||workspace.capabilities?.modules.experience==='planned',
     jsonPending=raw!==JSON.stringify(form,null,2),dirty=!readonly&&(JSON.stringify(form)!==original||jsonPending||pending);
   const template=experienceTemplate(form.manifest),maxResources=template?.limits.maxResources??0,
     remainingBytes=(template?.limits.maxTotalResourceBytes??0)-form.manifest.resources.reduce((sum,r)=>sum+r.byteSize,0);
   const methodForm=workspace.capabilities?.intentForm??'web';
-  useEffect(()=>{onDirty(dirty);return()=>onDirty(false);},[dirty,onDirty]);
+  useEffect(()=>{onDirty(dirty,!!pendingRequest,action.busy||uploading);return()=>onDirty(false);},[dirty,pendingRequest,action.busy,uploading,onDirty]);
   const candidates=useQuery({queryKey:['private','admin','experience-method-candidates',methodForm],enabled:!readonly,
     queryFn:()=>Promise.all((['scene_design','report_presentation'] as const).map(purpose=>allPages(page=>bindingsApi.candidates('experience',new URLSearchParams({purpose,form:methodForm,pageSize:'50',page:String(page)}).toString())))),refetchOnWindowFocus:false});
-  function update(next:Proposal){setForm(next);setRaw(JSON.stringify(next,null,2));setCheck(null);setPreview(null);}
+  const planFailed=useCallback((error:unknown,verify:()=>Promise<unknown>)=>{setNestedError(error);onReadFailure(error,verify,'plan');},[onReadFailure]);
+  useEffect(()=>{if(candidates.error)onReadFailure(candidates.error,()=>candidates.refetch({throwOnError:true}),'candidates');},[candidates.error,onReadFailure]);
+  useEffect(()=>{if(isAccessFailure(action.error))onReadFailure(action.error);},[action.error,onReadFailure]);
+  useEffect(()=>{setNestedError(null);setNeedsRecheck(false);if(isAccessFailure(action.error)||action.error instanceof ClientError&&action.error.status===409)action.resetError();},[recoveryEpoch]);
+  function update(next:Proposal){setForm(next);setRaw(JSON.stringify(next,null,2));setCheck(null);setPreview(null);action.resetError();}
+  async function dispatch(request:ExperienceRequest){
+    const wasUnknown=!!pendingRequest;
+    try{
+      const value=request.kind==='save'?await experienceApi.save(request.productId,request.versionId,request.body):await experienceApi.review(request.revisionId,request.body);
+      setPendingRequest(null);setNeedsRecheck(false);return value;
+    }catch(error){
+      setPendingRequest(uncertainResponse(error)||wasUnknown&&isAccessFailure(error)?request:null);
+      if(error instanceof ClientError&&error.status===409)setNeedsRecheck(true);
+      throw error;
+    }
+  }
   function proposal(){if(jsonPending)throw new Error('请先应用 JSON 修改。');return ExperienceDraftInputSchema.parse(form);}
   const q=workspace.questions[questionIndex]!;
   const anyMethodMissing=form.methods.some(m=>!m.skillVersionId);
-  return <>
+  const operationLocked=action.busy||uploading||!!pendingRequest||needsRecheck||unavailable||!!nestedError||(!readonly&&candidates.isError),locked=readonly||operationLocked;
+  if(blocked||isAccessFailure(action.error)||isAccessFailure(candidates.error)||isAccessFailure(nestedError))return null;
+  return <section className="content-editor experience-desk" aria-label={view==='result'?'结果呈现制作工作台':'体验设计制作工作台'}>
+    {header}
+    {pendingRequest&&<div className="experience-unknown" role="status"><p>体验{pendingRequest.kind==='save'?'保存':'审核'}结果尚未确认，原请求及输入已保留。核对前不能修改或提交另一份请求。</p>
+      <button disabled={action.busy||unavailable||!!nestedError||candidates.isError} onClick={()=>void action.run(()=>dispatch(pendingRequest),saved=>onSaved(`体验 r${saved.revision} 的原请求结果已确认。`))}>用原请求核对{pendingRequest.kind==='save'?'保存':'审核'}结果</button></div>}
+    {(candidates.isError||!!nestedError)&&<RefreshNotice retry={onRefresh} busy={unavailable}/>}
+    {needsRecheck&&<p role="status" className="content-note">服务器修订发生冲突，当前草稿已保留。请先核对服务器状态，再决定是否采用最新稿。</p>}
     {(readonly||!form.manifest.creativeProfileRevisionId)&&<p className="content-note">{historical?'正在查看历史修订。':workspace.capabilities?.status==='blocked'?'此设定超出当前已注册能力，现有体验与结果以只读方式保留。':readonly?'此版本的体验和结果已固定。请在商品内容页签派生新版本后继续制作。':'请先选择共同创作设定，保存时会固定到此内容版本。'}</p>}
     {form.manifest.intent&&<div className="experience-intent" hidden={view!=='experience'}><p><span>希望带来的感受</span>{form.manifest.intent.emotionalGoal}</p><p><span>希望获得的理解</span>{form.manifest.intent.understandingGoal}</p><p><span>共同意象</span>{form.manifest.intent.world}</p><p><span>表达方式</span>{form.manifest.intent.language}</p></div>}
     {row&&<ProductionOrigin source={{source:row.source,machineCredentialId:row.machineCredentialId??undefined,machineRequestId:row.machineRequestId??undefined}}/>}
-    <fieldset disabled={readonly||action.busy||uploading}>
+    <fieldset disabled={locked}>
       <section className="content-form-section"><header className="content-form-section-heading"><h4>{view==='result'?'02 / 结果模板与叙事方案':'01 / 形式与主题'}</h4><p>{view==='result'?'结果模板需与体验模板成对兼容；与体验设计共用同一份修订草稿。':'只采用已注册、能够完成交付的模板组合。'}</p></header>
         <div className="content-fields"><label hidden={view!=='experience'}>交互模板<select aria-label="交互模板" value={`${form.manifest.renderer.key}@${form.manifest.renderer.version}`} onChange={event=>{
           const template=registeredExperiences.find(item=>`${item.key}@${item.version}`===event.target.value);
@@ -126,7 +188,7 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
         <SkillPlanInput productId={productId} profileId={form.manifest.creativeProfileRevisionId ?? ''} form={methodForm}
           purposes={form.methods.length?form.methods.map(method=>method.purpose):['scene_design']}
           value={{reference:form.productPlan,modules:form.methods.length?Object.fromEntries(form.methods.map(method=>[method.purpose,method.planModuleId??form.planModuleId??''])):{scene_design:form.planModuleId??''}}}
-          disabled={readonly||action.busy||jsonPending} onChange={choice=>update({...form,productPlan:choice.reference,
+          disabled={locked||jsonPending} onReadFailure={planFailed} onChange={choice=>update({...form,productPlan:choice.reference,
             planModuleId:choice.modules.scene_design,methods:form.methods.map(method=>({...method,planModuleId:choice.modules[method.purpose]}))})} />
         {form.methods.map((m,i)=>{const options=candidates.data?.[m.purpose==='scene_design'?0:1]??[],fixed=row?.methods.find(v=>v.purpose===m.purpose)?.version;return <label key={m.purpose}>{methodNames[m.purpose]}<select aria-label={methodNames[m.purpose]+'方法'} value={m.skillVersionId} onChange={e=>update({...form,methods:form.methods.map((v,j)=>j===i?{...v,skillVersionId:e.target.value}:v)})}>
           <option value="">选择已启用版本</option>{fixed&&!options.some(v=>v.id===fixed.id)&&<option value={fixed.id}>{fixed.manifest.name} · v{fixed.number}（固定历史）</option>}
@@ -137,10 +199,10 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
       <details className="content-block"><summary>结构化清单 · JSON</summary><textarea aria-label="体验清单 JSON" className="content-json" rows={14} value={raw} onChange={e=>setRaw(e.target.value)}/>
         <button type="button" onClick={()=>void action.run(async()=>ExperienceDraftInputSchema.parse(JSON.parse(raw)),value=>update(value))}>应用 JSON 修改</button></details>
     </fieldset>
-    <div className="biz-row experience-actions"><button type="button" disabled={action.busy||uploading||pending||anyMethodMissing||!form.manifest.creativeProfileRevisionId} onClick={()=>void action.run(()=>experienceApi.check(productId,workspace.productVersionId,proposal()),setCheck)}>检查兼容性</button>
-      <button type="button" disabled={readonly||action.busy||uploading||pending||anyMethodMissing||jsonPending||!form.manifest.creativeProfileRevisionId} onClick={()=>void action.run(()=>experienceApi.save(productId,workspace.productVersionId,action.intent('experience-save',{
-        ...proposal(),expectedRevision:workspace.latest?.revision??0,expectedVersionRevision:workspace.versionRevision})),saved=>onSaved(`体验与结果草稿 r${saved.revision} 已保存。`))}>保存体验与结果草稿</button>
-      <button type="button" disabled={readonly||dirty||contentDirty||action.busy||!row||row.status!=='draft'} onClick={()=>void action.run(()=>experienceApi.review(row!.id,action.intent('experience-review',{expectedRevision:row!.revision})),saved=>onSaved(`体验 r${saved.revision} 已审核，可随题库版本发布。`))}>审核体验</button></div>
+    <div className="biz-row experience-actions"><button type="button" disabled={operationLocked||pending||anyMethodMissing||!form.manifest.creativeProfileRevisionId} onClick={()=>void action.run(()=>experienceApi.check(productId,workspace.productVersionId,proposal()),setCheck)}>检查兼容性</button>
+      <button type="button" disabled={locked||pending||anyMethodMissing||jsonPending||!form.manifest.creativeProfileRevisionId} onClick={()=>void action.run(()=>dispatch({kind:'save',productId,versionId:workspace.productVersionId,body:action.intent('experience-save',{
+        ...proposal(),expectedRevision:workspace.latest?.revision??0,expectedVersionRevision:workspace.versionRevision})}),saved=>onSaved(`体验与结果草稿 r${saved.revision} 已保存。`))}>保存体验与结果草稿</button>
+      <button type="button" disabled={locked||dirty||contentDirty||!row||row.status!=='draft'} onClick={()=>void action.run(()=>dispatch({kind:'review',revisionId:row!.id,body:action.intent('experience-review',{expectedRevision:row!.revision})}),saved=>onSaved(`体验 r${saved.revision} 已审核，可随题库版本发布。`))}>审核体验</button></div>
     {check&&<div className="content-note" role="status">{check.valid?'注册兼容性检查通过。':<><strong>仍有待修正项</strong><ul>{check.issues.map((issue,i)=><li key={i}>{issue}</li>)}</ul></>}
       {check.publication&&<><p>{check.publication.eligibleForReview?'固定规划与方法检查通过，保存后可提交审核。':'审核前仍需补齐：'}</p>
         {!!check.publication.issues.length&&<ul>{check.publication.issues.map((issue,i)=><li key={i}>{issue}</li>)}</ul>}
@@ -148,14 +210,14 @@ function ExperienceEditor({productId,workspace,row,historical,view,contentDirty,
     {Boolean(action.error)&&<Failure error={action.error}/>}
     <section className="content-form-section experience-preview" hidden={view!=='result'} aria-label="体验与报告演示预览"><header className="content-form-section-heading"><h4>03 / 演示结果预览</h4><p>选择只用于样例计算，不会创建用户答卷或消耗报告次数。</p></header>
       {dirty&&<p className="content-note">先保存当前草稿，再预览这一修订。</p>}
-      {q&&<div className="content-block"><p>第 {questionIndex+1}/{workspace.questions.length} 题</p><h4>{q.text}</h4>
+      <fieldset disabled={operationLocked}>{q&&<div className="content-block"><p>第 {questionIndex+1}/{workspace.questions.length} 题</p><h4>{q.text}</h4>
         {q.options.map(o=><label className="biz-option" key={o.id}><input type="radio" name="experience-preview-answer" checked={answers[q.id]===o.id} onChange={()=>{setAnswers(v=>({...v,[q.id]:o.id}));setPreview(null);}}/>{o.label}</label>)}
         <div className="biz-row"><button type="button" disabled={questionIndex===0} onClick={()=>setQuestionIndex(i=>i-1)}>预览上一题</button><button type="button" disabled={questionIndex===workspace.questions.length-1} onClick={()=>setQuestionIndex(i=>i+1)}>预览下一题</button></div></div>}
-      <button type="button" disabled={!row||dirty||contentDirty||action.busy} onClick={()=>void action.run(()=>experienceApi.preview(row!.id,{answers:workspace.questions.map(q=>({questionId:q.id,optionId:answers[q.id]}))}),setPreview)}>生成演示预览</button>
+      <button type="button" disabled={!row||dirty||contentDirty||operationLocked} onClick={()=>void action.run(()=>experienceApi.preview(row!.id,{answers:workspace.questions.map(q=>({questionId:q.id,optionId:answers[q.id]}))}),setPreview)}>生成演示预览</button></fieldset>
       {preview&&!contentDirty&&<div className="experience-preview-result" data-preview-revision={preview.revisionId}><span className="content-badge">演示报告 · {preview.manifest.theme.key} / r{preview.manifest.theme.revision}</span>
         <ReportHost content={preview.report} presentation={preview.presentation}/></div>}
     </section>
-  </>;
+  </section>;
 }
 function ExperiencePictureUpload({versionId,maxBytes,onUploaded,onBusy,onPending}:{versionId:string;maxBytes:number;onUploaded:(v:Upload)=>void;onBusy:(v:boolean)=>void;onPending:(v:boolean)=>void}) {
   const [file,setFile]=useState<File|null>(null),[ticket,setTicket]=useState<Upload|null>(null),[epoch,setEpoch]=useState(0),[reset,setReset]=useState(0),action=useAction();

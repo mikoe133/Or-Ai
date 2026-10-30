@@ -1,0 +1,8 @@
+{
+  "expected": "Unknown persistent save retains and locks the original request",
+  "observed": {
+    "editable": true,
+    "value": "TEST 未知体验保存原稿"
+  },
+  "reproduced": true
+}

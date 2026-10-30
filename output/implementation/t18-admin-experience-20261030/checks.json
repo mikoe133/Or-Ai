@@ -1,0 +1,345 @@
+[
+  {
+    "name": "failed_read_retains_draft_without_success",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "successful_recheck_retains_unsaved_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "unknown_save_retains_and_locks_input",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "unknown_save_blocks_tab_and_base_changes",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "unknown_save_blocks_route_leave",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "history_denial_hides_private_editor",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "partial_permission_recheck_does_not_reveal_editor",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "permission_recovery_preserves_unknown_request_and_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "denied_retry_keeps_unknown_request_private",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "successful_reads_do_not_settle_unknown_mutation",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "conflict_preserves_and_locks_draft_until_read",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "conflict_read_recovers_editor_without_discarding_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "explicit_adoption_replaces_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "unknown_review_locks_clean_revision",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "unknown_review_retries_original_request",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "fixed_history_is_readonly",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "failed_history_read_preserves_fixed_selection",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "successful_history_recheck_keeps_selected_revision",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "candidate_denial_hides_editor",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "candidate_permission_recovery_reopens_editor",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "nested_plan_denial_hides_editor",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "nested_plan_recovery_keeps_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "invalid_json_keeps_raw_and_blocks_save",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "valid_json_application_recovers_save",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "current_1440_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 1440,
+      "height": 1000,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "width": 1440
+    }
+  },
+  {
+    "name": "history_1440_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 1440,
+      "height": 1000,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "width": 1440
+    }
+  },
+  {
+    "name": "result_1440_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 1440,
+      "height": 1000,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "width": 1440
+    }
+  },
+  {
+    "name": "current_768_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 768,
+      "height": 1024,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "width": 768
+    }
+  },
+  {
+    "name": "history_768_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 768,
+      "height": 1024,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "width": 768
+    }
+  },
+  {
+    "name": "result_768_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 768,
+      "height": 1024,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "width": 768
+    }
+  },
+  {
+    "name": "current_390_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 390,
+      "height": 844,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "width": 390
+    }
+  },
+  {
+    "name": "history_390_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 390,
+      "height": 844,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "width": 390
+    }
+  },
+  {
+    "name": "result_390_no_page_overflow",
+    "passed": true,
+    "observed": {
+      "documentWidth": 390,
+      "height": 844,
+      "mainScrollTop": 0,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "width": 390
+    }
+  },
+  {
+    "name": "result_note_focus_unobscured_1440",
+    "passed": true,
+    "observed": {
+      "actions": {
+        "bottom": 753.5625,
+        "position": "sticky",
+        "top": 689.5625
+      },
+      "focused": true,
+      "main": {
+        "bottom": 1000,
+        "top": 56
+      },
+      "note": {
+        "bottom": 567.1640625,
+        "left": 268,
+        "right": 1131,
+        "top": 489.1640625
+      },
+      "overlap": false,
+      "width": 1440
+    }
+  },
+  {
+    "name": "result_note_focus_unobscured_768",
+    "passed": true,
+    "observed": {
+      "actions": {
+        "bottom": 765.5,
+        "position": "sticky",
+        "top": 701.5
+      },
+      "focused": true,
+      "main": {
+        "bottom": 1024,
+        "top": 56
+      },
+      "note": {
+        "bottom": 579.1015625,
+        "left": 38,
+        "right": 719,
+        "top": 501.1015625
+      },
+      "overlap": false,
+      "width": 768
+    }
+  },
+  {
+    "name": "result_note_focus_unobscured_390",
+    "passed": true,
+    "observed": {
+      "actions": {
+        "bottom": 671.453125,
+        "position": "static",
+        "top": 607.453125
+      },
+      "focused": true,
+      "main": {
+        "bottom": 844,
+        "top": 56
+      },
+      "note": {
+        "bottom": 489.0546875,
+        "left": 31,
+        "right": 348,
+        "top": 411.0546875
+      },
+      "overlap": false,
+      "width": 390
+    }
+  },
+  {
+    "name": "ordinary_nested_failure_retains_and_locks_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "ordinary_nested_read_recovery_preserves_draft",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "mobile_unknown_save_locks_input",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "mobile_unknown_save_prevents_workspace_switch",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "initial_read_failure_does_not_show_success_or_editor",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "initial_failure_recovers_with_verified_reads",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "reduced_motion_read_returns_keyboard_focus",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "eight_text_samples_meet_AA",
+    "passed": true,
+    "observed": {
+      "minimum": 7.160098250650331,
+      "samples": 8
+    }
+  }
+]
