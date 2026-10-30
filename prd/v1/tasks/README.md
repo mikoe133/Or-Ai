@@ -27,7 +27,7 @@
 | 14 | [真实 Codex/MCP 手动制作与退回重做演练](active/14-manual-production-rehearsal.md) | T14.W3 | 暂停：实际内容生成未恢复 | 04、05、06 |
 | 15 | [交付日更生产配置与恢复说明](active/15-external-schedule-handoff.md) | T14.W4 | 等待手动全链与运行参数 | 14 |
 | 16 | [按商品需要选择并实现首个新玩法](active/16-new-interaction-engine.md) | T17 | 待玩法选型 | 01、02、03 |
-| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | 体验/结果呈现与历史恢复通过；8局部、3未独立审计及完整全站仍待 | 完整改造依赖05、06；现状审计可先准备 |
+| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | 体验/结果历史与未知地址本地通过；8局部、2未独立审计；Skill组合403及推送/CI待收尾 | 完整改造依赖05、06；现状审计可先准备 |
 
 01–04及07已归档；当前05–06商品本地实现→17前端改造→10最终真机，08独立持有真实云端；11–12完成正式商品与首发。17是新需求的队列编号（稳定ID为T18），完整退出在05/06之后、10之前；已独立完成根加载与后台共享骨架/概览首批，不重新编号旧任务或移除依赖。**硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
 
@@ -116,3 +116,5 @@ flowchart TD
 再完成[商品内容/结果配置与来源恢复](archive/completed/17-admin-assessment-source-slice-20261030.md)：有效RED、首轮失败及修复分别留证，112前端＋2专项、类型/构建、九组对照及45项CUA通过；配置/来源权限、缓存/草稿、原请求、JSON及手机输入已验，无成功写入/发布。最新[矩阵](../../../output/implementation/t18-admin-assessment-20261030/coverage-after.md)为16代表最终/10局部/3未独立审计/1外部，下一批接体验/结果呈现与历史，完整父项和商城审核不关闭。
 
 2026-10-30再完成[体验/结果呈现与历史恢复](archive/completed/17-admin-experience-result-slice-20261030.md)：接续原未完成补丁，三个有效RED取得GREEN，643业务＋2专项、类型/构建、九组对照及44项CUA通过；八文字样本最低7.16:1。核对保留草稿/历史、必要读取完整成功才恢复、保存/审核原请求和手机保护已验。11次写请求全拒绝；原5193只读服务接续用于遗漏审计，最终清理另记。最新[矩阵](../../../output/implementation/t18-admin-experience-20261030/coverage-after.md)为18代表最终/8局部/3未独立审计/1外部，继续Skill组合、媒体引用、预览/采用/历史明细及未知路由；完整T18/05/06与商城审核保持。
+
+2026-10-30接续[后台未知地址恢复](archive/completed/17-admin-missing-route-slice-20261030.md)：有效RED、112前端＋2夹具、含类型检查的构建、三组前后对照及8项CUA通过；10px操作间距、手机键盘返回与原身份门禁已验。已继续[商品Skill组合审计](../../../output/implementation/t18-admin-skill-set-audit-20261030/README.md)，实际候选403仍留可编辑表单，尚未修复。最新[矩阵](../../../output/implementation/t18-admin-missing-route-20261030/coverage-after.md)为19代表最终/8局部/2未独立审计/1外部，完整T18/05/06不关闭。两批及续审共用原TEST，结束时进程/端口/自建页签/视口均清理，原五容器healthy。GitHub现有令牌失效，正常推送与精确commit CI仍待收尾；不据本地归档声称远端成功。

@@ -1,0 +1,24 @@
+{
+  "localExperienceCommit": "f634c0c",
+  "branch": "mikoe33/t06-local-operations",
+  "pushConfirmed": false,
+  "ci": "unverified",
+  "attempts": [
+    {
+      "transport": "original SSH remote",
+      "result": "Connection closed on port 22; repository access failed"
+    },
+    {
+      "transport": "HTTPS with existing gh credential helper",
+      "result": "No valid credential; gh auth status confirms existing account token invalid"
+    },
+    {
+      "transport": "HTTPS with original osxkeychain helper",
+      "result": "No credential; interactive prompts disabled"
+    }
+  ],
+  "repositoryRemoteUnchanged": true,
+  "credentialsPrintedOrStored": false,
+  "userAuthRequested": true,
+  "newRemotePermissionsGranted": false
+}

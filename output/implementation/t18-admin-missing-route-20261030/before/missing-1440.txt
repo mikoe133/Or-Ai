@@ -1,0 +1,57 @@
+- link "跳到后台内容":
+  - /url: "#admin-workspace"
+- complementary "运营工作空间":
+  - link "MeetMyWorld 运营后台":
+    - /url: /admin
+    - text: meetmyworld
+    - generic: 运营后台
+  - navigation "后台导航":
+    - group "运营管理":
+      - generic: 运营管理
+      - link "概览与审计":
+        - /url: /admin
+        - generic: 概览与审计
+      - link "商品与版本":
+        - /url: /admin/products
+        - generic: 商品与版本
+    - group "内容制作":
+      - generic: 内容制作
+      - link "内容工作台":
+        - /url: /admin/content
+        - generic: 内容工作台
+      - link "素材与文件":
+        - /url: /admin/assets
+        - generic: 素材与文件
+      - link "skill 库":
+        - /url: /admin/skills
+        - generic: skill 库
+    - group "连接与交付":
+      - generic: 连接与交付
+      - link "Codex 连接":
+        - /url: /admin/machine
+        - generic: Codex 连接
+      - link "订单与售后":
+        - /url: /admin/orders
+        - generic: 订单与售后
+  - link "M 管理员 邮箱已验证":
+    - /url: /account
+    - generic: M
+    - text: 管理员
+    - generic: 邮箱已验证
+    - generic: ↗
+  - link "← 返回商城":
+    - /url: /
+- banner:
+  - link "运营后台":
+    - /url: /admin
+  - generic: /
+  - strong: 概览与审计
+  - text: 已验证的管理员
+  - link "账户设置":
+    - /url: /account
+    - text: M
+- main "概览与审计":
+  - heading "概览与审计" [level=1]
+  - paragraph: 后台页面不存在。
+  - generic: meetmyworld
+  - generic: 内容与工作，都有迹可循。

@@ -1,0 +1,18 @@
+{
+  "expected": "Unknown admin paths provide clear in-workspace navigation back to known admin areas, including mobile.",
+  "observed": [
+    {
+      "width": 1440,
+      "recoveryLinksInMain": 0
+    },
+    {
+      "width": 768,
+      "recoveryLinksInMain": 0
+    },
+    {
+      "width": 390,
+      "recoveryLinksInMain": 0
+    }
+  ],
+  "reproduced": true
+}

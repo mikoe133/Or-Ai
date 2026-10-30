@@ -1,0 +1,66 @@
+[
+  {
+    "name": "missing_route_layout_1440",
+    "passed": true,
+    "observed": {
+      "docWidth": 1440,
+      "gap": 10,
+      "mainScrollWidth": 1213,
+      "mainWidth": 1213,
+      "navSelected": 0,
+      "title": "后台页面不存在 · MeetMyWorld 运营后台",
+      "width": 1440
+    }
+  },
+  {
+    "name": "missing_route_layout_768",
+    "passed": true,
+    "observed": {
+      "docWidth": 768,
+      "gap": 10,
+      "mainScrollWidth": 757,
+      "mainWidth": 757,
+      "navSelected": 0,
+      "title": "后台页面不存在 · MeetMyWorld 运营后台",
+      "width": 768
+    }
+  },
+  {
+    "name": "missing_route_layout_390",
+    "passed": true,
+    "observed": {
+      "docWidth": 390,
+      "gap": 10,
+      "mainScrollWidth": 379,
+      "mainWidth": 379,
+      "navSelected": 0,
+      "title": "后台页面不存在 · MeetMyWorld 运营后台",
+      "width": 390
+    }
+  },
+  {
+    "name": "primary_recovery_keyboard_focus",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "keyboard_recovery_navigates_to_overview",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "member_does_not_receive_admin_recovery_links",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "anonymous_still_requires_admin_login",
+    "passed": true,
+    "observed": {}
+  },
+  {
+    "name": "admin_recovery_returns_after_identity_restore",
+    "passed": true,
+    "observed": {}
+  }
+]

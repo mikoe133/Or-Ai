@@ -80,3 +80,5 @@
 [17内容/结果配置与来源恢复](completed/17-admin-assessment-source-slice-20261030.md)：实际RED及首轮失败留证，112前端＋2专项、类型/构建、九组对照及45项CUA；来源权限/缓存/草稿、三类原请求和JSON错误恢复通过，无成功创建/发布，矩阵与父任务继续保留未验范围。
 
 2026-10-30再完成[体验/结果呈现与历史恢复](completed/17-admin-experience-result-slice-20261030.md)：接续原未完成补丁，三个有效RED取得GREEN，643业务＋2专项、类型/构建、九组对照及44项CUA通过；八文字样本最低7.16:1。核对保留草稿/历史、必要读取完整成功才恢复、保存/审核原请求和手机保护已验。11次写请求全拒绝；原5193只读服务接续用于遗漏审计，最终清理另记。最新[矩阵](../../../../output/implementation/t18-admin-experience-20261030/coverage-after.md)为18代表最终/8局部/3未独立审计/1外部，继续Skill组合、媒体引用、预览/采用/历史明细及未知路由；完整T18/05/06与商城审核保持。
+
+2026-10-30接续[后台未知地址恢复](completed/17-admin-missing-route-slice-20261030.md)：有效RED、112前端＋2夹具、含类型检查的构建、三组前后对照及8项CUA通过；10px操作间距、手机键盘返回与原身份门禁已验。已继续[商品Skill组合审计](../../../../output/implementation/t18-admin-skill-set-audit-20261030/README.md)，实际候选403仍留可编辑表单，尚未修复。最新[矩阵](../../../../output/implementation/t18-admin-missing-route-20261030/coverage-after.md)为19代表最终/8局部/2未独立审计/1外部，完整T18/05/06不关闭。两批及续审共用原TEST，结束时进程/端口/自建页签/视口均清理，原五容器healthy。GitHub现有令牌失效，正常推送与精确commit CI仍待收尾；不据本地归档声称远端成功。

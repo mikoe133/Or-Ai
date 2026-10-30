@@ -1,0 +1,131 @@
+- link "跳到后台内容":
+  - /url: "#admin-workspace"
+- banner:
+  - button "展开后台导航":
+  - strong: 内容工作台
+  - text: 已验证的管理员
+  - link "账户设置":
+    - /url: /account
+    - text: M
+- main "内容工作台":
+  - heading "内容工作台" [level=1]
+  - link "← 全部内容商品":
+    - /url: /admin/content
+  - heading "TEST Three.js 只读项目" [level=2]
+  - paragraph: 当前支持单人自我探索，体验以已注册模板为准
+  - generic: 演示范围
+  - text: 内容版本 · 单选 v1
+  - combobox "工作台内容版本" [disabled]:
+    - option "v1 · 草稿" [selected]
+    - option "建立单选内容版本"
+  - text: 共同创作设定
+  - combobox "共同创作设定" [disabled]:
+    - option "r1 · TEST 只读创作设定" [selected]
+  - paragraph: 有未保存修改。页签间可切换；保存或放弃后可切换版本、设定与稿件。
+  - text: 当前工作区
+  - combobox "切换内容工作区":
+    - option "项目工作区"
+    - option "创作设定"
+    - option "skill 组合 · 有未保存修改" [selected]
+    - option "商品内容"
+    - option "体验设计"
+    - option "结果交付"
+    - option "封面"
+    - option "视频与分镜"
+    - option "引流文案"
+    - option "整套预览"
+    - option "引用与历史"
+    - option "成套采用"
+    - option "文件清理"
+  - region "商品能力与制作范围":
+    - heading "商品能力与制作范围" [level=3]
+    - generic: 组合兼容
+    - paragraph: 静心花园 · 3D v1 · 花园手记 · v1
+    - generic "查看版本依据、支持范围与后续形式"
+  - region "商品 skill 组合":
+    - heading "绑定五个专业用途" [level=3]
+    - paragraph: 创作设定 r1 · 形式 3d。每次保存追加组合修订，历史产物继续引用原组合。
+    - button "刷新可绑定版本" [active]
+    - button "读取最新组合" [disabled]
+    - group "方法的固定商品规划输入":
+      - generic: 固定商品规划 · 必填输入
+      - paragraph: 选择本次制作的规划与模块。保存后固定摘要；规划更新后需重新选择并保存新修订。
+      - text: 商品规划
+      - combobox "方法固定商品规划":
+        - option "选择固定商品规划" [selected]
+        - option "r1 · TEST Three.js 项目规划"
+      - button "刷新可选规划"
+      - link "查看项目工作区":
+        - /url: /admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project
+    - text: 题目设计
+    - combobox "题目设计 skill 版本":
+      - option "选择已启用的兼容版本" [selected]
+    - text: 检索题目设计
+    - textbox "检索题目设计"
+    - alert: TEST 受控故障 403
+    - button "重新读取"
+    - text: 报告写作
+    - combobox "报告写作 skill 版本":
+      - option "选择已启用的兼容版本" [selected]
+    - text: 检索报告写作
+    - textbox "检索报告写作"
+    - alert: TEST 受控故障 403
+    - button "重新读取"
+    - text: 封面设计
+    - combobox "封面设计 skill 版本":
+      - option "选择已启用的兼容版本" [selected]
+    - text: 检索封面设计
+    - textbox "检索封面设计"
+    - alert: TEST 未提供此只读响应
+    - button "重新读取"
+    - text: 视频制作
+    - combobox "视频制作 skill 版本":
+      - option "选择已启用的兼容版本" [selected]
+    - text: 检索视频制作
+    - textbox "检索视频制作"
+    - alert: TEST 未提供此只读响应
+    - button "重新读取"
+    - text: 引流文案
+    - combobox "引流文案 skill 版本":
+      - option "选择已启用的兼容版本" [selected]
+    - text: 检索引流文案
+    - textbox "检索引流文案"
+    - alert: TEST 未提供此只读响应
+    - button "重新读取"
+    - text: 组合说明
+    - textbox "skill 组合说明": TEST 组合权限拒绝仍保留的输入
+    - generic: 组合有未保存修改
+    - button "保存新 skill 组合"
+    - button "放弃组合修改"
+  - complementary "当前创作上下文":
+    - heading "制作依据" [level=3]
+    - term: 内容版本 · 单选
+    - definition: v1 · 草稿
+    - term: 共同创作设定
+    - definition: r1 · TEST 只读创作设定
+    - term: 保存状态
+    - definition: 有未保存修改
+    - heading "四类内容" [level=4]
+    - generic "四类内容齐备情况":
+      - strong: 题库与报告
+      - generic: 1 份
+      - generic: 可预览
+      - strong: 封面
+      - generic: 0 份
+      - generic: 待制作
+      - strong: 视频与分镜
+      - generic: 0 份
+      - generic: 待制作
+      - strong: 引流文案
+      - generic: 0 份
+      - generic: 待制作
+    - heading "共同目标" [level=4]
+    - term: 情绪感受
+    - definition: TEST 情绪目标
+    - term: 加深理解
+    - definition: TEST 理解目标
+    - term: 语言风格
+    - definition: TEST 清楚简短
+    - paragraph: 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+  - generic: meetmyworld
+  - generic: 内容与工作，都有迹可循。

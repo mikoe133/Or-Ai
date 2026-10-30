@@ -64,7 +64,7 @@ export function AdminShell({
         item.to !== "/admin" &&
         (location.pathname === item.to ||
           location.pathname.startsWith(item.to + "/")),
-    ) ?? navigation[0]!;
+    ) ?? (location.pathname.replace(/\/+$/, '') === '/admin' ? navigation[0]! : { title: '后台页面不存在' });
   useEffect(() => {
     document.title = current.title + " · MeetMyWorld 运营后台";
     main.current?.scrollTo(0, 0);

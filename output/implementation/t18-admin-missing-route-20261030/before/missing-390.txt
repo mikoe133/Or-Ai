@@ -1,0 +1,14 @@
+- link "跳到后台内容":
+  - /url: "#admin-workspace"
+- banner:
+  - button "展开后台导航":
+  - strong: 概览与审计
+  - text: 已验证的管理员
+  - link "账户设置":
+    - /url: /account
+    - text: M
+- main "概览与审计":
+  - heading "概览与审计" [level=1]
+  - paragraph: 后台页面不存在。
+  - generic: meetmyworld
+  - generic: 内容与工作，都有迹可循。

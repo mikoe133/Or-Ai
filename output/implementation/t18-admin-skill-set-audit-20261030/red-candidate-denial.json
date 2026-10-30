@@ -1,0 +1,33 @@
+{
+  "expected": "A denied purpose candidate read hides private binding inputs until verified recovery.",
+  "observed": {
+    "noteEditable": true,
+    "note": "TEST 组合权限拒绝仍保留的输入"
+  },
+  "sourceCommit": "f634c0c",
+  "scope": "TEST read-only protocol substitute; no accepted writes",
+  "reproduced": true,
+  "actualCandidateRequests": [
+    {
+      "method": "GET",
+      "path": "/api/admin/skills/assessment/candidates",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/skills/assessment/candidates",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/skills/assessment/candidates",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/skills/assessment/candidates",
+      "status": 403
+    }
+  ],
+  "sourceDigest": "099bae5354d8643acdfb9c4c2fdbbd0f6dbca9e8e9ef1cb1b93c4ffeca9211f3"
+}

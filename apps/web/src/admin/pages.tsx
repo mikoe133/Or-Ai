@@ -13,6 +13,7 @@ import { SkillsApp } from "./skills.js";
 import { CodexConnections } from "./codex-connections.js";
 import { Overview } from "./overview.js";
 import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
+import { AdminEmptyState } from "./feedback-view.js";
 function Management() {
   const result = useQuery({
     queryKey: ["private", "admin", "overview"],
@@ -41,7 +42,10 @@ function Management() {
         />
         <Route path="machine/configurations" element={<CodexConnections scope={data.scope} />} />
         <Route path="orders" element={<Orders scope={data.scope} />} />
-        <Route path="*" element={<p>后台页面不存在。</p>} />
+        <Route path="*" element={<AdminEmptyState title="后台页面不存在" actions={<div className="biz-row">
+          <Link className="biz-button" to="/admin">返回概览与审计</Link>
+          <Link className="biz-button" to="/admin/content">打开内容工作台</Link>
+        </div>}>当前地址没有对应的后台页面。可返回概览，或进入内容工作台继续操作。</AdminEmptyState>} />
       </Routes>
     </>
   );
