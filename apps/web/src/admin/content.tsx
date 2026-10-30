@@ -227,6 +227,10 @@ function ProductWorkbench() {
   });
   const hasDirty = Object.values(dirty).some(Boolean);
   function changeTab(key: string) {
+    if (dirty.cleanup && key !== 'cleanup') {
+      setNavigationNotice('清理请求尚未确认，请先核对原请求再切换页签。');
+      return;
+    }
     if (dirty.project && key !== 'project') {
       setNavigationNotice('请先保存或放弃项目规划，再切换页签。');
       return;
@@ -252,6 +256,7 @@ function ProductWorkbench() {
   }, [tab, product.data?.id, profiles.data?.length, versions.data?.length]);
   const skillsDirty = useCallback((value: boolean) => setDirty(current => ({ ...current, skills: value })), []);
   const projectDirty = useCallback((value:boolean)=>setDirty(current=>({...current,project:value})),[]);
+  const cleanupDirty = useCallback((value:boolean)=>setDirty(current=>({...current,cleanup:value})),[]);
   const experienceDirty = useCallback((value: boolean) => setDirty(current => ({ ...current, experience: value })), []);
   const profileDirty = useCallback(
       (value: boolean) =>
@@ -296,7 +301,7 @@ function ProductWorkbench() {
       ) {
         event.preventDefault();
         event.stopPropagation();
-        setNavigationNotice("请先保存或放弃工作台中的修改，再离开此商品。");
+        setNavigationNotice(dirty.cleanup ? "清理结果尚未确认，请先核对原请求再离开此商品。" : "请先保存或放弃工作台中的修改，再离开此商品。");
       }
     };
     window.addEventListener("beforeunload", unload);
@@ -305,7 +310,7 @@ function ProductWorkbench() {
       window.removeEventListener("beforeunload", unload);
       document.removeEventListener("click", navigate, true);
     };
-  }, [hasDirty]);
+  }, [hasDirty, dirty.cleanup]);
   function inspect(id: string) {
     setInspectionId(id);
     setTab("history");
@@ -450,14 +455,14 @@ function ProductWorkbench() {
       </div>
       {hasDirty && (
         <p className="content-note">
-          {dirty.project?'项目规划有未保存修改。保存或放弃后可切换页签和版本。':'有未保存修改。页签间可切换；保存或放弃后可切换版本、设定与稿件。'}
+          {dirty.cleanup?'清理结果尚未确认。请先核对原请求，再切换页签、版本或离开。':dirty.project?'项目规划有未保存修改。保存或放弃后可切换页签和版本。':'有未保存修改。页签间可切换；保存或放弃后可切换版本、设定与稿件。'}
         </p>
       )}
       {navigationNotice && <p role="alert">{navigationNotice}</p>}
       <label className="content-mobile-navigation">
         当前工作区
         <select aria-label="切换内容工作区" value={tab} onChange={event => changeTab(event.target.value)}>
-          {Object.entries(workbenchTabs).map(([key, label]) => <option key={key} value={key}>{label}{dirty[key] ? " · 有未保存修改" : ""}</option>)}
+          {Object.entries(workbenchTabs).map(([key, label]) => <option key={key} value={key}>{label}{dirty[key] ? key === 'cleanup' ? " · 结果待核对" : " · 有未保存修改" : ""}</option>)}
         </select>
       </label>
       <nav ref={tabsRef} className="content-tabs" aria-label="内容工作台页签">
@@ -632,7 +637,7 @@ function ProductWorkbench() {
         />
       </div>
       <div hidden={tab !== "cleanup"}>
-        <CleanupPanel productId={productId} active={tab === "cleanup"} />
+        <CleanupPanel key={productId} productId={productId} active={tab === "cleanup"} onDirty={cleanupDirty} />
       </div>
       <div hidden={tab !== "preview"}>
         <SuitePreview
@@ -656,7 +661,7 @@ function ProductWorkbench() {
         <dl className="content-context-facts">
           <div><dt>内容版本 · 单选</dt><dd>{currentVersion ? `v${currentVersion.number} · ${statuses[currentVersion.status]}` : "尚未建立"}</dd></div>
           <div><dt>共同创作设定</dt><dd>{profile ? `r${profile.revision} · ${profile.profile.title}` : "尚未保存"}</dd></div>
-          <div><dt>保存状态</dt><dd className={hasDirty ? "content-pending" : ""}>{hasDirty ? "有未保存修改" : "无未保存修改"}</dd></div>
+          <div><dt>保存状态</dt><dd className={hasDirty ? "content-pending" : ""}>{dirty.cleanup ? "清理结果待核对" : hasDirty ? "有未保存修改" : "无未保存修改"}</dd></div>
         </dl>
         <h4>四类内容</h4>
         <div className="content-readiness" aria-label="四类内容齐备情况">

@@ -1,0 +1,2 @@
+output/implementation/t18-admin-coverage-cleanup-20261030/logs/build.txt:75: trailing whitespace.
++[plugin builtin:vite-reporter] 

@@ -1,0 +1,134 @@
+Browser tab: 6, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=cleanup".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=cleanup
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=cleanup#admin-workspace
+		22 container
+			146 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			23 link Description: 运营后台, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin
+			24 text / 内容工作台 已验证的管理员
+			25 link Description: 账户设置, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/account
+		26 container 内容工作台, ID: admin-workspace
+			27 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				28 text 内容工作台
+			29 link Description: ← 全部内容商品, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content
+			30 heading TEST Three.js 只读项目, Value: 2
+				31 text TEST Three.js 只读项目
+			32 text 创作方案待适配：当前运行协议需要题目、评估规则与报告内容；无评估或可选结果交付尚未实现；当前结果结构只兼容标准图文报告，其他报告方案尚未启用
+			33 text 演示范围
+			34 container
+				35 text 内容版本 · 单选 v1
+				36 pop up button (collapsed, settable) Description: 工作台内容版本, Value: 建立单选内容版本, Secondary Actions: Expand
+					37 menu
+						38 (selected) 建立单选内容版本
+			39 container
+				40 text 共同创作设定
+				41 pop up button (collapsed, settable) Description: 共同创作设定, Value: r1 · TEST 只读创作设定, Secondary Actions: Expand
+					42 menu
+						43 (selected) r1 · TEST 只读创作设定
+			147 container
+				148 text 当前工作区
+				149 pop up button (collapsed, settable) Description: 切换内容工作区, Value: 文件清理, Secondary Actions: Expand
+					150 menu
+						151 项目工作区
+						152 创作设定
+						153 skill 组合
+						154 商品内容
+						155 体验设计
+						156 结果交付
+						157 封面
+						158 视频与分镜
+						159 引流文案
+						160 整套预览
+						161 引用与历史
+						162 成套采用
+						163 (selected) 文件清理
+			58 container 商品能力与制作范围
+				59 container
+					60 heading 商品能力与制作范围, Value: 3
+						61 text 商品能力与制作范围
+					62 text 方案待适配
+				63 container
+					64 text 尚未选择运行模板  ·  标准图文结果
+				65 content list
+					66 text 当前运行协议需要题目、评估规则与报告内容；无评估或可选结果交付尚未实现
+					67 text 当前结果结构只兼容标准图文报告，其他报告方案尚未启用
+				68 button (collapsed) 查看版本依据、支持范围与后续形式, Secondary Actions: Expand
+					69 text 查看版本依据、支持范围与后续形式
+			70 container 临时文件清理工作台
+				71 heading 临时文件清理, Value: 3
+					72 text 临时文件清理
+				73 text 仅列出上传期限已过、没有任何当前或历史内容引用的文件。归档稿、历史预览和采用包使用过的文件继续保留。
+				74 content list 清理流程
+					75 container
+						76 text 01  选择过期文件
+					77 container
+						78 text 02  生成清理预演
+					79 container
+						80 text 03  核对后执行
+				81 table
+					82 row
+						83 cell
+							84 text 选择
+						85 cell
+							86 text 文件
+						87 cell
+							88 text 大小
+						89 cell
+							90 text 状态
+						91 cell
+							92 text 上传期限
+				93 text 没有符合清理条件的文件。
+				94 container 分页
+					95 button (disabled) 上一页
+					96 text 第  1  页 · 共  0  条
+					97 button (disabled) 下一页
+				98 button (disabled) 生成清理预演
+			99 container 当前创作上下文
+				100 heading 制作依据, Value: 3
+					101 text 制作依据
+				102 definition list
+					103 container 内容版本 · 单选
+						104 text 内容版本 · 单选
+					105 text 尚未建立
+					106 container 共同创作设定
+						107 text 共同创作设定
+					108 text r1 · TEST 只读创作设定
+					109 container 保存状态
+						110 text 保存状态
+					111 text 无未保存修改
+				112 heading 四类内容, Value: 4
+					113 text 四类内容
+				114 container 四类内容齐备情况
+					115 text 题库与报告
+					116 container
+						117 text 0  份
+					118 text 待制作
+					119 text 封面
+					120 container
+						121 text 0  份
+					122 text 待制作
+					123 text 视频与分镜
+					124 container
+						125 text 0  份
+					126 text 待制作
+					127 text 引流文案
+					128 container
+						129 text 0  份
+					130 text 待制作
+				131 heading 共同目标, Value: 4
+					132 text 共同目标
+				133 definition list
+					134 container 情绪感受
+						135 text 情绪感受
+					136 text TEST 情绪目标
+					137 container 加深理解
+						138 text 加深理解
+					139 text TEST 理解目标
+					140 container 语言风格
+						141 text 语言风格
+					142 text TEST 清楚简短
+				143 text 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+			144 container
+				145 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 26 container 内容工作台, ID: admin-workspace

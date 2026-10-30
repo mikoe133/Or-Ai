@@ -1,0 +1,128 @@
+[
+  {
+    "name": "prepared",
+    "phase": "before",
+    "width": 1440,
+    "height": 1000,
+    "body": 1440
+  },
+  {
+    "name": "prepared",
+    "phase": "before",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "name": "prepared",
+    "phase": "before",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "name": "empty",
+    "phase": "before",
+    "width": 1440,
+    "height": 1000,
+    "body": 1440
+  },
+  {
+    "name": "empty",
+    "phase": "before",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "name": "empty",
+    "phase": "before",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "name": "complete",
+    "phase": "before",
+    "width": 1440,
+    "height": 1000,
+    "body": 1440
+  },
+  {
+    "name": "complete",
+    "phase": "before",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "name": "complete",
+    "phase": "before",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "name": "prepared",
+    "phase": "after",
+    "width": 1440,
+    "height": 1000,
+    "body": 1440
+  },
+  {
+    "name": "prepared",
+    "phase": "after",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "name": "prepared",
+    "phase": "after",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "name": "empty",
+    "phase": "after",
+    "width": 1440,
+    "height": 1000,
+    "body": 1440
+  },
+  {
+    "name": "empty",
+    "phase": "after",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "name": "empty",
+    "phase": "after",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "name": "complete",
+    "phase": "after",
+    "width": 1440,
+    "height": 1000,
+    "body": 1440
+  },
+  {
+    "name": "complete",
+    "phase": "after",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "name": "complete",
+    "phase": "after",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  }
+]

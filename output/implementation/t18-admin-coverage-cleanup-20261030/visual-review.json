@@ -1,0 +1,7 @@
+{
+  "initialAccepted": false,
+  "issue": "Mobile candidate columns compressed the file name into many lines. Fixed with a 600px locally scrollable table.",
+  "retained": "states/visual-first-pass",
+  "finalAccepted": true,
+  "finalCaptures": "after/"
+}

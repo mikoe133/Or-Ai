@@ -1,0 +1,161 @@
+Browser tab: 6, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=cleanup&cleanup=fcab27c7-a495-4e62-b056-21d51a198744".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=cleanup&cleanup=fcab27c7-a495-4e62-b056-21d51a198744
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=cleanup&cleanup=fcab27c7-a495-4e62-b056-21d51a198744#admin-workspace
+		22 container
+			173 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			23 link Description: 运营后台, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin
+			24 text / 内容工作台 已验证的管理员
+			25 link Description: 账户设置, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/account
+		26 container 内容工作台, ID: admin-workspace
+			27 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				28 text 内容工作台
+			29 link Description: ← 全部内容商品, Value: orai-cua-bad9b584-ef50-4b9b-bde6-1502cb39949f.localhost:5191/admin/content
+			30 heading TEST Three.js 只读项目, Value: 2
+				31 text TEST Three.js 只读项目
+			32 text 创作方案待适配：当前运行协议需要题目、评估规则与报告内容；无评估或可选结果交付尚未实现；当前结果结构只兼容标准图文报告，其他报告方案尚未启用
+			33 text 演示范围
+			34 container
+				35 text 内容版本 · 单选 v1
+				36 pop up button (collapsed, settable) Description: 工作台内容版本, Value: 建立单选内容版本, Secondary Actions: Expand
+					37 menu
+						38 (selected) 建立单选内容版本
+			39 container
+				40 text 共同创作设定
+				41 pop up button (collapsed, settable) Description: 共同创作设定, Value: r1 · TEST 只读创作设定, Secondary Actions: Expand
+					42 menu
+						43 (selected) r1 · TEST 只读创作设定
+			174 container
+				175 text 当前工作区
+				176 pop up button (collapsed, settable) Description: 切换内容工作区, Value: 文件清理, Secondary Actions: Expand
+					177 menu
+						178 项目工作区
+						179 创作设定
+						180 skill 组合
+						181 商品内容
+						182 体验设计
+						183 结果交付
+						184 封面
+						185 视频与分镜
+						186 引流文案
+						187 整套预览
+						188 引用与历史
+						189 成套采用
+						190 (selected) 文件清理
+			58 container 商品能力与制作范围
+				59 container
+					60 heading 商品能力与制作范围, Value: 3
+						61 text 商品能力与制作范围
+					62 text 方案待适配
+				63 container
+					64 text 尚未选择运行模板  ·  标准图文结果
+				65 content list
+					66 text 当前运行协议需要题目、评估规则与报告内容；无评估或可选结果交付尚未实现
+					67 text 当前结果结构只兼容标准图文报告，其他报告方案尚未启用
+				68 button (collapsed) 查看版本依据、支持范围与后续形式, Secondary Actions: Expand
+					69 text 查看版本依据、支持范围与后续形式
+			70 container 临时文件清理工作台
+				71 container
+					72 heading 临时文件清理, Value: 3
+						73 text 临时文件清理
+					74 text 核对过期且无引用的文件，再决定是否清理。归档稿、历史预览和采用包的引用继续保留。
+					75 button 更新清理状态, ID: cleanup-refresh
+				76 content list 清理流程
+					77 container
+						78 text 01  选择过期文件
+					79 container
+						80 text 02  生成清理预演
+					81 container
+						82 text 03  核对后执行
+				83 container
+					84 text 候选文件  1
+				85 text 已选  0  / 50
+				86 table
+					87 row
+						88 cell
+							89 text 选择
+						90 cell
+							91 text 文件
+						92 cell
+							93 text 大小
+						94 cell
+							95 text 状态
+						96 cell
+							97 text 上传期限
+					98 row
+						99 cell
+							100 checkbox (settable, integer) Description: 清理候选 TEST expired-no-reference.png, Value: 0
+						101 cell
+							102 text TEST expired-no-reference.png
+						103 cell
+							104 text 2.0 KiB
+						105 cell
+							106 text 待校验
+						107 cell
+							108 text 2026/10/28 08:00:00
+				109 button (disabled) 生成清理预演
+				110 container 文件清理预演
+					111 container
+						112 text 固定清理清单
+						113 heading 清理预演 · 已完成, Value: 4
+							114 text 清理预演 ·  已完成
+						115 text 1  份文件 ·  2.0 KiB
+					116 container
+						117 text 预演有效期至  2026/11/5 08:00:00 。执行时会重新检查引用与状态。
+					118 content list
+						119 container
+							120 text TEST expired-no-reference.png 2.0 KiB
+					121 button (collapsed) 查看固定文件标识与摘要, Secondary Actions: Expand
+						122 text 查看固定文件标识与摘要
+					123 container
+						124 text ee570bc9-dddb-44dc-86d5-90a9a7b31192 ： TEST metadata only: retained
+					125 text 预演后被引用的文件会保留。失败时重试同一计划，已删除的文件不会重新上传或激活。
+			126 container 当前创作上下文
+				127 heading 制作依据, Value: 3
+					128 text 制作依据
+				129 definition list
+					130 container 内容版本 · 单选
+						131 text 内容版本 · 单选
+					132 text 尚未建立
+					133 container 共同创作设定
+						134 text 共同创作设定
+					135 text r1 · TEST 只读创作设定
+					136 container 保存状态
+						137 text 保存状态
+					138 text 无未保存修改
+				139 heading 四类内容, Value: 4
+					140 text 四类内容
+				141 container 四类内容齐备情况
+					142 text 题库与报告
+					143 container
+						144 text 0  份
+					145 text 待制作
+					146 text 封面
+					147 container
+						148 text 0  份
+					149 text 待制作
+					150 text 视频与分镜
+					151 container
+						152 text 0  份
+					153 text 待制作
+					154 text 引流文案
+					155 container
+						156 text 0  份
+					157 text 待制作
+				158 heading 共同目标, Value: 4
+					159 text 共同目标
+				160 definition list
+					161 container 情绪感受
+						162 text 情绪感受
+					163 text TEST 情绪目标
+					164 container 加深理解
+						165 text 加深理解
+					166 text TEST 理解目标
+					167 container 语言风格
+						168 text 语言风格
+					169 text TEST 清楚简短
+				170 text 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+			171 container
+				172 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 26 container 内容工作台, ID: admin-workspace

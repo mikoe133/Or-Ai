@@ -1,0 +1,130 @@
+[
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".cleanup-heading p",
+    "fontSize": 13,
+    "contrast": 7.78
+  },
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "12px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".cleanup-selection>span",
+    "fontSize": 12,
+    "contrast": 7.78
+  },
+  {
+    "background": [
+      27,
+      29,
+      40
+    ],
+    "fontSizeText": "17px",
+    "foreground": [
+      236,
+      234,
+      245
+    ],
+    "selector": ".cleanup-plan h4",
+    "fontSize": 17,
+    "contrast": 14.09
+  },
+  {
+    "background": [
+      27,
+      29,
+      40
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".cleanup-caption",
+    "fontSize": 13,
+    "contrast": 7.16
+  },
+  {
+    "background": [
+      27,
+      29,
+      40
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".cleanup-plan>.content-note",
+    "fontSize": 13,
+    "contrast": 7.16
+  },
+  {
+    "background": [
+      27,
+      29,
+      40
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      236,
+      234,
+      245
+    ],
+    "selector": ".cleanup-files strong",
+    "fontSize": 13,
+    "contrast": 14.09
+  },
+  {
+    "background": [
+      27,
+      29,
+      40
+    ],
+    "fontSizeText": "12px",
+    "foreground": [
+      190,
+      165,
+      236
+    ],
+    "selector": ".cleanup-identifiers summary",
+    "fontSize": 12,
+    "contrast": 7.81
+  },
+  {
+    "background": [
+      34,
+      36,
+      48
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".content-cleanup-editor th",
+    "fontSize": 13,
+    "contrast": 6.58
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "expected": "Permission denial hides private cleanup plan and invalidates confirmation",
+  "observed": {
+    "confirmation": true,
+    "executeEnabled": true,
+    "previewVisible": true
+  },
+  "reproduced": true
+}

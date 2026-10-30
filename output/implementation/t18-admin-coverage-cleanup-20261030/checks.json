@@ -1,0 +1,205 @@
+[
+  {
+    "name": "candidate-403-hides-private-cleanup-plan-and-confirmation",
+    "passed": true,
+    "observed": {
+      "previews": 0,
+      "privatePanels": 0
+    }
+  },
+  {
+    "name": "partial-access-retry-keeps-private-plan-hidden",
+    "passed": true
+  },
+  {
+    "name": "all-required-reads-restore-cleanup-without-old-consent",
+    "passed": true,
+    "observed": {
+      "checked": false,
+      "disabled": false
+    }
+  },
+  {
+    "name": "empty-cleanup-state-explains-protected-history",
+    "passed": true
+  },
+  {
+    "name": "completed-cleanup-plan-is-read-only-with-results",
+    "passed": true
+  },
+  {
+    "name": "three-cleanup-states-have-three-viewport-pairs",
+    "passed": true,
+    "observed": 18
+  },
+  {
+    "name": "cleanup-captures-have-no-document-horizontal-overflow",
+    "passed": true
+  },
+  {
+    "name": "candidate-503-retains-table-selection-and-plan-while-locking-writes",
+    "passed": true,
+    "observed": {
+      "newPreviewDisabled": true,
+      "plan": true,
+      "rows": 1,
+      "selected": true
+    }
+  },
+  {
+    "name": "ordinary-read-recovery-keeps-file-selection",
+    "passed": true
+  },
+  {
+    "name": "plan-503-retains-fixed-preview-and-disables-confirmation",
+    "passed": true
+  },
+  {
+    "name": "restored-plan-403-hides-candidates-and-preview",
+    "passed": true
+  },
+  {
+    "name": "preview-conflict-keeps-selection-and-requires-read-before-more-actions",
+    "passed": true
+  },
+  {
+    "name": "conflict-recovery-clears-obsolete-operation-error",
+    "passed": true
+  },
+  {
+    "name": "execute-denial-hides-private-plan-without-performing-cleanup",
+    "passed": true
+  },
+  {
+    "name": "execute-denial-recovery-requires-fresh-confirmation",
+    "passed": true
+  },
+  {
+    "name": "mobile-candidate-table-scrolls-locally-without-cramping-columns",
+    "passed": true
+  },
+  {
+    "name": "initial-cleanup-loading-is-explicit-and-not-a-fake-empty-state",
+    "passed": true
+  },
+  {
+    "name": "delayed-first-read-eventually-shows-real-candidates",
+    "passed": true
+  },
+  {
+    "name": "initial-failure-has-retry-without-fake-empty-or-retained-data-notice",
+    "passed": true
+  },
+  {
+    "name": "initial-failure-retry-restores-candidates",
+    "passed": true
+  },
+  {
+    "name": "unknown-preview-locks-original-selection-and-new-preview",
+    "passed": true
+  },
+  {
+    "name": "unknown-cleanup-request-blocks-workbench-tab-switch",
+    "passed": true
+  },
+  {
+    "name": "unknown-cleanup-request-blocks-leaving-product",
+    "passed": true
+  },
+  {
+    "name": "permission-loss-hides-unknown-preview-and-private-selection",
+    "passed": true
+  },
+  {
+    "name": "access-recovery-preserves-unknown-preview-intent",
+    "passed": true
+  },
+  {
+    "name": "unknown-preview-retry-keeps-identical-original-body",
+    "passed": true,
+    "observed": [
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/preview",
+        "status": 503,
+        "bodyDigest": "4cdaa0c71c937f261ca228f80a466190451c4b1a104c1050c2ab81d363a9b1f8"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/preview",
+        "status": 503,
+        "bodyDigest": "4cdaa0c71c937f261ca228f80a466190451c4b1a104c1050c2ab81d363a9b1f8"
+      }
+    ]
+  },
+  {
+    "name": "definitive-preview-conflict-ends-unknown-state-and-requires-recheck",
+    "passed": true
+  },
+  {
+    "name": "cleanup-execution-requires-explicit-plan-confirmation",
+    "passed": true
+  },
+  {
+    "name": "unknown-execution-keeps-fixed-plan-and-disables-new-execution",
+    "passed": true
+  },
+  {
+    "name": "parent-workbench-describes-unknown-cleanup-result-correctly",
+    "passed": true
+  },
+  {
+    "name": "unknown-execution-keeps-cleanup-tab-selected",
+    "passed": true
+  },
+  {
+    "name": "plan-permission-loss-hides-unknown-execution",
+    "passed": true
+  },
+  {
+    "name": "execution-access-recovery-keeps-original-request-but-clears-consent",
+    "passed": true
+  },
+  {
+    "name": "unknown-execution-retry-keeps-identical-original-body",
+    "passed": true,
+    "observed": [
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/fcab27c7-a495-4e62-b056-21d51a198744/execute",
+        "status": 503,
+        "bodyDigest": "2db627c022fb2dc279eecdf10fb26f81d5d8562eb239f1783d0b37765def8d42"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/fcab27c7-a495-4e62-b056-21d51a198744/execute",
+        "status": 503,
+        "bodyDigest": "2db627c022fb2dc279eecdf10fb26f81d5d8562eb239f1783d0b37765def8d42"
+      }
+    ]
+  },
+  {
+    "name": "definitive-execution-conflict-locks-until-current-plan-is-rechecked",
+    "passed": true
+  },
+  {
+    "name": "successful-recheck-restores-focus-to-visible-refresh-control",
+    "passed": true
+  },
+  {
+    "name": "candidate-checkbox-supports-keyboard-within-local-table",
+    "passed": true
+  },
+  {
+    "name": "cleanup-text-samples-are-readable-at-12px-or-more-and-AA-contrast",
+    "passed": true,
+    "observed": {
+      "samples": 8,
+      "minimum": 6.58
+    }
+  },
+  {
+    "name": "final-source-retains-all-nine-viewport-comparisons",
+    "passed": true
+  }
+]

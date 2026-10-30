@@ -1,0 +1,1011 @@
+{
+  "note": "No credentials, real products, permissions or content are created; READ metadata only.",
+  "product": {
+    "slug": "test-project-only",
+    "name": "TEST Three.js 只读项目",
+    "hook": "TEST 项目界面验证",
+    "summary": "TEST 合成元数据，不是正式商品",
+    "description": "TEST 无商品内容生成",
+    "categoryId": "451c569f-1b06-47e9-bbb0-b57eb70a982e",
+    "tagIds": [],
+    "priceFen": 0,
+    "durationMinutes": 5,
+    "experienceType": "tendency",
+    "themeKey": "test-project",
+    "coverUrl": null,
+    "scope": "demo",
+    "recommended": false,
+    "publicSample": {
+      "label": "TEST 无公开样例",
+      "summary": "TEST 不含真实个人报告",
+      "dimensions": [
+        {
+          "label": "TEST 未评估",
+          "score": null
+        }
+      ],
+      "suggestion": "TEST 不作正式交付",
+      "isDemo": true
+    },
+    "purchaseUrl": null,
+    "purchaseNotice": "TEST 未上架",
+    "redemptionNotice": "TEST 不发码",
+    "id": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "revision": 1,
+    "status": "draft",
+    "recommendationOrder": 0,
+    "currentVersionId": null,
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "updatedAt": "2026-10-30T00:00:00.000Z"
+  },
+  "profile": {
+    "id": "31c29711-2609-45c1-a23f-f190540eb658",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "scope": "demo",
+    "revision": 1,
+    "profile": {
+      "schemaVersion": 1,
+      "title": "TEST 只读创作设定",
+      "audience": "TEST 合成范围",
+      "situation": "TEST 合成场景",
+      "emotionalGoal": "TEST 情绪目标",
+      "understandingGoal": "TEST 理解目标",
+      "takeaway": "TEST 回顾目标",
+      "perspective": "self",
+      "experienceForm": "3d",
+      "pace": "TEST 按商品规划",
+      "world": "TEST 独立商品世界观",
+      "language": "TEST 清楚简短",
+      "visual": "TEST 按商品规划",
+      "sound": "TEST 无音频",
+      "reportPlan": {
+        "schemaVersion": 1,
+        "title": "TEST 报告规划",
+        "narrative": "TEST 未制作正式报告",
+        "presentation": "custom",
+        "sections": [
+          {
+            "sectionId": "review",
+            "title": "TEST 回顾",
+            "purpose": "TEST 结构校验"
+          }
+        ]
+      },
+      "channels": [
+        "manual"
+      ],
+      "deliverables": [
+        "copy"
+      ]
+    },
+    "digest": "452177a93439859065b554cf9b576e5921733c4ab19c6d68b7916743a22a0ef9",
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "runtimeSupport": "authoring_only"
+  },
+  "workspace": {
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "scope": "demo",
+    "observedAt": "2026-10-30T00:00:00.000Z",
+    "source": "live",
+    "plans": {
+      "items": [
+        {
+          "id": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+          "revision": 1,
+          "createdAt": "2026-10-30T00:00:00.000Z",
+          "title": "TEST Three.js 项目规划"
+        }
+      ],
+      "page": 1,
+      "pageSize": 20,
+      "total": 1
+    },
+    "reviews": {
+      "items": [],
+      "page": 1,
+      "pageSize": 20,
+      "total": 0
+    },
+    "runs": {
+      "items": [],
+      "page": 1,
+      "pageSize": 20,
+      "total": 0
+    },
+    "plan": {
+      "id": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+      "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+      "scope": "demo",
+      "revision": 1,
+      "creativeProfileRevisionId": "31c29711-2609-45c1-a23f-f190540eb658",
+      "creativeProfileDigest": "452177a93439859065b554cf9b576e5921733c4ab19c6d68b7916743a22a0ef9",
+      "plan": {
+        "schemaVersion": 2,
+        "title": "TEST Three.js 项目规划",
+        "selection": {
+          "basis": "manual",
+          "rationale": "验证不同商品拥有独立规划",
+          "evidenceKeys": []
+        },
+        "freshnessWindowHours": 72,
+        "evidence": [],
+        "modules": [
+          {
+            "moduleKey": "experience",
+            "title": "商品体验",
+            "domain": "experience",
+            "required": true,
+            "purpose": "按明确选择保存答案",
+            "dependsOn": [],
+            "target": {
+              "form": "3d",
+              "runtime": {
+                "renderer": {
+                  "key": "synthetic-gallery",
+                  "version": 1
+                },
+                "reportRenderer": {
+                  "key": "synthetic-notes",
+                  "version": 1
+                },
+                "inputSchema": "single_choice_v1",
+                "engine": "dimensions_v1",
+                "reportSchema": "report_content_v1"
+              }
+            },
+            "methodPurposes": [
+              "scene_design",
+              "report_presentation"
+            ],
+            "methodRetention": "manifest_instructions_and_references",
+            "outputs": [
+              {
+                "outputKey": "scene",
+                "label": "场景原件",
+                "required": true,
+                "kind": "scene_bundle",
+                "original": {
+                  "storage": "platform",
+                  "representation": "file"
+                },
+                "files": [
+                  {
+                    "fileKey": "source",
+                    "purpose": "original",
+                    "label": "原件",
+                    "required": true,
+                    "mimeTypes": [
+                      "application/zip"
+                    ],
+                    "sourceUrl": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "moduleKey": "copy",
+            "title": "TEST 引流文案",
+            "domain": "copy",
+            "required": true,
+            "purpose": "制作TEST 引流文案",
+            "dependsOn": [
+              "experience"
+            ],
+            "target": {
+              "form": "web",
+              "runtime": null
+            },
+            "methodPurposes": [
+              "copywriting"
+            ],
+            "methodRetention": "manifest_instructions_and_references",
+            "outputs": [
+              {
+                "outputKey": "main",
+                "label": "TEST 引流文案",
+                "required": true,
+                "kind": "copy",
+                "original": {
+                  "storage": "platform",
+                  "representation": "structured"
+                },
+                "files": []
+              }
+            ]
+          }
+        ],
+        "retention": "platform_originals_and_exact_methods",
+        "productPlan": {
+          "schemaVersion": 1,
+          "implementation": "threejs",
+          "basedOnPlanRevisionId": null,
+          "visualDimension": "2.5d",
+          "experienceModuleKey": "experience",
+          "assessmentModuleKey": null,
+          "decisions": {
+            "scene": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "纸片展厅的固定构图",
+              "evidence": []
+            },
+            "animation": {
+              "requirement": "not_required",
+              "status": "planned",
+              "details": "使用静态构图",
+              "evidence": []
+            },
+            "camera": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "固定正交镜头",
+              "evidence": []
+            },
+            "interaction": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "触摸或键盘明确选择对象",
+              "evidence": []
+            },
+            "feedback": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "显示选中轮廓和文字反馈",
+              "evidence": []
+            },
+            "confirmation": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "点击确认后保存；镜头运动不参与评估",
+              "evidence": []
+            },
+            "recovery": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "恢复服务端已确认答案",
+              "evidence": []
+            },
+            "report": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "固定文本报告，承接商品意象",
+              "evidence": []
+            },
+            "accessibility": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "键盘、文字说明和减少动态",
+              "evidence": []
+            },
+            "fallback": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "图形失效时使用同题文字回退并允许重试",
+              "evidence": []
+            },
+            "resources": {
+              "requirement": "required",
+              "status": "planned",
+              "details": "内置几何体，不加载外部模型",
+              "evidence": []
+            }
+          },
+          "budgets": {
+            "devices": [
+              "desktop",
+              "ios_safari",
+              "android_chrome"
+            ],
+            "maxRendererGzipBytes": 245760,
+            "maxTotalResourceBytes": 1048576,
+            "maxFirstFrameMs": 5000,
+            "maxPixelRatio": 1.5,
+            "maxCanvasPixels": 1500000,
+            "maxTriangles": 14000,
+            "maxDrawCalls": 48,
+            "minFps": 30
+          },
+          "sources": []
+        },
+        "creativeProfileRevisionId": "31c29711-2609-45c1-a23f-f190540eb658"
+      },
+      "digest": "b451c73425e0df9f00e950a01a8d5b81128a3af6165201ab9e1131f4dbbedd1c",
+      "status": "planning_only",
+      "createdAt": "2026-10-30T00:00:00.000Z",
+      "modules": [
+        {
+          "id": "896d3899-7ddc-4750-b461-bdacae3ff981",
+          "moduleId": "bec9ae02-aaac-40ac-97bc-47473b99b9f2",
+          "moduleKey": "experience",
+          "dependencyIds": [],
+          "digest": "98cc221120ba2319b84c6a53ea752efc6289426fe3d636c338619e95e758e609",
+          "definition": {
+            "moduleKey": "experience",
+            "title": "商品体验",
+            "domain": "experience",
+            "required": true,
+            "purpose": "按明确选择保存答案",
+            "dependsOn": [],
+            "target": {
+              "form": "3d",
+              "runtime": {
+                "renderer": {
+                  "key": "synthetic-gallery",
+                  "version": 1
+                },
+                "reportRenderer": {
+                  "key": "synthetic-notes",
+                  "version": 1
+                },
+                "inputSchema": "single_choice_v1",
+                "engine": "dimensions_v1",
+                "reportSchema": "report_content_v1"
+              }
+            },
+            "methodPurposes": [
+              "scene_design",
+              "report_presentation"
+            ],
+            "methodRetention": "manifest_instructions_and_references",
+            "outputs": [
+              {
+                "outputKey": "scene",
+                "label": "场景原件",
+                "required": true,
+                "kind": "scene_bundle",
+                "original": {
+                  "storage": "platform",
+                  "representation": "file"
+                },
+                "files": [
+                  {
+                    "fileKey": "source",
+                    "purpose": "original",
+                    "label": "原件",
+                    "required": true,
+                    "mimeTypes": [
+                      "application/zip"
+                    ],
+                    "sourceUrl": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+          "moduleId": "9a978cae-3801-4d21-8b3a-df10f39c0f9c",
+          "moduleKey": "copy",
+          "dependencyIds": [
+            "896d3899-7ddc-4750-b461-bdacae3ff981"
+          ],
+          "digest": "48eb10766c03275e15694cbcb48784873b5c575c264db16a1d86e15723e3a80c",
+          "definition": {
+            "moduleKey": "copy",
+            "title": "TEST 引流文案",
+            "domain": "copy",
+            "required": true,
+            "purpose": "制作TEST 引流文案",
+            "dependsOn": [
+              "experience"
+            ],
+            "target": {
+              "form": "web",
+              "runtime": null
+            },
+            "methodPurposes": [
+              "copywriting"
+            ],
+            "methodRetention": "manifest_instructions_and_references",
+            "outputs": [
+              {
+                "outputKey": "main",
+                "label": "TEST 引流文案",
+                "required": true,
+                "kind": "copy",
+                "original": {
+                  "storage": "platform",
+                  "representation": "structured"
+                },
+                "files": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "profile": {
+      "id": "31c29711-2609-45c1-a23f-f190540eb658",
+      "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+      "scope": "demo",
+      "revision": 1,
+      "profile": {
+        "schemaVersion": 1,
+        "title": "TEST 只读创作设定",
+        "audience": "TEST 合成范围",
+        "situation": "TEST 合成场景",
+        "emotionalGoal": "TEST 情绪目标",
+        "understandingGoal": "TEST 理解目标",
+        "takeaway": "TEST 回顾目标",
+        "perspective": "self",
+        "experienceForm": "3d",
+        "pace": "TEST 按商品规划",
+        "world": "TEST 独立商品世界观",
+        "language": "TEST 清楚简短",
+        "visual": "TEST 按商品规划",
+        "sound": "TEST 无音频",
+        "reportPlan": {
+          "schemaVersion": 1,
+          "title": "TEST 报告规划",
+          "narrative": "TEST 未制作正式报告",
+          "presentation": "custom",
+          "sections": [
+            {
+              "sectionId": "review",
+              "title": "TEST 回顾",
+              "purpose": "TEST 结构校验"
+            }
+          ]
+        },
+        "channels": [
+          "manual"
+        ],
+        "deliverables": [
+          "copy"
+        ]
+      },
+      "digest": "452177a93439859065b554cf9b576e5921733c4ab19c6d68b7916743a22a0ef9",
+      "createdAt": "2026-10-30T00:00:00.000Z",
+      "runtimeSupport": "authoring_only"
+    },
+    "review": null,
+    "run": null,
+    "methods": [],
+    "records": [],
+    "content": [],
+    "experiences": [],
+    "originals": [],
+    "originalsTruncated": false
+  },
+  "canvas": {
+    "planRevisionId": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+    "latestPlanRevisionId": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+    "editable": true,
+    "layout": null
+  },
+  "candidate": {
+    "skillId": "378b0908-023d-457a-b50a-95eb8045dd69",
+    "versionId": "c4624ca3-f6da-49f9-9e25-1b15aee4cf49",
+    "revision": 2,
+    "status": "reviewed",
+    "origin": "shared",
+    "compatible": true,
+    "unavailableReason": null,
+    "version": {
+      "id": "c4624ca3-f6da-49f9-9e25-1b15aee4cf49",
+      "skillId": "378b0908-023d-457a-b50a-95eb8045dd69",
+      "number": 2,
+      "digest": "1f99794759aadf5805e2145718329084e69c7bac78ee856b43d4271a45cc256f",
+      "manifest": {
+        "schemaVersion": 2,
+        "domain": "copy",
+        "name": "TEST 文案基础方法",
+        "description": "TEST 只读界面验证，不是正式方法",
+        "purposes": [
+          "copywriting"
+        ],
+        "styles": [
+          "TEST 克制表达"
+        ],
+        "supportedForms": [
+          "3d"
+        ],
+        "inputs": [
+          {
+            "key": "creative-profile",
+            "description": "TEST 固定共同设定",
+            "required": true
+          },
+          {
+            "key": "product-plan",
+            "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "key": "copy",
+            "description": "TEST 文案草稿"
+          }
+        ],
+        "instructions": "TEST 根据固定商品规划组织文案。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。",
+        "examples": [],
+        "references": [],
+        "productPolicy": {
+          "schemaVersion": 1,
+          "implementation": "threejs",
+          "applicability": "all_declared_purposes",
+          "planInput": {
+            "key": "product-plan",
+            "schemaVersion": 2,
+            "required": true
+          },
+          "decisions": "fixed_product_plan"
+        }
+      },
+      "files": []
+    }
+  },
+  "fixedMethod": {
+    "id": "3b29400b-0a40-4a44-a580-53dd60f0663a",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "scope": "demo",
+    "planRevisionId": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+    "planModuleId": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+    "moduleId": "9a978cae-3801-4d21-8b3a-df10f39c0f9c",
+    "moduleDigest": "48eb10766c03275e15694cbcb48784873b5c575c264db16a1d86e15723e3a80c",
+    "creativeProfileRevisionId": "31c29711-2609-45c1-a23f-f190540eb658",
+    "creativeProfileDigest": "452177a93439859065b554cf9b576e5921733c4ab19c6d68b7916743a22a0ef9",
+    "purpose": "copywriting",
+    "sourceRevision": 2,
+    "version": {
+      "id": "c4624ca3-f6da-49f9-9e25-1b15aee4cf49",
+      "skillId": "378b0908-023d-457a-b50a-95eb8045dd69",
+      "number": 2,
+      "digest": "1f99794759aadf5805e2145718329084e69c7bac78ee856b43d4271a45cc256f",
+      "manifest": {
+        "schemaVersion": 2,
+        "domain": "copy",
+        "name": "TEST 文案基础方法",
+        "description": "TEST 只读界面验证，不是正式方法",
+        "purposes": [
+          "copywriting"
+        ],
+        "styles": [
+          "TEST 克制表达"
+        ],
+        "supportedForms": [
+          "3d"
+        ],
+        "inputs": [
+          {
+            "key": "creative-profile",
+            "description": "TEST 固定共同设定",
+            "required": true
+          },
+          {
+            "key": "product-plan",
+            "description": "固定版本的商品规划，含 Three.js 场景、动画/镜头与交互决定；未确定项明确标记待规划",
+            "required": true
+          }
+        ],
+        "outputs": [
+          {
+            "key": "copy",
+            "description": "TEST 文案草稿"
+          }
+        ],
+        "instructions": "TEST 根据固定商品规划组织文案。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。",
+        "examples": [],
+        "references": [],
+        "productPolicy": {
+          "schemaVersion": 1,
+          "implementation": "threejs",
+          "applicability": "all_declared_purposes",
+          "planInput": {
+            "key": "product-plan",
+            "schemaVersion": 2,
+            "required": true
+          },
+          "decisions": "fixed_product_plan"
+        }
+      },
+      "files": []
+    },
+    "digest": "2f35fcbef61831da7210d9d9e1c93c0456f77380ef230fc863879225e7196c93",
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "customization": {
+      "parameters": {
+        "gentle": true
+      },
+      "instructions": "TEST 仅本商品的补充说明",
+      "effectiveInstructions": "TEST 根据固定商品规划组织文案。\n\n## 商品实现约束 · Three.js\n\n所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。\nThree.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。\n制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。\n题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。\nDOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。\n历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。\n\n文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。\n\nTEST 固定商品说明"
+    },
+    "status": "captured",
+    "activationEffect": "none"
+  },
+  "run": {
+    "id": "90fbadee-eac8-43aa-aa58-ee6e66c6dc43",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "planRevisionId": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+    "scope": "demo",
+    "runKey": "test-readonly-run",
+    "digest": "f820a6e02ea4a9ec3ec12c91976aa1fe388794ed3942683b4bb43ce3bac76564",
+    "limits": {
+      "maxAttemptsPerModule": 3,
+      "maxTotalAttempts": 6,
+      "maxConcurrency": 1,
+      "maxDurationSeconds": 600,
+      "maxReportedCostFen": null,
+      "maxReportedTokens": null
+    },
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "cancelledAt": null,
+    "cancelReason": null,
+    "modules": [
+      {
+        "planModuleId": "896d3899-7ddc-4750-b461-bdacae3ff981",
+        "moduleId": "bec9ae02-aaac-40ac-97bc-47473b99b9f2",
+        "moduleKey": "experience",
+        "title": "商品体验",
+        "domain": "experience",
+        "required": true,
+        "state": "waiting_input",
+        "latestAttemptId": null,
+        "recordId": null,
+        "recordDigest": null,
+        "reviewId": null,
+        "reason": null,
+        "needsRecheck": false,
+        "attemptCount": 0
+      },
+      {
+        "planModuleId": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+        "moduleId": "9a978cae-3801-4d21-8b3a-df10f39c0f9c",
+        "moduleKey": "copy",
+        "title": "TEST 引流文案",
+        "domain": "copy",
+        "required": true,
+        "state": "failed",
+        "latestAttemptId": "dd328dc6-4eed-4703-b8fc-8cc901a22434",
+        "recordId": null,
+        "recordDigest": null,
+        "reviewId": null,
+        "reason": "TEST 制作端申报失败",
+        "needsRecheck": false,
+        "attemptCount": 2
+      }
+    ],
+    "readyForHumanReview": false,
+    "metricsSource": "external_declaration",
+    "platformExecuted": false,
+    "scheduler": "external"
+  },
+  "attempt": {
+    "id": "dd328dc6-4eed-4703-b8fc-8cc901a22434",
+    "runId": "90fbadee-eac8-43aa-aa58-ee6e66c6dc43",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "planModuleId": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+    "domain": "copy",
+    "clientKey": "test-declaration",
+    "inputFingerprint": "bb357127b468856f9c1068218af397adf61c57072bad9049dd4376afcf005878",
+    "sourceFrontierFingerprint": "de7e481a587408dc5eb757e8d7740f27bad5782350afb3bc221567a515b9d9f6",
+    "methods": [
+      {
+        "snapshotId": "3b29400b-0a40-4a44-a580-53dd60f0663a",
+        "digest": "2f35fcbef61831da7210d9d9e1c93c0456f77380ef230fc863879225e7196c93"
+      }
+    ],
+    "inputs": [],
+    "state": "failed",
+    "revision": 2,
+    "generation": 2,
+    "leaseExpiresAt": "2026-10-30T00:00:00.000Z",
+    "leaseActive": false,
+    "outputRecordId": null,
+    "outputDigest": null,
+    "job": {
+      "provider": "test-provider",
+      "jobId": "TEST-job-001",
+      "terminal": false
+    },
+    "reportedCostFen": null,
+    "reportedTokens": null,
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "endedAt": "2026-10-30T00:00:00.000Z",
+    "events": [
+      {
+        "id": "45bdf31f-40e1-4e1c-b1a8-10d35747a8e8",
+        "revision": 2,
+        "state": "failed",
+        "step": "S4",
+        "reasonCode": "test-failure",
+        "reason": "TEST 外部申报，原作业仍须核对",
+        "job": {
+          "provider": "test-provider",
+          "jobId": "TEST-job-001",
+          "terminal": false
+        },
+        "reportedCostFen": null,
+        "reportedTokens": null,
+        "metricsSource": "external_declaration",
+        "createdAt": "2026-10-30T00:00:00.000Z"
+      }
+    ],
+    "platformExecuted": false,
+    "savedOutputsVerifiedAt": null,
+    "needsRecheck": false
+  },
+  "oldAttempt": {
+    "id": "58543281-563a-4d60-bb0d-f2a0ed17cea0",
+    "runId": "90fbadee-eac8-43aa-aa58-ee6e66c6dc43",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "planModuleId": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+    "domain": "copy",
+    "clientKey": "test-old-declaration",
+    "inputFingerprint": "bb357127b468856f9c1068218af397adf61c57072bad9049dd4376afcf005878",
+    "sourceFrontierFingerprint": "de7e481a587408dc5eb757e8d7740f27bad5782350afb3bc221567a515b9d9f6",
+    "methods": [
+      {
+        "snapshotId": "3b29400b-0a40-4a44-a580-53dd60f0663a",
+        "digest": "2f35fcbef61831da7210d9d9e1c93c0456f77380ef230fc863879225e7196c93"
+      }
+    ],
+    "inputs": [],
+    "state": "failed",
+    "revision": 1,
+    "generation": 1,
+    "leaseExpiresAt": "2026-10-30T00:00:00.000Z",
+    "leaseActive": false,
+    "outputRecordId": null,
+    "outputDigest": null,
+    "job": {
+      "provider": "test-provider",
+      "jobId": "TEST-job-001",
+      "terminal": false
+    },
+    "reportedCostFen": null,
+    "reportedTokens": null,
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "endedAt": "2026-10-30T00:00:00.000Z",
+    "events": [
+      {
+        "id": "45bdf31f-40e1-4e1c-b1a8-10d35747a8e8",
+        "revision": 2,
+        "state": "failed",
+        "step": "S4",
+        "reasonCode": "test-failure",
+        "reason": "TEST 外部申报，原作业仍须核对",
+        "job": {
+          "provider": "test-provider",
+          "jobId": "TEST-job-001",
+          "terminal": false
+        },
+        "reportedCostFen": null,
+        "reportedTokens": null,
+        "metricsSource": "external_declaration",
+        "createdAt": "2026-10-30T00:00:00.000Z"
+      }
+    ],
+    "platformExecuted": false,
+    "savedOutputsVerifiedAt": null,
+    "needsRecheck": false
+  },
+  "operations": {
+    "run": {
+      "id": "90fbadee-eac8-43aa-aa58-ee6e66c6dc43",
+      "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+      "planRevisionId": "b67b0e44-d496-4964-a4a6-2f5a52c3c879",
+      "scope": "demo",
+      "runKey": "test-readonly-run",
+      "digest": "f820a6e02ea4a9ec3ec12c91976aa1fe388794ed3942683b4bb43ce3bac76564",
+      "limits": {
+        "maxAttemptsPerModule": 3,
+        "maxTotalAttempts": 6,
+        "maxConcurrency": 1,
+        "maxDurationSeconds": 600,
+        "maxReportedCostFen": null,
+        "maxReportedTokens": null
+      },
+      "createdAt": "2026-10-30T00:00:00.000Z",
+      "cancelledAt": null,
+      "cancelReason": null,
+      "modules": [
+        {
+          "planModuleId": "896d3899-7ddc-4750-b461-bdacae3ff981",
+          "moduleId": "bec9ae02-aaac-40ac-97bc-47473b99b9f2",
+          "moduleKey": "experience",
+          "title": "商品体验",
+          "domain": "experience",
+          "required": true,
+          "state": "waiting_input",
+          "latestAttemptId": null,
+          "recordId": null,
+          "recordDigest": null,
+          "reviewId": null,
+          "reason": null,
+          "needsRecheck": false,
+          "attemptCount": 0
+        },
+        {
+          "planModuleId": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+          "moduleId": "9a978cae-3801-4d21-8b3a-df10f39c0f9c",
+          "moduleKey": "copy",
+          "title": "TEST 引流文案",
+          "domain": "copy",
+          "required": true,
+          "state": "failed",
+          "latestAttemptId": "dd328dc6-4eed-4703-b8fc-8cc901a22434",
+          "recordId": null,
+          "recordDigest": null,
+          "reviewId": null,
+          "reason": "TEST 制作端申报失败",
+          "needsRecheck": false,
+          "attemptCount": 2
+        }
+      ],
+      "readyForHumanReview": false,
+      "metricsSource": "external_declaration",
+      "platformExecuted": false,
+      "scheduler": "external"
+    },
+    "productName": "TEST Three.js 只读项目",
+    "checkedAt": "2026-10-30T00:00:00.000Z",
+    "workspaceOwned": true,
+    "canStop": true,
+    "stopBlockedReason": null,
+    "issues": [],
+    "modules": [
+      {
+        "planModuleId": "3ca9641b-75b8-4f45-a4d2-a5b583092091",
+        "moduleId": "9a978cae-3801-4d21-8b3a-df10f39c0f9c",
+        "moduleKey": "copy",
+        "title": "TEST 引流文案",
+        "domain": "copy",
+        "required": true,
+        "state": "failed",
+        "latestAttemptId": "dd328dc6-4eed-4703-b8fc-8cc901a22434",
+        "recordId": null,
+        "recordDigest": null,
+        "reviewId": null,
+        "reason": "TEST 制作端申报失败",
+        "needsRecheck": false,
+        "attemptCount": 2,
+        "lastReportedState": "failed",
+        "latestRevision": 2,
+        "generation": 2,
+        "leaseState": "ended",
+        "leaseExpiresAt": "2026-10-30T00:00:00.000Z",
+        "producerConnectionAvailable": true,
+        "condition": "failed",
+        "conditionReason": "TEST 制作端申报失败，原外部作业待核对",
+        "missingInputs": [],
+        "blockers": [],
+        "job": {
+          "provider": "test-provider",
+          "jobId": "TEST-job-001",
+          "terminal": false
+        },
+        "savedRecords": [],
+        "canPrepareRecovery": true
+      },
+      {
+        "planModuleId": "896d3899-7ddc-4750-b461-bdacae3ff981",
+        "moduleId": "bec9ae02-aaac-40ac-97bc-47473b99b9f2",
+        "moduleKey": "experience",
+        "title": "商品体验",
+        "domain": "experience",
+        "required": true,
+        "state": "waiting_input",
+        "latestAttemptId": null,
+        "recordId": null,
+        "recordDigest": null,
+        "reviewId": null,
+        "reason": null,
+        "needsRecheck": false,
+        "attemptCount": 0,
+        "lastReportedState": null,
+        "latestRevision": null,
+        "generation": null,
+        "leaseState": "none",
+        "leaseExpiresAt": null,
+        "producerConnectionAvailable": false,
+        "condition": "not_started",
+        "conditionReason": "TEST 尚无尝试",
+        "missingInputs": [],
+        "blockers": [],
+        "job": null,
+        "savedRecords": [],
+        "canPrepareRecovery": false
+      }
+    ],
+    "summary": {
+      "savedModules": 0,
+      "attentionModules": 1,
+      "unstartedModules": 1,
+      "unknownJobs": 1
+    },
+    "usage": {
+      "attempts": 2,
+      "activeClaims": 0,
+      "reportedCostFen": 0,
+      "reportedTokens": 0,
+      "unknownCost": true,
+      "unknownTokens": true
+    },
+    "platformExecuted": false
+  },
+  "stopPreview": {
+    "checkedAt": "2026-10-30T00:00:00.000Z",
+    "ready": true,
+    "digest": "459699cdb92360fc03ae1fec09e336e06892678f1f640f8013f2325c903351b1",
+    "productName": "TEST Three.js 只读项目",
+    "runId": "90fbadee-eac8-43aa-aa58-ee6e66c6dc43",
+    "runKey": "test-readonly-run",
+    "savedModules": 0,
+    "unknownJobs": [
+      {
+        "attemptId": "dd328dc6-4eed-4703-b8fc-8cc901a22434",
+        "provider": "test-provider",
+        "jobId": "TEST-job-001"
+      }
+    ],
+    "issues": []
+  },
+  "handoffOptions": {
+    "records": {
+      "items": [],
+      "page": 1,
+      "pageSize": 20,
+      "total": 0
+    },
+    "selectedRecord": null,
+    "fragments": {
+      "items": [],
+      "page": 1,
+      "pageSize": 20,
+      "total": 0
+    },
+    "fileOnly": false
+  },
+  "cleanupCandidate": {
+    "id": "ee570bc9-dddb-44dc-86d5-90a9a7b31192",
+    "fileName": "TEST expired-no-reference.png",
+    "byteSize": 2048,
+    "checksum": "a896b4efbeacf73e9346bfe53574adad197e4697ac59fc698a95c137709d1a3e",
+    "status": "pending",
+    "expiresAt": "2026-10-28T00:00:00.000Z"
+  },
+  "cleanupPlan": {
+    "id": "fcab27c7-a495-4e62-b056-21d51a198744",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "scope": "demo",
+    "digest": "a896b4efbeacf73e9346bfe53574adad197e4697ac59fc698a95c137709d1a3e",
+    "status": "prepared",
+    "expiresAt": "2026-11-05T00:00:00.000Z",
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "files": [
+      {
+        "id": "ee570bc9-dddb-44dc-86d5-90a9a7b31192",
+        "fileName": "TEST expired-no-reference.png",
+        "byteSize": 2048,
+        "checksum": "a896b4efbeacf73e9346bfe53574adad197e4697ac59fc698a95c137709d1a3e",
+        "status": "pending",
+        "expiresAt": "2026-10-28T00:00:00.000Z"
+      }
+    ],
+    "results": []
+  },
+  "otherCleanupPlan": {
+    "id": "d88b5161-92d7-4800-a033-e1adc636d71a",
+    "productId": "e2a93928-8d84-4eae-9988-32c326961cfb",
+    "scope": "demo",
+    "digest": "cc99a7586643baa83623843106dcf4e2d87467e765615f0c189d863fc38722bf",
+    "status": "prepared",
+    "expiresAt": "2026-11-05T00:00:00.000Z",
+    "createdAt": "2026-10-30T00:00:00.000Z",
+    "files": [
+      {
+        "id": "06ab5ac8-39fa-4644-ad71-e64d7b519e66",
+        "fileName": "TEST other expired file.png",
+        "byteSize": 2048,
+        "checksum": "a896b4efbeacf73e9346bfe53574adad197e4697ac59fc698a95c137709d1a3e",
+        "status": "pending",
+        "expiresAt": "2026-10-28T00:00:00.000Z"
+      }
+    ],
+    "results": []
+  }
+}

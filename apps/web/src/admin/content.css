@@ -943,6 +943,28 @@
 .admin-shell .biz-view .content-cleanup-editor > button {
   margin: 10px 0 20px;
 }
+.admin-shell .biz-view .content-cleanup-editor :is(p,label,button,td,th){font-size:13px;line-height:1.8}
+.admin-shell .biz-view .content-cleanup-editor :is(button,input){min-height:42px}
+.admin-shell .biz-view .content-cleanup-editor input[type="checkbox"]{min-height:0}
+.admin-shell .biz-view .cleanup-heading,.admin-shell .biz-view .cleanup-plan>header,.admin-shell .biz-view .cleanup-selection{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.admin-shell .biz-view .cleanup-heading h3{font-size:20px;margin:0 0 8px}
+.admin-shell .biz-view .cleanup-heading p{max-width:66ch;margin:0;color:var(--admin-muted)}
+.admin-shell .biz-view .cleanup-selection{margin:20px 0 0;font-size:13px}
+.admin-shell .biz-view .cleanup-selection>span,.admin-shell .biz-view .cleanup-plan>header>span,.admin-shell .biz-view .cleanup-caption{color:var(--admin-muted);font-size:12px}
+.admin-shell .biz-view .cleanup-plan{background:var(--admin-panel);padding:20px}
+.admin-shell .biz-view .cleanup-plan h4{font-size:17px;margin:4px 0 0}
+.admin-shell .biz-view .cleanup-plan .cleanup-caption{margin:0}
+.admin-shell .biz-view .cleanup-files{list-style:none;padding:0;margin:16px 0;border-top:1px solid var(--admin-border)}
+.admin-shell .biz-view .cleanup-files li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--admin-border);font-size:13px;overflow-wrap:anywhere}
+.admin-shell .biz-view .cleanup-files li strong{font-weight:500;min-width:0}
+.admin-shell .biz-view .cleanup-identifiers{font-size:12px;color:var(--admin-muted);overflow-wrap:anywhere;margin:12px 0}
+.admin-shell .biz-view .cleanup-identifiers p{font-size:12px}
+.admin-shell .biz-view .cleanup-confirmation{border:0;padding:16px 0 0;margin:0}
+.admin-shell .biz-view .cleanup-confirmation label{align-items:flex-start;gap:10px}
+.admin-shell .biz-view .cleanup-confirmation button{margin-top:14px}
+.admin-shell .biz-view .cleanup-unknown{padding:16px;border-left:2px solid #e4c18d;background:var(--admin-panel);margin:16px 0}
+.admin-shell .biz-view .cleanup-unknown p{margin:0 0 12px}
+@media(max-width:760px){.admin-shell .biz-view .cleanup-heading,.admin-shell .biz-view .cleanup-plan>header{align-items:flex-start;flex-direction:column}.admin-shell .biz-view .cleanup-plan{padding:16px}.admin-shell .biz-view .content-cleanup-editor>button{width:100%}.admin-shell .biz-view .content-cleanup-editor table{min-width:600px}.admin-shell .biz-view .content-cleanup-editor td:nth-child(2){min-width:190px}}
 .admin-shell .biz-view [hidden] {
   display: none !important;
 }

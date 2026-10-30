@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-30",
+  "baseCommit": "b1b9af3323c5c70f300afdb36c3f81fdf930fbf4",
+  "scope": "T18 admin route evidence audit and file cleanup UI recovery only",
+  "sourceDigests": {
+    "apps/web/src/admin/content-cleanup.tsx": "ae2bbd0bab61cd917c52dade54614559dcbe97d17aae3d56f854c82fed5b0ed9",
+    "apps/web/src/admin/content.tsx": "eded8ef0d42f60955d8346b0cb9762de8fd14831fa85ecaaa6eb994cf80a6533",
+    "apps/web/src/admin/content.css": "5f28142c8bec675d9c60f24614efdfc06460a7baad9d659e8489751d32c271d8"
+  },
+  "coverage": {
+    "surfaces": 30,
+    "allRouteDeclarations": 44,
+    "adminRouteDeclarations": 14,
+    "counts": {
+      "representative_final_evidence": 15,
+      "parent_or_partial": 11,
+      "not_audited": 3,
+      "external_authorization_or_conditions": 1
+    },
+    "fullAdminCoverage": false
+  },
+  "automated": {
+    "web": 112,
+    "fixtureIsolation": 2,
+    "webTypecheck": "passed as part of final build",
+    "build": "passed; existing >500kB chunk warning retained",
+    "apiAndMcp": "unchanged; new hosted commit CI must be verified separately"
+  },
+  "cua": {
+    "checks": 39,
+    "passed": true,
+    "beforeAfterPairs": 9,
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "contrastSamples": 8,
+    "minimumContrast": 6.58
+  },
+  "protocol": {
+    "mode": "schema-checked loopback metadata only; every POST rejected",
+    "database": false,
+    "credentials": false,
+    "requests": 318,
+    "writes": [
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/preview",
+        "status": 409,
+        "bodyDigest": "3a548b3e324d0d8087f63ea67442bec74397a8bf4947568cf17ca6565e9c5ba3"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/fcab27c7-a495-4e62-b056-21d51a198744/execute",
+        "status": 403,
+        "bodyDigest": "8863b353d90478d28546197c52cd0d4a0d8d73235b2ce8fc998b1ea8c781b21e"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/preview",
+        "status": 503,
+        "bodyDigest": "4cdaa0c71c937f261ca228f80a466190451c4b1a104c1050c2ab81d363a9b1f8"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/preview",
+        "status": 503,
+        "bodyDigest": "4cdaa0c71c937f261ca228f80a466190451c4b1a104c1050c2ab81d363a9b1f8"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/preview",
+        "status": 409,
+        "bodyDigest": "4cdaa0c71c937f261ca228f80a466190451c4b1a104c1050c2ab81d363a9b1f8"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/fcab27c7-a495-4e62-b056-21d51a198744/execute",
+        "status": 503,
+        "bodyDigest": "2db627c022fb2dc279eecdf10fb26f81d5d8562eb239f1783d0b37765def8d42"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/fcab27c7-a495-4e62-b056-21d51a198744/execute",
+        "status": 503,
+        "bodyDigest": "2db627c022fb2dc279eecdf10fb26f81d5d8562eb239f1783d0b37765def8d42"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/file-cleanups/fcab27c7-a495-4e62-b056-21d51a198744/execute",
+        "status": 409,
+        "bodyDigest": "2db627c022fb2dc279eecdf10fb26f81d5d8562eb239f1783d0b37765def8d42"
+      }
+    ],
+    "writesAccepted": 0,
+    "deletedFiles": 0,
+    "unknownPreviewBodyIdentical": true,
+    "unknownExecuteBodyIdentical": true
+  },
+  "review": {
+    "businessRed": [
+      "candidate403 leaves private plan and enabled execution visible",
+      "candidate503 removes cached table"
+    ],
+    "firstVisualPass": "Mobile table cramped filenames; retained and corrected in final after/",
+    "observationFailures": "Delayed response exceeded initial followup locator deadline; DOM observation lacks global parseFloat. Both retained; final assertions passed without changing their expectations.",
+    "routeInventoryCorrection": "Initial line scan omitted two multiline opening tags. Retained raw observation; baseline and current TypeScript TSX AST each have44 declarations,14 admin declarations.",
+    "rawArtifactWhitespace": "Original AX/build text is preserved; source and documentation scoped diff check passed. Raw output check retained (1 trailing-space lines)."
+  },
+  "cleanup": {
+    "tabsClosed": true,
+    "viewportReset": true,
+    "serverStopped": true,
+    "controlsRemoved": true,
+    "originalContainersHealthy": 5
+  },
+  "remaining": [
+    "Running/expired plan transitions, actual object bytes, accepted cleanup writes and every cross-route identity failure are not individually verified by this read-only UI batch.",
+    "Coverage matrix still contains 11 partial and 3 unaudited surfaces; T18 and05/06 remain open.",
+    "Real identity/file operations and cloud/client/schedule tasks retain their own conditions; storefront screenshots require explicit user review."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "expected": "Ordinary refresh failure retains the cached candidate rows",
+  "observed": {
+    "preview": true,
+    "rows": 0
+  },
+  "reproduced": true
+}

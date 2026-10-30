@@ -1,0 +1,218 @@
+{
+  "accepted": false,
+  "reason": "Line matching missed two multiline Route opening tags. Replaced by TypeScript TSX AST traversal; original observations retained.",
+  "all": 42,
+  "admin": 12,
+  "routeDeclarations": [
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 29,
+      "text": "return <Routes><Route element={<AuthLayout />}>"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 30,
+      "text": "<Route path=\"/auth/login\" element={<AuthForm key=\"login\" mode=\"login\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 31,
+      "text": "<Route path=\"/auth/register\" element={<AuthForm key=\"register\" mode=\"register\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 32,
+      "text": "<Route path=\"/auth/forgot\" element={<AuthForm key=\"forgot\" mode=\"forgot\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 33,
+      "text": "<Route path=\"/auth/callback\" element={<AuthCallbackPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 34,
+      "text": "<Route path=\"/auth/reset\" element={<AuthCallbackPage recovery />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 35,
+      "text": "<Route path=\"/account\" element={<AccountPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 36,
+      "text": "</Route><Route path=\"*\" element={<NotFound />} /></Routes>;"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 42,
+      "text": "<Route element={<Workspace />}>"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 43,
+      "text": "<Route path=\"/\" element={<Catalog />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 44,
+      "text": "<Route path=\"/apps\" element={<Library />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 45,
+      "text": "<Route path=\"/reports\" element={<Library reports />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 46,
+      "text": "<Route path=\"/help\" element={<Help />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 48,
+      "text": "<Route path=\"/developers\" element={<Developer />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 49,
+      "text": "<Route path=\"/together\" element={<Upcoming section=\"together\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 50,
+      "text": "<Route path=\"/collaborations\" element={<Upcoming section=\"collaboration\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 51,
+      "text": "<Route path=\"/products/:slug\" element={<Product />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 52,
+      "text": "<Route path=\"/redeem\" element={<Redeem />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 53,
+      "text": "<Route path=\"/redeem/success\" element={<Navigate to=\"/apps\" replace/>} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 54,
+      "text": "<Route path=\"/reports/:id\" element={<Report />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 55,
+      "text": "<Route path=\"/attempts/:id\" element={<Attempt />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 56,
+      "text": "<Route path=\"/admin/*\" element={<Admin />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 57,
+      "text": "<Route path=\"/preview\" element={<HomePage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 58,
+      "text": "<Route path=\"/preview/experience/quiet-room\" element={<QuietRoomPreview />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 59,
+      "text": "<Route path=\"/preview/experience/reflection-garden\" element={<GardenPreview />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 60,
+      "text": "<Route path=\"/preview/products/partner\" element={<ProductDetailPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 61,
+      "text": "<Route path=\"/preview/assessment/partner\" element={<AssessmentPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 62,
+      "text": "<Route path=\"/preview/reports/partner\" element={<ReportPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 63,
+      "text": "<Route path=\"/preview/redeem\" element={<RedemptionPage key=\"redeem\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 64,
+      "text": "<Route path=\"/preview/redeem/success\" element={<RedemptionPage key=\"redemption-success\" success />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 65,
+      "text": "<Route path=\"*\" element={<SupportingPages />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 30,
+      "text": "<Route index element={<Overview />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 35,
+      "text": "<Route path=\"assets\" element={<Assets />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 36,
+      "text": "<Route path=\"content/*\" element={<ContentWorkbench />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 37,
+      "text": "<Route path=\"skills/*\" element={<SkillsApp />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 42,
+      "text": "<Route path=\"machine/configurations\" element={<CodexConnections scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 43,
+      "text": "<Route path=\"orders\" element={<Orders scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 44,
+      "text": "<Route path=\"*\" element={<p>后台页面不存在。</p>} />"
+    },
+    {
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 47,
+      "text": "<Route index element={<ContentProducts />} />"
+    },
+    {
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 48,
+      "text": "<Route path=\":productId\" element={<ProductWorkbench />} />"
+    },
+    {
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 58,
+      "text": "<Route index element={<Navigate to=\"assessment\" replace />} />"
+    },
+    {
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 59,
+      "text": "<Route path=\":domain\" element={<LibraryRoute />} />"
+    }
+  ]
+}

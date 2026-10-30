@@ -1,0 +1,12 @@
+[
+  {
+    "name": "initial-loading-followup",
+    "accepted": false,
+    "reason": "The fixture deliberately delayed candidates by 4 seconds; the followup locator deadline expired before the delayed response. Inspect the next fresh UI state before asserting completion."
+  },
+  {
+    "name": "contrast-font-parser",
+    "accepted": false,
+    "reason": "The read-only DOM observation scope does not expose global parseFloat. Return computed CSS text and parse it in the REPL; keep the same contrast and font assertions."
+  }
+]
