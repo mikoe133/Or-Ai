@@ -1,0 +1,9 @@
+{
+  "expected": "Denied fixed production source hides the private assessment/result editor",
+  "observed": {
+    "privateEditors": 1,
+    "questionEditable": true,
+    "questionIdVisible": true
+  },
+  "reproduced": true
+}

@@ -1,0 +1,8 @@
+{
+  "expected": "Discard restores valid configuration and clears its obsolete validation error",
+  "observed": {
+    "retainedErrors": 1,
+    "validJson": true
+  },
+  "reproduced": true
+}

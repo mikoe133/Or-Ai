@@ -1,0 +1,64 @@
+output/implementation/t18-admin-assessment-20261030/after/content-1440.txt:83: trailing whitespace.
++							82 text 第 
+output/implementation/t18-admin-assessment-20261030/after/content-1440.txt:85: trailing whitespace.
++							84 text  题 · 
+output/implementation/t18-admin-assessment-20261030/after/content-390.txt:68: trailing whitespace.
++							82 text 第 
+output/implementation/t18-admin-assessment-20261030/after/content-390.txt:70: trailing whitespace.
++							84 text  题 · 
+output/implementation/t18-admin-assessment-20261030/after/content-768.txt:69: trailing whitespace.
++							82 text 第 
+output/implementation/t18-admin-assessment-20261030/after/content-768.txt:71: trailing whitespace.
++							84 text  题 · 
+output/implementation/t18-admin-assessment-20261030/after/result-1440.txt:146: trailing whitespace.
++							145 text 叙事方案 · 
+output/implementation/t18-admin-assessment-20261030/after/result-390.txt:131: trailing whitespace.
++							145 text 叙事方案 · 
+output/implementation/t18-admin-assessment-20261030/after/result-768.txt:132: trailing whitespace.
++							145 text 叙事方案 · 
+output/implementation/t18-admin-assessment-20261030/after/source-1440.txt:83: trailing whitespace.
++							82 text 第 
+output/implementation/t18-admin-assessment-20261030/after/source-1440.txt:85: trailing whitespace.
++							84 text  题 · 
+output/implementation/t18-admin-assessment-20261030/after/source-390.txt:68: trailing whitespace.
++							82 text 第 
+output/implementation/t18-admin-assessment-20261030/after/source-390.txt:70: trailing whitespace.
++							84 text  题 · 
+output/implementation/t18-admin-assessment-20261030/after/source-768.txt:69: trailing whitespace.
++							82 text 第 
+output/implementation/t18-admin-assessment-20261030/after/source-768.txt:71: trailing whitespace.
++							84 text  题 · 
+output/implementation/t18-admin-assessment-20261030/before/content-1440.txt:82: trailing whitespace.
++							81 text 第 
+output/implementation/t18-admin-assessment-20261030/before/content-1440.txt:84: trailing whitespace.
++							83 text  题 · 
+output/implementation/t18-admin-assessment-20261030/before/content-390.txt:67: trailing whitespace.
++							81 text 第 
+output/implementation/t18-admin-assessment-20261030/before/content-390.txt:69: trailing whitespace.
++							83 text  题 · 
+output/implementation/t18-admin-assessment-20261030/before/content-768.txt:68: trailing whitespace.
++							81 text 第 
+output/implementation/t18-admin-assessment-20261030/before/content-768.txt:70: trailing whitespace.
++							83 text  题 · 
+output/implementation/t18-admin-assessment-20261030/before/result-1440.txt:145: trailing whitespace.
++							144 text 叙事方案 · 
+output/implementation/t18-admin-assessment-20261030/before/result-390.txt:130: trailing whitespace.
++							144 text 叙事方案 · 
+output/implementation/t18-admin-assessment-20261030/before/result-768.txt:131: trailing whitespace.
++							144 text 叙事方案 · 
+output/implementation/t18-admin-assessment-20261030/before/source-1440.txt:82: trailing whitespace.
++							81 text 第 
+output/implementation/t18-admin-assessment-20261030/before/source-1440.txt:84: trailing whitespace.
++							83 text  题 · 
+output/implementation/t18-admin-assessment-20261030/before/source-390.txt:67: trailing whitespace.
++							81 text 第 
+output/implementation/t18-admin-assessment-20261030/before/source-390.txt:69: trailing whitespace.
++							83 text  题 · 
+output/implementation/t18-admin-assessment-20261030/before/source-768.txt:68: trailing whitespace.
++							81 text 第 
+output/implementation/t18-admin-assessment-20261030/before/source-768.txt:70: trailing whitespace.
++							83 text  题 · 
+output/implementation/t18-admin-assessment-20261030/logs/build.txt:75: trailing whitespace.
++[plugin builtin:vite-reporter] 
+output/implementation/t18-admin-assessment-20261030/logs/minimal-build.txt:75: trailing whitespace.
++[plugin builtin:vite-reporter] 

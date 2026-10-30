@@ -1,0 +1,7 @@
+[
+  {
+    "name": "tab-switch-locator",
+    "accepted": false,
+    "reason": "Dirty shared content/result tabs include a trailing · in their actual accessible name. Fresh AX/DOM confirmed this at1280px. Use the observed label prefix; retain the same draft and privacy assertions."
+  }
+]

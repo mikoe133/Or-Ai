@@ -1,0 +1,5 @@
+orai-auth-local-gateway-1 Up 8 days (healthy)
+orai-auth-local-auth-1 Up 8 days (healthy)
+orai-auth-local-auth-db-1 Up 2 days (healthy)
+orai-auth-local-mail-1 Up 8 days (healthy)
+orai-db-1 Up 2 days (healthy)

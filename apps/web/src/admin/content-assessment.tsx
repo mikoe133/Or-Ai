@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ProductConfigurationSchema } from "@orai/contracts/admin";
-import { Failure, Loading, useAction } from "../business/shared.js";
+import { Loading, useAction } from "../business/shared.js";
+import { ClientError } from "../api/client.js";
+import { AdminFailure as Failure } from "./feedback.js";
+import { isAccessFailure, RefreshNotice } from "./refresh-notice.js";
 import { adminApi, parseEditor, type AdminProduct } from "./api.js";
 import { contentApi, type Profile, type Revision } from "./content-api.js";
 import { defaultConfiguration, statuses } from "./content-model.js";
 import { SkillSetSource, SavedSkillSource } from './content-skills.js';
 import { ProductionOrigin } from "./content-parts.js";
 type Preview = Awaited<ReturnType<typeof adminApi.preview>>;
+type AssessmentRequest = { kind: 'replace' | 'derive' | 'source'; productId: string; versionId: string | null; body: object };
+const uncertainResponse = (error: unknown) => error instanceof ClientError &&
+  (error.status === 0 || error.status >= 500 || error.status === 408 || error.code === 'INVALID_RESPONSE');
 export function AssessmentDesk({
   product,
   versionId,
@@ -15,6 +21,7 @@ export function AssessmentDesk({
   assessment,
   onVersionSaved,
   onDirty,
+  onPending,
   view = 'content',
   readOnly = false,
 }: {
@@ -24,6 +31,7 @@ export function AssessmentDesk({
   assessment?: Revision;
   onVersionSaved: (versionId: string) => void;
   onDirty: (dirty: boolean) => void;
+  onPending?: (pending: boolean) => void;
   view?: 'content' | 'result';
   readOnly?: boolean;
 }) {
@@ -40,27 +48,68 @@ export function AssessmentDesk({
     enabled: !!assessment,
     refetchOnWindowFocus: false,
   });
-  if (versionId && read.isPending) return <Loading />;
-  if (read.isError)
-    return <Failure error={read.error} retry={() => void read.refetch()} />;
+  const [session, setSession] = useState<Preview | undefined>(undefined);
+  const [dirty, setDirty] = useState(false), [unknown, setUnknown] = useState(false);
+  const [accessError, setAccessError] = useState<unknown>(null), [retrying, setRetrying] = useState(false);
+  const [recoveryEpoch, setRecoveryEpoch] = useState(0);
+  const reads = [...(versionId ? [read] : []), ...(assessment ? [source] : [])];
+  const denial = [read.error, source.error].find(isAccessFailure) ?? accessError;
+  const preview = session?.version.id === versionId ? session : read.data;
+  const checking = retrying || reads.some(query => query.isFetching);
+  const unavailable = checking || reads.some(query => query.isError);
+  const handleDirty = useCallback((value: boolean, pending = false) => { setDirty(value); setUnknown(pending); }, []);
+  const accessFailed = useCallback((error: unknown) => setAccessError(error), []);
+  useEffect(() => { if (denial) setAccessError(denial); }, [denial]);
+  useEffect(() => {
+    if (read.data && (session?.version.id !== versionId || !dirty && !unknown)) setSession(read.data);
+  }, [read.data, versionId, dirty, unknown]);
+  useEffect(() => { onDirty(unknown || !denial && dirty); return () => onDirty(false); }, [dirty, unknown, denial, onDirty]);
+  useEffect(() => { onPending?.(unknown); return () => onPending?.(false); }, [unknown, onPending]);
+  async function retryReads() {
+    if (retrying) return;
+    setRetrying(true);
+    try {
+      await Promise.all(reads.map(query => query.refetch({ throwOnError: true })));
+      setAccessError(null); setRecoveryEpoch(value => value + 1);
+      requestAnimationFrame(() => document.getElementById('assessment-refresh')?.focus({ preventScroll: true }));
+    } catch { /* A partial retry must not reveal the retained editor. */ }
+    finally { setRetrying(false); }
+  }
+  const remoteChanged = !!preview && !!read.data && preview.version.revision !== read.data.version.revision;
   return (
+    <>
+    {denial ? <Failure error={denial} retry={retrying ? undefined : () => void retryReads()} /> : <>
+      <div className="assessment-read-controls"><button id="assessment-refresh" disabled={checking} onClick={() => void retryReads()}>核对配置与来源</button></div>
+      {reads.some(query => query.isError && query.data) && <RefreshNotice busy={checking} retry={() => void retryReads()} />}
+      {versionId && !preview && (read.isError ? <Failure error={read.error} retry={() => void retryReads()} /> : <Loading />)}
+      {remoteChanged && <p role="status" className="content-note">服务器已有新修订，当前草稿和基础版本已保留。放弃本地修改后读取新基础，或核对冲突后继续。</p>}
+    </>}
+    {(!versionId || preview) &&
     <AssessmentEditor
       key={
-        (read.data?.version.id ?? "new") +
+        (preview?.version.id ?? "new") +
         ":" +
-        (read.data?.version.revision ?? 0)
+        (preview?.version.revision ?? 0)
       }
       product={product}
-      preview={read.data}
+      preview={preview}
       profile={profile}
-      onVersionSaved={onVersionSaved}
-      onDirty={onDirty}
+      onVersionSaved={id => { setDirty(false); setUnknown(false); onVersionSaved(id); }}
+      onDirty={handleDirty}
       assessment={assessment}
       source={source.data?.production}
       sourceError={source.error}
+      sourceKnown={!assessment || !!source.data}
       view={view}
       readOnly={readOnly}
+      blocked={!!denial}
+      unavailable={unavailable}
+      recoveryEpoch={recoveryEpoch}
+      onAccessFailure={accessFailed}
+      onRefresh={() => void retryReads()}
     />
+    }
+    </>
   );
 }
 function AssessmentEditor({
@@ -70,10 +119,16 @@ function AssessmentEditor({
   assessment,
   source,
   sourceError,
+  sourceKnown,
   onVersionSaved,
   onDirty,
   view,
   readOnly,
+  blocked,
+  unavailable,
+  recoveryEpoch,
+  onAccessFailure,
+  onRefresh,
 }: {
   product: AdminProduct;
   preview?: Preview;
@@ -81,10 +136,16 @@ function AssessmentEditor({
   assessment?: Revision;
   source?: Awaited<ReturnType<typeof contentApi.revision>>["production"];
   sourceError: unknown;
+  sourceKnown: boolean;
   onVersionSaved: (versionId: string) => void;
-  onDirty: (dirty: boolean) => void;
+  onDirty: (dirty: boolean, pending?: boolean) => void;
   view: 'content' | 'result';
   readOnly: boolean;
+  blocked: boolean;
+  unavailable: boolean;
+  recoveryEpoch: number;
+  onAccessFailure: (error: unknown) => void;
+  onRefresh: () => void;
 }) {
   const initial = preview?.configuration ?? defaultConfiguration(),
     [draft, setDraft] = useState(initial),
@@ -95,19 +156,38 @@ function AssessmentEditor({
       "manual" | "external_ai" | "mcp"
     >("manual"),
     [batch, setBatch] = useState(""), [skillSetId, setSkillSetId] = useState('');
+  const [pendingRequest, setPendingRequest] = useState<AssessmentRequest | null>(null);
+  const [needsRecheck, setNeedsRecheck] = useState(false);
   const dirty =
     JSON.stringify(initial) !== JSON.stringify(draft) ||
     raw !== JSON.stringify(draft, null, 2);
   const sourceDirty =
     !source && (productionSource !== "manual" || batch !== "" || skillSetId !== '');
   useEffect(() => {
-    onDirty(dirty || sourceDirty);
+    onDirty(dirty || sourceDirty, !!pendingRequest);
     return () => onDirty(false);
-  }, [dirty, sourceDirty, onDirty]);
+  }, [dirty, sourceDirty, pendingRequest, onDirty]);
+  useEffect(() => { if (isAccessFailure(action.error)) onAccessFailure(action.error); }, [action.error, onAccessFailure]);
+  useEffect(() => { if (isAccessFailure(action.error) || action.error instanceof ClientError && action.error.status === 409) action.resetError(); setNeedsRecheck(false); }, [recoveryEpoch]);
   function update(value: typeof draft) {
     setDraft(value);
     setRaw(JSON.stringify(value, null, 2));
     setNotice("");
+    action.resetError();
+  }
+  async function dispatch(request: AssessmentRequest) {
+    const wasUnknown = !!pendingRequest;
+    try {
+      const value = request.kind === 'source' ? await contentApi.production(request.body) : request.kind === 'derive' ?
+        await adminApi.importVersion(request.productId, request.body) : await adminApi.replaceVersion(request.productId, request.versionId!, request.body);
+      setPendingRequest(null); setNeedsRecheck(false);
+      return value;
+    } catch (error) {
+      if (uncertainResponse(error) || wasUnknown && isAccessFailure(error)) setPendingRequest(request);
+      else setPendingRequest(null);
+      if (error instanceof ClientError && error.status === 409) setNeedsRecheck(true);
+      throw error;
+    }
   }
   async function save(derive: boolean) {
     const configuration = parseEditor(
@@ -117,19 +197,16 @@ function AssessmentEditor({
     if (raw !== JSON.stringify(draft, null, 2))
       throw new Error("请先校验并应用 JSON 修改。");
     return derive || !preview
-      ? adminApi.importVersion(
-          product.id,
-          action.intent("derive:" + product.id, { configuration }),
-        )
-      : adminApi.replaceVersion(
-          product.id,
-          preview.version.id,
-          action.intent("replace:" + preview.version.id, {
+      ? dispatch({ kind: 'derive', productId: product.id, versionId: null,
+          body: action.intent("derive:" + product.id, { configuration }) })
+      : dispatch({ kind: 'replace', productId: product.id, versionId: preview.version.id,
+          body: action.intent("replace:" + preview.version.id, {
             configuration,
             expectedRevision: preview.version.revision,
-          }),
-        );
+          }) });
   }
+  const locked = action.busy || readOnly || unavailable || !!pendingRequest || needsRecheck;
+  if (blocked || isAccessFailure(action.error)) return null;
   return (
     <section className="content-editor content-assessment-editor" aria-label="题库报告编辑器">
       <div className="content-section-heading">
@@ -148,7 +225,14 @@ function AssessmentEditor({
       <p className="content-note">
         当前引擎 dimensions_v1，单人作答。已发布版本通过“派生新版本”继续编辑。
       </p>
-      <fieldset disabled={action.busy || readOnly}>
+      {pendingRequest && <div className="assessment-unknown" role="status">
+        <p>{pendingRequest.kind === 'source' ? '来源登记结果尚未确认' : '内容保存结果尚未确认'}，原请求及输入已保留。核对前不能修改、派生或提交另一份请求。</p>
+        <button disabled={action.busy || unavailable} onClick={() => void action.run(() => dispatch(pendingRequest), value => {
+          onVersionSaved(pendingRequest.kind === 'source' ? pendingRequest.versionId! : value.id);
+          setNotice('原请求结果已确认，请核对当前固定修订。');
+        })}>用原请求核对{pendingRequest.kind === 'source' ? '来源结果' : '保存结果'}</button>
+      </div>}
+      <fieldset disabled={locked}>
         <section className="content-form-section content-question-section" hidden={view !== 'content'}>
         <header className="content-form-section-heading"><h4>01 / 题目与选项</h4><p>{draft.questions.length} 道题目 · 展开题目编辑选项与分值</p></header>
         {draft.questions.map((question, index) => (
@@ -536,8 +620,8 @@ function AssessmentEditor({
       )}
       <section className="content-form-section" hidden={view !== 'content'}>
       <header className="content-form-section-heading"><h4>本修订制作来源</h4></header>
-      {sourceError ? (
-        <Failure error={sourceError} />
+      {!sourceKnown && !sourceError ? <Loading label="正在读取制作来源…" /> : sourceError && !source && !sourceKnown ? (
+        <Failure error={sourceError} retry={onRefresh} />
       ) : source ? (
         <div className="content-block">
           <ProductionOrigin source={source} />
@@ -551,7 +635,7 @@ function AssessmentEditor({
           <SavedSkillSource setId={source.skillSetId} />
         </div>
       ) : (
-        <fieldset disabled={action.busy || dirty || readOnly}>
+        <fieldset disabled={locked || dirty}>
           {profile && <SkillSetSource profileId={profile.id} value={skillSetId} onChange={setSkillSetId} label="题库与报告 skill 组合" />}
           <div className="content-fields">
             <label>
@@ -583,8 +667,8 @@ function AssessmentEditor({
             onClick={() =>
               void action.run(
                 () =>
-                  contentApi.production(
-                    action.intent("source:" + assessment!.id, {
+                  dispatch({ kind: 'source', productId: product.id, versionId: preview!.version.id,
+                    body: action.intent("source:" + assessment!.id, {
                       outputRevisionId: assessment!.id,
                       creativeProfileRevisionId: profile!.id,
                       production: {
@@ -594,8 +678,7 @@ function AssessmentEditor({
                         skillVersionId: null,
                         ...(skillSetId ? { skillSetId } : {}),
                       },
-                    }),
-                  ),
+                    }) }),
                 () => {
                   onVersionSaved(preview!.version.id);
                   setNotice("本修订的制作来源已登记。");
@@ -612,7 +695,7 @@ function AssessmentEditor({
       )}
       </section>
       {notice && <p role="status">{notice}</p>}
-      {Boolean(action.error) && <Failure error={action.error} />}
+      {Boolean(action.error) && <Failure error={action.error} draft retry={pendingRequest ? undefined : onRefresh} />}
     </section>
   );
 }

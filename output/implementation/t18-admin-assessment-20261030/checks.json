@@ -1,0 +1,266 @@
+[
+  {
+    "name": "config-503-keeps-original-question-draft-and-editor",
+    "passed": true,
+    "observed": {
+      "locked": true,
+      "value": "TEST 网络与权限恢复必须保留的题干"
+    }
+  },
+  {
+    "name": "source-403-hides-private-question-and-result-editor",
+    "passed": true
+  },
+  {
+    "name": "partial-read-recovery-cannot-reveal-retained-assessment",
+    "passed": true
+  },
+  {
+    "name": "full-read-recovery-restores-the-exact-original-draft",
+    "passed": true
+  },
+  {
+    "name": "explicit-discard-restores-original-server-question",
+    "passed": true
+  },
+  {
+    "name": "source-503-retains-fixed-origin-instead-of-faking-manual-source",
+    "passed": true,
+    "observed": {
+      "fixedSource": true,
+      "newSourceButton": false
+    }
+  },
+  {
+    "name": "content-and-result-tabs-share-the-same-unsaved-draft",
+    "passed": true
+  },
+  {
+    "name": "source-denial-also-hides-the-result-content-editor",
+    "passed": true
+  },
+  {
+    "name": "result-permission-recovery-retains-the-exact-explanation",
+    "passed": true
+  },
+  {
+    "name": "returning-to-content-keeps-original-question-edit",
+    "passed": true
+  },
+  {
+    "name": "save-conflict-keeps-draft-and-blocks-another-write-until-recheck",
+    "passed": true
+  },
+  {
+    "name": "successful-conflict-recheck-preserves-unsubmitted-content",
+    "passed": true
+  },
+  {
+    "name": "unknown-save-locks-the-original-input-and-derive-action",
+    "passed": true
+  },
+  {
+    "name": "unknown-save-protects-version-context-and-explains-parent-state",
+    "passed": true
+  },
+  {
+    "name": "unknown-save-cannot-leave-the-product-through-navigation",
+    "passed": true
+  },
+  {
+    "name": "source-permission-loss-hides-an-unknown-save-without-dropping-intent",
+    "passed": true
+  },
+  {
+    "name": "access-recovery-retains-unknown-save-and-keeps-editing-locked",
+    "passed": true
+  },
+  {
+    "name": "unknown-save-recovery-retries-identical-original-body",
+    "passed": true,
+    "observed": [
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 503,
+        "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 503,
+        "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+      }
+    ]
+  },
+  {
+    "name": "definitive-save-conflict-exits-unknown-state-but-requires-recheck",
+    "passed": true
+  },
+  {
+    "name": "configuration-403-hides-the-private-editor",
+    "passed": true
+  },
+  {
+    "name": "configuration-access-recovery-retains-local-draft",
+    "passed": true
+  },
+  {
+    "name": "unknown-source-registration-locks-original-batch-and-source",
+    "passed": true
+  },
+  {
+    "name": "source-operation-denial-hides-private-editor-and-retains-unknown-intent",
+    "passed": true
+  },
+  {
+    "name": "source-operation-access-recovery-keeps-exact-original-batch",
+    "passed": true
+  },
+  {
+    "name": "source-registration-recovery-reuses-one-body-across-503-403-503",
+    "passed": true,
+    "observed": [
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 503,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 403,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 503,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      }
+    ]
+  },
+  {
+    "name": "fixed-source-reappears-read-only-after-definitive-conflict-and-recheck",
+    "passed": true
+  },
+  {
+    "name": "unknown-derived-version-blocks-new-derivation",
+    "passed": true
+  },
+  {
+    "name": "unknown-derivation-retries-original-post-body",
+    "passed": true,
+    "observed": [
+      {
+        "method": "POST",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+        "status": 503,
+        "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+        "status": 503,
+        "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+      }
+    ]
+  },
+  {
+    "name": "invalid-config-json-stays-local-and-is-preserved",
+    "passed": true
+  },
+  {
+    "name": "invalid-config-json-does-not-call-a-write-endpoint",
+    "passed": true
+  },
+  {
+    "name": "discard-clears-obsolete-json-error-and-restores-valid-configuration",
+    "passed": true
+  },
+  {
+    "name": "content-result-and-source-have-nine-final-viewport-pairs",
+    "passed": true,
+    "observed": 18
+  },
+  {
+    "name": "assessment-captures-do-not-overflow-the-document",
+    "passed": true
+  },
+  {
+    "name": "mobile-source-input-retains-keyboard-focus",
+    "passed": true
+  },
+  {
+    "name": "manual-source-503-retains-and-locks-the-original-form",
+    "passed": true
+  },
+  {
+    "name": "manual-source-read-recovery-preserves-entered-batch",
+    "passed": true
+  },
+  {
+    "name": "initial-source-loading-does-not-pretend-an-unregistered-origin",
+    "passed": true
+  },
+  {
+    "name": "initial-source-read-resolves-to-fixed-origin",
+    "passed": true
+  },
+  {
+    "name": "initial-source-failure-cannot-open-a-new-registration-form",
+    "passed": true
+  },
+  {
+    "name": "initial-config-failure-does-not-invent-an-editable-default-version",
+    "passed": true
+  },
+  {
+    "name": "initial-config-read-retry-restores-real-fixture-version",
+    "passed": true
+  },
+  {
+    "name": "read-recovery-restores-focus-to-visible-assessment-refresh",
+    "passed": true
+  },
+  {
+    "name": "final-source-retains-all-nine-comparisons-without-page-overflow",
+    "passed": true
+  },
+  {
+    "name": "changed-assessment-text-samples-have-readable-size-and-AA-contrast",
+    "passed": true,
+    "observed": {
+      "samples": 8,
+      "minimum": 7.78
+    }
+  },
+  {
+    "name": "result-explanation-remains-visible-and-focusable-above-sticky-actions",
+    "passed": true,
+    "observed": [
+      {
+        "actionsTop": 909,
+        "focused": true,
+        "inputBottom": 566.859375,
+        "inputTop": 488.859375,
+        "width": 1440
+      },
+      {
+        "actionsTop": 935,
+        "focused": true,
+        "inputBottom": 578.796875,
+        "inputTop": 500.796875,
+        "width": 768
+      },
+      {
+        "actionsTop": 680.8515625,
+        "focused": true,
+        "inputBottom": 489.5703125,
+        "inputTop": 409.9765625,
+        "width": 390
+      }
+    ]
+  }
+]

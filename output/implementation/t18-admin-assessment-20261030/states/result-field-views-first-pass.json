@@ -1,0 +1,27 @@
+{
+  "accepted": false,
+  "reason": "The first geometry observation used an absent action-bar selector and a viewport fallback. Re-measure the actual content-action-bar explicitly.",
+  "views": [
+    {
+      "actionsTop": 1000,
+      "focused": true,
+      "inputBottom": 566.859375,
+      "inputTop": 488.859375,
+      "width": 1440
+    },
+    {
+      "actionsTop": 1024,
+      "focused": true,
+      "inputBottom": 578.796875,
+      "inputTop": 500.796875,
+      "width": 768
+    },
+    {
+      "actionsTop": 844,
+      "focused": true,
+      "inputBottom": 489.5703125,
+      "inputTop": 409.9765625,
+      "width": 390
+    }
+  ]
+}

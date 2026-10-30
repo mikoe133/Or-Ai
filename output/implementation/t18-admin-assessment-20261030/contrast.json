@@ -1,0 +1,130 @@
+[
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "21px",
+    "foreground": [
+      236,
+      234,
+      245
+    ],
+    "selector": ".content-assessment-editor .content-section-heading h3",
+    "fontSize": 21,
+    "contrast": 15.3
+  },
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".content-assessment-editor .content-section-heading p",
+    "fontSize": 13,
+    "contrast": 7.78
+  },
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".content-assessment-editor .content-note",
+    "fontSize": 13,
+    "contrast": 7.78
+  },
+  {
+    "background": [
+      27,
+      29,
+      40
+    ],
+    "fontSizeText": "14px",
+    "foreground": [
+      236,
+      234,
+      245
+    ],
+    "selector": ".content-assessment-editor .content-form-section-heading h4",
+    "fontSize": 14,
+    "contrast": 14.09
+  },
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      170,
+      167,
+      189
+    ],
+    "selector": ".content-assessment-editor label",
+    "fontSize": 13,
+    "contrast": 7.78
+  },
+  {
+    "background": [
+      34,
+      36,
+      48
+    ],
+    "fontSizeText": "16px",
+    "foreground": [
+      236,
+      234,
+      245
+    ],
+    "selector": ".content-assessment-editor input",
+    "fontSize": 16,
+    "contrast": 12.95
+  },
+  {
+    "background": [
+      20,
+      21,
+      28
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      190,
+      165,
+      236
+    ],
+    "selector": ".content-assessment-editor .content-block>summary",
+    "fontSize": 13,
+    "contrast": 8.48
+  },
+  {
+    "background": [
+      34,
+      36,
+      48
+    ],
+    "fontSizeText": "13px",
+    "foreground": [
+      236,
+      234,
+      245
+    ],
+    "selector": ".assessment-read-controls button",
+    "fontSize": 13,
+    "contrast": 12.95
+  }
+]

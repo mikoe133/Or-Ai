@@ -1,0 +1,887 @@
+{
+  "date": "2026-10-30",
+  "applicationCommit": null,
+  "stage": "after_assessment_configuration_source_slice",
+  "definition": "Route declarations are not unique pages. Tabs, domains and query states are listed separately. Representative final evidence does not mean every state is verified.",
+  "classes": {
+    "representative_final_evidence": "Final source, representative 1440/768/390 captures and interaction evidence exist.",
+    "parent_or_partial": "Only parent/shared/selected state evidence exists; direct surface audit remains.",
+    "not_audited": "No dedicated final evidence found in the sealed T18 batches.",
+    "external_authorization_or_conditions": "Separate real identity/file/client/operation conditions; not closed by a local UI substitute."
+  },
+  "routeDeclarations": [
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 29,
+      "path": null,
+      "index": false,
+      "text": "<Route element={<AuthLayout />}>"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 30,
+      "path": "/auth/login",
+      "index": false,
+      "text": "<Route path=\"/auth/login\" element={<AuthForm key=\"login\" mode=\"login\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 31,
+      "path": "/auth/register",
+      "index": false,
+      "text": "<Route path=\"/auth/register\" element={<AuthForm key=\"register\" mode=\"register\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 32,
+      "path": "/auth/forgot",
+      "index": false,
+      "text": "<Route path=\"/auth/forgot\" element={<AuthForm key=\"forgot\" mode=\"forgot\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 33,
+      "path": "/auth/callback",
+      "index": false,
+      "text": "<Route path=\"/auth/callback\" element={<AuthCallbackPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 34,
+      "path": "/auth/reset",
+      "index": false,
+      "text": "<Route path=\"/auth/reset\" element={<AuthCallbackPage recovery />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 35,
+      "path": "/account",
+      "index": false,
+      "text": "<Route path=\"/account\" element={<AccountPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 36,
+      "path": "*",
+      "index": false,
+      "text": "<Route path=\"*\" element={<NotFound />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 42,
+      "path": null,
+      "index": false,
+      "text": "<Route element={<Workspace />}>"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 43,
+      "path": "/",
+      "index": false,
+      "text": "<Route path=\"/\" element={<Catalog />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 44,
+      "path": "/apps",
+      "index": false,
+      "text": "<Route path=\"/apps\" element={<Library />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 45,
+      "path": "/reports",
+      "index": false,
+      "text": "<Route path=\"/reports\" element={<Library reports />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 46,
+      "path": "/help",
+      "index": false,
+      "text": "<Route path=\"/help\" element={<Help />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 48,
+      "path": "/developers",
+      "index": false,
+      "text": "<Route path=\"/developers\" element={<Developer />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 49,
+      "path": "/together",
+      "index": false,
+      "text": "<Route path=\"/together\" element={<Upcoming section=\"together\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 50,
+      "path": "/collaborations",
+      "index": false,
+      "text": "<Route path=\"/collaborations\" element={<Upcoming section=\"collaboration\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 51,
+      "path": "/products/:slug",
+      "index": false,
+      "text": "<Route path=\"/products/:slug\" element={<Product />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 52,
+      "path": "/redeem",
+      "index": false,
+      "text": "<Route path=\"/redeem\" element={<Redeem />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 53,
+      "path": "/redeem/success",
+      "index": false,
+      "text": "<Route path=\"/redeem/success\" element={<Navigate to=\"/apps\" replace/>} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 54,
+      "path": "/reports/:id",
+      "index": false,
+      "text": "<Route path=\"/reports/:id\" element={<Report />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 55,
+      "path": "/attempts/:id",
+      "index": false,
+      "text": "<Route path=\"/attempts/:id\" element={<Attempt />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 56,
+      "path": "/admin/*",
+      "index": false,
+      "text": "<Route path=\"/admin/*\" element={<Admin />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 57,
+      "path": "/preview",
+      "index": false,
+      "text": "<Route path=\"/preview\" element={<HomePage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 58,
+      "path": "/preview/experience/quiet-room",
+      "index": false,
+      "text": "<Route path=\"/preview/experience/quiet-room\" element={<QuietRoomPreview />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 59,
+      "path": "/preview/experience/reflection-garden",
+      "index": false,
+      "text": "<Route path=\"/preview/experience/reflection-garden\" element={<GardenPreview />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 60,
+      "path": "/preview/products/partner",
+      "index": false,
+      "text": "<Route path=\"/preview/products/partner\" element={<ProductDetailPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 61,
+      "path": "/preview/assessment/partner",
+      "index": false,
+      "text": "<Route path=\"/preview/assessment/partner\" element={<AssessmentPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 62,
+      "path": "/preview/reports/partner",
+      "index": false,
+      "text": "<Route path=\"/preview/reports/partner\" element={<ReportPage />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 63,
+      "path": "/preview/redeem",
+      "index": false,
+      "text": "<Route path=\"/preview/redeem\" element={<RedemptionPage key=\"redeem\" />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 64,
+      "path": "/preview/redeem/success",
+      "index": false,
+      "text": "<Route path=\"/preview/redeem/success\" element={<RedemptionPage key=\"redemption-success\" success />} />"
+    },
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 65,
+      "path": "*",
+      "index": false,
+      "text": "<Route path=\"*\" element={<SupportingPages />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 30,
+      "path": null,
+      "index": true,
+      "text": "<Route index element={<Overview />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 31,
+      "path": "products",
+      "index": false,
+      "text": "<Route path=\"products\" element={<Products scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 35,
+      "path": "assets",
+      "index": false,
+      "text": "<Route path=\"assets\" element={<Assets />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 36,
+      "path": "content/*",
+      "index": false,
+      "text": "<Route path=\"content/*\" element={<ContentWorkbench />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 37,
+      "path": "skills/*",
+      "index": false,
+      "text": "<Route path=\"skills/*\" element={<SkillsApp />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 38,
+      "path": "machine",
+      "index": false,
+      "text": "<Route path=\"machine\" element={<CodexConnections scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 42,
+      "path": "machine/configurations",
+      "index": false,
+      "text": "<Route path=\"machine/configurations\" element={<CodexConnections scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 43,
+      "path": "orders",
+      "index": false,
+      "text": "<Route path=\"orders\" element={<Orders scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 44,
+      "path": "*",
+      "index": false,
+      "text": "<Route path=\"*\" element={<p>后台页面不存在。</p>} />"
+    },
+    {
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 47,
+      "path": null,
+      "index": true,
+      "text": "<Route index element={<ContentProducts />} />"
+    },
+    {
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 48,
+      "path": ":productId",
+      "index": false,
+      "text": "<Route path=\":productId\" element={<ProductWorkbench />} />"
+    },
+    {
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 58,
+      "path": null,
+      "index": true,
+      "text": "<Route index element={<Navigate to=\"assessment\" replace />} />"
+    },
+    {
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 59,
+      "path": ":domain",
+      "index": false,
+      "text": "<Route path=\":domain\" element={<LibraryRoute />} />"
+    }
+  ],
+  "sourceDigests": {
+    "apps/web/src/app.tsx": "9c8871f5c9dcfc2b87e4d1c0fd93989867b4b5ed8d666522ae3718ef95517b75",
+    "apps/web/src/admin/pages.tsx": "77540659c2431f6ea4ef5722fc79cb0019f04d7e3741d1778779ead79c8985f5",
+    "apps/web/src/admin/content.tsx": "fc2732a7fa3a77c5e979925ad5fa4911879f2534fcc085d6a89a42d945b8887e",
+    "apps/web/src/admin/skills.tsx": "29d322bf1c9edbdcae56cf7a759c32f29a1a0b727191f6db77725719c9097503"
+  },
+  "rows": [
+    {
+      "id": "access-shell",
+      "route": "/admin/*",
+      "source": "apps/web/src/admin/pages.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-shell-20261028/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Every route re-entry on overview/account transient/access errors is not separately proven."
+      ]
+    },
+    {
+      "id": "overview-audit",
+      "route": "/admin",
+      "source": "apps/web/src/admin/overview.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-shell-20261028/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Dedicated audit detail/error/filter combinations remain to be enumerated."
+      ]
+    },
+    {
+      "id": "products",
+      "route": "/admin/products",
+      "source": "apps/web/src/admin/products.tsx",
+      "evidence": [
+        "output/implementation/t18-catalog-content-20261029/verification.md",
+        "output/implementation/t18-admin-media-orders-20261029/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "All create/version transition dialogs and unknown save results are not exhaustively covered."
+      ]
+    },
+    {
+      "id": "assets",
+      "route": "/admin/assets",
+      "source": "apps/web/src/admin/assets.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-media-orders-20261029/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Actual upload/download bytes and every review/ready/archive transition need their own scope."
+      ]
+    },
+    {
+      "id": "orders",
+      "route": "/admin/orders",
+      "source": "apps/web/src/admin/orders.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-media-orders-20261029/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Actual issuance/refund/CSV commit not executed by T18 design checks."
+      ]
+    },
+    {
+      "id": "content-index",
+      "route": "/admin/content",
+      "source": "apps/web/src/admin/content.tsx",
+      "evidence": [
+        "output/implementation/t18-catalog-content-20261029/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "No assertion of every combined filter/page state."
+      ]
+    },
+    {
+      "id": "content-project",
+      "route": "/admin/content/:productId?tab=project",
+      "source": "apps/web/src/admin/project-workspace.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-project-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "All graph/record/history nested states are not proven."
+      ]
+    },
+    {
+      "id": "content-profile",
+      "route": "/admin/content/:productId?tab=profile",
+      "source": "apps/web/src/admin/content-profile.tsx",
+      "evidence": [
+        "output/implementation/t18-catalog-content-20261029/verification.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Dedicated profile diff nested denial and all restoration states remain."
+      ]
+    },
+    {
+      "id": "content-skills",
+      "route": "/admin/content/:productId?tab=skills",
+      "source": "apps/web/src/admin/content-skills.tsx",
+      "evidence": [],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Skill-set editor is separate from the five standalone Skill libraries; requires direct refresh/access/conflict/history audit."
+      ]
+    },
+    {
+      "id": "content-assessment",
+      "route": "/admin/content/:productId?tab=assessment",
+      "source": "apps/web/src/admin/content-assessment.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-assessment-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Actual accepted version/source writes, a changed remote base while dirty, nested bound Skill reads, and every history/identity combination remain unverified by this read-only UI slice."
+      ],
+      "stateEvidence": {
+        "contentResultAndManualSource": {
+          "viewports": [
+            1440,
+            768,
+            390
+          ],
+          "evidence": "screenshots.json"
+        },
+        "configAndSourceReads403503": {
+          "viewports": [
+            1440,
+            390
+          ],
+          "evidence": "checks.json"
+        },
+        "unknownReplaceAndDerive": {
+          "viewports": [
+            1440
+          ],
+          "evidence": "checks.json"
+        },
+        "unknownSourceRegistration": {
+          "viewports": [
+            1440,
+            390
+          ],
+          "evidence": "checks.json"
+        },
+        "initialSourceAndConfigFailure": {
+          "viewports": [
+            390
+          ],
+          "evidence": "checks.json"
+        },
+        "resultFocusAboveStickyActions": {
+          "viewports": [
+            1440,
+            768,
+            390
+          ],
+          "evidence": "result-field-views.json"
+        },
+        "realWrites": "not_performed"
+      }
+    },
+    {
+      "id": "content-experience",
+      "route": "/admin/content/:productId?tab=experience",
+      "source": "apps/web/src/admin/content-experience.tsx",
+      "evidence": [],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Workspace/history/action access and ordinary failure require direct audit."
+      ]
+    },
+    {
+      "id": "content-result",
+      "route": "/admin/content/:productId?tab=result",
+      "source": "apps/web/src/admin/content-assessment.tsx;apps/web/src/admin/content-experience.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-assessment-20261030/README.md"
+      ],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Assessment result text/configuration and source recovery now have direct evidence. ExperienceDesk presentation, methods, history, released versions and their nested states still require a separate audit."
+      ]
+    },
+    {
+      "id": "content-cover",
+      "route": "/admin/content/:productId?tab=cover",
+      "source": "apps/web/src/admin/content-assets.tsx",
+      "evidence": [],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Cover asset editor and nested references/files are not covered by the standalone media catalog."
+      ]
+    },
+    {
+      "id": "content-video",
+      "route": "/admin/content/:productId?tab=video",
+      "source": "apps/web/src/admin/content-assets.tsx",
+      "evidence": [],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Scene editor, source references and file states require direct audit."
+      ]
+    },
+    {
+      "id": "content-copy",
+      "route": "/admin/content/:productId?tab=copy",
+      "source": "apps/web/src/admin/content-assets.tsx",
+      "evidence": [],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Copy blocks, source references and file states require direct audit."
+      ]
+    },
+    {
+      "id": "content-preview",
+      "route": "/admin/content/:productId?tab=preview",
+      "source": "apps/web/src/admin/content-preview.tsx",
+      "evidence": [],
+      "coverage": "not_audited",
+      "gaps": [
+        "Suite preview/public sample and protected media states have no dedicated final three-viewport/interaction batch."
+      ]
+    },
+    {
+      "id": "content-history",
+      "route": "/admin/content/:productId?tab=history",
+      "source": "apps/web/src/admin/content-history.tsx",
+      "evidence": [
+        "output/implementation/t18-catalog-content-20261029/verification.md"
+      ],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Top history screenshot does not verify impact/links/diff/detail nested errors."
+      ]
+    },
+    {
+      "id": "content-adoption",
+      "route": "/admin/content/:productId?tab=adoption",
+      "source": "apps/web/src/admin/content-adoption.tsx",
+      "evidence": [],
+      "coverage": "not_audited",
+      "gaps": [
+        "Preview/package history/selected package/errors/unknown adoption require direct audit."
+      ]
+    },
+    {
+      "id": "content-cleanup",
+      "route": "/admin/content/:productId?tab=cleanup",
+      "source": "apps/web/src/admin/content-cleanup.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-coverage-cleanup-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Running/expired plan transitions, actual object bytes, accepted cleanup writes and every cross-route identity failure are not individually verified by this read-only UI batch."
+      ],
+      "stateEvidence": {
+        "prepared": {
+          "viewports": [
+            1440,
+            768,
+            390
+          ],
+          "evidence": "screenshots.json"
+        },
+        "empty": {
+          "viewports": [
+            1440,
+            768,
+            390
+          ],
+          "evidence": "screenshots.json"
+        },
+        "completeReadOnly": {
+          "viewports": [
+            1440,
+            768,
+            390
+          ],
+          "evidence": "screenshots.json"
+        },
+        "firstLoadingAndFailure": {
+          "viewports": [
+            390
+          ],
+          "evidence": "checks.json"
+        },
+        "ordinaryFailureAccessDenialConflict": {
+          "viewports": [
+            1440
+          ],
+          "evidence": "checks.json"
+        },
+        "unknownPreview": {
+          "viewports": [
+            1440
+          ],
+          "evidence": "checks.json"
+        },
+        "unknownExecution": {
+          "viewports": [
+            1440,
+            390
+          ],
+          "evidence": "checks.json"
+        },
+        "keyboardFocus": {
+          "viewports": [
+            390
+          ],
+          "evidence": "checks.json"
+        },
+        "realMutation": "not_performed",
+        "expiredAndRunningTransitions": "not_verified"
+      }
+    },
+    {
+      "id": "methods",
+      "route": "/admin/content/:productId?tab=project (methods query state)",
+      "source": "apps/web/src/admin/project-methods.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-methods-runs-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Real successful capture/export/recovery with actual identity/attachments remains external; not a new route."
+      ]
+    },
+    {
+      "id": "run-operations",
+      "route": "/admin/content/:productId?tab=project (run-operations query state)",
+      "source": "apps/web/src/admin/production-run-operations.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-methods-runs-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Real successful capture/export/recovery with actual identity/attachments remains external; not a new route."
+      ]
+    },
+    {
+      "id": "skills-assessment",
+      "route": "/admin/skills/assessment",
+      "source": "apps/web/src/admin/skills.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-skills-20261029/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Shared library/editor behavior has evidence; domain-specific inputs/attachments/policies are not all separately proven."
+      ]
+    },
+    {
+      "id": "skills-experience",
+      "route": "/admin/skills/experience",
+      "source": "apps/web/src/admin/skills.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-skills-20261029/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Shared library/editor behavior has evidence; domain-specific inputs/attachments/policies are not all separately proven."
+      ]
+    },
+    {
+      "id": "skills-cover",
+      "route": "/admin/skills/cover",
+      "source": "apps/web/src/admin/skills.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-skills-20261029/README.md"
+      ],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Shared library/editor behavior has evidence; domain-specific inputs/attachments/policies are not all separately proven."
+      ]
+    },
+    {
+      "id": "skills-video",
+      "route": "/admin/skills/video",
+      "source": "apps/web/src/admin/skills.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-skills-20261029/README.md"
+      ],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Shared library/editor behavior has evidence; domain-specific inputs/attachments/policies are not all separately proven."
+      ]
+    },
+    {
+      "id": "skills-copy",
+      "route": "/admin/skills/copy",
+      "source": "apps/web/src/admin/skills.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-skills-20261029/README.md"
+      ],
+      "coverage": "parent_or_partial",
+      "gaps": [
+        "Shared library/editor behavior has evidence; domain-specific inputs/attachments/policies are not all separately proven."
+      ]
+    },
+    {
+      "id": "connections",
+      "route": "/admin/machine",
+      "source": "apps/web/src/admin/codex-connections.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-connections-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Actual credential issuance/revocation not performed; no inferred permission expansion."
+      ]
+    },
+    {
+      "id": "configurations",
+      "route": "/admin/machine/configurations",
+      "source": "apps/web/src/admin/external-run-configurations.tsx",
+      "evidence": [
+        "output/implementation/t18-admin-connections-20261030/README.md"
+      ],
+      "coverage": "representative_final_evidence",
+      "gaps": [
+        "Actual client import/schedule activation remain external; configurations stay disabled."
+      ]
+    },
+    {
+      "id": "admin-not-found",
+      "route": "/admin/* (unknown child)",
+      "source": "apps/web/src/admin/pages.tsx",
+      "evidence": [],
+      "coverage": "not_audited",
+      "gaps": [
+        "Dedicated not-found recovery/focus/three-viewport audit remains."
+      ]
+    },
+    {
+      "id": "external-cloud-client",
+      "route": "08 / 09 / 14 / 15",
+      "source": "prd/v1/tasks/README.md",
+      "evidence": [],
+      "coverage": "external_authorization_or_conditions",
+      "gaps": [
+        "Real cloud identities/files, clients, content jobs and schedules remain in their original tasks."
+      ]
+    }
+  ],
+  "adminRouteDeclarations": [
+    {
+      "source": "apps/web/src/app.tsx",
+      "line": 56,
+      "path": "/admin/*",
+      "index": false,
+      "text": "<Route path=\"/admin/*\" element={<Admin />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 30,
+      "path": null,
+      "index": true,
+      "text": "<Route index element={<Overview />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 31,
+      "path": "products",
+      "index": false,
+      "text": "<Route path=\"products\" element={<Products scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 35,
+      "path": "assets",
+      "index": false,
+      "text": "<Route path=\"assets\" element={<Assets />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 36,
+      "path": "content/*",
+      "index": false,
+      "text": "<Route path=\"content/*\" element={<ContentWorkbench />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 37,
+      "path": "skills/*",
+      "index": false,
+      "text": "<Route path=\"skills/*\" element={<SkillsApp />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 38,
+      "path": "machine",
+      "index": false,
+      "text": "<Route path=\"machine\" element={<CodexConnections scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 42,
+      "path": "machine/configurations",
+      "index": false,
+      "text": "<Route path=\"machine/configurations\" element={<CodexConnections scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 43,
+      "path": "orders",
+      "index": false,
+      "text": "<Route path=\"orders\" element={<Orders scope={data.scope} />} />"
+    },
+    {
+      "source": "apps/web/src/admin/pages.tsx",
+      "line": 44,
+      "path": "*",
+      "index": false,
+      "text": "<Route path=\"*\" element={<p>后台页面不存在。</p>} />"
+    },
+    {
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 47,
+      "path": null,
+      "index": true,
+      "text": "<Route index element={<ContentProducts />} />"
+    },
+    {
+      "source": "apps/web/src/admin/content.tsx",
+      "line": 48,
+      "path": ":productId",
+      "index": false,
+      "text": "<Route path=\":productId\" element={<ProductWorkbench />} />"
+    },
+    {
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 58,
+      "path": null,
+      "index": true,
+      "text": "<Route index element={<Navigate to=\"assessment\" replace />} />"
+    },
+    {
+      "source": "apps/web/src/admin/skills.tsx",
+      "line": 59,
+      "path": ":domain",
+      "index": false,
+      "text": "<Route path=\":domain\" element={<LibraryRoute />} />"
+    }
+  ],
+  "baseCommit": "ecc73ce0cbbfc89406c1efed628ed996c0c6fc36",
+  "sourceSnapshot": "Working tree source digests below; committed together with this report.",
+  "counts": {
+    "representative_final_evidence": 16,
+    "parent_or_partial": 10,
+    "not_audited": 3,
+    "external_authorization_or_conditions": 1
+  },
+  "fullAdminCoverage": false,
+  "routeInventoryMethod": "TypeScript TSX AST: JsxOpeningElement and JsxSelfClosingElement with tagName Route"
+}

@@ -1,0 +1,7 @@
+{
+  "expected": "A cached, unregistered source retains its disabled draft form during an ordinary failure",
+  "observed": {
+    "batchInputs": 0
+  },
+  "reproduced": true
+}

@@ -1,0 +1,80 @@
+
+> @orai/web@0.1.0 build /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/web
+> tsc -p tsconfig.json --noEmit && vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 610 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                1.15 kB │ gzip:   0.58 kB
+dist/experience-budget.json                    1.80 kB │ gzip:   0.41 kB
+dist/assets/report-host-CoyQ-66a.css           1.76 kB │ gzip:   0.54 kB
+dist/assets/catalog-tPp-bDZK.css               6.49 kB │ gzip:   1.52 kB
+dist/assets/reflection-garden-Cvo4W8Jn.css     6.99 kB │ gzip:   1.95 kB
+dist/assets/relationship-atlas-CruN3dzT.css    7.40 kB │ gzip:   2.01 kB
+dist/assets/index-CxZ5cYmd.css                 7.47 kB │ gzip:   2.61 kB
+dist/assets/quiet-room-B7lNFKJT.css            8.62 kB │ gzip:   2.34 kB
+dist/assets/product-detail-DCFUGTAH.css       10.95 kB │ gzip:   2.64 kB
+dist/assets/assessment-t30AGNAA.css           10.99 kB │ gzip:   2.66 kB
+dist/assets/report-DqlOqBh7.css               12.73 kB │ gzip:   2.94 kB
+dist/assets/redemption-BiAdoWm1.css           14.98 kB │ gzip:   3.24 kB
+dist/assets/flow-shell-DmO_DUur.css           16.54 kB │ gzip:   3.79 kB
+dist/assets/shared-BQlXQneY.css               20.46 kB │ gzip:   4.38 kB
+dist/assets/home-ZFzT8y5Y.css                 31.39 kB │ gzip:   7.04 kB
+dist/assets/project-workspace-DnkYi60V.css   110.80 kB │ gzip:  16.75 kB
+dist/assets/pages-qN-b5U0C.css               158.77 kB │ gzip:  22.05 kB
+dist/assets/garden-notes-Xvt_cr7r.js           0.22 kB │ gzip:   0.18 kB
+dist/assets/legacy-report-D1yYTPCB.js          0.29 kB │ gzip:   0.22 kB
+dist/assets/model-DmgVhA9n.js                  0.41 kB │ gzip:   0.27 kB
+dist/assets/dom-choice-D78VGvsr.js             0.64 kB │ gzip:   0.43 kB
+dist/assets/workspace-layout-BouWiBsS.js       0.68 kB │ gzip:   0.47 kB
+dist/assets/developer-B7S83jlP.js              0.87 kB │ gzip:   0.54 kB
+dist/assets/download-BoKyQK_3.js               1.08 kB │ gzip:   0.76 kB
+dist/assets/upcoming-CZkAibDd.js               1.21 kB │ gzip:   0.75 kB
+dist/assets/layout-CRzUJ-Wy.js                 1.48 kB │ gzip:   0.85 kB
+dist/assets/redemption-art-Dv6GN21e.js         1.78 kB │ gzip:   0.92 kB
+dist/assets/preview-Dh1yWfm7.js                1.97 kB │ gzip:   1.08 kB
+dist/assets/dist-B5b3PdTM.js                   2.12 kB │ gzip:   1.04 kB
+dist/assets/model-6ScopbUH.js                  2.22 kB │ gzip:   1.25 kB
+dist/assets/help-BBV6Bsig.js                   2.24 kB │ gzip:   1.09 kB
+dist/assets/atlas-notes-BsRSM4FH.js            2.37 kB │ gzip:   1.00 kB
+dist/assets/garden-preview-B00rHjnt.js         2.52 kB │ gzip:   1.33 kB
+dist/assets/room-sample-CdNrixsW.js            3.09 kB │ gzip:   1.76 kB
+dist/assets/quiet-room-B6yT13vQ.js             3.20 kB │ gzip:   1.47 kB
+dist/assets/shared-BRmBB7xG.js                 3.21 kB │ gzip:   1.66 kB
+dist/assets/room-art-BlzpoTtM.js               3.41 kB │ gzip:   1.30 kB
+dist/assets/product-detail-DLp88CwQ.js         3.50 kB │ gzip:   1.90 kB
+dist/assets/field-notes-J3WIUi3-.js            3.96 kB │ gzip:   1.66 kB
+dist/assets/preview-state-DTJO9SjA.js          4.29 kB │ gzip:   2.12 kB
+dist/assets/relationship-atlas-RiY27hYy.js     4.67 kB │ gzip:   2.13 kB
+dist/assets/tslib.es6-C-DzQg4N.js              4.91 kB │ gzip:   1.81 kB
+dist/assets/atlas-renderer-D8cbdthc.js         5.05 kB │ gzip:   2.42 kB
+dist/assets/reflection-garden-DIlygBSh.js      5.32 kB │ gzip:   2.29 kB
+dist/assets/garden-renderer-CMzhT03R.js        6.55 kB │ gzip:   3.07 kB
+dist/assets/product-detail-CfiEAsrO.js         6.82 kB │ gzip:   2.61 kB
+dist/assets/assessment-Bm-fjDOo.js             7.43 kB │ gzip:   3.13 kB
+dist/assets/pages-DQ7G_rzM.js                  7.64 kB │ gzip:   2.84 kB
+dist/assets/redemption-CTb0D2js.js             7.79 kB │ gzip:   2.93 kB
+dist/assets/report-host-YGRnHjyk.js            8.06 kB │ gzip:   3.18 kB
+dist/assets/react-yIOJJ3r4.js                  8.40 kB │ gzip:   3.23 kB
+dist/assets/library-BFKKX40e.js               10.62 kB │ gzip:   3.93 kB
+dist/assets/report-8KUmKI7a.js                11.62 kB │ gzip:   4.16 kB
+dist/assets/assessment-CyVrCrt-.js            11.65 kB │ gzip:   4.09 kB
+dist/assets/catalog-BurqP9nc.js               14.57 kB │ gzip:   4.64 kB
+dist/assets/home-_vJL3lI_.js                  18.49 kB │ gzip:   5.61 kB
+dist/assets/flow-shell-BkuTGLOT.js            20.47 kB │ gzip:   7.02 kB
+dist/assets/home-BtbaohFL.js                  54.13 kB │ gzip:  18.40 kB
+dist/assets/experience-BwXptbhX.js            98.83 kB │ gzip:  28.71 kB
+dist/assets/privacy-DxSM2GRp.js              242.38 kB │ gzip:  64.76 kB
+dist/assets/index-D1L6J8FS.js                275.97 kB │ gzip:  88.04 kB
+dist/assets/project-workspace-k13VijJb.js    311.87 kB │ gzip:  95.13 kB
+dist/assets/pages-Bum1aqQj.js                427.47 kB │ gzip: 119.17 kB
+dist/assets/three.module-LK1pl1yG.js         541.91 kB │ gzip: 134.53 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 909ms

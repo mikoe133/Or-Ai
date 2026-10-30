@@ -1,0 +1,8 @@
+{
+  "expected": "Denied production source hides private editor",
+  "observed": {
+    "privateEditors": 0,
+    "questionInputs": 0
+  },
+  "passed": true
+}

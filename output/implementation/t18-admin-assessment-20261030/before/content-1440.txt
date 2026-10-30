@@ -1,0 +1,180 @@
+Browser tab: 7, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=assessment&version=dceb5635-8924-49bd-abd9-f8101732ed9a".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=assessment&version=dceb5635-8924-49bd-abd9-f8101732ed9a
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=assessment&version=dceb5635-8924-49bd-abd9-f8101732ed9a#admin-workspace
+		4 container Description: 运营工作空间, ID: admin-sidebar
+			5 link Description: MeetMyWorld 运营后台, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin
+			6 container 后台导航
+				7 container 运营管理
+					8 text 运营管理
+					9 link Description: 概览与审计, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin
+					10 link Description: 商品与版本, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/products
+				11 container 内容制作
+					12 text 内容制作
+					13 link Description: 内容工作台, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/content
+					14 link Description: 素材与文件, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/assets
+					15 link Description: skill 库, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/skills
+				16 container 连接与交付
+					17 text 连接与交付
+					18 link Description: Codex 连接, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/machine
+					19 link Description: 订单与售后, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/orders
+			20 link Description: M 管理员 邮箱已验证, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/account
+			21 link Description: ← 返回商城, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/
+		22 container
+			23 link Description: 运营后台, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin
+			24 text / 内容工作台 已验证的管理员
+			25 link Description: 账户设置, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/account
+		26 container 内容工作台, ID: admin-workspace
+			27 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				28 text 内容工作台
+			29 link Description: ← 全部内容商品, Value: orai-cua-0a2ea44d-0d5e-4a65-8ac7-8a3241a777dc.localhost:5192/admin/content
+			30 heading TEST Three.js 只读项目, Value: 2
+				31 text TEST Three.js 只读项目
+			32 text 当前支持单人自我探索，体验以已注册模板为准
+			33 text 演示范围
+			34 container
+				35 text 内容版本 · 单选 v1
+				36 pop up button (collapsed, settable) Description: 工作台内容版本, Value: v1 · 草稿, Secondary Actions: Expand
+					37 menu
+						38 (selected) v1 · 草稿
+						39 建立单选内容版本
+			40 container
+				41 text 共同创作设定
+				42 pop up button (collapsed, settable) Description: 共同创作设定, Value: r1 · TEST 只读创作设定, Secondary Actions: Expand
+					43 menu
+						44 (selected) r1 · TEST 只读创作设定
+			45 container 内容工作台页签
+				46 button 项目工作区
+				47 button 创作设定
+				48 button skill 组合
+				49 button 商品内容
+				50 button 体验设计
+				51 button 结果交付
+				52 button 封面
+				53 button 视频与分镜
+				54 button 引流文案
+				55 button 整套预览
+				56 button 引用与历史
+				57 button 成套采用
+				58 button 文件清理
+			59 container 商品能力与制作范围
+				60 container
+					61 heading 商品能力与制作范围, Value: 3
+						62 text 商品能力与制作范围
+					63 text 组合兼容
+				64 container
+					65 text 静心花园 · 3D v1  ·  花园手记 · v1
+				66 button (collapsed) 查看版本依据、支持范围与后续形式, Secondary Actions: Expand
+					67 text 查看版本依据、支持范围与后续形式
+			68 container 题库报告编辑器
+				69 heading 商品内容 · 单选评估, Value: 3
+					70 text 商品内容 · 单选评估
+				71 text 此内容协议使用题目、选项与维度规则。场景外观在体验设计中配置。
+				72 text v1 · 草稿
+				73 text 当前引擎 dimensions_v1，单人作答。已发布版本通过“派生新版本”继续编辑。
+				74 container
+					75 container
+						76 heading 01 / 题目与选项, Value: 4
+							77 text 01 / 题目与选项
+						78 text 1  道题目 · 展开题目编辑选项与分值
+					79 container
+						80 button (expanded) 第 1 题 · TEST 原始题目, Secondary Actions: Collapse
+							81 text 第 
+							82 text 1
+							83 text  题 · 
+							84 text TEST 原始题目
+						85 text 题目 ID
+						86 text field (settable) Description: 题目 1 ID, Value: daily-need
+						87 text 维度
+						88 pop up button (collapsed, settable) 维度, Value: 自我觉察, Secondary Actions: Expand
+							89 menu
+								90 (selected) 自我觉察
+						91 text 题目权重
+						92 stepper (settable, integer) 题目权重, Value: 1
+						93 text 题干
+						94 text entry area (settable) Description: 题目 1 题干, Value: TEST 原始题目
+						95 text 选项 ID
+						96 text field (settable) Description: 题目 1 选项 1 ID, Value: often
+						97 text 选项文字
+						98 text field (settable) Description: 题目 1 选项 1 文字, Value: 经常会
+						99 text 分值
+						100 stepper (settable, integer) 分值, Value: 2
+						101 checkbox (settable, integer) Description: 不适用, Value: 0
+						102 text 选项 ID
+						103 text field (settable) Description: 题目 1 选项 2 ID, Value: sometimes
+						104 text 选项文字
+						105 text field (settable) Description: 题目 1 选项 2 文字, Value: 偶尔会
+						106 text 分值
+						107 stepper (settable, integer) 分值, Value: 1
+						108 checkbox (settable, integer) Description: 不适用, Value: 0
+						109 text 选项 ID
+						110 text field (settable) Description: 题目 1 选项 3 ID, Value: na
+						111 text 选项文字
+						112 text field (settable) Description: 题目 1 选项 3 文字, Value: 暂时不适用
+						113 text 分值
+						114 stepper (disabled, settable) 分值
+						115 checkbox (settable, integer) Description: 不适用, Value: 1
+						116 button (disabled) 移除此题
+					117 button 添加题目
+					118 button (collapsed) 规则、信息不足模板与完整 JSON, Secondary Actions: Expand
+						119 text 规则、信息不足模板与完整 JSON
+					120 text 题库内容已与当前版本同步
+					121 button (disabled) 保存内容与结果草稿
+					122 button 派生新版本
+					123 button (disabled) 放弃题库修改
+				124 container
+					125 heading 本修订制作来源, Value: 4
+						126 text 本修订制作来源
+					127 text external_ai  · 批次  test-readonly-source  ·  未关联 skill
+					128 button (collapsed) 固定记录, Secondary Actions: Expand
+						129 text 固定记录
+					130 text 此历史修订未关联 skill。
+			131 container 当前创作上下文
+				132 heading 制作依据, Value: 3
+					133 text 制作依据
+				134 definition list
+					135 container 内容版本 · 单选
+						136 text 内容版本 · 单选
+					137 text v1 · 草稿
+					138 container 共同创作设定
+						139 text 共同创作设定
+					140 text r1 · TEST 只读创作设定
+					141 container 保存状态
+						142 text 保存状态
+					143 text 无未保存修改
+				144 heading 四类内容, Value: 4
+					145 text 四类内容
+				146 container 四类内容齐备情况
+					147 text 题库与报告
+					148 container
+						149 text 1  份
+					150 text 可预览
+					151 text 封面
+					152 container
+						153 text 0  份
+					154 text 待制作
+					155 text 视频与分镜
+					156 container
+						157 text 0  份
+					158 text 待制作
+					159 text 引流文案
+					160 container
+						161 text 0  份
+					162 text 待制作
+				163 heading 共同目标, Value: 4
+					164 text 共同目标
+				165 definition list
+					166 container 情绪感受
+						167 text 情绪感受
+					168 text TEST 情绪目标
+					169 container 加深理解
+						170 text 加深理解
+					171 text TEST 理解目标
+					172 container 语言风格
+						173 text 语言风格
+					174 text TEST 清楚简短
+				175 text 各稿件固定引用保存时的设定、内容与 skill 版本。单选题库属于当前内容协议；更新后可在「引用与历史」核对影响。
+			176 container
+				177 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 26 container 内容工作台, ID: admin-workspace

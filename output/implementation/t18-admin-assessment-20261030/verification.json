@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-30",
+  "baseCommit": "ecc73ce0cbbfc89406c1efed628ed996c0c6fc36",
+  "scope": "Admin assessment/result configuration and production-source read/draft/request recovery only",
+  "sourceDigests": {
+    "apps/web/src/admin/content-assessment.tsx": "b7e04976bdd1af021e044dd0ad4ee03fb6ca0f00846071ee1130ee2513fb0cc2",
+    "apps/web/src/admin/content.tsx": "fc2732a7fa3a77c5e979925ad5fa4911879f2534fcc085d6a89a42d945b8887e",
+    "apps/web/src/admin/content.css": "4a4ea0045a117e5df6a4f08aaeafcf221cad19f3f264e0e65a224f885b36df29"
+  },
+  "automated": {
+    "web": 112,
+    "fixtureIsolation": 2,
+    "typecheck": "passed in final web build",
+    "build": "passed with existing >500kB warning retained",
+    "apiAndMcp": "unchanged; new exact hosted commit CI required separately"
+  },
+  "cua": {
+    "checks": 45,
+    "passed": true,
+    "beforeAfterPairs": 9,
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "contrastSamples": 8,
+    "minimumContrast": 7.78
+  },
+  "coverage": {
+    "surfaces": 30,
+    "routeDeclarations": 44,
+    "adminDeclarations": 14,
+    "counts": {
+      "representative_final_evidence": 16,
+      "parent_or_partial": 10,
+      "not_audited": 3,
+      "external_authorization_or_conditions": 1
+    },
+    "fullAdminCoverage": false
+  },
+  "protocol": {
+    "mode": "schema-checked loopback metadata; all writes rejected",
+    "database": false,
+    "credentials": false,
+    "requests": 925,
+    "writes": [
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 503,
+        "bodyDigest": "da47cecdb3037edcc3447101ede19a835f94eece37ed66bfcffd10fdf7dddbb9"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 409,
+        "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 503,
+        "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 503,
+        "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+      },
+      {
+        "method": "PUT",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+        "status": 409,
+        "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 503,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 403,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 503,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/production-records",
+        "status": 409,
+        "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+        "status": 503,
+        "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+        "status": 503,
+        "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+        "status": 409,
+        "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+      }
+    ],
+    "acceptedWrites": 0,
+    "realVersionsOrSourcesCreated": 0,
+    "reusedBodies": [
+      {
+        "name": "unknown-save-recovery-retries-identical-original-body",
+        "requests": [
+          {
+            "method": "PUT",
+            "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+            "status": 503,
+            "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+          },
+          {
+            "method": "PUT",
+            "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions/dceb5635-8924-49bd-abd9-f8101732ed9a",
+            "status": 503,
+            "bodyDigest": "42d8f0dffc57f2084b918cd9a1dc2ca67bdde323b1d602eb351c8d132285e126"
+          }
+        ]
+      },
+      {
+        "name": "source-registration-recovery-reuses-one-body-across-503-403-503",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/admin/production-records",
+            "status": 503,
+            "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+          },
+          {
+            "method": "POST",
+            "path": "/api/admin/production-records",
+            "status": 403,
+            "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+          },
+          {
+            "method": "POST",
+            "path": "/api/admin/production-records",
+            "status": 503,
+            "bodyDigest": "9b0ca7ba7c82698809a0032531d6cb5785083d8d0b5e7f66a676cdfc685006dc"
+          }
+        ]
+      },
+      {
+        "name": "unknown-derivation-retries-original-post-body",
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+            "status": 503,
+            "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+          },
+          {
+            "method": "POST",
+            "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+            "status": 503,
+            "bodyDigest": "fb35408fe56703ea7d968bfae577c3877d49ec3fff260fc572634fd54f2e274c"
+          }
+        ]
+      }
+    ]
+  },
+  "review": {
+    "source403MinimalGreen": "green-source-403.json",
+    "firstImplementationFailure": "first-pass-checks.json preserves partial retry revealing cached editor; persistent denial state added and exact assertions rerun successfully",
+    "locatorObservation": "Dirty content/result tab accessible names include a trailing dot; observed prefix used without changing assertions.",
+    "fixturePreparation": "fixture-preparation-notes.json",
+    "geometryObservation": "The first action-bar selector was absent and used a viewport fallback; raw observation retained. Final checks explicitly measure the actual content-action-bar.",
+    "rawArtifactWhitespace": "Original AX/build output retained (32 trailing-space lines); source/documentation scoped diff check passed."
+  },
+  "cleanup": {
+    "serverStopped": true,
+    "tabsClosed": true,
+    "viewportReset": true,
+    "controlsRemoved": true,
+    "originalContainersHealthy": 5
+  },
+  "remaining": [
+    "Actual accepted version/source writes, a changed remote base while dirty, nested bound Skill reads, and every history/identity combination remain unverified by this read-only UI slice.",
+    "Assessment result text/configuration and source recovery now have direct evidence. ExperienceDesk presentation, methods, history, released versions and their nested states still require a separate audit.",
+    "T18 and05/06 remain open; storefront requires screenshot approval. Real cloud/client/schedule and13/14 pause remain in their original tasks."
+  ]
+}

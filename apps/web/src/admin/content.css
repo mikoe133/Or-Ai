@@ -964,6 +964,16 @@
 .admin-shell .biz-view .cleanup-confirmation button{margin-top:14px}
 .admin-shell .biz-view .cleanup-unknown{padding:16px;border-left:2px solid #e4c18d;background:var(--admin-panel);margin:16px 0}
 .admin-shell .biz-view .cleanup-unknown p{margin:0 0 12px}
+.admin-shell .biz-view .assessment-read-controls{display:flex;justify-content:flex-end;margin:0 0 12px}
+.admin-shell .biz-view .assessment-read-controls button{min-height:42px;font-size:13px}
+.admin-shell .biz-view .content-assessment-editor :is(p,label,button,input,textarea,select){font-size:13px;line-height:1.8}
+.admin-shell .biz-view .content-assessment-editor :is(button,input,select){min-height:42px}
+.admin-shell .biz-view .content-assessment-editor input[type="checkbox"]{min-height:0}
+.admin-shell .biz-view .content-assessment-editor .content-section-heading h3{font-size:21px}
+.admin-shell .biz-view .content-assessment-editor .content-form-section-heading h4{font-size:14px}
+.admin-shell .biz-view .content-assessment-editor .content-block>summary{font-size:13px}
+.admin-shell .biz-view .assessment-unknown{padding:16px;margin:16px 0;background:var(--admin-panel);border-left:2px solid #e4c18d}
+.admin-shell .biz-view .assessment-unknown p{margin:0 0 12px}
 @media(max-width:760px){.admin-shell .biz-view .cleanup-heading,.admin-shell .biz-view .cleanup-plan>header{align-items:flex-start;flex-direction:column}.admin-shell .biz-view .cleanup-plan{padding:16px}.admin-shell .biz-view .content-cleanup-editor>button{width:100%}.admin-shell .biz-view .content-cleanup-editor table{min-width:600px}.admin-shell .biz-view .content-cleanup-editor td:nth-child(2){min-width:190px}}
 .admin-shell .biz-view [hidden] {
   display: none !important;

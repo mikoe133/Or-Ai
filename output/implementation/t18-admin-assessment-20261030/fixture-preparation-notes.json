@@ -1,0 +1,8 @@
+{
+  "firstAttemptAccepted": false,
+  "corrections": [
+    "ExperienceWorkspace uses public question shapes; omit configuration-only weight/points rather than weakening the strict schema.",
+    "The inherited copy-only profile correctly made content read-only; use a separate explicit TEST profile declaring assessment delivery and standard report to exercise existing editable capability."
+  ],
+  "realDataOrPolicyChanged": false
+}

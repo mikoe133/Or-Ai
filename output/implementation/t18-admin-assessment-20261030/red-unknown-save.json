@@ -1,0 +1,8 @@
+{
+  "expected": "Unknown save result preserves and locks the original request before further edits or deriving a new version",
+  "observed": {
+    "editable": true,
+    "value": "TEST 未知保存的原始题干"
+  },
+  "reproduced": true
+}
