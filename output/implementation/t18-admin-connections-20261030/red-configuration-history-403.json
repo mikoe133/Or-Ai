@@ -1,0 +1,10 @@
+{
+  "expected": "403 on history hides private configuration",
+  "response": {
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 403,
+    "sequence": 680
+  },
+  "privateDetailCount": 1,
+  "reproduced": true
+}

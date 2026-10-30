@@ -1,0 +1,72 @@
+Browser tab: 1, Title: "Codex 连接 · MeetMyWorld 运营后台", URL: "http://orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine".
+1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 text Codex 连接 已验证的管理员
+			7 link Description: 账户设置, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/account
+		8 container Codex 连接, ID: admin-workspace
+			9 heading Codex 连接, Value: 1, ID: admin-workspace-title
+				10 text Codex 连接
+			11 link Description: 运行配置草稿 →, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations
+			12 container
+				13 text YOUR CODEX / CONTENT STUDIO
+				14 heading 连接我的 Codex, Value: 2
+					15 text 连接我的 Codex
+				16 text 让 Codex 帮你创建商品、使用允许的 Skill、上传题目和宣传素材草稿。一次连接，后续多个商品都可沿用。
+			17 container
+				18 heading 你希望 Codex 帮你做什么？, Value: 3
+					19 text 你希望 Codex 帮你做什么？
+				20 text 由你选择允许的操作
+				21 container
+					22 container 允许 Codex 做的事
+						23 container
+							24 checkbox (settable, integer) Description: 创建商品项目, Value: 0
+							25 text 创建商品项目 根据选题建立商品和制作计划，先保存为草稿。
+						26 container
+							27 checkbox (settable, integer) Description: 使用允许的 Skill, Value: 0
+							28 text 使用允许的 Skill 读取允许的方法，为商品保存独立的方法版本；共享库保持原样。
+						29 container
+							30 checkbox (settable, integer) Description: 上传商品草稿, Value: 0
+							31 text 上传商品草稿 上传题目、报告方案、封面、视频或文案，留给你查看和审核。
+					32 text ↳ 审核和上架仍由你操作。Codex 不能读取用户答卷和个人报告。
+					33 button (collapsed) ＋ 高级设置 可选 · 一次设置，后续商品复用, Secondary Actions: Expand
+						34 text ＋
+						35 text 高级设置
+						36 text 可选 · 一次设置，后续商品复用
+			37 container 连接权限摘要
+				38 heading 这次连接允许什么, Value: 3
+					39 text 这次连接允许什么
+				40 text 确认前请核对
+				41 definition list
+					42 container 允许做的事
+						43 text 允许做的事
+					44 text 尚未允许任何操作
+					45 container 能访问的商品
+						46 text 能访问的商品
+					47 container
+						48 text 仅限归入本连接制作空间的商品。
+						49 text 分类： 尚未选择
+					50 container Skill 范围
+						51 text Skill 范围
+					52 text 尚未允许读取 Skill
+					53 container 额度与到期
+						54 text 额度与到期
+					55 container
+						56 text 最多新建 12 个商品  · 每商品  8  个方法 /  20  次制作批次
+						57 text 到期： 2026/11/06 16:49 （上海时间）
+					58 container 授权边界
+						59 text 授权边界
+					60 container
+						61 text 不能审核或上架，不能修改共享 Skill 库；不能读取用户答卷和个人报告。
+						62 text 各内容领域分别授权。
+			63 container
+				64 text 先核对权限摘要，再由你确认连接。
+				65 text 内容制作和定时任务需要之后另行安排。
+			66 button (disabled) 连接我的 Codex, ID: cx-connect-button
+			67 link Description: 管理已有单领域连接, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine?view=legacy
+			68 container
+				69 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine

@@ -1,0 +1,22 @@
+
+> orai@0.1.0 typecheck /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai
+> pnpm --filter @orai/contracts build && pnpm -r --if-present typecheck
+
+
+> @orai/contracts@0.1.0 build /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/packages/contracts
+> tsc -p tsconfig.json
+
+Scope: 4 of 5 workspace projects
+packages/contracts typecheck$ tsc -p tsconfig.json --noEmit
+packages/contracts typecheck: Done
+apps/api typecheck$ pnpm db:generate && tsc -p tsconfig.json --noEmit
+packages/mcp typecheck$ tsc -p tsconfig.json --noEmit
+apps/web typecheck$ tsc -p tsconfig.json --noEmit
+apps/api typecheck: > @orai/api@0.1.0 db:generate /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api
+apps/api typecheck: > node node_modules/prisma/build/index.js generate
+apps/api typecheck: Loaded Prisma config from prisma.config.ts.
+apps/api typecheck: Prisma schema loaded from prisma/schema.prisma.
+packages/mcp typecheck: Done
+apps/api typecheck: ✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 475ms
+apps/api typecheck: Done
+apps/web typecheck: Done

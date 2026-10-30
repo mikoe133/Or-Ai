@@ -1,0 +1,326 @@
+[
+  {
+    "phase": "before",
+    "name": "connection-new",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "connection-active",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "connection-revoked",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "configuration-detail",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "configuration-editor",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "configuration-history",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "connection-new",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "connection-active",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "connection-revoked",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "configuration-detail",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "configuration-editor",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "configuration-history",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "connection-new",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "connection-active",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "connection-revoked",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "configuration-detail",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "configuration-editor",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "configuration-history",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "connection-new",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "after",
+    "name": "connection-active",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "after",
+    "name": "connection-revoked",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "after",
+    "name": "configuration-detail",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "after",
+    "name": "configuration-editor",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "after",
+    "name": "configuration-history",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "after",
+    "name": "connection-new",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "after",
+    "name": "connection-active",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "after",
+    "name": "connection-revoked",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "after",
+    "name": "configuration-detail",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "after",
+    "name": "configuration-editor",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "after",
+    "name": "configuration-history",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "after",
+    "name": "connection-new",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "connection-active",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "connection-revoked",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "configuration-detail",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "configuration-editor",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "configuration-history",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  }
+]

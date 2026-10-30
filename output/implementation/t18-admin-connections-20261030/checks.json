@@ -1,0 +1,194 @@
+[
+  {
+    "name": "configuration-history-403-hides-private-content",
+    "passed": true
+  },
+  {
+    "name": "failed-permission-retry-keeps-private-content-hidden",
+    "passed": true
+  },
+  {
+    "name": "successful-all-reads-restores-configuration",
+    "passed": true
+  },
+  {
+    "name": "connection-503-retains-form-and-name",
+    "passed": true
+  },
+  {
+    "name": "connection-category-403-hides-editor-and-summary",
+    "passed": true
+  },
+  {
+    "name": "connection-failed-retry-still-hides-form",
+    "passed": true
+  },
+  {
+    "name": "connection-successful-retry-restores-original-draft",
+    "passed": true
+  },
+  {
+    "name": "connection-recovery-does-not-grant-actions",
+    "passed": true
+  },
+  {
+    "name": "configuration-refresh-503-retains-editor-draft",
+    "passed": true
+  },
+  {
+    "name": "configuration-cancel-leave-keeps-draft",
+    "passed": true
+  },
+  {
+    "name": "configuration-cancel-restores-focus",
+    "passed": true
+  },
+  {
+    "name": "workspace-403-hides-draft-and-closes-dialog",
+    "passed": true
+  },
+  {
+    "name": "configuration-permission-recovery-retains-original-input",
+    "passed": true
+  },
+  {
+    "name": "explicit-discard-restores-saved-revision",
+    "passed": true
+  },
+  {
+    "name": "configuration-409-preserves-input",
+    "passed": true
+  },
+  {
+    "name": "configuration-conflict-reload-can-be-cancelled",
+    "passed": true
+  },
+  {
+    "name": "unknown-configuration-save-locks-fields",
+    "passed": true
+  },
+  {
+    "name": "unknown-save-reuses-identical-original-body",
+    "passed": true,
+    "bodyDigest": "8b57d352a126a845e827830c043dc7e22d6d2540621a3e0dce96dcbbc86d2d96"
+  },
+  {
+    "name": "unknown-save-prevents-abandoning-original-result",
+    "passed": true
+  },
+  {
+    "name": "permission-loss-hides-unknown-save-fields",
+    "passed": true
+  },
+  {
+    "name": "permission-recovery-keeps-unknown-save-locked",
+    "passed": true
+  },
+  {
+    "name": "permission-recovery-keeps-original-save-intent",
+    "passed": true
+  },
+  {
+    "name": "connection-confirmation-starts-without-consent",
+    "passed": true
+  },
+  {
+    "name": "cancel-connection-preview-restores-trigger-focus",
+    "passed": true
+  },
+  {
+    "name": "unknown-connection-save-keeps-consent-locked",
+    "passed": true
+  },
+  {
+    "name": "permission-loss-hides-unknown-connection-and-dialog",
+    "passed": true
+  },
+  {
+    "name": "permission-recovery-keeps-original-connection-form-locked",
+    "passed": true
+  },
+  {
+    "name": "permission-recovery-keeps-original-connection-intent",
+    "passed": true,
+    "bodyDigest": "5e49471311a7b8b649ba9295d707a8bd57c4af5907b8517c046b58065242ea7b"
+  },
+  {
+    "name": "six-admin-states-have-three-viewport-before-after",
+    "passed": true
+  },
+  {
+    "name": "all-captured-pages-avoid-page-horizontal-overflow",
+    "passed": true
+  },
+  {
+    "name": "history-revision-has-disabled-edit",
+    "passed": true
+  },
+  {
+    "name": "mobile-saved-configuration-list-is-accessible",
+    "passed": true
+  },
+  {
+    "name": "historical-configuration-fields-remain-readonly",
+    "passed": true
+  },
+  {
+    "name": "mobile-step-1-reachable",
+    "passed": true
+  },
+  {
+    "name": "mobile-step-2-reachable",
+    "passed": true
+  },
+  {
+    "name": "mobile-step-3-reachable",
+    "passed": true
+  },
+  {
+    "name": "mobile-step-4-reachable",
+    "passed": true
+  },
+  {
+    "name": "mobile-step-5-reachable",
+    "passed": true
+  },
+  {
+    "name": "mobile-step-6-reachable",
+    "passed": true
+  },
+  {
+    "name": "configuration-text-samples-meet-4.5-contrast",
+    "passed": true,
+    "minimum": 7.45
+  },
+  {
+    "name": "read-only-connection-has-no-recoverable-credentials",
+    "passed": true
+  },
+  {
+    "name": "permissions-dialog-cancel-restores-focus",
+    "passed": true
+  },
+  {
+    "name": "revoke-cancel-restores-focus-without-post",
+    "passed": true
+  },
+  {
+    "name": "initial-503-shows-retry-without-empty-creation-form",
+    "passed": true
+  },
+  {
+    "name": "member-presentation-cannot-open-connection-workspace",
+    "passed": true
+  },
+  {
+    "name": "anonymous-presentation-cannot-open-connection-workspace",
+    "passed": true
+  },
+  {
+    "name": "connection-text-samples-meet-4.5-contrast",
+    "passed": true,
+    "minimum": 7.16
+  }
+]

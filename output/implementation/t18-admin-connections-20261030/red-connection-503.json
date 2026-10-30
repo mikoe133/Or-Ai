@@ -1,0 +1,11 @@
+{
+  "expected": "form and draft survive 503 refresh",
+  "before": {
+    "formCount": 1,
+    "name": "TEST 503后必须保留的连接草稿"
+  },
+  "after": {
+    "formCount": 0
+  },
+  "reproduced": true
+}

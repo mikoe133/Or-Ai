@@ -1,0 +1,127 @@
+Browser tab: 1, Title: "Codex 连接 · MeetMyWorld 运营后台", URL: "http://orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3".
+1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 link Description: 运营后台, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin
+			7 text / Codex 连接 已验证的管理员
+			8 link Description: 账户设置, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/account
+		9 container Codex 连接, ID: admin-workspace
+			10 heading Codex 连接, Value: 1, ID: admin-workspace-title
+				11 text Codex 连接
+			12 container 未启用运行配置
+				13 container 连接与配置
+					14 link Description: 连接与权限, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine
+					15 text 运行配置草稿
+				16 container
+					17 text EXTERNAL OPERATIONS / CONFIGURATION
+					18 heading 编辑运行配置, Value: 2
+						19 text 编辑运行配置
+					20 text 把时间、方法与工具限制放在同一份可核对的安排里。 未启用
+					21 button 返回配置详情, ID: ec-back
+					22 text 已保存 r2 配置、审核交接与真实执行分别核对
+					23 container 配置步骤
+						24 button 01 范围与客户端
+							25 text 01
+							26 text 范围与客户端
+						27 button 02 时间与产量
+							28 text 02
+							29 text 时间与产量
+						30 button 03 来源与输入
+							31 text 03
+							32 text 来源与输入
+						33 button 04 方法与分工
+							34 text 04
+							35 text 方法与分工
+						36 button 05 工具与限制
+							37 text 05
+							38 text 工具与限制
+						39 button 06 核对与导出
+							40 text 06
+							41 text 核对与导出
+					42 container
+						43 text STEP  01  / 06
+						44 heading 范围与客户端, Value: 3, ID: ec-step-title
+							45 text 范围与客户端
+						46 text 精确依据由服务端核对，当前选择不会启动执行。
+					47 container
+						48 text 配置名称
+						49 text field (settable) Description: 配置名称, Value: TEST 未启用配置（只读响应）, ID: ec-name
+						50 text 已有工作区
+						51 pop up button (disabled, collapsed, settable) Description: 已有工作区, Value: TEST 只读工作区 · 有效, ID: ec-workspace, Secondary Actions: Expand
+							52 menu
+								53 (disabled) 请选择当前管理员已有工作区
+								54 (disabled) TEST 只读工作区 · 有效
+						55 text 只引用现有工作区，不签发权限。
+						56 text 已有工作区连接
+						57 pop up button (collapsed, settable) Description: 已有工作区连接, Value: 请明确选择已有连接, Secondary Actions: Expand
+							58 menu
+								59 (selected) 请明确选择已有连接
+						60 text 外部客户端
+						61 pop up button (collapsed, settable) Description: 外部客户端, Value: Codex桌面端, Secondary Actions: Expand
+							62 menu
+								63 请明确选择
+								64 (selected) Codex桌面端
+								65 Codex CLI
+						66 text 仅声明，安装/版本/接入未验证。
+						67 text 本机工作目录
+						68 text field (settable) Description: 本机工作目录, ID: ec-client-workingDirectory
+						69 text 私有元数据，只检查路径格式，不读取目录。
+						70 text 起点范围
+						71 pop up button (collapsed, settable) Description: 起点范围, Value: 新题目准备 · 尚无固定计划, Secondary Actions: Expand
+							72 menu
+								73 既有商品 · 固定计划
+								74 (selected) 新题目准备 · 尚无固定计划
+						75 container 分页
+							76 button (disabled) 上一页
+							77 text 第  1  页 · 共  1  条
+							78 button (disabled) 下一页
+						79 container 分页
+							80 button (disabled) 上一页
+							81 text 第  1  页 · 共  0  条
+							82 button (disabled) 下一页
+						83 container 分页
+							84 button (disabled) 上一页
+							85 text 第  1  页 · 共  0  条
+							86 button (disabled) 下一页
+						87 text 新题目需要先形成S0–S2的证据、计划与方法；当前不携带旧商品引用，保持未就绪。
+					88 text CONFIGURATION CHECK
+					89 heading 当前核对, Value: 3
+						90 text 当前核对
+					91 text 待校验
+					92 text 保存、字段核对与真实执行分开。
+					93 container
+						94 text ○
+						95 button 范围与客户端 · 尚未校验
+							96 text 范围与客户端
+							97 text · 尚未校验
+					98 container
+						99 text ○
+						100 button 时间与产量 · 尚未校验
+							101 text 时间与产量
+							102 text · 尚未校验
+					103 container
+						104 text ○
+						105 button 来源与输入 · 尚未校验
+							106 text 来源与输入
+							107 text · 尚未校验
+					108 container
+						109 text ○
+						110 button 方法与分工 · 尚未校验
+							111 text 方法与分工
+							112 text · 尚未校验
+					113 container
+						114 text ○
+						115 button 工具与限制 · 尚未校验
+							116 text 工具与限制
+							117 text · 尚未校验
+					118 text 模型与档位沿用外部客户端，本页不改变设置或调用模型。
+					119 text 已保存配置可刷新回读，当前修改须另存修订
+					120 button (disabled) 上一步
+					121 button 下一步
+					122 button 保存配置草稿, ID: ec-save
+			123 container
+				124 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 44 heading 范围与客户端, Value: 3, ID: ec-step-title

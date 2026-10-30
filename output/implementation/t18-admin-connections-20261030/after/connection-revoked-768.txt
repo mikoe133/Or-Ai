@@ -1,0 +1,64 @@
+Browser tab: 2, Title: "Codex 连接 · MeetMyWorld 运营后台", URL: "http://orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine".
+1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 link Description: 运营后台, Value: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin
+			7 text / Codex 连接 已验证的管理员
+			8 link Description: 账户设置, Value: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/account
+		9 container Codex 连接, ID: admin-workspace
+			10 heading Codex 连接, Value: 1, ID: admin-workspace-title
+				11 text Codex 连接
+			12 container 连接与配置
+				13 text 连接与权限
+				14 link Description: 运行配置草稿, Value: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine/configurations
+			15 container
+				16 heading 我的 Codex 连接, Value: 2
+					17 text 我的 Codex 连接
+				18 text 后续商品沿用这份连接范围。你可以随时查看权限或撤销访问，不用每做一款商品重新配置。
+			19 container
+				20 heading TEST 已撤销连接（只读响应）, Value: 3
+					21 text TEST 已撤销连接（只读响应）
+				22 text 已撤销
+				23 heading 这份连接不再提供访问权限, Value: 3
+					24 text 这份连接不再提供访问权限
+				25 text 已有商品、方法和成果保留。撤销本平台访问不代表已终止第三方作业。
+				26 button 查看权限, ID: cx-permissions-trigger
+				27 button 重新设置连接
+			28 container Description: 连接权限摘要, ID: cx-summary
+				29 heading 原授权记录, Value: 3
+					30 text 原授权记录
+				31 text 当前请核对状态
+				32 definition list
+					33 container 允许做的事
+						34 text 允许做的事
+					35 content list
+						36 container
+							37 text · 读取并固定  题目与报告、引流文案、封面图片、宣传视频  的商品方法
+					38 container 能访问的商品
+						39 text 能访问的商品
+					40 container
+						41 text 仅限归入本连接制作空间的商品。
+						42 text 分类： TEST 合成分类
+					43 container Skill 范围
+						44 text Skill 范围
+					45 text 所属商品的方法；共享库：尚未授权
+					46 container 额度与到期
+						47 text 额度与到期
+					48 container
+						49 text 最多新建 12 个商品  · 每商品  8  个方法 /  20  次制作批次
+						50 text 到期： 2026/11/15 08:00 （上海时间）
+					51 container 授权边界
+						52 text 授权边界
+					53 container
+						54 text 不能审核或上架，不能修改共享 Skill 库；不能读取用户答卷和个人报告。
+						55 text 4 个领域分别授权，彼此不能代用。
+			56 container
+				57 link Description: 管理已有单领域连接, Value: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine?view=legacy
+				58 text  · 
+				59 button 设置另一份连接
+			60 container
+				61 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine

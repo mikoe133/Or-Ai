@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-30",
+  "baseCommit": "b0db080cf50fa2a22c7f559f8536fed4fd92aeca",
+  "scope": "T18 admin connection and disabled external configuration UI only",
+  "red": [
+    "connection 503 removes existing form and draft",
+    "history GET 403 leaves private configuration visible"
+  ],
+  "automated": {
+    "api": 509,
+    "web": 112,
+    "mcp": 22,
+    "uiFixtureIsolation": 2,
+    "typecheck": "passed",
+    "webBuild": "passed"
+  },
+  "cua": {
+    "checks": 47,
+    "passed": true,
+    "beforeAfterPairs": 18,
+    "viewports": [
+      1440,
+      768,
+      390
+    ],
+    "protocol": "loopback-only no-credential READ metadata substitute; not real authentication or grant verification"
+  },
+  "textContrast": {
+    "samples": 10,
+    "minimum": 7.16
+  },
+  "safety": {
+    "realGrantsCreated": 0,
+    "configurationOrScheduleWrites": 0,
+    "mutations": [
+      {
+        "method": "POST",
+        "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+        "status": 409,
+        "bodyDigest": "740f25c078b694ef0e8e730ea0cca8d67549abf5972ecb82143206b0d86dda4c"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+        "status": 503,
+        "bodyDigest": "8b57d352a126a845e827830c043dc7e22d6d2540621a3e0dce96dcbbc86d2d96"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+        "status": 503,
+        "bodyDigest": "8b57d352a126a845e827830c043dc7e22d6d2540621a3e0dce96dcbbc86d2d96"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+        "status": 503,
+        "bodyDigest": "8b57d352a126a845e827830c043dc7e22d6d2540621a3e0dce96dcbbc86d2d96"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/codex-connections/preview",
+        "status": 200,
+        "bodyDigest": "7042044cef4dbf05ee7ff517b6a8188f4d76f41bb96094701d7dd0f6bbe2eb6c"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/codex-connections/preview",
+        "status": 200,
+        "bodyDigest": "7042044cef4dbf05ee7ff517b6a8188f4d76f41bb96094701d7dd0f6bbe2eb6c"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/codex-connections",
+        "status": 503,
+        "bodyDigest": "5e49471311a7b8b649ba9295d707a8bd57c4af5907b8517c046b58065242ea7b"
+      },
+      {
+        "method": "POST",
+        "path": "/api/admin/codex-connections",
+        "status": 503,
+        "bodyDigest": "5e49471311a7b8b649ba9295d707a8bd57c4af5907b8517c046b58065242ea7b"
+      }
+    ],
+    "protocolServerStopped": true,
+    "ownedTabsClosed": true,
+    "viewportReset": true,
+    "staleOwnedTestFixtureCleaned": true,
+    "storefrontChanged": false,
+    "parentT18Complete": false
+  },
+  "knownLimits": [
+    "New-form default expiry follows the clock, so its minute changes between captures. Fixed READ metadata is identical.",
+    "No real credential issuance, client setup, cloud authentication, export integration or schedule execution was performed.",
+    "Historical configuration is read-only; related real backend contracts are covered by the existing API suite."
+  ]
+}

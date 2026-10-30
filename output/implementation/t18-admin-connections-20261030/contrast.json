@@ -1,0 +1,72 @@
+[
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "13px",
+    "foreground": "rgb(170, 164, 184)",
+    "selector": ".form-heading p",
+    "contrast": 7.55
+  },
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "13px",
+    "foreground": "rgb(201, 195, 211)",
+    "selector": ".field",
+    "contrast": 10.6
+  },
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".field small",
+    "contrast": 7.78
+  },
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "13px",
+    "foreground": "rgb(170, 164, 184)",
+    "selector": ".step-caption",
+    "contrast": 7.55
+  },
+  {
+    "background": "rgb(25, 25, 35)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".editor-actions small",
+    "contrast": 7.45
+  },
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "13px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".heading p",
+    "contrast": 7.78
+  },
+  {
+    "background": "rgb(27, 29, 40)",
+    "fontSize": "18px",
+    "foreground": "rgb(236, 234, 245)",
+    "selector": ".active-header h3",
+    "contrast": 14.09
+  },
+  {
+    "background": "rgb(27, 29, 40)",
+    "fontSize": "13px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".step p",
+    "contrast": 7.16
+  },
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "13px",
+    "foreground": "rgb(236, 234, 245)",
+    "selector": ".summary-body dd",
+    "contrast": 15.3
+  },
+  {
+    "background": "rgb(20, 21, 28)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".summary-body dt",
+    "contrast": 7.78
+  }
+]

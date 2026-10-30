@@ -1,0 +1,1382 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections/bbd854da-e8fe-4cf0-914e-b94c3ff1e65a",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections/7c34c3fd-b487-4844-bc7c-c7e03be2fc05",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/options",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections/bbd854da-e8fe-4cf0-914e-b94c3ff1e65a",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections/7c34c3fd-b487-4844-bc7c-c7e03be2fc05",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/options",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections/bbd854da-e8fe-4cf0-914e-b94c3ff1e65a",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections/7c34c3fd-b487-4844-bc7c-c7e03be2fc05",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/options",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations/06dd3c7f-f153-4d14-beb6-6d8482e4fcd3/revisions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/external-run-configurations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/machine-workspaces",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/categories",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  }
+]

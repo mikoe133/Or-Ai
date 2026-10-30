@@ -1,0 +1,593 @@
+{
+  "note": "Controlled READ metadata only; no tokens or server-side grants/workspaces/configurations/schedules created.",
+  "workspace": {
+    "name": "TEST 只读工作区",
+    "categoryIds": [
+      "868ab090-c806-424e-b50e-0232776cbe6a"
+    ],
+    "maxProjects": 12,
+    "maxMethodsPerProject": 8,
+    "maxRunsPerProject": 20,
+    "expiresAt": "2026-11-15T00:00:00Z",
+    "id": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+    "scope": "demo",
+    "createdAt": "2026-10-29T00:00:00Z",
+    "revokedAt": null,
+    "projectCount": 0,
+    "status": "active"
+  },
+  "active": {
+    "id": "bbd854da-e8fe-4cf0-914e-b94c3ff1e65a",
+    "scope": "demo",
+    "name": "TEST 已存连接（只读响应）",
+    "plan": {
+      "name": "TEST 已存连接（只读响应）",
+      "workspace": {
+        "kind": "new",
+        "categoryIds": [
+          "868ab090-c806-424e-b50e-0232776cbe6a"
+        ],
+        "maxProjects": 12,
+        "maxMethodsPerProject": 8,
+        "maxRunsPerProject": 20
+      },
+      "actions": {
+        "createProjects": false,
+        "useSkills": true,
+        "uploadDrafts": false
+      },
+      "domains": [
+        {
+          "domain": "assessment",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        },
+        {
+          "domain": "cover",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        },
+        {
+          "domain": "video",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        },
+        {
+          "domain": "copy",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        }
+      ],
+      "expiresAt": "2026-11-15T00:00:00.000Z"
+    },
+    "digest": "fec98c65c62f6b8a3b2422a1c4c704259186a6b2e23ab0e42afc4d483e5b83f9",
+    "summary": {
+      "categories": [
+        {
+          "id": "868ab090-c806-424e-b50e-0232776cbe6a",
+          "name": "TEST 合成分类"
+        }
+      ],
+      "sharedSkills": [],
+      "existingProjectCount": 0,
+      "maxProjects": 12,
+      "maxMethodsPerProject": 8,
+      "maxRunsPerProject": 20,
+      "workspaceExpiresAt": "2026-11-15T00:00:00.000Z",
+      "grants": [
+        {
+          "domain": "assessment",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        },
+        {
+          "domain": "copy",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        },
+        {
+          "domain": "cover",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        },
+        {
+          "domain": "video",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        }
+      ],
+      "canReview": false,
+      "canPublish": false,
+      "canReadConsumerData": false,
+      "canEditSharedSkills": false
+    },
+    "workspace": {
+      "name": "TEST 只读工作区",
+      "categoryIds": [
+        "868ab090-c806-424e-b50e-0232776cbe6a"
+      ],
+      "maxProjects": 12,
+      "maxMethodsPerProject": 8,
+      "maxRunsPerProject": 20,
+      "expiresAt": "2026-11-15T00:00:00Z",
+      "id": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+      "scope": "demo",
+      "createdAt": "2026-10-29T00:00:00Z",
+      "revokedAt": null,
+      "projectCount": 0,
+      "status": "active"
+    },
+    "credentials": [
+      {
+        "id": "b725b4ba-ef5f-4710-8b37-2c0eefed6695",
+        "name": "TEST 元数据",
+        "domain": "assessment",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": null,
+        "status": "active"
+      },
+      {
+        "id": "646495bc-d24e-47b8-9eba-6b475f80dd3a",
+        "name": "TEST 元数据",
+        "domain": "copy",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": null,
+        "status": "active"
+      },
+      {
+        "id": "3a35bec2-a9f5-432d-abed-8d58905900fa",
+        "name": "TEST 元数据",
+        "domain": "cover",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": null,
+        "status": "active"
+      },
+      {
+        "id": "6f1a27fb-5fb6-4c66-9939-92ec45335548",
+        "name": "TEST 元数据",
+        "domain": "video",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": null,
+        "status": "active"
+      }
+    ],
+    "status": "active",
+    "unavailableReason": null,
+    "expiresAt": "2026-11-15T00:00:00Z",
+    "createdAt": "2026-10-29T00:00:00Z",
+    "revokedAt": null
+  },
+  "revoked": {
+    "id": "7c34c3fd-b487-4844-bc7c-c7e03be2fc05",
+    "scope": "demo",
+    "name": "TEST 已撤销连接（只读响应）",
+    "plan": {
+      "name": "TEST 已存连接（只读响应）",
+      "workspace": {
+        "kind": "new",
+        "categoryIds": [
+          "868ab090-c806-424e-b50e-0232776cbe6a"
+        ],
+        "maxProjects": 12,
+        "maxMethodsPerProject": 8,
+        "maxRunsPerProject": 20
+      },
+      "actions": {
+        "createProjects": false,
+        "useSkills": true,
+        "uploadDrafts": false
+      },
+      "domains": [
+        {
+          "domain": "assessment",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        },
+        {
+          "domain": "cover",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        },
+        {
+          "domain": "video",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        },
+        {
+          "domain": "copy",
+          "readSkills": true,
+          "uploadDrafts": true,
+          "skillIds": []
+        }
+      ],
+      "expiresAt": "2026-11-15T00:00:00.000Z"
+    },
+    "digest": "fec98c65c62f6b8a3b2422a1c4c704259186a6b2e23ab0e42afc4d483e5b83f9",
+    "summary": {
+      "categories": [
+        {
+          "id": "868ab090-c806-424e-b50e-0232776cbe6a",
+          "name": "TEST 合成分类"
+        }
+      ],
+      "sharedSkills": [],
+      "existingProjectCount": 0,
+      "maxProjects": 12,
+      "maxMethodsPerProject": 8,
+      "maxRunsPerProject": 20,
+      "workspaceExpiresAt": "2026-11-15T00:00:00.000Z",
+      "grants": [
+        {
+          "domain": "assessment",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        },
+        {
+          "domain": "copy",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        },
+        {
+          "domain": "cover",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        },
+        {
+          "domain": "video",
+          "permissions": [
+            "context:read",
+            "methods:create",
+            "projects:read",
+            "skills:read"
+          ],
+          "skillIds": []
+        }
+      ],
+      "canReview": false,
+      "canPublish": false,
+      "canReadConsumerData": false,
+      "canEditSharedSkills": false
+    },
+    "workspace": {
+      "name": "TEST 只读工作区",
+      "categoryIds": [
+        "868ab090-c806-424e-b50e-0232776cbe6a"
+      ],
+      "maxProjects": 12,
+      "maxMethodsPerProject": 8,
+      "maxRunsPerProject": 20,
+      "expiresAt": "2026-11-15T00:00:00Z",
+      "id": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+      "scope": "demo",
+      "createdAt": "2026-10-29T00:00:00Z",
+      "revokedAt": null,
+      "projectCount": 0,
+      "status": "active"
+    },
+    "credentials": [
+      {
+        "id": "a7848e68-9361-46e7-bfe6-0bfb6236a37d",
+        "name": "TEST 元数据",
+        "domain": "assessment",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": "2026-10-29T00:00:00Z",
+        "status": "revoked"
+      },
+      {
+        "id": "9d7d684f-4ac6-4e5d-a226-44b6791aba52",
+        "name": "TEST 元数据",
+        "domain": "copy",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": "2026-10-29T00:00:00Z",
+        "status": "revoked"
+      },
+      {
+        "id": "e1bdab4c-0673-4345-8b8a-510ec4fe0035",
+        "name": "TEST 元数据",
+        "domain": "cover",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": "2026-10-29T00:00:00Z",
+        "status": "revoked"
+      },
+      {
+        "id": "6e706c76-1925-41da-a080-bf9d574d542a",
+        "name": "TEST 元数据",
+        "domain": "video",
+        "scope": "demo",
+        "permissions": [
+          "context:read",
+          "methods:create",
+          "projects:read",
+          "skills:read"
+        ],
+        "productIds": [],
+        "skillIds": [],
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "createdAt": "2026-10-29T00:00:00Z",
+        "expiresAt": "2026-11-15T00:00:00Z",
+        "revokedAt": "2026-10-29T00:00:00Z",
+        "status": "revoked"
+      }
+    ],
+    "status": "revoked",
+    "unavailableReason": null,
+    "expiresAt": "2026-11-15T00:00:00Z",
+    "createdAt": "2026-10-29T00:00:00Z",
+    "revokedAt": "2026-10-29T00:00:00Z"
+  },
+  "current": {
+    "id": "06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "scope": "demo",
+    "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+    "currentRevision": 2,
+    "revision": {
+      "id": "c98eee7e-962e-451f-a653-2d65fdf400ea",
+      "configurationId": "06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+      "revision": 2,
+      "digest": "d58fb06019708fcf35d23dc9cab227b81ff24b2c16e4b463a4fbd5cb5eb5b709",
+      "document": {
+        "schemaVersion": 1,
+        "name": "TEST 未启用配置（只读响应）",
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "connectionId": null,
+        "target": {
+          "kind": "new_topics",
+          "productId": null,
+          "planRevisionId": null,
+          "planDigest": null
+        },
+        "client": {
+          "kind": "codex_desktop",
+          "workingDirectory": null
+        },
+        "timing": {
+          "kind": null,
+          "date": null,
+          "time": null,
+          "timeZone": null,
+          "until": null,
+          "weekdays": [],
+          "quantity": null,
+          "missed": null,
+          "overlap": null
+        },
+        "sourcing": {
+          "basis": "manual",
+          "freshnessWindowHours": null,
+          "maxSources": null,
+          "maxDurationMinutes": null,
+          "missing": null,
+          "sources": []
+        },
+        "orchestration": "single",
+        "modules": [],
+        "tools": [],
+        "limits": {
+          "maxAttemptsPerModule": null,
+          "maxTotalAttempts": null,
+          "maxConcurrency": null,
+          "maxDurationSeconds": null,
+          "maxReportedCostFen": null,
+          "maxReportedTokens": null,
+          "unknownCost": null,
+          "stageLimits": []
+        },
+        "recovery": {
+          "unknownJob": null,
+          "failedModule": null,
+          "pause": null,
+          "resume": null
+        }
+      },
+      "createdAt": "2026-10-29T00:00:00Z",
+      "enabled": false,
+      "externalReadiness": "not_verified"
+    },
+    "createdAt": "2026-10-29T00:00:00Z",
+    "enabled": false
+  },
+  "old": {
+    "id": "06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+    "scope": "demo",
+    "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+    "currentRevision": 2,
+    "revision": {
+      "id": "49a63487-6bc2-494c-ab60-a6d50bf16225",
+      "configurationId": "06dd3c7f-f153-4d14-beb6-6d8482e4fcd3",
+      "revision": 1,
+      "digest": "d6a06edff914f60679ac3f9aca1334c6b3f85066e4079dbaab5ceb631a2f638d",
+      "document": {
+        "schemaVersion": 1,
+        "name": "TEST 历史配置（只读响应）",
+        "workspaceId": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+        "connectionId": null,
+        "target": {
+          "kind": "new_topics",
+          "productId": null,
+          "planRevisionId": null,
+          "planDigest": null
+        },
+        "client": {
+          "kind": "codex_desktop",
+          "workingDirectory": null
+        },
+        "timing": {
+          "kind": null,
+          "date": null,
+          "time": null,
+          "timeZone": null,
+          "until": null,
+          "weekdays": [],
+          "quantity": null,
+          "missed": null,
+          "overlap": null
+        },
+        "sourcing": {
+          "basis": "manual",
+          "freshnessWindowHours": null,
+          "maxSources": null,
+          "maxDurationMinutes": null,
+          "missing": null,
+          "sources": []
+        },
+        "orchestration": "single",
+        "modules": [],
+        "tools": [],
+        "limits": {
+          "maxAttemptsPerModule": null,
+          "maxTotalAttempts": null,
+          "maxConcurrency": null,
+          "maxDurationSeconds": null,
+          "maxReportedCostFen": null,
+          "maxReportedTokens": null,
+          "unknownCost": null,
+          "stageLimits": []
+        },
+        "recovery": {
+          "unknownJob": null,
+          "failedModule": null,
+          "pause": null,
+          "resume": null
+        }
+      },
+      "createdAt": "2026-10-29T00:00:00Z",
+      "enabled": false,
+      "externalReadiness": "not_verified"
+    },
+    "createdAt": "2026-10-29T00:00:00Z",
+    "enabled": false
+  },
+  "options": {
+    "workspace": {
+      "id": "2ddbff08-15bd-4c9c-a0ca-7049a7f0a185",
+      "name": "TEST 只读工作区",
+      "expiresAt": "2026-11-15T00:00:00Z",
+      "status": "active"
+    },
+    "projects": {
+      "items": [],
+      "page": 1,
+      "pageSize": 20,
+      "total": 0
+    }
+  }
+}

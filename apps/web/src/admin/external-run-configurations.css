@@ -23,3 +23,35 @@
 .admin-shell .external-run-configurations .form-pane .dependency .inline-check{font-size:11px}
 .admin-shell .cx-config-entry{text-align:right;margin:0 0 14px;font-size:12px}
 @media(max-width:760px){.admin-shell .external-run-configurations .page-heading h2{font-size:24px}.admin-shell .external-run-configurations .spec-row{grid-template-columns:72px minmax(0,1fr)}}
+
+/* The current step and fixed revision carry the hierarchy, without decorative labels. */
+.admin-shell .external-run-configurations{font-size:13px;line-height:1.7}
+.admin-shell .external-run-configurations :is(button,input,select,textarea){font-size:13px;min-height:42px}
+.admin-shell .external-run-configurations :is(.page-heading .muted,.field,.spec-row,.callout,.form-heading p,.source-title,.inline-check,.check-item,.review-state p,.issues li){font-size:13px;line-height:1.8}
+.admin-shell .external-run-configurations :is(.field small,.context-line,.context-line .end,.config-row small,.detail-top .muted,.detail-meta small,.spec-row small,.editor-actions small,.check-item small,.limits-note){font-size:12px;line-height:1.7}
+.admin-shell .external-run-configurations .step-nav button{font-size:13px;min-height:46px}
+.admin-shell .external-run-configurations .step-nav small{font-size:12px}
+.admin-shell .external-run-configurations .step-caption,.admin-shell .external-run-configurations .revision-label{color:var(--muted);font-size:12px;letter-spacing:0;margin:0 0 8px}
+.admin-shell .external-run-configurations .check-rail h3{font-size:15px;margin-bottom:12px}
+.admin-shell .external-run-configurations .config-row strong{font-size:14px;overflow-wrap:anywhere}
+.admin-shell .external-run-configurations .list-empty{color:var(--muted);font-size:13px;padding:16px 0}
+.admin-shell .external-run-configurations .surface-tabs{font-size:13px}
+.admin-shell .external-run-configurations .mobile-step{display:none}
+.admin-shell .external-run-configurations .form-heading h3{scroll-margin-top:104px}
+.admin-shell .external-run-configurations .dialog-body>p{font-size:13px}
+.admin-shell .external-run-configurations .dialog-actions button{font-size:13px}
+@media(max-width:950px){
+  .admin-shell .external-run-configurations .config-list{display:block;border-right:0;border-bottom:1px solid var(--line);padding:0 0 18px;max-height:240px;overflow-y:auto}
+  .admin-shell .external-run-configurations .step-nav{display:none}
+  .admin-shell .external-run-configurations .mobile-step{display:block;position:sticky;top:0;z-index:2;background:var(--panel);padding:10px 0 16px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+  .admin-shell .external-run-configurations .mobile-step label{display:grid;gap:6px;color:var(--muted);font-size:12px}
+  .admin-shell .external-run-configurations .mobile-step select{width:100%;color:var(--text);font-size:14px}
+}
+@media(max-width:760px){
+  .admin-shell .external-run-configurations :is(input,select,textarea){font-size:14px}
+  .admin-shell .external-run-configurations .editor-actions small{margin-bottom:8px}
+  .admin-shell .external-run-configurations .editor-actions button{font-size:12px;padding:9px 10px}
+  .admin-shell .external-run-configurations .detail-actions button{font-size:13px}
+  .admin-shell .external-run-configurations .form-pane{padding-bottom:12px}
+  .admin-shell .external-run-configurations .detail-meta strong{font-size:22px}
+}

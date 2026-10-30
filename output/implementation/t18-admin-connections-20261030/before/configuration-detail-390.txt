@@ -1,0 +1,40 @@
+Browser tab: 1, Title: "Codex 连接 · MeetMyWorld 运营后台", URL: "http://orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3".
+1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 text Codex 连接 已验证的管理员
+			7 link Description: 账户设置, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/account
+		8 container Codex 连接, ID: admin-workspace
+			9 heading Codex 连接, Value: 1, ID: admin-workspace-title
+				10 text Codex 连接
+			11 container 未启用运行配置
+				12 container 连接与配置
+					13 link Description: 连接与权限, Value: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine
+					14 text 运行配置草稿
+				15 container
+					16 text EXTERNAL OPERATIONS / CONFIGURATION
+					17 heading 运行配置草稿, Value: 2
+						18 text 运行配置草稿
+					19 text 把时间、方法与工具限制放在同一份可核对的安排里。 未启用
+					20 button 新建配置草稿, ID: ec-new
+					21 text 当前管理员私有配置 配置、审核交接与真实执行分别核对 CONFIGURATION / REVISION  2
+					22 heading TEST 未启用配置（只读响应）, Value: 3
+						23 text TEST 未启用配置（只读响应）
+					24 text 当前草稿  ·  2026/10/29 08:00:00 配置修订
+					25 pop up button (collapsed, settable) 配置修订, Value: r2 · 当前, ID: ec-history, Secondary Actions: Expand
+						26 menu
+							27 (selected) r2 · 当前
+							28 r1 · 历史只读
+					29 container 分页
+						30 button (disabled) 上一页
+						31 text 第  1  页 · 共  2  条
+						32 button (disabled) 下一页
+					33 text 0 固定模块 单任务 仅交接方式 未验证 外部客户端与实际执行 客户端 Codex桌面端（声明，接入未验） 时间与时区 尚未确定 方法与依赖 精确计划、方法快照及最小回执；未来上游只声明等待 工具与费用 配置声明，不替代外部权限或真实账单 失败与恢复 原作业先核对，成功稿保留，人工确认后恢复 草稿已真实保存；尚未配置客户端、创建定时器或启动制作。导出也保持未启用。
+					34 button 编辑此草稿, ID: ec-edit
+					35 button 核对与导出, ID: ec-review
+			36 container
+				37 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea Codex 连接 · MeetMyWorld 运营后台, URL: orai-cua-b1cfcbdf-a1e7-4ad4-9c1c-c391458f8626.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3

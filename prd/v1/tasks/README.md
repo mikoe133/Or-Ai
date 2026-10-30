@@ -1,6 +1,6 @@
 # 当前任务：执行顺序与归档
 
-更新：2026-10-29。01–04及[07云适配](archive/completed/07-cloud-adapters.md)已完成各自本地范围并归档；**当前接续[05商品与模板转制](active/05-product-template-migration.md)**及06剩余本地验收；A/B合成技术子批次已通过635项与26项自主CUA。07通过626项、类型/构建、35项离线检查、12项初始化专项及最新Linux镜像/恢复证明；真实部署仍属08。新增[17全站前端设计改造](active/17-frontend-design-refinement.md)：原Skill ZIP已接收核验、项目安装并完整读取，设计标准、24张静态基线/根加载修复及后台共享骨架/概览首批已有证据，全站改造未完成，17独立排期。旧托管CI失败断言仍待权限可读日志，见[调查](../../../output/implementation/ci-investigation-20261028.md)。本地技术完成不等于云端或商业上线。
+更新：2026-10-30。01–04及[07云适配](archive/completed/07-cloud-adapters.md)已完成各自本地范围并归档；**当前接续[05商品与模板转制](active/05-product-template-migration.md)**及06剩余本地验收；A/B合成技术子批次已通过635项与26项自主CUA。07通过626项、类型/构建、35项离线检查、12项初始化专项及最新Linux镜像/恢复证明；真实部署仍属08。新增[17全站前端设计改造](active/17-frontend-design-refinement.md)：原Skill ZIP已接收核验、项目安装并完整读取，设计标准、24张静态基线/根加载修复及后台共享骨架/概览首批已有证据，全站改造未完成，17独立排期。旧托管CI失败断言仍待权限可读日志，见[调查](../../../output/implementation/ci-investigation-20261028.md)。本地技术完成不等于云端或商业上线。
 
 实际待办集中在 `active/`。原完整完成任务在 `archive/completed/`；包含未完成项的旧文件与旧总表在 `archive/history/2026-10-26/`，不认定为完成。根目录的 `Txx-*.md` 仅兼容旧链接，不是另一套待办。新旧编号逐项见 [TASK-MAP.md](TASK-MAP.md)，状态数据见 [registry.json](registry.json)；其中 legacyCoverage 的 disposition/carryover 明确记录被替代方向及剩余验收承接。
 
@@ -27,7 +27,7 @@
 | 14 | [真实 Codex/MCP 手动制作与退回重做演练](active/14-manual-production-rehearsal.md) | T14.W3 | 暂停：实际内容生成未恢复 | 04、05、06 |
 | 15 | [交付日更生产配置与恢复说明](active/15-external-schedule-handoff.md) | T14.W4 | 等待手动全链与运行参数 | 14 |
 | 16 | [按商品需要选择并实现首个新玩法](active/16-new-interaction-engine.md) | T17 | 待玩法选型 | 01、02、03 |
-| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | Skill首批通过；连接配置/项目、全站与完整状态待做 | 完整改造依赖05、06；现状审计可先准备 |
+| 17 | [依据anti-ai-web-design审计并改造全站前端](active/17-frontend-design-refinement.md) | T18 | 连接/配置首批通过；项目、全站与完整状态待做 | 完整改造依赖05、06；现状审计可先准备 |
 
 01–04及07已归档；当前05–06商品本地实现→17前端改造→10最终真机，08独立持有真实云端；11–12完成正式商品与首发。17是新需求的队列编号（稳定ID为T18），完整退出在05/06之后、10之前；已独立完成根加载与后台共享骨架/概览首批，不重新编号旧任务或移除依赖。**硬依赖以上表和各任务为准**，不能用“前面有暂停项”停止无关工作。
 
@@ -104,3 +104,5 @@ flowchart TD
 
 归档入口：[archive/README.md](archive/README.md)。
 
+
+2026-10-30完成[连接与运行配置子批次](archive/completed/17-admin-connections-configurations-slice-20261030.md)：643业务＋2专项、类型/前端构建、18组前后对照、47项CUA通过。503保留、完整权限隐藏/恢复、原保存请求、409/历史/手机导航已验；项目页继续，17/T18及05/06不关闭。

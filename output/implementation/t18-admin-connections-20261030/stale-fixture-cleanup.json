@@ -1,0 +1,9 @@
+{
+  "staleProcessAbsent": true,
+  "ownedTestDatabase": "orai_test_t18_e1ab8d266f",
+  "previouslyExisted": true,
+  "activeSessions": 0,
+  "ownedTestDatabaseRemoved": true,
+  "expiredSyntheticPrivateStateRemoved": true,
+  "productionDataTouched": false
+}

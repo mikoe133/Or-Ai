@@ -22,3 +22,38 @@
 .admin-shell .codex-connections .cx-other ul{list-style:none;padding:0;display:flex;gap:8px;flex-wrap:wrap;}
 .admin-shell .codex-connections .ux-pager{margin:12px 0;}
 @media(max-width:700px){.admin-shell .codex-connections .cx-title{font-size:26px;}.admin-shell .codex-connections .cx-buttons{width:100%;}.admin-shell .codex-connections .cx-buttons button{flex:1;}.admin-shell .codex-connections .dialog-frame{max-height:calc(100dvh - 40px);}.admin-shell .codex-connections .cx-legacy{font-size:10px;}}
+
+/* Task hierarchy and readable scope summaries; confined to the admin surface. */
+.admin-shell .cx-surface-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin:0 0 24px;font-size:13px}
+.admin-shell .cx-surface-tabs>*{padding:10px 0 13px;color:var(--muted);text-decoration:none}
+.admin-shell .cx-surface-tabs [aria-current]{border-bottom:2px solid var(--accent);color:var(--text)}
+.admin-shell .codex-connections{font-size:13px;line-height:1.7}
+.admin-shell .codex-connections .heading{margin-bottom:24px}
+.admin-shell .codex-connections .heading p{font-size:13px;line-height:1.8}
+.admin-shell .codex-connections h3{font-size:15px}
+.admin-shell .codex-connections .active-header h3{font-size:18px;overflow-wrap:anywhere}
+.admin-shell .codex-connections .panel{padding:24px}
+.admin-shell .codex-connections :is(.section-title small,.field small,.hint,.setup-actions small,.advanced>summary small){font-size:12px;line-height:1.7}
+.admin-shell .codex-connections :is(.action-choice p,.business-boundary,.step p,.summary-body dd,.field,.chip,.consent,.dialog-body>p){font-size:13px;line-height:1.8}
+.admin-shell .codex-connections .action-choice strong{font-size:15px}
+.admin-shell .codex-connections :is(.summary-body dt,.domain-table,.domain-table th,.state-badge,.skill-choice,.skill-choice small){font-size:12px}
+.admin-shell .codex-connections .summary-body dt{margin-top:16px;margin-bottom:6px}
+.admin-shell .codex-connections .section-title{align-items:baseline;flex-wrap:wrap;gap:4px 12px}
+.admin-shell .codex-connections :is(.step h3,.advanced>summary){font-size:14px}
+.admin-shell .codex-connections :is(.step button,.connection-actions button,.dialog-actions button){font-size:13px;min-height:42px}
+.admin-shell .codex-connections .summary{scroll-margin-top:20px}
+.admin-shell .codex-connections .cx-page-links{display:none}
+.admin-shell .codex-connections .business-boundary{background:transparent;border-left-color:var(--line)}
+@media(max-width:1100px){
+  .admin-shell .codex-connections .cx-page-links{display:flex;flex-wrap:wrap;gap:12px 24px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px}
+}
+@media(max-width:700px){
+  .admin-shell .codex-connections .panel,.admin-shell .codex-connections .summary{padding:20px 16px}
+  .admin-shell .codex-connections .advanced>summary{align-items:flex-start;flex-wrap:wrap}
+  .admin-shell .codex-connections .advanced>summary small{flex-basis:100%;margin-left:25px}
+  .admin-shell .codex-connections .field input,.admin-shell .codex-connections .field select{font-size:14px}
+  .admin-shell .codex-connections .dialog-body .summary-body dd{font-size:13px}
+  .admin-shell .codex-connections .domain-table th{font-size:12px}
+  .admin-shell .codex-connections .domain-table td{padding:14px 2px}
+  .admin-shell .codex-connections .setup-actions .cx-buttons{width:100%}
+}

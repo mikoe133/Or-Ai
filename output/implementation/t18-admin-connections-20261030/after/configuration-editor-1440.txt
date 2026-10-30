@@ -1,0 +1,95 @@
+Browser tab: 2, Title: "Codex 连接 · MeetMyWorld 运营后台", URL: "http://orai-cua-80cca092-586c-49a6-9663-f283bc87ed12.localhost:5188/admin/machine/configurations?configuration=06dd3c7f-f153-4d14-beb6-6d8482e4fcd3".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 41-42, 44-60, 62-64
+~					34 heading 编辑运行配置, Value: 2
+~						35 text 编辑运行配置
+~					37 button 返回配置详情, ID: ec-back
+~					38 text 已保存 r2 配置、审核交接与真实执行分别核对
+~					39 container 配置步骤
+~						40 button 01 范围与客户端
++							41 text 01
++							42 text 范围与客户端
+~						43 button 02 时间与产量
++							44 text 02
++							45 text 时间与产量
++						46 button 03 来源与输入
++							47 text 03
++							48 text 来源与输入
++						49 button 04 方法与分工
++							50 text 04
++							51 text 方法与分工
++						52 button 05 工具与限制
++							53 text 05
++							54 text 工具与限制
++						55 button 06 核对与导出
++							56 text 06
++							57 text 核对与导出
++						58 container
++							59 text 未知参数不代填。
++							60 text 配置和真实执行分开核对。
+~					61 container
++						62 text 步骤  1  /  6
++						63 heading 范围与客户端, Value: 3, ID: ec-step-title
++							64 text 范围与客户端
++						65 text 精确依据由服务端核对，当前选择不会启动执行。
++					66 container
++						67 text 配置名称
++						68 text field (settable) Description: 配置名称, Value: TEST 未启用配置（只读响应）, ID: ec-name
++						69 text 已有工作区
++						70 pop up button (disabled, collapsed, settable) Description: 已有工作区, Value: TEST 只读工作区 · 有效, ID: ec-workspace, Secondary Actions: Expand
++							71 menu
++								72 (disabled) 请选择当前管理员已有工作区
++								73 (disabled) TEST 只读工作区 · 有效
++						74 text 只引用现有工作区，不签发权限。
++						75 text 已有工作区连接
++						76 pop up button (collapsed, settable) Description: 已有工作区连接, Value: 请明确选择已有连接, Secondary Actions: Expand
++							77 menu
++								78 (selected) 请明确选择已有连接
++						79 text 外部客户端
++						80 pop up button (collapsed, settable) Description: 外部客户端, Value: Codex桌面端, Secondary Actions: Expand
++							81 menu
++								82 请明确选择
++								83 (selected) Codex桌面端
++								84 Codex CLI
++						85 text 仅声明，安装/版本/接入未验证。
++						86 text 本机工作目录
++						87 text field (settable) Description: 本机工作目录, ID: ec-client-workingDirectory
++						88 text 私有元数据，只检查路径格式，不读取目录。
++						89 text 起点范围
++						90 pop up button (collapsed, settable) Description: 起点范围, Value: 新题目准备 · 尚无固定计划, Secondary Actions: Expand
++							91 menu
++								92 既有商品 · 固定计划
++								93 (selected) 新题目准备 · 尚无固定计划
++						94 text 新题目需要先形成S0–S2的证据、计划与方法；当前不携带旧商品引用，保持未就绪。
++					95 heading 当前核对, Value: 3
++						96 text 当前核对
++					97 text 待校验
++					98 text 保存、字段核对与真实执行分开。
++					99 text ○
++					100 button 范围与客户端 · 尚未校验
++						101 text 范围与客户端
++						102 text · 尚未校验
++					103 text ○
++					104 button 时间与产量 · 尚未校验
++						105 text 时间与产量
++						106 text · 尚未校验
++					107 text ○
++					108 button 来源与输入 · 尚未校验
++						109 text 来源与输入
++						110 text · 尚未校验
++					111 text ○
++					112 button 方法与分工 · 尚未校验
++						113 text 方法与分工
++						114 text · 尚未校验
++					115 text ○
++					116 button 工具与限制 · 尚未校验
++						117 text 工具与限制
++						118 text · 尚未校验
++					119 text 模型与档位沿用外部客户端，本页不改变设置或调用模型。
++					120 text 已保存配置可刷新回读，当前修改须另存修订
++					121 button (disabled) 上一步
++					122 button 下一步
++					123 button 保存配置草稿, ID: ec-save
++			124 container
++				125 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 63 heading 范围与客户端, Value: 3, ID: ec-step-title

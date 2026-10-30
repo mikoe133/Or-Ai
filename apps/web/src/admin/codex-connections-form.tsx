@@ -5,9 +5,12 @@ import {ClientError} from '../api/client.js';
 import {skillsApi} from './skills-api.js';
 import {codexConnectionsApi,type CodexPreview} from './codex-connections-api.js';
 import {codexDomainNames,shanghaiInput,type CodexDomain,type CodexForm,type NamedChoice} from './codex-connections-model.js';
+import {isAccessFailure} from './refresh-notice.js';
 
-export function CodexFailure({error,retry}:{error:unknown;retry?:()=>void}){
-  return <div className="cx-error"><p role="alert">{error instanceof ClientError?error.message:'操作未完成，请核对输入或重新读取。'}</p>{retry&&<button type="button" onClick={retry}>重新读取</button>}</div>;
+export type CodexAccessFailure=(error:unknown,verify?:()=>Promise<unknown>)=>void;
+
+export function CodexFailure({error,retry,busy=false}:{error:unknown;retry?:()=>void;busy?:boolean}){
+  return <div className="cx-error"><p role="alert">{error instanceof ClientError?error.message:'操作未完成，请核对输入或重新读取。'}</p>{retry&&<button type="button" disabled={busy} onClick={retry}>重新读取</button>}</div>;
 }
 export function CodexSummary({plan,summary}:{plan:CodexPreview['plan'];summary:CodexPreview['summary']}){
   const reading=summary.grants.filter(g=>g.permissions.includes('skills:read')).map(g=>codexDomainNames[g.domain]),
@@ -33,8 +36,9 @@ export function CodexDialog({title,children,footer,onClose,returnFocusId,dismiss
   </dialog>;
 }
 
-function CategoryChoices({selected,onChange,locked}:{selected:NamedChoice[];onChange:(choices:NamedChoice[])=>void;locked:boolean}){
+function CategoryChoices({selected,onChange,locked,onAccessFailure}:{selected:NamedChoice[];onChange:(choices:NamedChoice[])=>void;locked:boolean;onAccessFailure:CodexAccessFailure}){
   const [page,setPage]=useState(1),query=useQuery({queryKey:['private','admin','codex-categories',page],queryFn:({signal})=>codexConnectionsApi.categories(page,signal),enabled:!locked});
+  useEffect(()=>{if(isAccessFailure(query.error))onAccessFailure(query.error,()=>codexConnectionsApi.categories(page));},[query.error]);
   if(locked)return <p>{selected.map(c=>c.name).join('、')}<small> · 现有工作区范围固定</small></p>;
   return <>{query.isPending?<Loading/>:query.isError?<CodexFailure error={query.error} retry={()=>void query.refetch()}/>:<>
     <div className="chips">{query.data.items.map(c=><label className="chip" key={c.id}><input type="checkbox" aria-label={'允许分类 '+c.name} checked={selected.some(s=>s.id===c.id)} disabled={selected.length>=30&&!selected.some(s=>s.id===c.id)}
@@ -43,10 +47,11 @@ function CategoryChoices({selected,onChange,locked}:{selected:NamedChoice[];onCh
     {!!selected.filter(s=>!query.data.items.some(c=>c.id===s.id)).length&&<div className="chips">{selected.filter(s=>!query.data.items.some(c=>c.id===s.id)).map(s=><button type="button" key={s.id} onClick={()=>onChange(selected.filter(c=>c.id!==s.id))}>移除 {s.name}</button>)}</div>}
   </>}</>;
 }
-function SharedSkills({domain,selected,onChange}:{domain:CodexDomain;selected:NamedChoice[];onChange:(choices:NamedChoice[])=>void}){
+function SharedSkills({domain,selected,onChange,onAccessFailure}:{domain:CodexDomain;selected:NamedChoice[];onChange:(choices:NamedChoice[])=>void;onAccessFailure:CodexAccessFailure}){
   const [page,setPage]=useState(1),[search,setSearch]=useState(''),[open,setOpen]=useState(false);
   const query=useQuery({queryKey:['private','admin','codex-shared-skills',domain,page,search],enabled:open,
     queryFn:({signal})=>skillsApi.list(domain,new URLSearchParams({page:String(page),pageSize:'10',...(search?{q:search}:{})}).toString(),signal)});
+  useEffect(()=>{if(isAccessFailure(query.error))onAccessFailure(query.error,()=>skillsApi.list(domain,new URLSearchParams({page:String(page),pageSize:'10',...(search?{q:search}:{})}).toString()));},[query.error]);
   return <details className="cx-skill-choices" onToggle={e=>setOpen(e.currentTarget.open)}><summary>{codexDomainNames[domain]} · 已选 {selected.length} 个</summary>
     <label className="field">搜索{codexDomainNames[domain]} Skill<input aria-label={'搜索 '+codexDomainNames[domain]+' Skill'} value={search} maxLength={100} onChange={e=>{setSearch(e.target.value);setPage(1);}}/></label>
     {!!selected.length&&<div className="chips">{selected.map(s=><button type="button" key={s.id} aria-label={'移除共享 Skill '+s.name} onClick={()=>onChange(selected.filter(c=>c.id!==s.id))}>{s.name} ×</button>)}</div>}
@@ -58,9 +63,10 @@ function SharedSkills({domain,selected,onChange}:{domain:CodexDomain;selected:Na
   </details>;
 }
 
-export function CodexAdvanced({form,setForm,categories}:{form:CodexForm;setForm:(value:CodexForm)=>void;categories:NamedChoice[]}){
+export function CodexAdvanced({form,setForm,categories,onAccessFailure}:{form:CodexForm;setForm:(value:CodexForm)=>void;categories:NamedChoice[];onAccessFailure:CodexAccessFailure}){
   const [open,setOpen]=useState(false),[page,setPage]=useState(1),workspaces=useQuery({queryKey:['private','admin','codex-workspaces',page],enabled:open,
     queryFn:({signal})=>codexConnectionsApi.workspaces(page,signal)}),locked=!!form.workspace;
+  useEffect(()=>{if(isAccessFailure(workspaces.error))onAccessFailure(workspaces.error,()=>codexConnectionsApi.workspaces(page));},[workspaces.error]);
   const selected=form.workspace,rows=workspaces.data?.items??[],choices=selected&&!rows.some(w=>w.id===selected.id)?[selected,...rows]:rows;
   return <details className="advanced" onToggle={e=>setOpen(e.currentTarget.open)}><summary>高级设置 <small>可选 · 一次设置，后续商品复用</small></summary>
     <div className="advanced-body"><section className="settings-section"><h3>连接与商品范围</h3><div className="fields">
@@ -71,7 +77,7 @@ export function CodexAdvanced({form,setForm,categories}:{form:CodexForm;setForm:
       </select><small>仅当前管理员自己的私有空间。</small></label>
       {workspaces.isError&&<div className="wide"><CodexFailure error={workspaces.error} retry={()=>void workspaces.refetch()}/></div>}
       {workspaces.data&&workspaces.data.total>workspaces.data.pageSize&&<div className="wide"><Pager {...workspaces.data} onChange={setPage}/></div>}
-      <fieldset className="wide"><legend>允许的商品分类</legend><CategoryChoices selected={form.categories} locked={locked} onChange={values=>setForm({...form,categories:values})}/>
+      <fieldset className="wide"><legend>允许的商品分类</legend><CategoryChoices selected={form.categories} locked={locked} onAccessFailure={onAccessFailure} onChange={values=>setForm({...form,categories:values})}/>
         {locked&&<p className="hint">现有工作区范围和额度固定。它已有的商品访问也会列在确认摘要中。</p>}</fieldset>
     </div></section>
     <section className="settings-section"><h3>各类内容的访问权限</h3><p>主页面勾选操作后，才会请求下方对应权限；新建商品与共同计划仅由题目与报告连接负责。</p>
@@ -83,7 +89,7 @@ export function CodexAdvanced({form,setForm,categories}:{form:CodexForm;setForm:
       <p className="hint">这里是待确认的范围，不会自动勾选主页面操作。</p>
     </section>
     <section className="settings-section"><h3>允许使用的共享 Skill（可选）</h3><p>不选择时，仅可处理所属项目的方法。共享库只读，商品定制版本另存。</p>
-      {(Object.keys(codexDomainNames) as CodexDomain[]).filter(d=>form.domains[d].enabled&&form.domains[d].readSkills).map(domain=><SharedSkills key={domain} domain={domain} selected={form.domains[domain].skills}
+      {(Object.keys(codexDomainNames) as CodexDomain[]).filter(d=>form.domains[d].enabled&&form.domains[d].readSkills).map(domain=><SharedSkills key={domain} domain={domain} selected={form.domains[domain].skills} onAccessFailure={onAccessFailure}
         onChange={skills=>setForm({...form,domains:{...form.domains,[domain]:{...form.domains[domain],skills}}})}/>)}
     </section>
     <section className="settings-section"><h3>数量与有效期</h3><div className="fields">
