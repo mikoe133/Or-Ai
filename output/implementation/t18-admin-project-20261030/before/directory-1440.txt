@@ -1,0 +1,58 @@
+Browser tab: 3, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-d2e297fd-fd4b-4d12-9339-15d153a9fdfb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 97-188
+~					77 checkbox 关系画布, Value: 0
+~					78 checkbox 目录列表, Value: 1
++						97 text 尚无已保存文件
++					98 container
++						99 button 02 TEST 引流文案 等待输入 · 必需
++							100 text 02
++							101 text TEST 引流文案
++							102 container
++								103 text 等待输入  ·  必需
++						104 button (collapsed) Description: 展开TEST 引流文案文件夹, Secondary Actions: Expand
++						105 text 尚无已保存文件
++					106 button ✓ 缺项与审核留存
++				107 container 项目详情
++					108 container
++						109 text PROJECT BRIEF
++						110 heading TEST Three.js 项目规划, Value: 3
++							111 text TEST Three.js 项目规划
++						112 text r1
++					113 container
++						114 heading 共同目标, Value: 4
++							115 text 共同目标
++						116 definition list
++							117 container 情绪价值
++								118 text 情绪价值
++							119 text TEST 情绪目标
++							120 container 加深理解
++								121 text 加深理解
++							122 text TEST 理解目标
++							123 container 留给参与者
++								124 text 留给参与者
++							125 text TEST 回顾目标
++					126 container
++						127 heading 对象与表达, Value: 4
++							128 text 对象与表达
++						129 text TEST 合成范围  ·  TEST 合成场景 TEST 按商品规划 TEST 清楚简短
++					130 container
++						131 heading 选题依据, Value: 4
++							132 text 选题依据
++						133 text 验证不同商品拥有独立规划
++					134 container
++						135 heading 固定版本, Value: 4
++							136 text 固定版本
++						137 button (collapsed) 计划 · b67b0e44, Secondary Actions: Expand
++							138 text 计划
++							139 text  · 
++							140 text b67b0e44
++						141 button (collapsed) 设定 · 31c29711, Secondary Actions: Expand
++							142 text 设定
++							143 text  · 
++							144 text 31c29711
++				145 container
++					146 text 当前工作区  · 计划 r 1 读取于  2026/10/30 08:00:00
++			147 container
++				148 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 78 checkbox 目录列表, Value: 1

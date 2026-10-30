@@ -1,0 +1,35 @@
+Browser tab: 3, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-d2e297fd-fd4b-4d12-9339-15d153a9fdfb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&node=module%3A3ca9641b-75b8-4f45-a4d2-a5b583092091".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 71-112
+~					63 checkbox 关系画布, Value: 0
+~					64 checkbox 目录列表, Value: 1
+~				68 container 项目内容目录
+~					69 container
+~						70 text 查找模块
++						71 text field (settable) 查找项目模块
++					72 button ▱ 制作计划 r1
++						73 text ▱ 制作计划
++						74 container
++							75 text r 1
++					76 container
++						77 button 01 商品体验 等待输入 · 必需
++							78 text 01
++							79 text 商品体验
++							80 container
++								81 text 等待输入  ·  必需
++						82 button (collapsed) Description: 展开商品体验文件夹, Secondary Actions: Expand
++						83 text 尚无已保存文件
++					84 container
++						85 button 02 TEST 引流文案 等待输入 · 必需
++							86 text 02
++							87 text TEST 引流文案
++							88 container
++								89 text 等待输入  ·  必需
++						90 button (collapsed) Description: 展开TEST 引流文案文件夹, Secondary Actions: Expand
++						91 text 尚无已保存文件
++					92 button ✓ 缺项与审核留存
++				93 container
++					94 text 当前工作区  · 计划 r 1 读取于  2026/10/30 08:00:00
++			95 container
++				96 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 64 checkbox 目录列表, Value: 1

@@ -1,0 +1,120 @@
+[
+  {
+    "name": "503-keeps-open-node-dialog-and-name",
+    "passed": true
+  },
+  {
+    "name": "local-node-add-preserves-threejs-plan",
+    "passed": true
+  },
+  {
+    "name": "canvas-403-hides-private-project-and-dialogs",
+    "passed": true
+  },
+  {
+    "name": "failed-access-retry-does-not-reveal-project",
+    "passed": true
+  },
+  {
+    "name": "successful-retry-restores-unsaved-plan",
+    "passed": true
+  },
+  {
+    "name": "explicit-plan-discard-restores-fixed-modules",
+    "passed": true
+  },
+  {
+    "name": "four-project-views-have-three-viewport-pairs",
+    "passed": true
+  },
+  {
+    "name": "project-pages-avoid-horizontal-page-overflow",
+    "passed": true
+  },
+  {
+    "name": "final-capture-uses-matching-selection-and-no-overflow",
+    "passed": true
+  },
+  {
+    "name": "directory-search-keeps-matching-module",
+    "passed": true
+  },
+  {
+    "name": "mobile-detail-surface-is-opaque",
+    "passed": true
+  },
+  {
+    "name": "mobile-detail-close-restores-module-focus",
+    "passed": true
+  },
+  {
+    "name": "workspace-403-closes-mobile-detail-and-hides-project",
+    "passed": true
+  },
+  {
+    "name": "project-recovery-shows-admin-destinations",
+    "passed": true
+  },
+  {
+    "name": "successful-project-retry-does-not-reopen-private-dialog",
+    "passed": true
+  },
+  {
+    "name": "project-503-keeps-method-subpage-state",
+    "passed": true
+  },
+  {
+    "name": "project-403-hides-method-subpage",
+    "passed": true
+  },
+  {
+    "name": "project-permission-recovery-preserves-method-state",
+    "passed": true
+  },
+  {
+    "name": "project-503-keeps-run-subpage-mounted",
+    "passed": true
+  },
+  {
+    "name": "project-403-hides-run-subpage",
+    "passed": true
+  },
+  {
+    "name": "project-successful-retry-restores-run-subpage",
+    "passed": true
+  },
+  {
+    "name": "planning-dialog-cancel-restores-trigger-focus",
+    "passed": true
+  },
+  {
+    "name": "discarded-draft-selection-returns-to-fixed-plan",
+    "passed": true
+  },
+  {
+    "name": "project-text-samples-meet-4.5-contrast",
+    "passed": true,
+    "minimum": 6.58
+  },
+  {
+    "name": "initial-project-503-has-admin-retry-without-empty-workspace",
+    "passed": true
+  },
+  {
+    "name": "connection-tab-resolves-shared-admin-accent",
+    "passed": true
+  },
+  {
+    "name": "unknown-planning-save-retains-pending-module",
+    "passed": true
+  },
+  {
+    "name": "permission-loss-hides-unknown-planning-save",
+    "passed": true
+  },
+  {
+    "name": "permission-recovery-reuses-original-plan-save-body",
+    "passed": true,
+    "bodyDigest": "ec1ddae12b1aac2f42dfe61155ab664979faa37a56f0ed49961bb014da408b19"
+  }
+]

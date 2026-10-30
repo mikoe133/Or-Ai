@@ -1,0 +1,43 @@
+Browser tab: 3, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-d2e297fd-fd4b-4d12-9339-15d153a9fdfb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&node=module%3A3ca9641b-75b8-4f45-a4d2-a5b583092091".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 114-148
+~1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-d2e297fd-fd4b-4d12-9339-15d153a9fdfb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&node=module%3A3ca9641b-75b8-4f45-a4d2-a5b583092091
+~		3 link Description: 跳到后台内容, Value: orai-cua-d2e297fd-fd4b-4d12-9339-15d153a9fdfb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&node=module%3A3ca9641b-75b8-4f45-a4d2-a5b583092091#admin-workspace
+~						109 text 引流文案
+~						110 heading TEST 引流文案, Value: 3
+~							111 text TEST 引流文案
+~						112 text 等待输入
+~					113 text 制作TEST 引流文案
++					114 container
++						115 heading 输入依赖, Value: 4
++							116 text 输入依赖
++						117 button ← 商品体验
++							118 text ← 
++							119 text 商品体验
++					120 container
++						121 heading 固定方法, Value: 4
++							122 text 固定方法
++						123 text 方法尚未固定。
++						124 button 选择或另存制作方法
++					125 container
++						126 heading 交付与原件, Value: 4
++							127 text 交付与原件
++						128 text TEST 引流文案
++						129 text 必需
++						130 text 尚无保存记录 缺少文案创作 缺少TEST 引流文案原件
++					131 container
++						132 heading 继续处理, Value: 4
++							133 text 继续处理
++						134 button 打开引流文案编辑
++							135 text 打开
++							136 text 引流文案
++							137 text 编辑
++					138 button (collapsed) 模块 · 3ca9641b, Secondary Actions: Expand
++						139 text 模块
++						140 text  · 
++						141 text 3ca9641b
++				142 container
++					143 text 当前工作区  · 计划 r 1 读取于  2026/10/30 08:00:00
++			144 container
++				145 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 99 button 02 TEST 引流文案 等待输入 · 必需

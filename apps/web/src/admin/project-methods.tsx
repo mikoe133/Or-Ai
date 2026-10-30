@@ -19,8 +19,8 @@ function MethodDialog({title,children,footer,close,busy=false,returnFocusId}:{ti
  useEffect(()=>{previous.current=document.activeElement as HTMLElement;ref.current?.showModal();return()=>{requestAnimationFrame(()=>{const target=returnFocusId?document.getElementById(returnFocusId):previous.current;if(target?.isConnected)target.focus();});};},[]);
  return <dialog ref={ref} className="handoff-dialog" aria-label={title} onCancel={e=>{e.preventDefault();if(!busy)close();}}><header><h2>{title}</h2><button type="button" className="icon-button" disabled={busy} onClick={close} aria-label={'关闭'+title}>×</button></header><div className="pm-handoff-body">{children}</div><footer>{footer}</footer></dialog>;
 }
-export function ProjectMethods({data,productName,moduleKey,onModule,onClose,onPlan,onDirty,onSaved}:{data:ProjectWorkspaceData;productName:string;moduleKey:string;onModule:(key:string)=>void;
- onClose:()=>void;onPlan:(id:string)=>void;onDirty?:(dirty:boolean)=>void;onSaved:()=>void}){
+export function ProjectMethods({data,productName,moduleKey,onModule,onClose,onPlan,onDirty,onSaved,blocked=false}:{data:ProjectWorkspaceData;productName:string;moduleKey:string;onModule:(key:string)=>void;
+ onClose:()=>void;onPlan:(id:string)=>void;onDirty?:(dirty:boolean)=>void;onSaved:()=>void;blocked?:boolean}){
  const client=useQueryClient(),location=useLocation(),navigate=useNavigate(),[context,setContext]=useState(data),[active,setActive]=useState(()=>data.plan?.modules.find(m=>m.moduleKey===moduleKey)?.moduleKey??data.plan?.modules[0]?.moduleKey??''),
   [purpose,setPurpose]=useState<string>(()=>data.plan?.modules.find(m=>m.moduleKey===moduleKey)?.definition.methodPurposes[0]??data.plan?.modules[0]?.definition.methodPurposes[0]??'copywriting'),
   [step,setStep]=useState(1),[candidate,setCandidate]=useState<MethodCandidate|null>(null),[parameters,setParameters]=useState<MethodParameter[]>([]),[instructions,setInstructions]=useState(''),
@@ -33,7 +33,7 @@ export function ProjectMethods({data,productName,moduleKey,onModule,onClose,onPl
  const module=context.plan?.modules.find(m=>m.moduleKey===active),plan=context.plan,
   current=context.source==='live'&&context.plans.page===1&&context.plans.items[0]?.id===plan?.id,
   uncertain=!!captureIntent.current&&action.error instanceof ClientError&&(action.error.status===0||action.error.status>=500),
-  permissionLost=[action.error,handoffAction.error].some(e=>e instanceof ClientError&&[401,403].includes(e.status)),
+  permissionLost=blocked||[action.error,handoffAction.error].some(e=>e instanceof ClientError&&[401,403].includes(e.status)),
   stale=data.plan?.id!==context.plan?.id||data.source!==context.source,
   busy=action.busy||handoffAction.busy,locked=busy||uncertain||permissionLost||!current||stale,
   selectionKey=module?.id+':'+purpose,snapshot=selected[selectionKey],
@@ -95,6 +95,7 @@ export function ProjectMethods({data,productName,moduleKey,onModule,onClose,onPl
    setCopyNotice(copy?'制作说明已复制，不含密钥；尚未发送或启动制作。':'固定清单已导出，不含密钥；尚未启动制作。');
   });
  }
+ if(blocked)return null;
  if(!plan||!module)return <div className="project-method-operations"><p>当前计划没有可设置的方法模块。</p><button onClick={onClose}>返回项目</button></div>;
  const chosen=Object.values(selected).filter(m=>m.planModuleId===module.id),history=methods.data?.items.filter(m=>m.purpose===purpose)??[],full=()=>{try{return candidate?effectiveMethod(candidate,parameters,instructions):'';}catch{return '';}};
  return <section className="project-method-operations" aria-label="商品方法与交接"><button className="pm-return" onClick={()=>guard(onClose)}>← 返回商品项目</button>

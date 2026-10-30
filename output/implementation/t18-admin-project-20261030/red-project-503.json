@@ -1,0 +1,11 @@
+{
+  "expected": "project refresh keeps the mounted planning dialog and its draft",
+  "response": {
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 503,
+    "sequence": 76
+  },
+  "dialogCount": 0,
+  "draftFieldCount": 0,
+  "reproduced": true
+}

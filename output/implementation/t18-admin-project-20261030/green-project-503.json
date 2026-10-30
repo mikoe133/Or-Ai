@@ -1,0 +1,9 @@
+{
+  "response": {
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 503,
+    "sequence": 4002
+  },
+  "dialogCount": 1,
+  "name": "TEST 503后应保留的节点草稿"
+}

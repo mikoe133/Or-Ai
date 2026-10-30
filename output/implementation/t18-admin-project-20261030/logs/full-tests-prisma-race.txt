@@ -1,0 +1,108 @@
+
+> orai@0.1.0 test /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai
+> pnpm --filter @orai/contracts build && pnpm --filter @orai/mcp build && pnpm --filter @orai/api test && pnpm --filter @orai/web test && pnpm --filter @orai/mcp test
+
+
+> @orai/contracts@0.1.0 build /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/packages/contracts
+> tsc -p tsconfig.json
+
+
+> @orai/mcp@0.1.0 build /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/packages/mcp
+> tsc -p tsconfig.json
+
+
+> @orai/api@0.1.0 test /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api
+> pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/*.test.js
+
+
+> @orai/api@0.1.0 db:generate /Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api
+> node node_modules/prisma/build/index.js generate
+
+Loaded Prisma config from prisma.config.ts.
+
+Prisma schema loaded from prisma/schema.prisma.
+
+✔ Generated Prisma Client (7.10.0) to ./src/generated/prisma in 457ms
+
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/commonInputTypes.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/CodexConnection.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ContentPackageItem.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/CreativeSkillBinding.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/CreativeSkillSet.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ExternalAttemptEvent.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ExternalModuleLease.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ExternalProductionAttempt.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ExternalProductionRun.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ExternalRunConfiguration.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ExternalRunConfigurationRevision.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/FileCleanupPlan.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/MachineCall.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/MachineCredential.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/MachineProject.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/MachineProjectSkill.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/MachineProjectWorkspace.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/MachineUpload.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ProjectCandidateDraft.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ProjectOriginalFile.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ProjectReviewRecord.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/ProjectReviewRevision.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/SkillReferenceFile.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/StyleSkill.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/StyleSkillAttachment.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+error TS6053: File '/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api/src/generated/prisma/models/StyleSkillVersion.ts' not found.
+  The file is in the program because:
+    Matched by include pattern 'src/**/*.ts' in 'tsconfig.test.json'
+/Volumes/outssd/mac-home/Ai 工作空间/Codex_workspace/orai/apps/api:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @orai/api@0.1.0 test: `pnpm db:generate && tsc -p tsconfig.test.json && node --env-file-if-exists=../../.env --test .test-build/test/*.test.js`
+Exit status 2
+ ELIFECYCLE  Test failed. See above for more details.

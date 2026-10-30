@@ -1,0 +1,115 @@
+Browser tab: 3, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 link Description: 运营后台, Value: orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin
+			7 text / 内容工作台 已验证的管理员
+			8 link Description: 账户设置, Value: orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/account
+		9 container 内容工作台, ID: admin-workspace
+			10 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				11 text 内容工作台
+			12 link Description: ← 全部内容商品, Value: orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin/content
+			13 container
+				14 text 当前工作区
+				15 pop up button (collapsed, settable) Description: 切换内容工作区, Value: 项目工作区, Secondary Actions: Expand
+					16 menu
+						17 (selected) 项目工作区
+						18 创作设定
+						19 skill 组合
+						20 商品内容
+						21 体验设计
+						22 结果交付
+						23 封面
+						24 视频与分镜
+						25 引流文案
+						26 整套预览
+						27 引用与历史
+						28 成套采用
+						29 文件清理
+			30 container 商品项目工作区
+				31 text 本地演示范围
+				32 heading TEST Three.js 项目规划, Value: 3
+					33 text TEST Three.js 项目规划
+				34 text 当前计划 · 查看已保存的方法与成果
+				35 button 刷新项目 ↻
+				36 container 项目版本选择
+					37 container
+						38 text 制作计划
+						39 pop up button (collapsed, settable) Description: 项目制作计划, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
+							40 menu
+								41 (selected) r1 · TEST Three.js 项目规划
+					42 container
+						43 text 外部制作批次
+						44 pop up button (collapsed, settable) Description: 项目制作批次, Value: 查看计划记录, Secondary Actions: Expand
+							45 menu
+								46 (selected) 查看计划记录
+					47 container
+						48 text 审核与留存
+						49 pop up button (collapsed, settable) Description: 项目审核快照, Value: 查看当前工作区, Secondary Actions: Expand
+							50 menu
+								51 (selected) 查看当前工作区
+				52 text 查看已有成果、原作业与当前接续条件
+				53 button 外部制作与接续 →
+				54 container 项目规划编辑
+					55 button 编辑规划
+					56 text 模块依赖可编辑 · 方法与来源只读
+				57 button (collapsed) ▸ 商品体验规划 Three.js · v2 · 决定已填写 · 运行另验, Secondary Actions: Expand
+					58 text ▸
+					59 text 商品体验规划
+					60 text Three.js · v2 · 
+					61 text 决定已填写 · 运行另验
+				62 container 项目视图
+					63 checkbox 关系画布, Value: 1
+					64 checkbox 目录列表, Value: 0
+				65 text 2  个模块 ·  0  份制作记录
+				66 checkbox 聚焦模块, Value: 0
+				67 button 检查与审核
+				68 container 项目关系画布
+					69 container 固定计划、依赖、方法与产物关系
+						70 container
+							71 image
+								72 edge Edge from plan to module:896d3899-7ddc-4750-b461-bdacae3ff981
+							73 image
+								74 edge Edge from plan to module:3ca9641b-75b8-4f45-a4d2-a5b583092091
+							75 image
+								76 container 商品体验是TEST 引流文案的输入依赖
+							77 container TEST Three.js 项目规划，设定 r1
+								78 container
+									79 text ▱ 固定计划 TEST Three.js 项目规划 计划 r1 · 2 个模块 设定 r1
+							80 container 商品体验，等待输入
+								81 container
+									82 text ▱ 交互体验
+									83 text 必需
+									84 heading 商品体验, Value: 3
+										85 text 商品体验
+									86 text 等待输入 0  方法 ·  0  产物
+									87 button (collapsed) Description: 展开商品体验依据, Secondary Actions: Expand
+							88 container TEST 引流文案，等待输入
+								89 container
+									90 text ▱ 引流文案
+									91 text 必需
+									92 heading TEST 引流文案, Value: 3
+										93 text TEST 引流文案
+									94 text 等待输入 0  方法 ·  0  产物
+									95 button (collapsed) Description: 展开TEST 引流文案依据, Secondary Actions: Expand
+						96 image
+						97 container Control Panel
+							98 button Zoom In
+								99 image
+							100 button Zoom Out
+								101 image
+							102 button Fit View
+								103 image
+						104 image Mini Map
+						105 container
+							106 text 模块依赖 固定方法 · 只读 产物来源 · 只读
+						107 button 整理布局
+						108 link Description: React Flow attribution, Value: reactflow.dev/?utm_source=attribution
+				109 container
+					110 text 当前工作区  · 计划 r 1 读取于  2026/10/30 08:00:00
+			111 container
+				112 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 63 checkbox 关系画布, Value: 1

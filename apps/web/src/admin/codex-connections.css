@@ -24,9 +24,9 @@
 @media(max-width:700px){.admin-shell .codex-connections .cx-title{font-size:26px;}.admin-shell .codex-connections .cx-buttons{width:100%;}.admin-shell .codex-connections .cx-buttons button{flex:1;}.admin-shell .codex-connections .dialog-frame{max-height:calc(100dvh - 40px);}.admin-shell .codex-connections .cx-legacy{font-size:10px;}}
 
 /* Task hierarchy and readable scope summaries; confined to the admin surface. */
-.admin-shell .cx-surface-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin:0 0 24px;font-size:13px}
-.admin-shell .cx-surface-tabs>*{padding:10px 0 13px;color:var(--muted);text-decoration:none}
-.admin-shell .cx-surface-tabs [aria-current]{border-bottom:2px solid var(--accent);color:var(--text)}
+.admin-shell .cx-surface-tabs{display:flex;gap:24px;border-bottom:1px solid var(--admin-border);margin:0 0 24px;font-size:13px}
+.admin-shell .cx-surface-tabs>*{padding:10px 0 13px;color:var(--admin-muted);text-decoration:none}
+.admin-shell .cx-surface-tabs [aria-current]{border-bottom:2px solid var(--admin-accent);color:var(--admin-text)}
 .admin-shell .codex-connections{font-size:13px;line-height:1.7}
 .admin-shell .codex-connections .heading{margin-bottom:24px}
 .admin-shell .codex-connections .heading p{font-size:13px;line-height:1.8}

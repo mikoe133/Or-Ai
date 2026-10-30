@@ -1,0 +1,242 @@
+[
+  {
+    "phase": "before",
+    "name": "canvas",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "directory",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "module-detail",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "empty",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213
+  },
+  {
+    "phase": "before",
+    "name": "canvas",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "directory",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "module-detail",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "empty",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757
+  },
+  {
+    "phase": "before",
+    "name": "canvas",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "directory",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "module-detail",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "before",
+    "name": "empty",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379
+  },
+  {
+    "phase": "after",
+    "name": "canvas",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "directory",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "module-detail",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213,
+    "mainTop": 0,
+    "node": "module:3ca9641b-75b8-4f45-a4d2-a5b583092091"
+  },
+  {
+    "phase": "after",
+    "name": "empty",
+    "width": 1440,
+    "height": 960,
+    "body": 1440,
+    "main": 1213,
+    "mainScroll": 1213,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "canvas",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "directory",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "module-detail",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757,
+    "mainTop": 591,
+    "node": "module:3ca9641b-75b8-4f45-a4d2-a5b583092091"
+  },
+  {
+    "phase": "after",
+    "name": "empty",
+    "width": 768,
+    "height": 1024,
+    "body": 768,
+    "main": 757,
+    "mainScroll": 757,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "canvas",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "directory",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379,
+    "mainTop": 0,
+    "node": null
+  },
+  {
+    "phase": "after",
+    "name": "module-detail",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379,
+    "mainTop": 815.5,
+    "node": "module:3ca9641b-75b8-4f45-a4d2-a5b583092091"
+  },
+  {
+    "phase": "after",
+    "name": "empty",
+    "width": 390,
+    "height": 844,
+    "body": 390,
+    "main": 379,
+    "mainScroll": 379,
+    "mainTop": 0,
+    "node": null
+  }
+]

@@ -19,7 +19,7 @@ function RunDialog({title,children,footer,close,locked=false,returnFocusId}:{tit
  return <dialog ref={ref} aria-label={title} onCancel={e=>{e.preventDefault();close();}}><header className="dialog-heading"><div><p className="eyebrow">EXTERNAL PRODUCTION / OPERATIONS</p><h2>{title}</h2></div><button aria-label={'关闭'+title} disabled={locked} onClick={close}>×</button></header><div className="dialog-body">{children}</div><footer className="dialog-actions">{footer}</footer></dialog>;
 }
 function download(value:unknown,name:string){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)+'\n'],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}
-export function ProductionRunOperations({productId,productName,runId,onRun,onClose,onDirty}:{productId:string;productName:string;runId:string|null;onRun:(id:string|null)=>void;onClose:()=>void;onDirty?:(v:boolean)=>void}){
+export function ProductionRunOperations({productId,productName,runId,onRun,onClose,onDirty,blocked=false}:{productId:string;productName:string;runId:string|null;onRun:(id:string|null)=>void;onClose:()=>void;onDirty?:(v:boolean)=>void;blocked?:boolean}){
  const client=useQueryClient(),location=useLocation(),navigate=useNavigate(),[runPage,setRunPage]=useState(1),[selected,setSelected]=useState<string|null>(null),[tab,setTab]=useState('basis'),[search,setSearch]=useState(''),[historyPage,setHistoryPage]=useState(1),[historicalId,setHistoricalId]=useState<string|null>(null),
   [stopOpen,setStopOpen]=useState(false),[stopPreview,setStopPreview]=useState<ReturnType<typeof RunStopPreviewSchema.parse>|null>(null),[reason,setReason]=useState(''),[stopConsent,setStopConsent]=useState(false),
   [recoveryOpen,setRecoveryOpen]=useState(false),[connectionId,setConnectionId]=useState<string|null>(null),[connectionPage,setConnectionPage]=useState(1),[inputs,setInputs]=useState<RecoveryInput[]>([]),[recoveryConsent,setRecoveryConsent]=useState(false),[preview,setPreview]=useState<RecoveryPreview|null>(null),
@@ -35,7 +35,7 @@ export function ProductionRunOperations({productId,productName,runId,onRun,onClo
   attempt=historicalId?history.data?.items.find(a=>a.id===historicalId):history.data?.items.find(a=>a.id===module?.latestAttemptId),
   connections=useQuery({queryKey:['private','admin','codex-connections',connectionPage],enabled:recoveryOpen,queryFn:({signal})=>codexConnectionsApi.list(connectionPage,signal),refetchOnWindowFocus:false}),
   uncertain=!!stopIntent.current&&action.error instanceof ClientError&&(action.error.status===0||action.error.status>=500),busy=action.busy||recoveryAction.busy,
-  dirty=!!reason.trim()&&stopOpen||recoveryDirty,permissionLost=[detail.error,action.error,recoveryAction.error].some(e=>e instanceof ClientError&&[401,403].includes(e.status));
+  dirty=!!reason.trim()&&stopOpen||recoveryDirty,permissionLost=blocked||[detail.error,action.error,recoveryAction.error].some(e=>e instanceof ClientError&&[401,403].includes(e.status));
  protectedRef.current=dirty||uncertain||busy;
  useEffect(()=>{onDirty?.(dirty||uncertain||busy);return()=>onDirty?.(false);},[dirty,uncertain,busy,onDirty]);
  useEffect(()=>{if(!protectedRef.current){runRef.current=runId;setProtectedRun(runId);url.current=location.pathname+location.search;}},[runId,location.pathname,location.search,dirty,uncertain,busy]);
@@ -67,6 +67,7 @@ export function ProductionRunOperations({productId,productName,runId,onRun,onClo
    return value;
   });}
  const conflict=action.error instanceof ClientError&&action.error.code==='REVISION_CONFLICT';
+ if(blocked)return null;
  return <section className="production-run-operations" aria-label="外部制作与接续"><button className="ro-return" onClick={()=>guard(onClose)}>← 返回商品项目</button><div className="run-frame">
   <div className="page-heading"><div><p className="eyebrow">PROJECT / EXTERNAL PRODUCTION</p><h2>外部制作与接续</h2><p className="muted">看清当前回执，保留已有成果，再决定下一步。</p></div><div className="heading-actions"><button id="ro-refresh" disabled={busy||uncertain} onClick={refresh}>重新核对回执 ↻</button><button id="ro-stop" disabled={!data?.canStop||busy||uncertain||permissionLost} onClick={()=>void openStop()}>停止本批接续</button></div></div>
   <div className="context"><div><small>当前商品</small><strong>{data?.productName??productName}</strong></div><div><label htmlFor="ro-run">制作批次</label><select id="ro-run" value={currentRun??''} disabled={busy||uncertain} onChange={e=>{const next=e.target.value;guard(()=>{resetDraft();onRun(next||null);});}}><option value="">未选择制作批次</option>

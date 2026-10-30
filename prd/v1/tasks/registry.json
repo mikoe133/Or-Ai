@@ -368,7 +368,7 @@
       "file": "active/17-frontend-design-refinement.md",
       "title": "依据 anti-ai-web-design 审计并改造全站前端",
       "lane": "主线",
-      "status": "连接/运行配置首批通过：643业务＋2专项、18组前后对照、47项CUA；项目/完整状态/全站及05/06依赖保持",
+      "status": "项目工作区/父级恢复首批通过：643业务＋2专项、12组对照、29项CUA；方法/运行子页自身、全站及05/06依赖保持",
       "dependsOn": [
         5,
         6

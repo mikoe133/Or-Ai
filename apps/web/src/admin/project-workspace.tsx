@@ -2,7 +2,8 @@ import { useEffect,useRef,useState,useCallback,type ReactNode } from 'react';
 import { useQuery,useQueryClient } from '@tanstack/react-query';
 import { Link,useSearchParams } from 'react-router-dom';
 import { ProjectWorkspaceQuerySchema,ProductConfigurationSchema,AssetAuthoringSchema } from '@orai/contracts/admin';
-import { Failure,Loading,useAction } from '../business/shared.js';
+import { Loading,useAction } from '../business/shared.js';
+import { AdminFailure as Failure } from './feedback.js';
 import { api } from '../api/consumer.js';
 import { projectApi,type ProjectWorkspaceData,type ProjectModule,type ProjectMethod,type ProjectOutput,type ProjectRecord } from './project-api.js';
 import { ProjectGraph } from './project-graph.js';
@@ -13,6 +14,7 @@ import {useProjectPlanning,PlanningToolbar,PlanningDialog} from './project-plann
 import {ProjectMethods} from './project-methods.js';
 import {ProductionRunOperations} from './production-run-operations.js';
 import {ProductPlanPanel} from './product-plan-panel.js';
+import {isAccessFailure,RefreshNotice} from './refresh-notice.js';
 import './project-workspace.css';
 
 const when=(value:string)=>new Date(value).toLocaleString('zh-CN',{hour12:false});
@@ -20,7 +22,7 @@ export function ProjectWorkspace({productId,productName,onEdit,initialProfile=nu
   initialProfile?:ProjectWorkspaceData['profile'];onDirty?:(value:boolean)=>void}){
   const [params,setParams]=useSearchParams(),client=useQueryClient(),[view,setView]=useState<'canvas'|'directory'>(()=>matchMedia('(max-width:820px)').matches?'directory':'canvas'),
     [search,setSearch]=useState(''),[expanded,setExpanded]=useState<string|null>(null),[focus,setFocus]=useState<string|null>(null),[mobileOpen,setMobileOpen]=useState(false),
-    [mobile,setMobile]=useState(()=>matchMedia('(max-width:1100px)').matches),dialog=useRef<HTMLDialogElement>(null),inspectorElement=useRef<HTMLElement>(null);
+    [mobile,setMobile]=useState(()=>matchMedia('(max-width:1100px)').matches),[accessError,setAccessError]=useState<unknown>(null),[retrying,setRetrying]=useState(false),dialog=useRef<HTMLDialogElement>(null),inspectorElement=useRef<HTMLElement>(null);
   const parsed=ProjectWorkspaceQuerySchema.safeParse({planRevisionId:params.get('plan')??undefined,runId:params.get('run')??undefined,reviewId:params.get('review')??undefined,
     planPage:params.get('planPage')??1,reviewPage:params.get('reviewPage')??1,runPage:params.get('runPage')??1}),query=parsed.success?parsed.data:null;
   const workspace=useQuery({queryKey:['private','admin','project-workspace',productId,query],enabled:!!query,
@@ -35,8 +37,11 @@ export function ProjectWorkspace({productId,productName,onEdit,initialProfile=nu
     onReload:()=>{change({plan:null,run:null,review:null,node:null});refreshed();},
     onAdded:key=>{setFocus('draft:'+key);setExpanded(null);setSearch('');change({node:'module:draft:'+key});}});
   const selected=params.get('node')??'plan';
+  useEffect(()=>{if(!editor.active&&!editor.dirty&&selected.startsWith('module:draft:'))change({node:'plan'});},[editor.active,editor.dirty,selected]);
+  const denial=[workspace.error,editor.canvas.error,editor.action.error].find(isAccessFailure)??accessError;
+  useEffect(()=>{if(denial){setAccessError(denial);dialog.current?.close();setMobileOpen(false);editor.setDialog(null);}},[denial]);
   useEffect(()=>{const m=matchMedia('(max-width:1100px)'),change=()=>setMobile(m.matches);m.addEventListener('change',change);return()=>m.removeEventListener('change',change);},[]);
-  useEffect(()=>{if(mobile&&mobileOpen&&dialog.current&&!dialog.current.open)dialog.current.showModal();},[mobileOpen,mobile,workspace.data]);
+  useEffect(()=>{if(!denial&&mobile&&mobileOpen&&dialog.current&&!dialog.current.open)dialog.current.showModal();},[mobileOpen,mobile,workspace.data,denial]);
   useEffect(()=>{setExpanded(null);setFocus(null);setMobileOpen(false);},[workspace.data?.plan?.id,workspace.data?.review?.id,workspace.data?.run?.id]);
   useEffect(()=>{inspectorElement.current?.scrollTo(0,0);dialog.current?.scrollTo(0,0);},[selected,workspace.data?.plan?.id,workspace.data?.review?.id]);
   function change(fields:Record<string,string|null>){setParams(current=>{const next=new URLSearchParams(current);for(const [key,value] of Object.entries(fields))value===null?next.delete(key):next.set(key,value);return next;});}
@@ -57,14 +62,17 @@ export function ProjectWorkspace({productId,productName,onEdit,initialProfile=nu
   }
   function refreshed(){void client.invalidateQueries({queryKey:['private','admin','project-workspace',productId]});
     void client.invalidateQueries({queryKey:['private','admin','project-canvas',workspace.data?.plan?.id]});}
+  async function retryRead(){if(retrying)return;setRetrying(true);try{await Promise.all([workspace.refetch({throwOnError:true}),...(workspace.data?.plan&&workspace.data.source==='live'?[editor.canvas.refetch({throwOnError:true})]:[])]);if(isAccessFailure(editor.action.error))editor.action.resetError();setAccessError(null);}catch{/* Cached private content stays hidden until every required read succeeds. */}finally{setRetrying(false);}}
   if(!query)return <div className="pw-empty" role="alert"><h3>项目链接格式不正确</h3><button onClick={()=>change({plan:null,run:null,review:null,planPage:null,runPage:null,reviewPage:null,node:null})}>回到当前项目</button></div>;
-  if(workspace.isPending)return <Loading/>;
-  if(workspace.isError)return <Failure error={workspace.error} retry={()=>void workspace.refetch()}/>;
-  if(params.has('runOperations')||runsDirty.current)return <ProductionRunOperations productId={productId} productName={productName} runId={params.get('run')}
-    onRun={id=>change({run:id,review:null,node:null,runOperations:'1'})} onClose={()=>change({runOperations:null})} onDirty={runsChanged}/>;
-  if((params.has('methodModule')||methodsDirty.current)&&workspace.data.plan)return <ProjectMethods data={workspace.data} productName={productName} moduleKey={params.get('methodModule')??lastMethodKey.current}
+  if(!workspace.data)return workspace.isError?<Failure error={denial??workspace.error} retry={()=>void retryRead()}/>:<Loading/>;
+  const failure=denial?<Failure error={denial} retry={retrying?undefined:()=>void retryRead()}/>:null,
+    refreshNotice=workspace.isError&&!denial?<RefreshNotice busy={retrying} retry={()=>void retryRead()}/>:null;
+  if(params.has('runOperations')||runsDirty.current)return <>{failure??refreshNotice}<ProductionRunOperations key="run-operations" blocked={!!denial} productId={productId} productName={productName} runId={params.get('run')}
+    onRun={id=>change({run:id,review:null,node:null,runOperations:'1'})} onClose={()=>change({runOperations:null})} onDirty={runsChanged}/></>;
+  if((params.has('methodModule')||methodsDirty.current)&&workspace.data.plan)return <>{failure??refreshNotice}<ProjectMethods key="project-methods" blocked={!!denial} data={workspace.data} productName={productName} moduleKey={params.get('methodModule')??lastMethodKey.current}
     onModule={key=>{lastMethodKey.current=key;change({methodModule:key});}} onClose={()=>change({methodModule:null})}
-    onPlan={plan=>{change({plan,run:null,review:null,node:null});refreshed();}} onDirty={methodsChanged} onSaved={refreshed}/>;
+    onPlan={plan=>{change({plan,run:null,review:null,node:null});refreshed();}} onDirty={methodsChanged} onSaved={refreshed}/></>;
+  if(denial)return failure;
   const data=editor.data??workspace.data,plan=data.plan,modules=plan?.modules??[],filtered=modules.filter(m=>(m.definition.title+' '+m.moduleKey+' '+projectDomains[m.definition.domain]).toLowerCase().includes(search.toLowerCase())),
     selectedModule=modules.find(m=>selected==='module:'+m.id)||modules.find(m=>data.methods.some(s=>s.planModuleId===m.id&&selected==='method:'+s.id)||data.records.some(r=>r.planModuleId===m.id&&r.outputs.some(o=>selected==='output:'+o.id)));
   const inspector=selected==='review'&&(editor.active||editor.dirty)?<div className="pw-detail-content"><h3>规划编辑中</h3><p>先保存或放弃规划，再对固定版本检查与审核。</p><button onClick={()=>select('plan')}>查看规划</button></div>:
@@ -73,7 +81,8 @@ export function ProjectWorkspace({productId,productName,onEdit,initialProfile=nu
       onMethods={key=>{if(editor.active||editor.dirty){editor.setNotice('先保存或放弃规划，再设置商品方法。');return;}dialog.current?.close();setMobileOpen(false);change({methodModule:key});}}
       refresh={refreshed} reviewSaved={id=>{source('review',id);refreshed();}}/>;
   return <section className="project-workspace" aria-label="商品项目工作区">
-    <div className="pw-context"><div><span className="pw-kicker">PROJECT / WORKSPACE · {data.scope==='demo'?'本地演示范围':'正式范围'}</span><h3>{plan?.plan.title??productName}</h3>
+    {refreshNotice}
+    <div className="pw-context"><div><span className="pw-kicker">{data.scope==='demo'?'本地演示范围':'正式范围'}</span><h3>{plan?.plan.title??productName}</h3>
       <p>{data.source==='review_snapshot'?'审核快照 · 内容与原件固定在此修订':data.source==='run'?'固定批次 · 按该次尝试回读成果':'当前计划 · 查看已保存的方法与成果'}</p></div>
       <button type="button" onClick={()=>{if(editor.dirty||editor.active)editor.setNotice('未保存规划已保留，请先保存或放弃再刷新。');else refreshed();}} disabled={workspace.isFetching||editor.action.busy}>{workspace.isFetching?'读取中…':'刷新项目 ↻'}</button></div>
     <div className="pw-sources" aria-label="项目版本选择">
@@ -142,7 +151,7 @@ function Inspector({data,selected,select,onEdit,onMethods,refresh,reviewSaved}:{
   if(output&&record)return <OutputDetail key={output.id} output={output} record={record} data={data} select={select}/>;
   if(module)return <ModuleDetail module={module} data={data} select={select} onEdit={onEdit} onMethods={onMethods}/>;
   if(selected!=='plan')return <div className="pw-detail-content" role="alert"><h3>这个引用不在当前视图中</h3><p>请核对计划、批次或审核版本，再从目录选择内容。</p><button onClick={()=>select('plan')}>回到制作计划</button></div>;
-  return <div className="pw-detail-content"><DetailHeading overline="PROJECT BRIEF" title={data.plan?.plan.title??'项目计划'} badge={'r'+(data.plan?.revision??'—')}/>
+  return <div className="pw-detail-content"><DetailHeading overline="共同设定" title={data.plan?.plan.title??'项目计划'} badge={'r'+(data.plan?.revision??'—')}/>
     <Section title="共同目标"><dl><dt>情绪价值</dt><dd>{data.profile?.profile.emotionalGoal}</dd><dt>加深理解</dt><dd>{data.profile?.profile.understandingGoal}</dd><dt>留给参与者</dt><dd>{data.profile?.profile.takeaway}</dd></dl></Section>
     <Section title="对象与表达"><p>{data.profile?.profile.audience} · {data.profile?.profile.situation}</p><p>{data.profile?.profile.visual}</p><p>{data.profile?.profile.language}</p></Section>
     <Section title="选题依据"><p>{data.plan?.plan.selection.rationale}</p>{data.plan?.plan.evidence.map(e=><article key={e.evidenceKey} className="pw-evidence"><a href={e.sourceUrl} target="_blank" rel="noreferrer">{e.title} ↗</a><p>{e.summary}</p><small>{e.sourceName} · {e.region==='domestic'?'国内':'国际'}<br/>源发布时间：{e.publishedAt?when(e.publishedAt):'未知'}<br/>检索：{when(e.retrievedAt)}</small></article>)}</Section>
@@ -171,7 +180,7 @@ function ModuleDetail({module,data,select,onEdit,onMethods}:{module:ProjectModul
 }
 function MethodDetail({method,data,select,onMethods}:{method:ProjectMethod;data:ProjectWorkspaceData;select:(key:string)=>void;onMethods:(key:string)=>void}){
   const records=data.records.filter(r=>r.methods.some(m=>m.snapshotId===method.id));
-  return <div className="pw-detail-content"><DetailHeading overline="FIXED SKILL" title={method.version.manifest.name} badge={`基础 v${method.version.number} · 源修订 r${method.sourceRevision}`}/>
+  return <div className="pw-detail-content"><DetailHeading overline="固定方法" title={method.version.manifest.name} badge={`基础 v${method.version.number} · 源修订 r${method.sourceRevision}`}/>
     <p>{method.version.manifest.description}</p><p className="pw-muted">{projectPurposes[method.purpose]} · {method.customization?'基础模板＋商品定制':'固定基础模板'}</p>
     <SnapshotDownload value={method} name={'method-'+shortId(method.id)+'.json'} label="取回完整方法快照"/><p className="pw-muted">包含基础版本、完整正文和商品定制。参考附件在下方分别取回。</p>
     <button disabled={data.source!=='live'||data.plans.page!==1||data.plans.items[0]?.id!==data.plan?.id} onClick={()=>onMethods(data.plan!.modules.find(m=>m.id===method.planModuleId)!.moduleKey)}>选择或另存商品方法</button>
@@ -194,7 +203,7 @@ function OutputDetail({output,record,data,select}:{output:ProjectOutput;record:P
     [preview,setPreview]=useState<Awaited<ReturnType<typeof experienceApi.preview>>|null>(null);
   const downloadPath=data.review&&output.file?(output.originalFileId?`/api/admin/project-reviews/${data.review.id}/files/original/${output.originalFileId}/content`:
     `/api/admin/project-reviews/${data.review.id}/files/media/${output.fileId}/content`):output.file?.downloadPath;
-  return <div className="pw-detail-content"><DetailHeading overline="SAVED OUTPUT" title={module.definition.outputs.find(o=>o.outputKey===output.outputKey)?.label??output.outputKey} badge={`制作记录 r${record.revision}`}/>
+  return <div className="pw-detail-content"><DetailHeading overline="已保存产物" title={module.definition.outputs.find(o=>o.outputKey===output.outputKey)?.label??output.outputKey} badge={`制作记录 r${record.revision}`}/>
     <p className={output.purpose==='original'?'pw-muted':'pw-warning'}>{output.purpose==='authoring'?'体验制作清单；网页或场景原包需单独保存。':output.purpose==='preview'?'这是预览文件；请另行核对原件。':'已保存的固定原件记录'}</p>
     {output.file&&<Section title="平台文件">{failed?<p role="alert">媒体无法读取，请刷新后重试。</p>:output.file.mimeType.startsWith('image/')?<img className="pw-media" src={output.file.downloadPath} alt={output.file.fileName} onError={()=>setFailed(true)}/>:output.file.mimeType.startsWith('video/')?<video className="pw-media" controls preload="metadata" src={output.file.downloadPath} onError={()=>setFailed(true)}/>:<p className="pw-file-type">{output.file.mimeType==='model/gltf-binary'?'3D 场景原件':'网页 / 归档原件'}</p>}
       <p>{output.file.fileName}<br/><small>{output.file.mimeType} · {fileSize(output.file.byteSize)}</small></p>
@@ -240,7 +249,7 @@ function ProjectReviewPanel({data,select,refresh,saved}:{data:ProjectWorkspaceDa
       ...(kind==='return'?{returns:[{planModuleId:returnModule,reason}]}:{})};
     void action.run(()=>projectApi.transition(review.id,kind,action.intent('project-'+kind+':'+review.id,body)),value=>saved(value.id));
   }
-  return <div className="pw-detail-content"><DetailHeading overline="CHECK / HUMAN REVIEW" title="项目检查与留存" badge={review?`审核 r${review.revision} · ${projectStates[review.status]}`:'准备审核候选'}/>
+  return <div className="pw-detail-content"><DetailHeading overline="缺项与人工审核" title="项目检查与留存" badge={review?`审核 r${review.revision} · ${projectStates[review.status]}`:'准备审核候选'}/>
     <p className="pw-muted">核对固定方法、输入与实际文件。审核留存后，商品仍由上架流程单独管理。</p>
     {review?.status==='retained'&&<p className="pw-callout">此修订已留存，可从目录取回固定内容与原件。</p>}
     {!latest&&<p className="pw-warning">正在查看历史审核修订。可回读；新审核操作需切换最新修订。</p>}

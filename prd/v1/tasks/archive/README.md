@@ -70,3 +70,5 @@
 [新旧映射](../TASK-MAP.md)覆盖原46个未勾条目。来源/归档摘要见[archive-manifest.json](archive-manifest.json)；归档全文只修复 Markdown 相对链接，正文、复选框和原数字保持。旧 Txx 文件仅为兼容入口；历史 output 验收文件没有修改。
 
 [17连接/运行配置子批次](completed/17-admin-connections-configurations-slice-20261030.md)：有效RED/GREEN、643业务＋2隔离专项、类型/前端构建、18组前后对照与47项CUA。无真实签发/配置/日程，继续项目页，父项保持未完成。
+
+[17项目工作区/父级恢复子范围](completed/17-admin-project-workspace-slice-20261030.md)：有效RED/GREEN、643业务＋2专项、类型/构建、12组对照和29项CUA通过；失败首轮与修复分别留证，方法/运行子页自身仍待专批，父任务不关闭。

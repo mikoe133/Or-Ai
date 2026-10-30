@@ -1,0 +1,40 @@
+Browser tab: 3, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&node=module%3A3ca9641b-75b8-4f45-a4d2-a5b583092091".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-fb840abc-9c8d-4cec-92a8-b7359b9309eb.localhost:5189/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&node=module%3A3ca9641b-75b8-4f45-a4d2-a5b583092091
+	2 container 项目详情
+		3 button ← 返回项目
+		4 container
+			5 text 引流文案
+			6 heading TEST 引流文案, Value: 3
+				7 text TEST 引流文案
+			8 text 等待输入
+		9 text 制作TEST 引流文案
+		10 container
+			11 heading 输入依赖, Value: 4
+				12 text 输入依赖
+			13 button ← 商品体验
+				14 text ← 
+				15 text 商品体验
+		16 container
+			17 heading 固定方法, Value: 4
+				18 text 固定方法
+			19 text 方法尚未固定。
+			20 button 选择或另存制作方法
+		21 container
+			22 heading 交付与原件, Value: 4
+				23 text 交付与原件
+			24 text TEST 引流文案
+			25 text 必需
+			26 text 尚无保存记录 缺少文案创作 缺少TEST 引流文案原件
+		27 container
+			28 heading 继续处理, Value: 4
+				29 text 继续处理
+			30 button 打开引流文案编辑
+				31 text 打开
+				32 text 引流文案
+				33 text 编辑
+		34 button (collapsed) 模块 · 3ca9641b, Secondary Actions: Expand
+			35 text 模块
+			36 text  · 
+			37 text 3ca9641b
+
+The focused UI element is 3 button ← 返回项目
