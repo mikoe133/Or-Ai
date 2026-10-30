@@ -1,0 +1,10 @@
+{
+  "expected": "method history 403 hides private method workspace",
+  "response": {
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 403,
+    "sequence": 92
+  },
+  "privateWorkspaceCount": 1,
+  "reproduced": true
+}

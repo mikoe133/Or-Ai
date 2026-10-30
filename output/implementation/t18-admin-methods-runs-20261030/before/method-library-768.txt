@@ -1,0 +1,105 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 link Description: 运营后台, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin
+			7 text / 内容工作台 已验证的管理员
+			8 link Description: 账户设置, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/account
+		9 container 内容工作台, ID: admin-workspace
+			10 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				11 text 内容工作台
+			12 link Description: ← 全部内容商品, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content
+			13 container
+				14 text 当前工作区
+				15 pop up button (collapsed, settable) Description: 切换内容工作区, Value: 项目工作区, Secondary Actions: Expand
+					16 menu
+						17 (selected) 项目工作区
+						18 创作设定
+						19 skill 组合
+						20 商品内容
+						21 体验设计
+						22 结果交付
+						23 封面
+						24 视频与分镜
+						25 引流文案
+						26 整套预览
+						27 引用与历史
+						28 成套采用
+						29 文件清理
+			30 container 商品方法与交接
+				31 button ← 返回商品项目
+				32 text PRODUCT / METHODS
+				33 heading 为商品选好制作方法, Value: 2
+					34 text 为商品选好制作方法
+				35 text 选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。
+				36 button 整理交接说明 ↗, ID: pm-handoff-open
+				37 text 当前商品
+				38 text TEST Three.js 只读项目
+				39 text 当前计划 制作计划 r 1 共同设定 r 1
+				40 pop up button (collapsed, settable) Description: 查看计划版本, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
+					41 menu
+						42 (selected) r1 · TEST Three.js 项目规划
+				43 text 这款商品留给用户的体验
+				44 text TEST 回顾目标
+				45 container
+					46 heading 交付模块, Value: 2
+						47 text 交付模块
+					48 text 按专业用途分别固定
+					49 button 01 商品体验 0 / 2 个用途已选, ID: pm-module-experience
+						50 text 01
+						51 text 商品体验
+						52 container
+							53 text 0  /  2  个用途已选
+					54 button 02 TEST 引流文案 0 / 1 个用途已选, ID: pm-module-copy
+						55 text 02
+						56 text TEST 引流文案
+						57 container
+							58 text 0  /  1  个用途已选
+					59 text 各模块沿用同一份商品设定。
+					60 text 为本次制作明确选择固定方法。
+				61 container
+					62 text COPY  /  WEB
+					63 heading TEST 引流文案, Value: 2
+						64 text TEST 引流文案
+					65 text 制作TEST 引流文案
+					66 text 待选方法
+					67 button 01 选择基础 Skill
+						68 text 0
+						69 text 1
+						70 text 选择基础 Skill
+					71 button (disabled) 02 商品定制
+						72 text 0 2 商品定制
+					73 button (disabled) 03 确认并固定
+						74 text 0 3 确认并固定
+					75 heading 先选一种适合这款商品的方法, Value: 3
+						76 text 先选一种适合这款商品的方法
+					77 text 固定精确版本，共享库升级不会悄悄换掉它。
+					78 text field (settable) 搜索基础 Skill
+					79 pop up button (collapsed, settable) Description: 基础方法状态, Value: 全部可用状态, Secondary Actions: Expand
+						80 menu
+							81 (selected) 全部可用状态
+							82 已启用
+							83 已审核
+							84 草稿
+							85 已归档
+					86 radio button (settable, integer) Description: 选择TEST 文案基础方法 v2, Value: 0
+					87 container
+						88 text TEST 文案基础方法 v 2  / r 2
+					89 text 已审核 · 未启用
+					90 text TEST 只读界面验证，不是正式方法
+					91 text 文案创作  ·  3d  ·  0  份参考附件
+					92 container 分页
+						93 button (disabled) 上一页
+						94 text 第  1  页 · 共  1  条
+						95 button (disabled) 下一页
+					96 text 只选择基础版本，不修改共享库，也不启动内容制作。
+					97 button (collapsed) 已固定的本用途方法 · 为本次交接选择精确版本, Secondary Actions: Expand
+						98 text 已固定的本用途方法 · 为本次交接选择精确版本
+					99 text 定制只属于本商品；内容制作需要另行安排。
+					100 button (disabled) 继续，补充商品要求
+			101 container
+				102 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy

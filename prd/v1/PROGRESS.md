@@ -2,7 +2,7 @@
 
 更新：2026-10-30。01商品规划合同、02 Skill服务端政策、03项目/发布门禁、04旧方法前向升级及07云适配已完成各自本地范围并归档。04代码594项、类型/构建、最终专项13项和16项自主CUA通过；选定开发库四份方法追加v2 DRAFT，未自动启用或重绑。技术完成不代表云端或商业上线。
 
-**当前任务：[05商品与模板转制（T16.C3）](tasks/active/05-product-template-migration.md)及06本地功能/性能验证。07本地范围已归档，真实云仍待08。** [17全站前端设计改造（T18）](tasks/active/17-frontend-design-refinement.md)按独立后台子批次推进，Skill及标准、骨架/概览、商品/内容、素材/订单首批已有实现和验证；Skill/连接/项目及完整状态、全站仍未完成，细节见下。完整排期看[任务索引](tasks/README.md)。
+**当前任务：[05商品与模板转制（T16.C3）](tasks/active/05-product-template-migration.md)及06本地功能/性能验证。07本地范围已归档，真实云仍待08。** [17全站前端设计改造（T18）](tasks/active/17-frontend-design-refinement.md)按独立后台子批次推进，骨架/概览、商品/内容、素材/订单、Skill、连接/配置、项目及方法/运行恢复已有实现和验证；完整路由/状态及全站仍未完成，细节见下。完整排期看[任务索引](tasks/README.md)。
 
 06后续[本地实测](../../output/implementation/local-experience-performance-20261028/verification.md)修复静态gzip及图片重试；最终36首帧≤3s、24活动≥30fps、40次卸载资源/静默及22恢复通过，507 API＋107 web＋22 MCP＝636项，类型/构建通过。A自然堆末5次中位数增5,636,088 B、全局Nodes仍增长，强制GC未提供；IAB第二标签仍visible，完整内存/真实hidden保持06待验。临时TEST及浏览器设置/标签已清理，原5容器healthy。该批当时17仅完成[源码路由/状态/组件清单准备](../../output/implementation/t18-frontend-audit-preparation-20261028/README.md)，截图审计及实际页面改造未执行。
 
@@ -81,3 +81,5 @@ Skill提交6b269c9的[托管run40868218624](https://github.com/mikoe133/Or-Ai/ac
 此前b0db080的精确[CI40872484003](https://github.com/mikoe133/Or-Ai/actions/runs/40872484003)已确认completed/success（headSha b0db080cf50fa2a22c7f559f8536fed4fd92aeca）；6b269c9的原失败记录保持，本批新提交CI另核对。
 
 2026-10-30续[T18项目工作区/父级恢复](../../output/implementation/t18-admin-project-20261030/README.md)：503卸载节点草稿的有效RED→GREEN，权限隐藏/完整重读恢复、方法/运行子页父级保留、未保存规划/原请求、目录/手机与放弃引用已验；643业务＋2专项、类型/构建、12组对照及29项CUA，文字最低6.58:1。初轮视觉变量和Prisma生成竞争均留证并修复复验，服务/页签已清理。1bf932e精确CI41031598340成功；项目本批CI另核对，方法/运行子页自身与完整T18继续，商城及05/06边界保持。
+
+随后完成[T18方法与运行回执恢复](../../output/implementation/t18-admin-methods-runs-20261030/README.md)：四类有效RED、112前端＋2专项、含类型检查的最终构建、21组对照和42项CUA通过，10文字样本最低6.85:1。完整权限隐藏/恢复、503/409草稿/固定历史保留、手机焦点及未知方法/停止原请求核对已有证据。观察工具隐藏select原值的失败单独保留，改用可见选项核对；8纯预览/5拒绝写入，服务/页签/视口/控制文件清理，原五容器healthy。前批4a15ea8精确CI41034794724成功；本提交CI另核对，完整路由/状态、T18/05/06与商城审核仍待，云08/远程09/13–15原状态保持。

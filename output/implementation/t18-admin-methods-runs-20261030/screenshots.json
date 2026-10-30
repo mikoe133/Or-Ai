@@ -1,0 +1,296 @@
+[
+  {
+    "phase": "before",
+    "name": "method-library",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "method-customize",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "method-fixed",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "run-basis",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "run-history",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "run-stop-preview",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "run-empty",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "before",
+    "name": "method-library",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "method-customize",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "method-fixed",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "run-basis",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "run-history",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "run-stop-preview",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "run-empty",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "before",
+    "name": "method-library",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "before",
+    "name": "method-customize",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "before",
+    "name": "method-fixed",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "before",
+    "name": "run-basis",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "before",
+    "name": "run-history",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "before",
+    "name": "run-stop-preview",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "before",
+    "name": "run-empty",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "method-library",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "method-customize",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "method-fixed",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "run-basis",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "run-history",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "run-stop-preview",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "run-empty",
+    "width": 1440,
+    "height": 960,
+    "body": 1440
+  },
+  {
+    "phase": "after",
+    "name": "method-library",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "method-customize",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "method-fixed",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "run-basis",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "run-history",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "run-stop-preview",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "run-empty",
+    "width": 768,
+    "height": 1024,
+    "body": 768
+  },
+  {
+    "phase": "after",
+    "name": "method-library",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "method-customize",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "method-fixed",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "run-basis",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "run-history",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "run-stop-preview",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  },
+  {
+    "phase": "after",
+    "name": "run-empty",
+    "width": 390,
+    "height": 844,
+    "body": 390
+  }
+]

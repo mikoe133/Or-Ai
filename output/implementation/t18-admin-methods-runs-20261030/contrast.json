@@ -1,0 +1,82 @@
+[
+  {
+    "background": "rgb(19, 20, 28)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".summary span",
+    "contrast": 7.84,
+    "surface": ".production-run-operations"
+  },
+  {
+    "background": "rgb(19, 20, 28)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".summary small",
+    "contrast": 7.84,
+    "surface": ".production-run-operations"
+  },
+  {
+    "background": "rgb(25, 26, 36)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".list-footnote",
+    "contrast": 7.39,
+    "surface": ".production-run-operations"
+  },
+  {
+    "background": "rgb(28, 29, 40)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".module-caption",
+    "contrast": 7.14,
+    "surface": ".production-run-operations"
+  },
+  {
+    "background": "rgb(28, 29, 40)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".fact-list dt",
+    "contrast": 7.14,
+    "surface": ".production-run-operations"
+  },
+  {
+    "background": "rgb(23, 23, 32)",
+    "fontSize": "13px",
+    "foreground": "rgb(163, 158, 177)",
+    "selector": ".job-box p",
+    "contrast": 6.85,
+    "surface": ".production-run-operations"
+  },
+  {
+    "background": "rgb(19, 20, 28)",
+    "fontSize": "13px",
+    "foreground": "rgb(161, 157, 175)",
+    "selector": ".page-title p",
+    "contrast": 6.95,
+    "surface": ".project-method-operations"
+  },
+  {
+    "background": "rgb(28, 29, 40)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".module-heading small",
+    "contrast": 7.14,
+    "surface": ".project-method-operations"
+  },
+  {
+    "background": "rgb(28, 29, 40)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".wide-label small",
+    "contrast": 7.14,
+    "surface": ".project-method-operations"
+  },
+  {
+    "background": "rgb(27, 28, 38)",
+    "fontSize": "12px",
+    "foreground": "rgb(170, 167, 189)",
+    "selector": ".pm-editor-actions small",
+    "contrast": 7.23,
+    "surface": ".project-method-operations"
+  }
+]

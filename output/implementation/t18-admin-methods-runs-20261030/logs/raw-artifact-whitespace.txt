@@ -1,0 +1,14 @@
+output/implementation/t18-admin-methods-runs-20261030/before/method-customize-390.txt:53: trailing whitespace.
++						52 text  / 
+output/implementation/t18-admin-methods-runs-20261030/before/method-customize-390.txt:59: trailing whitespace.
++						58 text  / 
+output/implementation/t18-admin-methods-runs-20261030/before/method-fixed-390.txt:52: trailing whitespace.
++						51 text  / 
+output/implementation/t18-admin-methods-runs-20261030/before/method-fixed-390.txt:58: trailing whitespace.
++						57 text  / 
+output/implementation/t18-admin-methods-runs-20261030/before/method-library-390.txt:52: trailing whitespace.
++						51 text  / 
+output/implementation/t18-admin-methods-runs-20261030/before/method-library-390.txt:58: trailing whitespace.
++						57 text  / 
+output/implementation/t18-admin-methods-runs-20261030/logs/build.txt:75: trailing whitespace.
++[plugin builtin:vite-reporter] 

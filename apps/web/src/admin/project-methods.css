@@ -11,3 +11,32 @@
 .admin-shell .project-method-operations .module-heading{scroll-margin-top:72px}
 
 .admin-shell .project-method-operations .project-context>div>span{white-space:nowrap}.admin-shell .project-method-operations .project-context select{width:auto;max-width:360px;min-width:180px}@media(max-width:760px){.admin-shell .project-method-operations .project-context select{min-width:0;max-width:100%}}
+
+/* Keep the operator's module, current task and fixed source readable. */
+.admin-shell .project-method-operations{font-size:13px;line-height:1.75;color:var(--admin-text)}
+.admin-shell .project-method-operations .page-title h2{font-size:26px}
+.admin-shell .project-method-operations :is(.page-title p,.module-heading p,.body-intro p,.wide-label,.template-choice p,.review-block dl,.handoff-label,.callout,.consent){font-size:13px;line-height:1.85}
+.admin-shell .project-method-operations :is(.context-label,.project-context,.goal,.goal>span,.modules small,.module-foot,.module-heading small,.template-choice small,.review-block dt,.editor-actions small,.history-choice small){font-size:12px;line-height:1.8;color:var(--admin-muted)}
+.admin-shell .project-method-operations :is(button,input,select,textarea){font-size:13px;min-height:42px}
+.admin-shell .project-method-operations .modules button{justify-content:flex-start;align-items:flex-start;text-align:left}
+.admin-shell .project-method-operations .modules button strong{font-size:14px}
+.admin-shell .project-method-operations .body-intro h3,.admin-shell .project-method-operations .review-block h3{font-size:15px}
+.admin-shell .project-method-operations .template-title strong{font-size:14px}
+.admin-shell .project-method-operations .body-copy{font-size:12px;line-height:1.85;color:var(--admin-text);background:var(--admin-bg)}
+.admin-shell .project-method-operations .steps button{font-size:12px;white-space:normal;min-height:44px}
+.admin-shell .project-method-operations .pm-mobile-module{display:none}
+.admin-shell .project-method-operations dialog{background:var(--admin-panel);color:var(--admin-text);border-color:var(--admin-border)}
+.admin-shell .project-method-operations .handoff-dialog :is(p,label,small){font-size:13px;line-height:1.85}
+.admin-shell .project-method-operations .tag{font-size:12px}
+@media(max-width:760px){
+  .admin-shell .project-method-operations .modules{display:none}
+  .admin-shell .project-method-operations .pm-mobile-module{display:block;padding:16px;border-bottom:1px solid var(--admin-border)}
+  .admin-shell .project-method-operations .pm-mobile-module label{display:grid;gap:8px;color:var(--admin-muted);font-size:12px}
+  .admin-shell .project-method-operations .pm-mobile-module select{width:100%;font-size:14px;min-height:44px}
+  .admin-shell .project-method-operations .page-title h2{font-size:24px}
+  .admin-shell .project-method-operations :is(input,select,textarea){font-size:14px}
+  .admin-shell .project-method-operations .steps button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:10px 8px}
+  .admin-shell .project-method-operations .editor-actions .buttons{flex-wrap:wrap;gap:8px}
+  .admin-shell .project-method-operations .pm-editor-actions small{font-size:12px;line-height:1.75}
+}
+.admin-shell .project-method-operations .wide-label small{font-size:12px;line-height:1.8;color:var(--admin-muted)}

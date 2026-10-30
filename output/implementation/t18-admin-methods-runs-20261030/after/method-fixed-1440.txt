@@ -1,0 +1,92 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 31-113
+~			30 container 内容工作台页签
++				31 button 项目工作区
++				32 button 创作设定
++				33 button skill 组合
++				34 button 商品内容
++				35 button 体验设计
++				36 button 结果交付
++				37 button 封面
++				38 button 视频与分镜
++				39 button 引流文案
++				40 button 整套预览
++				41 button 引用与历史
++				42 button 成套采用
++				43 button 文件清理
++			44 container 商品方法与交接
++				45 button ← 返回商品项目
++				46 heading 为商品选好制作方法, Value: 2
++					47 text 为商品选好制作方法
++				48 text 选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。
++				49 button 整理交接说明 ↗, ID: pm-handoff-open
++				50 text 当前商品
++				51 text TEST Three.js 只读项目
++				52 text 当前计划 制作计划 r 1 共同设定 r 1
++				53 pop up button (collapsed, settable) Description: 查看计划版本, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
++					54 menu
++						55 (selected) r1 · TEST Three.js 项目规划
++				56 text 这款商品留给用户的体验
++				57 text TEST 回顾目标
++				58 container
++					59 heading 交付模块, Value: 2
++						60 text 交付模块
++					61 text 按专业用途分别固定
++					62 button 01 商品体验 0 / 2 个用途已选, ID: pm-module-experience
++						63 text 01
++						64 text 商品体验
++						65 container
++							66 text 0  /  2  个用途已选
++					67 button 02 TEST 引流文案 1 / 1 个用途已选, ID: pm-module-copy
++						68 text 02
++						69 text TEST 引流文案
++						70 container
++							71 text 1  /  1  个用途已选
++					72 text 各模块沿用同一份商品设定。
++					73 text 为本次制作明确选择固定方法。
++				74 container
++					75 text 引流文案  ·  文案创作
++					76 heading TEST 引流文案, Value: 2
++						77 text TEST 引流文案
++					78 text 制作TEST 引流文案
++					79 text 已选固定方法
++					80 button 01 选择基础 Skill
++						81 text 0
++						82 text 1
++						83 text 选择基础 Skill
++					84 button (disabled) 02 商品定制
++						85 text 0 2 商品定制
++					86 button (disabled) 03 确认并固定
++						87 text 0 3 确认并固定
++					88 text ✓
++					89 heading 商品方法已固定, Value: 3
++						90 text 商品方法已固定
++					91 text TEST 文案基础方法  · 基础 v 2  / 源 r 2
++					92 heading 本次完整方法正文, Value: 3
++						93 text 本次完整方法正文
++					94 text TEST 根据固定商品规划组织文案。
+
+## 商品实现约束 · Three.js
+
+所有商品的正常体验必须使用 Three.js 制作，并具有实际可运行、与商品内容相关的场景；不能以普通网页表单或空白 Canvas 冒充 Three.js 商品。
+Three.js 是统一实现基线，视觉可以是 2D、2.5D 或 3D。动画、镜头、场景切换、物体操作、确认与反馈均以该商品固定版本的规划为准，不默认套用静心花园、固定动画或小游戏。
+制作前必须读取共同创作设定及商品规划。未明确的动画或交互记为待规划，不自行承诺、补造或把未实现玩法标成可用。
+题目、报告、封面、视频和文案须对应同一商品的场景、风格及真实能力；各交付物按其媒介制作，宣传不得夸大交互和效果。
+DOM 可用于文字、无障碍和设备故障回退；正常商品体验仍须包含实际 Three.js 场景。已有答案、评分、保存恢复及权益语义按已注册能力处理，不以渲染技术替代新玩法的评估协议。
+历史商品、报告和 Skill 版本保持原样，改造须追加新版本并审核。
+
+文案依据商品真实的 Three.js 体验、情绪目标和最终交付表达价值；动画和玩法未确定时不得写成已经具备的卖点。
+
+TEST 固定商品说明
++					95 button (expanded) 已固定的本用途方法 · 为本次交接选择精确版本, Secondary Actions: Collapse
++						96 text 已固定的本用途方法 · 为本次交接选择精确版本
++					97 container
++						98 radio button (settable, integer) Description: 交接使用方法 3b29400b-0a40-4a44-a580-53dd60f0663a, Value: 1
++						99 text TEST 文案基础方法  · 基础 v 2  / 源 r 2 2026/10/30 08:00:00  ·  TEST 仅本商品的补充说明
++					100 text 定制只属于本商品；内容制作需要另行安排。
++					101 button 另存一版商品定制
++					102 button 整理交接说明, ID: pm-prepare-handoff
++			103 container
++				104 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 98 radio button (settable, integer) Description: 交接使用方法 3b29400b-0a40-4a44-a580-53dd60f0663a, Value: 1

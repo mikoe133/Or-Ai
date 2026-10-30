@@ -1,0 +1,10 @@
+{
+  "expected": "run history 403 hides private receipt workspace",
+  "response": {
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 403,
+    "sequence": 481
+  },
+  "privateWorkspaceCount": 1,
+  "reproduced": true
+}

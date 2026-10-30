@@ -1,0 +1,96 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&runOperations=1&run=90fbadee-eac8-43aa-aa58-ee6e66c6dc43".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 55-58, 60-74, 76-109
+~1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&runOperations=1&run=90fbadee-eac8-43aa-aa58-ee6e66c6dc43
+~		3 link Description: 跳到后台内容, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&runOperations=1&run=90fbadee-eac8-43aa-aa58-ee6e66c6dc43#admin-workspace
+~			44 container 外部制作与接续
+~				46 text PROJECT / EXTERNAL PRODUCTION
+~				47 heading 外部制作与接续, Value: 2
+~					48 text 外部制作与接续
+~				49 text 看清当前回执，保留已有成果，再决定下一步。
+~				50 button 重新核对回执 ↻, ID: ro-refresh
+~				51 button 停止本批接续, ID: ro-stop
+~				52 text 当前商品
+~				53 text TEST Three.js 只读项目
+~				54 text 制作批次
++				55 pop up button (collapsed, settable) 制作批次, Value: test-readonly-run, ID: ro-run, Secondary Actions: Expand
++					56 menu
++						57 未选择制作批次
++						58 (selected) test-readonly-run
+~				59 text 固定批次 ·  b67b0e44
++				60 container 分页
++					61 button (disabled) 上一页
++					62 text 第  1  页 · 共  1  条
++					63 button (disabled) 下一页
++				64 text 0
++				65 text 组已保存成果
++				66 text 原记录和历史版本继续保留
++				67 text 1
++				68 text 项需要处理
++				69 text 复查信号与当前接续条件分列
++				70 text 1
++				71 text 项尚未开始
++				72 text 没有尝试不等于制作失败
++				73 text 1
++				74 text 项原作业待核对
+~				75 text 本平台未向外部服务查询
++				76 container
++					77 heading 交付模块 2, Value: 3
++						78 text 交付模块  2
++					79 search text field (settable) 搜索制作模块
++					80 text 模块 / 已保存成果 当前情况 下一步
++					81 checkbox Description: 查看TEST 引流文案, Value: 1, ID: ro-module-copy
++						82 text TEST 引流文案
++						83 text 尚无已校验保存成果
++						84 text 制作端申报失败
++						85 text 原外部作业结果待核对
++						86 text 核对依据
++						87 text  →
++					88 checkbox Description: 查看商品体验, Value: 0, ID: ro-module-experience
++						89 text 商品体验
++						90 text 尚无已校验保存成果
++						91 text 尚未开始
++						92 text 未创建尝试
++						93 text 查看情况
++						94 text  →
++					95 text 状态来自制作端回执；已保存成果与当前接续状态分别保留。
++				96 container ro-detail
++					97 container
++						98 text COPY  / MODULE
++					99 heading TEST 引流文案, Value: 3
++						100 text TEST 引流文案
++					101 text 引流文案  · 固定批次 制作端申报失败
++					102 container 模块详情
++						103 button 处理依据
++						104 button 尝试历史
++						105 button 已保存成果
++					106 text TEST 制作端申报失败，原外部作业待核对
++					107 definition list
++						108 container 最近尝试
++							109 text 最近尝试
++						110 text 第 2 次
++						111 container 最后外部申报
++							112 text 最后外部申报
++						113 text 制作失败
++						114 container 当前认领
++							115 text 当前认领
++						116 container
++							117 text 已经结束  ·  2026/10/30 08:00:00
++						118 container 原连接状态
++							119 text 原连接状态
++						120 text 当前仍有效，实际工具调用仍重查
++						121 container 费用
++							122 text 费用
++						123 container
++							124 text 未知项仍存在  · 制作端申报
++					125 text 原外部作业 ·  结果尚未确认
++					126 container
++						127 text test-provider  /  TEST-job-001
++					128 text 平台未查询外部服务，没有重新创建作业。
++					129 button 整理原作业核对说明, ID: ro-recovery
++					130 text 说明只固定依据，不认领尝试、不创建外部作业。已有成果优先复用。
++				131 container
++					132 text 固定批次 · 原方法 / 原输入 / 原作业 服务端核对于  2026/10/30 08:00:00
++			133 container
++				134 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&runOperations=1&run=90fbadee-eac8-43aa-aa58-ee6e66c6dc43

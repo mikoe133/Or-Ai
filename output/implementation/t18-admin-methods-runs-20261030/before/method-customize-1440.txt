@@ -1,0 +1,89 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 31-116
+~			30 text 项目规划有未保存修改。保存或放弃后可切换页签和版本。
++			31 container 内容工作台页签
++				32 button 项目工作区 ·
++					33 text 项目工作区
++					34 text  ·
++				35 button 创作设定
++				36 button skill 组合
++				37 button 商品内容
++				38 button 体验设计
++				39 button 结果交付
++				40 button 封面
++				41 button 视频与分镜
++				42 button 引流文案
++				43 button 整套预览
++				44 button 引用与历史
++				45 button 成套采用
++				46 button 文件清理
++			47 container 商品方法与交接
++				48 button ← 返回商品项目
++				49 text PRODUCT / METHODS
++				50 heading 为商品选好制作方法, Value: 2
++					51 text 为商品选好制作方法
++				52 text 选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。
++				53 button 整理交接说明 ↗, ID: pm-handoff-open
++				54 text 当前商品
++				55 text TEST Three.js 只读项目
++				56 text 当前计划 制作计划 r 1 共同设定 r 1
++				57 pop up button (collapsed, settable) Description: 查看计划版本, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
++					58 menu
++						59 (selected) r1 · TEST Three.js 项目规划
++				60 text 这款商品留给用户的体验
++				61 text TEST 回顾目标
++				62 container
++					63 heading 交付模块, Value: 2
++						64 text 交付模块
++					65 text 按专业用途分别固定
++					66 button 01 商品体验 0 / 2 个用途已选, ID: pm-module-experience
++						67 text 01
++						68 text 商品体验
++						69 container
++							70 text 0  /  2  个用途已选
++					71 button 02 TEST 引流文案 0 / 1 个用途已选, ID: pm-module-copy
++						72 text 02
++						73 text TEST 引流文案
++						74 container
++							75 text 0  /  1  个用途已选
++					76 text 各模块沿用同一份商品设定。
++					77 text 为本次制作明确选择固定方法。
++				78 container
++					79 text COPY  /  WEB
++					80 heading TEST 引流文案, Value: 2
++						81 text TEST 引流文案
++					82 text 制作TEST 引流文案
++					83 text 待选方法
++					84 button 01 选择基础 Skill
++						85 text 0
++						86 text 1
++						87 text 选择基础 Skill
++					88 button 02 商品定制
++						89 text 0
++						90 text 2
++						91 text 商品定制
++					92 button 03 确认并固定
++						93 text 0
++						94 text 3
++						95 text 确认并固定
++					96 heading 把这款商品的要求补充清楚, Value: 3
++						97 text 把这款商品的要求补充清楚
++					98 text 基础模板保持原样，参数和补充说明只属于本商品方法。 TEST 文案基础方法  · v 2 固定源修订 r 2
++					99 button 更换基础方法
++					100 heading 商品参数, Value: 3
++						101 text 商品参数
++					102 text 文字、数字或开关，最多 40 项。
++					103 button ＋ 添加
++					104 text 给这款商品的补充说明
++					105 text 希望呈现的场景、语言尺度、应该避开的表达。
++					106 text entry area (settable) 商品补充说明
++					107 button (collapsed) 已固定的本用途方法 · 为本次交接选择精确版本, Secondary Actions: Expand
++						108 text 已固定的本用途方法 · 为本次交接选择精确版本
++					109 text 定制只属于本商品；内容制作需要另行安排。
++					110 button 返回选择
++					111 button 预览完整商品方法
++				112 button 放弃未保存的方法设置
++			113 container
++				114 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy

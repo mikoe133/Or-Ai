@@ -1,0 +1,5195 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 409,
+    "bodyDigest": "9d7c871aeae0841319b1a0cb18081f562f07ac3e75dbbb08501bf058dc7dcdac"
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/handoff-inputs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/handoff-inputs",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/handoff-inputs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/handoff-inputs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/handoff-inputs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 503
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/codex-connections",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 503,
+    "bodyDigest": "838018598fbffb7aa3614ad903f9b572b745b93e3b9d0001132b0cff73b80358"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/method-candidates",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-modules/3ca9641b-75b8-4f45-a4d2-a5b583092091/methods",
+    "status": 503,
+    "bodyDigest": "838018598fbffb7aa3614ad903f9b572b745b93e3b9d0001132b0cff73b80358"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop/preview",
+    "status": 200,
+    "bodyDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop",
+    "status": 503,
+    "bodyDigest": "71202f65f32c4d854cd9a5d4a0455e7466d2f08de745ea2ed6d1ab4f3b691740"
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/creative-profiles",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/versions",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/creative-profiles/31c29711-2609-45c1-a23f-f190540eb658/skill-sets",
+    "status": 404
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/project-workspace",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-plans/b67b0e44-d496-4964-a4a6-2f5a52c3c879/canvas-layout",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 403
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/products/e2a93928-8d84-4eae-9988-32c326961cfb/production-runs",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/operations",
+    "status": 200
+  },
+  {
+    "method": "POST",
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/stop",
+    "status": 503,
+    "bodyDigest": "71202f65f32c4d854cd9a5d4a0455e7466d2f08de745ea2ed6d1ab4f3b691740"
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/session/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/account/context",
+    "status": 200
+  },
+  {
+    "method": "GET",
+    "path": "/api/admin/overview",
+    "status": 200
+  }
+]

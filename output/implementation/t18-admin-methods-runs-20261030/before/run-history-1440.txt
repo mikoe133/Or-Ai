@@ -1,0 +1,23 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&runOperations=1&run=90fbadee-eac8-43aa-aa58-ee6e66c6dc43".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 110-134
+~					106 text 尝试历史
+~					107 pop up button (collapsed, settable) 尝试历史, Value: 第 1 次 · 历史只读, ID: ro-history, Secondary Actions: Expand
+~						108 menu
+~							109 第 2 次 · 当前尝试
++							110 (selected) 第 1 次 · 历史只读
++					111 container 分页
++						112 button (disabled) 上一页
++						113 text 第  1  页 · 共  2  条
++						114 button (disabled) 下一页
++					115 text 历史尝试只读，不能恢复旧代次。请回到当前尝试重新核对。
++					116 content list
++						117 container
++							118 text 制作失败 S4  ·  2026/10/30 08:00:00 TEST 外部申报，原作业仍须核对
++					119 button (disabled) 历史只读 · 回到当前尝试, ID: ro-recovery
++					120 text 说明只固定依据，不认领尝试、不创建外部作业。已有成果优先复用。
++				121 container
++					122 text 固定批次 · 原方法 / 原输入 / 原作业 服务端核对于  2026/10/30 08:00:00
++			123 container
++				124 text meetmyworld 内容与工作，都有迹可循。
+The focused UI element is 104 button 尝试历史

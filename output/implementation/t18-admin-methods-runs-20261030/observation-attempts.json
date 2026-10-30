@@ -1,0 +1,7 @@
+[
+  {
+    "name": "mobile-module-switch-cancel-keeps-original-module",
+    "passed": false,
+    "reason": "The browser redacted the raw select value. The visible AX state still selected TEST 引流文案. Recheck the displayed selected option rather than a redacted value."
+  }
+]

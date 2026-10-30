@@ -12,3 +12,26 @@
 .admin-shell .production-run-operations .module-row>span{min-width:0;overflow-wrap:anywhere}.admin-shell .production-run-operations .context strong{overflow-wrap:anywhere}
 
 .admin-shell .production-run-operations .handoff-steps b{flex:0 0 20px;white-space:nowrap}
+
+/* Receipt status stays separate from claims, costs and real external execution. */
+.admin-shell .production-run-operations{font-size:13px;line-height:1.75;color:var(--admin-text)}
+.admin-shell .production-run-operations :is(button,input,select,textarea){font-size:13px;min-height:42px}
+.admin-shell .production-run-operations :is(.page-heading .muted,.context,.module-row,.fact-list,.callout,.dialog-lead,.consent,.job-box p,.detail-body>.muted){font-size:13px;line-height:1.85}
+.admin-shell .production-run-operations :is(.context small,.context label,.context>div>span,.summary span,.summary small,.table-labels,.list-footnote,.module-row small,.detail-heading small,.fact-list dt,.job-box small,.statusbar,.module-caption){font-size:12px;line-height:1.8;color:var(--admin-muted);letter-spacing:0}
+.admin-shell .production-run-operations .summary strong{font-size:25px}
+.admin-shell .production-run-operations .module-row{justify-content:flex-start;text-align:left}
+.admin-shell .production-run-operations .detail-heading h3{font-size:20px}
+.admin-shell .production-run-operations .detail-tabs button{font-size:13px}
+.admin-shell .production-run-operations dialog{background:var(--admin-panel);color:var(--admin-text);border-color:var(--admin-border)}
+.admin-shell .production-run-operations .dialog-heading h2{font-size:21px}
+.admin-shell .production-run-operations .dialog-body :is(p,label,small){font-size:13px;line-height:1.85}
+.admin-shell .production-run-operations .dialog-actions button{font-size:13px}
+.admin-shell .production-run-operations .tag{font-size:12px}
+@media(max-width:760px){
+  .admin-shell .production-run-operations .heading-actions{display:flex;flex-wrap:wrap;gap:8px}
+  .admin-shell .production-run-operations .context>div{display:flex;flex-wrap:wrap;gap:8px;min-width:0}
+  .admin-shell .production-run-operations .context select{width:100%;max-width:100%;font-size:14px;min-height:44px}
+  .admin-shell .production-run-operations .list-heading{flex-wrap:wrap;gap:12px}
+  .admin-shell .production-run-operations .list-heading input{width:100%;font-size:14px;min-height:44px}
+  .admin-shell .production-run-operations .dialog-actions{flex-wrap:wrap}
+}

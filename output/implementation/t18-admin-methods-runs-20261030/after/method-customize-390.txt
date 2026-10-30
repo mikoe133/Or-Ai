@@ -1,0 +1,11 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 23-24, 61-76
++			132 text 内容工作台 已验证的管理员
++				133 container
++					134 text 交付模块
++					135 pop up button (collapsed, settable) 交付模块, Value: 2 / 2 · TEST 引流文案, ID: pm-module-mobile, Secondary Actions: Expand
++						136 menu
++							137 1 / 2 · 商品体验
++							138 (selected) 2 / 2 · TEST 引流文案
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy

@@ -1,0 +1,101 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 link Description: 运营后台, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin
+			7 text / 内容工作台 已验证的管理员
+			8 link Description: 账户设置, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/account
+		9 container 内容工作台, ID: admin-workspace
+			10 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				11 text 内容工作台
+			12 link Description: ← 全部内容商品, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content
+			13 text 项目规划有未保存修改。保存或放弃后可切换页签和版本。
+			14 container
+				15 text 当前工作区
+				16 pop up button (collapsed, settable) Description: 切换内容工作区, Value: 项目工作区 · 有未保存修改, Secondary Actions: Expand
+					17 menu
+						18 (selected) 项目工作区 · 有未保存修改
+						19 创作设定
+						20 skill 组合
+						21 商品内容
+						22 体验设计
+						23 结果交付
+						24 封面
+						25 视频与分镜
+						26 引流文案
+						27 整套预览
+						28 引用与历史
+						29 成套采用
+						30 文件清理
+			31 container 商品方法与交接
+				32 button ← 返回商品项目
+				33 text PRODUCT / METHODS
+				34 heading 为商品选好制作方法, Value: 2
+					35 text 为商品选好制作方法
+				36 text 选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。
+				37 button 整理交接说明 ↗, ID: pm-handoff-open
+				38 text 当前商品
+				39 text TEST Three.js 只读项目
+				40 text 当前计划 制作计划 r 1 共同设定 r 1
+				41 pop up button (collapsed, settable) Description: 查看计划版本, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
+					42 menu
+						43 (selected) r1 · TEST Three.js 项目规划
+				44 text 这款商品留给用户的体验
+				45 text TEST 回顾目标
+				46 container
+					47 heading 交付模块, Value: 2
+						48 text 交付模块
+					49 text 按专业用途分别固定
+					50 button 01 商品体验 0 / 2 个用途已选, ID: pm-module-experience
+						51 text 01
+						52 text 商品体验
+						53 container
+							54 text 0  /  2  个用途已选
+					55 button 02 TEST 引流文案 0 / 1 个用途已选, ID: pm-module-copy
+						56 text 02
+						57 text TEST 引流文案
+						58 container
+							59 text 0  /  1  个用途已选
+					60 text 各模块沿用同一份商品设定。
+					61 text 为本次制作明确选择固定方法。
+				62 container
+					63 text COPY  /  WEB
+					64 heading TEST 引流文案, Value: 2
+						65 text TEST 引流文案
+					66 text 制作TEST 引流文案
+					67 text 待选方法
+					68 button 01 选择基础 Skill
+						69 text 0
+						70 text 1
+						71 text 选择基础 Skill
+					72 button 02 商品定制
+						73 text 0
+						74 text 2
+						75 text 商品定制
+					76 button 03 确认并固定
+						77 text 0
+						78 text 3
+						79 text 确认并固定
+					80 heading 把这款商品的要求补充清楚, Value: 3
+						81 text 把这款商品的要求补充清楚
+					82 text 基础模板保持原样，参数和补充说明只属于本商品方法。 TEST 文案基础方法  · v 2 固定源修订 r 2
+					83 button 更换基础方法
+					84 heading 商品参数, Value: 3
+						85 text 商品参数
+					86 text 文字、数字或开关，最多 40 项。
+					87 button ＋ 添加
+					88 text 给这款商品的补充说明
+					89 text 希望呈现的场景、语言尺度、应该避开的表达。
+					90 text entry area (settable) 商品补充说明
+					91 button (collapsed) 已固定的本用途方法 · 为本次交接选择精确版本, Secondary Actions: Expand
+						92 text 已固定的本用途方法 · 为本次交接选择精确版本
+					93 text 定制只属于本商品；内容制作需要另行安排。
+					94 button 返回选择
+					95 button 预览完整商品方法
+				96 button 放弃未保存的方法设置
+			97 container
+				98 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy

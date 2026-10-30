@@ -1,0 +1,174 @@
+[
+  {
+    "name": "method-history-403-hides-private-workspace",
+    "passed": true
+  },
+  {
+    "name": "method-failed-access-retry-keeps-private-fields-hidden",
+    "passed": true
+  },
+  {
+    "name": "method-successful-reads-restore-workspace",
+    "passed": true
+  },
+  {
+    "name": "run-history-403-hides-private-receipts",
+    "passed": true
+  },
+  {
+    "name": "run-successful-reads-restore-receipts",
+    "passed": true
+  },
+  {
+    "name": "seven-method-and-run-states-have-three-viewport-pairs",
+    "passed": true
+  },
+  {
+    "name": "all-method-and-run-captures-avoid-page-overflow",
+    "passed": true
+  },
+  {
+    "name": "candidate-refresh-503-preserves-customization",
+    "passed": true
+  },
+  {
+    "name": "method-history-denial-hides-customization",
+    "passed": true
+  },
+  {
+    "name": "method-read-recovery-restores-original-customization",
+    "passed": true
+  },
+  {
+    "name": "new-method-requires-explicit-review-consent",
+    "passed": true
+  },
+  {
+    "name": "capture-conflict-keeps-complete-customized-method",
+    "passed": true
+  },
+  {
+    "name": "source-recheck-preserves-customization",
+    "passed": true
+  },
+  {
+    "name": "mobile-module-switch-cancel-keeps-visible-original-module",
+    "passed": true
+  },
+  {
+    "name": "mobile-module-switch-cancel-restores-selector-focus",
+    "passed": true
+  },
+  {
+    "name": "fixed-method-view-keeps-original-version-and-body",
+    "passed": true
+  },
+  {
+    "name": "clone-keeps-original-customization",
+    "passed": true
+  },
+  {
+    "name": "discarded-customization-has-visible-focus-fallback",
+    "passed": true
+  },
+  {
+    "name": "handoff-input-403-closes-dialog-and-private-workspace",
+    "passed": true
+  },
+  {
+    "name": "handoff-probe-must-succeed-before-restoring",
+    "passed": true
+  },
+  {
+    "name": "handoff-connection-403-hides-private-methods",
+    "passed": true
+  },
+  {
+    "name": "handoff-connection-recovery-does-not-reopen-dialog",
+    "passed": true
+  },
+  {
+    "name": "historical-run-attempt-cannot-prepare-recovery",
+    "passed": true
+  },
+  {
+    "name": "history-503-keeps-fixed-attempt-selector",
+    "passed": true
+  },
+  {
+    "name": "receipt-refresh-503-keeps-search-and-history-tab",
+    "passed": true
+  },
+  {
+    "name": "run-history-403-hides-search-and-private-attempts",
+    "passed": true
+  },
+  {
+    "name": "run-read-recovery-keeps-original-search-and-selection",
+    "passed": true
+  },
+  {
+    "name": "recovery-connection-403-closes-dialog-and-hides-receipts",
+    "passed": true
+  },
+  {
+    "name": "receipt-recovery-does-not-reopen-previous-dialog",
+    "passed": true
+  },
+  {
+    "name": "stop-preview-requires-reason-and-explicit-consent",
+    "passed": true
+  },
+  {
+    "name": "cancel-stop-preview-restores-trigger-focus",
+    "passed": true
+  },
+  {
+    "name": "unknown-run-fees-remain-explicitly-unknown",
+    "passed": true
+  },
+  {
+    "name": "method-and-run-text-samples-meet-4.5-contrast",
+    "passed": true,
+    "minimum": 6.85,
+    "samples": 10
+  },
+  {
+    "name": "method-helper-text-is-at-least-12px",
+    "passed": true
+  },
+  {
+    "name": "unknown-method-save-locks-review-input",
+    "passed": true
+  },
+  {
+    "name": "permission-loss-hides-unknown-method-result",
+    "passed": true
+  },
+  {
+    "name": "method-permission-recovery-reuses-identical-original-body",
+    "passed": true,
+    "bodyDigest": "838018598fbffb7aa3614ad903f9b572b745b93e3b9d0001132b0cff73b80358"
+  },
+  {
+    "name": "unknown-stop-keeps-original-reason-locked",
+    "passed": true
+  },
+  {
+    "name": "run-list-403-hides-unknown-stop-and-private-dialog",
+    "passed": true
+  },
+  {
+    "name": "stop-access-recovery-awaits-explicit-original-result-check",
+    "passed": true
+  },
+  {
+    "name": "original-stop-check-restores-exact-reason",
+    "passed": true
+  },
+  {
+    "name": "stop-permission-recovery-reuses-identical-original-body",
+    "passed": true,
+    "bodyDigest": "71202f65f32c4d854cd9a5d4a0455e7466d2f08de745ea2ed6d1ab4f3b691740"
+  }
+]

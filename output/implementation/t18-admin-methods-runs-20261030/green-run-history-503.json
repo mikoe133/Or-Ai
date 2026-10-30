@@ -1,0 +1,9 @@
+{
+  "response": {
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 503,
+    "sequence": 15812
+  },
+  "selectorCount": 1,
+  "keepsFirstAttempt": true
+}

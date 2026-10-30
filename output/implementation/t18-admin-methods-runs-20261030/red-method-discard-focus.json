@@ -1,0 +1,1 @@
+{"expected":"A visible module selector or handoff control receives focus after the discarded draft removes its opener.","observed":{"tag":"BODY","id":""},"reproduced":true}

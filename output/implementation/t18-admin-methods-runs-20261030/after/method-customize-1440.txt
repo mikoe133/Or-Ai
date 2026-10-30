@@ -1,0 +1,116 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy#admin-workspace
+		4 container Description: 运营工作空间, ID: admin-sidebar
+			5 link Description: MeetMyWorld 运营后台, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin
+			6 container 后台导航
+				7 container 运营管理
+					8 text 运营管理
+					9 link Description: 概览与审计, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin
+					10 link Description: 商品与版本, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/products
+				11 container 内容制作
+					12 text 内容制作
+					13 link Description: 内容工作台, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content
+					14 link Description: 素材与文件, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/assets
+					15 link Description: skill 库, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/skills
+				16 container 连接与交付
+					17 text 连接与交付
+					18 link Description: Codex 连接, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/machine
+					19 link Description: 订单与售后, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/orders
+			20 link Description: M 管理员 邮箱已验证, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/account
+			21 link Description: ← 返回商城, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/
+		22 container
+			23 link Description: 运营后台, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin
+			24 text / 内容工作台 已验证的管理员
+			25 link Description: 账户设置, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/account
+		26 container 内容工作台, ID: admin-workspace
+			27 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				28 text 内容工作台
+			29 link Description: ← 全部内容商品, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content
+			30 text 项目规划有未保存修改。保存或放弃后可切换页签和版本。
+			31 container 内容工作台页签
+				32 button 项目工作区 ·
+					33 text 项目工作区
+					34 text  ·
+				35 button 创作设定
+				36 button skill 组合
+				37 button 商品内容
+				38 button 体验设计
+				39 button 结果交付
+				40 button 封面
+				41 button 视频与分镜
+				42 button 引流文案
+				43 button 整套预览
+				44 button 引用与历史
+				45 button 成套采用
+				46 button 文件清理
+			47 container 商品方法与交接
+				48 button ← 返回商品项目
+				49 heading 为商品选好制作方法, Value: 2
+					50 text 为商品选好制作方法
+				51 text 选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。
+				52 button 整理交接说明 ↗, ID: pm-handoff-open
+				53 text 当前商品
+				54 text TEST Three.js 只读项目
+				55 text 当前计划 制作计划 r 1 共同设定 r 1
+				56 pop up button (collapsed, settable) Description: 查看计划版本, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
+					57 menu
+						58 (selected) r1 · TEST Three.js 项目规划
+				59 text 这款商品留给用户的体验
+				60 text TEST 回顾目标
+				61 container
+					62 heading 交付模块, Value: 2
+						63 text 交付模块
+					64 text 按专业用途分别固定
+					65 button 01 商品体验 0 / 2 个用途已选, ID: pm-module-experience
+						66 text 01
+						67 text 商品体验
+						68 container
+							69 text 0  /  2  个用途已选
+					70 button 02 TEST 引流文案 0 / 1 个用途已选, ID: pm-module-copy
+						71 text 02
+						72 text TEST 引流文案
+						73 container
+							74 text 0  /  1  个用途已选
+					75 text 各模块沿用同一份商品设定。
+					76 text 为本次制作明确选择固定方法。
+				77 container
+					78 text 引流文案  ·  文案创作
+					79 heading TEST 引流文案, Value: 2
+						80 text TEST 引流文案
+					81 text 制作TEST 引流文案
+					82 text 待选方法
+					83 button 01 选择基础 Skill
+						84 text 0
+						85 text 1
+						86 text 选择基础 Skill
+					87 button 02 商品定制
+						88 text 0
+						89 text 2
+						90 text 商品定制
+					91 button 03 确认并固定
+						92 text 0
+						93 text 3
+						94 text 确认并固定
+					95 heading 把这款商品的要求补充清楚, Value: 3
+						96 text 把这款商品的要求补充清楚
+					97 text 基础模板保持原样，参数和补充说明只属于本商品方法。 TEST 文案基础方法  · v 2 固定源修订 r 2
+					98 button 更换基础方法
+					99 heading 商品参数, Value: 3
+						100 text 商品参数
+					101 text 文字、数字或开关，最多 40 项。
+					102 button ＋ 添加
+					103 text 给这款商品的补充说明
+					104 text 希望呈现的场景、语言尺度、应该避开的表达。
+					105 text entry area (settable) 商品补充说明
+					106 button (collapsed) 已固定的本用途方法 · 为本次交接选择精确版本, Secondary Actions: Expand
+						107 text 已固定的本用途方法 · 为本次交接选择精确版本
+					108 text 定制只属于本商品；内容制作需要另行安排。
+					109 button 返回选择
+					110 button 预览完整商品方法
+				111 button 放弃未保存的方法设置
+			112 container
+				113 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy

@@ -1,0 +1,2 @@
+READY http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/machine
+CLEANED read-only protocol substitute

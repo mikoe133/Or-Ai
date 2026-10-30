@@ -1,0 +1,93 @@
+Browser tab: 4, Title: "内容工作台 · MeetMyWorld 运营后台", URL: "http://orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy".
+1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy
+	2 container root
+		3 link Description: 跳到后台内容, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy#admin-workspace
+		4 container
+			5 button (collapsed) Description: 展开后台导航, Secondary Actions: Expand
+			6 text 内容工作台 已验证的管理员
+			7 link Description: 账户设置, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/account
+		8 container 内容工作台, ID: admin-workspace
+			9 heading 内容工作台, Value: 1, ID: admin-workspace-title
+				10 text 内容工作台
+			11 link Description: ← 全部内容商品, Value: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content
+			12 container
+				13 text 当前工作区
+				14 pop up button (collapsed, settable) Description: 切换内容工作区, Value: 项目工作区, Secondary Actions: Expand
+					15 menu
+						16 (selected) 项目工作区
+						17 创作设定
+						18 skill 组合
+						19 商品内容
+						20 体验设计
+						21 结果交付
+						22 封面
+						23 视频与分镜
+						24 引流文案
+						25 整套预览
+						26 引用与历史
+						27 成套采用
+						28 文件清理
+			29 container 商品方法与交接
+				30 button ← 返回商品项目
+				31 heading 为商品选好制作方法, Value: 2
+					32 text 为商品选好制作方法
+				33 text 选基础 Skill，补上这款商品的要求，再把固定版本交给 Codex。
+				34 button 整理交接说明 ↗, ID: pm-handoff-open
+				35 text 当前商品
+				36 text TEST Three.js 只读项目
+				37 text 当前计划 制作计划 r 1 共同设定 r 1
+				38 pop up button (collapsed, settable) Description: 查看计划版本, Value: r1 · TEST Three.js 项目规划, Secondary Actions: Expand
+					39 menu
+						40 (selected) r1 · TEST Three.js 项目规划
+				41 text 这款商品留给用户的体验
+				42 text TEST 回顾目标
+				43 container
+					44 text 交付模块
+					45 pop up button (collapsed, settable) 交付模块, Value: 2 / 2 · TEST 引流文案, ID: pm-module-mobile, Secondary Actions: Expand
+						46 menu
+							47 1 / 2 · 商品体验
+							48 (selected) 2 / 2 · TEST 引流文案
+				49 container
+					50 text 引流文案  ·  文案创作
+					51 heading TEST 引流文案, Value: 2
+						52 text TEST 引流文案
+					53 text 制作TEST 引流文案
+					54 text 待选方法
+					55 button 01 选择基础 Skill
+						56 text 0
+						57 text 1
+						58 text 选择基础 Skill
+					59 button (disabled) 02 商品定制
+						60 text 0 2 商品定制
+					61 button (disabled) 03 确认并固定
+						62 text 0 3 确认并固定
+					63 heading 先选一种适合这款商品的方法, Value: 3
+						64 text 先选一种适合这款商品的方法
+					65 text 固定精确版本，共享库升级不会悄悄换掉它。
+					66 text field (settable) 搜索基础 Skill
+					67 pop up button (collapsed, settable) Description: 基础方法状态, Value: 全部可用状态, Secondary Actions: Expand
+						68 menu
+							69 (selected) 全部可用状态
+							70 已启用
+							71 已审核
+							72 草稿
+							73 已归档
+					74 radio button (settable, integer) Description: 选择TEST 文案基础方法 v2, Value: 0
+					75 container
+						76 text TEST 文案基础方法 v 2  / r 2
+					77 text 已审核 · 未启用
+					78 text TEST 只读界面验证，不是正式方法
+					79 text 文案创作  ·  3d  ·  0  份参考附件
+					80 container 分页
+						81 button (disabled) 上一页
+						82 text 第  1  页 · 共  1  条
+						83 button (disabled) 下一页
+					84 text 只选择基础版本，不修改共享库，也不启动内容制作。
+					85 button (collapsed) 已固定的本用途方法 · 为本次交接选择精确版本, Secondary Actions: Expand
+						86 text 已固定的本用途方法 · 为本次交接选择精确版本
+					87 text 定制只属于本商品；内容制作需要另行安排。
+					88 button (disabled) 继续，补充商品要求
+			89 container
+				90 text meetmyworld 内容与工作，都有迹可循。
+
+The focused UI element is 1 AXWebArea 内容工作台 · MeetMyWorld 运营后台, URL: orai-cua-dc059433-1498-4029-b208-c33aa9e7adb1.localhost:5190/admin/content/e2a93928-8d84-4eae-9988-32c326961cfb?tab=project&methodModule=copy

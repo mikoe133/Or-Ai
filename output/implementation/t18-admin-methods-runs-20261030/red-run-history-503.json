@@ -1,0 +1,10 @@
+{
+  "expected": "ordinary history refresh preserves the existing fixed attempt selector",
+  "response": {
+    "path": "/api/admin/production-runs/90fbadee-eac8-43aa-aa58-ee6e66c6dc43/attempts",
+    "status": 503,
+    "sequence": 15343
+  },
+  "selectorCount": 0,
+  "reproduced": true
+}
